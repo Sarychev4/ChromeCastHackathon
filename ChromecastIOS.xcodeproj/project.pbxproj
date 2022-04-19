@@ -56,14 +56,13 @@
 		E89642BB280EAF7700E6E287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E89642BD280EAF7900E6E287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89642C0280EAF7900E6E287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E89642C2280EAF7900E6E287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8964312280EB5A700E6E287 /* MirroringExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MirroringExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8964313280EB5A700E6E287 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		E8964316280EB5A700E6E287 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
 		E8964318280EB5A700E6E287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E896431F280EB5A700E6E287 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E8964347280EB75D00E6E287 /* ChromecastIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromecastIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8964348280EB75E00E6E287 /* ChromecastIOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ChromecastIOS-Info.plist"; path = "/Users/vital/Projects/chromecast_ios/ChromecastIOS-Info.plist"; sourceTree = "<absolute>"; };
+		E896434C280EBB1F00E6E287 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromecastIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,7 +117,6 @@
 				E89642B2280EAF7700E6E287 /* Products */,
 				9FB1EA453052B0581D0BFE07 /* Pods */,
 				504D1222731237FE33320495 /* Frameworks */,
-				E8964348280EB75E00E6E287 /* ChromecastIOS-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,9 +136,8 @@
 				E89642B6280EAF7700E6E287 /* SceneDelegate.swift */,
 				E89642B8280EAF7700E6E287 /* ViewController.swift */,
 				E89642BA280EAF7700E6E287 /* Main.storyboard */,
-				E89642BD280EAF7900E6E287 /* Assets.xcassets */,
 				E89642BF280EAF7900E6E287 /* LaunchScreen.storyboard */,
-				E89642C2280EAF7900E6E287 /* Info.plist */,
+				E896434B280EBB1F00E6E287 /* Resources */,
 			);
 			path = ChromecastIOS;
 			sourceTree = "<group>";
@@ -152,6 +149,15 @@
 				E8964318280EB5A700E6E287 /* Info.plist */,
 			);
 			path = MirroringExtension;
+			sourceTree = "<group>";
+		};
+		E896434B280EBB1F00E6E287 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E896434C280EBB1F00E6E287 /* Info.plist */,
+				E89642BD280EAF7900E6E287 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -555,7 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ChromecastIOS-Info.plist";
+				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -584,7 +590,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ChromecastIOS-Info.plist";
+				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
