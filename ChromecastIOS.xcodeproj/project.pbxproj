@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C79DB51145C97265C38D971 /* Pods_MirroringExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */; };
 		78F9D85941594D195FC9F26F /* Pods_ChromecastIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */; };
 		E89642B5280EAF7700E6E287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89642B4280EAF7700E6E287 /* AppDelegate.swift */; };
 		E89642B7280EAF7700E6E287 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89642B6280EAF7700E6E287 /* SceneDelegate.swift */; };
@@ -44,6 +45,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.debug.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.release.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.release.xcconfig"; sourceTree = "<group>"; };
+		315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirroringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6B40AE5B01FA94F58DD536 /* Pods-ChromecastIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.debug.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.release.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.release.xcconfig"; sourceTree = "<group>"; };
 		E89642B1280EAF7700E6E287 /* ChromecastIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromecastIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */,
+				5C79DB51145C97265C38D971 /* Pods_MirroringExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +93,7 @@
 				EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */,
 				E8964313280EB5A700E6E287 /* ReplayKit.framework */,
 				E896431F280EB5A700E6E287 /* UIKit.framework */,
+				315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,6 +103,8 @@
 			children = (
 				3E6B40AE5B01FA94F58DD536 /* Pods-ChromecastIOS.debug.xcconfig */,
 				9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */,
+				15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */,
+				2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -173,6 +181,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8964331280EB5A700E6E287 /* Build configuration list for PBXNativeTarget "MirroringExtension" */;
 			buildPhases = (
+				9D8BDC54077DA9B1897DDAEC /* [CP] Check Pods Manifest.lock */,
 				E896430E280EB5A700E6E287 /* Sources */,
 				E896430F280EB5A700E6E287 /* Frameworks */,
 				E8964310280EB5A700E6E287 /* Resources */,
@@ -276,6 +285,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D8BDC54077DA9B1897DDAEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MirroringExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9DDF9191950C5DDD391D392E /* [CP] Check Pods Manifest.lock */ = {
@@ -525,6 +556,7 @@
 		};
 		E896432C280EB5A700E6E287 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -549,6 +581,7 @@
 		};
 		E896432D280EB5A700E6E287 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
