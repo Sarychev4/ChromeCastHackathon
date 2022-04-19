@@ -2,8 +2,7 @@
 #platform :ios, '9.0'
 inhibit_all_warnings!
 
-def common_pods_for_target 
-  pod 'AmazonFling', :path => '../ScreenMirroring/Libs/FireTV' 
+def common_pods_for_target  
   pod 'CocoaAsyncSocket' 
   pod 'Criollo', :git => 'git@github.com:mirroringcontact/Criollo.git'
 end
