@@ -63,7 +63,7 @@
 		E8964318280EB5A700E6E287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E896431F280EB5A700E6E287 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E8964347280EB75D00E6E287 /* ChromecastIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromecastIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8964348280EB75E00E6E287 /* ChromecastIOS copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ChromecastIOS copy-Info.plist"; path = "/Users/vital/Projects/chromecast_ios/ChromecastIOS copy-Info.plist"; sourceTree = "<absolute>"; };
+		E8964348280EB75E00E6E287 /* ChromecastIOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ChromecastIOS-Info.plist"; path = "/Users/vital/Projects/chromecast_ios/ChromecastIOS-Info.plist"; sourceTree = "<absolute>"; };
 		EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromecastIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,7 +118,7 @@
 				E89642B2280EAF7700E6E287 /* Products */,
 				9FB1EA453052B0581D0BFE07 /* Pods */,
 				504D1222731237FE33320495 /* Frameworks */,
-				E8964348280EB75E00E6E287 /* ChromecastIOS copy-Info.plist */,
+				E8964348280EB75E00E6E287 /* ChromecastIOS-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -555,7 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ChromecastIOS copy-Info.plist";
+				INFOPLIST_FILE = "ChromecastIOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -584,7 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ChromecastIOS copy-Info.plist";
+				INFOPLIST_FILE = "ChromecastIOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
