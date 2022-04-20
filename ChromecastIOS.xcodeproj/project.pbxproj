@@ -98,6 +98,8 @@
 		E896431F280EB5A700E6E287 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E8964347280EB75D00E6E287 /* ChromecastIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromecastIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E896434C280EBB1F00E6E287 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8C16010280FFA6200995934 /* ChromecastIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChromecastIOS.entitlements; sourceTree = "<group>"; };
+		E8C16011280FFA9700995934 /* MirroringExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MirroringExtension.entitlements; sourceTree = "<group>"; };
 		EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromecastIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -253,6 +255,7 @@
 		E89642B3280EAF7700E6E287 /* ChromecastIOS */ = {
 			isa = PBXGroup;
 			children = (
+				E8C16010280FFA6200995934 /* ChromecastIOS.entitlements */,
 				E89642B4280EAF7700E6E287 /* AppDelegate.swift */,
 				E89642BA280EAF7700E6E287 /* Main.storyboard */,
 				DD305EA2280F2D1900BA57B4 /* Controllers */,
@@ -267,6 +270,7 @@
 		E8964315280EB5A700E6E287 /* MirroringExtension */ = {
 			isa = PBXGroup;
 			children = (
+				E8C16011280FFA9700995934 /* MirroringExtension.entitlements */,
 				E8964316280EB5A700E6E287 /* SampleHandler.swift */,
 				E8964318280EB5A700E6E287 /* Info.plist */,
 			);
@@ -658,6 +662,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
@@ -684,6 +689,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
@@ -713,12 +719,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3VW8T2TLKM;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -745,11 +753,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3VW8T2TLKM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
