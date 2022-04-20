@@ -703,6 +703,7 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -734,6 +735,7 @@
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
