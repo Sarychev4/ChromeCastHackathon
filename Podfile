@@ -23,7 +23,6 @@ target 'ChromecastIOS' do
   pod 'Kingfisher'  
   pod 'ReachabilitySwift'
   pod "NextLevelSessionExporter", "~> 0.4.5"
-  pod 'smart-view-sdk'
   pod 'google-cast-sdk-no-bluetooth'
   pod 'LNZCollectionLayouts'
   pod 'XCDYouTubeKit-kbexdev', :git => 'https://github.com/kbex-dev/XCDYouTubeKit.git' 

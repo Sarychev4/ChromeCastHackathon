@@ -644,6 +644,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MirroringExtension;
@@ -669,6 +670,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MirroringExtension;
@@ -697,6 +699,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 32CU8MGAMB;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -727,6 +731,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
