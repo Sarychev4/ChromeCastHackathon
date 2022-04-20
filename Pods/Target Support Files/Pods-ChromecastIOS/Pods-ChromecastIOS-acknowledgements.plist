@@ -546,7 +546,7 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2014-2022 Alamofire Software Foundation (http://alamofire.org/)
+			<string>Copyright (c) 2014-2021 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -3396,7 +3396,7 @@ standalone and requires a support library to be linked with it.  This
 support library is itself covered by the above license.
 </string>
 			<key>License</key>
-			<string>BSD-3-Clause</string>
+			<string>3-Clause BSD License</string>
 			<key>Title</key>
 			<string>Protobuf</string>
 			<key>Type</key>

@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  ChromecastIOS
+
+  Created by Artsiom Sarychau on 19.04.2022.
+  
+*/
+
+/*
+ - Main Screen
+ */
+
+"Screen.Main.Banner.Title" = "Unlock Premium
+Features";
+"Screen.Main.Banner.Title.2" = "Device Not Connected";
+
+"Screen.Main.Title" = "Start Mirroring";
+"Screen.Main.Tap.Title" = "Tap to start";
+
+"Screen.Main.Tab.Browser.Title" = "Browser";
+"Screen.Main.Tab.Browser.Subtitle" = "Cast from websites";
+
+"Screen.Main.Tab.MediaLibrary.Title" = "Media";
+"Screen.Menu.Tab.MediaLibrary.Subtitle" = "Cast photos & videos";
+
+"Screen.Main.Tab.IPTV.Title" = "IPTV";
+"Screen.Menu.Tab.IPTV.Subtitle" = "Watch TV channels";
+
+"Screen.Main.Tab.Youtube.Title" = "YouTube";
+"Screen.Menu.Tab.Youtube.Subtitle" = "Watch YouTube";
+
+"Screen.Main.Tab.GoogleDrive.Title" = "Google Drive";
+"Screen.Main.Tab.GoogleDrive.Subtitle" = "Explore Drive";
+
+"Screen.Main.Tab.GooglePhotos.Title" = "Google Photos";
+"Screen.Main.Tab.GooglePhotos.Subtitle" = "Explore Photos";
+
+/*
+ 
+ */
+"Screen.Main.Tabbar.Title" = "Tap to start";
