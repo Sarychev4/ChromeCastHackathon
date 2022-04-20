@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "cast.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "backArrow.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
