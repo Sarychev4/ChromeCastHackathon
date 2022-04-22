@@ -12,7 +12,7 @@ enum AnimatedCellType {
     case unfolding
 }
 
-class ThumbnailMasterFlowLayout: UICollectionViewFlowLayout,  CellBasicMeasurement, CellAnimationMeasurement, FlowLayoutInvalidateBehavior {
+class ThumbnailMasterFlowLayout: UICollectionViewFlowLayout,  CellBasicMeasurement, CellAnimationMeasurement {
     
     fileprivate var normalCenterPoints: [CGPoint] = []
     var shouldLayoutEverything = true
@@ -21,6 +21,7 @@ class ThumbnailMasterFlowLayout: UICollectionViewFlowLayout,  CellBasicMeasureme
     
     // Dependency Injection
     var accordionAnimationManager: AccordionAnimation!
+    var flowLayoutSyncManager: FlowLayoutSync!
     
     var animatedCellIndex: Int = 0
     
@@ -75,7 +76,7 @@ extension ThumbnailMasterFlowLayout {
         normalCenterPoints = []
         for itemIndex in 0 ..< cellCount {
             var cellCenter: CGPoint = CGPoint.zero
-            cellCenter.y = cellMaximumHeight / 2.0
+            cellCenter.y = cellHeight / 2.0
             cellCenter.x = CGFloat(itemIndex) * cellNormalWidthAndSpacing + cellNormalSpacing + cellNormalWidth / 2.0
             normalCenterPoints.append(cellCenter)
         }
@@ -87,7 +88,7 @@ extension ThumbnailMasterFlowLayout {
             + animatedCellSize.width
             + fmax(0.0, CGFloat(cellCount - 1)) * cellNormalWidthAndSpacing
         
-        return CGSize(width: contentWidth, height: cellMaximumHeight)
+        return CGSize(width: contentWidth, height: cellHeight)
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -110,6 +111,7 @@ extension ThumbnailMasterFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        flowLayoutSyncManager.didMove(collectionView!, to: IndexPath(item:currentCellIndex, section:0),  with: 0)
         
         var allAttributes: [UICollectionViewLayoutAttributes] = []
         for itemIndex in 0 ..< cellCount {
@@ -195,11 +197,11 @@ extension ThumbnailMasterFlowLayout {
             + adjacentSpacingOfAnimatedCell
             + cellNormalWidthAndSpacing * fmax(0, CGFloat(indexPath.item - animatedCellIndex - 1))
             + cellNormalWidth / 2,
-                       y: cellMaximumHeight / 2)
+                       y: cellHeight / 2)
     }
     
     fileprivate var animatedCellCenter: CGPoint {
-        return CGPoint(x: CGFloat(animatedCellIndex) * cellNormalWidthAndSpacing + adjacentSpacingOfAnimatedCell + animatedCellSize.width / 2, y: cellMaximumHeight / 2)
+        return CGPoint(x: CGFloat(animatedCellIndex) * cellNormalWidthAndSpacing + adjacentSpacingOfAnimatedCell + animatedCellSize.width / 2,y: cellHeight / 2)
     }
     
     fileprivate var adjacentSpacingOfAnimatedCell: CGFloat {
@@ -207,6 +209,6 @@ extension ThumbnailMasterFlowLayout {
     }
     
     fileprivate var animatedCellSize: CGSize {
-        return CGSize(width: (cellFullWidth(for: animatedCellIndexPath) - cellNormalWidth) * accordionAnimationManager.progress() + cellNormalWidth, height: cellMaximumHeight)
+        return CGSize(width: (cellFullWidth(for: animatedCellIndexPath) - cellNormalWidth) *  accordionAnimationManager.progress() + cellNormalWidth, height: cellHeight)
     }
 }

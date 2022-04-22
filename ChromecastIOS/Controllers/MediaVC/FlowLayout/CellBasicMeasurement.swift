@@ -9,6 +9,7 @@ import UIKit
 
 protocol CellBasicMeasurement: class {
     var currentCellIndex: Int { get }
+    var cellMaximumWidth: CGFloat { get }
 }
 
 extension CellBasicMeasurement where Self: UICollectionViewLayout {
@@ -46,7 +47,7 @@ extension CellBasicMeasurement where Self: UICollectionViewLayout {
         return CGSize(width:collectionView.cellNormalWidth, height:collectionView.cellHeight)
     }
     
-    var cellMaximumHeight: CGFloat {
+    var cellHeight: CGFloat {
         guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
         return collectionView.cellHeight
     }

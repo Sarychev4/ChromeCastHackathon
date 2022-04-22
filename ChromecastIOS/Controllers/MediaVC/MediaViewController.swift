@@ -21,6 +21,7 @@ class MediaViewController: BaseViewController {
     var thumbnailCollectionViewThinnestRatio: CGFloat = 0
     var thumbnailCollectionViewThickestRatio: CGFloat = 0
     let thumbnailMaximumWidth:CGFloat = 160
+    var flowLayoutSyncManager: FlowLayoutSyncManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class MediaViewController: BaseViewController {
         
         setupHDCollectionView()
         setupThumbnailCollectionView()//thumbnailCollectionView.dataSource = self
+        
+        
+        flowLayoutSyncManager.register(hdCollectionView)
+        flowLayoutSyncManager.register(thumbnailCollectionView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,28 +47,21 @@ class MediaViewController: BaseViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        // set up the basic attributes such as itemSize and spacing.
-//                if let layout = hdCollectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
-//                    layout.itemSize = hdCollectionView.frame.size
-//                    layout.minimumLineSpacing = 0
-//                }
         setupHDCollectionViewMeasurement()
         hdCollectionView.collectionViewLayout.invalidateLayout()
-        
-//        if let layout = thumbnailCollectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
-//            layout.itemSize = CGSize(width: 30, height: 72)
-//            layout.minimumLineSpacing = 2
-//        }
         setupThumbnailCollectionViewMeasurement()
         thumbnailCollectionView.collectionViewLayout.invalidateLayout()
     }
     
     fileprivate func setupHDCollectionView() {
-        hdCollectionView.collectionViewLayout = HDFlowLayout()
         hdCollectionView!.cellSize = self
         hdCollectionView.dataSource = self
+        hdCollectionView.delegate = self
         hdCollectionView!.isPagingEnabled = true
         hdCollectionView!.decelerationRate = UIScrollView.DecelerationRate.normal;
+        let layout = HDFlowLayout()
+        layout.flowLayoutSyncManager = flowLayoutSyncManager
+        hdCollectionView!.collectionViewLayout = layout
     }
     
     fileprivate func setupThumbnailCollectionView() {
@@ -71,9 +69,7 @@ class MediaViewController: BaseViewController {
         thumbnailCollectionView!.delegate = self
         thumbnailCollectionView!.cellSize = self
         thumbnailCollectionView!.alwaysBounceHorizontal = true
-        let layout = ThumbnailMasterFlowLayout()
-        layout.accordionAnimationManager = AcoordionAnimationManager()
-        thumbnailCollectionView!.collectionViewLayout = layout
+        thumbnailCollectionView!.collectionViewLayout = ThumbnailSlaveFlowLayout()
     }
     
     fileprivate func setupHDCollectionViewMeasurement() {
@@ -84,7 +80,6 @@ class MediaViewController: BaseViewController {
         hdCollectionView.cellHeight = hdCollectionView.bounds.size.height
         hdCollectionViewRatio = hdCollectionView.frame.size.height / hdCollectionView.frame.size.width
         if var layout = hdCollectionView.collectionViewLayout as? FlowLayoutInvalidateBehavior {
-            print(">>>\(layout)")
             layout.shouldLayoutEverything = true
         }
     }
@@ -97,7 +92,7 @@ class MediaViewController: BaseViewController {
         thumbnailCollectionView.cellMaximumWidth = thumbnailMaximumWidth
         thumbnailCollectionViewThinnestRatio = thumbnailCollectionView.cellHeight / thumbnailCollectionView.cellNormalWidth
         thumbnailCollectionViewThickestRatio = thumbnailCollectionView.cellHeight / thumbnailMaximumWidth
-        if var layout = thumbnailCollectionView.collectionViewLayout as? FlowLayoutInvalidateBehavior {
+        if var layout = hdCollectionView.collectionViewLayout as? FlowLayoutInvalidateBehavior {
             layout.shouldLayoutEverything = true
         }
     }
@@ -153,9 +148,11 @@ extension MediaViewController: UICollectionViewDataSource {
 
 extension MediaViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if let collectionView = scrollView as? UICollectionView,
-            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
-            layout.foldCurrentCell()
+        if let collectionView = scrollView as? UICollectionView {
+            flowLayoutSyncManager.masterCollectionView = collectionView
+            if let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
+                layout.foldCurrentCell()
+            }
         }
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

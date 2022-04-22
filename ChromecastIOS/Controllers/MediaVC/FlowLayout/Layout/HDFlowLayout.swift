@@ -5,47 +5,9 @@
 //  Created by Artsiom Sarychau on 22.04.2022.
 //
 
-
 import UIKit
 
-class HDFlowLayout: UICollectionViewFlowLayout, FlowLayoutInvalidateBehavior {
-    var cellMaximumWidth: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellMaximumWidth
-    }
-    
-    var cellFullSpacing: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellFullSpacing
-    }
-    
-    var cellNormalWidth: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellNormalWidth
-    }
-    
-    var cellNormalSpacing: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellNormalSpacing
-    }
-    
-    var cellNormalWidthAndSpacing: CGFloat {
-        return cellNormalWidth + cellNormalSpacing
-    }
-    
-    var cellNormalSize: CGSize {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return CGSize.zero }
-        return CGSize(width:collectionView.cellNormalWidth, height:collectionView.cellHeight)
-    }
-    
-    var cellMaximumHeight: CGFloat {
-        guard let collectionView = collectionView as? CellConfiguratedCollectionView else { return 0 }
-        return collectionView.cellHeight
-    }
-    
-    var cellCount: Int {
-        return collectionView!.dataSource!.collectionView(collectionView!, numberOfItemsInSection: 0)
-    }
+class HDFlowLayout: UICollectionViewFlowLayout, CellBasicMeasurement, FlowLayoutInvalidateBehavior {
     
     fileprivate func cellIndex(at offset: CGFloat) -> Int {
         return Int(offset / cellMaximumWidth)
@@ -55,7 +17,7 @@ class HDFlowLayout: UICollectionViewFlowLayout, FlowLayoutInvalidateBehavior {
         return (collectionView!.contentOffset.x + collectionView!.contentInset.left)
     }
     
-    fileprivate var currentCellIndex: Int {
+    var currentCellIndex: Int {
         return min(cellCount - 1, Int(currentOffset / cellMaximumWidth))
     }
     
@@ -69,6 +31,9 @@ class HDFlowLayout: UICollectionViewFlowLayout, FlowLayoutInvalidateBehavior {
     fileprivate var cellEstimatedFrames: [CGRect] = []
     var shouldLayoutEverything = true
     let minimumPhotoWidth: CGFloat = 40
+    
+    // MARK: - Injection
+    var flowLayoutSyncManager: FlowLayoutSync!
 }
 
 
@@ -84,14 +49,14 @@ extension HDFlowLayout {
             cellCenter.y = collectionView!.frame.size.height / 2.0
             cellCenter.x = cellMaximumWidth * CGFloat(itemIndex) + cellMaximumWidth  / 2.0
             cellEstimatedCenterPoints.append(cellCenter)
-            cellEstimatedFrames.append(CGRect.init(origin: CGPoint.init(x: cellMaximumWidth * CGFloat(itemIndex), y: 0), size: CGSize.init(width: cellMaximumWidth, height: cellMaximumHeight)))
+            cellEstimatedFrames.append(CGRect.init(origin: CGPoint.init(x: cellMaximumWidth * CGFloat(itemIndex), y: 0), size: CGSize.init(width: cellMaximumWidth, height: cellHeight)))
         }
         shouldLayoutEverything = false
     }
     
     override var collectionViewContentSize: CGSize {
         let contentWidth = cellMaximumWidth * CGFloat(cellCount)
-        let contentHeight = cellMaximumHeight
+        let contentHeight = cellHeight
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
@@ -110,7 +75,7 @@ extension HDFlowLayout {
                 attributes.size = CGSize(width: max(minimumPhotoWidth, cellSize.width - cellFullSpacing * (1-currentFractionComplete)), height: cellSize.height)
                 
             default:
-                attributes.size = CGSize(width: cellMaximumWidth, height: cellMaximumHeight)
+                attributes.size = CGSize(width: cellMaximumWidth, height: cellHeight)
             }
             attributes.center = cellEstimatedCenterPoints[indexPath.row]
         }
@@ -119,6 +84,8 @@ extension HDFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        
+        flowLayoutSyncManager.didMove(collectionView!, to: IndexPath(item:currentCellIndex, section:0), with: currentFractionComplete)
         
         var allAttributes: [UICollectionViewLayoutAttributes] = []
         for itemIndex in 0 ..< cellCount {
@@ -131,7 +98,6 @@ extension HDFlowLayout {
         return allAttributes
     }
 }
-
 
 //MARK: - Invalidate Context
 
@@ -156,5 +122,4 @@ extension HDFlowLayout {
         super.invalidateLayout(with: context)
     }
 }
-
 

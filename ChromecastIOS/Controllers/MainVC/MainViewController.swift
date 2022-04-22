@@ -108,6 +108,7 @@ class MainViewController: BaseViewController {
         case .media:
             let viewController = MediaViewController()
             viewController.hidesBottomBarWhenPushed = true
+            viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
             navigation?.pushViewController(viewController, animated: .left)
         case .browser:
             let viewController = BrowserViewController()
