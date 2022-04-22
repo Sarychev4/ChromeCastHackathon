@@ -20,7 +20,25 @@ enum MenuButtonType {
 
 class MainViewController: BaseViewController {
     
+    @IBOutlet weak var settingsInteractiveView: InteractiveView! {
+        didSet {
+            settingsInteractiveView.didTouchAction = {
+                let vc = SettingsViewController()
+                vc.modalPresentationStyle = .automatic//.fullScreen
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var mirrorInteractiveView: InteractiveView! {
+        didSet {
+            mirrorInteractiveView.didTouchAction = {
+                self.navigation?.pushViewController(MirrorViewController(), animated: .left)
+            }
+        }
+    }
     
     var tabs: [Tab] = []
     override func viewDidLoad() {
@@ -83,36 +101,36 @@ class MainViewController: BaseViewController {
     }
     
     private func handleTapOnCell(at indexPath: IndexPath) {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
-//        if UIScreen.main.isCaptured {
-//            showAlertStopMirroring()
-//            return
-//        }
-//
-//        let cellTitle = tabs[indexPath.row].title
-//        let buttonType = tabs[indexPath.row].type
-//
-//        switch buttonType {
-//        case .media:
-//            let viewController = MediaLibraryViewController()
-//            viewController.hidesBottomBarWhenPushed = true
-//            navigation?.pushViewController(viewController, animated: .left)
-//        case .browser:
-//            let viewController = BrowseAndCastViewController()
-//            viewController.hidesBottomBarWhenPushed = true
-//            navigation?.pushViewController(viewController, animated: .left)
-//        case .iptv:
-//            let viewController = IPTVViewController()
-//            viewController.hidesBottomBarWhenPushed = true
-//            self.navigation?.pushViewController(viewController, animated: .left)
-//        case .youtube:
-//            let viewController = YouTubeViewController()
-//            viewController.hidesBottomBarWhenPushed = true
-//            self.navigation?.pushViewController(viewController, animated: .left)
-//        }
+        let buttonType = tabs[indexPath.row].type
+        
+        switch buttonType {
+        case .media:
+            let viewController = MediaViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            navigation?.pushViewController(viewController, animated: .left)
+        case .browser:
+            let viewController = BrowserViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            navigation?.pushViewController(viewController, animated: .left)
+        case .iptv:
+            let viewController = IPTVViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigation?.pushViewController(viewController, animated: .left)
+        case .youtube:
+            let viewController = YouTubeViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigation?.pushViewController(viewController, animated: .left)
+        case .googleDrive:
+            let viewController = GoogleDriveViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigation?.pushViewController(viewController, animated: .left)
+        case .googlePhotos:
+            let viewController = GooglePhotosViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigation?.pushViewController(viewController, animated: .left)
+        }
     }
-    
     
 }
 
@@ -128,7 +146,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.subtitleLabel.text = tab.subtitle
         cell.imageView.image =  tab.image
         cell.type = tab.type
-        cell.didTouchAction = { [weak self] in
+        cell.showControllerAction = { [weak self] in
             guard let self = self else { return }
             self.handleTapOnCell(at: indexPath)
         }
@@ -141,11 +159,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cellWidth = (collectionWidth) / 2
         
         var size: CGSize //(width: cellWidth, height: cellWidth )//+ 10 * SizeFactor)
-//        if Device.current.isOneOf(Device.allDevicesWithSensorHousing + Device.allSimulatorDevicesWithSensorHousing) {
-//            size = CGSize(width: cellWidth, height: cellWidth )
-//        } else {
-//            size = CGSize(width: cellWidth, height: cellWidth - 10 * SizeFactor )
-//        }
+        //        if Device.current.isOneOf(Device.allDevicesWithSensorHousing + Device.allSimulatorDevicesWithSensorHousing) {
+        //            size = CGSize(width: cellWidth, height: cellWidth )
+        //        } else {
+        //            size = CGSize(width: cellWidth, height: cellWidth - 10 * SizeFactor )
+        //        }
         size = CGSize(width: cellWidth, height: 146 )
         return size
     }

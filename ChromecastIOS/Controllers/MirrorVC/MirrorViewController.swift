@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MirrorViewController: UIViewController {
+class MirrorViewController: BaseViewController {
 
     @IBOutlet weak var showHideInteractiveView: InteractiveView!
     @IBOutlet weak var showHideImageView: UIImageView!
