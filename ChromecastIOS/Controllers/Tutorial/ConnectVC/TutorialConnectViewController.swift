@@ -9,7 +9,6 @@ import UIKit
 
 class TutorialConnectViewController: BaseViewController {
     
-    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var continueInteractiveView: InteractiveView!
     @IBOutlet weak var continueLabel: DefaultLabel!
     
@@ -29,15 +28,11 @@ class TutorialConnectViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        containerViewHeightConstraint?.constant = TutorialConstants.containerViewHeightConstraint
-        
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.didFinishAction?()
-        }
-        
-        
+        }    
     }
     
     override func viewDidAppear(_ animated: Bool) {

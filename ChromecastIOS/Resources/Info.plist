@@ -6,7 +6,7 @@
 	<array>
 		<string>audio</string>
 		<string>processing</string>
-		<string>com.appflair.screenmirroring</string>
+		<string>com.appflair.chromecast.ios</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>

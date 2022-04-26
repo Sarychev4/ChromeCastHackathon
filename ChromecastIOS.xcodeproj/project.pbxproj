@@ -8,12 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5C79DB51145C97265C38D971 /* Pods_MirroringExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */; };
-		DD19E46E2811D58600931489 /* ted_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19E4662811D58600931489 /* ted_ico.png */; };
-		DD19E46F2811D58600931489 /* twitch_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19E4672811D58600931489 /* twitch_ico.png */; };
-		DD19E4702811D58600931489 /* dailymotion_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19E4682811D58600931489 /* dailymotion_ico.png */; };
-		DD19E4712811D58600931489 /* youtube_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19E4692811D58600931489 /* youtube_ico.png */; };
-		DD19E4722811D58600931489 /* veoh_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19E46A2811D58600931489 /* veoh_ico.png */; };
-		DD19E4732811D58600931489 /* vimeo_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD19E46B2811D58600931489 /* vimeo_ico.png */; };
 		DD19E4742811D58600931489 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = DD19E46C2811D58600931489 /* style.css */; };
 		DD19E4752811D58600931489 /* Index.html in Resources */ = {isa = PBXBuildFile; fileRef = DD19E46D2811D58600931489 /* Index.html */; };
 		DD19E4842811E56F00931489 /* WebsiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD19E4822811E56F00931489 /* WebsiteCell.swift */; };
@@ -58,6 +52,13 @@
 		DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD23EAE32811BF4000DB7D44 /* OpenWebsitesViewController.swift */; };
 		DD23EAE62811BF4000DB7D44 /* OpenWebsitesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD23EAE42811BF4000DB7D44 /* OpenWebsitesViewController.xib */; };
 		DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */; };
+		DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1C2817FA9700E67AB0 /* ted_ico.png */; };
+		DD345D232817FA9700E67AB0 /* twitch_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1D2817FA9700E67AB0 /* twitch_ico.png */; };
+		DD345D242817FA9700E67AB0 /* dailymotion_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1E2817FA9700E67AB0 /* dailymotion_ico.png */; };
+		DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1F2817FA9700E67AB0 /* youtube_ico.png */; };
+		DD345D262817FA9700E67AB0 /* veoh_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D202817FA9700E67AB0 /* veoh_ico.png */; };
+		DD345D272817FA9700E67AB0 /* vimeo_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D212817FA9700E67AB0 /* vimeo_ico.png */; };
+		DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9159B82817F2B300C1393F /* Main.storyboard */; };
 		DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */; };
 		DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */; };
 		DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AD32812E6C10034E5D3 /* CellBasicMeasurement.swift */; };
@@ -117,7 +118,6 @@
 		E896433B280EB75D00E6E287 /* Pods_ChromecastIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */; };
 		E896433D280EB75D00E6E287 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89642BF280EAF7900E6E287 /* LaunchScreen.storyboard */; };
 		E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89642BD280EAF7900E6E287 /* Assets.xcassets */; };
-		E896433F280EB75D00E6E287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89642BA280EAF7700E6E287 /* Main.storyboard */; };
 		E8964343280EB75D00E6E287 /* MirroringExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E8964312280EB5A700E6E287 /* MirroringExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -151,20 +151,8 @@
 		315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirroringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6B40AE5B01FA94F58DD536 /* Pods-ChromecastIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.debug.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.release.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.release.xcconfig"; sourceTree = "<group>"; };
-		DD19E4662811D58600931489 /* ted_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ted_ico.png; sourceTree = "<group>"; };
-		DD19E4672811D58600931489 /* twitch_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitch_ico.png; sourceTree = "<group>"; };
-		DD19E4682811D58600931489 /* dailymotion_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dailymotion_ico.png; sourceTree = "<group>"; };
-		DD19E4692811D58600931489 /* youtube_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube_ico.png; sourceTree = "<group>"; };
-		DD19E46A2811D58600931489 /* veoh_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veoh_ico.png; sourceTree = "<group>"; };
-		DD19E46B2811D58600931489 /* vimeo_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo_ico.png; sourceTree = "<group>"; };
 		DD19E46C2811D58600931489 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		DD19E46D2811D58600931489 /* Index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Index.html; sourceTree = "<group>"; };
-		DD19E4772811D5D500931489 /* ted_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ted_ico.png; sourceTree = "<group>"; };
-		DD19E4782811D5D500931489 /* twitch_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitch_ico.png; sourceTree = "<group>"; };
-		DD19E4792811D5D500931489 /* dailymotion_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dailymotion_ico.png; sourceTree = "<group>"; };
-		DD19E47A2811D5D500931489 /* youtube_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube_ico.png; sourceTree = "<group>"; };
-		DD19E47B2811D5D500931489 /* veoh_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veoh_ico.png; sourceTree = "<group>"; };
-		DD19E47C2811D5D500931489 /* vimeo_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo_ico.png; sourceTree = "<group>"; };
 		DD19E4822811E56F00931489 /* WebsiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteCell.swift; sourceTree = "<group>"; };
 		DD19E4832811E56F00931489 /* WebsiteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebsiteCell.xib; sourceTree = "<group>"; };
 		DD19E4882812AA5700931489 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
@@ -207,6 +195,13 @@
 		DD23EAE32811BF4000DB7D44 /* OpenWebsitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWebsitesViewController.swift; sourceTree = "<group>"; };
 		DD23EAE42811BF4000DB7D44 /* OpenWebsitesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenWebsitesViewController.xib; sourceTree = "<group>"; };
 		DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScripts.swift; sourceTree = "<group>"; };
+		DD345D1C2817FA9700E67AB0 /* ted_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ted_ico.png; sourceTree = "<group>"; };
+		DD345D1D2817FA9700E67AB0 /* twitch_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitch_ico.png; sourceTree = "<group>"; };
+		DD345D1E2817FA9700E67AB0 /* dailymotion_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dailymotion_ico.png; sourceTree = "<group>"; };
+		DD345D1F2817FA9700E67AB0 /* youtube_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube_ico.png; sourceTree = "<group>"; };
+		DD345D202817FA9700E67AB0 /* veoh_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veoh_ico.png; sourceTree = "<group>"; };
+		DD345D212817FA9700E67AB0 /* vimeo_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo_ico.png; sourceTree = "<group>"; };
+		DD9159B92817F2B300C1393F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailMasterFlowLayout.swift; sourceTree = "<group>"; };
 		DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailFlowLayoutDraggingBehavior.swift; sourceTree = "<group>"; };
 		DD923AD32812E6C10034E5D3 /* CellBasicMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellBasicMeasurement.swift; sourceTree = "<group>"; };
@@ -262,7 +257,6 @@
 		DDF59C12280F5E1F00CE2E2B /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		DDF59C13280F5E1F00CE2E2B /* MainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
 		E89642B4280EAF7700E6E287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E89642BB280EAF7700E6E287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E89642BD280EAF7900E6E287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E89642C0280EAF7900E6E287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8964312280EB5A700E6E287 /* MirroringExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MirroringExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,33 +312,6 @@
 				2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		DD19E4652811D58600931489 /* img */ = {
-			isa = PBXGroup;
-			children = (
-				DD19E4662811D58600931489 /* ted_ico.png */,
-				DD19E4672811D58600931489 /* twitch_ico.png */,
-				DD19E4682811D58600931489 /* dailymotion_ico.png */,
-				DD19E4692811D58600931489 /* youtube_ico.png */,
-				DD19E46A2811D58600931489 /* veoh_ico.png */,
-				DD19E46B2811D58600931489 /* vimeo_ico.png */,
-			);
-			path = img;
-			sourceTree = "<group>";
-		};
-		DD19E4762811D5D500931489 /* img */ = {
-			isa = PBXGroup;
-			children = (
-				DD19E4772811D5D500931489 /* ted_ico.png */,
-				DD19E4782811D5D500931489 /* twitch_ico.png */,
-				DD19E4792811D5D500931489 /* dailymotion_ico.png */,
-				DD19E47A2811D5D500931489 /* youtube_ico.png */,
-				DD19E47B2811D5D500931489 /* veoh_ico.png */,
-				DD19E47C2811D5D500931489 /* vimeo_ico.png */,
-			);
-			name = img;
-			path = ChromecastIOS/Resources/BrowserDefaultPage/img;
 			sourceTree = "<group>";
 		};
 		DD19E4812811E52F00931489 /* WebsiteCell */ = {
@@ -454,7 +421,7 @@
 		DD23EAE72811C1B300DB7D44 /* BrowserDefaultPage */ = {
 			isa = PBXGroup;
 			children = (
-				DD19E4652811D58600931489 /* img */,
+				DD345D1B2817FA9700E67AB0 /* img */,
 				DD19E46D2811D58600931489 /* Index.html */,
 				DD19E46C2811D58600931489 /* style.css */,
 			);
@@ -496,6 +463,19 @@
 				DDF59BEF280F2EAB00CE2E2B /* Common */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DD345D1B2817FA9700E67AB0 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				DD345D1C2817FA9700E67AB0 /* ted_ico.png */,
+				DD345D1D2817FA9700E67AB0 /* twitch_ico.png */,
+				DD345D1E2817FA9700E67AB0 /* dailymotion_ico.png */,
+				DD345D1F2817FA9700E67AB0 /* youtube_ico.png */,
+				DD345D202817FA9700E67AB0 /* veoh_ico.png */,
+				DD345D212817FA9700E67AB0 /* vimeo_ico.png */,
+			);
+			path = img;
 			sourceTree = "<group>";
 		};
 		DD923AD72812E7010034E5D3 /* Manager */ = {
@@ -704,7 +684,6 @@
 		E89642A8280EAF7700E6E287 = {
 			isa = PBXGroup;
 			children = (
-				DD19E4762811D5D500931489 /* img */,
 				E89642B3280EAF7700E6E287 /* ChromecastIOS */,
 				E8964315280EB5A700E6E287 /* MirroringExtension */,
 				E89642B2280EAF7700E6E287 /* Products */,
@@ -727,7 +706,7 @@
 			children = (
 				E8C16010280FFA6200995934 /* ChromecastIOS.entitlements */,
 				E89642B4280EAF7700E6E287 /* AppDelegate.swift */,
-				E89642BA280EAF7700E6E287 /* Main.storyboard */,
+				DD9159B82817F2B300C1393F /* Main.storyboard */,
 				DD305EA2280F2D1900BA57B4 /* Controllers */,
 				DD305EA1280F2D1300BA57B4 /* Models */,
 				DDF59BF4280F308600CE2E2B /* Views */,
@@ -855,18 +834,16 @@
 				DD19E4742811D58600931489 /* style.css in Resources */,
 				DDCE09FC281064C2004E9C18 /* BrowserViewController.xib in Resources */,
 				E896433D280EB75D00E6E287 /* LaunchScreen.storyboard in Resources */,
-				DD19E4722811D58600931489 /* veoh_ico.png in Resources */,
 				DDCE0A1628116FEC004E9C18 /* IPTVViewController.xib in Resources */,
 				DDCE0A1A28117020004E9C18 /* YouTubeViewController.xib in Resources */,
+				DD345D232817FA9700E67AB0 /* twitch_ico.png in Resources */,
 				DD23EAE62811BF4000DB7D44 /* OpenWebsitesViewController.xib in Resources */,
 				DDF59C07280F46CE00CE2E2B /* Localizable.strings in Resources */,
 				DD19E4852811E56F00931489 /* WebsiteCell.xib in Resources */,
 				DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */,
-				DD19E4732811D58600931489 /* vimeo_ico.png in Resources */,
 				DD19E4C52812AC8E00931489 /* HDCell.xib in Resources */,
 				DD923AE92816AF1B0034E5D3 /* TutorialContainerViewController.xib in Resources */,
 				DD923AF52816B3F40034E5D3 /* TutorialWifiViewController.xib in Resources */,
-				DD19E46F2811D58600931489 /* twitch_ico.png in Resources */,
 				DD19E4AF2812ABD900931489 /* barton_nature_area_bridge_hd.JPG in Resources */,
 				DD19E4AB2812ABD900931489 /* bird_hills_nature_tree_hd.JPG in Resources */,
 				DD19E4AA2812ABD900931489 /* vertical_strip_hd.png in Resources */,
@@ -878,12 +855,12 @@
 				DDCE0A0B28116EF9004E9C18 /* GooglePhotosViewController.xib in Resources */,
 				DD19E4B82812ABD900931489 /* bird_hills_nature_sunset_hd.JPG in Resources */,
 				DD19E4BC2812ABD900931489 /* winsor_skyline.png in Resources */,
-				DD19E4702811D58600931489 /* dailymotion_ico.png in Resources */,
+				DD345D242817FA9700E67AB0 /* dailymotion_ico.png in Resources */,
 				DD19E4AC2812ABD900931489 /* barton_nature_swan.JPG in Resources */,
 				DD19E4BE2812ABD900931489 /* bird_hills_nature_tree.JPG in Resources */,
 				E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */,
+				DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */,
 				DD923AED2816B39B0034E5D3 /* TutorialWelcomeViewController.xib in Resources */,
-				DD19E46E2811D58600931489 /* ted_ico.png in Resources */,
 				DD19E4BA2812ABD900931489 /* huron_river_hd.JPG in Resources */,
 				DDCE0A1228116FAE004E9C18 /* MediaViewController.xib in Resources */,
 				DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */,
@@ -895,16 +872,18 @@
 				DD19E4B32812ABD900931489 /* barton_nature_lake_hd.JPG in Resources */,
 				DD19E4B52812ABD900931489 /* barton_nature_leeve_hd.JPG in Resources */,
 				DD19E4BF2812ABD900931489 /* barton_nature_swan_hd.JPG in Resources */,
-				E896433F280EB75D00E6E287 /* Main.storyboard in Resources */,
+				DD345D272817FA9700E67AB0 /* vimeo_ico.png in Resources */,
 				DD19E4B02812ABD900931489 /* vertical_strip.png in Resources */,
 				DDF59C15280F5E1F00CE2E2B /* MainCell.xib in Resources */,
 				DD19E4AD2812ABD900931489 /* bird_hills_nature_sunset.JPG in Resources */,
+				DD345D262817FA9700E67AB0 /* veoh_ico.png in Resources */,
 				DD19E4BD2812ABD900931489 /* willowtree_apartment_sunset.jpg in Resources */,
 				DD19E4B12812ABD900931489 /* bird_hills_nature_foliage_hd.JPG in Resources */,
 				DD19E4CA2812ACB500931489 /* ThumbnailCell.xib in Resources */,
 				DD19E4B42812ABD900931489 /* horizontal_strip.png in Resources */,
-				DD19E4712811D58600931489 /* youtube_ico.png in Resources */,
 				DD19E4B92812ABD900931489 /* horizontal_strip_hd.png in Resources */,
+				DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */,
+				DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */,
 				DD19E4A92812ABD900931489 /* winsor_skyline_hd.png in Resources */,
 				DDCE0A0728116ED5004E9C18 /* GoogleDriveViewController.xib in Resources */,
 				DD19E4752811D58600931489 /* Index.html in Resources */,
@@ -1071,6 +1050,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DD9159B82817F2B300C1393F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD9159B92817F2B300C1393F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		DDF59C09280F46CE00CE2E2B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1078,14 +1065,6 @@
 				DDF59C0A280F470800CE2E2B /* de */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		E89642BA280EAF7700E6E287 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E89642BB280EAF7700E6E287 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		E89642BF280EAF7900E6E287 /* LaunchScreen.storyboard */ = {
@@ -1238,7 +1217,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1265,7 +1244,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1287,7 +1266,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1301,7 +1279,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1322,7 +1300,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1336,7 +1313,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
