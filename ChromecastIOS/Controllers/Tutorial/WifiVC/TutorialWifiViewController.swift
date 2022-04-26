@@ -9,7 +9,6 @@ import UIKit
 
 class TutorialWifiViewController: BaseViewController {
     
-    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var continueInteractiveView: InteractiveView!
     @IBOutlet weak var continueLabel: DefaultLabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -19,8 +18,6 @@ class TutorialWifiViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        containerViewHeightConstraint?.constant = TutorialConstants.containerViewHeightConstraint
-        
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }

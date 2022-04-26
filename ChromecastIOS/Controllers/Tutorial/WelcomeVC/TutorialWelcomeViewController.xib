@@ -6,14 +6,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialWelcomeViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="Bv4-p2-0bV" id="ytl-7O-JyA"/>
-                <outlet property="containerViewHeightConstraint" destination="Pix-O1-9lh" id="6VZ-DQ-XTu"/>
                 <outlet property="continueInteractiveView" destination="oYB-eL-hhP" id="FaM-NF-QXf"/>
                 <outlet property="continueLabel" destination="W6s-8H-JNn" id="rX1-7R-88i"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -37,7 +35,6 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="qoI-49-Lov" firstAttribute="centerX" secondItem="74b-5A-aym" secondAttribute="centerX" id="Eu0-WV-mOo"/>
-                                <constraint firstAttribute="height" constant="300" id="Pix-O1-9lh"/>
                                 <constraint firstItem="qoI-49-Lov" firstAttribute="centerY" secondItem="74b-5A-aym" secondAttribute="centerY" id="oBm-K8-mY1"/>
                             </constraints>
                         </view>
@@ -47,7 +44,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIH-P2-y3e">
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buv-VV-if7" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buv-VV-if7" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                             <color key="textColor" name="labelColorDark"/>
@@ -58,7 +55,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Buv-VV-if7" firstAttribute="leading" secondItem="hIH-P2-y3e" secondAttribute="leading" id="E4s-2R-t1t"/>
                                         <constraint firstItem="Buv-VV-if7" firstAttribute="top" secondItem="hIH-P2-y3e" secondAttribute="top" id="csA-Lk-4V4"/>
@@ -67,10 +64,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHG-ZL-YnX">
-                                    <rect key="frame" x="0.0" y="50" width="334" height="46"/>
+                                    <rect key="frame" x="0.0" y="50" width="334" height="81.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-8H-JNn" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="46"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-8H-JNn" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="41"/>
                                             <string key="text">_Let’s complete a few steps 
 together to get started.</string>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -82,28 +79,29 @@ together to get started.</string>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="W6s-8H-JNn" firstAttribute="top" secondItem="BHG-ZL-YnX" secondAttribute="top" id="5wc-pv-mJa"/>
                                         <constraint firstItem="W6s-8H-JNn" firstAttribute="leading" secondItem="BHG-ZL-YnX" secondAttribute="leading" id="OXY-Xq-wjG"/>
                                         <constraint firstAttribute="trailing" secondItem="W6s-8H-JNn" secondAttribute="trailing" id="g0v-Bo-Gd7"/>
-                                        <constraint firstAttribute="bottom" secondItem="W6s-8H-JNn" secondAttribute="bottom" id="tmd-lq-n7v"/>
+                                        <constraint firstAttribute="height" constant="81.5" id="ppw-4e-dzS"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZF6-qy-gbH">
-                                    <rect key="frame" x="0.0" y="96" width="334" height="50"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cm5-XF-Wr9">
+                                    <rect key="frame" x="0.0" y="131.5" width="334" height="14.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="146" id="I5P-lM-weB"/>
+                                <constraint firstAttribute="height" constant="146" id="KBz-Dr-ObR"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-eL-hhP" customClass="InteractiveView" customModule="ScreenMirroring" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-eL-hhP" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                             <rect key="frame" x="40" y="794" width="334" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVW-m9-cvS" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="334" height="48"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVW-m9-cvS" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="13.5" width="334" height="21.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -127,9 +125,9 @@ together to get started.</string>
                                 <constraint firstItem="Bv4-p2-0bV" firstAttribute="centerX" secondItem="oYB-eL-hhP" secondAttribute="centerX" id="FJ6-pm-4Jd"/>
                                 <constraint firstItem="WVW-m9-cvS" firstAttribute="leading" secondItem="oYB-eL-hhP" secondAttribute="leading" id="IZp-hk-kwa"/>
                                 <constraint firstItem="Bv4-p2-0bV" firstAttribute="centerY" secondItem="oYB-eL-hhP" secondAttribute="centerY" id="P0m-tM-52D"/>
+                                <constraint firstItem="WVW-m9-cvS" firstAttribute="centerX" secondItem="oYB-eL-hhP" secondAttribute="centerX" id="RTy-Uf-NQY"/>
                                 <constraint firstAttribute="trailing" secondItem="WVW-m9-cvS" secondAttribute="trailing" id="Wau-zm-f8U"/>
-                                <constraint firstItem="WVW-m9-cvS" firstAttribute="top" secondItem="oYB-eL-hhP" secondAttribute="top" id="bbc-WD-7sA"/>
-                                <constraint firstAttribute="bottom" secondItem="WVW-m9-cvS" secondAttribute="bottom" id="qRC-cT-kXS"/>
+                                <constraint firstItem="WVW-m9-cvS" firstAttribute="centerY" secondItem="oYB-eL-hhP" secondAttribute="centerY" id="o76-QX-kXa"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
@@ -138,19 +136,28 @@ together to get started.</string>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0G-pE-sfs">
+                            <rect key="frame" x="40" y="842" width="334" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
                         <constraint firstItem="oYB-eL-hhP" firstAttribute="centerX" secondItem="hw1-YI-Gbu" secondAttribute="centerX" id="2tR-cc-559"/>
+                        <constraint firstItem="w0G-pE-sfs" firstAttribute="top" secondItem="oYB-eL-hhP" secondAttribute="bottom" id="4Og-G5-M2A"/>
                         <constraint firstItem="74b-5A-aym" firstAttribute="leading" secondItem="hw1-YI-Gbu" secondAttribute="leading" id="56a-TR-zcH"/>
+                        <constraint firstAttribute="bottom" secondItem="w0G-pE-sfs" secondAttribute="bottom" id="6LU-Ty-kec"/>
                         <constraint firstItem="74b-5A-aym" firstAttribute="top" secondItem="hw1-YI-Gbu" secondAttribute="top" constant="84" id="7c2-HO-fSI"/>
                         <constraint firstItem="oUj-d7-LrU" firstAttribute="leading" secondItem="hw1-YI-Gbu" secondAttribute="leading" constant="40" id="BJD-AW-z9W"/>
+                        <constraint firstItem="w0G-pE-sfs" firstAttribute="height" secondItem="hw1-YI-Gbu" secondAttribute="height" multiplier="0.06" id="HB4-ot-cp7"/>
+                        <constraint firstItem="oYB-eL-hhP" firstAttribute="top" secondItem="oUj-d7-LrU" secondAttribute="bottom" constant="30" id="Kgi-Wh-qKL"/>
                         <constraint firstAttribute="trailing" secondItem="oYB-eL-hhP" secondAttribute="trailing" constant="40" id="Pax-Q9-Sae"/>
                         <constraint firstAttribute="trailing" secondItem="74b-5A-aym" secondAttribute="trailing" id="TO6-MI-FG8"/>
+                        <constraint firstItem="74b-5A-aym" firstAttribute="height" secondItem="hw1-YI-Gbu" secondAttribute="height" multiplier="0.3348" id="WaK-jx-Trw"/>
                         <constraint firstItem="oYB-eL-hhP" firstAttribute="leading" secondItem="hw1-YI-Gbu" secondAttribute="leading" constant="40" id="Y8t-qQ-5YK"/>
-                        <constraint firstItem="oYB-eL-hhP" firstAttribute="top" secondItem="oUj-d7-LrU" secondAttribute="bottom" constant="30" id="gCy-LJ-J3H"/>
+                        <constraint firstItem="w0G-pE-sfs" firstAttribute="leading" secondItem="hw1-YI-Gbu" secondAttribute="leading" constant="40" id="bpx-tR-n7k"/>
                         <constraint firstAttribute="trailing" secondItem="oUj-d7-LrU" secondAttribute="trailing" constant="40" id="ilh-fG-v5y"/>
-                        <constraint firstAttribute="bottom" secondItem="oYB-eL-hhP" secondAttribute="bottom" constant="54" id="rId-ok-Mfe"/>
+                        <constraint firstAttribute="trailing" secondItem="w0G-pE-sfs" secondAttribute="trailing" constant="40" id="knT-bD-r1c"/>
                     </constraints>
                 </view>
             </subviews>
@@ -168,7 +175,7 @@ together to get started.</string>
     <resources>
         <image name="tutorialWelcome" width="375" height="300"/>
         <namedColor name="AppleBlue">
-            <color red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -179,8 +186,5 @@ together to get started.</string>
         <namedColor name="labelColorGrayPunk">
             <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

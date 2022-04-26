@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialAccessToNetworkViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="20L-hS-K7C" id="uXR-DH-PO4"/>
-                <outlet property="containerViewHeightConstraint" destination="tCI-Lm-668" id="Iun-6G-Ngr"/>
                 <outlet property="continueInteractiveView" destination="vtV-dv-i9r" id="wIp-6G-M4C"/>
                 <outlet property="continueLabel" destination="MlR-mA-Zza" id="e6G-en-I5J"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -38,7 +37,6 @@
                             <constraints>
                                 <constraint firstItem="FNi-uS-BHh" firstAttribute="centerX" secondItem="1eG-eY-TgR" secondAttribute="centerX" id="4bk-d2-obD"/>
                                 <constraint firstItem="FNi-uS-BHh" firstAttribute="centerY" secondItem="1eG-eY-TgR" secondAttribute="centerY" id="dkH-JP-9We"/>
-                                <constraint firstAttribute="height" constant="300" id="tCI-Lm-668"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gWn-yl-fPT">
@@ -47,7 +45,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bck-GL-8Re">
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fc-7Z-2mP" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fc-7Z-2mP" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                             <color key="textColor" name="labelColorDark"/>
@@ -58,7 +56,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="7Fc-7Z-2mP" firstAttribute="leading" secondItem="bck-GL-8Re" secondAttribute="leading" id="6dZ-9W-IgF"/>
                                         <constraint firstAttribute="trailing" secondItem="7Fc-7Z-2mP" secondAttribute="trailing" id="Fpq-Vv-B6o"/>
@@ -69,7 +67,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QkW-Au-9gx">
                                     <rect key="frame" x="0.0" y="50" width="334" height="81.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Make sure the app has access to your local network in order to connect to your TV or streaming device" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk8-IR-ORS" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Make sure the app has access to your local network in order to connect to your TV or streaming device" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yk8-IR-ORS" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="81.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" name="labelColorGrayPunk"/>
@@ -80,9 +78,9 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="yk8-IR-ORS" secondAttribute="bottom" id="AKl-7l-BPp"/>
+                                        <constraint firstAttribute="height" constant="81.5" id="K2k-5K-hKv"/>
                                         <constraint firstItem="yk8-IR-ORS" firstAttribute="leading" secondItem="QkW-Au-9gx" secondAttribute="leading" id="ROs-9R-hhE"/>
                                         <constraint firstItem="yk8-IR-ORS" firstAttribute="top" secondItem="QkW-Au-9gx" secondAttribute="top" id="kOp-3O-6ri"/>
                                         <constraint firstAttribute="trailing" secondItem="yk8-IR-ORS" secondAttribute="trailing" id="zgS-LO-T7W"/>
@@ -94,14 +92,14 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="146" id="GJi-iI-PCg"/>
+                                <constraint firstAttribute="height" constant="146" id="utQ-tm-4iD"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-dv-i9r" customClass="InteractiveView" customModule="ScreenMirroring" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-dv-i9r" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                             <rect key="frame" x="40" y="794" width="334" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlR-mA-Zza" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="334" height="48"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlR-mA-Zza" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="120" y="13.5" width="94" height="21.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -121,13 +119,11 @@
                             </subviews>
                             <color key="backgroundColor" name="AppleBlue"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="MlR-mA-Zza" secondAttribute="trailing" id="Jj0-Rl-uNr"/>
-                                <constraint firstItem="MlR-mA-Zza" firstAttribute="top" secondItem="vtV-dv-i9r" secondAttribute="top" id="NKs-qS-cYH"/>
+                                <constraint firstItem="MlR-mA-Zza" firstAttribute="centerY" secondItem="vtV-dv-i9r" secondAttribute="centerY" id="0Oe-fi-cXZ"/>
+                                <constraint firstItem="MlR-mA-Zza" firstAttribute="centerX" secondItem="vtV-dv-i9r" secondAttribute="centerX" id="HZd-eg-U5c"/>
                                 <constraint firstItem="20L-hS-K7C" firstAttribute="centerX" secondItem="vtV-dv-i9r" secondAttribute="centerX" id="Tp2-TZ-wdx"/>
-                                <constraint firstAttribute="bottom" secondItem="MlR-mA-Zza" secondAttribute="bottom" id="Yob-4V-jnA"/>
                                 <constraint firstAttribute="height" constant="48" id="bZt-yc-4kU"/>
                                 <constraint firstItem="20L-hS-K7C" firstAttribute="centerY" secondItem="vtV-dv-i9r" secondAttribute="centerY" id="d40-qr-aCX"/>
-                                <constraint firstItem="MlR-mA-Zza" firstAttribute="leading" secondItem="vtV-dv-i9r" secondAttribute="leading" id="mD2-oX-RRq"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
@@ -136,18 +132,27 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-QH-hN1">
+                            <rect key="frame" x="40" y="842" width="334" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
                         <constraint firstItem="1eG-eY-TgR" firstAttribute="leading" secondItem="Y38-6I-Io5" secondAttribute="leading" id="2Zu-Qg-Zo8"/>
+                        <constraint firstItem="wdq-QH-hN1" firstAttribute="top" secondItem="vtV-dv-i9r" secondAttribute="bottom" id="3pN-9C-JGu"/>
+                        <constraint firstItem="1eG-eY-TgR" firstAttribute="height" secondItem="Y38-6I-Io5" secondAttribute="height" multiplier="0.3348" id="4WO-6f-2Ue"/>
                         <constraint firstItem="vtV-dv-i9r" firstAttribute="centerX" secondItem="Y38-6I-Io5" secondAttribute="centerX" id="AWZ-tG-7tj"/>
+                        <constraint firstAttribute="trailing" secondItem="wdq-QH-hN1" secondAttribute="trailing" constant="40" id="Cu3-n8-c8F"/>
                         <constraint firstAttribute="trailing" secondItem="gWn-yl-fPT" secondAttribute="trailing" constant="40" id="Fz2-Js-jJb"/>
                         <constraint firstAttribute="trailing" secondItem="1eG-eY-TgR" secondAttribute="trailing" id="RzZ-xI-n6P"/>
                         <constraint firstItem="gWn-yl-fPT" firstAttribute="leading" secondItem="Y38-6I-Io5" secondAttribute="leading" constant="40" id="TOO-sy-ee6"/>
                         <constraint firstAttribute="trailing" secondItem="vtV-dv-i9r" secondAttribute="trailing" constant="40" id="VXD-Mk-tvH"/>
+                        <constraint firstItem="wdq-QH-hN1" firstAttribute="height" secondItem="Y38-6I-Io5" secondAttribute="height" multiplier="0.06" id="d2O-dP-Eab"/>
                         <constraint firstItem="vtV-dv-i9r" firstAttribute="leading" secondItem="Y38-6I-Io5" secondAttribute="leading" constant="40" id="dO2-Yd-NgH"/>
                         <constraint firstItem="vtV-dv-i9r" firstAttribute="top" secondItem="gWn-yl-fPT" secondAttribute="bottom" constant="30" id="sEe-rm-KT4"/>
-                        <constraint firstAttribute="bottom" secondItem="vtV-dv-i9r" secondAttribute="bottom" constant="54" id="tBo-mN-hzm"/>
+                        <constraint firstAttribute="bottom" secondItem="wdq-QH-hN1" secondAttribute="bottom" id="tFw-zj-w3E"/>
+                        <constraint firstItem="wdq-QH-hN1" firstAttribute="leading" secondItem="Y38-6I-Io5" secondAttribute="leading" constant="40" id="vks-AW-87J"/>
                         <constraint firstItem="1eG-eY-TgR" firstAttribute="top" secondItem="Y38-6I-Io5" secondAttribute="top" constant="84" id="wwo-gt-eGC"/>
                     </constraints>
                 </view>
@@ -166,7 +171,7 @@
     <resources>
         <image name="tutorialAccess" width="375" height="300"/>
         <namedColor name="AppleBlue">
-            <color red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
