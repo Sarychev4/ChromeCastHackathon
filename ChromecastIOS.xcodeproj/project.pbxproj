@@ -79,6 +79,10 @@
 		DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */; };
 		DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */; };
 		DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */; };
+		DDAE264C281824D400355735 /* TutorialThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE264A281824D400355735 /* TutorialThankYouViewController.swift */; };
+		DDAE264D281824D400355735 /* TutorialThankYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE264B281824D400355735 /* TutorialThankYouViewController.xib */; };
+		DDAE26502818250000355735 /* TutorialRatingStarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */; };
+		DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */; };
 		DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */; };
 		DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */; };
 		DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */; };
@@ -95,6 +99,12 @@
 		DDCE0A1628116FEC004E9C18 /* IPTVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A1428116FEC004E9C18 /* IPTVViewController.xib */; };
 		DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE0A1728117020004E9C18 /* YouTubeViewController.swift */; };
 		DDCE0A1A28117020004E9C18 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */; };
+		DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */; };
+		DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */; };
+		DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */; };
+		DDF231C828181568005E3E3E /* TutorialPreviewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C628181568005E3E3E /* TutorialPreviewImageViewController.xib */; };
+		DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231CA281815EF005E3E3E /* TutorialEverythingReadyViewController.swift */; };
+		DDF231CD281815EF005E3E3E /* TutorialEverythingReadyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231CB281815EF005E3E3E /* TutorialEverythingReadyViewController.xib */; };
 		DDF59BEC280F2E9600CE2E2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59BEA280F2E9600CE2E2B /* MainViewController.swift */; };
 		DDF59BED280F2E9600CE2E2B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF59BEB280F2E9600CE2E2B /* MainViewController.xib */; };
 		DDF59BF1280F2F0B00CE2E2B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59BF0280F2F0B00CE2E2B /* BaseViewController.swift */; };
@@ -222,6 +232,10 @@
 		DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialConnectViewController.xib; sourceTree = "<group>"; };
 		DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
 		DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		DDAE264A281824D400355735 /* TutorialThankYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialThankYouViewController.swift; sourceTree = "<group>"; };
+		DDAE264B281824D400355735 /* TutorialThankYouViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialThankYouViewController.xib; sourceTree = "<group>"; };
+		DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRatingStarsViewController.swift; sourceTree = "<group>"; };
+		DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialRatingStarsViewController.xib; sourceTree = "<group>"; };
 		DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorViewController.xib; sourceTree = "<group>"; };
 		DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +252,12 @@
 		DDCE0A1428116FEC004E9C18 /* IPTVViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IPTVViewController.xib; sourceTree = "<group>"; };
 		DDCE0A1728117020004E9C18 /* YouTubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
 		DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouTubeViewController.xib; sourceTree = "<group>"; };
+		DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTestConnectionViewController.swift; sourceTree = "<group>"; };
+		DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialTestConnectionViewController.xib; sourceTree = "<group>"; };
+		DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreviewImageViewController.swift; sourceTree = "<group>"; };
+		DDF231C628181568005E3E3E /* TutorialPreviewImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialPreviewImageViewController.xib; sourceTree = "<group>"; };
+		DDF231CA281815EF005E3E3E /* TutorialEverythingReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialEverythingReadyViewController.swift; sourceTree = "<group>"; };
+		DDF231CB281815EF005E3E3E /* TutorialEverythingReadyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialEverythingReadyViewController.xib; sourceTree = "<group>"; };
 		DDF59BEA280F2E9600CE2E2B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DDF59BEB280F2E9600CE2E2B /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		DDF59BF0280F2F0B00CE2E2B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -495,6 +515,11 @@
 				DD923AE32816A3040034E5D3 /* AccessToNetworkVC */,
 				DD923AE42816A31E0034E5D3 /* WifiVC */,
 				DD923AE52816A32C0034E5D3 /* ConnectVC */,
+				DDF231BF281814D7005E3E3E /* TestConnectionVC */,
+				DDF231C428181543005E3E3E /* PreviewImageVC */,
+				DDF231C9281815A1005E3E3E /* EverythingReadyVC */,
+				DDAE26482818249400355735 /* RatingStarsVC */,
+				DDAE2649281824A300355735 /* ThankYouVC */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -542,6 +567,24 @@
 				DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */,
 			);
 			path = ConnectVC;
+			sourceTree = "<group>";
+		};
+		DDAE26482818249400355735 /* RatingStarsVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */,
+				DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */,
+			);
+			path = RatingStarsVC;
+			sourceTree = "<group>";
+		};
+		DDAE2649281824A300355735 /* ThankYouVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDAE264A281824D400355735 /* TutorialThankYouViewController.swift */,
+				DDAE264B281824D400355735 /* TutorialThankYouViewController.xib */,
+			);
+			path = ThankYouVC;
 			sourceTree = "<group>";
 		};
 		DDCE09F32810327C004E9C18 /* MirrorVC */ = {
@@ -618,6 +661,33 @@
 				DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */,
 			);
 			path = YouTubeVC;
+			sourceTree = "<group>";
+		};
+		DDF231BF281814D7005E3E3E /* TestConnectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */,
+				DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */,
+			);
+			path = TestConnectionVC;
+			sourceTree = "<group>";
+		};
+		DDF231C428181543005E3E3E /* PreviewImageVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */,
+				DDF231C628181568005E3E3E /* TutorialPreviewImageViewController.xib */,
+			);
+			path = PreviewImageVC;
+			sourceTree = "<group>";
+		};
+		DDF231C9281815A1005E3E3E /* EverythingReadyVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDF231CA281815EF005E3E3E /* TutorialEverythingReadyViewController.swift */,
+				DDF231CB281815EF005E3E3E /* TutorialEverythingReadyViewController.xib */,
+			);
+			path = EverythingReadyVC;
 			sourceTree = "<group>";
 		};
 		DDF59BEE280F2E9C00CE2E2B /* MainVC */ = {
@@ -837,10 +907,12 @@
 				DDCE0A1628116FEC004E9C18 /* IPTVViewController.xib in Resources */,
 				DDCE0A1A28117020004E9C18 /* YouTubeViewController.xib in Resources */,
 				DD345D232817FA9700E67AB0 /* twitch_ico.png in Resources */,
+				DDAE264D281824D400355735 /* TutorialThankYouViewController.xib in Resources */,
 				DD23EAE62811BF4000DB7D44 /* OpenWebsitesViewController.xib in Resources */,
 				DDF59C07280F46CE00CE2E2B /* Localizable.strings in Resources */,
 				DD19E4852811E56F00931489 /* WebsiteCell.xib in Resources */,
 				DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */,
+				DDF231CD281815EF005E3E3E /* TutorialEverythingReadyViewController.xib in Resources */,
 				DD19E4C52812AC8E00931489 /* HDCell.xib in Resources */,
 				DD923AE92816AF1B0034E5D3 /* TutorialContainerViewController.xib in Resources */,
 				DD923AF52816B3F40034E5D3 /* TutorialWifiViewController.xib in Resources */,
@@ -858,6 +930,7 @@
 				DD345D242817FA9700E67AB0 /* dailymotion_ico.png in Resources */,
 				DD19E4AC2812ABD900931489 /* barton_nature_swan.JPG in Resources */,
 				DD19E4BE2812ABD900931489 /* bird_hills_nature_tree.JPG in Resources */,
+				DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */,
 				E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */,
 				DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */,
 				DD923AED2816B39B0034E5D3 /* TutorialWelcomeViewController.xib in Resources */,
@@ -880,11 +953,13 @@
 				DD19E4BD2812ABD900931489 /* willowtree_apartment_sunset.jpg in Resources */,
 				DD19E4B12812ABD900931489 /* bird_hills_nature_foliage_hd.JPG in Resources */,
 				DD19E4CA2812ACB500931489 /* ThumbnailCell.xib in Resources */,
+				DDF231C828181568005E3E3E /* TutorialPreviewImageViewController.xib in Resources */,
 				DD19E4B42812ABD900931489 /* horizontal_strip.png in Resources */,
 				DD19E4B92812ABD900931489 /* horizontal_strip_hd.png in Resources */,
 				DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */,
 				DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */,
 				DD19E4A92812ABD900931489 /* winsor_skyline_hd.png in Resources */,
+				DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */,
 				DDCE0A0728116ED5004E9C18 /* GoogleDriveViewController.xib in Resources */,
 				DD19E4752811D58600931489 /* Index.html in Resources */,
 				DDF59BED280F2E9600CE2E2B /* MainViewController.xib in Resources */,
@@ -989,8 +1064,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD19E4C92812ACB500931489 /* ThumbnailCell.swift in Sources */,
+				DDAE264C281824D400355735 /* TutorialThankYouViewController.swift in Sources */,
 				DD923AD62812E6DF0034E5D3 /* CellAnimationMeasurement.swift in Sources */,
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
+				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
 				DD19E4892812AA5700931489 /* PhotoModel.swift in Sources */,
 				DDF59C00280F32A400CE2E2B /* UIViewController+Extension.swift in Sources */,
@@ -1013,6 +1090,7 @@
 				DDF59C0E280F48D500CE2E2B /* UIFont+Extension.swift in Sources */,
 				DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */,
 				DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */,
+				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaViewController.swift in Sources */,
 				DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */,
 				DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */,
@@ -1020,6 +1098,7 @@
 				DDF59C14280F5E1F00CE2E2B /* MainCell.swift in Sources */,
 				DD19E48B2812AB9A00931489 /* UIImage+Extension.swift in Sources */,
 				DDF59C04280F459600CE2E2B /* DropShadowView.swift in Sources */,
+				DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */,
 				DD19E4D02812C43400931489 /* FlowLayoutInvalidateBehavior.swift in Sources */,
 				DDF59BEC280F2E9600CE2E2B /* MainViewController.swift in Sources */,
 				DD23EAE02811947A00DB7D44 /* SettingsViewController.swift in Sources */,
@@ -1031,6 +1110,7 @@
 				DDCE0A1528116FEC004E9C18 /* IPTVViewController.swift in Sources */,
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
+				DDAE26502818250000355735 /* TutorialRatingStarsViewController.swift in Sources */,
 				DD19E4842811E56F00931489 /* WebsiteCell.swift in Sources */,
 				DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */,
 				DD923ADF2812F3C70034E5D3 /* CellPassiveMeasurement.swift in Sources */,

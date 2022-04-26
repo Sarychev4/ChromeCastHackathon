@@ -26,6 +26,26 @@
 "Tutorial.Connect.Subtitle" = "Please wait while we're setting up\nthe connection. This process will\nfinish shortly";
 "Tutorial.Connect.Action" = "Continue";
 
+"Tutorial.TestConnection.Title" = "Test Connection";
+"Tutorial.TestConnection.Subtitle" = "In order to make sure you have a\ngood connection. Tap the button\nbelow to test it. You should see an\nimage";
+"Tutorial.TestConnection.Action" = "Tap to see on TV";
+"Tutorial.TestConnection.Action2" = "Don't see the image?";
+
+"Tutorial.PreviewImage.Title" = "See the image?";
+"Tutorial.PreviewImage.Subtitle" = "If you’ve seen it, then the\nconnection is successfully\nestablished";
+"Tutorial.PreviewImage.Action" = "Yes, I do";
+"Tutorial.PreviewImage.Action2" = "I don't see the image";
+
+"Tutorial.EverythingReady.Title" = "Everything is ready";
+"Tutorial.EverythingReady.Subtitle" = "We would like to hear from you. This\nway we’ll be able to make the app\neven easier to use";
+"Tutorial.EverythingReady.Action" = "Start";
+
+"Tutorial.RatingStars.Title" = "How would you rate\nyour experience?";
+"Tutorial.RatingStars.Action" = "Continue";
+
+"Tutorial.ThankYou.Title" = "Thank You";
+"Tutorial.ThankYou.Subtitle" = "We appreciate the feedback you\nshared. With your help, we’re able to\nmake better products for you.";
+"Tutorial.EverythingReady.Action" = "Start";
 /*
  - Main Screen
  */

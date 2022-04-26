@@ -24,7 +24,7 @@ class TutorialConnectViewController: BaseViewController {
     private var progressTimer: Timer?
     private var currentProgress: Int = 0
     
-    var temp = true
+    var temp = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
