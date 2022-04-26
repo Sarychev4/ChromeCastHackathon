@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -47,7 +47,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIH-P2-y3e">
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buv-VV-if7" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buv-VV-if7" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                             <color key="textColor" name="labelColorDark"/>
@@ -69,7 +69,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHG-ZL-YnX">
                                     <rect key="frame" x="0.0" y="50" width="334" height="46"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-8H-JNn" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-8H-JNn" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="46"/>
                                             <string key="text">_Let’s complete a few steps 
 together to get started.</string>
@@ -99,10 +99,10 @@ together to get started.</string>
                                 <constraint firstAttribute="height" constant="146" id="I5P-lM-weB"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-eL-hhP" customClass="InteractiveView" customModule="ScreenMirroring" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-eL-hhP" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                             <rect key="frame" x="40" y="794" width="334" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVW-m9-cvS" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVW-m9-cvS" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="48"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,11 +164,61 @@ together to get started.</string>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="54.910714285714285"/>
         </view>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IFF-oi-KfK">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySK-Li-3cx">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cnA-cU-LBC">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caJ-nk-2os">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pac-g3-7Pb">
+                                    <rect key="frame" x="0.0" y="448" width="414" height="448"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTc-Fr-v51">
+                                            <rect key="frame" x="56" y="55" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" name="MainBackground"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="cnA-cU-LBC" secondAttribute="bottom" id="C4T-At-bMp"/>
+                        <constraint firstItem="cnA-cU-LBC" firstAttribute="leading" secondItem="ySK-Li-3cx" secondAttribute="leading" id="KAY-G7-AJ6"/>
+                        <constraint firstAttribute="trailing" secondItem="cnA-cU-LBC" secondAttribute="trailing" id="PqG-pF-u15"/>
+                        <constraint firstItem="cnA-cU-LBC" firstAttribute="top" secondItem="ySK-Li-3cx" secondAttribute="top" id="keS-lH-ZPT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="wdJ-nw-VXz"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ySK-Li-3cx" secondAttribute="bottom" id="S5S-qI-N9W"/>
+                <constraint firstItem="ySK-Li-3cx" firstAttribute="top" secondItem="IFF-oi-KfK" secondAttribute="top" id="foj-PR-k4l"/>
+                <constraint firstItem="ySK-Li-3cx" firstAttribute="leading" secondItem="wdJ-nw-VXz" secondAttribute="leading" id="hx9-kU-yK0"/>
+                <constraint firstItem="caJ-nk-2os" firstAttribute="height" secondItem="IFF-oi-KfK" secondAttribute="height" multiplier="1:2" id="nOq-7u-rGk"/>
+                <constraint firstItem="wdJ-nw-VXz" firstAttribute="trailing" secondItem="ySK-Li-3cx" secondAttribute="trailing" id="rVr-hx-YLM"/>
+            </constraints>
+            <point key="canvasLocation" x="883" y="46"/>
+        </view>
     </objects>
     <resources>
         <image name="tutorialWelcome" width="375" height="300"/>
         <namedColor name="AppleBlue">
-            <color red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
