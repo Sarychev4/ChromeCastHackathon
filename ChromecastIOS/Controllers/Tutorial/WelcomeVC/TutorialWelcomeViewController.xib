@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialWelcomeViewController" customModule="ChromecastIOS" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="Bv4-p2-0bV" id="ytl-7O-JyA"/>
+                <outlet property="containerViewHeightConstraint" destination="Pix-O1-9lh" id="6VZ-DQ-XTu"/>
+                <outlet property="continueInteractiveView" destination="oYB-eL-hhP" id="FaM-NF-QXf"/>
+                <outlet property="continueLabel" destination="W6s-8H-JNn" id="rX1-7R-88i"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hw1-YI-Gbu">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74b-5A-aym">
+                            <rect key="frame" x="0.0" y="84" width="414" height="300"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorialWelcome" translatesAutoresizingMaskIntoConstraints="NO" id="qoI-49-Lov">
+                                    <rect key="frame" x="19.5" y="0.0" width="375" height="300"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="qoI-49-Lov" firstAttribute="centerX" secondItem="74b-5A-aym" secondAttribute="centerX" id="Eu0-WV-mOo"/>
+                                <constraint firstAttribute="height" constant="300" id="Pix-O1-9lh"/>
+                                <constraint firstItem="qoI-49-Lov" firstAttribute="centerY" secondItem="74b-5A-aym" secondAttribute="centerY" id="oBm-K8-mY1"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oUj-d7-LrU">
+                            <rect key="frame" x="40" y="618" width="334" height="146"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIH-P2-y3e">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buv-VV-if7" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                            <color key="textColor" name="labelColorDark"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.Welcome.Title"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="Buv-VV-if7" firstAttribute="leading" secondItem="hIH-P2-y3e" secondAttribute="leading" id="E4s-2R-t1t"/>
+                                        <constraint firstItem="Buv-VV-if7" firstAttribute="top" secondItem="hIH-P2-y3e" secondAttribute="top" id="csA-Lk-4V4"/>
+                                        <constraint firstAttribute="bottom" secondItem="Buv-VV-if7" secondAttribute="bottom" constant="14" id="j0G-0p-3bN"/>
+                                        <constraint firstAttribute="trailing" secondItem="Buv-VV-if7" secondAttribute="trailing" id="xln-Oj-LCH"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHG-ZL-YnX">
+                                    <rect key="frame" x="0.0" y="50" width="334" height="46"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6s-8H-JNn" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="46"/>
+                                            <string key="text">_Let’s complete a few steps 
+together to get started.</string>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" name="labelColorGrayPunk"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.Welcome.Subtitle"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="W6s-8H-JNn" firstAttribute="top" secondItem="BHG-ZL-YnX" secondAttribute="top" id="5wc-pv-mJa"/>
+                                        <constraint firstItem="W6s-8H-JNn" firstAttribute="leading" secondItem="BHG-ZL-YnX" secondAttribute="leading" id="OXY-Xq-wjG"/>
+                                        <constraint firstAttribute="trailing" secondItem="W6s-8H-JNn" secondAttribute="trailing" id="g0v-Bo-Gd7"/>
+                                        <constraint firstAttribute="bottom" secondItem="W6s-8H-JNn" secondAttribute="bottom" id="tmd-lq-n7v"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZF6-qy-gbH">
+                                    <rect key="frame" x="0.0" y="96" width="334" height="50"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="146" id="I5P-lM-weB"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-eL-hhP" customClass="InteractiveView" customModule="ScreenMirroring" customModuleProvider="target">
+                            <rect key="frame" x="40" y="794" width="334" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVW-m9-cvS" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="48"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.Welcome.Action"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isUppercased" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Bv4-p2-0bV">
+                                    <rect key="frame" x="157" y="14" width="20" height="20"/>
+                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" name="AppleBlue"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="8ew-mY-dDB"/>
+                                <constraint firstItem="Bv4-p2-0bV" firstAttribute="centerX" secondItem="oYB-eL-hhP" secondAttribute="centerX" id="FJ6-pm-4Jd"/>
+                                <constraint firstItem="WVW-m9-cvS" firstAttribute="leading" secondItem="oYB-eL-hhP" secondAttribute="leading" id="IZp-hk-kwa"/>
+                                <constraint firstItem="Bv4-p2-0bV" firstAttribute="centerY" secondItem="oYB-eL-hhP" secondAttribute="centerY" id="P0m-tM-52D"/>
+                                <constraint firstAttribute="trailing" secondItem="WVW-m9-cvS" secondAttribute="trailing" id="Wau-zm-f8U"/>
+                                <constraint firstItem="WVW-m9-cvS" firstAttribute="top" secondItem="oYB-eL-hhP" secondAttribute="top" id="bbc-WD-7sA"/>
+                                <constraint firstAttribute="bottom" secondItem="WVW-m9-cvS" secondAttribute="bottom" id="qRC-cT-kXS"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="enabledBackgroundColor">
+                                    <color key="value" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="MainBackground"/>
+                    <constraints>
+                        <constraint firstItem="oYB-eL-hhP" firstAttribute="centerX" secondItem="hw1-YI-Gbu" secondAttribute="centerX" id="2tR-cc-559"/>
+                        <constraint firstItem="74b-5A-aym" firstAttribute="leading" secondItem="hw1-YI-Gbu" secondAttribute="leading" id="56a-TR-zcH"/>
+                        <constraint firstItem="74b-5A-aym" firstAttribute="top" secondItem="hw1-YI-Gbu" secondAttribute="top" constant="84" id="7c2-HO-fSI"/>
+                        <constraint firstItem="oUj-d7-LrU" firstAttribute="leading" secondItem="hw1-YI-Gbu" secondAttribute="leading" constant="40" id="BJD-AW-z9W"/>
+                        <constraint firstAttribute="trailing" secondItem="oYB-eL-hhP" secondAttribute="trailing" constant="40" id="Pax-Q9-Sae"/>
+                        <constraint firstAttribute="trailing" secondItem="74b-5A-aym" secondAttribute="trailing" id="TO6-MI-FG8"/>
+                        <constraint firstItem="oYB-eL-hhP" firstAttribute="leading" secondItem="hw1-YI-Gbu" secondAttribute="leading" constant="40" id="Y8t-qQ-5YK"/>
+                        <constraint firstItem="oYB-eL-hhP" firstAttribute="top" secondItem="oUj-d7-LrU" secondAttribute="bottom" constant="30" id="gCy-LJ-J3H"/>
+                        <constraint firstAttribute="trailing" secondItem="oUj-d7-LrU" secondAttribute="trailing" constant="40" id="ilh-fG-v5y"/>
+                        <constraint firstAttribute="bottom" secondItem="oYB-eL-hhP" secondAttribute="bottom" constant="54" id="rId-ok-Mfe"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hw1-YI-Gbu" secondAttribute="trailing" id="8As-eC-XJr"/>
+                <constraint firstAttribute="bottom" secondItem="hw1-YI-Gbu" secondAttribute="bottom" id="Hiw-UF-RMI"/>
+                <constraint firstItem="hw1-YI-Gbu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bCn-KV-20Z"/>
+                <constraint firstItem="hw1-YI-Gbu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lGd-XM-wry"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="54.910714285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tutorialWelcome" width="375" height="300"/>
+        <namedColor name="AppleBlue">
+            <color red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorGrayPunk">
+            <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

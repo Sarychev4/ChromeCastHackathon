@@ -66,6 +66,18 @@
 		DD923ADB2812F08E0034E5D3 /* FlowLayoutSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ADA2812F08E0034E5D3 /* FlowLayoutSyncManager.swift */; };
 		DD923ADD2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ADC2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift */; };
 		DD923ADF2812F3C70034E5D3 /* CellPassiveMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ADE2812F3C70034E5D3 /* CellPassiveMeasurement.swift */; };
+		DD923AE82816AF1B0034E5D3 /* TutorialContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AE62816AF1B0034E5D3 /* TutorialContainerViewController.swift */; };
+		DD923AE92816AF1B0034E5D3 /* TutorialContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AE72816AF1B0034E5D3 /* TutorialContainerViewController.xib */; };
+		DD923AEC2816B39B0034E5D3 /* TutorialWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AEA2816B39B0034E5D3 /* TutorialWelcomeViewController.swift */; };
+		DD923AED2816B39B0034E5D3 /* TutorialWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AEB2816B39B0034E5D3 /* TutorialWelcomeViewController.xib */; };
+		DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AEE2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift */; };
+		DD923AF12816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AEF2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib */; };
+		DD923AF42816B3F40034E5D3 /* TutorialWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AF22816B3F40034E5D3 /* TutorialWifiViewController.swift */; };
+		DD923AF52816B3F40034E5D3 /* TutorialWifiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AF32816B3F40034E5D3 /* TutorialWifiViewController.xib */; };
+		DD923AF82816B4130034E5D3 /* TutorialConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AF62816B4130034E5D3 /* TutorialConnectViewController.swift */; };
+		DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */; };
+		DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */; };
+		DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */; };
 		DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */; };
 		DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */; };
 		DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */; };
@@ -203,6 +215,18 @@
 		DD923ADA2812F08E0034E5D3 /* FlowLayoutSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutSyncManager.swift; sourceTree = "<group>"; };
 		DD923ADC2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailSlaveFlowLayout.swift; sourceTree = "<group>"; };
 		DD923ADE2812F3C70034E5D3 /* CellPassiveMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPassiveMeasurement.swift; sourceTree = "<group>"; };
+		DD923AE62816AF1B0034E5D3 /* TutorialContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContainerViewController.swift; sourceTree = "<group>"; };
+		DD923AE72816AF1B0034E5D3 /* TutorialContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialContainerViewController.xib; sourceTree = "<group>"; };
+		DD923AEA2816B39B0034E5D3 /* TutorialWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialWelcomeViewController.swift; sourceTree = "<group>"; };
+		DD923AEB2816B39B0034E5D3 /* TutorialWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialWelcomeViewController.xib; sourceTree = "<group>"; };
+		DD923AEE2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialAccessToNetworkViewController.swift; sourceTree = "<group>"; };
+		DD923AEF2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialAccessToNetworkViewController.xib; sourceTree = "<group>"; };
+		DD923AF22816B3F40034E5D3 /* TutorialWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialWifiViewController.swift; sourceTree = "<group>"; };
+		DD923AF32816B3F40034E5D3 /* TutorialWifiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialWifiViewController.xib; sourceTree = "<group>"; };
+		DD923AF62816B4130034E5D3 /* TutorialConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialConnectViewController.swift; sourceTree = "<group>"; };
+		DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialConnectViewController.xib; sourceTree = "<group>"; };
+		DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
+		DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorViewController.xib; sourceTree = "<group>"; };
 		DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +481,7 @@
 		DD305EA2280F2D1900BA57B4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DD923AE02816A2700034E5D3 /* Tutorial */,
 				DD23EADD2811945C00DB7D44 /* SettingsVC */,
 				DDF59BFA280F31FF00CE2E2B /* NavigationContrainer */,
 				DDF59BEE280F2E9C00CE2E2B /* MainVC */,
@@ -480,6 +505,63 @@
 				DD923ADA2812F08E0034E5D3 /* FlowLayoutSyncManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		DD923AE02816A2700034E5D3 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				DD923AE12816A2C60034E5D3 /* Container */,
+				DD923AE22816A2DE0034E5D3 /* WelcomeVC */,
+				DD923AE32816A3040034E5D3 /* AccessToNetworkVC */,
+				DD923AE42816A31E0034E5D3 /* WifiVC */,
+				DD923AE52816A32C0034E5D3 /* ConnectVC */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		DD923AE12816A2C60034E5D3 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				DD923AE62816AF1B0034E5D3 /* TutorialContainerViewController.swift */,
+				DD923AE72816AF1B0034E5D3 /* TutorialContainerViewController.xib */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		DD923AE22816A2DE0034E5D3 /* WelcomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				DD923AEA2816B39B0034E5D3 /* TutorialWelcomeViewController.swift */,
+				DD923AEB2816B39B0034E5D3 /* TutorialWelcomeViewController.xib */,
+			);
+			path = WelcomeVC;
+			sourceTree = "<group>";
+		};
+		DD923AE32816A3040034E5D3 /* AccessToNetworkVC */ = {
+			isa = PBXGroup;
+			children = (
+				DD923AEE2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift */,
+				DD923AEF2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib */,
+			);
+			path = AccessToNetworkVC;
+			sourceTree = "<group>";
+		};
+		DD923AE42816A31E0034E5D3 /* WifiVC */ = {
+			isa = PBXGroup;
+			children = (
+				DD923AF22816B3F40034E5D3 /* TutorialWifiViewController.swift */,
+				DD923AF32816B3F40034E5D3 /* TutorialWifiViewController.xib */,
+			);
+			path = WifiVC;
+			sourceTree = "<group>";
+		};
+		DD923AE52816A32C0034E5D3 /* ConnectVC */ = {
+			isa = PBXGroup;
+			children = (
+				DD923AF62816B4130034E5D3 /* TutorialConnectViewController.swift */,
+				DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */,
+			);
+			path = ConnectVC;
 			sourceTree = "<group>";
 		};
 		DDCE09F32810327C004E9C18 /* MirrorVC */ = {
@@ -572,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				DDF59BF0280F2F0B00CE2E2B /* BaseViewController.swift */,
+				DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -595,6 +678,7 @@
 				DDF59BFF280F32A400CE2E2B /* UIViewController+Extension.swift */,
 				DDF59C0D280F48D500CE2E2B /* UIFont+Extension.swift */,
 				DD19E48A2812AB9A00931489 /* UIImage+Extension.swift */,
+				DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -777,8 +861,11 @@
 				DD23EAE62811BF4000DB7D44 /* OpenWebsitesViewController.xib in Resources */,
 				DDF59C07280F46CE00CE2E2B /* Localizable.strings in Resources */,
 				DD19E4852811E56F00931489 /* WebsiteCell.xib in Resources */,
+				DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */,
 				DD19E4732811D58600931489 /* vimeo_ico.png in Resources */,
 				DD19E4C52812AC8E00931489 /* HDCell.xib in Resources */,
+				DD923AE92816AF1B0034E5D3 /* TutorialContainerViewController.xib in Resources */,
+				DD923AF52816B3F40034E5D3 /* TutorialWifiViewController.xib in Resources */,
 				DD19E46F2811D58600931489 /* twitch_ico.png in Resources */,
 				DD19E4AF2812ABD900931489 /* barton_nature_area_bridge_hd.JPG in Resources */,
 				DD19E4AB2812ABD900931489 /* bird_hills_nature_tree_hd.JPG in Resources */,
@@ -795,6 +882,7 @@
 				DD19E4AC2812ABD900931489 /* barton_nature_swan.JPG in Resources */,
 				DD19E4BE2812ABD900931489 /* bird_hills_nature_tree.JPG in Resources */,
 				E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */,
+				DD923AED2816B39B0034E5D3 /* TutorialWelcomeViewController.xib in Resources */,
 				DD19E46E2811D58600931489 /* ted_ico.png in Resources */,
 				DD19E4BA2812ABD900931489 /* huron_river_hd.JPG in Resources */,
 				DDCE0A1228116FAE004E9C18 /* MediaViewController.xib in Resources */,
@@ -821,6 +909,7 @@
 				DDCE0A0728116ED5004E9C18 /* GoogleDriveViewController.xib in Resources */,
 				DD19E4752811D58600931489 /* Index.html in Resources */,
 				DDF59BED280F2E9600CE2E2B /* MainViewController.xib in Resources */,
+				DD923AF12816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,9 +1012,11 @@
 				DD19E4C92812ACB500931489 /* ThumbnailCell.swift in Sources */,
 				DD923AD62812E6DF0034E5D3 /* CellAnimationMeasurement.swift in Sources */,
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
+				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
 				DD19E4892812AA5700931489 /* PhotoModel.swift in Sources */,
 				DDF59C00280F32A400CE2E2B /* UIViewController+Extension.swift in Sources */,
 				DDF59C10280F4B7B00CE2E2B /* UIView+Extension.swift in Sources */,
+				DD923AE82816AF1B0034E5D3 /* TutorialContainerViewController.swift in Sources */,
 				DDF59C0C280F489C00CE2E2B /* DefaultLabel.swift in Sources */,
 				DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */,
 				E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */,
@@ -935,7 +1026,10 @@
 				DDF59BF8280F30AF00CE2E2B /* DefaultView.swift in Sources */,
 				DD19E4C42812AC8E00931489 /* HDCell.swift in Sources */,
 				DD923ADB2812F08E0034E5D3 /* FlowLayoutSyncManager.swift in Sources */,
+				DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */,
+				DD923AEC2816B39B0034E5D3 /* TutorialWelcomeViewController.swift in Sources */,
 				DDCE0A0A28116EF9004E9C18 /* GooglePhotosViewController.swift in Sources */,
+				DD923AF42816B3F40034E5D3 /* TutorialWifiViewController.swift in Sources */,
 				DD923AD92812E7190034E5D3 /* AcoordionAnimationManager.swift in Sources */,
 				DDF59C0E280F48D500CE2E2B /* UIFont+Extension.swift in Sources */,
 				DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */,
@@ -943,6 +1037,7 @@
 				DDCE0A1128116FAE004E9C18 /* MediaViewController.swift in Sources */,
 				DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */,
 				DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */,
+				DD923AF82816B4130034E5D3 /* TutorialConnectViewController.swift in Sources */,
 				DDF59C14280F5E1F00CE2E2B /* MainCell.swift in Sources */,
 				DD19E48B2812AB9A00931489 /* UIImage+Extension.swift in Sources */,
 				DDF59C04280F459600CE2E2B /* DropShadowView.swift in Sources */,
@@ -953,6 +1048,7 @@
 				DD923ADD2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift in Sources */,
 				DDCE0A0628116ED5004E9C18 /* GoogleDriveViewController.swift in Sources */,
 				DDF59BF3280F2F3500CE2E2B /* Constants.swift in Sources */,
+				DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */,
 				DDCE0A1528116FEC004E9C18 /* IPTVViewController.swift in Sources */,
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,

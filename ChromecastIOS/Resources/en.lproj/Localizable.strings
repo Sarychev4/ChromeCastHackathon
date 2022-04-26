@@ -7,6 +7,26 @@
 */
 
 /*
+ - Tutorial
+ */
+
+"Tutorial.Welcome.Title" = "Hi there!";
+"Tutorial.Welcome.Subtitle" = "Let’s complete a few steps\ntogether to get started.";
+"Tutorial.Welcome.Action" = "Continue";
+
+"Tutorial.AccessToNetwork.Title" = "Access to network";
+"Tutorial.AccessToNetwork.Subtitle" = "Make sure the app has access to\nyour local network in order\nto connect to your TV or streaming\ndevice";
+"Tutorial.AccessToNetwork.Action" = "Continue";
+
+"Tutorial.Wifi.Title" = "Same Wi-Fi";
+"Tutorial.Wifi.Subtitle" = "Please make sure your devices are\non the same Wi-Fi network";
+"Tutorial.Wifi.Action" = "Continue";
+
+"Tutorial.Connect.Title" = "Let's set up";
+"Tutorial.Connect.Subtitle" = "Please wait while we're setting up\nthe connection. This process will\nfinish shortly";
+"Tutorial.Connect.Action" = "Continue";
+
+/*
  - Main Screen
  */
 
