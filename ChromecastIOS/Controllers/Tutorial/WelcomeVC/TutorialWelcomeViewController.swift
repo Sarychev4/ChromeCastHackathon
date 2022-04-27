@@ -23,5 +23,12 @@ class TutorialWelcomeViewController: BaseViewController {
             guard let self = self else { return }
             self.didFinishAction?()
         }
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
 }

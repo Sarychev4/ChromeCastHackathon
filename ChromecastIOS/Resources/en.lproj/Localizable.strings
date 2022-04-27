@@ -29,6 +29,7 @@
 "Tutorial.ListDevices.Title" = "Select your device";
 "Tutorial.ListDevices.Subtitle" = "Doesn't see your device?";
 "Tutorial.ListDevices.Action" = "Tap to refresh";
+"Tutorial.ListDevices.Attention" = "Make sure your phone and Smart TV are\nconnected to the same Wi-Fi network. If\nyour TV is not on the list, please reboot it\n(power reset) and try again.";
 
 "Tutorial.TestConnection.Title" = "Test Connection";
 "Tutorial.TestConnection.Subtitle" = "In order to make sure you have a\ngood connection. Tap the button\nbelow to test it. You should see an\nimage";
@@ -83,3 +84,11 @@ Features";
  
  */
 "Screen.Main.Tabbar.Title" = "Tap to start";
+
+
+/*
+ 
+ */
+"Alert.Permissions.Denied.LocalNetwork.Title" = "Confirm connection";
+"Alert.Permissions.Denied.LocalNetwork.Subtitle" = "In some cases you may see a\nconfirmation dialog on the screen of\nour TV. Tap Yes to confirm\nconnection.\n\nIf you don’t see any confirmation\nwindow on your TV, just tap Continue.";
+"Alert.Permissions.Denied.LocalNetwork.Continue" = "Continue";

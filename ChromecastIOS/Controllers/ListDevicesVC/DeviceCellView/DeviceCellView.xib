@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceCellView" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="containerDropShadowView" destination="KDr-N0-2M6" id="vSf-d4-rLa"/>
+                <outlet property="containerInteractiveView" destination="oi6-r3-btA" id="iVK-NW-ly9"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="gS0-bk-Si1"/>
                 <outlet property="imageView" destination="Jgo-VY-Bet" id="hfC-1w-zBU"/>
                 <outlet property="nameLabel" destination="gdW-5Q-mnv" id="WNp-Dk-5mQ"/>
@@ -18,16 +20,16 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="68"/>
+            <rect key="frame" x="0.0" y="0.0" width="378" height="76"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-N0-2M6" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
-                    <rect key="frame" x="4" y="4" width="350" height="68"/>
+                    <rect key="frame" x="4" y="4" width="370" height="68"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oi6-r3-btA">
-                            <rect key="frame" x="0.0" y="0.0" width="350" height="68"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oi6-r3-btA" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="370" height="68"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jgo-VY-Bet">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yourTV" translatesAutoresizingMaskIntoConstraints="NO" id="Jgo-VY-Bet">
                                     <rect key="frame" x="16" y="16" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="iIY-iR-9Zu"/>
@@ -52,11 +54,11 @@
                     </subviews>
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="oi6-r3-btA" secondAttribute="bottom" id="3zt-IZ-isA"/>
-                        <constraint firstItem="oi6-r3-btA" firstAttribute="top" secondItem="KDr-N0-2M6" secondAttribute="top" id="LLq-Bm-DeL"/>
-                        <constraint firstAttribute="trailing" secondItem="oi6-r3-btA" secondAttribute="trailing" id="RhK-zV-6Ti"/>
-                        <constraint firstItem="oi6-r3-btA" firstAttribute="leading" secondItem="KDr-N0-2M6" secondAttribute="leading" id="jaf-mL-hkS"/>
-                        <constraint firstAttribute="height" constant="68" id="ldD-OB-x0u"/>
+                        <constraint firstItem="oi6-r3-btA" firstAttribute="leading" secondItem="KDr-N0-2M6" secondAttribute="leading" id="5u5-FO-dOB"/>
+                        <constraint firstAttribute="bottom" secondItem="oi6-r3-btA" secondAttribute="bottom" id="ETm-3K-1C5"/>
+                        <constraint firstAttribute="trailing" secondItem="oi6-r3-btA" secondAttribute="trailing" id="KqQ-hH-9eL"/>
+                        <constraint firstItem="oi6-r3-btA" firstAttribute="top" secondItem="KDr-N0-2M6" secondAttribute="top" id="Mas-Qe-Op0"/>
+                        <constraint firstAttribute="height" constant="68" id="NXx-uM-SdC"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
@@ -71,18 +73,19 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="KDr-N0-2M6" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="4" id="MAq-uK-ROL"/>
-                <constraint firstItem="KDr-N0-2M6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="MRf-GU-NPJ"/>
-                <constraint firstItem="KDr-N0-2M6" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="4" id="Zf8-GF-h3m"/>
-                <constraint firstItem="KDr-N0-2M6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="o1E-Nb-uKc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KDr-N0-2M6" secondAttribute="trailing" constant="4" id="0BA-4X-Fsx"/>
+                <constraint firstAttribute="bottom" secondItem="KDr-N0-2M6" secondAttribute="bottom" constant="4" id="EH9-L0-JYl"/>
+                <constraint firstItem="KDr-N0-2M6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="FqE-Oh-4ze"/>
+                <constraint firstItem="KDr-N0-2M6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="tei-Q7-N6A"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="122.46376811594205" y="-168.75"/>
+            <point key="canvasLocation" x="139.13043478260872" y="-168.75"/>
         </view>
     </objects>
     <resources>
+        <image name="yourTV" width="36" height="36"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
