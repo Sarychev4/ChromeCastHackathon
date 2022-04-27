@@ -9,13 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialListDevicesViewController" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListDevicesViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="attentionContainer" destination="lDg-cx-fI4" id="ewx-Rc-JMs"/>
+                <outlet property="devicesStackView" destination="ImO-5w-wZX" id="Tr6-4d-Hph"/>
+                <outlet property="dotsIndicatorView" destination="Bbo-HT-csX" id="xdb-2A-qjD"/>
                 <outlet property="panelView" destination="Z0C-sv-KAL" id="JXl-kl-c8d"/>
                 <outlet property="panelViewBottomConstraint" destination="pbc-7d-Dlf" id="ZDb-2K-Qlb"/>
                 <outlet property="panelViewContentBottomConstraint" destination="nac-gu-5Bl" id="yru-SK-Wfh"/>
-                <outlet property="stackView" destination="ImO-5w-wZX" id="V2W-ob-wnj"/>
-                <outlet property="testView" destination="R3W-Ui-dzV" id="Cgg-It-H4i"/>
+                <outlet property="refereshInteractiveView" destination="l0D-oZ-3B4" id="5Cg-fg-BeB"/>
+                <outlet property="refreshIcon" destination="sSD-3g-BzS" id="Vg4-oc-Yff"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,16 +28,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0C-sv-KAL">
-                    <rect key="frame" x="0.0" y="613" width="414" height="283"/>
+                    <rect key="frame" x="0.0" y="367.5" width="414" height="528.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zva-EQ-N49">
-                            <rect key="frame" x="16" y="32" width="382" height="219"/>
+                            <rect key="frame" x="16" y="32" width="382" height="464.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3W-Ui-dzV">
-                                    <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="59.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Select your device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBz-78-Scz" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                            <rect key="frame" x="108.5" y="0.0" width="165" height="40"/>
+                                            <rect key="frame" x="108.5" y="0.0" width="165" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <color key="textColor" name="labelColorDark"/>
                                             <nil key="highlightedColor"/>
@@ -42,16 +45,50 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ListDevices.Title"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-HT-csX" customClass="DotsActivityIndicator" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="175" y="41.5" width="32" height="8"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="8" id="H9I-PH-rzf"/>
+                                                <constraint firstAttribute="width" constant="32" id="tdm-Ci-FW3"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="Bbo-HT-csX" firstAttribute="centerX" secondItem="R3W-Ui-dzV" secondAttribute="centerX" id="Gvf-aE-U5B"/>
                                         <constraint firstItem="aBz-78-Scz" firstAttribute="centerX" secondItem="R3W-Ui-dzV" secondAttribute="centerX" id="Kyj-Zt-atH"/>
-                                        <constraint firstAttribute="bottom" secondItem="aBz-78-Scz" secondAttribute="bottom" constant="10" id="fY0-Yd-h99"/>
+                                        <constraint firstItem="Bbo-HT-csX" firstAttribute="top" secondItem="aBz-78-Scz" secondAttribute="bottom" constant="20" id="MmS-4m-Iig"/>
+                                        <constraint firstAttribute="bottom" secondItem="Bbo-HT-csX" secondAttribute="bottom" constant="10" id="drb-ou-iaW"/>
                                         <constraint firstItem="aBz-78-Scz" firstAttribute="top" secondItem="R3W-Ui-dzV" secondAttribute="top" id="yl4-GU-8pw"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDg-cx-fI4">
+                                    <rect key="frame" x="0.0" y="59.5" width="382" height="236"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7Q-5T-mNc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="0.0" width="366" height="76.5"/>
+                                            <string key="text">_Make sure your phone and Smart TV are connected to the same Wi-Fi network. If
+your TV is not on the list, please reboot it
+(power reset) and try again.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" name="labelColorGrayPunk"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ListDevices.Attention"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="a7Q-5T-mNc" firstAttribute="leading" secondItem="lDg-cx-fI4" secondAttribute="leading" constant="8" id="5ma-3b-bic"/>
+                                        <constraint firstItem="a7Q-5T-mNc" firstAttribute="top" secondItem="lDg-cx-fI4" secondAttribute="top" id="ffg-am-Kh3"/>
+                                        <constraint firstAttribute="trailing" secondItem="a7Q-5T-mNc" secondAttribute="trailing" constant="8" id="iuT-fr-DwS"/>
+                                        <constraint firstAttribute="height" constant="236" id="zHJ-7Z-ahd"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0o-CZ-vZf">
-                                    <rect key="frame" x="0.0" y="50" width="382" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="295.5" width="382" height="0.0"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ImO-5w-wZX">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="0.0"/>
@@ -76,7 +113,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wL-PW-9oB">
-                                    <rect key="frame" x="0.0" y="50" width="382" height="169"/>
+                                    <rect key="frame" x="0.0" y="295.5" width="382" height="169"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTz-yw-0wl">
                                             <rect key="frame" x="90.5" y="20" width="201" height="36"/>

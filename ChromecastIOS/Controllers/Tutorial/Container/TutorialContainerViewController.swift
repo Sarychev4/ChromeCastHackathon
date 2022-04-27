@@ -67,8 +67,8 @@ class TutorialContainerViewController: BaseViewController {
         let controller = TutorialWelcomeViewController()
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.connectController)
-//            self.pushViewController(self.accessToNetworkController)
+//            self.pushViewController(self.connectController)
+            self.pushViewController(self.accessToNetworkController)
         }
         return controller
     }
@@ -152,8 +152,7 @@ class TutorialContainerViewController: BaseViewController {
         setRootViewController(welcomeController)
         setupPageController()
     }
-    
-    
+
     private func pushViewController(_ pushVC: UIViewController) {
         addController(pushVC, container: stackView)
         

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertViewController" customModule="ChromecastIOS" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="NJW-uk-MTf" id="CeN-CS-7bl"/>
+                <outlet property="continueInteractiveView" destination="GP6-6I-m6I" id="DEA-Zf-VGV"/>
+                <outlet property="continueLabel" destination="8SG-g5-pMp" id="Wjf-li-oN1"/>
+                <outlet property="darkBackgroundView" destination="4OT-lG-wod" id="4Zo-8d-QAb"/>
+                <outlet property="subtitleLabel" destination="1RZ-vy-fyO" id="uCx-5C-hka"/>
+                <outlet property="titleLabel" destination="adm-UA-VZM" id="zx2-J1-sDw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9g-Ig-QaW">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OT-lG-wod">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJW-uk-MTf">
+                            <rect key="frame" x="71" y="351.5" width="272.5" height="193.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Confirm connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adm-UA-VZM" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="57.5" y="16" width="157" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RZ-vy-fyO" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="40" width="240.5" height="93.5"/>
+                                    <string key="text">In some cases you may see a
+confirmation dialog on the screen of your TV. Tap Yes to confirm connection. 
+if you don’t see any confirmation window on your TV, just tap Continue.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GP6-6I-m6I" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="149.5" width="272.5" height="44"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFk-f2-LUh" userLabel="separator">
+                                            <rect key="frame" x="0.0" y="0.0" width="272.5" height="1"/>
+                                            <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.36492878401360546" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="gRv-Mp-8iM"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SG-g5-pMp" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="100" y="11.5" width="72" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" name="AppleBlue"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="AFk-f2-LUh" secondAttribute="trailing" id="6Zo-VT-YkZ"/>
+                                        <constraint firstAttribute="height" constant="44" id="Enr-Gk-oxj"/>
+                                        <constraint firstItem="8SG-g5-pMp" firstAttribute="centerX" secondItem="GP6-6I-m6I" secondAttribute="centerX" id="FK7-qC-nyd"/>
+                                        <constraint firstItem="AFk-f2-LUh" firstAttribute="top" secondItem="GP6-6I-m6I" secondAttribute="top" id="FoG-ZN-qIa"/>
+                                        <constraint firstItem="8SG-g5-pMp" firstAttribute="centerY" secondItem="GP6-6I-m6I" secondAttribute="centerY" id="QO9-NM-QgH"/>
+                                        <constraint firstItem="AFk-f2-LUh" firstAttribute="leading" secondItem="GP6-6I-m6I" secondAttribute="leading" id="eWS-DV-XVl"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="1RZ-vy-fyO" firstAttribute="leading" secondItem="NJW-uk-MTf" secondAttribute="leading" constant="16" id="EVO-iI-FRm"/>
+                                <constraint firstItem="adm-UA-VZM" firstAttribute="top" secondItem="NJW-uk-MTf" secondAttribute="top" constant="16" id="Nq9-EE-S22"/>
+                                <constraint firstItem="1RZ-vy-fyO" firstAttribute="top" secondItem="NJW-uk-MTf" secondAttribute="top" constant="40" id="Q1b-qQ-YYT"/>
+                                <constraint firstItem="GP6-6I-m6I" firstAttribute="top" secondItem="1RZ-vy-fyO" secondAttribute="bottom" constant="16" id="U5l-a6-Xv2"/>
+                                <constraint firstAttribute="trailing" secondItem="1RZ-vy-fyO" secondAttribute="trailing" constant="16" id="Yxa-RH-dur"/>
+                                <constraint firstAttribute="trailing" secondItem="GP6-6I-m6I" secondAttribute="trailing" id="e3H-RP-de9"/>
+                                <constraint firstItem="adm-UA-VZM" firstAttribute="centerX" secondItem="NJW-uk-MTf" secondAttribute="centerX" id="jVf-eQ-O4m"/>
+                                <constraint firstItem="GP6-6I-m6I" firstAttribute="leading" secondItem="NJW-uk-MTf" secondAttribute="leading" id="u5R-Ak-nv7"/>
+                                <constraint firstAttribute="bottom" secondItem="GP6-6I-m6I" secondAttribute="bottom" id="y2V-4G-a8c"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="4OT-lG-wod" firstAttribute="top" secondItem="H9g-Ig-QaW" secondAttribute="top" id="9Cu-oJ-CIh"/>
+                        <constraint firstItem="4OT-lG-wod" firstAttribute="leading" secondItem="H9g-Ig-QaW" secondAttribute="leading" id="CU8-EM-iZ8"/>
+                        <constraint firstAttribute="bottom" secondItem="4OT-lG-wod" secondAttribute="bottom" id="IcK-Dt-eAU"/>
+                        <constraint firstItem="NJW-uk-MTf" firstAttribute="centerX" secondItem="H9g-Ig-QaW" secondAttribute="centerX" id="Npq-91-wKZ"/>
+                        <constraint firstAttribute="trailing" secondItem="4OT-lG-wod" secondAttribute="trailing" id="ojy-3E-Uvn"/>
+                        <constraint firstItem="NJW-uk-MTf" firstAttribute="centerY" secondItem="H9g-Ig-QaW" secondAttribute="centerY" id="suI-DX-8cO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="H9g-Ig-QaW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2tW-so-AVW"/>
+                <constraint firstAttribute="bottom" secondItem="H9g-Ig-QaW" secondAttribute="bottom" id="3UG-ZH-t6d"/>
+                <constraint firstItem="H9g-Ig-QaW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GXL-01-7eY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="H9g-Ig-QaW" secondAttribute="trailing" id="RyJ-gE-Ofa"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="74"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AppleBlue">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

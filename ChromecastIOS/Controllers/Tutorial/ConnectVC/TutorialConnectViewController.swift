@@ -28,6 +28,7 @@ class TutorialConnectViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
@@ -38,6 +39,7 @@ class TutorialConnectViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startProcessingAnimation()
+//        presentDevices()
     }
     //MARK: - Process Animation
     private func startProcessingAnimation() {
@@ -117,7 +119,7 @@ class TutorialConnectViewController: BaseViewController {
     }
     
     private func presentDevices() {
-        let controller = TutorialListDevicesViewController()
+        let controller = ListDevicesViewController()
         controller.canDismissOnPan = false
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
