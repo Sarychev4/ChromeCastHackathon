@@ -26,6 +26,10 @@
 "Tutorial.Connect.Subtitle" = "Please wait while we're setting up\nthe connection. This process will\nfinish shortly";
 "Tutorial.Connect.Action" = "Continue";
 
+"Tutorial.ListDevices.Title" = "Select your device";
+"Tutorial.ListDevices.Subtitle" = "Doesn't see your device?";
+"Tutorial.ListDevices.Action" = "Tap to refresh";
+
 "Tutorial.TestConnection.Title" = "Test Connection";
 "Tutorial.TestConnection.Subtitle" = "In order to make sure you have a\ngood connection. Tap the button\nbelow to test it. You should see an\nimage";
 "Tutorial.TestConnection.Action" = "Tap to see on TV";

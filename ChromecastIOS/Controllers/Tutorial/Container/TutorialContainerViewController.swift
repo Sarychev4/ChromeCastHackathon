@@ -61,15 +61,14 @@ class TutorialContainerViewController: BaseViewController {
     
     private var currentPage: Int = 0
     
-    
-    
     //MARK: - CONTROLLERS
     
     private var welcomeController: TutorialWelcomeViewController! {
         let controller = TutorialWelcomeViewController()
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.accessToNetworkController)
+            self.pushViewController(self.connectController)
+//            self.pushViewController(self.accessToNetworkController)
         }
         return controller
     }

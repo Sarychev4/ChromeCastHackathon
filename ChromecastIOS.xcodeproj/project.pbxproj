@@ -83,6 +83,11 @@
 		DDAE264D281824D400355735 /* TutorialThankYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE264B281824D400355735 /* TutorialThankYouViewController.xib */; };
 		DDAE26502818250000355735 /* TutorialRatingStarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */; };
 		DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */; };
+		DDAE26542818535200355735 /* TutorialListDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE26522818535200355735 /* TutorialListDevicesViewController.swift */; };
+		DDAE26552818535200355735 /* TutorialListDevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE26532818535200355735 /* TutorialListDevicesViewController.xib */; };
+		DDAE26572818545E00355735 /* AFFloatingPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE26562818545E00355735 /* AFFloatingPanelViewController.swift */; };
+		DDAE265D2818724C00355735 /* DeviceCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE265C2818724C00355735 /* DeviceCellView.xib */; };
+		DDAE265F281874A600355735 /* DeviceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE265E281874A600355735 /* DeviceCellView.swift */; };
 		DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */; };
 		DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */; };
 		DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */; };
@@ -236,6 +241,11 @@
 		DDAE264B281824D400355735 /* TutorialThankYouViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialThankYouViewController.xib; sourceTree = "<group>"; };
 		DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRatingStarsViewController.swift; sourceTree = "<group>"; };
 		DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialRatingStarsViewController.xib; sourceTree = "<group>"; };
+		DDAE26522818535200355735 /* TutorialListDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialListDevicesViewController.swift; sourceTree = "<group>"; };
+		DDAE26532818535200355735 /* TutorialListDevicesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialListDevicesViewController.xib; sourceTree = "<group>"; };
+		DDAE26562818545E00355735 /* AFFloatingPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFFloatingPanelViewController.swift; sourceTree = "<group>"; };
+		DDAE265C2818724C00355735 /* DeviceCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceCellView.xib; sourceTree = "<group>"; };
+		DDAE265E281874A600355735 /* DeviceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCellView.swift; sourceTree = "<group>"; };
 		DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorViewController.xib; sourceTree = "<group>"; };
 		DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
@@ -563,8 +573,11 @@
 		DD923AE52816A32C0034E5D3 /* ConnectVC */ = {
 			isa = PBXGroup;
 			children = (
+				DDAE2659281870D100355735 /* DeviceCellView */,
 				DD923AF62816B4130034E5D3 /* TutorialConnectViewController.swift */,
 				DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */,
+				DDAE26522818535200355735 /* TutorialListDevicesViewController.swift */,
+				DDAE26532818535200355735 /* TutorialListDevicesViewController.xib */,
 			);
 			path = ConnectVC;
 			sourceTree = "<group>";
@@ -585,6 +598,15 @@
 				DDAE264B281824D400355735 /* TutorialThankYouViewController.xib */,
 			);
 			path = ThankYouVC;
+			sourceTree = "<group>";
+		};
+		DDAE2659281870D100355735 /* DeviceCellView */ = {
+			isa = PBXGroup;
+			children = (
+				DDAE265C2818724C00355735 /* DeviceCellView.xib */,
+				DDAE265E281874A600355735 /* DeviceCellView.swift */,
+			);
+			path = DeviceCellView;
 			sourceTree = "<group>";
 		};
 		DDCE09F32810327C004E9C18 /* MirrorVC */ = {
@@ -705,6 +727,7 @@
 			children = (
 				DDF59BF0280F2F0B00CE2E2B /* BaseViewController.swift */,
 				DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */,
+				DDAE26562818545E00355735 /* AFFloatingPanelViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -930,6 +953,7 @@
 				DD345D242817FA9700E67AB0 /* dailymotion_ico.png in Resources */,
 				DD19E4AC2812ABD900931489 /* barton_nature_swan.JPG in Resources */,
 				DD19E4BE2812ABD900931489 /* bird_hills_nature_tree.JPG in Resources */,
+				DDAE265D2818724C00355735 /* DeviceCellView.xib in Resources */,
 				DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */,
 				E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */,
 				DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */,
@@ -961,6 +985,7 @@
 				DD19E4A92812ABD900931489 /* winsor_skyline_hd.png in Resources */,
 				DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */,
 				DDCE0A0728116ED5004E9C18 /* GoogleDriveViewController.xib in Resources */,
+				DDAE26552818535200355735 /* TutorialListDevicesViewController.xib in Resources */,
 				DD19E4752811D58600931489 /* Index.html in Resources */,
 				DDF59BED280F2E9600CE2E2B /* MainViewController.xib in Resources */,
 				DD923AF12816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib in Resources */,
@@ -1077,9 +1102,11 @@
 				DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */,
 				E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */,
 				DDF59C02280F41AD00CE2E2B /* RoundedView.swift in Sources */,
+				DDAE26542818535200355735 /* TutorialListDevicesViewController.swift in Sources */,
 				DDF59BF6280F30A100CE2E2B /* InteractiveView.swift in Sources */,
 				DD19E4CE2812C42500931489 /* HDFlowLayout.swift in Sources */,
 				DDF59BF8280F30AF00CE2E2B /* DefaultView.swift in Sources */,
+				DDAE265F281874A600355735 /* DeviceCellView.swift in Sources */,
 				DD19E4C42812AC8E00931489 /* HDCell.swift in Sources */,
 				DD923ADB2812F08E0034E5D3 /* FlowLayoutSyncManager.swift in Sources */,
 				DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */,
@@ -1095,6 +1122,7 @@
 				DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */,
 				DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */,
 				DD923AF82816B4130034E5D3 /* TutorialConnectViewController.swift in Sources */,
+				DDAE26572818545E00355735 /* AFFloatingPanelViewController.swift in Sources */,
 				DDF59C14280F5E1F00CE2E2B /* MainCell.swift in Sources */,
 				DD19E48B2812AB9A00931489 /* UIImage+Extension.swift in Sources */,
 				DDF59C04280F459600CE2E2B /* DropShadowView.swift in Sources */,

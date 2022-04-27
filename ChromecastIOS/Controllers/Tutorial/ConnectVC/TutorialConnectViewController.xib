@@ -132,7 +132,7 @@ together to get started.</string>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.0" green="0.4779999852180481" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="AppleBlue"/>
                                     <constraints>
                                         <constraint firstAttribute="width" id="6jg-Ym-4ha"/>
                                         <constraint firstItem="Xc1-ee-ZSW" firstAttribute="centerY" secondItem="JDG-Xc-xHV" secondAttribute="centerY" id="Err-7R-3fp"/>
@@ -167,6 +167,9 @@ together to get started.</string>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                     <color key="value" name="AppleBlue"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
