@@ -46,12 +46,12 @@ class TutorialConnectViewController: BaseViewController {
         if temp ==  true {
             showLongAnimation { [weak self] in
                 guard let self = self else { return }
-                
+                self.presentDevices()
             }
         } else {
             showShortAnimation { [weak self] in
                 guard let self = self else { return }
-                
+                self.presentDevices()
             }
         }
     }
@@ -114,6 +114,20 @@ class TutorialConnectViewController: BaseViewController {
     private func stopProgressTimer() {
         progressTimer?.invalidate()
         progressTimer = nil
+    }
+    
+    private func presentDevices() {
+        let controller = TutorialListDevicesViewController()
+        controller.canDismissOnPan = false
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let self = self else { return }
+            self.didFinishAction?()
+        }
+        present(controller, animated: false, completion: nil)
     }
 
 }

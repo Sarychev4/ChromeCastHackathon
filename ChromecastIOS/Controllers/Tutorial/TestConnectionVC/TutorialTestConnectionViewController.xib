@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialTestConnectionViewController" customModule="ChromecastIOS" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="YXa-HZ-KZ7" id="E31-Hl-CZ7"/>
+                <outlet property="continueInteractiveView" destination="dqh-Ji-ul4" id="gAZ-aI-scn"/>
+                <outlet property="continueLabel" destination="FDK-B9-scP" id="fID-ir-1wH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVW-WD-09L">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-4o-gTT">
+                            <rect key="frame" x="0.0" y="84" width="414" height="300"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorialTestConnection" translatesAutoresizingMaskIntoConstraints="NO" id="Pxx-sZ-ej4">
+                                    <rect key="frame" x="19.5" y="0.0" width="375" height="300"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Pxx-sZ-ej4" firstAttribute="centerX" secondItem="pw4-4o-gTT" secondAttribute="centerX" id="0Wk-oq-iUk"/>
+                                <constraint firstItem="Pxx-sZ-ej4" firstAttribute="centerY" secondItem="pw4-4o-gTT" secondAttribute="centerY" id="JXB-LB-8H7"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WVP-dX-avb">
+                            <rect key="frame" x="40" y="618" width="334" height="146"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKL-ut-qKZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Test connection" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCj-87-EKk" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                            <color key="textColor" name="labelColorDark"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.TestConnection.Title"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="HCj-87-EKk" secondAttribute="bottom" constant="14" id="4By-cM-0W6"/>
+                                        <constraint firstItem="HCj-87-EKk" firstAttribute="leading" secondItem="uKL-ut-qKZ" secondAttribute="leading" id="Av5-wX-Y2h"/>
+                                        <constraint firstItem="HCj-87-EKk" firstAttribute="top" secondItem="uKL-ut-qKZ" secondAttribute="top" id="Z6r-sJ-ULU"/>
+                                        <constraint firstAttribute="trailing" secondItem="HCj-87-EKk" secondAttribute="trailing" id="v9L-Fb-GdJ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6i-CO-af0">
+                                    <rect key="frame" x="0.0" y="50" width="334" height="81.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgS-Qw-Vgd" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="81.5"/>
+                                            <string key="text">_In order to make sure you have a
+good connection. Tap the button
+below to test it. You should see an
+image</string>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" name="labelColorGrayPunk"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.TestConnection.Subtitle"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="PgS-Qw-Vgd" firstAttribute="top" secondItem="W6i-CO-af0" secondAttribute="top" id="A3w-xH-381"/>
+                                        <constraint firstAttribute="height" constant="81.5" id="Aao-Pt-59f"/>
+                                        <constraint firstItem="PgS-Qw-Vgd" firstAttribute="leading" secondItem="W6i-CO-af0" secondAttribute="leading" id="QrO-k0-HP0"/>
+                                        <constraint firstAttribute="trailing" secondItem="PgS-Qw-Vgd" secondAttribute="trailing" id="bvE-kf-Ocz"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFn-Gb-nlw">
+                                    <rect key="frame" x="0.0" y="131.5" width="334" height="14.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="146" id="7G1-OV-ygO"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqh-Ji-ul4" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                            <rect key="frame" x="40" y="794" width="334" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Tap to see on TV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-B9-scP" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="48"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.TestConnection.Action"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isUppercased" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YXa-HZ-KZ7">
+                                    <rect key="frame" x="157" y="14" width="20" height="20"/>
+                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" name="AppleBlue"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="FDK-B9-scP" secondAttribute="bottom" id="6i8-G0-gNq"/>
+                                <constraint firstAttribute="height" constant="48" id="7Yg-AB-Ux7"/>
+                                <constraint firstItem="FDK-B9-scP" firstAttribute="top" secondItem="dqh-Ji-ul4" secondAttribute="top" id="D3b-gV-NMy"/>
+                                <constraint firstItem="FDK-B9-scP" firstAttribute="leading" secondItem="dqh-Ji-ul4" secondAttribute="leading" id="Tz6-de-Vay"/>
+                                <constraint firstAttribute="trailing" secondItem="FDK-B9-scP" secondAttribute="trailing" id="jmN-Iw-Uut"/>
+                                <constraint firstItem="YXa-HZ-KZ7" firstAttribute="centerX" secondItem="dqh-Ji-ul4" secondAttribute="centerX" id="tQS-xJ-2QG"/>
+                                <constraint firstItem="YXa-HZ-KZ7" firstAttribute="centerY" secondItem="dqh-Ji-ul4" secondAttribute="centerY" id="zcW-Wk-ncs"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="enabledBackgroundColor">
+                                    <color key="value" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkr-kU-RS5" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                            <rect key="frame" x="40" y="842" width="334" height="54"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Don't see the image?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fB-UY-arc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="80" y="18" width="174.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" name="AppleBlue"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.TestConnection.Action2"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="7fB-UY-arc" firstAttribute="top" secondItem="Rkr-kU-RS5" secondAttribute="top" constant="18" id="0jZ-Il-Dwk"/>
+                                <constraint firstItem="7fB-UY-arc" firstAttribute="centerX" secondItem="Rkr-kU-RS5" secondAttribute="centerX" id="HZy-5S-hAd"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="MainBackground"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Rkr-kU-RS5" secondAttribute="trailing" constant="40" id="8fr-gS-5hg"/>
+                        <constraint firstAttribute="trailing" secondItem="pw4-4o-gTT" secondAttribute="trailing" id="CBr-TD-wD1"/>
+                        <constraint firstItem="dqh-Ji-ul4" firstAttribute="centerX" secondItem="EVW-WD-09L" secondAttribute="centerX" id="CFB-ao-kqC"/>
+                        <constraint firstItem="Rkr-kU-RS5" firstAttribute="leading" secondItem="EVW-WD-09L" secondAttribute="leading" constant="40" id="CFc-5L-h78"/>
+                        <constraint firstItem="pw4-4o-gTT" firstAttribute="height" secondItem="EVW-WD-09L" secondAttribute="height" multiplier="0.3348" id="D2m-J4-TPQ"/>
+                        <constraint firstAttribute="trailing" secondItem="dqh-Ji-ul4" secondAttribute="trailing" constant="40" id="Hm4-3e-UuR"/>
+                        <constraint firstAttribute="trailing" secondItem="WVP-dX-avb" secondAttribute="trailing" constant="40" id="N34-bX-THH"/>
+                        <constraint firstItem="dqh-Ji-ul4" firstAttribute="leading" secondItem="EVW-WD-09L" secondAttribute="leading" constant="40" id="OMJ-UN-xGi"/>
+                        <constraint firstItem="WVP-dX-avb" firstAttribute="leading" secondItem="EVW-WD-09L" secondAttribute="leading" constant="40" id="XE1-Ai-9oT"/>
+                        <constraint firstItem="Rkr-kU-RS5" firstAttribute="height" secondItem="EVW-WD-09L" secondAttribute="height" multiplier="0.06" id="cId-09-c7v"/>
+                        <constraint firstItem="pw4-4o-gTT" firstAttribute="top" secondItem="EVW-WD-09L" secondAttribute="top" constant="84" id="gKW-DR-lzr"/>
+                        <constraint firstItem="Rkr-kU-RS5" firstAttribute="top" secondItem="dqh-Ji-ul4" secondAttribute="bottom" id="jlT-yh-Jn6"/>
+                        <constraint firstItem="pw4-4o-gTT" firstAttribute="leading" secondItem="EVW-WD-09L" secondAttribute="leading" id="qCg-Xf-V6N"/>
+                        <constraint firstAttribute="bottom" secondItem="Rkr-kU-RS5" secondAttribute="bottom" id="sKR-y0-bmM"/>
+                        <constraint firstItem="dqh-Ji-ul4" firstAttribute="top" secondItem="WVP-dX-avb" secondAttribute="bottom" constant="30" id="uzq-8K-Iwz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="EVW-WD-09L" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="DzT-4I-q9c"/>
+                <constraint firstAttribute="bottom" secondItem="EVW-WD-09L" secondAttribute="bottom" id="QZn-mF-lHb"/>
+                <constraint firstItem="EVW-WD-09L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="r4b-sr-Oex"/>
+                <constraint firstItem="EVW-WD-09L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="z7t-0N-x4P"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="70"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tutorialTestConnection" width="375" height="300"/>
+        <namedColor name="AppleBlue">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorGrayPunk">
+            <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

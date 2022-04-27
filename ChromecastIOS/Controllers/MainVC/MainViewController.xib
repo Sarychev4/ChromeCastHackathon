@@ -46,7 +46,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="44U-aX-0Ds" firstAttribute="centerY" secondItem="6bg-bX-Ipf" secondAttribute="centerY" id="Ufq-7P-Rhg"/>
                                                         <constraint firstAttribute="trailing" secondItem="44U-aX-0Ds" secondAttribute="trailing" id="bry-P7-mLw"/>
@@ -55,7 +55,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7t1-Rs-BNb">
                                                     <rect key="frame" x="24" y="0.0" width="198" height="40"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALM-iL-9to" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                     <rect key="frame" x="222" y="0.0" width="160" height="40"/>
@@ -215,7 +215,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="Kl0-mV-ytr" secondAttribute="trailing" id="3cl-zu-Wwj"/>
                                                                         <constraint firstItem="Kl0-mV-ytr" firstAttribute="leading" secondItem="NxL-aV-oVd" secondAttribute="leading" id="Dm1-b1-dRA"/>
@@ -285,7 +285,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </label>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstItem="tYX-7w-bEX" firstAttribute="leading" secondItem="xeM-av-tcq" secondAttribute="leading" id="4MV-bv-VZj"/>
                                                                         <constraint firstAttribute="trailing" secondItem="tYX-7w-bEX" secondAttribute="trailing" id="4b1-yV-kcA"/>

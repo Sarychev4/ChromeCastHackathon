@@ -100,7 +100,7 @@ together to get started.</string>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYB-eL-hhP" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                             <rect key="frame" x="40" y="794" width="334" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVW-m9-cvS" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVW-m9-cvS" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="13.5" width="334" height="21.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,7 +108,7 @@ together to get started.</string>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.Welcome.Action"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isUppercased" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isUppercased" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="8"/>
                                         </userDefinedRuntimeAttribute>

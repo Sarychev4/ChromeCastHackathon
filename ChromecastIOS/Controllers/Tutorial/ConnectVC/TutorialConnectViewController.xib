@@ -104,7 +104,7 @@ together to get started.</string>
                             <rect key="frame" x="40" y="794" width="334" height="48"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Processing..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srd-CF-dky" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="334" height="21.5"/>
+                                    <rect key="frame" x="0.0" y="13.5" width="334" height="21.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" name="AppleBlue"/>
                                     <nil key="highlightedColor"/>
@@ -135,6 +135,7 @@ together to get started.</string>
                                     <color key="backgroundColor" name="AppleBlue"/>
                                     <constraints>
                                         <constraint firstAttribute="width" id="6jg-Ym-4ha"/>
+                                        <constraint firstItem="Xc1-ee-ZSW" firstAttribute="centerY" secondItem="JDG-Xc-xHV" secondAttribute="centerY" id="Err-7R-3fp"/>
                                         <constraint firstItem="Xc1-ee-ZSW" firstAttribute="top" secondItem="JDG-Xc-xHV" secondAttribute="top" id="XAX-cR-XoH"/>
                                         <constraint firstAttribute="bottom" secondItem="Xc1-ee-ZSW" secondAttribute="bottom" id="b4U-NL-lOs"/>
                                         <constraint firstAttribute="height" constant="48" id="qNQ-9p-Mmk"/>
@@ -152,9 +153,10 @@ together to get started.</string>
                                 <constraint firstItem="JDG-Xc-xHV" firstAttribute="top" secondItem="sgs-hs-2Pt" secondAttribute="top" id="7Gy-lI-8yV"/>
                                 <constraint firstAttribute="height" constant="48" id="8Hw-y2-PBJ"/>
                                 <constraint firstItem="OD0-VV-8rN" firstAttribute="centerX" secondItem="sgs-hs-2Pt" secondAttribute="centerX" id="ASO-23-2a2"/>
-                                <constraint firstItem="srd-CF-dky" firstAttribute="top" secondItem="sgs-hs-2Pt" secondAttribute="top" id="EAc-nl-7tW"/>
                                 <constraint firstItem="Xc1-ee-ZSW" firstAttribute="width" secondItem="srd-CF-dky" secondAttribute="width" id="FUq-Ug-6Js"/>
                                 <constraint firstItem="OD0-VV-8rN" firstAttribute="centerY" secondItem="sgs-hs-2Pt" secondAttribute="centerY" id="Oxf-9h-7CF"/>
+                                <constraint firstItem="JDG-Xc-xHV" firstAttribute="centerY" secondItem="sgs-hs-2Pt" secondAttribute="centerY" id="PBn-bV-HVp"/>
+                                <constraint firstItem="srd-CF-dky" firstAttribute="centerY" secondItem="sgs-hs-2Pt" secondAttribute="centerY" id="Y9J-2e-wZJ"/>
                                 <constraint firstItem="JDG-Xc-xHV" firstAttribute="leading" secondItem="sgs-hs-2Pt" secondAttribute="leading" id="c4k-f3-5ox"/>
                                 <constraint firstItem="srd-CF-dky" firstAttribute="leading" secondItem="sgs-hs-2Pt" secondAttribute="leading" id="o8j-0O-Kf0"/>
                             </constraints>
@@ -165,6 +167,9 @@ together to get started.</string>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                     <color key="value" name="AppleBlue"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>

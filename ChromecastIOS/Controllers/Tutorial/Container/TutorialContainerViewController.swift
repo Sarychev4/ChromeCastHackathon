@@ -61,21 +61,20 @@ class TutorialContainerViewController: BaseViewController {
     
     private var currentPage: Int = 0
     
-    
-    
     //MARK: - CONTROLLERS
     
     private var welcomeController: TutorialWelcomeViewController! {
         let controller = TutorialWelcomeViewController()
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.accessToNetworkController)
+            self.pushViewController(self.connectController)
+//            self.pushViewController(self.accessToNetworkController)
         }
         return controller
     }
     
     private var accessToNetworkController: TutorialAccessToNetworkViewController! {
-        let controller =  TutorialAccessToNetworkViewController()
+        let controller = TutorialAccessToNetworkViewController()
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
             self.pushViewController(self.wifiController)
@@ -84,7 +83,7 @@ class TutorialContainerViewController: BaseViewController {
     }
     
     private var wifiController: TutorialWifiViewController! {
-        let controller =  TutorialWifiViewController()
+        let controller = TutorialWifiViewController()
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
             self.pushViewController(self.connectController)
@@ -93,7 +92,52 @@ class TutorialContainerViewController: BaseViewController {
     }
     
     private var connectController: TutorialConnectViewController! {
-        let controller =  TutorialConnectViewController()
+        let controller = TutorialConnectViewController()
+        controller.didFinishAction = { [weak self] in
+            guard let self = self else { return }
+            self.pushViewController(self.testConnectionController)
+        }
+        return controller
+    }
+    
+    private var testConnectionController: TutorialTestConnectionViewController! {
+        let controller = TutorialTestConnectionViewController()
+        controller.didFinishAction = { [weak self] in
+            guard let self = self else { return }
+            self.pushViewController(self.previewImageController)
+        }
+        return controller
+    }
+    
+    private var previewImageController: TutorialPreviewImageViewController! {
+        let controller = TutorialPreviewImageViewController()
+        controller.didFinishAction = { [weak self] in
+            guard let self = self else { return }
+            self.pushViewController(self.everythingReadyController)
+        }
+        return controller
+    }
+    
+    private var everythingReadyController: TutorialEverythingReadyViewController! {
+        let controller = TutorialEverythingReadyViewController()
+        controller.didFinishAction = { [weak self] in
+            guard let self = self else { return }
+            self.pushViewController(self.ratingStarsController)
+        }
+        return controller
+    }
+    
+    private var ratingStarsController: TutorialRatingStarsViewController! {
+        let controller = TutorialRatingStarsViewController()
+        controller.didFinishAction = { [weak self] in
+            guard let self = self else { return }
+            self.pushViewController(self.thankYouController)
+        }
+        return controller
+    }
+    
+    private var thankYouController: TutorialThankYouViewController! {
+        let controller = TutorialThankYouViewController()
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
             self.didFinishAction?()
@@ -165,7 +209,7 @@ class TutorialContainerViewController: BaseViewController {
     }
     
     private func setupPageController() {
-        let pagesCount = 4
+        let pagesCount = 9
         pageContainerView.drawer = ExtendedDotDrawer(numberOfPages: pagesCount,
                                                      height: 8,
                                                      width: 8,

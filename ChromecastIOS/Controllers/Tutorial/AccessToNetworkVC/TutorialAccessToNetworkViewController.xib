@@ -98,15 +98,15 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-dv-i9r" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                             <rect key="frame" x="40" y="794" width="334" height="48"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTINUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlR-mA-Zza" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                    <rect key="frame" x="120" y="13.5" width="94" height="21.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlR-mA-Zza" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="123" y="13.5" width="88" height="21.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.Welcome.Action"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isUppercased" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isUppercased" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="8"/>
                                         </userDefinedRuntimeAttribute>

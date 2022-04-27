@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TutorialThankYouViewController" customModule="ChromecastIOS" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="Y5M-8M-qGH" id="mdv-G2-N1G"/>
+                <outlet property="continueInteractiveView" destination="NyB-Jx-wZi" id="0gf-3p-BeE"/>
+                <outlet property="continueLabel" destination="snM-jm-Flf" id="6Yl-iB-M8M"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQA-YU-Gup">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCt-J1-MGF">
+                            <rect key="frame" x="0.0" y="84" width="414" height="300"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorialThankYou" translatesAutoresizingMaskIntoConstraints="NO" id="EqR-Jf-I4Q">
+                                    <rect key="frame" x="19.5" y="0.0" width="375" height="300"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="EqR-Jf-I4Q" firstAttribute="centerX" secondItem="xCt-J1-MGF" secondAttribute="centerX" id="eIE-3O-75U"/>
+                                <constraint firstItem="EqR-Jf-I4Q" firstAttribute="centerY" secondItem="xCt-J1-MGF" secondAttribute="centerY" id="sAM-TI-2q2"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qt0-km-DrN">
+                            <rect key="frame" x="40" y="618" width="334" height="146"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iph-HW-oln">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Thank You" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mr3-h5-WDN" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                            <color key="textColor" name="labelColorDark"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ThankYou.Title"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Mr3-h5-WDN" firstAttribute="top" secondItem="iph-HW-oln" secondAttribute="top" id="3UG-dC-bQH"/>
+                                        <constraint firstAttribute="bottom" secondItem="Mr3-h5-WDN" secondAttribute="bottom" constant="14" id="DJg-Te-cYI"/>
+                                        <constraint firstAttribute="trailing" secondItem="Mr3-h5-WDN" secondAttribute="trailing" id="ZZT-dR-3yP"/>
+                                        <constraint firstItem="Mr3-h5-WDN" firstAttribute="leading" secondItem="iph-HW-oln" secondAttribute="leading" id="tmu-Ew-BAp"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PkI-Tn-uK5">
+                                    <rect key="frame" x="0.0" y="50" width="334" height="81.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2g-Wa-NDg" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="61"/>
+                                            <string key="text">_We appreciate the feedback you
+shared. With your help, we’re able to
+make better products for you.</string>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" name="labelColorGrayPunk"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ThankYou.Subtitle"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="h2g-Wa-NDg" firstAttribute="leading" secondItem="PkI-Tn-uK5" secondAttribute="leading" id="FXu-Qg-cdg"/>
+                                        <constraint firstItem="h2g-Wa-NDg" firstAttribute="top" secondItem="PkI-Tn-uK5" secondAttribute="top" id="NoA-J2-987"/>
+                                        <constraint firstAttribute="trailing" secondItem="h2g-Wa-NDg" secondAttribute="trailing" id="rmk-E4-P22"/>
+                                        <constraint firstAttribute="height" constant="81.5" id="tF4-Fw-mtl"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DR2-Nd-KkO">
+                                    <rect key="frame" x="0.0" y="131.5" width="334" height="14.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="146" id="o2e-gI-lmp"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyB-Jx-wZi" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                            <rect key="frame" x="40" y="794" width="334" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snM-jm-Flf" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="48"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.Welcome.Action"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isUppercased" value="NO"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Y5M-8M-qGH">
+                                    <rect key="frame" x="157" y="14" width="20" height="20"/>
+                                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" name="AppleBlue"/>
+                            <constraints>
+                                <constraint firstItem="snM-jm-Flf" firstAttribute="top" secondItem="NyB-Jx-wZi" secondAttribute="top" id="8SN-OD-3PX"/>
+                                <constraint firstAttribute="height" constant="48" id="AZl-67-SKW"/>
+                                <constraint firstItem="Y5M-8M-qGH" firstAttribute="centerY" secondItem="NyB-Jx-wZi" secondAttribute="centerY" id="IAY-5V-G4Z"/>
+                                <constraint firstItem="Y5M-8M-qGH" firstAttribute="centerX" secondItem="NyB-Jx-wZi" secondAttribute="centerX" id="N4s-4h-TpU"/>
+                                <constraint firstAttribute="trailing" secondItem="snM-jm-Flf" secondAttribute="trailing" id="Ydf-Qd-NoJ"/>
+                                <constraint firstItem="snM-jm-Flf" firstAttribute="leading" secondItem="NyB-Jx-wZi" secondAttribute="leading" id="bSY-GB-2LN"/>
+                                <constraint firstAttribute="bottom" secondItem="snM-jm-Flf" secondAttribute="bottom" id="w4d-qD-sYA"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="enabledBackgroundColor">
+                                    <color key="value" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXf-1g-qv5">
+                            <rect key="frame" x="40" y="842" width="334" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="MainBackground"/>
+                    <constraints>
+                        <constraint firstItem="xCt-J1-MGF" firstAttribute="height" secondItem="fQA-YU-Gup" secondAttribute="height" multiplier="0.3348" id="1fl-um-o90"/>
+                        <constraint firstItem="NyB-Jx-wZi" firstAttribute="top" secondItem="Qt0-km-DrN" secondAttribute="bottom" constant="30" id="9lh-ev-7ha"/>
+                        <constraint firstItem="xCt-J1-MGF" firstAttribute="leading" secondItem="fQA-YU-Gup" secondAttribute="leading" id="FM2-ed-lCc"/>
+                        <constraint firstItem="LXf-1g-qv5" firstAttribute="leading" secondItem="fQA-YU-Gup" secondAttribute="leading" constant="40" id="G6n-Eh-NeJ"/>
+                        <constraint firstItem="LXf-1g-qv5" firstAttribute="top" secondItem="NyB-Jx-wZi" secondAttribute="bottom" id="HG4-R1-rg1"/>
+                        <constraint firstAttribute="trailing" secondItem="Qt0-km-DrN" secondAttribute="trailing" constant="40" id="NM4-AX-LP7"/>
+                        <constraint firstAttribute="trailing" secondItem="LXf-1g-qv5" secondAttribute="trailing" constant="40" id="SZn-Gr-QEN"/>
+                        <constraint firstAttribute="trailing" secondItem="xCt-J1-MGF" secondAttribute="trailing" id="UnS-aU-ehS"/>
+                        <constraint firstItem="NyB-Jx-wZi" firstAttribute="centerX" secondItem="fQA-YU-Gup" secondAttribute="centerX" id="Vl6-CN-Op5"/>
+                        <constraint firstItem="Qt0-km-DrN" firstAttribute="leading" secondItem="fQA-YU-Gup" secondAttribute="leading" constant="40" id="bYn-Qi-BQH"/>
+                        <constraint firstAttribute="bottom" secondItem="LXf-1g-qv5" secondAttribute="bottom" id="emx-ZT-2hl"/>
+                        <constraint firstAttribute="trailing" secondItem="NyB-Jx-wZi" secondAttribute="trailing" constant="40" id="noM-cl-uWL"/>
+                        <constraint firstItem="NyB-Jx-wZi" firstAttribute="leading" secondItem="fQA-YU-Gup" secondAttribute="leading" constant="40" id="rG1-IY-Ugl"/>
+                        <constraint firstItem="LXf-1g-qv5" firstAttribute="height" secondItem="fQA-YU-Gup" secondAttribute="height" multiplier="0.06" id="vOF-Gt-PFd"/>
+                        <constraint firstItem="xCt-J1-MGF" firstAttribute="top" secondItem="fQA-YU-Gup" secondAttribute="top" constant="84" id="vk0-EV-xgT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fQA-YU-Gup" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KQ4-3d-OpU"/>
+                <constraint firstItem="fQA-YU-Gup" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="XUj-Tl-FUD"/>
+                <constraint firstAttribute="bottom" secondItem="fQA-YU-Gup" secondAttribute="bottom" id="eSs-TX-k3Y"/>
+                <constraint firstItem="fQA-YU-Gup" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eqq-nd-WfH"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="70"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tutorialThankYou" width="375" height="300"/>
+        <namedColor name="AppleBlue">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorGrayPunk">
+            <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
