@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryItemView" customModule="ChromecastIOS" customModuleProvider="target">
+            <connections>
+                <outlet property="containerInteractiveView" destination="dbg-yZ-OLC" id="ssi-YR-BLU"/>
+                <outlet property="dropShadowBackgroundView" destination="WsH-Kf-UlM" id="kXp-M8-g3f"/>
+                <outlet property="titleLabel" destination="flv-cf-3Hx" id="qDc-VY-gWy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="96" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsH-Kf-UlM" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
+                    <rect key="frame" x="4" y="4" width="88" height="36"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbg-yZ-OLC" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="88" height="36"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flv-cf-3Hx">
+                                    <rect key="frame" x="16" y="11" width="56" height="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" name="labelColorDark"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="flv-cf-3Hx" secondAttribute="bottom" constant="11" id="1Jr-8G-Dc7"/>
+                                <constraint firstAttribute="trailing" secondItem="flv-cf-3Hx" secondAttribute="trailing" constant="16" id="MCq-g0-EGP"/>
+                                <constraint firstItem="flv-cf-3Hx" firstAttribute="leading" secondItem="dbg-yZ-OLC" secondAttribute="leading" constant="16" id="RoI-o9-KwZ"/>
+                                <constraint firstItem="flv-cf-3Hx" firstAttribute="top" secondItem="dbg-yZ-OLC" secondAttribute="top" constant="11" id="mRi-Q1-iu3"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="dbg-yZ-OLC" firstAttribute="leading" secondItem="WsH-Kf-UlM" secondAttribute="leading" id="NHR-NR-heS"/>
+                        <constraint firstAttribute="bottom" secondItem="dbg-yZ-OLC" secondAttribute="bottom" id="PLq-cq-N6i"/>
+                        <constraint firstItem="dbg-yZ-OLC" firstAttribute="top" secondItem="WsH-Kf-UlM" secondAttribute="top" id="qxR-ZG-Fsb"/>
+                        <constraint firstAttribute="trailing" secondItem="dbg-yZ-OLC" secondAttribute="trailing" id="ytz-3o-WE6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="WsH-Kf-UlM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="SZN-1i-GRD"/>
+                <constraint firstAttribute="bottom" secondItem="WsH-Kf-UlM" secondAttribute="bottom" constant="4" id="Ugo-Ra-MSF"/>
+                <constraint firstItem="WsH-Kf-UlM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="UoP-9p-3zh"/>
+                <constraint firstAttribute="trailing" secondItem="WsH-Kf-UlM" secondAttribute="trailing" constant="4" id="gqu-ol-Y60"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="87.681159420289859" y="-189.17410714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -106,10 +106,15 @@ class MainViewController: BaseViewController {
         
         switch buttonType {
         case .media:
-            let viewController = MediaViewController()
-            viewController.hidesBottomBarWhenPushed = true
-            viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
-            navigation?.pushViewController(viewController, animated: .left)
+            let viewController = MediaLibraryViewController()
+                       viewController.hidesBottomBarWhenPushed = true
+//                       viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
+                       navigation?.pushViewController(viewController, animated: .left)
+            
+//            let viewController = MediaViewController()
+//            viewController.hidesBottomBarWhenPushed = true
+//            viewController.flowLayoutSyncManager = FlowLayoutSyncManager() //temp as important
+//            navigation?.pushViewController(viewController, animated: .left)
         case .browser:
             let viewController = BrowserViewController()
             viewController.hidesBottomBarWhenPushed = true
