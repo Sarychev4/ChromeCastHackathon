@@ -11,29 +11,24 @@ import Photos
 
 class MediaLibraryViewController: BaseViewController {
     
-    
     @IBOutlet weak var backInteractiveView: InteractiveView!
-    
     @IBOutlet weak var connectInteractiveView: InteractiveView!
+    @IBOutlet weak var separatorShadowView: DropShadowView!
+    @IBOutlet weak var albumsScrollView: UIScrollView!
+    @IBOutlet weak var albumsStackView: UIStackView!
+    @IBOutlet weak var assetsCollectionView: UICollectionView!
     
-    @IBOutlet weak var topContainerView: UIView!
-    @IBOutlet weak var topDropShadowView: DropShadowView!
-    @IBOutlet weak var topCategoriesScrollView: UIScrollView!
-    @IBOutlet weak var topCategoriesStackView: UIStackView!
-    
-    @IBOutlet weak var mediaItemsCollectionView: UICollectionView!
-    
-    private var shadowAnimator: UIViewPropertyAnimator?
-    private var categoryItemsViews: [CategoryItemView] = []
-    private let imageManager = PHCachingImageManager()
-    private var datasource: [(album: PHAssetCollection, images:[PHAsset])] = []
-    private var categoryIndex: Int = 0 {
+    private var albumViewsArray: [AlbumView] = []
+    private var dataSource: [(album: PHAssetCollection, images:[PHAsset])] = []
+    private var albumIndex: Int = 0 {
         didSet {
             updateUI()
         }
     }
+    private let imageManager = PHCachingImageManager()
+    private var shadowAnimator: UIViewPropertyAnimator?
     
-    let CellWidth = (UIScreen.main.bounds.width - 48 * SizeFactor) / 3
+    private let сellWidth = (UIScreen.main.bounds.width - 48 * SizeFactor) / 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,49 +43,73 @@ class MediaLibraryViewController: BaseViewController {
             self.presentDevices(postAction: nil)
         }
         
-        let collectionItemCellNib = UINib(nibName: MediaItemCollectionViewCell.Identifier, bundle: .main)
-        mediaItemsCollectionView.register(collectionItemCellNib, forCellWithReuseIdentifier: MediaItemCollectionViewCell.Identifier)
+        let assetCellNib = UINib(nibName: AssetCell.Identifier, bundle: .main)
+        assetsCollectionView.register(assetCellNib, forCellWithReuseIdentifier: AssetCell.Identifier)
         
-        topCategoriesScrollView.contentInset = UIEdgeInsets(top: 0, left: 16 * SizeFactor, bottom: 0, right: 16 * SizeFactor)
-        mediaItemsCollectionView.contentInset = UIEdgeInsets(top: 16, left: 16 * SizeFactor, bottom: 0, right: 16 * SizeFactor)
+        albumsScrollView.contentInset = UIEdgeInsets(top: 0, left: 16 * SizeFactor, bottom: 0, right: 16 * SizeFactor)
+        assetsCollectionView.contentInset = UIEdgeInsets(top: 16, left: 16 * SizeFactor, bottom: 0, right: 16 * SizeFactor)
         
+        assetsCollectionView.dataSource = self
+        assetsCollectionView.delegate = self
         
-        mediaItemsCollectionView.dataSource = self
-        mediaItemsCollectionView.delegate = self
-        
-        requestPermissions()
         setupShadowAnimation()
+        requestAccessPermition()
+        
     }
     
-    
-    /*
-     MARK: - Methods
-     */
-    
-    private func requestPermissions() {
-        
-        func finish() {
-            setupCategories()
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            shadowAnimator?.stopAnimation(true)
+            if shadowAnimator?.state != .inactive {
+                shadowAnimator?.finishAnimation(at: .current)
+            }
         }
+    }
+    
+    // Request permission to access photo library
+    private func requestAccessPermition() {
         
         if PHPhotoLibrary.authorizationStatus() == .authorized {
-            finish()
+            setupAlbums()
         } else {
-            PHPhotoLibrary.requestAuthorization { [weak self] (status) in
-                DispatchQueue.main.async { [weak self] in
-                    if status == .authorized {
-                        finish()
-                    } else {
-                        self?.showAlertAccessRequired { [weak self] in
-                            guard let _ = self else { return }
-                            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-                            
-                            if UIApplication.shared.canOpenURL(settingsURL) {
-                                UIApplication.shared.open(settingsURL, completionHandler: { (success) in
-                                    
-                                })
+            if #available(iOS 14, *) {
+                PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] (status) in
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        if status == .authorized || status == .limited {
+                            self.setupAlbums()
+                        } else {
+                            self.showAlertAccessRequired { [weak self] in
+                                guard let _ = self else { return }
+                                guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                                
+                                if UIApplication.shared.canOpenURL(settingsURL) {
+                                    UIApplication.shared.open(settingsURL, completionHandler: { (success) in
+                                        
+                                    })
+                                }
                             }
-                            
+                        }
+                    }
+                }
+            } else {
+                PHPhotoLibrary.requestAuthorization{ [weak self] (status) in
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        if status == .authorized {
+                            self.setupAlbums()
+                        } else {
+                            self.showAlertAccessRequired { [weak self] in
+                                guard let _ = self else { return }
+                                guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                                
+                                if UIApplication.shared.canOpenURL(settingsURL) {
+                                    UIApplication.shared.open(settingsURL, completionHandler: { (success) in
+                                        
+                                    })
+                                }
+                            }
                         }
                     }
                 }
@@ -98,18 +117,17 @@ class MediaLibraryViewController: BaseViewController {
         }
     }
     
-    private func setupCategories() {
-        categoryItemsViews.forEach({ $0.removeFromSuperview(); topCategoriesStackView.removeArrangedSubview($0) })
-        categoryItemsViews.removeAll()
-        datasource.removeAll()
+    private func setupAlbums() {
+        albumViewsArray.forEach({ $0.removeFromSuperview(); albumsStackView.removeArrangedSubview($0) })
+        albumViewsArray.removeAll()
+        dataSource.removeAll()
         
-        let fetchOptions = PHFetchOptions()
-        
-        let smartAlbumEntry = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: fetchOptions)
+        let fetchOptions = PHFetchOptions() //A set of options that affect the filtering, sorting, and management of results that Photos returns when you fetch asset or collection objects.
+        let smartAlbumEntry = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: fetchOptions)//A PHAssetCollection object represents a collection of photo or video assets, such as an album, moment, or Shared Photo Stream.
         smartAlbumEntry.enumerateObjects { (collection, index, stop) in
             let assets = self.fetchAssets(in: collection)
             if assets.count > 0 {
-                self.datasource.append((collection, assets))
+                self.dataSource.append((collection, assets))
             }
         }
         
@@ -117,49 +135,57 @@ class MediaLibraryViewController: BaseViewController {
         userCollections.enumerateObjects { (collection, index, stop) in
             let assets = self.fetchAssets(in: collection)
             if assets.count > 0 {
-                self.datasource.append((collection, assets))
+                self.dataSource.append((collection, assets))
             }
         }
         
-        for (index, album) in datasource.map({ $0.album }).enumerated() {
-            let view = CategoryItemView()
+        let albums = dataSource.map({$0.album})
+        for (index, album) in albums.enumerated() {
+            let view = AlbumView()
             view.titleLabel.text = album.localizedTitle
             view.containerInteractiveView.didTouchAction = { [weak self] in
                 guard let self = self else { return }
-                let numberOfPhotosInAlbum = self.datasource[self.categoryIndex].images.count
+                let numberOfPhotosInAlbum = self.dataSource[self.albumIndex].images.count
                 if numberOfPhotosInAlbum > 0 {
-                    self.mediaItemsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: [], animated: false)
+                    self.assetsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: [], animated: false)
                 }
-                
-                self.categoryIndex = index
+                self.albumIndex = index
             }
-            self.topCategoriesStackView.addArrangedSubview(view)
-            self.categoryItemsViews.append(view)
+            self.albumsStackView.addArrangedSubview(view)
+            self.albumViewsArray.append(view)
+            print(index)
         }
-        
-        self.updateUI()
+        updateUI()
     }
     
     private func updateUI() {
-        for (index, view) in categoryItemsViews.enumerated() {
-            view.isSelected = index == categoryIndex
+        for (index, view) in albumViewsArray.enumerated() {
+            view.isSelected = index == albumIndex
         }
-        mediaItemsCollectionView.reloadData()
+        assetsCollectionView.reloadData()
+    }
+    
+    func fetchAssets(in album: PHAssetCollection) -> [PHAsset] {
+        let options = PHFetchOptions()
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        options.predicate = NSPredicate(format:"mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
+        
+        let fetchResult = PHAsset.fetchAssets(in: album, options: options)
+        let indexSet = IndexSet(0..<fetchResult.count)
+        return fetchResult.objects(at: indexSet)
     }
     
     private func showAlertAccessRequired(onComplete: (() -> ())?) {
-        
         let alertView = AlertViewController(
-            alertTitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Title", comment: ""),
-            alertSubtitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Subtitle", comment: ""),
-            continueAction: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Continue", comment: "")
+            alertTitle: NSLocalizedString("Alert.Permissions.Denied.Library.Title", comment: ""),
+            alertSubtitle: NSLocalizedString("Alert.Permissions.Denied.Library.Message", comment: ""),
+            continueAction: NSLocalizedString("Alert.Permissions.Denied.Library.Continue", comment: "")
         )
         
         alertView.continueClicked = {
             onComplete?()
             alertView.dismiss()
         }
-        
         alertView.present(from: self)
     }
     
@@ -171,36 +197,32 @@ class MediaLibraryViewController: BaseViewController {
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
         controller.modalPresentationStyle = .overCurrentContext
         controller.didFinishAction = {  [weak self] in
-            guard let self = self else { return }
+            guard let _ = self else { return }
             postAction?()
         }
         present(controller, animated: false, completion: nil)
     }
+    
 }
 
-
-
-
-
-//MARK: - Extension CollectionView
 extension MediaLibraryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let categoryCount = datasource.map({ $0.album }).count
-        guard categoryCount > 0 else {
+        let albumsCount = dataSource.map({ $0.album }).count
+        guard albumsCount > 0 else {
             return 0
         }
-        let numberOfPhotosInCategory = datasource[categoryIndex].images.count
+        let numberOfPhotosInCategory = dataSource[albumIndex].images.count
         return numberOfPhotosInCategory
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MediaItemCollectionViewCell.Identifier, for: indexPath) as! MediaItemCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetCell.Identifier, for: indexPath) as! AssetCell
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? MediaItemCollectionViewCell {
-            let asset = datasource[categoryIndex].images[indexPath.row]
+        if let cell = cell as? AssetCell {
+            let asset = dataSource[albumIndex].images[indexPath.row] //A representation of an image, video, or Live Photo in the Photos library.
             cell.type = asset.mediaType
             image(for: asset, size: CGSize(width: 109, height: 109)) { (image, needd) in
                 cell.previewImageView.image = image
@@ -212,7 +234,7 @@ extension MediaLibraryViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CellWidth, height: CellWidth)
+        return CGSize(width: сellWidth, height: сellWidth)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -224,10 +246,11 @@ extension MediaLibraryViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let player = MediaPlayerViewController()
-//        player.selectedIndex = indexPath.row
-//        player.assets = datasource[albumIndex].images
-//        navigation?.pushViewController(player, animated: .left)
+        let player = MediaPlayerViewController()
+        player.selectedIndex = indexPath.row
+        player.flowLayoutSyncManager = FlowLayoutSyncManager()
+        player.assets = dataSource[albumIndex].images
+        navigation?.pushViewController(player, animated: .left)
     }
 }
 
@@ -235,10 +258,10 @@ extension MediaLibraryViewController: UICollectionViewDelegate, UICollectionView
 extension MediaLibraryViewController: UIScrollViewDelegate {
     
     private func setupShadowAnimation() {
-        topDropShadowView.alpha = 0
+        separatorShadowView.alpha = 0
         shadowAnimator = UIViewPropertyAnimator(duration: 0.1, curve: .easeOut, animations: { [weak self] in
             guard let self = self else { return }
-            self.topDropShadowView.alpha = 1.0
+            self.separatorShadowView.alpha = 1.0
         })
     }
     
@@ -269,15 +292,13 @@ extension MediaLibraryViewController: UIScrollViewDelegate {
 
 extension MediaLibraryViewController {
     
-    func fetchAssets(in album: PHAssetCollection) -> [PHAsset] {
-        let options = PHFetchOptions()
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        options.predicate = NSPredicate(format:"mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
-        
-        let fetchResult = PHAsset.fetchAssets(in: album, options: options)
-        let indexSet = IndexSet(0..<fetchResult.count)
-        return fetchResult.objects(at: indexSet)
-    }
+    /*
+     image(for: asset, size: CGSize(width: 109, height: 109)) { (image, needd) in
+         cell.previewImageView.image = image
+     }
+     
+     private let imageManager = PHCachingImageManager()
+     */
     
     @discardableResult func image(for asset: PHAsset, size: CGSize, completion: @escaping ((UIImage?, Bool) -> Void)) -> PHImageRequestID {
         return imageManager.requestImage(

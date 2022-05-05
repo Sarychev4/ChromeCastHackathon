@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MirrorViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="backInteractiveView" destination="3b6-ld-I3Y" id="C0A-RT-8O8"/>
                 <outlet property="qualityContainer" destination="9ba-LH-SMB" id="L4X-H1-vtO"/>
                 <outlet property="showHideImageView" destination="t7u-BW-eaD" id="piT-FN-DXF"/>
                 <outlet property="showHideInteractiveView" destination="mJb-W2-r0E" id="WZO-zC-pfS"/>

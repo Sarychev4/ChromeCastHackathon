@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class MediaItemCollectionViewCell: UICollectionViewCell {
+class AssetCell: UICollectionViewCell {
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var previewImageView: UIImageView!

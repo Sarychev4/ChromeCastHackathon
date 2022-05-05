@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryItemView: UIView {
+class AlbumView: UIView {
 
     @IBOutlet weak var dropShadowBackgroundView: DropShadowView!
     @IBOutlet weak var containerInteractiveView: InteractiveView!
@@ -30,7 +30,7 @@ class CategoryItemView: UIView {
     }
     
     @discardableResult func loadNib() -> UIView {
-        guard let view = Bundle.main.loadNibNamed("CategoryItemView", owner: self, options: nil)?.first as? UIView else { return UIView() }
+        guard let view = Bundle.main.loadNibNamed("AlbumView", owner: self, options: nil)?.first as? UIView else { return UIView() }
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.frame = bounds
         dropShadowBackgroundView.layer.cornerRadius = 10

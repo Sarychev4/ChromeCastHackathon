@@ -50,7 +50,7 @@ class MainViewController: BaseViewController {
         let menuCellNib = UINib(nibName: MainCell.Identifier, bundle: .main)
         collectionView.register(menuCellNib, forCellWithReuseIdentifier: MainCell.Identifier)
         
-        collectionView.contentInset.top = 20
+        collectionView.contentInset.top = 16
         setupTabs()
     }
     
@@ -170,7 +170,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //        } else {
         //            size = CGSize(width: cellWidth, height: cellWidth - 10 * SizeFactor )
         //        }
-        size = CGSize(width: cellWidth, height: 146 )
+        size = CGSize(width: cellWidth, height: 146)
         return size
     }
     

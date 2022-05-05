@@ -1,23 +1,24 @@
 //
-//  SettingsViewController.swift
+//  MirrorSettingsViewController.swift
 //  ChromecastIOS
 //
-//  Created by Artsiom Sarychau on 20.04.2022.
+//  Created by Artsiom Sarychau on 04.05.2022.
 //
 
 import UIKit
 
-class MirrorViewController: BaseViewController {
+class MirrorSettingsViewController: AFFloatingPanelViewController {
 
-    @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var showHideInteractiveView: InteractiveView!
     @IBOutlet weak var showHideImageView: UIImageView!
     @IBOutlet weak var qualityContainer: UIStackView!
     
     private var isHide = true
+    var didFinishAction: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         qualityContainer.isHidden = true
 
         showHideInteractiveView.didTouchAction = {
@@ -30,11 +31,6 @@ class MirrorViewController: BaseViewController {
             }
         }
         
-        backInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            self.navigation?.popViewController(self, animated: true)
-        }
-        
     }
-
+    
 }
