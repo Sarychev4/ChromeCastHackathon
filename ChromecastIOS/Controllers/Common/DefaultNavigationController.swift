@@ -12,7 +12,7 @@ class DefaultNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        isNavigationBarHidden = true
+        isNavigationBarHidden = false //temp as
     }
     
     /*

@@ -190,7 +190,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
                 cell.photoWidthConstraint.constant = 23
                 cell.clipsToBounds = true
                 cell.photoImageView.contentMode = .scaleAspectFit
-            
+//            asset.pixelWidth //temp as
                 image(for: asset, size: CGSize(width: 23, height: 49)) { (image, needd) in
                     cell.photoImageView.image = image
                 }

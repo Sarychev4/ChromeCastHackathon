@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import GoogleCast
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,20 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        var realmConfig = Realm.Configuration()
+        realmConfig.schemaVersion = 1
+        Realm.Configuration.defaultConfiguration = realmConfig
         
-        let viewController = MainViewController()
-        let navigationController = UINavigationContainer(rootViewController: viewController)
+//        let viewController = MainViewController()
+//        let navigationController = UINavigationContainer(rootViewController: viewController)
         
-//        let vc = TutorialContainerViewController()
-//        vc.didFinishAction = {
-//            let viewController = MainViewController()
-//            let navigationController = UINavigationContainer(rootViewController: viewController)
-//
-//            self.window!.layer.add(CATransition(), forKey: nil)
-//            self.window!.rootViewController = navigationController
-//        }
-//        let navigationController = DefaultNavigationController(rootViewController: vc)
-//        navigationController.isNavigationBarHidden = true
+        let vc = TutorialContainerViewController()
+        vc.didFinishAction = {
+            let viewController = MainViewController()
+            let navigationController = UINavigationContainer(rootViewController: viewController)
+
+            self.window!.layer.add(CATransition(), forKey: nil)
+            self.window!.rootViewController = navigationController
+        }
+        let navigationController = DefaultNavigationController(rootViewController: vc)
+        navigationController.isNavigationBarHidden = false
+
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.layer.add(CATransition(), forKey: nil)

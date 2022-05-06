@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleCast
+import RealmSwift
 
 class TutorialConnectViewController: BaseViewController {
     
@@ -25,9 +27,11 @@ class TutorialConnectViewController: BaseViewController {
     private var currentProgress: Int = 0
     
     var temp = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print("Realm is here: \(Realm.Configuration.defaultConfiguration.fileURL!.path)")
         
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
@@ -120,7 +124,7 @@ class TutorialConnectViewController: BaseViewController {
     
     private func presentDevices() {
         let controller = ListDevicesViewController()
-        controller.canDismissOnPan = false
+        controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)

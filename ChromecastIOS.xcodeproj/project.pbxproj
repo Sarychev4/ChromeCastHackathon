@@ -52,6 +52,8 @@
 		DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD23EAE32811BF4000DB7D44 /* OpenWebsitesViewController.swift */; };
 		DD23EAE62811BF4000DB7D44 /* OpenWebsitesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD23EAE42811BF4000DB7D44 /* OpenWebsitesViewController.xib */; };
 		DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */; };
+		DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */; };
+		DD2FEAB82824FFD300D8EB11 /* DeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2FEAB72824FFD300D8EB11 /* DeviceObject.swift */; };
 		DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1C2817FA9700E67AB0 /* ted_ico.png */; };
 		DD345D232817FA9700E67AB0 /* twitch_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1D2817FA9700E67AB0 /* twitch_ico.png */; };
 		DD345D242817FA9700E67AB0 /* dailymotion_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1E2817FA9700E67AB0 /* dailymotion_ico.png */; };
@@ -229,6 +231,8 @@
 		DD23EAE32811BF4000DB7D44 /* OpenWebsitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWebsitesViewController.swift; sourceTree = "<group>"; };
 		DD23EAE42811BF4000DB7D44 /* OpenWebsitesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenWebsitesViewController.xib; sourceTree = "<group>"; };
 		DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScripts.swift; sourceTree = "<group>"; };
+		DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromeCastService.swift; sourceTree = "<group>"; };
+		DD2FEAB72824FFD300D8EB11 /* DeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceObject.swift; sourceTree = "<group>"; };
 		DD345D1C2817FA9700E67AB0 /* ted_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ted_ico.png; sourceTree = "<group>"; };
 		DD345D1D2817FA9700E67AB0 /* twitch_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitch_ico.png; sourceTree = "<group>"; };
 		DD345D1E2817FA9700E67AB0 /* dailymotion_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dailymotion_ico.png; sourceTree = "<group>"; };
@@ -510,6 +514,7 @@
 				DD5232A3281ACE8F004AF0AA /* Managers */,
 				DDF59BF2280F2F3500CE2E2B /* Constants.swift */,
 				DD19E4882812AA5700931489 /* PhotoModel.swift */,
+				DD2FEAB72824FFD300D8EB11 /* DeviceObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				DD5232A4281ACEA2004AF0AA /* SubscriptionSpotsManager.swift */,
+				DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1301,8 +1307,10 @@
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
 				DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */,
+				DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */,
 				DDAE26502818250000355735 /* TutorialRatingStarsViewController.swift in Sources */,
 				DD19E4842811E56F00931489 /* WebsiteCell.swift in Sources */,
+				DD2FEAB82824FFD300D8EB11 /* DeviceObject.swift in Sources */,
 				DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */,
 				DD923ADF2812F3C70034E5D3 /* CellPassiveMeasurement.swift in Sources */,
 				DD19E4D22812C7E700931489 /* CellConfiguratedCollectionView.swift in Sources */,
