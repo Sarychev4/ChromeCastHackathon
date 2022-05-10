@@ -40,3 +40,32 @@ extension UIViewController {
     }
     
 }
+
+public var TopViewController: UIViewController? {
+    guard let window = UIApplication.shared.keyWindow else {
+        return nil
+    }
+    
+    /*
+     */
+    
+    var viewController: UIViewController? = nil
+    var topViewController = window.rootViewController
+    
+    while viewController == nil {
+        if topViewController?.presentedViewController == nil {
+            viewController = topViewController
+        } else {
+            topViewController = topViewController?.presentedViewController
+        }
+    }
+    
+    /*
+     */
+    
+    if let navigationController = topViewController as? UINavigationController, let lastViewController = navigationController.viewControllers.last {
+        topViewController = lastViewController
+    }
+    
+    return topViewController
+}

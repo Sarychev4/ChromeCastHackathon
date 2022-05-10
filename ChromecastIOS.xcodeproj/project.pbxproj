@@ -167,6 +167,8 @@
 		E896433D280EB75D00E6E287 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89642BF280EAF7900E6E287 /* LaunchScreen.storyboard */; };
 		E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89642BD280EAF7900E6E287 /* Assets.xcassets */; };
 		E8964343280EB75D00E6E287 /* MirroringExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E8964312280EB5A700E6E287 /* MirroringExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E8CFAEC4282AED8B002C3B87 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */; };
+		E8CFAEC6282AEE94002C3B87 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -364,6 +366,8 @@
 		E896434C280EBB1F00E6E287 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8C16010280FFA6200995934 /* ChromecastIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChromecastIOS.entitlements; sourceTree = "<group>"; };
 		E8C16011280FFA9700995934 /* MirroringExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MirroringExtension.entitlements; sourceTree = "<group>"; };
+		E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromecastIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -929,6 +933,7 @@
 		DDF59BF9280F31D500CE2E2B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */,
 				DDF59BFF280F32A400CE2E2B /* UIViewController+Extension.swift */,
 				DDF59C0D280F48D500CE2E2B /* UIFont+Extension.swift */,
 				DD19E48A2812AB9A00931489 /* UIImage+Extension.swift */,
@@ -937,6 +942,7 @@
 				DD03EFB4282AB0090075F70E /* Locale+Extension.swift */,
 				DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */,
 				DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */,
+				E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1316,6 +1322,7 @@
 				DDF59C0E280F48D500CE2E2B /* UIFont+Extension.swift in Sources */,
 				DD5232AC281ACF0C004AF0AA /* PremiumDiscountViewController.swift in Sources */,
 				DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */,
+				E8CFAEC4282AED8B002C3B87 /* URL+Extension.swift in Sources */,
 				DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */,
 				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */,
@@ -1334,6 +1341,7 @@
 				DD03EFB1282AA4580075F70E /* DataManager.swift in Sources */,
 				DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */,
 				DD19E4D02812C43400931489 /* FlowLayoutInvalidateBehavior.swift in Sources */,
+				E8CFAEC6282AEE94002C3B87 /* Bundle+Extension.swift in Sources */,
 				DD52329D281AAE26004AF0AA /* AssetCell.swift in Sources */,
 				DD5232B0281ACF22004AF0AA /* PremuimLifeTimeViewController.swift in Sources */,
 				DDF59BEC280F2E9600CE2E2B /* MainViewController.swift in Sources */,

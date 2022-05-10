@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 @objc
-enum SubscriptionSpotPresentationStyle: Int, RealmEnum {
+enum SubscriptionSpotPresentationStyle: Int, PersistableEnum {
     case modal, fade
     
     public var stringValue: String! {
@@ -35,7 +35,8 @@ class SubscriptionSpot: Object {
      MARK: -
      */
     
-    @objc dynamic var title: String! //temp as persisted
+    @objc
+    @Persisted var title: String! //temp as persisted
     
     @Persisted var specialOfferConfiguration: String!
     
@@ -49,8 +50,7 @@ class SubscriptionSpot: Object {
     
     @Persisted var isSpecialOfferEnabled: Bool = true
     
-    @objc
-    dynamic var presentationStyle: SubscriptionSpotPresentationStyle = .modal
+    @Persisted var presentationStyle = SubscriptionSpotPresentationStyle.modal
     
     /*
      Сдесь хранится полная конфигурация для Spot
