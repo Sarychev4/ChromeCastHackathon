@@ -89,6 +89,13 @@ Features";
 /*
  
  */
-"Alert.Permissions.Denied.LocalNetwork.Title" = "Confirm connection";
-"Alert.Permissions.Denied.LocalNetwork.Subtitle" = "In some cases you may see a\nconfirmation dialog on the screen of\nour TV. Tap Yes to confirm\nconnection.\n\nIf you don’t see any confirmation\nwindow on your TV, just tap Continue.";
-"Alert.Permissions.Denied.LocalNetwork.Continue" = "Continue";
+"Alert.Permissions.Denied.Library.Title" = "Access to Library";
+"Alert.Permissions.Denied.Library.Message" = "Chromecast uses Library to cast media.";
+"Alert.Permissions.Denied.Library.Continue" = "Continue";
+
+
+/*
+ 
+ */
+"MirrorSettings.Title" = "Mirror Settings";
+

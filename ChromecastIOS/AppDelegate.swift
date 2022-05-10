@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import RealmSwift
+import RealmSwift 
 import Agregator
+import GoogleCast
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,19 +40,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*
          */
         
-        let viewController = MainViewController()
-        let navigationController = UINavigationContainer(rootViewController: viewController)
+        var realmConfig = Realm.Configuration()
+        realmConfig.schemaVersion = 1
+        Realm.Configuration.defaultConfiguration = realmConfig
         
-//        let vc = TutorialContainerViewController()
-//        vc.didFinishAction = {
-//            let viewController = MainViewController()
-//            let navigationController = UINavigationContainer(rootViewController: viewController)
-//
-//            self.window!.layer.add(CATransition(), forKey: nil)
-//            self.window!.rootViewController = navigationController
-//        }
-//        let navigationController = DefaultNavigationController(rootViewController: vc)
-//        navigationController.isNavigationBarHidden = true
+//        let viewController = MainViewController()
+//        let navigationController = UINavigationContainer(rootViewController: viewController)
+        
+        let vc = TutorialContainerViewController()
+        vc.didFinishAction = {
+            let viewController = MainViewController()
+            let navigationController = UINavigationContainer(rootViewController: viewController)
+
+            self.window!.layer.add(CATransition(), forKey: nil)
+            self.window!.rootViewController = navigationController
+        }
+        let navigationController = DefaultNavigationController(rootViewController: vc)
+        navigationController.isNavigationBarHidden = false
+
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.layer.add(CATransition(), forKey: nil)

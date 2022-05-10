@@ -12,13 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaLibraryViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="albumsScrollView" destination="b2w-si-2po" id="DvK-Z0-KdR"/>
+                <outlet property="albumsStackView" destination="Yfg-sX-i15" id="LTt-ti-7i0"/>
+                <outlet property="assetsCollectionView" destination="MBK-F1-NbR" id="YxT-LT-SGG"/>
                 <outlet property="backInteractiveView" destination="ta2-iJ-BU3" id="qbj-z2-chn"/>
                 <outlet property="connectInteractiveView" destination="3yF-AT-fvH" id="mr6-Ds-7KD"/>
-                <outlet property="mediaItemsCollectionView" destination="MBK-F1-NbR" id="2fr-Gm-nLA"/>
-                <outlet property="topCategoriesScrollView" destination="b2w-si-2po" id="UKL-29-IfW"/>
-                <outlet property="topCategoriesStackView" destination="Yfg-sX-i15" id="ktD-mC-7fh"/>
-                <outlet property="topContainerView" destination="YtI-A8-p1t" id="W5y-vt-R4n"/>
-                <outlet property="topDropShadowView" destination="QrL-lC-hva" id="BOK-e3-wwO"/>
+                <outlet property="separatorShadowView" destination="QrL-lC-hva" id="qyB-MC-lFm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,7 +34,7 @@
                             <subviews>
                                 <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="MBK-F1-NbR">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="MainBackground"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sS8-dm-yVQ">
                                         <size key="itemSize" width="128" height="128"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -44,7 +43,7 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="MainBackground"/>
                             <constraints>
                                 <constraint firstItem="MBK-F1-NbR" firstAttribute="top" secondItem="pt7-BK-NDM" secondAttribute="top" id="In6-rv-a04"/>
                                 <constraint firstAttribute="bottom" secondItem="MBK-F1-NbR" secondAttribute="bottom" id="Pa5-2A-gTd"/>

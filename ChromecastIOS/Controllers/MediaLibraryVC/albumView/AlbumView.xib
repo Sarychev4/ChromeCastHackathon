@@ -5,11 +5,10 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryItemView" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumView" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerInteractiveView" destination="dbg-yZ-OLC" id="ssi-YR-BLU"/>
                 <outlet property="dropShadowBackgroundView" destination="WsH-Kf-UlM" id="kXp-M8-g3f"/>
@@ -43,7 +42,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
                         <constraint firstItem="dbg-yZ-OLC" firstAttribute="leading" secondItem="WsH-Kf-UlM" secondAttribute="leading" id="NHR-NR-heS"/>
                         <constraint firstAttribute="bottom" secondItem="dbg-yZ-OLC" secondAttribute="bottom" id="PLq-cq-N6i"/>
@@ -66,11 +65,11 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="MainBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="labelColorDark">
             <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

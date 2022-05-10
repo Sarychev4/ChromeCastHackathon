@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleCast
 
 class TutorialWifiViewController: BaseViewController {
     
@@ -15,6 +16,8 @@ class TutorialWifiViewController: BaseViewController {
     
     var didFinishAction: (() -> ())?
     
+//    let kReceiverAppID = "2C5BA44D" //kGCKDefaultMediaReceiverApplicationID
+//    let kDebugLoggingEnabled = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +26,21 @@ class TutorialWifiViewController: BaseViewController {
             guard let self = self else { return }
             self.didFinishAction?()
         }
+        
+//        startDiscoveringDevices()
     }
+    
+//    private func startDiscoveringDevices() {
+//        let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
+//        let options = GCKCastOptions(discoveryCriteria: criteria)
+//        GCKCastContext.setSharedInstanceWith(options) //coordinates all of the framework's activities
+//        GCKLogger.sharedInstance().delegate = self
+//        
+//        
+//    }
 
+}
+
+extension TutorialWifiViewController: GCKLoggerDelegate {
+    
 }

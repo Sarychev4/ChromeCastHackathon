@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RealmSwift
+import CoreMedia
 
 class ListDevicesViewController: AFFloatingPanelViewController {
     
@@ -16,9 +18,11 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     @IBOutlet weak var refreshIcon: UIImageView!
     @IBOutlet weak var attentionContainer: UIView!
     
+    private var detectedDevices: Results<DeviceObject>?
+    private var devicesNotificationToken: NotificationToken?
     
     var didFinishAction: (() -> ())?
-    private let arrayOfTVs: [String] = ["Samsung", "Sony", "LG"]
+//    private let arrayOfTVs: [String] = ["Samsung", "Sony", "LG"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,57 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             guard let self = self else { return }
             self.handleTapOnRefreshButton()
         }
+        
+        addDevicesObserver()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let realm = try! Realm()
+        detectedDevices = realm.objects(DeviceObject.self)
+        if detectedDevices?.isEmpty == true {
+            attentionContainer.isHidden = false
+        } else {
+            attentionContainer.isHidden = true
+            guard let detectedDevices = detectedDevices else { return }
+            for (index, elem) in detectedDevices.enumerated() {
+                self.populateStackView(tvName: elem.friendlyName, index: index)
+            }
+        }
+    }
+    
+    private func addDevicesObserver() {
+        let realm = try! Realm()
+        detectedDevices = realm.objects(DeviceObject.self)
+        
+        devicesNotificationToken = detectedDevices?.observe { [weak self] changes in
+            guard let self = self else { return }
+            switch changes {
+            case .initial(_):
+                break
+            case .update(let devices, _, _, _):
+                if devices.count == 0 {
+                    self.attentionContainer.isHidden = false
+                    self.devicesStackView.subviews.forEach { (view) in
+                        view.removeFromSuperview()
+                    }
+                } else {
+                    self.attentionContainer.isHidden = true
+                    self.devicesStackView.subviews.forEach { (view) in
+                        view.removeFromSuperview()
+                    }
+                    for (index, element) in devices.enumerated() {
+                        self.populateStackView(tvName: element.friendlyName, index: index)
+                    }
+                }
+                
+                
+                break
+            case .error(_):
+                break
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,12 +91,20 @@ class ListDevicesViewController: AFFloatingPanelViewController {
   
     }
     
-    private func populateStackView(tvName: String) {
+    private func populateStackView(tvName: String, index: Int) {
         let cellView = DeviceCellView()
         cellView.nameLabel.text = tvName
         cellView.containerInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            self.dismiss(animated: true, completion: nil)
+            guard let device = self.detectedDevices?[index] else { return }
+            ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
+                guard let self = self else { return }
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                    self.didFinishAction?()
+                }
+            })
+            
             
         }
         devicesStackView.addArrangedSubview(cellView)
@@ -56,20 +119,16 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     
     private func handleTapOnRefreshButton() {
         //temp as
-        attentionContainer.isHidden = true
         
-        for i in arrayOfTVs {
-            populateStackView(tvName: i)
-        }
         
         self.rotate(self.refreshIcon)
         
-        self.showAlertLocalNetworkPermissionRequired { [weak self] in
-            guard let _ = self else { return }
-            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-            guard UIApplication.shared.canOpenURL(settingsURL) else { return }
-            UIApplication.shared.open(settingsURL, completionHandler: nil)
-        }
+//        self.showAlertLocalNetworkPermissionRequired { [weak self] in
+//            guard let _ = self else { return }
+//            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+//            guard UIApplication.shared.canOpenURL(settingsURL) else { return }
+//            UIApplication.shared.open(settingsURL, completionHandler: nil)
+//        }
     }
     
     private func rotate(_ targetView: UIView) {
@@ -101,3 +160,6 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     }
     
 }
+
+
+

@@ -43,11 +43,11 @@ class ThumbnailMasterFlowLayout: UICollectionViewFlowLayout,  CellBasicMeasureme
 //MARK: - ThumbnailFlowLayout
 extension ThumbnailMasterFlowLayout: ThumbnailFlowLayoutDraggingBehavior {
     func foldCurrentCell() {
-        startAnimation(of: .folding)
+        startAnimation(of: .folding) //temp as
     }
     
     func unfoldCurrentCell() {
-        startAnimation(of: .unfolding)
+        startAnimation(of: .unfolding) // temp as
     }
     
     fileprivate func startAnimation(of type:AnimatedCellType) {

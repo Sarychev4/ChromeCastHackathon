@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import GoogleCast
+import RealmSwift
 
 class TutorialAccessToNetworkViewController: BaseViewController {
+    
+    let kReceiverAppID = "2C5BA44D"// kGCKDefaultMediaReceiverApplicationID //
+    let kDebugLoggingEnabled = true
     
     @IBOutlet weak var continueInteractiveView: InteractiveView!
     @IBOutlet weak var continueLabel: DefaultLabel!
@@ -23,6 +28,9 @@ class TutorialAccessToNetworkViewController: BaseViewController {
             guard let self = self else { return }
             self.didFinishAction?()
         }
-    }
 
+        ChromeCastService.shared.initialize()
+    }
 }
+
+

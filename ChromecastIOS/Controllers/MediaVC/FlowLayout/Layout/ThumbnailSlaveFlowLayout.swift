@@ -57,8 +57,8 @@ class ThumbnailSlaveFlowLayout: UICollectionViewFlowLayout, CellBasicMeasurement
             attributes.size = cellNormalSize
             attributes.center = centerAfterNextFocusedCell(for: indexPath)
         } else if indexPath.item == puppetCellIndex {
-            attributes.size = focusedCellSize
-            attributes.center = focusedCellCenter
+            attributes.size = focusedCellSize //temp as 
+            attributes.center = focusedCellCenter // 
         } else if indexPath.item == puppetCellIndex + 1 {
             attributes.size = nextFocusedCellSize
             attributes.center = nextFocusedCellCenter
