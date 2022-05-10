@@ -31,11 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         
         Agregator.shared.initialize(
-            applicationID: "1586624313",
-            amplitudeAPIKey: "2861f703602b114d2559848f268412d5",
-            apphudAPIKey: "app_SGCck8rWYavbreuunHRFxA6BXyJsxp",
+            applicationID: "1620128676",
+            amplitudeAPIKey: "a9ab440a6e5b2968cfe176520ea091f7",
+            apphudAPIKey: "app_HARkZgrMoU5oAsLqx1fGcyPFQGhL8b",
             appsFlyerAPIKey: "mVN6DoQzLUCxz7gLjQivSY"
         )
+        
         
         /*
          */
