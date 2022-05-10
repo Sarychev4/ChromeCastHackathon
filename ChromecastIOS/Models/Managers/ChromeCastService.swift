@@ -14,7 +14,7 @@ class ChromeCastService: NSObject {
     let kReceiverAppID = "2C5BA44D"
     let kDebugLoggingEnabled = true
     
-    let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
+//    let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
     var foundedDevices: [GCKDevice] = []
     var screenMirroringChannel: GCKCastChannel?
     
@@ -27,12 +27,17 @@ class ChromeCastService: NSObject {
     }
     
     func initialize() {
+        print(">>> INITIALIZE")
         let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
         let options = GCKCastOptions(discoveryCriteria: criteria)
         options.disableDiscoveryAutostart = true
+//        options.disableAnalyticsLogging = true;
+        options.stopReceiverApplicationWhenEndingSession = true;
+        options.physicalVolumeButtonsWillControlDeviceVolume = true;
+        options.startDiscoveryAfterFirstTapOnCastButton = false;
         GCKCastContext.setSharedInstanceWith(options)
         GCKLogger.sharedInstance().delegate = self
-
+        let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
         deviceScanner.add(self)
         deviceScanner.startDiscovery()
         
@@ -42,6 +47,7 @@ class ChromeCastService: NSObject {
     
     func connect(to deviceID: String, onComplete: ClosureBool?) {
         print("DeviceID \(deviceID)")
+        let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
         guard let device = deviceScanner.device(withUniqueID: deviceID) else { return }
         
         print("DeviceID from scanner \(device.deviceID)")
@@ -80,15 +86,11 @@ extension ChromeCastService: GCKDiscoveryManagerListener {
     
     func didInsert(_ device: GCKDevice, at index: UInt) { //called when device was discovered and added into devicelist
         
-        print("DEVICE WAS FOUND")
         let deviceObj = DeviceObject()
         deviceObj.deviceID = device.deviceID
         deviceObj.deviceUniqueID = device.uniqueID
         deviceObj.friendlyName = device.friendlyName ?? "No friendly name"
         deviceObj.modelName = device.modelName ?? "No model name"
-        
-        print("Device ID \(device.deviceID)")
-//        print("Device UNIC ID \(device.uniqueID)")
         let realm = try! Realm()
         try! realm.write {
             realm.add(deviceObj, update: .all)
@@ -120,6 +122,7 @@ extension ChromeCastService: GCKSessionManagerListener {
     }
     
     func sessionManager(_ sessionManager: GCKSessionManager, didFailToStart session: GCKSession, withError error: Error) {
+        print("Session Not started")
         connectFinish?(false)
         print(error.localizedDescription)
     }

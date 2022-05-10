@@ -50,115 +50,116 @@ import AdvancedPageControl
 import Reachability
 
 class TutorialContainerViewController: BaseViewController {
-
+    
+    deinit {
+        print(">>> deinit TutorialContainerViewController")
+    }
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var pageContainerView: AdvancedPageControlView!
     
-    var didFinishAction: (() -> ())?
-    var viewControllers: [UIViewController] = []
-    var currentViewController: UIViewController!
-    
+    var didFinishAction: Closure?
+    private var source: String = "AppDelegate"
+    private var nameForEvents: String { return "Tutorial container screen" }
+    private var viewControllers: [UIViewController] = []
+    private var currentViewController: UIViewController!
     private var currentPage: Int = 0
     
     //MARK: - CONTROLLERS
-    
-    private var welcomeController: TutorialWelcomeViewController! {
+    private func welcomeController(source: String) -> TutorialWelcomeViewController! {
         let controller = TutorialWelcomeViewController()
+        controller.source = source
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-//            self.pushViewController(self.connectController)
-            self.pushViewController(self.accessToNetworkController)
+            self.pushViewController(self.accessToNetworkController(source: controller.source))
         }
         return controller
     }
     
-    private var accessToNetworkController: TutorialAccessToNetworkViewController! {
+    private func accessToNetworkController(source: String) -> TutorialAccessToNetworkViewController! {
         let controller = TutorialAccessToNetworkViewController()
+        controller.source = source
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.wifiController)
+            self.pushViewController(self.wifiController(source: controller.source))
         }
         return controller
     }
     
-    private var wifiController: TutorialWifiViewController! {
+    private func wifiController(source: String) -> TutorialWifiViewController! {
         let controller = TutorialWifiViewController()
+        controller.source = source
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.connectController)
+            self.pushViewController(self.connectController(source: controller.source))
         }
         return controller
     }
     
-    private var connectController: TutorialConnectViewController! {
+    private func connectController(source: String) -> TutorialConnectViewController! {
         let controller = TutorialConnectViewController()
+        controller.source = source
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.testConnectionController)
+            self.pushViewController(self.testConnectionController(source: controller.source))
         }
         return controller
     }
     
-    private var testConnectionController: TutorialTestConnectionViewController! {
+    private func testConnectionController(source: String) -> TutorialTestConnectionViewController! {
         let controller = TutorialTestConnectionViewController()
+        controller.source = source
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.previewImageController)
+            self.pushViewController(self.previewImageController(source: controller.source))
         }
         return controller
     }
     
-    private var previewImageController: TutorialPreviewImageViewController! {
+    private func previewImageController(source: String) -> TutorialPreviewImageViewController! {
         let controller = TutorialPreviewImageViewController()
+        controller.source = source
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.everythingReadyController)
+            self.pushViewController(self.everythingReadyController(source: controller.source))
         }
         return controller
     }
     
-    private var everythingReadyController: TutorialEverythingReadyViewController! {
+    private func everythingReadyController(source: String) -> TutorialEverythingReadyViewController! {
         let controller = TutorialEverythingReadyViewController()
+        controller.source = source
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
-            self.pushViewController(self.ratingStarsController)
+            self.pushViewController(self.ratingStarsController(source: controller.source))
         }
         return controller
     }
     
-    private var ratingStarsController: TutorialRatingStarsViewController! {
+    private func ratingStarsController(source: String) -> TutorialRatingStarsViewController! {
         let controller = TutorialRatingStarsViewController()
-        controller.didFinishAction = { [weak self] in
-            guard let self = self else { return }
-            self.pushViewController(self.thankYouController)
+        controller.source = source
+        controller.movePageControl = {
+            self.pageContainerView.setPage(self.currentPage + 1)
         }
-        return controller
-    }
-    
-    private var thankYouController: TutorialThankYouViewController! {
-        let controller = TutorialThankYouViewController()
         controller.didFinishAction = { [weak self] in
             guard let self = self else { return }
             self.didFinishAction?()
         }
         return controller
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setRootViewController(welcomeController)
+        setRootViewController(welcomeController(source: self.source))
         setupPageController()
     }
 
     private func pushViewController(_ pushVC: UIViewController) {
         addController(pushVC, container: stackView)
-        
         currentViewController.beginAppearanceTransition(false, animated: true)
         pushVC.beginAppearanceTransition(true, animated: true)
-        
         currentPage += 1
         
         show(currentPage, animated: true, onComplete: { [weak self] in
@@ -171,9 +172,7 @@ class TutorialContainerViewController: BaseViewController {
     
     private func popViewController() {
         currentViewController.beginAppearanceTransition(false, animated: true)
-        
         currentPage -= 1
-        
         let leftVC = viewControllers[currentPage]
         leftVC.beginAppearanceTransition(true, animated: true)
         
@@ -188,7 +187,6 @@ class TutorialContainerViewController: BaseViewController {
     
     private func show(_ page: Int, animated: Bool, onComplete: (() -> ())?) {
         guard currentPage < viewControllers.count else { return }
-        
         let width = UIScreen.main.bounds.width
         let x = width * CGFloat(currentPage)
         
@@ -208,7 +206,7 @@ class TutorialContainerViewController: BaseViewController {
     }
     
     private func setupPageController() {
-        let pagesCount = 9
+        let pagesCount = 8
         pageContainerView.drawer = ExtendedDotDrawer(numberOfPages: pagesCount,
                                                      height: 8,
                                                      width: 8,

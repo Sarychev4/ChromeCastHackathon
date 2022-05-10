@@ -7,40 +7,56 @@
 
 import UIKit
 import GoogleCast
+import Agregator
 
 class TutorialWifiViewController: BaseViewController {
+    
+    deinit {
+        print(">>> deinit TutorialWifiViewController")
+    }
     
     @IBOutlet weak var continueInteractiveView: InteractiveView!
     @IBOutlet weak var continueLabel: DefaultLabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var didFinishAction: (() -> ())?
+    var source: String!
+    var nameForEvents: String { return "Same Wi-Fi screen" }
     
-//    let kReceiverAppID = "2C5BA44D" //kGCKDefaultMediaReceiverApplicationID
-//    let kDebugLoggingEnabled = true
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        AgregatorLogger.shared.log(eventName: "Tutorial_shown",
+                                   parameters: ["Tutorial Step": nameForEvents, "Source": source])
+        
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.didFinishAction?()
         }
         
-//        startDiscoveringDevices()
+        /*
+         */
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForegroundAction),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil)
+        
+        /*
+         */
     }
     
-//    private func startDiscoveringDevices() {
-//        let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
-//        let options = GCKCastOptions(discoveryCriteria: criteria)
-//        GCKCastContext.setSharedInstanceWith(options) //coordinates all of the framework's activities
-//        GCKLogger.sharedInstance().delegate = self
-//        
-//        
-//    }
-
-}
-
-extension TutorialWifiViewController: GCKLoggerDelegate {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func willEnterForegroundAction() {
+        AgregatorLogger.shared.log(eventName: "Tutorial_shown",
+                                   parameters: ["Tutorial Step": nameForEvents, "Source": "Launch"])
+    }
     
 }
+

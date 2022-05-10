@@ -10,6 +10,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PremiumDiscountViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundImageView" destination="edg-Hx-26J" id="snS-eR-5ct"/>
+                <outlet property="closeInteractiveView" destination="MeG-uX-nBE" id="0lz-Fd-1T2"/>
+                <outlet property="continueInteractiveView" destination="VC1-yB-jiY" id="AVe-gF-5Il"/>
+                <outlet property="mainStackView" destination="45s-fy-A3Z" id="XLO-h5-Utl"/>
+                <outlet property="policyInteractiveLabel" destination="DY5-Oy-Ow4" id="fHl-Cc-kAz"/>
+                <outlet property="priceLabel" destination="0U9-ph-At0" id="qdl-sc-sXS"/>
+                <outlet property="restoreInteractiveLabel" destination="epM-Gn-3x3" id="Dgv-pg-aS4"/>
+                <outlet property="scrollView" destination="Cho-bN-4gk" id="d5v-eO-j1z"/>
+                <outlet property="subscriptionTermsInteractiveLabel" destination="us1-vN-KFx" id="rog-qv-M0j"/>
+                <outlet property="termsInteractiveLabel" destination="lT0-bh-bNt" id="y5V-zu-FR4"/>
+                <outlet property="timerLabel" destination="qFJ-5l-wEq" id="tIm-AX-wUP"/>
+                <outlet property="timerView" destination="wr2-KG-sVS" id="DYJ-gb-yUL"/>
+                <outlet property="topStackView" destination="vgt-L0-F2U" id="pNg-Rm-3OW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,13 +53,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUG-Pn-dFa">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-uX-nBE" customClass="InteractiveView" customModule="ScreenMirroring" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-uX-nBE" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="358" y="0.0" width="56" height="48"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3W-29-Bx7" customClass="RoundedView" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3W-29-Bx7" customClass="RoundedView" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="16" y="12" width="24" height="24"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloseDarkRounded" translatesAutoresizingMaskIntoConstraints="NO" id="5n0-TQ-dqH" customClass="RoundedImageView" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloseDarkRounded" translatesAutoresizingMaskIntoConstraints="NO" id="5n0-TQ-dqH" customClass="RoundedImageView" customModule="ChromecastIOS" customModuleProvider="target">
                                                                             <rect key="frame" x="6" y="6" width="12" height="12"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
@@ -87,7 +100,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3KY-ep-Of2">
                                                     <rect key="frame" x="0.0" y="48" width="414" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_SPECIAL OFFER" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ik-Kn-dzl" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_SPECIAL OFFER" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ik-Kn-dzl" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="32" y="0.0" width="366" height="50"/>
                                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="35"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,7 +133,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tU6-nF-LdX">
                                                                     <rect key="frame" x="0.0" y="0.0" width="406" height="40"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_50% OFF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="yx4-Ml-bW6" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_50% OFF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="yx4-Ml-bW6" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                             <rect key="frame" x="32" y="2" width="144" height="36"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,7 +169,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="y3N-te-ybA">
                                                             <rect key="frame" x="32" y="0.0" width="305.5" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Get access for the all features  for the" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cju-AY-9pR" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Get access for the all features  for the" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cju-AY-9pR" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="305.5" height="28.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -166,7 +179,7 @@
                                                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Subscription.Top.Subtitle.1"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_best experience" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3em-zl-MPu" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_best experience" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3em-zl-MPu" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="28.5" width="305.5" height="21.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -194,7 +207,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caI-vs-YWh">
                                                     <rect key="frame" x="0.0" y="110" width="414" height="44"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U9-ph-At0" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U9-ph-At0" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="32" y="20" width="350" height="36"/>
                                                             <attributedString key="attributedText">
                                                                 <fragment>
@@ -244,7 +257,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                         <constraint firstAttribute="width" constant="18" id="wJq-OU-lSd"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Unlimited Mirroring" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tep-cz-djV" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Unlimited Mirroring" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tep-cz-djV" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="34" y="0.5" width="312" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -267,7 +280,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                         <constraint firstAttribute="height" constant="18" id="fv8-v4-ABK"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_No Delay" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mt2-tT-Xuy" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_No Delay" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mt2-tT-Xuy" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="34" y="0.5" width="312" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -290,7 +303,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                         <constraint firstAttribute="height" constant="18" id="xbT-eq-V3G"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_IPTV" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnk-wt-9tj" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_IPTV" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnk-wt-9tj" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="34" y="0.5" width="312" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -313,7 +326,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                         <constraint firstAttribute="height" constant="18" id="FRe-1Z-1Cx"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Works with all TVs" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rar-nC-dFc" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Works with all TVs" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rar-nC-dFc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="34" y="0.5" width="312" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -336,7 +349,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                         <constraint firstAttribute="height" constant="18" id="Lk0-xG-hs5"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_No ADS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNg-bu-icV" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_No ADS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNg-bu-icV" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="34" y="0.5" width="312" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -359,7 +372,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                         <constraint firstAttribute="width" constant="18" id="Ayw-J2-cgk"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Screen Mirroring with Audio" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaX-YM-xro" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Screen Mirroring with Audio" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaX-YM-xro" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="34" y="0.5" width="312" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -399,7 +412,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GOw-qL-rto">
                                                                     <rect key="frame" x="24" y="-2" width="334" height="60"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Offer ends in:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GH-zC-7kv" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Offer ends in:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GH-zC-7kv" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                             <rect key="frame" x="119.5" y="0.0" width="95.5" height="17"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -409,7 +422,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Subscription.SpecialOffer.Timer.Title"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFJ-5l-wEq" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFJ-5l-wEq" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                             <rect key="frame" x="82.5" y="17" width="169" height="43"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -441,10 +454,10 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCD-n1-wed">
                                                     <rect key="frame" x="0.0" y="64" width="414" height="60"/>
                                                     <subviews>
-                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VC1-yB-jiY" customClass="InteractiveView" customModule="ScreenMirroring" customModuleProvider="target">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VC1-yB-jiY" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="16" y="0.0" width="382" height="60"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o71-O8-bCX" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o71-O8-bCX" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="16" y="0.0" width="342" height="60"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -482,7 +495,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21d-1s-gSy">
                                                     <rect key="frame" x="129" y="0.0" width="156.5" height="13.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you accept our:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiw-cG-6P1" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you accept our:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiw-cG-6P1" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="156.5" height="13.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -496,7 +509,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuS-RN-aMF">
                                                     <rect key="frame" x="124.5" y="21.5" width="165" height="14.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Terms of Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lT0-bh-bNt" customClass="InteractiveLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Terms of Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lT0-bh-bNt" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="75.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -511,7 +524,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY5-Oy-Ow4" customClass="InteractiveLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY5-Oy-Ow4" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="85.5" y="0.0" width="79.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -522,7 +535,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Subscription Terms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us1-vN-KFx" customClass="InteractiveLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Subscription Terms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us1-vN-KFx" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                     <rect key="frame" x="153" y="40" width="108" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -531,7 +544,7 @@ Billed yearly $9.99. Cancel anytime.</string>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Subscription.SubscriptionTerms.Title"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Restore purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epM-Gn-3x3" customClass="InteractiveLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Restore purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epM-Gn-3x3" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                     <rect key="frame" x="155" y="44" width="104.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

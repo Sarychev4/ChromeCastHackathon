@@ -8,19 +8,24 @@
 import UIKit
 import GoogleCast
 import RealmSwift
+import Agregator
 
 class TutorialConnectViewController: BaseViewController {
     
+    deinit {
+        print(">>> deinit TutorialConnectViewController")
+    }
+    
     @IBOutlet weak var continueInteractiveView: InteractiveView!
     @IBOutlet weak var continueLabel: DefaultLabel!
-    
     @IBOutlet weak var continueInteractiveViewCopy: UIView!
     @IBOutlet weak var continueLabelCopy: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
     
     var didFinishAction: (() -> ())?
+    var source: String!
+    var nameForEvents: String { return "Let's set up screen" }
     
     private var isAnimating: Bool = false
     private var progressTimer: Timer?
@@ -31,20 +36,43 @@ class TutorialConnectViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Realm is here: \(Realm.Configuration.defaultConfiguration.fileURL!.path)")
+        AgregatorLogger.shared.log(eventName: "Tutorial_shown",
+                                   parameters: ["Tutorial Step": nameForEvents, "Source": source])
         
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.didFinishAction?()
-        }    
+        }
+        
+        /*
+         */
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForegroundAction),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil)
+        
+        /*
+         */
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startProcessingAnimation()
-//        presentDevices()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func willEnterForegroundAction() {
+        AgregatorLogger.shared.log(eventName: "Tutorial_shown",
+                                   parameters: ["Tutorial Step": nameForEvents, "Source": "Launch"])
+    }
+    
     //MARK: - Process Animation
     private func startProcessingAnimation() {
         guard currentProgress < 100 else { return }

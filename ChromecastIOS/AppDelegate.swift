@@ -44,27 +44,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         realmConfig.schemaVersion = 1
         Realm.Configuration.defaultConfiguration = realmConfig
         
-//        let viewController = MainViewController()
-//        let navigationController = UINavigationContainer(rootViewController: viewController)
+        /*
+         */
         
-        let vc = TutorialContainerViewController()
-        vc.didFinishAction = {
-            let viewController = MainViewController()
-            let navigationController = UINavigationContainer(rootViewController: viewController)
-
-            self.window!.layer.add(CATransition(), forKey: nil)
-            self.window!.rootViewController = navigationController
+        DataManager.shared.initialize()
+        
+        /*
+         */
+        
+        if Settings.current.isIntroCompleted {
+            DataManager.shared.setupSpecialOfferTimer()
+            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.sessionStart.rawValue) { [weak self] success in
+                guard let self = self else { return }
+                self.showMainViewController()
+            }
+        } else {
+            self.showTutorial()
         }
+        
+        
+        
+        
+        print("Realm is here: \(Realm.Configuration.defaultConfiguration.fileURL!.path)")
+        
+        return true
+    }
+    
+    func showTutorial() {
+        let vc = TutorialContainerViewController()
         let navigationController = DefaultNavigationController(rootViewController: vc)
         navigationController.isNavigationBarHidden = false
-
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.layer.add(CATransition(), forKey: nil)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
         
-        return true
+        vc.didFinishAction = {
+            try! Settings.current.realm?.write {
+                Settings.current.isIntroCompleted = true
+            }
+            
+            DataManager.shared.setupSpecialOfferTimer()
+
+            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.intro.rawValue, with: { [weak self] success in
+                SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.introSpecialOffer.rawValue, with: { [weak self] success in
+                    self?.showMainViewController()
+                })
+            })
+        }
+        
+    }
+    
+    func showMainViewController() {
+        let viewController = MainViewController()
+        let navigationController = UINavigationContainer(rootViewController: viewController)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = navigationController
+        window!.layer.add(CATransition(), forKey: nil)
+        window!.makeKeyAndVisible()
     }
 
     // MARK: UISceneSession Lifecycle

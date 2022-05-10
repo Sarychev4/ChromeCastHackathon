@@ -22,7 +22,6 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     private var devicesNotificationToken: NotificationToken?
     
     var didFinishAction: (() -> ())?
-//    private let arrayOfTVs: [String] = ["Samsung", "Sony", "LG"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +98,8 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             guard let device = self.detectedDevices?[index] else { return }
             ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
                 guard let self = self else { return }
+                print(success)
+                
                 if success {
                     self.dismiss(animated: true, completion: nil)
                     self.didFinishAction?()

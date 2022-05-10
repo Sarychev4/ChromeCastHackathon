@@ -102,27 +102,27 @@ open class BaseViewController: UIViewController {
         return .darkContent
     }
     
-//    func checkInternetConnection(with completeBlock: @escaping Closure) {
-//
-//        let HUD = MBProgressHUD.showAdded(to: view, animated: true)
-//        DataManager.shared.checkConnection { [weak self] status in
-//            HUD.hide(animated: true)
-//
-//            if status == .success {
-//                completeBlock()
-//            } else {
-//                let alertTitle = NSLocalizedString("Reachabality.NoInternet.Title", comment: "")
-//                let alertMessage = NSLocalizedString("Reachabality.NoInternet.Message", comment: "")
-//                let OKButtonTitle = NSLocalizedString("Reachabality.NoInternet.OKButton.Title", comment: "")
-//                let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-//                let OKAction = UIAlertAction(title: OKButtonTitle, style: .default) { action in
-//
-//                }
-//
-//                alertController.addAction(OKAction)
-//                self?.present(alertController, animated: true, completion: nil)
-//            }
-//        }
-//    }
+    func checkInternetConnection(with completeBlock: @escaping Closure) {
+
+        let HUD = MBProgressHUD.showAdded(to: view, animated: true)
+        DataManager.shared.checkConnection { [weak self] status in
+            HUD.hide(animated: true)
+
+            if status == .success {
+                completeBlock()
+            } else {
+                let alertTitle = NSLocalizedString("Reachabality.NoInternet.Title", comment: "")
+                let alertMessage = NSLocalizedString("Reachabality.NoInternet.Message", comment: "")
+                let OKButtonTitle = NSLocalizedString("Reachabality.NoInternet.OKButton.Title", comment: "")
+                let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: OKButtonTitle, style: .default) { action in
+
+                }
+
+                alertController.addAction(OKAction)
+                self?.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
 
 }

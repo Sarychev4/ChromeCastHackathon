@@ -41,6 +41,9 @@ class MainViewController: BaseViewController {
     }
     
     var tabs: [Tab] = []
+//    var source: String!
+    var nameForEvents: String { return "Menu screen" }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +53,7 @@ class MainViewController: BaseViewController {
         let menuCellNib = UINib(nibName: MainCell.Identifier, bundle: .main)
         collectionView.register(menuCellNib, forCellWithReuseIdentifier: MainCell.Identifier)
         
-        collectionView.contentInset.top = 16
+        collectionView.contentInset.top = 0
         setupTabs()
     }
     
@@ -161,16 +164,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let collectionWidth = self.collectionView.bounds.width//UIScreen.main.bounds.width - 32
+        let collectionWidth = self.collectionView.bounds.width
+        let collectionHeight = self.collectionView.bounds.height
         let cellWidth = (collectionWidth) / 2
-        
-        var size: CGSize //(width: cellWidth, height: cellWidth )//+ 10 * SizeFactor)
-        //        if Device.current.isOneOf(Device.allDevicesWithSensorHousing + Device.allSimulatorDevicesWithSensorHousing) {
-        //            size = CGSize(width: cellWidth, height: cellWidth )
-        //        } else {
-        //            size = CGSize(width: cellWidth, height: cellWidth - 10 * SizeFactor )
-        //        }
-        size = CGSize(width: cellWidth, height: 146)
+        let cellHeight = (collectionHeight) / 3
+        var size: CGSize
+        size = CGSize(width: cellWidth, height: cellHeight) //146
         return size
     }
     

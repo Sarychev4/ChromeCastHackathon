@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HelpViewController" customModule="ChromecastIOS" customModuleProvider="target">
+            <connections>
+                <outlet property="backIconImageView" destination="fci-Cs-aoM" id="OeB-WY-mkl"/>
+                <outlet property="backInteractiveView" destination="6y4-Tc-0HR" id="V1a-mN-x3q"/>
+                <outlet property="titleLabel" destination="1Av-ol-cuc" id="PMS-wi-gxh"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wkWebView" destination="dd9-90-dsp" id="isE-TR-3C4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2G-1u-LsP">
+                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4J-B0-PNX">
+                            <rect key="frame" x="0.0" y="55" width="414" height="1"/>
+                            <color key="backgroundColor" name="SeparatorColorPrimary"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="itU-T9-dGt"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How it works?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Av-ol-cuc" customClass="DefaultLabel" customModule="ScreenMirroring" customModuleProvider="target">
+                            <rect key="frame" x="56" y="0.0" width="302" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="74i-s3-N6L"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAutomaticalyResizeEnabled" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6y4-Tc-0HR" customClass="InteractiveView" customModule="ScreenMirroring" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="fci-Cs-aoM">
+                                    <rect key="frame" x="16" y="16" width="24" height="24"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="Tah-Cb-DNM"/>
+                                        <constraint firstAttribute="height" constant="24" id="sRB-i0-gNZ"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="3we-ik-t9G"/>
+                                <constraint firstItem="fci-Cs-aoM" firstAttribute="centerX" secondItem="6y4-Tc-0HR" secondAttribute="centerX" id="H38-xQ-vhy"/>
+                                <constraint firstItem="fci-Cs-aoM" firstAttribute="centerY" secondItem="6y4-Tc-0HR" secondAttribute="centerY" id="fLB-WH-fqU"/>
+                                <constraint firstAttribute="height" constant="56" id="zqg-c6-LXZ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="1Av-ol-cuc" firstAttribute="leading" secondItem="6y4-Tc-0HR" secondAttribute="trailing" id="1s7-wD-Rh9"/>
+                        <constraint firstItem="Y4J-B0-PNX" firstAttribute="leading" secondItem="L2G-1u-LsP" secondAttribute="leading" id="2Ky-ab-zIb"/>
+                        <constraint firstAttribute="trailing" secondItem="Y4J-B0-PNX" secondAttribute="trailing" id="33A-sC-WHy"/>
+                        <constraint firstAttribute="height" constant="56" id="3yV-lg-oL1"/>
+                        <constraint firstAttribute="trailing" secondItem="1Av-ol-cuc" secondAttribute="trailing" constant="56" id="9ci-fE-HHf"/>
+                        <constraint firstAttribute="bottom" secondItem="Y4J-B0-PNX" secondAttribute="bottom" id="QO5-kK-1ir"/>
+                        <constraint firstAttribute="bottom" secondItem="1Av-ol-cuc" secondAttribute="bottom" id="QOH-8J-c1m"/>
+                        <constraint firstItem="6y4-Tc-0HR" firstAttribute="leading" secondItem="L2G-1u-LsP" secondAttribute="leading" id="bAz-io-SCR"/>
+                        <constraint firstAttribute="bottom" secondItem="6y4-Tc-0HR" secondAttribute="bottom" id="pRO-WM-O8c"/>
+                    </constraints>
+                </view>
+                <wkWebView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dd9-90-dsp">
+                    <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="L2G-1u-LsP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="GDQ-fp-zP8"/>
+                <constraint firstItem="dd9-90-dsp" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="bjb-cs-4MG"/>
+                <constraint firstItem="L2G-1u-LsP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cDP-9c-3dn"/>
+                <constraint firstItem="L2G-1u-LsP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cgw-M0-oKx"/>
+                <constraint firstItem="dd9-90-dsp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="g5j-2q-wyN"/>
+                <constraint firstAttribute="bottom" secondItem="dd9-90-dsp" secondAttribute="bottom" id="mLU-kR-noi"/>
+                <constraint firstItem="dd9-90-dsp" firstAttribute="top" secondItem="L2G-1u-LsP" secondAttribute="bottom" id="uI2-vO-3GI"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="90"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backArrow" width="16" height="16"/>
+        <namedColor name="SeparatorColorPrimary">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

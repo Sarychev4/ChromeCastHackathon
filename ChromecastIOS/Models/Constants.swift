@@ -54,3 +54,8 @@ public var TopViewController: UIViewController? {
 }
 
 
+//let MirroringURL = URL(string: "http://localhost:\(Port.app.rawValue)/faq")
+
+let TermsOfUse = URL(string: "http://appflair.io/terms-of-use.html")!
+let PrivacyPolicy = URL(string: "http://appflair.io/privacy-policy.html")!
+let SubscriptionTerms = URL(string: "")!

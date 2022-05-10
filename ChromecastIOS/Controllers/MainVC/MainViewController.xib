@@ -171,8 +171,8 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITX-UY-nv1">
                                     <rect key="frame" x="0.0" y="104" width="394" height="513.5"/>
                                     <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-fV-vv2">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="513.5"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-fV-vv2">
+                                            <rect key="frame" x="0.0" y="16" width="394" height="497.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RSU-BZ-eLK">
                                                 <size key="itemSize" width="128" height="128"/>
@@ -186,7 +186,7 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Bch-fV-vv2" secondAttribute="bottom" id="Bsv-v0-ori"/>
                                         <constraint firstAttribute="trailing" secondItem="Bch-fV-vv2" secondAttribute="trailing" id="ECY-sA-lJW"/>
-                                        <constraint firstItem="Bch-fV-vv2" firstAttribute="top" secondItem="ITX-UY-nv1" secondAttribute="top" id="leF-0x-PxM"/>
+                                        <constraint firstItem="Bch-fV-vv2" firstAttribute="top" secondItem="ITX-UY-nv1" secondAttribute="top" constant="16" id="leF-0x-PxM"/>
                                         <constraint firstItem="Bch-fV-vv2" firstAttribute="leading" secondItem="ITX-UY-nv1" secondAttribute="leading" id="oX8-VL-5aQ"/>
                                     </constraints>
                                 </view>
