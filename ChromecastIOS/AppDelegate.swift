@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Agregator
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        /*
+         */
+        
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+        /*
+         */
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        /*
+         */
+        
+        Agregator.shared.initialize(
+            applicationID: "1586624313",
+            amplitudeAPIKey: "2861f703602b114d2559848f268412d5",
+            apphudAPIKey: "app_SGCck8rWYavbreuunHRFxA6BXyJsxp",
+            appsFlyerAPIKey: "mVN6DoQzLUCxz7gLjQivSY"
+        )
+        
+        /*
+         */
         
         let viewController = MainViewController()
         let navigationController = UINavigationContainer(rootViewController: viewController)
