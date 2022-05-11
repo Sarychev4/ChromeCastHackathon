@@ -10,7 +10,7 @@ import RealmSwift
 import Agregator
 
 @objc
-enum SpecialOfferState: Int, RealmEnum {
+enum SpecialOfferState: Int, PersistableEnum {
     case none, running, completed
 }
 
@@ -59,10 +59,9 @@ class Settings: Object {
     
     @Persisted var specialOfferTime: Double = 3600
     
-    @objc dynamic var specialOfferTimeLeft: Double = 3600
+    @objc @Persisted var specialOfferTimeLeft: Double = 3600 //temp as
     
-    @objc
-    dynamic var specialOfferState: SpecialOfferState = .none
+    @Persisted var specialOfferState: SpecialOfferState = .none
     
     @Persisted var isSpecialOfferEnabled: Bool = true
 
