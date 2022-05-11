@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appsFlyerAPIKey: "mVN6DoQzLUCxz7gLjQivSY"
         )
         
-        
         /*
          */
         
@@ -53,18 +52,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*
          */
         
-        if Settings.current.isIntroCompleted {
-            DataManager.shared.setupSpecialOfferTimer()
-            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.sessionStart.rawValue) { [weak self] success in
-                guard let self = self else { return }
-                self.showMainViewController()
+        let loadingViewController = LoadingViewController()
+        loadingViewController.didFinishAction = { [weak self] in
+            guard let self = self else { return }
+            
+            if Settings.current.isIntroCompleted {
+                DataManager.shared.setupSpecialOfferTimer()
+                SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.sessionStart.rawValue) { [weak self] success in
+                    guard let self = self else { return }
+                    self.showMainViewController()
+                }
+            } else {
+                self.showTutorial()
             }
-        } else {
-            self.showTutorial()
         }
         
         
-        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = loadingViewController
+        window!.makeKeyAndVisible()
         
         print("Realm is here: \(Realm.Configuration.defaultConfiguration.fileURL!.path)")
         
@@ -75,11 +81,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = TutorialContainerViewController()
         let navigationController = DefaultNavigationController(rootViewController: vc)
         navigationController.isNavigationBarHidden = false
-        window = UIWindow(frame: UIScreen.main.bounds)
+        
         window!.layer.add(CATransition(), forKey: nil)
         window!.rootViewController = navigationController
-        window!.makeKeyAndVisible()
-        
+     
         vc.didFinishAction = {
             try! Settings.current.realm?.write {
                 Settings.current.isIntroCompleted = true
@@ -100,10 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = MainViewController()
         let navigationController = UINavigationContainer(rootViewController: viewController)
         
-        window = UIWindow(frame: UIScreen.main.bounds)
         window!.rootViewController = navigationController
         window!.layer.add(CATransition(), forKey: nil)
-        window!.makeKeyAndVisible()
     }
 
     // MARK: UISceneSession Lifecycle

@@ -107,6 +107,8 @@
 		DDA7204A282AC47700CF4DC3 /* SKPproduct+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */; };
 		DDA7204C282AC79900CF4DC3 /* DefaultAppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7204B282AC79900CF4DC3 /* DefaultAppConfiguration.swift */; };
 		DDA7204E282ACC2600CF4DC3 /* Realm+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */; };
+		DDA72051282BB33E00CF4DC3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7204F282BB33E00CF4DC3 /* LoadingViewController.swift */; };
+		DDA72052282BB33E00CF4DC3 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA72050282BB33E00CF4DC3 /* LoadingViewController.xib */; };
 		DDA737632819319C00CCF7FD /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA737612819319C00CCF7FD /* AlertViewController.swift */; };
 		DDA737642819319C00CCF7FD /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA737622819319C00CCF7FD /* AlertViewController.xib */; };
 		DDA7376628193C8C00CCF7FD /* InteractiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7376528193C8C00CCF7FD /* InteractiveLabel.swift */; };
@@ -300,6 +302,8 @@
 		DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKPproduct+Extension.swift"; sourceTree = "<group>"; };
 		DDA7204B282AC79900CF4DC3 /* DefaultAppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAppConfiguration.swift; sourceTree = "<group>"; };
 		DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extension.swift"; sourceTree = "<group>"; };
+		DDA7204F282BB33E00CF4DC3 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		DDA72050282BB33E00CF4DC3 /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		DDA737612819319C00CCF7FD /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		DDA737622819319C00CCF7FD /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		DDA7376528193C8C00CCF7FD /* InteractiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveLabel.swift; sourceTree = "<group>"; };
@@ -569,6 +573,7 @@
 		DD305EA2280F2D1900BA57B4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DDA72053282BB34400CF4DC3 /* Loading */,
 				DD18120E282ABA6A00EFF2AF /* HelpVC */,
 				DDCF125728229C03009019D4 /* MirrorSettingsVC */,
 				DD52329F281ACE16004AF0AA /* Subscriptions */,
@@ -739,6 +744,15 @@
 				DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */,
 			);
 			path = ConnectVC;
+			sourceTree = "<group>";
+		};
+		DDA72053282BB34400CF4DC3 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				DDA7204F282BB33E00CF4DC3 /* LoadingViewController.swift */,
+				DDA72050282BB33E00CF4DC3 /* LoadingViewController.xib */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		DDAE26482818249400355735 /* RatingStarsVC */ = {
@@ -1163,6 +1177,7 @@
 				DD19E4A72812ABD900931489 /* barton_nature_leeve.JPG in Resources */,
 				DDCF125B28229C23009019D4 /* MirrorSettingsViewController.xib in Resources */,
 				DDF59BFE280F323500CE2E2B /* UINavigationContainer.xib in Resources */,
+				DDA72052282BB33E00CF4DC3 /* LoadingViewController.xib in Resources */,
 				DD19E4B22812ABD900931489 /* willowtree_apartment_sunset_hd.jpg in Resources */,
 				DD23EAE12811947A00DB7D44 /* SettingsViewController.xib in Resources */,
 				DD19E4B32812ABD900931489 /* barton_nature_lake_hd.JPG in Resources */,
@@ -1323,6 +1338,7 @@
 				DD5232AC281ACF0C004AF0AA /* PremiumDiscountViewController.swift in Sources */,
 				DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */,
 				E8CFAEC4282AED8B002C3B87 /* URL+Extension.swift in Sources */,
+				DDA72051282BB33E00CF4DC3 /* LoadingViewController.swift in Sources */,
 				DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */,
 				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */,
