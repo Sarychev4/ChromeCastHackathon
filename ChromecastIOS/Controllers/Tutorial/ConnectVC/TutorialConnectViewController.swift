@@ -31,7 +31,7 @@ class TutorialConnectViewController: BaseViewController {
     private var progressTimer: Timer?
     private var currentProgress: Int = 0
     
-    var temp = true
+    private var isShortAnimation: Bool =  true //3 sec
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class TutorialConnectViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        startProcessingAnimation()
+        self.startProcessingAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,13 +77,13 @@ class TutorialConnectViewController: BaseViewController {
     private func startProcessingAnimation() {
         guard currentProgress < 100 else { return }
         
-        if temp ==  true {
-            showLongAnimation { [weak self] in
+        if isShortAnimation ==  true {
+            showShortAnimation { [weak self] in
                 guard let self = self else { return }
                 self.presentDevices()
             }
         } else {
-            showShortAnimation { [weak self] in
+            showLongAnimation { [weak self] in
                 guard let self = self else { return }
                 self.presentDevices()
             }
@@ -91,8 +91,8 @@ class TutorialConnectViewController: BaseViewController {
     }
     
     private func showShortAnimation(onComplete: @escaping () -> ()) {
-        animateWithRandomDuration(in: 1.5..<2.5, toPercent: 0.45) { [weak self] in
-            self?.animateWithRandomDuration(in: 0.5..<1, toPercent: 1) {
+        animateWithRandomDuration(in: 1.5..<2.0, toPercent: 0.45) { [weak self] in
+            self?.animateWithRandomDuration(in: 0.5..<1.0, toPercent: 1) {
                 onComplete()
             }
         }
@@ -114,7 +114,7 @@ class TutorialConnectViewController: BaseViewController {
         let maxWidth = UIScreen.main.bounds.width - 80
         let duration = Double.random(in: range)
         let ticksCount = max(1, toPercent * 100 - Double(currentProgress)) //Мы ниже делим на ticksCount, поэтому нельзя чтобы было 0
-        
+        print("Interval: \(duration / ticksCount)")
         startProgressTimer(withInterval: duration / ticksCount)
         progressWidthConstraint.constant = maxWidth * toPercent
         
@@ -124,6 +124,7 @@ class TutorialConnectViewController: BaseViewController {
         } completion: { [weak self] success in
             guard let self = self else { return }
             if success {
+                self.stopProgressTimer()
                 onComplete()
             } else {
                 self.stopProgressTimer()
@@ -132,7 +133,7 @@ class TutorialConnectViewController: BaseViewController {
     }
     
     private func startProgressTimer(withInterval interval: Double) {
-        stopProgressTimer()
+//        stopProgressTimer()
         
         guard currentProgress < 100 else { print(">>> error!"); return }
         
