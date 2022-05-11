@@ -109,6 +109,12 @@
 		DDA7204E282ACC2600CF4DC3 /* Realm+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */; };
 		DDA72051282BB33E00CF4DC3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7204F282BB33E00CF4DC3 /* LoadingViewController.swift */; };
 		DDA72052282BB33E00CF4DC3 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA72050282BB33E00CF4DC3 /* LoadingViewController.xib */; };
+		DDA72057282BF6BF00CF4DC3 /* IPTVPlayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72055282BF6BF00CF4DC3 /* IPTVPlayListCell.swift */; };
+		DDA72058282BF6BF00CF4DC3 /* IPTVPlayListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA72056282BF6BF00CF4DC3 /* IPTVPlayListCell.xib */; };
+		DDA7205D282C35A400CF4DC3 /* IPTVStreamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7205B282C35A400CF4DC3 /* IPTVStreamsViewController.swift */; };
+		DDA7205E282C35A400CF4DC3 /* IPTVStreamsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA7205C282C35A400CF4DC3 /* IPTVStreamsViewController.xib */; };
+		DDA72062282C378000CF4DC3 /* IPTVStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72060282C378000CF4DC3 /* IPTVStreamCell.swift */; };
+		DDA72063282C378000CF4DC3 /* IPTVStreamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA72061282C378000CF4DC3 /* IPTVStreamCell.xib */; };
 		DDA737632819319C00CCF7FD /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA737612819319C00CCF7FD /* AlertViewController.swift */; };
 		DDA737642819319C00CCF7FD /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA737622819319C00CCF7FD /* AlertViewController.xib */; };
 		DDA7376628193C8C00CCF7FD /* InteractiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7376528193C8C00CCF7FD /* InteractiveLabel.swift */; };
@@ -132,12 +138,17 @@
 		DDCE0A0B28116EF9004E9C18 /* GooglePhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A0928116EF9004E9C18 /* GooglePhotosViewController.xib */; };
 		DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE0A0F28116FAE004E9C18 /* MediaPlayerViewController.swift */; };
 		DDCE0A1228116FAE004E9C18 /* MediaPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A1028116FAE004E9C18 /* MediaPlayerViewController.xib */; };
-		DDCE0A1528116FEC004E9C18 /* IPTVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE0A1328116FEC004E9C18 /* IPTVViewController.swift */; };
-		DDCE0A1628116FEC004E9C18 /* IPTVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A1428116FEC004E9C18 /* IPTVViewController.xib */; };
+		DDCE0A1528116FEC004E9C18 /* IPTVPlayListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE0A1328116FEC004E9C18 /* IPTVPlayListsViewController.swift */; };
+		DDCE0A1628116FEC004E9C18 /* IPTVPlayListsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A1428116FEC004E9C18 /* IPTVPlayListsViewController.xib */; };
 		DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE0A1728117020004E9C18 /* YouTubeViewController.swift */; };
 		DDCE0A1A28117020004E9C18 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */; };
 		DDCF125A28229C23009019D4 /* MirrorSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCF125828229C23009019D4 /* MirrorSettingsViewController.swift */; };
 		DDCF125B28229C23009019D4 /* MirrorSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCF125928229C23009019D4 /* MirrorSettingsViewController.xib */; };
+		DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */ = {isa = PBXBuildFile; fileRef = DDED96E8282C47390088E4E6 /* SplashAnimation.json */; };
+		DDED96EA282C496F0088E4E6 /* SplashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = DDED96E8282C47390088E4E6 /* SplashAnimation.json */; };
+		DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */; };
+		DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96ED282C54510088E4E6 /* IPTVManager.swift */; };
+		DDED96F0282C63010088E4E6 /* ScrollViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96EF282C63010088E4E6 /* ScrollViewAnimator.swift */; };
 		DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */; };
 		DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */; };
 		DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */; };
@@ -304,6 +315,12 @@
 		DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Extension.swift"; sourceTree = "<group>"; };
 		DDA7204F282BB33E00CF4DC3 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		DDA72050282BB33E00CF4DC3 /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		DDA72055282BF6BF00CF4DC3 /* IPTVPlayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVPlayListCell.swift; sourceTree = "<group>"; };
+		DDA72056282BF6BF00CF4DC3 /* IPTVPlayListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IPTVPlayListCell.xib; sourceTree = "<group>"; };
+		DDA7205B282C35A400CF4DC3 /* IPTVStreamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVStreamsViewController.swift; sourceTree = "<group>"; };
+		DDA7205C282C35A400CF4DC3 /* IPTVStreamsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IPTVStreamsViewController.xib; sourceTree = "<group>"; };
+		DDA72060282C378000CF4DC3 /* IPTVStreamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVStreamCell.swift; sourceTree = "<group>"; };
+		DDA72061282C378000CF4DC3 /* IPTVStreamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IPTVStreamCell.xib; sourceTree = "<group>"; };
 		DDA737612819319C00CCF7FD /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		DDA737622819319C00CCF7FD /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		DDA7376528193C8C00CCF7FD /* InteractiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveLabel.swift; sourceTree = "<group>"; };
@@ -327,12 +344,16 @@
 		DDCE0A0928116EF9004E9C18 /* GooglePhotosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GooglePhotosViewController.xib; sourceTree = "<group>"; };
 		DDCE0A0F28116FAE004E9C18 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 		DDCE0A1028116FAE004E9C18 /* MediaPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaPlayerViewController.xib; sourceTree = "<group>"; };
-		DDCE0A1328116FEC004E9C18 /* IPTVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVViewController.swift; sourceTree = "<group>"; };
-		DDCE0A1428116FEC004E9C18 /* IPTVViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IPTVViewController.xib; sourceTree = "<group>"; };
+		DDCE0A1328116FEC004E9C18 /* IPTVPlayListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVPlayListsViewController.swift; sourceTree = "<group>"; };
+		DDCE0A1428116FEC004E9C18 /* IPTVPlayListsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IPTVPlayListsViewController.xib; sourceTree = "<group>"; };
 		DDCE0A1728117020004E9C18 /* YouTubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
 		DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouTubeViewController.xib; sourceTree = "<group>"; };
 		DDCF125828229C23009019D4 /* MirrorSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorSettingsViewController.swift; sourceTree = "<group>"; };
 		DDCF125928229C23009019D4 /* MirrorSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorSettingsViewController.xib; sourceTree = "<group>"; };
+		DDED96E8282C47390088E4E6 /* SplashAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SplashAnimation.json; sourceTree = "<group>"; };
+		DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistM3U8.swift; sourceTree = "<group>"; };
+		DDED96ED282C54510088E4E6 /* IPTVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVManager.swift; sourceTree = "<group>"; };
+		DDED96EF282C63010088E4E6 /* ScrollViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewAnimator.swift; sourceTree = "<group>"; };
 		DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTestConnectionViewController.swift; sourceTree = "<group>"; };
 		DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialTestConnectionViewController.xib; sourceTree = "<group>"; };
 		DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreviewImageViewController.swift; sourceTree = "<group>"; };
@@ -424,6 +445,7 @@
 				DD2FEAB72824FFD300D8EB11 /* DeviceObject.swift */,
 				DD03EFAB282AA2EC0075F70E /* Settings.swift */,
 				DD03EFAD282AA4280075F70E /* SubscriptionSpot.swift */,
+				DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -661,6 +683,7 @@
 				DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */,
 				DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */,
 				DD03EFB0282AA4580075F70E /* DataManager.swift */,
+				DDED96ED282C54510088E4E6 /* IPTVManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -755,6 +778,44 @@
 			path = Loading;
 			sourceTree = "<group>";
 		};
+		DDA72054282BF66100CF4DC3 /* IPTVPlayListCell */ = {
+			isa = PBXGroup;
+			children = (
+				DDA72055282BF6BF00CF4DC3 /* IPTVPlayListCell.swift */,
+				DDA72056282BF6BF00CF4DC3 /* IPTVPlayListCell.xib */,
+			);
+			path = IPTVPlayListCell;
+			sourceTree = "<group>";
+		};
+		DDA72059282C336000CF4DC3 /* IPTVPlayListsVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDA72054282BF66100CF4DC3 /* IPTVPlayListCell */,
+				DDCE0A1328116FEC004E9C18 /* IPTVPlayListsViewController.swift */,
+				DDCE0A1428116FEC004E9C18 /* IPTVPlayListsViewController.xib */,
+			);
+			path = IPTVPlayListsVC;
+			sourceTree = "<group>";
+		};
+		DDA7205A282C350400CF4DC3 /* IPTVStreamsVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDA7205F282C374B00CF4DC3 /* IPTVStreamCell */,
+				DDA7205B282C35A400CF4DC3 /* IPTVStreamsViewController.swift */,
+				DDA7205C282C35A400CF4DC3 /* IPTVStreamsViewController.xib */,
+			);
+			path = IPTVStreamsVC;
+			sourceTree = "<group>";
+		};
+		DDA7205F282C374B00CF4DC3 /* IPTVStreamCell */ = {
+			isa = PBXGroup;
+			children = (
+				DDA72060282C378000CF4DC3 /* IPTVStreamCell.swift */,
+				DDA72061282C378000CF4DC3 /* IPTVStreamCell.xib */,
+			);
+			path = IPTVStreamCell;
+			sourceTree = "<group>";
+		};
 		DDAE26482818249400355735 /* RatingStarsVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,8 +904,8 @@
 		DDCE0A0D28116F6D004E9C18 /* IptvVC */ = {
 			isa = PBXGroup;
 			children = (
-				DDCE0A1328116FEC004E9C18 /* IPTVViewController.swift */,
-				DDCE0A1428116FEC004E9C18 /* IPTVViewController.xib */,
+				DDA7205A282C350400CF4DC3 /* IPTVStreamsVC */,
+				DDA72059282C336000CF4DC3 /* IPTVPlayListsVC */,
 			);
 			path = IptvVC;
 			sourceTree = "<group>";
@@ -921,6 +982,7 @@
 				DDAE26562818545E00355735 /* AFFloatingPanelViewController.swift */,
 				DDA737612819319C00CCF7FD /* AlertViewController.swift */,
 				DDA737622819319C00CCF7FD /* AlertViewController.xib */,
+				DDED96EF282C63010088E4E6 /* ScrollViewAnimator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1036,6 +1098,7 @@
 				E89642BD280EAF7900E6E287 /* Assets.xcassets */,
 				DDF59C09280F46CE00CE2E2B /* Localizable.strings */,
 				DDA7204B282AC79900CF4DC3 /* DefaultAppConfiguration.swift */,
+				DDED96E8282C47390088E4E6 /* SplashAnimation.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1130,13 +1193,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDED96EA282C496F0088E4E6 /* SplashAnimation.json in Resources */,
 				DDCE0A002810724B004E9C18 /* BrowserCell.xib in Resources */,
 				DD19E4742811D58600931489 /* style.css in Resources */,
 				DDCE09FC281064C2004E9C18 /* BrowserViewController.xib in Resources */,
 				DD69DCAB281A8EF80010E4B3 /* MediaLibraryViewController.xib in Resources */,
 				DD181212282ABA8F00EFF2AF /* HelpViewController.xib in Resources */,
 				E896433D280EB75D00E6E287 /* LaunchScreen.storyboard in Resources */,
-				DDCE0A1628116FEC004E9C18 /* IPTVViewController.xib in Resources */,
+				DDCE0A1628116FEC004E9C18 /* IPTVPlayListsViewController.xib in Resources */,
+				DDA72058282BF6BF00CF4DC3 /* IPTVPlayListCell.xib in Resources */,
 				DDCE0A1A28117020004E9C18 /* YouTubeViewController.xib in Resources */,
 				DD345D232817FA9700E67AB0 /* twitch_ico.png in Resources */,
 				DD23EAE62811BF4000DB7D44 /* OpenWebsitesViewController.xib in Resources */,
@@ -1180,11 +1245,13 @@
 				DDA72052282BB33E00CF4DC3 /* LoadingViewController.xib in Resources */,
 				DD19E4B22812ABD900931489 /* willowtree_apartment_sunset_hd.jpg in Resources */,
 				DD23EAE12811947A00DB7D44 /* SettingsViewController.xib in Resources */,
+				DDA7205E282C35A400CF4DC3 /* IPTVStreamsViewController.xib in Resources */,
 				DD19E4B32812ABD900931489 /* barton_nature_lake_hd.JPG in Resources */,
 				DD19E4B52812ABD900931489 /* barton_nature_leeve_hd.JPG in Resources */,
 				DD19E4BF2812ABD900931489 /* barton_nature_swan_hd.JPG in Resources */,
 				DD345D272817FA9700E67AB0 /* vimeo_ico.png in Resources */,
 				DD19E4B02812ABD900931489 /* vertical_strip.png in Resources */,
+				DDA72063282C378000CF4DC3 /* IPTVStreamCell.xib in Resources */,
 				DDF59C15280F5E1F00CE2E2B /* MainCell.xib in Resources */,
 				DD19E4AD2812ABD900931489 /* bird_hills_nature_sunset.JPG in Resources */,
 				DD345D262817FA9700E67AB0 /* veoh_ico.png in Resources */,
@@ -1310,19 +1377,24 @@
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
 				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
+				DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */,
 				DD19E4892812AA5700931489 /* PhotoModel.swift in Sources */,
 				DDF59C00280F32A400CE2E2B /* UIViewController+Extension.swift in Sources */,
 				DDF59C10280F4B7B00CE2E2B /* UIView+Extension.swift in Sources */,
 				DD923AE82816AF1B0034E5D3 /* TutorialContainerViewController.swift in Sources */,
 				DDF59C0C280F489C00CE2E2B /* DefaultLabel.swift in Sources */,
 				DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */,
+				DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */,
 				DDCF125A28229C23009019D4 /* MirrorSettingsViewController.swift in Sources */,
 				E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */,
+				DDA7205D282C35A400CF4DC3 /* IPTVStreamsViewController.swift in Sources */,
+				DDED96F0282C63010088E4E6 /* ScrollViewAnimator.swift in Sources */,
 				DDF59C02280F41AD00CE2E2B /* RoundedView.swift in Sources */,
 				DD03EFB7282AB4E50075F70E /* RoundedImageView.swift in Sources */,
 				DDAE26542818535200355735 /* ListDevicesViewController.swift in Sources */,
 				DDF59BF6280F30A100CE2E2B /* InteractiveView.swift in Sources */,
 				DD19E4CE2812C42500931489 /* HDFlowLayout.swift in Sources */,
+				DDA72057282BF6BF00CF4DC3 /* IPTVPlayListCell.swift in Sources */,
 				DD181211282ABA8F00EFF2AF /* HelpViewController.swift in Sources */,
 				DDF59BF8280F30AF00CE2E2B /* DefaultView.swift in Sources */,
 				DDAE265F281874A600355735 /* DeviceCellView.swift in Sources */,
@@ -1343,6 +1415,7 @@
 				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */,
 				DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */,
+				DDA72062282C378000CF4DC3 /* IPTVStreamCell.swift in Sources */,
 				DDA7204A282AC47700CF4DC3 /* SKPproduct+Extension.swift in Sources */,
 				DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */,
 				DD69DCAA281A8EF80010E4B3 /* MediaLibraryViewController.swift in Sources */,
@@ -1364,6 +1437,7 @@
 				DD23EAE02811947A00DB7D44 /* SettingsViewController.swift in Sources */,
 				DDF59BF1280F2F0B00CE2E2B /* BaseViewController.swift in Sources */,
 				DD03EFAA282A63F10075F70E /* LocalNetworkPermissionsManager.swift in Sources */,
+				DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */,
 				DD923ADD2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift in Sources */,
 				DDA737632819319C00CCF7FD /* AlertViewController.swift in Sources */,
 				DDCE0A0628116ED5004E9C18 /* GoogleDriveViewController.swift in Sources */,
@@ -1372,7 +1446,7 @@
 				DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */,
 				DD03EFAC282AA2EC0075F70E /* Settings.swift in Sources */,
 				DD5232A5281ACEA2004AF0AA /* SubscriptionSpotsManager.swift in Sources */,
-				DDCE0A1528116FEC004E9C18 /* IPTVViewController.swift in Sources */,
+				DDCE0A1528116FEC004E9C18 /* IPTVPlayListsViewController.swift in Sources */,
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
 				DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */,

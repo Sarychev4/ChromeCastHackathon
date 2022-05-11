@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IPTVPlayListCell" rowHeight="83" id="KGk-i7-Jjw" customClass="IPTVPlayListCell" customModule="ChromecastIOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="353" height="83"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="353" height="83"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEJ-n9-15M">
+                        <rect key="frame" x="6" y="6" width="341" height="70"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hId-zA-t04" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="341" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouu-ZO-2sZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="341" height="70"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                        <connections>
+                                            <action selector="contentClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0cZ-4F-jJv"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHW-yz-cpM">
+                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIn-Km-JPH">
+                                                <rect key="frame" x="9.5" y="4" width="11" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <color key="textColor" name="MainBackground"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" name="AppleBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="8Zo-9w-N2i"/>
+                                            <constraint firstItem="SIn-Km-JPH" firstAttribute="centerX" secondItem="iHW-yz-cpM" secondAttribute="centerX" id="WaK-8T-VRW"/>
+                                            <constraint firstAttribute="height" constant="30" id="hvt-w1-mnT"/>
+                                            <constraint firstItem="SIn-Km-JPH" firstAttribute="centerY" secondItem="iHW-yz-cpM" secondAttribute="centerY" id="mot-Vs-vB1"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entertainment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4f-ng-YPN" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <rect key="frame" x="66" y="16" width="111" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" name="labelColorDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="328 channels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAB-4R-dQr" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <rect key="frame" x="66" y="41" width="76.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="labelColorGrayPunk"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="iHW-yz-cpM" firstAttribute="centerY" secondItem="hId-zA-t04" secondAttribute="centerY" id="IT2-8q-w2h"/>
+                                    <constraint firstItem="YAB-4R-dQr" firstAttribute="top" secondItem="b4f-ng-YPN" secondAttribute="bottom" constant="4" id="LdX-hj-Nl0"/>
+                                    <constraint firstItem="YAB-4R-dQr" firstAttribute="leading" secondItem="iHW-yz-cpM" secondAttribute="trailing" constant="16" id="MDH-7A-sxN"/>
+                                    <constraint firstItem="b4f-ng-YPN" firstAttribute="leading" secondItem="iHW-yz-cpM" secondAttribute="trailing" constant="16" id="Wum-vK-DVe"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ouu-ZO-2sZ" secondAttribute="bottom" id="bJ9-k9-kQ5"/>
+                                    <constraint firstAttribute="height" constant="70" id="cw9-U3-zIs"/>
+                                    <constraint firstItem="Ouu-ZO-2sZ" firstAttribute="top" secondItem="hId-zA-t04" secondAttribute="top" id="f1n-8M-8fE"/>
+                                    <constraint firstItem="b4f-ng-YPN" firstAttribute="top" secondItem="hId-zA-t04" secondAttribute="top" constant="16" id="gZq-e5-vQa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ouu-ZO-2sZ" secondAttribute="trailing" id="jOZ-1U-DLf"/>
+                                    <constraint firstItem="Ouu-ZO-2sZ" firstAttribute="leading" secondItem="hId-zA-t04" secondAttribute="leading" id="m1N-jf-mRX"/>
+                                    <constraint firstItem="iHW-yz-cpM" firstAttribute="leading" secondItem="hId-zA-t04" secondAttribute="leading" constant="20" id="ve1-Vy-qLb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hId-zA-t04" firstAttribute="leading" secondItem="cEJ-n9-15M" secondAttribute="leading" id="1ux-aL-bn4"/>
+                            <constraint firstAttribute="trailing" secondItem="hId-zA-t04" secondAttribute="trailing" id="XGY-OU-1gZ"/>
+                            <constraint firstAttribute="bottom" secondItem="hId-zA-t04" secondAttribute="bottom" id="au4-dl-1jS"/>
+                            <constraint firstItem="hId-zA-t04" firstAttribute="top" secondItem="cEJ-n9-15M" secondAttribute="top" id="hr4-eL-hbt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="cEJ-n9-15M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5qQ-jz-JH0"/>
+                    <constraint firstAttribute="bottom" secondItem="cEJ-n9-15M" secondAttribute="bottom" constant="6" id="9Dk-mJ-wn5"/>
+                    <constraint firstItem="cEJ-n9-15M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="GO9-go-FWx"/>
+                    <constraint firstAttribute="trailing" secondItem="cEJ-n9-15M" secondAttribute="trailing" constant="6" id="f2k-Hk-UNA"/>
+                    <constraint firstItem="cEJ-n9-15M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="ysf-UP-tCa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="backgroundShadow" destination="hId-zA-t04" id="aKR-fI-wjh"/>
+                <outlet property="logoContainerView" destination="iHW-yz-cpM" id="pmK-lz-ex2"/>
+                <outlet property="logoLabel" destination="SIn-Km-JPH" id="Ex5-kV-EDZ"/>
+                <outlet property="playlistInfoLabel" destination="YAB-4R-dQr" id="IBl-hn-1Id"/>
+                <outlet property="playlistNameLabel" destination="b4f-ng-YPN" id="BHd-Uf-tQe"/>
+            </connections>
+            <point key="canvasLocation" x="161.59420289855075" y="102.79017857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AppleBlue">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BackgroundColor">
+            <color red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorGrayPunk">
+            <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
