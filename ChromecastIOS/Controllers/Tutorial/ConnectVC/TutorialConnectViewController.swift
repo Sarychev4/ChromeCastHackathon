@@ -152,7 +152,7 @@ class TutorialConnectViewController: BaseViewController {
     
     private func presentDevices() {
         let controller = ListDevicesViewController()
-        controller.canDismissOnPan = true
+        controller.canDismissOnPan = false
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)

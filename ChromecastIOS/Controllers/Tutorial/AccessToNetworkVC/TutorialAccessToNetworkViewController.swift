@@ -151,7 +151,7 @@ class TutorialAccessToNetworkViewController: BaseViewController {
             self.isAnimating = false
             self.activityIndicator.stopAnimating()
             self.continueLabel.isHidden = false
-            self.continueLabel.text = NSLocalizedString("Common.Continue", comment: "").uppercased()
+            self.continueLabel.text = NSLocalizedString("Common.Continue", comment: "")
             self.continueInteractiveView.bounce(onComplete: nil)
         }
     }
