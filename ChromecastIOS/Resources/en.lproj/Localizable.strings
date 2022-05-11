@@ -102,3 +102,32 @@ Features";
  */
 "MirrorSettings.Title" = "Mirror Settings";
 
+/*
+ - Subscriptions
+ */
+
+"Subscription.Top.Subtitle.1" = "Get access to all features for the";
+"Subscription.Top.Subtitle.2" = "best experience";
+"Subscription.Feature.Title.1" = "Screen Mirroring with Audio";
+"Subscription.Feature.Title.2" = "Unlimited Mirroring";
+"Subscription.Feature.Title.3" = "No Delay";
+"Subscription.Feature.Title.4" = "IPTV";
+"Subscription.Feature.Title.5" = "Works with all TVs";
+"Subscription.Feature.Title.6" = "No ADS";
+  
+"Subscription.Bottom.ByContinue" = "By continuing you accept our: ";
+"Subscription.Bottom.Action.Title" = "Continue";
+ 
+"Subscription.PrivacyPolicy.Title" = "Privacy Policy";
+"Subscription.SubscriptionTerms.Title" = "Subscription Terms";
+"Subscription.Terms.Title" = "Terms of use";
+"Subscription.Restore.Title" = "Restore Purchase";
+
+"Subscription.SpecialOffer.Top.Title" = "SPECIAL OFFER";
+"Subscription.SpecialOffer.Offer.Title" = "50% OFF";
+"Subscription.SpecialOffer.Timer.Title" = "Offer ends in:";
+
+"SubscriptionComment1" = "I really enjoy the app, the set up was easy and it just works as expected.";
+"SubscriptionCommentName1" = "by Andy Davies";
+"SubscriptionComment2" = "So far I’m loving it.\nWay better to see all the info on a bigger screen";
+"SubscriptionCommentName2" = "by JD891";

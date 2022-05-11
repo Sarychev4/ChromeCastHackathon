@@ -102,7 +102,9 @@ class ListDevicesViewController: AFFloatingPanelViewController {
                 
                 if success {
                     self.dismiss(animated: true, completion: nil)
-                    self.didFinishAction?()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.didFinishAction?()
+                    }
                 }
             })
             

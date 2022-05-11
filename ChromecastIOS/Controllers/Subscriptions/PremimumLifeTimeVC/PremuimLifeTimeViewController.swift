@@ -89,7 +89,7 @@ class PremuimLifeTimeViewController: BaseViewController, SubscriptionController 
             firstProductAccessoryImageView.image = selectedIndex == 0 ? checkmarkOn : checkMarkOff
             secondProductAccessoryImageView.image = selectedIndex == 1 ? checkmarkOn : checkMarkOff
              
-            let blueBorder = UIColor(named: "IntroBlue")!
+            let blueBorder = UIColor(named: "AppleBlue")!
             let grayBorder = UIColor(named: "TrueWhite")!.withAlphaComponent(0.2)
             firstProductInteractiveView.borderColor = selectedIndex == 0 ? blueBorder : grayBorder
             secondProductInteractiveView.borderColor = selectedIndex == 1 ? blueBorder : grayBorder
