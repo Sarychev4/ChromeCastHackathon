@@ -54,6 +54,7 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Uqa-oC-6Lf" secondAttribute="bottom" id="2un-aj-4u3"/>
                                             <constraint firstItem="Uqa-oC-6Lf" firstAttribute="leading" secondItem="bNc-jv-jHC" secondAttribute="leading" id="7nM-FR-mnF"/>
+                                            <constraint firstAttribute="height" constant="36" id="Er4-3C-M0y"/>
                                             <constraint firstItem="Uqa-oC-6Lf" firstAttribute="top" secondItem="bNc-jv-jHC" secondAttribute="top" id="M3I-Ui-Te8"/>
                                         </constraints>
                                     </view>
@@ -62,12 +63,18 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-J1-YUR">
                                                 <rect key="frame" x="0.0" y="12" width="64.5" height="20.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20.5" id="4Gq-Uu-CYf"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" red="0.14117647058823529" green="0.15686274509803921" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cast from websites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4x-Fy-bsK">
                                                 <rect key="frame" x="0.0" y="36.5" width="109" height="14.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="14.5" id="6Sc-Dy-7XS"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.52549019607843139" green="0.52549019607843139" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -76,6 +83,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="z4x-Fy-bsK" firstAttribute="top" secondItem="44b-J1-YUR" secondAttribute="bottom" constant="4" id="EAz-37-KMW"/>
+                                            <constraint firstAttribute="height" constant="50" id="MRr-vV-RrS"/>
                                             <constraint firstAttribute="trailing" secondItem="z4x-Fy-bsK" secondAttribute="trailing" constant="1" id="TNY-CC-qI9"/>
                                             <constraint firstItem="z4x-Fy-bsK" firstAttribute="leading" secondItem="RpC-E0-ljn" secondAttribute="leading" id="evs-Sh-etP"/>
                                             <constraint firstItem="44b-J1-YUR" firstAttribute="top" secondItem="RpC-E0-ljn" secondAttribute="top" constant="12" id="tZb-4S-f2U"/>
@@ -88,10 +96,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="P6H-Df-0gv" secondAttribute="bottom" constant="24" id="4LO-ba-aJk"/>
+                            <constraint firstItem="P6H-Df-0gv" firstAttribute="centerY" secondItem="5yq-os-JMf" secondAttribute="centerY" id="8ca-Oy-9Q1"/>
                             <constraint firstItem="eko-ef-X77" firstAttribute="leading" secondItem="5yq-os-JMf" secondAttribute="leading" id="CHV-vI-9jh"/>
                             <constraint firstItem="P6H-Df-0gv" firstAttribute="leading" secondItem="5yq-os-JMf" secondAttribute="leading" constant="24" id="ElO-R0-NV8"/>
-                            <constraint firstItem="P6H-Df-0gv" firstAttribute="top" secondItem="5yq-os-JMf" secondAttribute="top" constant="24" id="OXA-SK-UnV"/>
                             <constraint firstItem="eko-ef-X77" firstAttribute="top" secondItem="5yq-os-JMf" secondAttribute="top" id="b2A-iH-svY"/>
                             <constraint firstAttribute="bottom" secondItem="eko-ef-X77" secondAttribute="bottom" id="bhr-cA-rTV"/>
                             <constraint firstAttribute="trailing" secondItem="eko-ef-X77" secondAttribute="trailing" id="eNI-Is-h27"/>
