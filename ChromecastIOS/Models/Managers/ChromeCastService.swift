@@ -66,7 +66,7 @@ class ChromeCastService: NSObject {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
             guard let convertedString = String(data: jsonData, encoding: String.Encoding.utf8) else {return}
-            screenMirroringChannel!.sendTextMessage(convertedString, error: nil)
+            screenMirroringChannel?.sendTextMessage(convertedString, error: nil)
         } catch {
             print(error.localizedDescription)
         }
