@@ -42,7 +42,12 @@ class ChromeCastService: NSObject {
         deviceScanner.startDiscovery()
         
         let sessionManager = GCKCastContext.sharedInstance().sessionManager
+        print(sessionManager.hasConnectedSession())
+        if sessionManager.hasConnectedSession(){
+            sessionManager.endSession()
+        }
         sessionManager.add(self)
+        
     }
     
     func connect(to deviceID: String, onComplete: ClosureBool?) {

@@ -123,7 +123,7 @@ class MainViewController: BaseViewController {
             viewController.hidesBottomBarWhenPushed = true
             navigation?.pushViewController(viewController, animated: .left)
         case .iptv:
-            let viewController = IPTVViewController()
+            let viewController = IPTVPlayListsViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigation?.pushViewController(viewController, animated: .left)
         case .youtube:

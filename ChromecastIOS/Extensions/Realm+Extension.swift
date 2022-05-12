@@ -14,12 +14,12 @@ extension Realm {
 //        return try! Realm(configuration: config)
 //    }
     
-//    static var IPTV: Realm! {
-//        let iptvRealm = URL.GroupRealmFile.deletingLastPathComponent().appendingPathComponent("FreeIPTV.realm")
-//        let schemaVersion = UInt64(Bundle.main.buildVersionNumber)!
-//        let config = Realm.Configuration(fileURL: iptvRealm, schemaVersion: schemaVersion)
-//        return try! Realm(configuration: config)
-//    }
+    static var IPTV: Realm! {
+        let iptvRealm = URL.GroupRealmFile.deletingLastPathComponent().appendingPathComponent("FreeIPTV.realm")
+        let schemaVersion = UInt64(Bundle.main.buildVersionNumber)!
+        let config = Realm.Configuration(fileURL: iptvRealm, schemaVersion: schemaVersion)
+        return try! Realm(configuration: config)
+    }
     
     static var Main: Realm! {
         let fileURL = URL.GroupRealmFile.deletingLastPathComponent().appendingPathComponent("Configuration.realm")

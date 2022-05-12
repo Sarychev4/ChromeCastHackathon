@@ -11,19 +11,27 @@ import Lottie
 
 class LoadingViewController: BaseViewController {
 
+    @IBOutlet weak var animationView: AnimationView!
     var didFinishAction: Closure!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.didFinishAction()
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.contentMode = .scaleAspectFit
+        
+        animationView.play(){ [weak self] (finished) in
+            guard let self = self else { return }
+            if finished == true {
+                self.didFinishAction()
+            }
+            //
         }
-    
+        
         AgregatorManager.shared.start { [weak self] success in
             guard let _ = self else { return }
         }
-    }
+    } 
     
     
 }
