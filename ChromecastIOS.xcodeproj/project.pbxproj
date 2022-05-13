@@ -149,6 +149,14 @@
 		DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */; };
 		DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96ED282C54510088E4E6 /* IPTVManager.swift */; };
 		DDED96F0282C63010088E4E6 /* ScrollViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96EF282C63010088E4E6 /* ScrollViewAnimator.swift */; };
+		DDED96F2282E77430088E4E6 /* BrowserTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96F1282E77420088E4E6 /* BrowserTab.swift */; };
+		DDED96F4282E77620088E4E6 /* DetectedUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96F3282E77620088E4E6 /* DetectedUrl.swift */; };
+		DDED96F5282E785C0088E4E6 /* JavaScripts.swift in Resources */ = {isa = PBXBuildFile; fileRef = DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */; };
+		DDED96F9282E7B470088E4E6 /* DetectedUrlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96F7282E7B470088E4E6 /* DetectedUrlsViewController.swift */; };
+		DDED96FA282E7B470088E4E6 /* DetectedUrlsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDED96F8282E7B470088E4E6 /* DetectedUrlsViewController.xib */; };
+		DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */; };
+		DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */; };
+		DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */; };
 		DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */; };
 		DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */; };
 		DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */; };
@@ -354,6 +362,13 @@
 		DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistM3U8.swift; sourceTree = "<group>"; };
 		DDED96ED282C54510088E4E6 /* IPTVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVManager.swift; sourceTree = "<group>"; };
 		DDED96EF282C63010088E4E6 /* ScrollViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewAnimator.swift; sourceTree = "<group>"; };
+		DDED96F1282E77420088E4E6 /* BrowserTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTab.swift; sourceTree = "<group>"; };
+		DDED96F3282E77620088E4E6 /* DetectedUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrl.swift; sourceTree = "<group>"; };
+		DDED96F7282E7B470088E4E6 /* DetectedUrlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrlsViewController.swift; sourceTree = "<group>"; };
+		DDED96F8282E7B470088E4E6 /* DetectedUrlsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedUrlsViewController.xib; sourceTree = "<group>"; };
+		DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrlCell.swift; sourceTree = "<group>"; };
+		DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedUrlCell.xib; sourceTree = "<group>"; };
+		DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInfoExtractor.swift; sourceTree = "<group>"; };
 		DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTestConnectionViewController.swift; sourceTree = "<group>"; };
 		DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialTestConnectionViewController.xib; sourceTree = "<group>"; };
 		DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreviewImageViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +461,9 @@
 				DD03EFAB282AA2EC0075F70E /* Settings.swift */,
 				DD03EFAD282AA4280075F70E /* SubscriptionSpot.swift */,
 				DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */,
+				DDED96F1282E77420088E4E6 /* BrowserTab.swift */,
+				DDED96F3282E77620088E4E6 /* DetectedUrl.swift */,
+				DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -856,6 +874,7 @@
 		DDCE09F8281060C4004E9C18 /* BrowserVC */ = {
 			isa = PBXGroup;
 			children = (
+				DDED96F6282E7B160088E4E6 /* DetectedUrls */,
 				DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */,
 				DDCE09FA281064C2004E9C18 /* BrowserViewController.xib */,
 				DDCE0A0128107255004E9C18 /* BrowserCell */,
@@ -935,6 +954,25 @@
 				DDCF125928229C23009019D4 /* MirrorSettingsViewController.xib */,
 			);
 			path = MirrorSettingsVC;
+			sourceTree = "<group>";
+		};
+		DDED96F6282E7B160088E4E6 /* DetectedUrls */ = {
+			isa = PBXGroup;
+			children = (
+				DDED96FB282E7B7B0088E4E6 /* DetectedUrlCell */,
+				DDED96F7282E7B470088E4E6 /* DetectedUrlsViewController.swift */,
+				DDED96F8282E7B470088E4E6 /* DetectedUrlsViewController.xib */,
+			);
+			path = DetectedUrls;
+			sourceTree = "<group>";
+		};
+		DDED96FB282E7B7B0088E4E6 /* DetectedUrlCell */ = {
+			isa = PBXGroup;
+			children = (
+				DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */,
+				DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */,
+			);
+			path = DetectedUrlCell;
 			sourceTree = "<group>";
 		};
 		DDF231BF281814D7005E3E3E /* TestConnectionVC */ = {
@@ -1193,6 +1231,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */,
+				DDED96F5282E785C0088E4E6 /* JavaScripts.swift in Resources */,
 				DDED96EA282C496F0088E4E6 /* SplashAnimation.json in Resources */,
 				DDCE0A002810724B004E9C18 /* BrowserCell.xib in Resources */,
 				DD19E4742811D58600931489 /* style.css in Resources */,
@@ -1264,6 +1304,7 @@
 				DD19E4B92812ABD900931489 /* horizontal_strip_hd.png in Resources */,
 				DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */,
 				DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */,
+				DDED96FA282E7B470088E4E6 /* DetectedUrlsViewController.xib in Resources */,
 				DD52329E281AAE26004AF0AA /* AssetCell.xib in Resources */,
 				DD19E4A92812ABD900931489 /* winsor_skyline_hd.png in Resources */,
 				DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */,
@@ -1409,8 +1450,10 @@
 				DDF59C0E280F48D500CE2E2B /* UIFont+Extension.swift in Sources */,
 				DD5232AC281ACF0C004AF0AA /* PremiumDiscountViewController.swift in Sources */,
 				DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */,
+				DDED96F9282E7B470088E4E6 /* DetectedUrlsViewController.swift in Sources */,
 				E8CFAEC4282AED8B002C3B87 /* URL+Extension.swift in Sources */,
 				DDA72051282BB33E00CF4DC3 /* LoadingViewController.swift in Sources */,
+				DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */,
 				DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */,
 				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */,
@@ -1446,6 +1489,7 @@
 				DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */,
 				DD03EFAC282AA2EC0075F70E /* Settings.swift in Sources */,
 				DD5232A5281ACEA2004AF0AA /* SubscriptionSpotsManager.swift in Sources */,
+				DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */,
 				DDCE0A1528116FEC004E9C18 /* IPTVPlayListsViewController.swift in Sources */,
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
@@ -1457,9 +1501,11 @@
 				DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */,
 				DDA7204E282ACC2600CF4DC3 /* Realm+Extension.swift in Sources */,
 				DD03EFB5282AB0090075F70E /* Locale+Extension.swift in Sources */,
+				DDED96F4282E77620088E4E6 /* DetectedUrl.swift in Sources */,
 				DD923ADF2812F3C70034E5D3 /* CellPassiveMeasurement.swift in Sources */,
 				DD19E4D22812C7E700931489 /* CellConfiguratedCollectionView.swift in Sources */,
 				DDF59BFD280F323500CE2E2B /* UINavigationContainer.swift in Sources */,
+				DDED96F2282E77430088E4E6 /* BrowserTab.swift in Sources */,
 				DDA72045282AC2B300CF4DC3 /* CommentView.swift in Sources */,
 				DDA7376628193C8C00CCF7FD /* InteractiveLabel.swift in Sources */,
 			);

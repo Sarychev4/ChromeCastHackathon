@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpenWebsitesViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="addTabInteractiveView" destination="o2K-Iv-7vs" id="u0R-G5-pgP"/>
                 <outlet property="backInteractiveView" destination="ODo-Kc-XIw" id="tSC-oR-UNN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="websitesCollectionView" destination="q5G-Na-115" id="3MS-Vs-pOf"/>
@@ -70,7 +71,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2K-Iv-7vs" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                     <rect key="frame" x="354" y="0.0" width="28" height="24"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="Mo6-YP-EEq">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="Mo6-YP-EEq">
                                                             <rect key="frame" x="0.0" y="3" width="22" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="22" id="eOp-iO-qCV"/>
@@ -105,7 +106,7 @@
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="q5G-Na-115">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="810"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" name="MainBackground"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wEA-lq-I6Q">
                                                 <size key="itemSize" width="128" height="128"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -114,7 +115,7 @@
                                             </collectionViewFlowLayout>
                                         </collectionView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="MainBackground"/>
                                     <constraints>
                                         <constraint firstItem="q5G-Na-115" firstAttribute="leading" secondItem="jnE-UZ-pyv" secondAttribute="leading" id="QDc-UB-MQh"/>
                                         <constraint firstAttribute="trailing" secondItem="q5G-Na-115" secondAttribute="trailing" id="mOQ-5J-r0c"/>
@@ -146,8 +147,8 @@
         </view>
     </objects>
     <resources>
+        <image name="add" width="16" height="16"/>
         <image name="backArrow" width="16" height="16"/>
-        <image name="cast" width="44" height="36"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
