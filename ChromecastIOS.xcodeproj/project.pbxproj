@@ -904,8 +904,8 @@
 		DDCE0A0D28116F6D004E9C18 /* IptvVC */ = {
 			isa = PBXGroup;
 			children = (
-				DDA7205A282C350400CF4DC3 /* IPTVStreamsVC */,
 				DDA72059282C336000CF4DC3 /* IPTVPlayListsVC */,
+				DDA7205A282C350400CF4DC3 /* IPTVStreamsVC */,
 			);
 			path = IptvVC;
 			sourceTree = "<group>";

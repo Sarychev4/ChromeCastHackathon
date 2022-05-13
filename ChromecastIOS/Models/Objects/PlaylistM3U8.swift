@@ -12,7 +12,7 @@ class PlaylistM3U8: Object {
     @objc @Persisted var name: String = ""
     @objc @Persisted var priority: Int = 0
     @objc @Persisted var isUserStream = false // Если false - вшитый стрим, если true - юзер сам руками добавил
-    var streams = List<IPTVStream>()
+    @Persisted var streams = List<IPTVStream>()
 
 }
 
@@ -24,10 +24,9 @@ class IPTVStream: Object {
     @Persisted var url = ""
     @Persisted var isAdult = false
 
-    
-    let categories = List<IPTVCategory>()
-    let languages = List<IPTVLanguage>()
-    let countries = List<IPTVCountry>()
+    @Persisted var categories = List<IPTVCategory>()
+    @Persisted var languages = List<IPTVLanguage>()
+    @Persisted var countries = List<IPTVCountry>()
     
     func setup(with json: [String: Any]) {
         name = json["name"] as? String ?? ""
@@ -68,7 +67,8 @@ class IPTVStream: Object {
 
 class IPTVCategory: Object {
     @Persisted(primaryKey: true) var name = ""
-    let streams = LinkingObjects(fromType: IPTVStream.self, property: "categories")
+//    let streams = LinkingObjects(fromType: IPTVStream.self, property: "categories")
+    @Persisted(originProperty: "categories") var streams: LinkingObjects<IPTVStream>
     
     func setup(with name: String?) {
         self.name = name ?? ""
@@ -90,7 +90,8 @@ class IPTVLanguage: Object {
 class IPTVCountry: Object {
     @Persisted(primaryKey: true) var name = ""
     @Persisted var logo = ""
-    let streams = LinkingObjects(fromType: IPTVStream.self, property: "countries")
+//    let streams = LinkingObjects(fromType: IPTVStream.self, property: "countries")
+    @Persisted(originProperty: "countries") var streams: LinkingObjects<IPTVStream>
     
     func setup(with json: [String: Any]?) {
         name = json?["name"] as? String ?? ""

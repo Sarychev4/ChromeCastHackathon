@@ -47,6 +47,8 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ChromeCastService.shared.initialize()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         

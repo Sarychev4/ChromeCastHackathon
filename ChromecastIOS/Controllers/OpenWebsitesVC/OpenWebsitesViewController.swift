@@ -9,6 +9,7 @@ import UIKit
 
 class OpenWebsitesViewController: BaseViewController {
 
+    @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var websitesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -23,6 +24,11 @@ class OpenWebsitesViewController: BaseViewController {
         websitesCollectionView.register(websiteCellNib, forCellWithReuseIdentifier: WebsiteCell.Identifier)
         
         websitesCollectionView.contentInset.top = 32
+        
+        backInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.navigation?.popViewController(self, animated: true)
+        }
     }
     
     

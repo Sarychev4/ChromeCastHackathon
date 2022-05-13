@@ -16,6 +16,7 @@ class IPTVStreamsViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var navigationTitleLabel: DefaultLabel!
+    @IBOutlet weak var addNewInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +31,7 @@ class IPTVStreamsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -54,12 +56,40 @@ class IPTVStreamsViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
-        /*
-         */
+        
+        
+        connectInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.presentDevices(postAction: nil)
+        }
         
         navigationTitleLabel.text = playlist?.name
+        
+        searchBar.searchTextField.textColor = UIColor(named: "labelColorDark")
     }
-
+    
+    
+    
+    private func stopEditing() {
+        if tableView.isEditing {
+            tableView.setEditing(false, animated: true)
+        }
+        tableView.reloadData()
+    }
+    
+    private func presentDevices(postAction: (() -> ())?) {
+        let controller = ListDevicesViewController()
+        controller.canDismissOnPan = true
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let _ = self else { return }
+            postAction?()
+        }
+        present(controller, animated: false, completion: nil)
+    }
 
 }
 
@@ -82,11 +112,10 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func didSelectCell(at indexPath: IndexPath) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.iptv.rawValue, with: { [weak self] success in
-            guard let _ = self, success == true else { return }
-                //запустить стрим
-        
-        })
+        guard let stream = self.streams?[indexPath.row] else { return }
+        print(">>>BeamStream")
+        ChromeCastService.shared.displayIPTVBeam(with: URL(string: stream.url)!)
+       
     }
     
 }

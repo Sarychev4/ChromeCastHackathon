@@ -10,6 +10,7 @@ import WebKit
 
 class BrowserViewController: BaseViewController {
 
+    @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var webViewContainer: UIView!
@@ -27,6 +28,11 @@ class BrowserViewController: BaseViewController {
         super.viewDidLoad()
         
         setupWebView()
+        
+        backInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.navigation?.popViewController(self, animated: true)
+        }
     }
     
     //MARK: - Setup WebView

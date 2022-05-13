@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpenWebsitesViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="backInteractiveView" destination="ODo-Kc-XIw" id="tSC-oR-UNN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="websitesCollectionView" destination="q5G-Na-115" id="3MS-Vs-pOf"/>
             </connections>

@@ -131,3 +131,16 @@ Features";
 "SubscriptionCommentName1" = "by Andy Davies";
 "SubscriptionComment2" = "So far I’m loving it.\nWay better to see all the info on a bigger screen";
 "SubscriptionCommentName2" = "by JD891";
+
+/*IPTV*/
+
+"IPTVSectionTitleUser" = "My channels";
+"IPTVSectionTitleFree" = "Popular channels";
+
+"IPTVAddTitle" = "Add M3U URL";
+"IPTVAddPlaylistName" = "Playlist name";
+"IPTVAddPlaylistLink" = "http://xxx.com/playlist.m3u";
+"IPTVAddSave" = "Save";
+"IPTVAddCancel" = "Cancel";
+"IPTVEditTitle" = "Edit";
+"IPTVDoneTitle" = "Done";

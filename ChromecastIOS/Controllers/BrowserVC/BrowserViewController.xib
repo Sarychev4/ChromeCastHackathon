@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrowserViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="backInteractiveView" destination="FHF-Aq-gUn" id="fEH-Ft-vdf"/>
                 <outlet property="openWebsitesInteractiveView" destination="l1P-tr-t0f" id="rGx-ae-XKz"/>
                 <outlet property="searchBar" destination="C4d-X1-hCE" id="1J8-ZJ-uNl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
