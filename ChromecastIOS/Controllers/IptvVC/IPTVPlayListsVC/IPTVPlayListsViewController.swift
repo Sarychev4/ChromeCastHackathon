@@ -245,6 +245,24 @@ extension IPTVPlayListsViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if let userPlaylists = userPlaylists, userPlaylists.count > 0, indexPath.section == 0 {
+            return .delete
+        } else {
+            return .none
+        }
+    }
+      
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            guard let playlist = userPlaylists?[indexPath.row] else { return }
+            let realm = IPTVManager.realm!
+            try! realm.write {
+                realm.delete(playlist)
+            }
+        }
+    }
+    
 }
 
 extension IPTVPlayListsViewController: UIScrollViewDelegate {
