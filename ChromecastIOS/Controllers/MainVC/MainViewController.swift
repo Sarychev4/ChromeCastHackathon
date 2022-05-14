@@ -92,14 +92,14 @@ class MainViewController: BaseViewController {
             title: NSLocalizedString("Screen.Main.Tab.GoogleDrive.Title", comment: ""),
             subtitle: NSLocalizedString("Screen.Main.Tab.GoogleDrive.Subtitle", comment: ""),
             image: UIImage(named: "googleDrive")!,
-            type: .youtube
+            type: .googleDrive
         )
         
         let googlePhotos = Tab(
             title: NSLocalizedString("Screen.Main.Tab.GooglePhotos.Title", comment: ""),
             subtitle: NSLocalizedString("Screen.Main.Tab.GooglePhotos.Subtitle", comment: ""),
             image: UIImage(named: "googlePhotos")!,
-            type: .youtube
+            type: .googlePhotos
         )
         
         tabs = [browser, media, iptv, youtube, googleDrive, googlePhotos]

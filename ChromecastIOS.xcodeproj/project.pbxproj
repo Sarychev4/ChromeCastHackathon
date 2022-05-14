@@ -81,6 +81,10 @@
 		DD5232B1281ACF22004AF0AA /* PremuimLifeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */; };
 		DD69DCAA281A8EF80010E4B3 /* MediaLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */; };
 		DD69DCAB281A8EF80010E4B3 /* MediaLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */; };
+		DD6E98A9282FC04D00A72DF3 /* GoogleDriveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */; };
+		DD6E98AD282FDE4100A72DF3 /* GoogleDriveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */; };
+		DD6E98AE282FDE4100A72DF3 /* GoogleDriveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */; };
+		DD6E98B12830036000A72DF3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98B02830036000A72DF3 /* Date+Extension.swift */; };
 		DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9159B82817F2B300C1393F /* Main.storyboard */; };
 		DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */; };
 		DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */; };
@@ -295,6 +299,10 @@
 		DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremuimLifeTimeViewController.xib; sourceTree = "<group>"; };
 		DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewController.swift; sourceTree = "<group>"; };
 		DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaLibraryViewController.xib; sourceTree = "<group>"; };
+		DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveAPI.swift; sourceTree = "<group>"; };
+		DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveCell.swift; sourceTree = "<group>"; };
+		DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleDriveCell.xib; sourceTree = "<group>"; };
+		DD6E98B02830036000A72DF3 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DD9159B92817F2B300C1393F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailMasterFlowLayout.swift; sourceTree = "<group>"; };
 		DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailFlowLayoutDraggingBehavior.swift; sourceTree = "<group>"; };
@@ -702,6 +710,7 @@
 				DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */,
 				DD03EFB0282AA4580075F70E /* DataManager.swift */,
 				DDED96ED282C54510088E4E6 /* IPTVManager.swift */,
+				DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -715,6 +724,15 @@
 				DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */,
 			);
 			path = MediaLibraryVC;
+			sourceTree = "<group>";
+		};
+		DD6E98AA282FDDB600A72DF3 /* GoogleDriveCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */,
+				DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */,
+			);
+			path = GoogleDriveCell;
 			sourceTree = "<group>";
 		};
 		DD923AD72812E7010034E5D3 /* Manager */ = {
@@ -894,6 +912,7 @@
 		DDCE0A0228116E8F004E9C18 /* GoogleDriveVC */ = {
 			isa = PBXGroup;
 			children = (
+				DD6E98AA282FDDB600A72DF3 /* GoogleDriveCell */,
 				DDCE0A0428116ED5004E9C18 /* GoogleDriveViewController.swift */,
 				DDCE0A0528116ED5004E9C18 /* GoogleDriveViewController.xib */,
 			);
@@ -1057,6 +1076,7 @@
 				DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */,
 				DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */,
 				E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */,
+				DD6E98B02830036000A72DF3 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1302,6 +1322,7 @@
 				DDA72048282AC2EC00CF4DC3 /* CommentView.xib in Resources */,
 				DD19E4B42812ABD900931489 /* horizontal_strip.png in Resources */,
 				DD19E4B92812ABD900931489 /* horizontal_strip_hd.png in Resources */,
+				DD6E98AE282FDE4100A72DF3 /* GoogleDriveCell.xib in Resources */,
 				DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */,
 				DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */,
 				DDED96FA282E7B470088E4E6 /* DetectedUrlsViewController.xib in Resources */,
@@ -1445,6 +1466,7 @@
 				DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */,
 				DD923AEC2816B39B0034E5D3 /* TutorialWelcomeViewController.swift in Sources */,
 				DDCE0A0A28116EF9004E9C18 /* GooglePhotosViewController.swift in Sources */,
+				DD6E98A9282FC04D00A72DF3 /* GoogleDriveAPI.swift in Sources */,
 				DD923AF42816B3F40034E5D3 /* TutorialWifiViewController.swift in Sources */,
 				DD923AD92812E7190034E5D3 /* AcoordionAnimationManager.swift in Sources */,
 				DDF59C0E280F48D500CE2E2B /* UIFont+Extension.swift in Sources */,
@@ -1481,6 +1503,7 @@
 				DDF59BF1280F2F0B00CE2E2B /* BaseViewController.swift in Sources */,
 				DD03EFAA282A63F10075F70E /* LocalNetworkPermissionsManager.swift in Sources */,
 				DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */,
+				DD6E98AD282FDE4100A72DF3 /* GoogleDriveCell.swift in Sources */,
 				DD923ADD2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift in Sources */,
 				DDA737632819319C00CCF7FD /* AlertViewController.swift in Sources */,
 				DDCE0A0628116ED5004E9C18 /* GoogleDriveViewController.swift in Sources */,
@@ -1492,6 +1515,7 @@
 				DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */,
 				DDCE0A1528116FEC004E9C18 /* IPTVPlayListsViewController.swift in Sources */,
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
+				DD6E98B12830036000A72DF3 /* Date+Extension.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
 				DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */,
 				DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */,
@@ -1736,6 +1760,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1770,6 +1795,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
