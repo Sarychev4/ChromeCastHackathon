@@ -38,6 +38,7 @@ class GoogleDriveAPI {
         query.pageSize = 100
         query.fields = "files(id,name,mimeType,modifiedTime,iconLink,thumbnailLink,contentHints,fileExtension,webContentLink,webViewLink,imageMediaMetadata,exportLinks,size),nextPageToken"
         query.q = "'\(folderID)' in parents"// and trashed=false" // and mimeType = 'application/vnd.google-apps.folder'"
+        query.orderBy = "folder"
         self.service.executeQuery(query) { (ticket, result, error) in
             onCompleted(result as? GTLRDrive_FileList, error)
             
