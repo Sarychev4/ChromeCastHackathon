@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="130" height="192"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICs-OP-BT9">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICs-OP-BT9" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="130" height="192"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2ri-Un-IfI">
@@ -58,7 +58,7 @@
                                         <rect key="frame" x="0.0" y="94" width="130" height="98"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="45Q-No-Ltz">
-                                                <rect key="frame" x="0.0" y="16" width="130" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="16" width="130" height="51"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Adventure_river__02" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wM-Ty-Rj4">
                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="16"/>
@@ -66,16 +66,21 @@
                                                         <color key="textColor" name="labelColorDark"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erV-wB-1aJ">
-                                                        <rect key="frame" x="0.0" y="20" width="130" height="26.5"/>
-                                                        <string key="text">03.04.2022
-2,5 MB</string>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03.04.2022" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erV-wB-1aJ">
+                                                        <rect key="frame" x="0.0" y="20" width="130" height="13.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <color key="textColor" name="labelColorGrayPunk"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3,5 MB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3H-Av-HSQ">
+                                                        <rect key="frame" x="0.0" y="37.5" width="130" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" name="labelColorGrayPunk"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="G3H-Av-HSQ" firstAttribute="centerX" secondItem="45Q-No-Ltz" secondAttribute="centerX" id="6pr-NI-5QD"/>
                                                     <constraint firstItem="erV-wB-1aJ" firstAttribute="centerX" secondItem="45Q-No-Ltz" secondAttribute="centerX" id="LJX-9d-vyD"/>
                                                     <constraint firstAttribute="trailing" secondItem="7wM-Ty-Rj4" secondAttribute="trailing" id="Tf9-dE-ozK"/>
                                                     <constraint firstItem="7wM-Ty-Rj4" firstAttribute="leading" secondItem="45Q-No-Ltz" secondAttribute="leading" id="ZWk-Ug-cor"/>
@@ -116,7 +121,8 @@
             </constraints>
             <size key="customSize" width="130" height="429"/>
             <connections>
-                <outlet property="containerView" destination="ICs-OP-BT9" id="ysb-nz-zwu"/>
+                <outlet property="containerView" destination="ICs-OP-BT9" id="eCG-Bm-8go"/>
+                <outlet property="dataSizeLabel" destination="G3H-Av-HSQ" id="h3G-30-K39"/>
                 <outlet property="dateLabel" destination="erV-wB-1aJ" id="57z-0N-rzG"/>
                 <outlet property="fileImageView" destination="RVj-Wy-z02" id="azD-rz-GFo"/>
                 <outlet property="fileLabel" destination="7wM-Ty-Rj4" id="mzI-Xp-rID"/>

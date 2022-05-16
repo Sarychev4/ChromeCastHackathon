@@ -27,7 +27,7 @@ class GoogleDriveAPI {
     
     public func allFilesAndFolders(onCompleted: @escaping (GTLRDrive_FileList?, Error?) -> ()) {
         let query = GTLRDriveQuery_FilesList.query()
-        query.fields = "files(id,name,mimeType,modifiedTime,iconLink,thumbnailLink,contentHints,fileExtension,webContentLink,webViewLink),nextPageToken"
+        query.fields = "files(id,name,mimeType,modifiedTime,iconLink,thumbnailLink,contentHints,fileExtension,webContentLink,webViewLink,imageMediaMetadata,exportLinks,size),nextPageToken"
         self.service.executeQuery(query) { (ticket, result, error) in
             onCompleted(result as? GTLRDrive_FileList, error)
         }
@@ -36,9 +36,11 @@ class GoogleDriveAPI {
     public func listFiles(_ folderID: String, onCompleted: @escaping (GTLRDrive_FileList?, Error?) -> ()) {
         let query = GTLRDriveQuery_FilesList.query()
         query.pageSize = 100
-        query.q = "'\(folderID)' in parents and mimeType != 'application/vnd.google-apps.folder'"
+        query.fields = "files(id,name,mimeType,modifiedTime,iconLink,thumbnailLink,contentHints,fileExtension,webContentLink,webViewLink,imageMediaMetadata,exportLinks,size),nextPageToken"
+        query.q = "'\(folderID)' in parents"// and trashed=false" // and mimeType = 'application/vnd.google-apps.folder'"
         self.service.executeQuery(query) { (ticket, result, error) in
             onCompleted(result as? GTLRDrive_FileList, error)
+            
         }
     }
     

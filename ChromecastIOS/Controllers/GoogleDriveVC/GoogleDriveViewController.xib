@@ -21,6 +21,7 @@
                 <outlet property="moreActionsInteractiveView" destination="Syb-ZJ-sHK" id="PKN-Mq-lUg"/>
                 <outlet property="searchBar" destination="RK4-Pt-K6x" id="Ed4-SO-388"/>
                 <outlet property="searchBarContainer" destination="Adg-HT-NG2" id="Wgd-5A-1gd"/>
+                <outlet property="titleLabel" destination="b7o-S6-Vbi" id="QRh-ID-5hC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
