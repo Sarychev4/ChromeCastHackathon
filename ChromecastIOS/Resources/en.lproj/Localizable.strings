@@ -144,3 +144,18 @@ Features";
 "IPTVAddCancel" = "Cancel";
 "IPTVEditTitle" = "Edit";
 "IPTVDoneTitle" = "Done";
+
+
+/*
+ - Screen Settings
+ */
+
+"Screen.Settings.Title" = "Settings";
+"Screen.Settings.Banner.Title" = "Get Premium access";
+"Screen.Settings.Banner.Subtitle" = "No limits. Best experience.";
+"Screen.Settings.Section.FAQ.Title" = "FAQ";
+"Screen.Settings.Section.RestorePurchases.Title" = "Restore Purchases";
+"Screen.Settings.Section.PrivacyPolicy.Title" = "Privacy Policy";
+"Screen.Settings.Section.TermsOfUse.Title" = "Terms of Use";
+"Screen.Settings.Section.SendUsANote.Title" = "Send us a note";
+"Screen.Settings.Help.Title" = "Need help?";

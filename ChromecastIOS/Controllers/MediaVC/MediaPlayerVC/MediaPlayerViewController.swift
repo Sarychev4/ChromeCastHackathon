@@ -12,14 +12,10 @@ import Photos
 class MediaPlayerViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
-    
     @IBOutlet weak var currentAssetNameLabel: DefaultLabel!
-    
     @IBOutlet weak var hdCollectionView: CellConfiguratedCollectionView!
     @IBOutlet weak var thumbnailCollectionView: CellConfiguratedCollectionView!
-    
     @IBOutlet weak var qualityInteractiveView: InteractiveView!
-    
     @IBOutlet weak var qualityShadow: DropShadowView!
     
     //    private var hdPhotoModel: PhotoModel = PhotoCollection(photos: ["barton_nature_leeve_hd.JPG", "barton_nature_area_bridge_hd.JPG", "barton_nature_lake_hd.JPG", "barton_nature_swan_hd.JPG", "bird_hills_nature_tree_hd.JPG", "bird_hills_nature_sunset_hd.JPG", "huron_river_hd.JPG", "bird_hills_nature_foliage_hd.JPG","leslie_park_hd.png", "willowtree_apartment_sunset_hd.jpg", "vertical_strip_hd.png", "winsor_skyline_hd.png"])

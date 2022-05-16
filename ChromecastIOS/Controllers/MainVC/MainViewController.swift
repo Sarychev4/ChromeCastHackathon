@@ -23,9 +23,10 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var settingsInteractiveView: InteractiveView! {
         didSet {
             settingsInteractiveView.didTouchAction = {
-                let vc = SettingsViewController()
-                vc.modalPresentationStyle = .automatic//.fullScreen
-                self.present(vc, animated: true, completion: nil)
+                let settingsViewController = SettingsViewController()
+                let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true, completion: nil)
             }
         }
     }
