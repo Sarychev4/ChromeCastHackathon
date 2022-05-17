@@ -78,7 +78,7 @@ class MediaPlayerViewController: BaseViewController {
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = MirrorSettingsViewController()
-        controller.canDismissOnPan = false
+        controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)

@@ -85,7 +85,7 @@ class SettingsViewController: BaseViewController {
                 guard let self = self else { return }
                 let viewController = HelpViewController()
                 viewController.title = NSLocalizedString("MoreFAQ", comment: "")
-                viewController.url = MirroringURL
+                viewController.url = ChromeCastFAQURL
                 self.navigationController?.pushViewController(viewController, animated: true)
                 
                 viewController.didFinishAction = { [weak self] in
@@ -182,7 +182,7 @@ class SettingsViewController: BaseViewController {
             self?.checkInternetConnection {
                 let viewController = HelpViewController()
                 viewController.title = NSLocalizedString("MoreFAQ", comment: "")
-                viewController.url = MirroringURL
+                viewController.url = ChromeCastFAQURL
                 self?.navigationController?.pushViewController(viewController, animated: true)
                 
                 viewController.didFinishAction = { [weak self] in

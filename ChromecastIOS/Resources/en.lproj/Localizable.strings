@@ -6,9 +6,21 @@
   
 */
 
+/*
+ - Reachabality
+*/
+
+"Reachabality.NoInternet.Title" = "Oh my!";
+"Reachabality.NoInternet.Message" = "No internet connection.\nPlease check your internet settings.";
+"Reachabality.NoInternet.OKButton.Title" = "OK";
+
+
+
 "Common.Continue" = "Continue";
 
-
+"MoreTermOfService" = "Terms of Use";
+"MorePrivacyPolicy" = "Privacy Policy";
+"MoreFAQ" = "FAQ";
 /*
  - Tutorial
  */

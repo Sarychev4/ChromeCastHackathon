@@ -9,10 +9,69 @@ import UIKit
 
 class YouTubeViewController: BaseViewController {
 
+    deinit {
+        print(">>> deinit YouTubeViewController")
+    }
+    
+    @IBOutlet weak var navigationBarShadowView: DropShadowView!
+    @IBOutlet weak var backInteractiveView: InteractiveView!
+    @IBOutlet weak var connectInteractiveView: InteractiveView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    private var navigationBarAnimator: UIViewPropertyAnimator?
+    private var animator: ScrollViewAnimator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        searchBar.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let youTubeCell = UINib(nibName: YouTubeCell.Identifier, bundle: .main)
+        tableView.register(youTubeCell, forCellReuseIdentifier: YouTubeCell.Identifier)
+        
+        let suggestionCell = UINib(nibName: SuggestionCell.Identifier, bundle: .main)
+        tableView.register(suggestionCell, forCellReuseIdentifier: SuggestionCell.Identifier)
+        
     }
 
 }
+
+extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: YouTubeCell.Identifier, for: indexPath) as! YouTubeCell
+        return cell
+    }
+    
+    
+}
+
+extension YouTubeViewController: UIScrollViewDelegate {
+    private func setupNavigationAnimations() {
+        navigationBarShadowView.alpha = 0
+        navigationBarAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeIn, animations: { [weak self] in
+            guard let self = self else { return }
+            self.navigationBarShadowView.alpha = 1
+        })
+        animator = ScrollViewAnimator(minAnchor: 0, maxAnchor: 50, animator: navigationBarAnimator!)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
+        animator?.handleAnimation(with: currentPosition)
+    }
+}
+
+extension YouTubeViewController: UISearchBarDelegate {
+    
+}
+

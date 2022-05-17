@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Agregator
+import Criollo
+import WebKit
 
 struct Tab {
     var title: String
@@ -31,6 +34,23 @@ class MainViewController: BaseViewController {
         }
     }
     
+    @IBOutlet weak var goToPremiumInteractiveView: InteractiveView! {
+        didSet {
+            goToPremiumInteractiveView.didTouchAction = {
+            #if DEBUG //1
+                try! AgregatorApplication.current.realm?.write {
+                    if AgregatorApplication.current.subscriptionState == .active {
+                        AgregatorApplication.current.subscriptionState = .none
+                    } else {
+                        AgregatorApplication.current.subscriptionState = .active
+                    }
+                }//temp vr 1
+                return
+            #endif
+            }
+        }
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var mirrorInteractiveView: InteractiveView! {
@@ -42,7 +62,7 @@ class MainViewController: BaseViewController {
     }
     
     var tabs: [Tab] = []
-//    var source: String!
+    //    var source: String!
     var nameForEvents: String { return "Menu screen" }
     
     override func viewDidLoad() {
@@ -113,14 +133,14 @@ class MainViewController: BaseViewController {
         switch buttonType {
         case .media:
             let viewController = MediaLibraryViewController()
-                       viewController.hidesBottomBarWhenPushed = true
-//                       viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
-                       navigation?.pushViewController(viewController, animated: .left)
+            viewController.hidesBottomBarWhenPushed = true
+            //                       viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
+            navigation?.pushViewController(viewController, animated: .left)
             
-//            let viewController = MediaViewController()
-//            viewController.hidesBottomBarWhenPushed = true
-//            viewController.flowLayoutSyncManager = FlowLayoutSyncManager() //temp as important
-//            navigation?.pushViewController(viewController, animated: .left)
+            //            let viewController = MediaViewController()
+            //            viewController.hidesBottomBarWhenPushed = true
+            //            viewController.flowLayoutSyncManager = FlowLayoutSyncManager() //temp as important
+            //            navigation?.pushViewController(viewController, animated: .left)
         case .browser:
             let viewController = BrowserViewController()
             viewController.hidesBottomBarWhenPushed = true

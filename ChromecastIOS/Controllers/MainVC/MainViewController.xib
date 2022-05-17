@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Bch-fV-vv2" id="QSG-Ar-Ies"/>
+                <outlet property="goToPremiumInteractiveView" destination="ALM-iL-9to" id="DQm-gi-SQv"/>
                 <outlet property="mirrorInteractiveView" destination="f8J-PE-0Pi" id="rcJ-mt-aAN"/>
                 <outlet property="settingsInteractiveView" destination="6bg-bX-Ipf" id="fBl-uh-jgJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

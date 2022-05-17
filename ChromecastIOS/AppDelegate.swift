@@ -11,11 +11,13 @@ import Agregator
 import GoogleCast
 import Firebase
 import GoogleSignIn
+import Criollo
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var server: CRHTTPServer?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -23,6 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /*
          */
+        server = CRHTTPServer()
+        var serverError: NSError?
+        let htmlStreamPort: UInt = Port.app.rawValue
+       
+        server?.mount("/faq", fileAtPath:  Bundle.main.bundlePath.appending("/FAQ.html"))
+        server?.get("/") { (req, res, next) in
+            res.send("Hello world!")
+        }
+        
+        server?.startListening(&serverError, portNumber: htmlStreamPort)
         
         UIApplication.shared.isIdleTimerDisabled = true
         
@@ -41,6 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appsFlyerAPIKey: "mVN6DoQzLUCxz7gLjQivSY"
         )
         
+        /*
+         */
+        
+       
         /*
          */
         
