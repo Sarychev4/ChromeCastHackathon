@@ -47,7 +47,7 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="MainBackground"/>
                             <constraints>
                                 <constraint firstItem="9iU-K2-vC5" firstAttribute="top" secondItem="lp2-h9-0bK" secondAttribute="top" id="DY0-CV-nFy"/>
                                 <constraint firstItem="9iU-K2-vC5" firstAttribute="leading" secondItem="lp2-h9-0bK" secondAttribute="leading" id="JP0-Us-ATi"/>

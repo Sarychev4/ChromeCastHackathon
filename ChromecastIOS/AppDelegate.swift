@@ -30,6 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let htmlStreamPort: UInt = Port.app.rawValue
        
         server?.mount("/faq", fileAtPath:  Bundle.main.bundlePath.appending("/FAQ.html"))
+        
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false }
+        let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
+        server?.mount("/image", fileAtPath: imageFileURL.path, options: .followSymlinks, fileName: nil, contentType: nil,  contentDisposition: .attachment)
+        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.jpeg")
+        server?.mount("/video", fileAtPath: videoFileURL.path, options: .followSymlinks, fileName: nil, contentType: nil,  contentDisposition: .attachment)
         server?.get("/") { (req, res, next) in
             res.send("Hello world!")
         }

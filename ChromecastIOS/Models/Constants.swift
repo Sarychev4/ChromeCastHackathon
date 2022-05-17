@@ -7,6 +7,7 @@
 
 import Foundation
 import DeviceKit
+import CSSystemInfoHelper
 
 /*
  */

@@ -54,6 +54,7 @@
                 <outlet property="photoImageView" destination="Dno-CX-3Iv" id="CRf-52-tCe"/>
                 <outlet property="photoWidthConstraint" destination="PAE-mv-iUh" id="Fvg-GK-Ouu"/>
                 <outlet property="playVideoInteractiveImageView" destination="Tz9-Id-yKV" id="ag8-Cl-hs7"/>
+                <outlet property="playerButtonsContainer" destination="a5S-m5-QGl" id="XPc-Yr-Tkb"/>
                 <outlet property="previousVideoInteractiveImageView" destination="ieT-g6-qL3" id="8yr-jU-2ob"/>
             </connections>
             <point key="canvasLocation" x="134" y="125"/>

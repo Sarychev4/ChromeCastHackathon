@@ -73,6 +73,7 @@ class ChromeCastService: NSObject {
             screenMirroringChannel!.sendTextMessage(convertedString, error: nil)
         } catch {
             print(error.localizedDescription)
+            print(">>>\(error.localizedDescription)")
         }
     }
     

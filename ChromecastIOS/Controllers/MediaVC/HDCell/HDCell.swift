@@ -13,6 +13,7 @@ class HDCell: UICollectionViewCell {
     @IBOutlet weak var photoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var photoWidthConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var playerButtonsContainer: UIStackView!
     @IBOutlet weak var previousVideoInteractiveImageView: InteractiveImageView!
     @IBOutlet weak var playVideoInteractiveImageView: InteractiveImageView!
     @IBOutlet weak var nextVideoInteractiveImageView: InteractiveImageView!

@@ -33,6 +33,7 @@ target 'ChromecastIOS' do
   pod 'Firebase/Messaging'
   pod 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
   pod 'GoogleSignIn', '~> 4.1.1'
+  pod 'CSSystemInfoHelper', '~> 2.0'
 end 
 
  post_install do |installer_representation|
