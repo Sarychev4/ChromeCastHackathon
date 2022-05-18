@@ -21,14 +21,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnA-Xv-hOY">
                         <rect key="frame" x="8" y="0.0" width="224" height="520"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lee-x3-blT">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lee-x3-blT" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="208" height="335"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tQ-im-YlX" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="208" height="335"/>
                                         <color key="backgroundColor" name="MainBackground"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfw-kY-Q3r">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfw-kY-Q3r">
                                         <rect key="frame" x="4" y="4" width="200" height="327"/>
                                     </imageView>
                                 </subviews>
@@ -59,7 +64,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCl-jt-iqe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="224" height="48"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxI-kr-v9B" customClass="RoundedView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxI-kr-v9B" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                                         <rect key="frame" x="88" y="0.0" width="48" height="48"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvY-YW-aeI" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
@@ -178,6 +183,13 @@
                 <constraint firstItem="fnA-Xv-hOY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aDT-nW-UQx"/>
             </constraints>
             <size key="customSize" width="328" height="604"/>
+            <connections>
+                <outlet property="cellInteractiveView" destination="Lee-x3-blT" id="egP-vC-SSU"/>
+                <outlet property="closeTabInteractiveView" destination="qxI-kr-v9B" id="bVj-gg-wBm"/>
+                <outlet property="dropShadow" destination="1tQ-im-YlX" id="Fyh-xT-F7N"/>
+                <outlet property="linkAddressField" destination="gnB-nP-WfB" id="izm-6Y-eqt"/>
+                <outlet property="screenImage" destination="yfw-kY-Q3r" id="ndA-zU-NqB"/>
+            </connections>
             <point key="canvasLocation" x="192.75362318840581" y="46.875"/>
         </collectionViewCell>
     </objects>

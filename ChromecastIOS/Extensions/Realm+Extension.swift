@@ -9,10 +9,10 @@ import RealmSwift
 import Foundation
 
 extension Realm {
-//    static var GroupShared: Realm! {
-//        let config = Realm.Configuration(fileURL: .GroupRealmFile, schemaVersion: UInt64(Bundle.main.buildVersionNumber)!)
-//        return try! Realm(configuration: config)
-//    }
+    static var GroupShared: Realm! {
+        let config = Realm.Configuration(fileURL: .GroupRealmFile, schemaVersion: UInt64(Bundle.main.buildVersionNumber)!)
+        return try! Realm(configuration: config)
+    }
     
     static var IPTV: Realm! {
         let iptvRealm = URL.GroupRealmFile.deletingLastPathComponent().appendingPathComponent("FreeIPTV.realm")

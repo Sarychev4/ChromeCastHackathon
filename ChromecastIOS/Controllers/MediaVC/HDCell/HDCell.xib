@@ -24,20 +24,45 @@
                             <constraint firstAttribute="width" constant="240" id="PAE-mv-iUh"/>
                         </constraints>
                     </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="a5S-m5-QGl">
+                        <rect key="frame" x="33.5" y="80.5" width="220" height="48"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previousVideo" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-g6-qL3" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="36" height="48"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playVideo" translatesAutoresizingMaskIntoConstraints="NO" id="Tz9-Id-yKV" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
+                                <rect key="frame" x="86" y="0.0" width="48" height="48"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextVideo" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-7C-pp1" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
+                                <rect key="frame" x="184" y="0.0" width="36" height="48"/>
+                            </imageView>
+                        </subviews>
+                    </stackView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1AX-Q3-pbF"/>
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TmO-yV-zUW"/>
+                <constraint firstItem="a5S-m5-QGl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="etl-dV-QnD"/>
+                <constraint firstItem="a5S-m5-QGl" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qmr-LS-Cfh"/>
             </constraints>
             <size key="customSize" width="287" height="209"/>
             <connections>
+                <outlet property="nextVideoInteractiveImageView" destination="c4J-7C-pp1" id="pzh-ff-Vdf"/>
                 <outlet property="photoHeightConstraint" destination="LIs-bt-GMB" id="Kgs-vI-QQt"/>
                 <outlet property="photoImageView" destination="Dno-CX-3Iv" id="CRf-52-tCe"/>
                 <outlet property="photoWidthConstraint" destination="PAE-mv-iUh" id="Fvg-GK-Ouu"/>
+                <outlet property="playVideoInteractiveImageView" destination="Tz9-Id-yKV" id="ag8-Cl-hs7"/>
+                <outlet property="playerButtonsContainer" destination="a5S-m5-QGl" id="XPc-Yr-Tkb"/>
+                <outlet property="previousVideoInteractiveImageView" destination="ieT-g6-qL3" id="8yr-jU-2ob"/>
             </connections>
             <point key="canvasLocation" x="134" y="125"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="nextVideo" width="36" height="36"/>
+        <image name="playVideo" width="48" height="48"/>
+        <image name="previousVideo" width="36" height="36"/>
+    </resources>
 </document>

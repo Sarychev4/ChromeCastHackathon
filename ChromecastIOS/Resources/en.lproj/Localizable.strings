@@ -6,9 +6,21 @@
   
 */
 
+/*
+ - Reachabality
+*/
+
+"Reachabality.NoInternet.Title" = "Oh my!";
+"Reachabality.NoInternet.Message" = "No internet connection.\nPlease check your internet settings.";
+"Reachabality.NoInternet.OKButton.Title" = "OK";
+
+
+
 "Common.Continue" = "Continue";
 
-
+"MoreTermOfService" = "Terms of Use";
+"MorePrivacyPolicy" = "Privacy Policy";
+"MoreFAQ" = "FAQ";
 /*
  - Tutorial
  */
@@ -131,3 +143,31 @@ Features";
 "SubscriptionCommentName1" = "by Andy Davies";
 "SubscriptionComment2" = "So far I’m loving it.\nWay better to see all the info on a bigger screen";
 "SubscriptionCommentName2" = "by JD891";
+
+/*IPTV*/
+
+"IPTVSectionTitleUser" = "My channels";
+"IPTVSectionTitleFree" = "Popular channels";
+
+"IPTVAddTitle" = "Add M3U URL";
+"IPTVAddPlaylistName" = "Playlist name";
+"IPTVAddPlaylistLink" = "http://xxx.com/playlist.m3u";
+"IPTVAddSave" = "Save";
+"IPTVAddCancel" = "Cancel";
+"IPTVEditTitle" = "Edit";
+"IPTVDoneTitle" = "Done";
+
+
+/*
+ - Screen Settings
+ */
+
+"Screen.Settings.Title" = "Settings";
+"Screen.Settings.Banner.Title" = "Get Premium access";
+"Screen.Settings.Banner.Subtitle" = "No limits. Best experience.";
+"Screen.Settings.Section.FAQ.Title" = "FAQ";
+"Screen.Settings.Section.RestorePurchases.Title" = "Restore Purchases";
+"Screen.Settings.Section.PrivacyPolicy.Title" = "Privacy Policy";
+"Screen.Settings.Section.TermsOfUse.Title" = "Terms of Use";
+"Screen.Settings.Section.SendUsANote.Title" = "Send us a note";
+"Screen.Settings.Help.Title" = "Need help?";

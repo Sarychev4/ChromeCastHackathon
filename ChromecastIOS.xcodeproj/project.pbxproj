@@ -79,8 +79,14 @@
 		DD5232AD281ACF0C004AF0AA /* PremiumDiscountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AB281ACF0C004AF0AA /* PremiumDiscountViewController.xib */; };
 		DD5232B0281ACF22004AF0AA /* PremuimLifeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */; };
 		DD5232B1281ACF22004AF0AA /* PremuimLifeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */; };
+		DD55A67B2832EF2400B99C17 /* YouTubeSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55A67A2832EF2400B99C17 /* YouTubeSearchManager.swift */; };
+		DD55A67D2832EF8900B99C17 /* YoutubeSearchCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */; };
 		DD69DCAA281A8EF80010E4B3 /* MediaLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */; };
 		DD69DCAB281A8EF80010E4B3 /* MediaLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */; };
+		DD6E98A9282FC04D00A72DF3 /* GoogleDriveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */; };
+		DD6E98AD282FDE4100A72DF3 /* GoogleDriveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */; };
+		DD6E98AE282FDE4100A72DF3 /* GoogleDriveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */; };
+		DD6E98B12830036000A72DF3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98B02830036000A72DF3 /* Date+Extension.swift */; };
 		DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9159B82817F2B300C1393F /* Main.storyboard */; };
 		DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */; };
 		DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */; };
@@ -144,11 +150,26 @@
 		DDCE0A1A28117020004E9C18 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */; };
 		DDCF125A28229C23009019D4 /* MirrorSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCF125828229C23009019D4 /* MirrorSettingsViewController.swift */; };
 		DDCF125B28229C23009019D4 /* MirrorSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCF125928229C23009019D4 /* MirrorSettingsViewController.xib */; };
+		DDD6E3722832F998000C5AB9 /* YouTubeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6E3702832F998000C5AB9 /* YouTubeCell.swift */; };
+		DDD6E3732832F998000C5AB9 /* YouTubeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD6E3712832F998000C5AB9 /* YouTubeCell.xib */; };
+		DDD6E3762832F9CD000C5AB9 /* SuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6E3742832F9CD000C5AB9 /* SuggestionCell.swift */; };
+		DDD6E3772832F9CD000C5AB9 /* SuggestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD6E3752832F9CD000C5AB9 /* SuggestionCell.xib */; };
+		DDD6E3C92833BEEC000C5AB9 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6E3C82833BEEC000C5AB9 /* ServerConfiguration.swift */; };
+		DDD6E3D02833C653000C5AB9 /* FAQ.html in Resources */ = {isa = PBXBuildFile; fileRef = DDD6E3CF2833C653000C5AB9 /* FAQ.html */; };
+		DDD6E3D12833C677000C5AB9 /* FAQ.html in Sources */ = {isa = PBXBuildFile; fileRef = DDD6E3CF2833C653000C5AB9 /* FAQ.html */; };
 		DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */ = {isa = PBXBuildFile; fileRef = DDED96E8282C47390088E4E6 /* SplashAnimation.json */; };
 		DDED96EA282C496F0088E4E6 /* SplashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = DDED96E8282C47390088E4E6 /* SplashAnimation.json */; };
 		DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */; };
 		DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96ED282C54510088E4E6 /* IPTVManager.swift */; };
 		DDED96F0282C63010088E4E6 /* ScrollViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96EF282C63010088E4E6 /* ScrollViewAnimator.swift */; };
+		DDED96F2282E77430088E4E6 /* BrowserTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96F1282E77420088E4E6 /* BrowserTab.swift */; };
+		DDED96F4282E77620088E4E6 /* DetectedUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96F3282E77620088E4E6 /* DetectedUrl.swift */; };
+		DDED96F5282E785C0088E4E6 /* JavaScripts.swift in Resources */ = {isa = PBXBuildFile; fileRef = DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */; };
+		DDED96F9282E7B470088E4E6 /* DetectedUrlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96F7282E7B470088E4E6 /* DetectedUrlsViewController.swift */; };
+		DDED96FA282E7B470088E4E6 /* DetectedUrlsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDED96F8282E7B470088E4E6 /* DetectedUrlsViewController.xib */; };
+		DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */; };
+		DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */; };
+		DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */; };
 		DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */; };
 		DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */; };
 		DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */; };
@@ -285,8 +306,14 @@
 		DD5232AB281ACF0C004AF0AA /* PremiumDiscountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumDiscountViewController.xib; sourceTree = "<group>"; };
 		DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremuimLifeTimeViewController.swift; sourceTree = "<group>"; };
 		DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremuimLifeTimeViewController.xib; sourceTree = "<group>"; };
+		DD55A67A2832EF2400B99C17 /* YouTubeSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchManager.swift; sourceTree = "<group>"; };
+		DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchCodable.swift; sourceTree = "<group>"; };
 		DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewController.swift; sourceTree = "<group>"; };
 		DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaLibraryViewController.xib; sourceTree = "<group>"; };
+		DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveAPI.swift; sourceTree = "<group>"; };
+		DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveCell.swift; sourceTree = "<group>"; };
+		DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleDriveCell.xib; sourceTree = "<group>"; };
+		DD6E98B02830036000A72DF3 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DD9159B92817F2B300C1393F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailMasterFlowLayout.swift; sourceTree = "<group>"; };
 		DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailFlowLayoutDraggingBehavior.swift; sourceTree = "<group>"; };
@@ -350,10 +377,23 @@
 		DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouTubeViewController.xib; sourceTree = "<group>"; };
 		DDCF125828229C23009019D4 /* MirrorSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorSettingsViewController.swift; sourceTree = "<group>"; };
 		DDCF125928229C23009019D4 /* MirrorSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorSettingsViewController.xib; sourceTree = "<group>"; };
+		DDD6E3702832F998000C5AB9 /* YouTubeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeCell.swift; sourceTree = "<group>"; };
+		DDD6E3712832F998000C5AB9 /* YouTubeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouTubeCell.xib; sourceTree = "<group>"; };
+		DDD6E3742832F9CD000C5AB9 /* SuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCell.swift; sourceTree = "<group>"; };
+		DDD6E3752832F9CD000C5AB9 /* SuggestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionCell.xib; sourceTree = "<group>"; };
+		DDD6E3C82833BEEC000C5AB9 /* ServerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
+		DDD6E3CF2833C653000C5AB9 /* FAQ.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = FAQ.html; sourceTree = "<group>"; };
 		DDED96E8282C47390088E4E6 /* SplashAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SplashAnimation.json; sourceTree = "<group>"; };
 		DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistM3U8.swift; sourceTree = "<group>"; };
 		DDED96ED282C54510088E4E6 /* IPTVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVManager.swift; sourceTree = "<group>"; };
 		DDED96EF282C63010088E4E6 /* ScrollViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewAnimator.swift; sourceTree = "<group>"; };
+		DDED96F1282E77420088E4E6 /* BrowserTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTab.swift; sourceTree = "<group>"; };
+		DDED96F3282E77620088E4E6 /* DetectedUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrl.swift; sourceTree = "<group>"; };
+		DDED96F7282E7B470088E4E6 /* DetectedUrlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrlsViewController.swift; sourceTree = "<group>"; };
+		DDED96F8282E7B470088E4E6 /* DetectedUrlsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedUrlsViewController.xib; sourceTree = "<group>"; };
+		DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrlCell.swift; sourceTree = "<group>"; };
+		DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedUrlCell.xib; sourceTree = "<group>"; };
+		DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInfoExtractor.swift; sourceTree = "<group>"; };
 		DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTestConnectionViewController.swift; sourceTree = "<group>"; };
 		DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialTestConnectionViewController.xib; sourceTree = "<group>"; };
 		DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreviewImageViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +486,11 @@
 				DD03EFAB282AA2EC0075F70E /* Settings.swift */,
 				DD03EFAD282AA4280075F70E /* SubscriptionSpot.swift */,
 				DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */,
+				DDED96F1282E77420088E4E6 /* BrowserTab.swift */,
+				DDED96F3282E77620088E4E6 /* DetectedUrl.swift */,
+				DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */,
+				DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */,
+				DDD6E3C82833BEEC000C5AB9 /* ServerConfiguration.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -684,6 +729,8 @@
 				DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */,
 				DD03EFB0282AA4580075F70E /* DataManager.swift */,
 				DDED96ED282C54510088E4E6 /* IPTVManager.swift */,
+				DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */,
+				DD55A67A2832EF2400B99C17 /* YouTubeSearchManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -697,6 +744,15 @@
 				DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */,
 			);
 			path = MediaLibraryVC;
+			sourceTree = "<group>";
+		};
+		DD6E98AA282FDDB600A72DF3 /* GoogleDriveCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */,
+				DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */,
+			);
+			path = GoogleDriveCell;
 			sourceTree = "<group>";
 		};
 		DD923AD72812E7010034E5D3 /* Manager */ = {
@@ -856,6 +912,7 @@
 		DDCE09F8281060C4004E9C18 /* BrowserVC */ = {
 			isa = PBXGroup;
 			children = (
+				DDED96F6282E7B160088E4E6 /* DetectedUrls */,
 				DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */,
 				DDCE09FA281064C2004E9C18 /* BrowserViewController.xib */,
 				DDCE0A0128107255004E9C18 /* BrowserCell */,
@@ -875,6 +932,7 @@
 		DDCE0A0228116E8F004E9C18 /* GoogleDriveVC */ = {
 			isa = PBXGroup;
 			children = (
+				DD6E98AA282FDDB600A72DF3 /* GoogleDriveCell */,
 				DDCE0A0428116ED5004E9C18 /* GoogleDriveViewController.swift */,
 				DDCE0A0528116ED5004E9C18 /* GoogleDriveViewController.xib */,
 			);
@@ -904,8 +962,8 @@
 		DDCE0A0D28116F6D004E9C18 /* IptvVC */ = {
 			isa = PBXGroup;
 			children = (
-				DDA7205A282C350400CF4DC3 /* IPTVStreamsVC */,
 				DDA72059282C336000CF4DC3 /* IPTVPlayListsVC */,
+				DDA7205A282C350400CF4DC3 /* IPTVStreamsVC */,
 			);
 			path = IptvVC;
 			sourceTree = "<group>";
@@ -913,6 +971,8 @@
 		DDCE0A0E28116F81004E9C18 /* YouTubeVC */ = {
 			isa = PBXGroup;
 			children = (
+				DDD6E36F2832F80A000C5AB9 /* SuggestionCell */,
+				DDD6E36E2832F7FB000C5AB9 /* YouTubeCell */,
 				DDCE0A1728117020004E9C18 /* YouTubeViewController.swift */,
 				DDCE0A1828117020004E9C18 /* YouTubeViewController.xib */,
 			);
@@ -935,6 +995,59 @@
 				DDCF125928229C23009019D4 /* MirrorSettingsViewController.xib */,
 			);
 			path = MirrorSettingsVC;
+			sourceTree = "<group>";
+		};
+		DDD6E36E2832F7FB000C5AB9 /* YouTubeCell */ = {
+			isa = PBXGroup;
+			children = (
+				DDD6E3702832F998000C5AB9 /* YouTubeCell.swift */,
+				DDD6E3712832F998000C5AB9 /* YouTubeCell.xib */,
+			);
+			path = YouTubeCell;
+			sourceTree = "<group>";
+		};
+		DDD6E36F2832F80A000C5AB9 /* SuggestionCell */ = {
+			isa = PBXGroup;
+			children = (
+				DDD6E3742832F9CD000C5AB9 /* SuggestionCell.swift */,
+				DDD6E3752832F9CD000C5AB9 /* SuggestionCell.xib */,
+			);
+			path = SuggestionCell;
+			sourceTree = "<group>";
+		};
+		DDD6E3C02833BD55000C5AB9 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				DDD6E3C12833BD5B000C5AB9 /* ChromeCast */,
+			);
+			path = HTML;
+			sourceTree = "<group>";
+		};
+		DDD6E3C12833BD5B000C5AB9 /* ChromeCast */ = {
+			isa = PBXGroup;
+			children = (
+				DDD6E3CF2833C653000C5AB9 /* FAQ.html */,
+			);
+			path = ChromeCast;
+			sourceTree = "<group>";
+		};
+		DDED96F6282E7B160088E4E6 /* DetectedUrls */ = {
+			isa = PBXGroup;
+			children = (
+				DDED96FB282E7B7B0088E4E6 /* DetectedUrlCell */,
+				DDED96F7282E7B470088E4E6 /* DetectedUrlsViewController.swift */,
+				DDED96F8282E7B470088E4E6 /* DetectedUrlsViewController.xib */,
+			);
+			path = DetectedUrls;
+			sourceTree = "<group>";
+		};
+		DDED96FB282E7B7B0088E4E6 /* DetectedUrlCell */ = {
+			isa = PBXGroup;
+			children = (
+				DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */,
+				DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */,
+			);
+			path = DetectedUrlCell;
 			sourceTree = "<group>";
 		};
 		DDF231BF281814D7005E3E3E /* TestConnectionVC */ = {
@@ -1019,6 +1132,7 @@
 				DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */,
 				DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */,
 				E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */,
+				DD6E98B02830036000A72DF3 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1089,6 +1203,7 @@
 		E896434B280EBB1F00E6E287 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DDD6E3C02833BD55000C5AB9 /* HTML */,
 				DD19E48C2812ABD800931489 /* samples */,
 				DD23EAF92811C27000DB7D44 /* JavaScripts */,
 				DD23EAE72811C1B300DB7D44 /* BrowserDefaultPage */,
@@ -1193,6 +1308,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */,
+				DDED96F5282E785C0088E4E6 /* JavaScripts.swift in Resources */,
 				DDED96EA282C496F0088E4E6 /* SplashAnimation.json in Resources */,
 				DDCE0A002810724B004E9C18 /* BrowserCell.xib in Resources */,
 				DD19E4742811D58600931489 /* style.css in Resources */,
@@ -1200,6 +1317,7 @@
 				DD69DCAB281A8EF80010E4B3 /* MediaLibraryViewController.xib in Resources */,
 				DD181212282ABA8F00EFF2AF /* HelpViewController.xib in Resources */,
 				E896433D280EB75D00E6E287 /* LaunchScreen.storyboard in Resources */,
+				DDD6E3732832F998000C5AB9 /* YouTubeCell.xib in Resources */,
 				DDCE0A1628116FEC004E9C18 /* IPTVPlayListsViewController.xib in Resources */,
 				DDA72058282BF6BF00CF4DC3 /* IPTVPlayListCell.xib in Resources */,
 				DDCE0A1A28117020004E9C18 /* YouTubeViewController.xib in Resources */,
@@ -1208,6 +1326,7 @@
 				DDA737642819319C00CCF7FD /* AlertViewController.xib in Resources */,
 				DDF59C07280F46CE00CE2E2B /* Localizable.strings in Resources */,
 				DD19E4852811E56F00931489 /* WebsiteCell.xib in Resources */,
+				DDD6E3D02833C653000C5AB9 /* FAQ.html in Resources */,
 				DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */,
 				DDF231CD281815EF005E3E3E /* TutorialEverythingReadyViewController.xib in Resources */,
 				DD19E4C52812AC8E00931489 /* HDCell.xib in Resources */,
@@ -1245,6 +1364,7 @@
 				DDA72052282BB33E00CF4DC3 /* LoadingViewController.xib in Resources */,
 				DD19E4B22812ABD900931489 /* willowtree_apartment_sunset_hd.jpg in Resources */,
 				DD23EAE12811947A00DB7D44 /* SettingsViewController.xib in Resources */,
+				DDD6E3772832F9CD000C5AB9 /* SuggestionCell.xib in Resources */,
 				DDA7205E282C35A400CF4DC3 /* IPTVStreamsViewController.xib in Resources */,
 				DD19E4B32812ABD900931489 /* barton_nature_lake_hd.JPG in Resources */,
 				DD19E4B52812ABD900931489 /* barton_nature_leeve_hd.JPG in Resources */,
@@ -1262,8 +1382,10 @@
 				DDA72048282AC2EC00CF4DC3 /* CommentView.xib in Resources */,
 				DD19E4B42812ABD900931489 /* horizontal_strip.png in Resources */,
 				DD19E4B92812ABD900931489 /* horizontal_strip_hd.png in Resources */,
+				DD6E98AE282FDE4100A72DF3 /* GoogleDriveCell.xib in Resources */,
 				DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */,
 				DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */,
+				DDED96FA282E7B470088E4E6 /* DetectedUrlsViewController.xib in Resources */,
 				DD52329E281AAE26004AF0AA /* AssetCell.xib in Resources */,
 				DD19E4A92812ABD900931489 /* winsor_skyline_hd.png in Resources */,
 				DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */,
@@ -1372,12 +1494,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDD6E3D12833C677000C5AB9 /* FAQ.html in Sources */,
 				DD19E4C92812ACB500931489 /* ThumbnailCell.swift in Sources */,
 				DD923AD62812E6DF0034E5D3 /* CellAnimationMeasurement.swift in Sources */,
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
 				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
 				DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */,
+				DD55A67D2832EF8900B99C17 /* YoutubeSearchCodable.swift in Sources */,
 				DD19E4892812AA5700931489 /* PhotoModel.swift in Sources */,
 				DDF59C00280F32A400CE2E2B /* UIViewController+Extension.swift in Sources */,
 				DDF59C10280F4B7B00CE2E2B /* UIView+Extension.swift in Sources */,
@@ -1386,11 +1510,13 @@
 				DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */,
 				DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */,
 				DDCF125A28229C23009019D4 /* MirrorSettingsViewController.swift in Sources */,
+				DD55A67B2832EF2400B99C17 /* YouTubeSearchManager.swift in Sources */,
 				E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */,
 				DDA7205D282C35A400CF4DC3 /* IPTVStreamsViewController.swift in Sources */,
 				DDED96F0282C63010088E4E6 /* ScrollViewAnimator.swift in Sources */,
 				DDF59C02280F41AD00CE2E2B /* RoundedView.swift in Sources */,
 				DD03EFB7282AB4E50075F70E /* RoundedImageView.swift in Sources */,
+				DDD6E3762832F9CD000C5AB9 /* SuggestionCell.swift in Sources */,
 				DDAE26542818535200355735 /* ListDevicesViewController.swift in Sources */,
 				DDF59BF6280F30A100CE2E2B /* InteractiveView.swift in Sources */,
 				DD19E4CE2812C42500931489 /* HDFlowLayout.swift in Sources */,
@@ -1404,13 +1530,17 @@
 				DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */,
 				DD923AEC2816B39B0034E5D3 /* TutorialWelcomeViewController.swift in Sources */,
 				DDCE0A0A28116EF9004E9C18 /* GooglePhotosViewController.swift in Sources */,
+				DD6E98A9282FC04D00A72DF3 /* GoogleDriveAPI.swift in Sources */,
 				DD923AF42816B3F40034E5D3 /* TutorialWifiViewController.swift in Sources */,
 				DD923AD92812E7190034E5D3 /* AcoordionAnimationManager.swift in Sources */,
 				DDF59C0E280F48D500CE2E2B /* UIFont+Extension.swift in Sources */,
 				DD5232AC281ACF0C004AF0AA /* PremiumDiscountViewController.swift in Sources */,
 				DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */,
+				DDD6E3C92833BEEC000C5AB9 /* ServerConfiguration.swift in Sources */,
+				DDED96F9282E7B470088E4E6 /* DetectedUrlsViewController.swift in Sources */,
 				E8CFAEC4282AED8B002C3B87 /* URL+Extension.swift in Sources */,
 				DDA72051282BB33E00CF4DC3 /* LoadingViewController.swift in Sources */,
+				DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */,
 				DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */,
 				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */,
@@ -1438,6 +1568,7 @@
 				DDF59BF1280F2F0B00CE2E2B /* BaseViewController.swift in Sources */,
 				DD03EFAA282A63F10075F70E /* LocalNetworkPermissionsManager.swift in Sources */,
 				DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */,
+				DD6E98AD282FDE4100A72DF3 /* GoogleDriveCell.swift in Sources */,
 				DD923ADD2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift in Sources */,
 				DDA737632819319C00CCF7FD /* AlertViewController.swift in Sources */,
 				DDCE0A0628116ED5004E9C18 /* GoogleDriveViewController.swift in Sources */,
@@ -1446,8 +1577,10 @@
 				DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */,
 				DD03EFAC282AA2EC0075F70E /* Settings.swift in Sources */,
 				DD5232A5281ACEA2004AF0AA /* SubscriptionSpotsManager.swift in Sources */,
+				DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */,
 				DDCE0A1528116FEC004E9C18 /* IPTVPlayListsViewController.swift in Sources */,
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
+				DD6E98B12830036000A72DF3 /* Date+Extension.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
 				DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */,
 				DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */,
@@ -1456,10 +1589,13 @@
 				DD2FEAB82824FFD300D8EB11 /* DeviceObject.swift in Sources */,
 				DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */,
 				DDA7204E282ACC2600CF4DC3 /* Realm+Extension.swift in Sources */,
+				DDD6E3722832F998000C5AB9 /* YouTubeCell.swift in Sources */,
 				DD03EFB5282AB0090075F70E /* Locale+Extension.swift in Sources */,
+				DDED96F4282E77620088E4E6 /* DetectedUrl.swift in Sources */,
 				DD923ADF2812F3C70034E5D3 /* CellPassiveMeasurement.swift in Sources */,
 				DD19E4D22812C7E700931489 /* CellConfiguratedCollectionView.swift in Sources */,
 				DDF59BFD280F323500CE2E2B /* UINavigationContainer.swift in Sources */,
+				DDED96F2282E77430088E4E6 /* BrowserTab.swift in Sources */,
 				DDA72045282AC2B300CF4DC3 /* CommentView.swift in Sources */,
 				DDA7376628193C8C00CCF7FD /* InteractiveLabel.swift in Sources */,
 			);
@@ -1690,6 +1826,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1724,6 +1861,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

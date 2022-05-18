@@ -6,7 +6,10 @@
 //
 
 import UIKit
-
+import Agregator
+import Criollo
+import WebKit
+import CSSystemInfoHelper
 struct Tab {
     var title: String
     var subtitle: String
@@ -23,12 +26,37 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var settingsInteractiveView: InteractiveView! {
         didSet {
             settingsInteractiveView.didTouchAction = {
-                let vc = SettingsViewController()
-                vc.modalPresentationStyle = .automatic//.fullScreen
-                self.present(vc, animated: true, completion: nil)
+                let settingsViewController = SettingsViewController()
+                let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true, completion: nil)
             }
         }
     }
+    
+
+    
+    
+    @IBOutlet weak var goToPremiumInteractiveView: InteractiveView! {
+        didSet {
+            goToPremiumInteractiveView.didTouchAction = {
+                
+            #if DEBUG //1
+                try! AgregatorApplication.current.realm?.write {
+                    if AgregatorApplication.current.subscriptionState == .active {
+                        AgregatorApplication.current.subscriptionState = .none
+                    } else {
+                        AgregatorApplication.current.subscriptionState = .active
+                    }
+                }//temp vr 1
+                return
+            #endif
+            }
+        }
+    }
+    
+    @IBOutlet weak var connectInteractiveView: InteractiveView!
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -41,14 +69,73 @@ class MainViewController: BaseViewController {
     }
     
     var tabs: [Tab] = []
-//    var source: String!
+    //    var source: String!
     var nameForEvents: String { return "Menu screen" }
+    
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var testImageView: UIImageView!
+    
+    var isFileMngr = false
+    
+    @IBAction func testCastImageButtonTapped(_ sender: Any) {
+//        ChromeCastService.shared.displayImage(with: URL(string: "http://risovach.ru/upload/2014/03/mem/s-dr-karoch_45066550_orig_.jpeg")!)
+        // URL(string: "http://localhost:\(Port.app.rawValue)/image")
+        //http://127.0.0.1/image.jpeg
+        //192.168.1.34
+        //scheme://host:port
+        //http://192.168.1.34:10101/image.jpeg worked!
+        //
+        let networkInterfaces = CSSystemInfoHelper.shared.networkInterfaces!
+        guard let interface = CSSystemInfoHelper.shared.networkInterfaces?.filter({ $0.name == "en0" && $0.familyName == "AF_INET" }).first else { return }
+        let ipAddress = interface.address
+
+        print("MY ADDRESS \(ipAddress)")
+        guard let url = URL(string: "http://\(ipAddress):10101/image") else { return }
+        if isFileMngr == true {
+            ChromeCastService.shared.displayImage(with: url)
+            isFileMngr = false
+        } else {
+            ChromeCastService.shared.displayImage(with: URL(string: "http://risovach.ru/upload/2014/03/mem/s-dr-karoch_45066550_orig_.jpeg")!)
+            isFileMngr = true
+        }
+
+        let request = URLRequest(url: url)
+        webView.load(request)
+        
+        print(ChromeCastService.shared.screenMirroringChannel ?? "CHANNEL IS DEAD")
+        
+        testImageView.image = loadImageFromDiskWith(fileName: "imageForCasting.jpeg")
+    }
+    
+    func loadImageFromDiskWith(fileName: String) -> UIImage? {
+
+      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
+
+        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
+
+        if let dirPath = paths.first {
+            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
+            let image = UIImage(contentsOfFile: imageUrl.path)
+            return image
+
+        }
+
+        return nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ChromeCastService.shared.initialize()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        connectInteractiveView.didTouchAction = { [weak self] in
+            guard self == self else { return }
+            self?.presentDevices(postAction: nil)
+        }
         
         let menuCellNib = UINib(nibName: MainCell.Identifier, bundle: .main)
         collectionView.register(menuCellNib, forCellWithReuseIdentifier: MainCell.Identifier)
@@ -90,14 +177,14 @@ class MainViewController: BaseViewController {
             title: NSLocalizedString("Screen.Main.Tab.GoogleDrive.Title", comment: ""),
             subtitle: NSLocalizedString("Screen.Main.Tab.GoogleDrive.Subtitle", comment: ""),
             image: UIImage(named: "googleDrive")!,
-            type: .youtube
+            type: .googleDrive
         )
         
         let googlePhotos = Tab(
             title: NSLocalizedString("Screen.Main.Tab.GooglePhotos.Title", comment: ""),
             subtitle: NSLocalizedString("Screen.Main.Tab.GooglePhotos.Subtitle", comment: ""),
             image: UIImage(named: "googlePhotos")!,
-            type: .youtube
+            type: .googlePhotos
         )
         
         tabs = [browser, media, iptv, youtube, googleDrive, googlePhotos]
@@ -110,14 +197,14 @@ class MainViewController: BaseViewController {
         switch buttonType {
         case .media:
             let viewController = MediaLibraryViewController()
-                       viewController.hidesBottomBarWhenPushed = true
-//                       viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
-                       navigation?.pushViewController(viewController, animated: .left)
+            viewController.hidesBottomBarWhenPushed = true
+            //                       viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
+            navigation?.pushViewController(viewController, animated: .left)
             
-//            let viewController = MediaViewController()
-//            viewController.hidesBottomBarWhenPushed = true
-//            viewController.flowLayoutSyncManager = FlowLayoutSyncManager() //temp as important
-//            navigation?.pushViewController(viewController, animated: .left)
+            //            let viewController = MediaViewController()
+            //            viewController.hidesBottomBarWhenPushed = true
+            //            viewController.flowLayoutSyncManager = FlowLayoutSyncManager() //temp as important
+            //            navigation?.pushViewController(viewController, animated: .left)
         case .browser:
             let viewController = BrowserViewController()
             viewController.hidesBottomBarWhenPushed = true
@@ -139,6 +226,20 @@ class MainViewController: BaseViewController {
             viewController.hidesBottomBarWhenPushed = true
             self.navigation?.pushViewController(viewController, animated: .left)
         }
+    }
+    
+    private func presentDevices(postAction: (() -> ())?) {
+        let controller = ListDevicesViewController()
+        controller.canDismissOnPan = true
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let _ = self else { return }
+            postAction?()
+        }
+        present(controller, animated: false, completion: nil)
     }
     
 }

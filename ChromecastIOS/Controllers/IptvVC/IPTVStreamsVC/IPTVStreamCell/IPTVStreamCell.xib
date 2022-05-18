@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,6 +23,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJg-s4-KLn" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="308" height="107"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9l-1f-Mxo">
+                                        <rect key="frame" x="0.0" y="0.0" width="308" height="107"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                        <connections>
+                                            <action selector="contentClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Uf8-jd-dE1"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-v1-gFs">
                                         <rect key="frame" x="20" y="38.5" width="30" height="30"/>
                                         <subviews>
@@ -37,7 +44,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="1Ku-2o-YyN"/>
                                             <constraint firstItem="5S8-SA-du9" firstAttribute="top" secondItem="HZH-v1-gFs" secondAttribute="top" id="77T-XS-Ccm"/>
@@ -72,15 +79,25 @@
                                     <constraint firstAttribute="trailing" secondItem="jkJ-g8-qO7" secondAttribute="trailing" constant="14" id="1IS-CC-GL8"/>
                                     <constraint firstItem="jkJ-g8-qO7" firstAttribute="leading" secondItem="HZH-v1-gFs" secondAttribute="trailing" constant="16" id="1q9-4S-gDr"/>
                                     <constraint firstItem="yvt-cw-oIk" firstAttribute="leading" secondItem="HZH-v1-gFs" secondAttribute="trailing" constant="16" id="45s-f1-m03"/>
+                                    <constraint firstAttribute="bottom" secondItem="t9l-1f-Mxo" secondAttribute="bottom" id="5ie-uW-c6L"/>
+                                    <constraint firstItem="t9l-1f-Mxo" firstAttribute="leading" secondItem="DJg-s4-KLn" secondAttribute="leading" id="9WH-5d-M3E"/>
                                     <constraint firstItem="yvt-cw-oIk" firstAttribute="top" secondItem="DJg-s4-KLn" secondAttribute="top" constant="16" id="B2c-e4-9PF"/>
                                     <constraint firstItem="jkJ-g8-qO7" firstAttribute="top" secondItem="yvt-cw-oIk" secondAttribute="bottom" constant="4" id="H72-sm-ww1"/>
+                                    <constraint firstItem="t9l-1f-Mxo" firstAttribute="top" secondItem="DJg-s4-KLn" secondAttribute="top" id="W9p-ej-Lbb"/>
                                     <constraint firstItem="HZH-v1-gFs" firstAttribute="centerY" secondItem="DJg-s4-KLn" secondAttribute="centerY" id="XSC-NL-xmX"/>
+                                    <constraint firstAttribute="trailing" secondItem="t9l-1f-Mxo" secondAttribute="trailing" id="aWX-oH-d4U"/>
                                     <constraint firstAttribute="bottom" secondItem="jkJ-g8-qO7" secondAttribute="bottom" constant="16" id="kA8-Q9-NZ3"/>
                                     <constraint firstItem="HZH-v1-gFs" firstAttribute="leading" secondItem="DJg-s4-KLn" secondAttribute="leading" constant="20" id="x5y-MM-e1Q"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -126,8 +143,5 @@
         <namedColor name="labelColorGrayPunk">
             <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

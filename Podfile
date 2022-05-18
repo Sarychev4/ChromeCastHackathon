@@ -28,7 +28,12 @@ target 'ChromecastIOS' do
   pod 'XCDYouTubeKit-kbexdev', :git => 'https://github.com/kbex-dev/XCDYouTubeKit.git' 
   pod 'IndicateKit', '~> 1.0.5'
   pod 'lottie-ios'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   pod 'Firebase/Messaging'
+  pod 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
+  pod 'GoogleSignIn', '~> 4.1.1'
+  pod 'CSSystemInfoHelper', '~> 2.0'
 end 
 
  post_install do |installer_representation|

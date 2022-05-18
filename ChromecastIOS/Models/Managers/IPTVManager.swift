@@ -101,8 +101,12 @@ class IPTVManager {
         }
     }
     
-    private func downloadAndParsePlayslist(_ url: String, onComplete: @escaping ([IPTVStream]) -> Void) {
-        let url = URL(string: "https://tv.wonny.net/m3u?url=\(url)")!
+//
+    
+    private func downloadAndParsePlayslist(_ channelUrl: String, onComplete: @escaping ([IPTVStream]) -> Void) {
+        let url = URL(string: "https://tv.wonny.net/m3u?url=\(channelUrl)")!
+//        let channel = "https://iptv-org.github.io/iptv/index.region.m3u"
+//        let url = URL(string: "https://tv.wonny.net/m3u?url=\(channel)")!
         AF.request(url).responseJSON { (response) in
             var result: [IPTVStream] = []
             if let arrayOfChannels = response.value as? [[String: Any]] {

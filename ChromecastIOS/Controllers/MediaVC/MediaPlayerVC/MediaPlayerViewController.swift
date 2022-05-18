@@ -12,14 +12,10 @@ import Photos
 class MediaPlayerViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
-    
     @IBOutlet weak var currentAssetNameLabel: DefaultLabel!
-    
     @IBOutlet weak var hdCollectionView: CellConfiguratedCollectionView!
     @IBOutlet weak var thumbnailCollectionView: CellConfiguratedCollectionView!
-    
     @IBOutlet weak var qualityInteractiveView: InteractiveView!
-    
     @IBOutlet weak var qualityShadow: DropShadowView!
     
     //    private var hdPhotoModel: PhotoModel = PhotoCollection(photos: ["barton_nature_leeve_hd.JPG", "barton_nature_area_bridge_hd.JPG", "barton_nature_lake_hd.JPG", "barton_nature_swan_hd.JPG", "bird_hills_nature_tree_hd.JPG", "bird_hills_nature_sunset_hd.JPG", "huron_river_hd.JPG", "bird_hills_nature_foliage_hd.JPG","leslie_park_hd.png", "willowtree_apartment_sunset_hd.jpg", "vertical_strip_hd.png", "winsor_skyline_hd.png"])
@@ -72,17 +68,61 @@ class MediaPlayerViewController: BaseViewController {
         }
         
         qualityShadow.layer.cornerRadius = 15
+        
+        saveImageToDirectory(onComplete: castToTV)
     }
     
     override func viewDidAppear(_ animated: Bool) {
 //        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
 //            layout.unfoldCurrentCell()
 //        }
+       
     }
+    
+    private func castToTV() {
+        let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image") else { return }
+        ChromeCastService.shared.displayImage(with: url)
+    }
+    
+    private func saveImageToDirectory(onComplete: Closure?) {
+        guard presentedViewController == nil else { return }
+        
+        let currentAsset = assets[selectedIndex]
+//        currentAsset.
+        //PHImageManagerMaximumSize
+        image(for: currentAsset, size: PHImageManagerMaximumSize) { (image, need) in
+            
+            guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+            let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
+            guard let imageToCast = image else { return }
+            guard let data = imageToCast.jpegData(compressionQuality: 0.9) else { return }
+            
+            if FileManager.default.fileExists(atPath: imageFileURL.path) {
+                do {
+                    try FileManager.default.removeItem(atPath: imageFileURL.path)
+                    print("Removed old image")
+                } catch let removeError {
+                    print("couldn't remove file at path", removeError)
+                }
+            }
+
+            do {
+                try data.write(to: imageFileURL)
+                print("IMAGE SIZE \(data.count)")
+            } catch let error {
+                print("error saving file with error", error)
+            }
+            
+            onComplete?()
+        }
+    }
+    
+    
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = MirrorSettingsViewController()
-        controller.canDismissOnPan = false
+        controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
@@ -176,6 +216,9 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
                 cell.photoHeightConstraint.constant = size.height
                 cell.clipsToBounds = true
                 cell.photoImageView?.contentMode = .scaleAspectFit
+                if asset.mediaType == .image {
+                    cell.playerButtonsContainer.isHidden = true
+                }
 //                cell.photoImageView?.image = image
                 image(for: asset, size: CGSize(width: size.width, height: size.height)) { (image, needd) in
                     cell.photoImageView?.image = image
@@ -225,6 +268,7 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
             let collectionView = scrollView as? UICollectionView,
             let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{ //temp as
             layout.unfoldCurrentCell()
+            print(self.selectedIndex)
         }
     }
 }
@@ -279,7 +323,7 @@ extension MediaPlayerViewController {
      
      private let imageManager = PHCachingImageManager()
      */
-    
+
     @discardableResult func image(for asset: PHAsset, size: CGSize, completion: @escaping ((UIImage?, Bool) -> Void)) -> PHImageRequestID {
         return imageManager.requestImage(
             for: asset,

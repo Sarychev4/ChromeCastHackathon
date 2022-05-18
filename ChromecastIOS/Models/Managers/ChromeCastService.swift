@@ -66,7 +66,6 @@ class ChromeCastService: NSObject {
     }
     
     func displayImage(with url: URL) {
-        
         let params = ["type": "image", "url": url.absoluteString]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -74,9 +73,21 @@ class ChromeCastService: NSObject {
             screenMirroringChannel?.sendTextMessage(convertedString, error: nil)
         } catch {
             print(error.localizedDescription)
+            print(">>>\(error.localizedDescription)")
         }
     }
- 
+    
+    func displayIPTVBeam(with url: URL) {
+        let metadata = GCKMediaMetadata(metadataType: .movie)
+        let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: url)
+        mediaInfoBuilder.contentType = "video/mp4" //mediaInfo.mimeType
+        mediaInfoBuilder.streamType = GCKMediaStreamType.none
+        mediaInfoBuilder.metadata = metadata
+        let mediaInformation = mediaInfoBuilder.build()
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        remoteMediaClient?.loadMedia(mediaInformation)
+    }
+
 }
 
 extension ChromeCastService: GCKLoggerDelegate {

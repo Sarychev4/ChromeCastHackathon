@@ -103,6 +103,7 @@ class PremuimLifeTimeViewController: BaseViewController, SubscriptionController 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = true
         /*
          */
         

@@ -14,6 +14,7 @@ class IPTVPlayListsViewController: BaseViewController {
         print(">>> deinit IPTVPlayListsViewController")
     }
     
+    @IBOutlet weak var navigationBarShadowView: DropShadowView!
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var addCategoryInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
@@ -32,6 +33,7 @@ class IPTVPlayListsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -56,6 +58,17 @@ class IPTVPlayListsViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
+        addCategoryInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.stopEditing()
+            self.showAlertForNewPlayList()
+        }
+        
+        connectInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.presentDevices(postAction: nil)
+        }
+        
         /*
          */
 
@@ -70,12 +83,53 @@ class IPTVPlayListsViewController: BaseViewController {
         
         /*
          */
+        setupNavigationAnimations()
         
-       
+        searchBar.searchTextField.textColor = UIColor(named: "labelColorDark")
         
         /*
          */
     
+    }
+    
+    private func showAlertForNewPlayList() {
+        let title = NSLocalizedString("IPTVAddTitle", comment: "")
+        let alertController = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        let addAction = UIAlertAction(title: NSLocalizedString("IPTVAddSave", comment: ""), style: .default) { [weak self] (action) in
+            guard let self = self, let playlistName = alertController.textFields?[0].text, let url = alertController.textFields?[1].text else { return }
+            self.iptvService.createIPTV(with: playlistName, playlistURL: url) { [weak self] success in
+                guard let _ = self else { return }
+                if success == false {
+                    print(">>> Failed add playlist")
+                }
+            }
+        }
+        alertController.addAction(addAction)
+
+        let cancelAction = UIAlertAction(title: NSLocalizedString("IPTVAddCancel", comment: ""), style: .cancel) { _ in }
+        alertController.addAction(cancelAction)
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = NSLocalizedString("IPTVAddPlaylistName", comment: "")
+        }
+        alertController.addTextField { (textField) in
+            textField.placeholder = NSLocalizedString("IPTVAddPlaylistLink", comment: "")
+        }
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func presentDevices(postAction: (() -> ())?) {
+        let controller = ListDevicesViewController()
+        controller.canDismissOnPan = true
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let _ = self else { return }
+            postAction?()
+        }
+        present(controller, animated: false, completion: nil)
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -158,15 +212,30 @@ extension IPTVPlayListsViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IPTVPlayListCell.Identifier, for: indexPath) as! IPTVPlayListCell
+        cell.sectionNameView.isHidden = indexPath.row != 0
         if let usersPlaylists = userPlaylists, usersPlaylists.count > 0, indexPath.section == 0 {
             let playlist = usersPlaylists[indexPath.row]
+            cell.sectionNameLabel.text = NSLocalizedString("IPTVSectionTitleUser", comment: "")
+            cell.editButton.alpha = searchBar.text?.isEmpty == false ? 0 : 1
+            if tableView.isEditing {
+                cell.editButton.setTitle(NSLocalizedString("IPTVDoneTitle", comment: ""), for: .normal)
+            } else {
+                cell.editButton.setTitle(NSLocalizedString("IPTVEditTitle", comment: ""), for: .normal)
+            }
+            
             cell.setup(with: playlist)
             cell.didTouchAction = { [weak self] in
                 guard let self = self else { return }
                 self.showStreamsListScreen(with: playlist)
             }
+            cell.didEditAction = { [weak self] in
+                guard let self = self else { return }
+                self.tableView.setEditing(!self.tableView.isEditing, animated: true)
+                self.tableView.reloadData()
+            }
         } else if let freePlaylists = freePlaylists, freePlaylists.count > 0 {
             let playlist = freePlaylists[indexPath.row]
+            cell.sectionNameLabel.text = NSLocalizedString("IPTVSectionTitleFree", comment: "")
             cell.setup(with: playlist)
             cell.didTouchAction = { [weak self] in
                 guard let self = self else { return }
@@ -176,6 +245,40 @@ extension IPTVPlayListsViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if let userPlaylists = userPlaylists, userPlaylists.count > 0, indexPath.section == 0 {
+            return .delete
+        } else {
+            return .none
+        }
+    }
+      
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            guard let playlist = userPlaylists?[indexPath.row] else { return }
+            let realm = IPTVManager.realm!
+            try! realm.write {
+                realm.delete(playlist)
+            }
+        }
+    }
+    
+}
+
+extension IPTVPlayListsViewController: UIScrollViewDelegate {
+    private func setupNavigationAnimations() {
+        navigationBarShadowView.alpha = 0
+        navigationBarAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeIn, animations: { [weak self] in
+            guard let self = self else { return }
+            self.navigationBarShadowView.alpha = 1
+        })
+        animator = ScrollViewAnimator(minAnchor: 0, maxAnchor: 50, animator: navigationBarAnimator!)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
+        animator?.handleAnimation(with: currentPosition)
+    }
 }
 
 extension IPTVPlayListsViewController: UISearchBarDelegate {

@@ -26,10 +26,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jU5-My-AEY">
-                    <rect key="frame" x="0.0" y="532.5" width="414" height="363.5"/>
+                    <rect key="frame" x="0.0" y="588.5" width="414" height="307.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kj8-JC-bqj">
-                            <rect key="frame" x="16" y="32" width="382" height="299.5"/>
+                            <rect key="frame" x="16" y="32" width="382" height="243.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1a-8c-MBK">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="59.5"/>
@@ -52,61 +52,13 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLD-W1-TH3">
-                                    <rect key="frame" x="0.0" y="59.5" width="382" height="240"/>
+                                    <rect key="frame" x="0.0" y="59.5" width="382" height="184"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-qK-XDY">
-                                            <rect key="frame" x="16" y="0.0" width="350" height="240"/>
+                                            <rect key="frame" x="16" y="0.0" width="350" height="184"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZS-Ff-5lN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="MqU-3y-Bye">
-                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6NQ-lp-uRe">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="36"/>
-                                                                    <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rotate" translatesAutoresizingMaskIntoConstraints="NO" id="5cA-Wy-iW0">
-                                                                            <rect key="frame" x="0.0" y="6" width="24" height="24"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="24" id="CjN-04-EYF"/>
-                                                                                <constraint firstAttribute="width" constant="24" id="dHG-WQ-Fti"/>
-                                                                            </constraints>
-                                                                        </imageView>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="5cA-Wy-iW0" secondAttribute="trailing" id="3Wh-Lv-vRR"/>
-                                                                        <constraint firstItem="5cA-Wy-iW0" firstAttribute="centerY" secondItem="6NQ-lp-uRe" secondAttribute="centerY" id="KRR-JS-ueD"/>
-                                                                        <constraint firstItem="5cA-Wy-iW0" firstAttribute="leading" secondItem="6NQ-lp-uRe" secondAttribute="leading" id="wvE-bu-QKL"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-rotate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1z-Un-iUt">
-                                                                    <rect key="frame" x="38" y="8" width="249" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                                    <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1et-MM-rF5">
-                                                                    <rect key="frame" x="301" y="2.5" width="51" height="31"/>
-                                                                </switch>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="p1z-Un-iUt" firstAttribute="leading" secondItem="6NQ-lp-uRe" secondAttribute="trailing" constant="14" id="xaa-Dw-JcK"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="MqU-3y-Bye" firstAttribute="top" secondItem="XZS-Ff-5lN" secondAttribute="top" id="4EJ-oJ-GHs"/>
-                                                        <constraint firstAttribute="bottom" secondItem="MqU-3y-Bye" secondAttribute="bottom" id="JGZ-rS-k8e"/>
-                                                        <constraint firstItem="MqU-3y-Bye" firstAttribute="leading" secondItem="XZS-Ff-5lN" secondAttribute="leading" id="W0v-Ce-fXF"/>
-                                                        <constraint firstAttribute="trailing" secondItem="MqU-3y-Bye" secondAttribute="trailing" id="xaN-bL-anx"/>
-                                                        <constraint firstAttribute="height" constant="36" id="z3t-am-CYC"/>
-                                                    </constraints>
-                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ac6-HY-TH7">
-                                                    <rect key="frame" x="0.0" y="56" width="350" height="36"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="iDX-LH-71u">
                                                             <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
@@ -178,7 +130,7 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6hY-Ry-vEB">
-                                                    <rect key="frame" x="0.0" y="112" width="350" height="128"/>
+                                                    <rect key="frame" x="0.0" y="56" width="350" height="128"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5G-mb-FW7">
                                                             <rect key="frame" x="0.0" y="0.0" width="350" height="36"/>
@@ -328,7 +280,6 @@
     <resources>
         <image name="done" width="48" height="48"/>
         <image name="quality" width="48" height="48"/>
-        <image name="rotate" width="48" height="48"/>
         <image name="show" width="48" height="48"/>
         <namedColor name="labelColorDark">
             <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
