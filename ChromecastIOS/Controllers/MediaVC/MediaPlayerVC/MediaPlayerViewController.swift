@@ -109,6 +109,7 @@ class MediaPlayerViewController: BaseViewController {
 
             do {
                 try data.write(to: imageFileURL)
+                print("IMAGE SIZE \(data.count)")
             } catch let error {
                 print("error saving file with error", error)
             }

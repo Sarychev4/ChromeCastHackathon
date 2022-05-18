@@ -75,6 +75,8 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var testImageView: UIImageView!
     
+    var isFileMngr = false
+    
     @IBAction func testCastImageButtonTapped(_ sender: Any) {
 //        ChromeCastService.shared.displayImage(with: URL(string: "http://risovach.ru/upload/2014/03/mem/s-dr-karoch_45066550_orig_.jpeg")!)
         // URL(string: "http://localhost:\(Port.app.rawValue)/image")
@@ -88,10 +90,19 @@ class MainViewController: BaseViewController {
         let ipAddress = interface.address
 
         print("MY ADDRESS \(ipAddress)")
-        guard let url = URL(string: "http://\(ipAddress):10101/image.jpeg") else { return }
-        ChromeCastService.shared.displayImage(with: url)
+        guard let url = URL(string: "http://\(ipAddress):10101/image") else { return }
+        if isFileMngr == true {
+            ChromeCastService.shared.displayImage(with: url)
+            isFileMngr = false
+        } else {
+            ChromeCastService.shared.displayImage(with: URL(string: "http://risovach.ru/upload/2014/03/mem/s-dr-karoch_45066550_orig_.jpeg")!)
+            isFileMngr = true
+        }
+
         let request = URLRequest(url: url)
         webView.load(request)
+        
+        print(ChromeCastService.shared.screenMirroringChannel ?? "CHANNEL IS DEAD")
         
         testImageView.image = loadImageFromDiskWith(fileName: "imageForCasting.jpeg")
     }
