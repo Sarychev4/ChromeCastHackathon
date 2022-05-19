@@ -15,7 +15,7 @@
                 <outlet property="activityIndicator" destination="KPe-0u-E7M" id="ZN9-2G-8sq"/>
                 <outlet property="addCategoryInteractiveView" destination="wTD-Yc-XOv" id="EeQ-E7-c9Q"/>
                 <outlet property="backInteractiveView" destination="8Ub-aE-oa6" id="2lA-Na-90z"/>
-                <outlet property="connectInteractiveView" destination="0cb-Ez-CXv" id="RI7-Y9-hZU"/>
+                <outlet property="connectInteractiveView" destination="0cb-Ez-CXv" id="OkZ-xm-ijD"/>
                 <outlet property="navigationBarShadowView" destination="Kg0-Jm-r2t" id="BhB-UW-ekB"/>
                 <outlet property="searchBar" destination="iyG-8b-A8i" id="WqD-sV-thU"/>
                 <outlet property="tableView" destination="89d-LO-pz8" id="RuA-SM-ivo"/>
@@ -73,13 +73,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfh-yF-o6Z">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                    <rect key="frame" x="6" y="0.0" width="362" height="24"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-aE-oa6" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-xi-fnI">
-                                                                    <rect key="frame" x="6" y="4" width="16" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="16" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="16" id="8WS-zC-4PG"/>
                                                                         <constraint firstAttribute="height" constant="16" id="eS8-BZ-TDu"/>
@@ -88,19 +88,19 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="b7T-xi-fnI" firstAttribute="leading" secondItem="8Ub-aE-oa6" secondAttribute="leading" constant="6" id="XQr-cj-PZL"/>
+                                                                <constraint firstItem="b7T-xi-fnI" firstAttribute="leading" secondItem="8Ub-aE-oa6" secondAttribute="leading" id="XQr-cj-PZL"/>
                                                                 <constraint firstAttribute="trailing" secondItem="b7T-xi-fnI" secondAttribute="trailing" id="jCv-BP-YOI"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jc8-ux-eo4">
-                                                            <rect key="frame" x="22" y="0.0" width="44" height="24"/>
+                                                            <rect key="frame" x="16" y="0.0" width="44" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="44" id="7y7-y0-xBc"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOp-XT-RV8">
-                                                            <rect key="frame" x="66" y="0.0" width="236" height="24"/>
+                                                            <rect key="frame" x="60" y="0.0" width="236" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IPTV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fys-bM-kqH" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="99" y="2" width="38" height="20.5"/>
@@ -116,7 +116,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTD-Yc-XOv" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="302" y="0.0" width="24" height="24"/>
+                                                            <rect key="frame" x="296" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-xk-5ft">
                                                                     <rect key="frame" x="4" y="4" width="16" height="16"/>
@@ -135,16 +135,16 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkT-Ov-9ZD">
-                                                            <rect key="frame" x="326" y="0.0" width="20" height="24"/>
+                                                            <rect key="frame" x="320" y="0.0" width="20" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="pQa-Iy-5Oi"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cb-Ez-CXv" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="346" y="0.0" width="28" height="24"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cb-Ez-CXv" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
+                                                            <rect key="frame" x="340" y="0.0" width="22" height="24"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="uNG-I2-dJt">
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="uNG-I2-dJt">
                                                                     <rect key="frame" x="0.0" y="3" width="22" height="18"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18" id="IX4-dP-Q5x"/>
@@ -154,8 +154,9 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="uNG-I2-dJt" secondAttribute="trailing" constant="6" id="6X0-He-Rcg"/>
+                                                                <constraint firstAttribute="trailing" secondItem="uNG-I2-dJt" secondAttribute="trailing" id="6X0-He-Rcg"/>
                                                                 <constraint firstItem="uNG-I2-dJt" firstAttribute="leading" secondItem="0cb-Ez-CXv" secondAttribute="leading" id="jjg-Fo-BAu"/>
+                                                                <constraint firstItem="uNG-I2-dJt" firstAttribute="centerX" secondItem="0cb-Ez-CXv" secondAttribute="centerX" id="spC-Fk-aeV"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -169,8 +170,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="vfh-yF-o6Z" secondAttribute="bottom" constant="9" id="JkC-BS-ez1"/>
-                                                <constraint firstAttribute="trailing" secondItem="vfh-yF-o6Z" secondAttribute="trailing" id="QbV-gf-BxL"/>
-                                                <constraint firstItem="vfh-yF-o6Z" firstAttribute="leading" secondItem="iwG-UU-GAp" secondAttribute="leading" id="hz2-3f-2mf"/>
+                                                <constraint firstAttribute="trailing" secondItem="vfh-yF-o6Z" secondAttribute="trailing" constant="6" id="QbV-gf-BxL"/>
+                                                <constraint firstItem="vfh-yF-o6Z" firstAttribute="leading" secondItem="iwG-UU-GAp" secondAttribute="leading" constant="6" id="hz2-3f-2mf"/>
                                                 <constraint firstItem="vfh-yF-o6Z" firstAttribute="top" secondItem="iwG-UU-GAp" secondAttribute="top" id="nzx-eb-fas"/>
                                             </constraints>
                                         </view>

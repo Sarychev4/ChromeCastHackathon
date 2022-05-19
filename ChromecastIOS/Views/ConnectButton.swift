@@ -12,7 +12,7 @@ import RealmSwift
 class ConnectButton: InteractiveView {
     
     deinit {
-        GCKCastContext.sharedInstance().removeObserver(self, forKeyPath: #keyPath(GCKCastContext.sessionManager.connectionState))
+    
     }
        
     /*

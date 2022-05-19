@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrowserViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="backInteractiveView" destination="FHF-Aq-gUn" id="fEH-Ft-vdf"/>
-                <outlet property="connectInteractiveView" destination="Kdf-db-wch" id="uI8-kc-6iz"/>
+                <outlet property="connectInteractiveView" destination="Kdf-db-wch" id="i92-bv-cQb"/>
                 <outlet property="detectedUrlsInteractiveView" destination="nlE-ep-pqx" id="e9b-hU-3cp"/>
                 <outlet property="detectedUrlsLabel" destination="qdK-tY-Z1Y" id="6Bn-Mv-Z4I"/>
                 <outlet property="navigationBarShadowView" destination="Adr-w7-JMB" id="bWs-hl-kQ8"/>
@@ -60,13 +60,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4c9-6M-5PG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
+                                                    <rect key="frame" x="6" y="0.0" width="362" height="24"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHF-Aq-gUn" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="DpW-rL-809">
-                                                                    <rect key="frame" x="6" y="4" width="16" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="16" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="l8M-Qz-Vqh"/>
                                                                         <constraint firstAttribute="width" constant="16" id="lyF-Nw-avo"/>
@@ -75,12 +75,12 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="DpW-rL-809" firstAttribute="leading" secondItem="FHF-Aq-gUn" secondAttribute="leading" constant="6" id="2I8-67-rnP"/>
+                                                                <constraint firstItem="DpW-rL-809" firstAttribute="leading" secondItem="FHF-Aq-gUn" secondAttribute="leading" id="2I8-67-rnP"/>
                                                                 <constraint firstAttribute="trailing" secondItem="DpW-rL-809" secondAttribute="trailing" id="UFu-BV-uf3"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDm-II-MXB">
-                                                            <rect key="frame" x="22" y="0.0" width="324" height="24"/>
+                                                            <rect key="frame" x="16" y="0.0" width="324" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-VH-eJR">
                                                                     <rect key="frame" x="129" y="2" width="66" height="20.5"/>
@@ -95,10 +95,10 @@
                                                                 <constraint firstItem="jvI-VH-eJR" firstAttribute="centerY" secondItem="MDm-II-MXB" secondAttribute="centerY" id="hoB-of-gM9"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-db-wch" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="346" y="0.0" width="28" height="24"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-db-wch" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
+                                                            <rect key="frame" x="340" y="0.0" width="22" height="24"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="dBa-5s-NKG">
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="dBa-5s-NKG">
                                                                     <rect key="frame" x="0.0" y="3" width="22" height="18"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18" id="WQu-AO-ugA"/>
@@ -108,7 +108,7 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="dBa-5s-NKG" secondAttribute="trailing" constant="6" id="RMW-yS-etF"/>
+                                                                <constraint firstAttribute="trailing" secondItem="dBa-5s-NKG" secondAttribute="trailing" id="RMW-yS-etF"/>
                                                                 <constraint firstItem="dBa-5s-NKG" firstAttribute="leading" secondItem="Kdf-db-wch" secondAttribute="leading" id="zWQ-1S-gda"/>
                                                             </constraints>
                                                         </view>
@@ -123,9 +123,9 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="4c9-6M-5PG" firstAttribute="top" secondItem="RY4-Zr-USi" secondAttribute="top" id="0ZU-lv-RkT"/>
-                                                <constraint firstItem="4c9-6M-5PG" firstAttribute="leading" secondItem="RY4-Zr-USi" secondAttribute="leading" id="abF-Fw-bbQ"/>
+                                                <constraint firstItem="4c9-6M-5PG" firstAttribute="leading" secondItem="RY4-Zr-USi" secondAttribute="leading" constant="6" id="abF-Fw-bbQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="4c9-6M-5PG" secondAttribute="bottom" constant="9" id="fRN-ph-gUr"/>
-                                                <constraint firstAttribute="trailing" secondItem="4c9-6M-5PG" secondAttribute="trailing" id="mTd-YS-BsP"/>
+                                                <constraint firstAttribute="trailing" secondItem="4c9-6M-5PG" secondAttribute="trailing" constant="6" id="mTd-YS-BsP"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0D-CR-Cx6">

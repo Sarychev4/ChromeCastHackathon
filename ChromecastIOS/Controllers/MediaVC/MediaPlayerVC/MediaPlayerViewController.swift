@@ -12,6 +12,7 @@ import Photos
 class MediaPlayerViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
+    @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var currentAssetNameLabel: DefaultLabel!
     @IBOutlet weak var hdCollectionView: CellConfiguratedCollectionView!
     @IBOutlet weak var thumbnailCollectionView: CellConfiguratedCollectionView!
@@ -53,9 +54,14 @@ class MediaPlayerViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
-        qualityInteractiveView.didTouchAction = { [weak self] in
+        connectInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.presentDevices(postAction: nil)
+        }
+        
+        qualityInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.presentSettings(postAction: nil)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
@@ -201,6 +207,20 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private func presentDevices(postAction: (() -> ())?) {
+        let controller = ListDevicesViewController()
+        controller.canDismissOnPan = false
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let _ = self else { return }
+            postAction?()
+        }
+        present(controller, animated: false, completion: nil)
+    }
+    
+    private func presentSettings(postAction: (() -> ())?) {
         let controller = MirrorSettingsViewController()
         controller.canDismissOnPan = true
         controller.isInteractiveBackground = false

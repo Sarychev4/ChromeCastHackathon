@@ -37,6 +37,31 @@ class YouTubeViewController: BaseViewController {
         let suggestionCell = UINib(nibName: SuggestionCell.Identifier, bundle: .main)
         tableView.register(suggestionCell, forCellReuseIdentifier: SuggestionCell.Identifier)
         
+        
+        backInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.navigation?.popViewController(self, animated: true)
+        }
+        
+        connectInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.presentDevices(postAction: nil)
+        }
+        
+    }
+    
+    private func presentDevices(postAction: (() -> ())?) {
+        let controller = ListDevicesViewController()
+        controller.canDismissOnPan = true
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let _ = self else { return }
+            postAction?()
+        }
+        present(controller, animated: false, completion: nil)
     }
 
 }

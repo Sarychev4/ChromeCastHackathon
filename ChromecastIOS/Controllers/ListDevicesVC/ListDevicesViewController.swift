@@ -99,6 +99,7 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             print(">>>is connected\(device.isConnected)")
             if device.isConnected {
                 self.didFinishAction?()
+                self.dismiss(animated: true, completion: nil)
             } else {
                 ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
                     guard let self = self else { return }
