@@ -19,8 +19,8 @@ class MediaPlayerViewController: BaseViewController {
     @IBOutlet weak var qualityShadow: DropShadowView!
     
     //    private var hdPhotoModel: PhotoModel = PhotoCollection(photos: ["barton_nature_leeve_hd.JPG", "barton_nature_area_bridge_hd.JPG", "barton_nature_lake_hd.JPG", "barton_nature_swan_hd.JPG", "bird_hills_nature_tree_hd.JPG", "bird_hills_nature_sunset_hd.JPG", "huron_river_hd.JPG", "bird_hills_nature_foliage_hd.JPG","leslie_park_hd.png", "willowtree_apartment_sunset_hd.jpg", "vertical_strip_hd.png", "winsor_skyline_hd.png"])
-//
-//    private var thumbnailPhotoModel: PhotoModel = PhotoCollection(photos: ["barton_nature_leeve.JPG", "barton_nature_area_bridge.JPG", "barton_nature_lake.JPG", "barton_nature_swan.JPG", "bird_hills_nature_tree.JPG", "bird_hills_nature_sunset.JPG", "huron_river.JPG", "bird_hills_nature_foliage.JPG","leslie_park", "willowtree_apartment_sunset.jpg", "vertical_strip.png",  "winsor_skyline.png"])
+    //
+    //    private var thumbnailPhotoModel: PhotoModel = PhotoCollection(photos: ["barton_nature_leeve.JPG", "barton_nature_area_bridge.JPG", "barton_nature_lake.JPG", "barton_nature_swan.JPG", "bird_hills_nature_tree.JPG", "bird_hills_nature_sunset.JPG", "huron_river.JPG", "bird_hills_nature_foliage.JPG","leslie_park", "willowtree_apartment_sunset.jpg", "vertical_strip.png",  "winsor_skyline.png"])
     
     
     var hdCollectionViewRatio: CGFloat = 0
@@ -34,7 +34,7 @@ class MediaPlayerViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let hdCellNib = UINib(nibName: HDCell.Identifier, bundle: .main)
         hdCollectionView.register(hdCellNib, forCellWithReuseIdentifier: HDCell.Identifier)
         
@@ -69,21 +69,29 @@ class MediaPlayerViewController: BaseViewController {
         
         qualityShadow.layer.cornerRadius = 15
         
-        saveImageToDirectory(onComplete: castToTV)
+        if assets[selectedIndex].mediaType == .image {
+            saveImageToDirectory(onComplete: castImageToTV)
+        } else {
+            saveVideoToDirectory(onComplete: castVideoToTV)
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
-//            layout.unfoldCurrentCell()
-//        }
-       
+        //        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
+        //            layout.unfoldCurrentCell()
+        //        }
     }
     
-    private func castToTV() {
+    private func castVideoToTV() {
         let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-        
-        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(Int.random(in: 0..<10000))") else { return }
-//        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image") else { return }
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+        ChromeCastService.shared.displayIPTVBeam(with: url)
+    }
+    
+    private func castImageToTV() {
+        let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(UUID().uuidString)") else { return }
         ChromeCastService.shared.displayImage(with: url)
     }
     
@@ -91,8 +99,6 @@ class MediaPlayerViewController: BaseViewController {
         guard presentedViewController == nil else { return }
         
         let currentAsset = assets[selectedIndex]
-//        currentAsset.
-        //PHImageManagerMaximumSize
         image(for: currentAsset, size: PHImageManagerMaximumSize) { (image, need) in
             
             guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
@@ -108,7 +114,7 @@ class MediaPlayerViewController: BaseViewController {
                     print("couldn't remove file at path", removeError)
                 }
             }
-
+            
             do {
                 try data.write(to: imageFileURL)
                 print("IMAGE SIZE \(data.count)")
@@ -120,7 +126,74 @@ class MediaPlayerViewController: BaseViewController {
         }
     }
     
+    private func saveVideoToDirectory(onComplete: Closure?) {
+        
+        let currentAsset = assets[selectedIndex]
+        
+        let options = PHVideoRequestOptions()
+        options.isNetworkAccessAllowed = true
+        options.deliveryMode = .highQualityFormat
+        options.version = .original
+        
+        imageManager.requestAVAsset(forVideo: currentAsset, options: options) { [weak self] (avasset, audiomix, info) in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                guard let avasset = avasset else { return }
+                self.convertVideoToMP4(avasset, onComplete: onComplete)
+            }
+        }
+    }
     
+    private func convertVideoToMP4(_ avasset: AVAsset, onComplete: Closure?) {
+        let startDate = Date()
+        //Create Export session
+        guard let exportSession = AVAssetExportSession(asset: avasset, presetName: AVAssetExportPresetPassthrough) else { return }
+        //Creating temp path to save the converted video
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
+        guard let inputVideoURL = (avasset as? AVURLAsset)?.url else { return }
+        //            guard let inputVideoData = NSData(contentsOf: inputVideoURL) else { return }
+        
+        //Check if the file already exists then remove the previous file
+        if FileManager.default.fileExists(atPath: videoFileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: videoFileURL.path)
+                print("Removed old video")
+            } catch let removeError{
+                print("couldn't remove file at path", removeError)
+            }
+        }
+        //        inputVideoData.write(to: videoFileURL, atomically: false)
+        exportSession.outputURL = videoFileURL
+        exportSession.outputFileType = AVFileType.mp4
+        exportSession.shouldOptimizeForNetworkUse = true
+        
+        let start = CMTimeMakeWithSeconds(0.0, preferredTimescale: 0)
+        let range = CMTimeRangeMake(start: start, duration: avasset.duration)
+        exportSession.timeRange = range
+        exportSession.exportAsynchronously(completionHandler: {() -> Void in
+            switch exportSession.status {
+            case .failed:
+                print(exportSession.error ?? "NO ERROR")
+            case .cancelled:
+                print("Export canceled")
+            case .completed:
+                //Video conversion finished
+                let endDate = Date()
+                
+                let time = endDate.timeIntervalSince(startDate)
+                print(time)
+                print("Successful!")
+                print(exportSession.outputURL ?? "NO OUTPUT URL")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+                    onComplete?()
+                }
+                
+                
+            default: break
+            }
+        })
+    }
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = MirrorSettingsViewController()
@@ -212,7 +285,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             let asset = assets[indexPath.row]
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HDCell.Identifier, for: indexPath) as! HDCell
-//            if let image = hdPhotoModel.photo(at: indexPath.row),
+            //            if let image = hdPhotoModel.photo(at: indexPath.row),
             if let size = self.collectionView(hdCollectionView, sizeForItemAt: indexPath) {
                 cell.photoWidthConstraint.constant = size.width
                 cell.photoHeightConstraint.constant = size.height
@@ -221,7 +294,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
                 if asset.mediaType == .image {
                     cell.playerButtonsContainer.isHidden = true
                 }
-//                cell.photoImageView?.image = image
+                //                cell.photoImageView?.image = image
                 image(for: asset, size: CGSize(width: size.width, height: size.height)) { (image, needd) in
                     cell.photoImageView?.image = image
                 }
@@ -230,17 +303,17 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
         case thumbnailCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCell.Identifier, for: indexPath) as! ThumbnailCell
             let asset = assets[indexPath.row]
-//            if let image = thumbnailPhotoModel.photo(at: indexPath.row) {
-                cell.photoHeightConstraint.constant = 49
-                cell.photoWidthConstraint.constant = 23
-                cell.clipsToBounds = true
-                cell.photoImageView.contentMode = .scaleAspectFit
-//            asset.pixelWidth //temp as
-                image(for: asset, size: CGSize(width: 23, height: 49)) { (image, needd) in
-                    cell.photoImageView.image = image
-                }
-//                cell.photoImageView.image = image
-//            }
+            //            if let image = thumbnailPhotoModel.photo(at: indexPath.row) {
+            cell.photoHeightConstraint.constant = 49
+            cell.photoWidthConstraint.constant = 23
+            cell.clipsToBounds = true
+            cell.photoImageView.contentMode = .scaleAspectFit
+            //            asset.pixelWidth //temp as
+            image(for: asset, size: CGSize(width: 23, height: 49)) { (image, needd) in
+                cell.photoImageView.image = image
+            }
+            //                cell.photoImageView.image = image
+            //            }
             return cell
         default:
             return UICollectionViewCell()
@@ -260,15 +333,15 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView,
-            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{ //temp as
+           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{ //temp as
             layout.unfoldCurrentCell()
         }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate,
-            let collectionView = scrollView as? UICollectionView,
-            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{ //temp as
+           let collectionView = scrollView as? UICollectionView,
+           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{ //temp as
             layout.unfoldCurrentCell()
             print(self.selectedIndex)
         }
@@ -280,15 +353,15 @@ extension MediaPlayerViewController: CollectionViewCellSize {
     func collectionView(_ collectionView: UICollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize? {
         switch collectionView {
         case hdCollectionView:
-//            if let size = hdPhotoModel.photoSize(at: indexPath.row) {
-//                return cellSize(forHDImage: size)
-//            }
+            //            if let size = hdPhotoModel.photoSize(at: indexPath.row) {
+            //                return cellSize(forHDImage: size)
+            //            }
             return CGSize(width: UIScreen.main.bounds.size.width, height: hdCollectionView.frame.height)
         case thumbnailCollectionView:
-//            if let size = thumbnailPhotoModel.photoSize(at: indexPath.row) {
-//                return cellSize(forThumbImage: size)
-//            }
-           return cellSize(forThumbImage: CGSize(width: 24, height: 49)) //CGSize(width: 24, height: 49)
+            //            if let size = thumbnailPhotoModel.photoSize(at: indexPath.row) {
+            //                return cellSize(forThumbImage: size)
+            //            }
+            return cellSize(forThumbImage: CGSize(width: 24, height: 49)) //CGSize(width: 24, height: 49)
         default:
             return nil
         }
@@ -320,26 +393,26 @@ extension MediaPlayerViewController {
     
     /*
      image(for: asset, size: CGSize(width: 109, height: 109)) { (image, needd) in
-         cell.previewImageView.image = image
+     cell.previewImageView.image = image
      }
      
      private let imageManager = PHCachingImageManager()
      */
-
+    
     @discardableResult func image(for asset: PHAsset, size: CGSize, completion: @escaping ((UIImage?, Bool) -> Void)) -> PHImageRequestID {
         return imageManager.requestImage(
             for: asset,
-            targetSize: size, //PHImageManagerMaximumSize
-            contentMode: .aspectFill,
-            options: nil,
-            resultHandler: { (image, info) in
-                let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
-                if isDegraded {
-                    return
-                }
-                DispatchQueue.main.async {
-                    completion(image, isDegraded)
-                }
-            })
+               targetSize: size, //PHImageManagerMaximumSize
+               contentMode: .aspectFill,
+               options: nil,
+               resultHandler: { (image, info) in
+                   let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
+                   if isDegraded {
+                       return
+                   }
+                   DispatchQueue.main.async {
+                       completion(image, isDegraded)
+                   }
+               })
     }
 }

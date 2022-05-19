@@ -91,10 +91,10 @@ class MainViewController: BaseViewController {
 
         print("MY ADDRESS \(ipAddress)")
         
-        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(Int.random(in: 0..<10000))") else { return }
-        ChromeCastService.shared.displayImage(with: url)
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+        ChromeCastService.shared.displayIPTVBeam(with: url)
 
-        let request = URLRequest(url: url)
+        let request = URLRequest(url: URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/:id")!)
         webView.load(request)
         
         print(ChromeCastService.shared.screenMirroringChannel ?? "CHANNEL IS DEAD")
