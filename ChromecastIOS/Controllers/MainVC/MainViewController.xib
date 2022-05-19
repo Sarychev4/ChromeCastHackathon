@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Bch-fV-vv2" id="QSG-Ar-Ies"/>
-                <outlet property="connectInteractiveView" destination="itx-s3-dbp" id="53I-0F-Jce"/>
+                <outlet property="connectInteractiveView" destination="itx-s3-dbp" id="bKT-zB-OcC"/>
                 <outlet property="goToPremiumInteractiveView" destination="ALM-iL-9to" id="DQm-gi-SQv"/>
                 <outlet property="mirrorInteractiveView" destination="f8J-PE-0Pi" id="rcJ-mt-aAN"/>
                 <outlet property="settingsInteractiveView" destination="6bg-bX-Ipf" id="fBl-uh-jgJ"/>
@@ -134,10 +134,10 @@
                                                     <color key="textColor" red="0.14117647058823529" green="0.15686274509803921" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="itx-s3-dbp" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="itx-s3-dbp" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
                                                     <rect key="frame" x="358" y="30" width="24" height="24"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="rD2-xZ-8uo">
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="rD2-xZ-8uo">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="8b8-p4-tlG"/>

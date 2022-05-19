@@ -108,6 +108,9 @@
 		DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */; };
 		DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */; };
 		DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */; };
+		DD92BAD62836677500ACD358 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAD52836677500ACD358 /* DeviceManager.swift */; };
+		DD92BAD82836AC2700ACD358 /* ConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAD72836AC2700ACD358 /* ConnectButton.swift */; };
+		DD92BADA2836C78F00ACD358 /* VideoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAD92836C78F00ACD358 /* VideoConverter.swift */; };
 		DDA72045282AC2B300CF4DC3 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72043282AC2B300CF4DC3 /* CommentView.swift */; };
 		DDA72048282AC2EC00CF4DC3 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA72047282AC2EC00CF4DC3 /* CommentView.xib */; };
 		DDA7204A282AC47700CF4DC3 /* SKPproduct+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */; };
@@ -335,6 +338,9 @@
 		DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialConnectViewController.xib; sourceTree = "<group>"; };
 		DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
 		DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		DD92BAD52836677500ACD358 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		DD92BAD72836AC2700ACD358 /* ConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectButton.swift; sourceTree = "<group>"; };
+		DD92BAD92836C78F00ACD358 /* VideoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConverter.swift; sourceTree = "<group>"; };
 		DDA72043282AC2B300CF4DC3 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		DDA72047282AC2EC00CF4DC3 /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
 		DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKPproduct+Extension.swift"; sourceTree = "<group>"; };
@@ -731,6 +737,8 @@
 				DDED96ED282C54510088E4E6 /* IPTVManager.swift */,
 				DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */,
 				DD55A67A2832EF2400B99C17 /* YouTubeSearchManager.swift */,
+				DD92BAD52836677500ACD358 /* DeviceManager.swift */,
+				DD92BAD92836C78F00ACD358 /* VideoConverter.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1115,6 +1123,7 @@
 				DD03EFB8282AB51F0075F70E /* InteractiveImageView.swift */,
 				DDA72043282AC2B300CF4DC3 /* CommentView.swift */,
 				DDA72047282AC2EC00CF4DC3 /* CommentView.xib */,
+				DD92BAD72836AC2700ACD358 /* ConnectButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1508,6 +1517,7 @@
 				DD923AE82816AF1B0034E5D3 /* TutorialContainerViewController.swift in Sources */,
 				DDF59C0C280F489C00CE2E2B /* DefaultLabel.swift in Sources */,
 				DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */,
+				DD92BAD82836AC2700ACD358 /* ConnectButton.swift in Sources */,
 				DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */,
 				DDCF125A28229C23009019D4 /* MirrorSettingsViewController.swift in Sources */,
 				DD55A67B2832EF2400B99C17 /* YouTubeSearchManager.swift in Sources */,
@@ -1522,6 +1532,7 @@
 				DD19E4CE2812C42500931489 /* HDFlowLayout.swift in Sources */,
 				DDA72057282BF6BF00CF4DC3 /* IPTVPlayListCell.swift in Sources */,
 				DD181211282ABA8F00EFF2AF /* HelpViewController.swift in Sources */,
+				DD92BAD62836677500ACD358 /* DeviceManager.swift in Sources */,
 				DDF59BF8280F30AF00CE2E2B /* DefaultView.swift in Sources */,
 				DDAE265F281874A600355735 /* DeviceCellView.swift in Sources */,
 				DD19E4C42812AC8E00931489 /* HDCell.swift in Sources */,
@@ -1583,6 +1594,7 @@
 				DD6E98B12830036000A72DF3 /* Date+Extension.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
 				DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */,
+				DD92BADA2836C78F00ACD358 /* VideoConverter.swift in Sources */,
 				DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */,
 				DDAE26502818250000355735 /* TutorialRatingStarsViewController.swift in Sources */,
 				DD19E4842811E56F00931489 /* WebsiteCell.swift in Sources */,

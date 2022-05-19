@@ -96,18 +96,28 @@ class ListDevicesViewController: AFFloatingPanelViewController {
         cellView.containerInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             guard let device = self.detectedDevices?[index] else { return }
-            ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
-                guard let self = self else { return }
-                print(success)
-                
-                if success {
-                    self.dismiss(animated: true, completion: nil)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        self.didFinishAction?()
+            print(">>>is connected\(device.isConnected)")
+            if device.isConnected {
+                self.didFinishAction?()
+            } else {
+                ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
+                    guard let self = self else { return }
+
+                    
+                    if success {
+                        let realm = try! Realm()
+                        
+                        try! realm.write {
+                            device.isConnected = true
+                            realm.add(device, update: .all)
+                        }
+                        self.dismiss(animated: true, completion: nil)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            self.didFinishAction?()
+                        }
                     }
-                }
-            })
-            
+                })
+            }
             
         }
         devicesStackView.addArrangedSubview(cellView)

@@ -10,6 +10,8 @@ import Agregator
 import Criollo
 import WebKit
 import CSSystemInfoHelper
+import GoogleCast
+
 struct Tab {
     var title: String
     var subtitle: String
@@ -130,6 +132,7 @@ class MainViewController: BaseViewController {
         connectInteractiveView.didTouchAction = { [weak self] in
             guard self == self else { return }
             self?.presentDevices(postAction: nil)
+            print(">>>STATE \(GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue)")
         }
         
         let menuCellNib = UINib(nibName: MainCell.Identifier, bundle: .main)

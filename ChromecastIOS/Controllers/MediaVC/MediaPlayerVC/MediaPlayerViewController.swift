@@ -168,6 +168,11 @@ class MediaPlayerViewController: BaseViewController {
         exportSession.outputFileType = AVFileType.mp4
         exportSession.shouldOptimizeForNetworkUse = true
         
+//        let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+//            guard let self = self, let avExporter = self.exportSession else { return }
+//            onProgress(exportSession.progress)
+//        }
+        
         let start = CMTimeMakeWithSeconds(0.0, preferredTimescale: 0)
         let range = CMTimeRangeMake(start: start, duration: avasset.duration)
         exportSession.timeRange = range

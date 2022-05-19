@@ -38,9 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let data = image.jpegData(compressionQuality: 0.9) else { return }
             res.setValue("image/jpeg", forHTTPHeaderField: "Content-type")
             res.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
-            res.setValue("0", forHTTPHeaderField: "Expires")
-            res.setValue("no-cache", forHTTPHeaderField: "Pragma")
-            res.setValue("Etag", forHTTPHeaderField: UUID().uuidString)
             res.send(data)
         })
         
