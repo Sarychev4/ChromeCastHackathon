@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        server?.mount("/faq", fileAtPath:  Bundle.main.bundlePath.appending("/FAQ.html"))
         
         
-        server?.get("/image", block: { [weak self] (req, res, next) in
+        server?.get("/image/:pid", block: { [weak self] (req, res, next) in
             guard let _ = self else { return }
             guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
             let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
@@ -40,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let data = image.jpegData(compressionQuality: 0.9) else { return }
             res.setValue("image/jpeg", forHTTPHeaderField: "Content-type")
             res.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
+            res.setValue("0", forHTTPHeaderField: "Expires")
+            res.setValue("no-cache", forHTTPHeaderField: "Pragma")
+            res.setValue("Etag", forHTTPHeaderField: UUID().uuidString)
             res.send(data)
         })
         //        server?.mount("/image", fileAtPath: imageFileURL.path, options: .followSymlinks, fileName: nil, contentType: nil,  contentDisposition: .attachment)

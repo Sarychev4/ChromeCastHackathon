@@ -90,14 +90,9 @@ class MainViewController: BaseViewController {
         let ipAddress = interface.address
 
         print("MY ADDRESS \(ipAddress)")
-        guard let url = URL(string: "http://\(ipAddress):10101/image") else { return }
-        if isFileMngr == true {
-            ChromeCastService.shared.displayImage(with: url)
-            isFileMngr = false
-        } else {
-            ChromeCastService.shared.displayImage(with: URL(string: "http://risovach.ru/upload/2014/03/mem/s-dr-karoch_45066550_orig_.jpeg")!)
-            isFileMngr = true
-        }
+        
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(Int.random(in: 0..<10000))") else { return }
+        ChromeCastService.shared.displayImage(with: url)
 
         let request = URLRequest(url: url)
         webView.load(request)

@@ -81,7 +81,9 @@ class MediaPlayerViewController: BaseViewController {
     
     private func castToTV() {
         let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image") else { return }
+        
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(Int.random(in: 0..<10000))") else { return }
+//        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image") else { return }
         ChromeCastService.shared.displayImage(with: url)
     }
     
