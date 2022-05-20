@@ -25,6 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" name="MainBackground"/>
                 <constraints>
                     <constraint firstItem="63Y-mT-gkP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="63z-Ul-ojJ"/>
                     <constraint firstItem="63Y-mT-gkP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="BUA-Pl-a4i"/>
@@ -33,6 +34,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="MainBackground"/>
             <connections>
                 <outlet property="suggestionLabel" destination="63Y-mT-gkP" id="nPJ-7V-zcm"/>
             </connections>
@@ -40,6 +42,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="MainBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="labelColorDark">
             <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

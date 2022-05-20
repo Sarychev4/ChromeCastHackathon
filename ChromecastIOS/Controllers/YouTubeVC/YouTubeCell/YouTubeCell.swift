@@ -14,6 +14,8 @@ class YouTubeCell: UITableViewCell {
 
     @IBOutlet weak var backgroundShadow: DropShadowView!
     @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var videoImage: UIImageView!
     @IBOutlet weak var videoDescLabel: UILabel!
     @IBOutlet weak var channelNameLabel: UILabel!
@@ -24,13 +26,17 @@ class YouTubeCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    
+        
+        backgroundShadow.layer.cornerRadius = 20
+        imageContainerView.layer.cornerRadius = 20
+        imageContainerView.clipsToBounds = true
+        
+        playPauseInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.didPlayTap?()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
     
 }
