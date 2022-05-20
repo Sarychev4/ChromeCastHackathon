@@ -191,7 +191,7 @@ class MediaLibraryViewController: BaseViewController {
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
-        controller.canDismissOnPan = false
+        controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)

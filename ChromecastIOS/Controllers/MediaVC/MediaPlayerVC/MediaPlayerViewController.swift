@@ -8,6 +8,11 @@
 import UIKit
 import AudioToolbox
 import Photos
+import MBProgressHUD
+
+enum State {
+    case convertingToMP4(_ progress: Float)
+}
 
 class MediaPlayerViewController: BaseViewController {
     
@@ -19,11 +24,7 @@ class MediaPlayerViewController: BaseViewController {
     @IBOutlet weak var qualityInteractiveView: InteractiveView!
     @IBOutlet weak var qualityShadow: DropShadowView!
     
-    //    private var hdPhotoModel: PhotoModel = PhotoCollection(photos: ["barton_nature_leeve_hd.JPG", "barton_nature_area_bridge_hd.JPG", "barton_nature_lake_hd.JPG", "barton_nature_swan_hd.JPG", "bird_hills_nature_tree_hd.JPG", "bird_hills_nature_sunset_hd.JPG", "huron_river_hd.JPG", "bird_hills_nature_foliage_hd.JPG","leslie_park_hd.png", "willowtree_apartment_sunset_hd.jpg", "vertical_strip_hd.png", "winsor_skyline_hd.png"])
-    //
-    //    private var thumbnailPhotoModel: PhotoModel = PhotoCollection(photos: ["barton_nature_leeve.JPG", "barton_nature_area_bridge.JPG", "barton_nature_lake.JPG", "barton_nature_swan.JPG", "bird_hills_nature_tree.JPG", "bird_hills_nature_sunset.JPG", "huron_river.JPG", "bird_hills_nature_foliage.JPG","leslie_park", "willowtree_apartment_sunset.jpg", "vertical_strip.png",  "winsor_skyline.png"])
-    
-    
+    private var videoPlayerManager = VideoPlayerManager.shared
     var hdCollectionViewRatio: CGFloat = 0
     var thumbnailCollectionViewThinnestRatio: CGFloat = 0
     var thumbnailCollectionViewThickestRatio: CGFloat = 0
@@ -32,6 +33,21 @@ class MediaPlayerViewController: BaseViewController {
     private let imageManager = PHCachingImageManager()
     var selectedIndex: Int = 0
     var assets: [PHAsset] = []
+    var assetExportSession = VideoConverter()
+    
+    private var HUD: MBProgressHUD? {
+        if _HUD == nil {
+            let HUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+            HUD.mode = .determinate
+            HUD.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
+            HUD.button.setTitle(NSLocalizedString("Common.Cancel", comment: ""), for: .normal)
+            HUD.progressObject = Progress(totalUnitCount: 100)
+            _HUD = HUD
+        }
+        return _HUD
+    }
+   
+    private var _HUD: MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +91,7 @@ class MediaPlayerViewController: BaseViewController {
         
         qualityShadow.layer.cornerRadius = 15
         
-        if assets[selectedIndex].mediaType == .image {
-            saveImageToDirectory(onComplete: castImageToTV)
-        } else {
-            saveVideoToDirectory(onComplete: castVideoToTV)
-        }
+        
         
     }
     
@@ -87,9 +99,43 @@ class MediaPlayerViewController: BaseViewController {
         //        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
         //            layout.unfoldCurrentCell()
         //        }
+        
+        if assets[selectedIndex].mediaType == .image {
+            saveImageToDirectory(onComplete: castImageToTV)
+        } else {
+            saveVideoToDirectory(onComplete: castVideoToTV)
+        }
+    }
+    
+    private func showHUD() {
+        HUD?.show(animated: true)
+    }
+    
+    private func hideHUD() {
+        _HUD?.hide(animated: true)
+        _HUD = nil
+    }
+    
+    private func stopObservePlayerState() {
+        videoPlayerManager.stateObserver = nil
+    }
+    
+    
+    private func observeVideoPlayerState() {
+        videoPlayerManager.stateObserver = { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .convertingToMP4(let progress):
+                self.HUD?.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
+                self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
+                break
+            }
+        }
     }
     
     private func castVideoToTV() {
+        stopObservePlayerState()
+        hideHUD()
         let ipAddress = ServerConfiguration.shared.deviceIPAddress()
         guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
         ChromeCastService.shared.displayIPTVBeam(with: url)
@@ -134,6 +180,8 @@ class MediaPlayerViewController: BaseViewController {
     
     private func saveVideoToDirectory(onComplete: Closure?) {
         
+        observeVideoPlayerState()
+        
         let currentAsset = assets[selectedIndex]
         
         let options = PHVideoRequestOptions()
@@ -145,70 +193,51 @@ class MediaPlayerViewController: BaseViewController {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 guard let avasset = avasset else { return }
-                self.convertVideoToMP4(avasset, onComplete: onComplete)
+//                self.convertVideoToMP4(avasset, onComplete: onComplete)
+                self.videoPlayerManager.convertVideoToMP4(avasset, onComplete: onComplete)
             }
         }
     }
     
-    private func convertVideoToMP4(_ avasset: AVAsset, onComplete: Closure?) {
-        let startDate = Date()
-        //Create Export session
-        guard let exportSession = AVAssetExportSession(asset: avasset, presetName: AVAssetExportPresetPassthrough) else { return }
-        //Creating temp path to save the converted video
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
-        guard let inputVideoURL = (avasset as? AVURLAsset)?.url else { return }
-        //            guard let inputVideoData = NSData(contentsOf: inputVideoURL) else { return }
-        
-        //Check if the file already exists then remove the previous file
-        if FileManager.default.fileExists(atPath: videoFileURL.path) {
-            do {
-                try FileManager.default.removeItem(atPath: videoFileURL.path)
-                print("Removed old video")
-            } catch let removeError{
-                print("couldn't remove file at path", removeError)
-            }
-        }
-        //        inputVideoData.write(to: videoFileURL, atomically: false)
-        exportSession.outputURL = videoFileURL
-        exportSession.outputFileType = AVFileType.mp4
-        exportSession.shouldOptimizeForNetworkUse = true
-        
-//        let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-//            guard let self = self, let avExporter = self.exportSession else { return }
-//            onProgress(exportSession.progress)
+//    private func convertVideoToMP4(_ avasset: AVAsset, onComplete: Closure?) {
+//        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+//        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
+//        let quality = Settings.current.videosResolution
+//
+//        stateObserver?(.convertingToMP4(0))
+//
+//        if FileManager.default.fileExists(atPath: videoFileURL.path) {
+//            do {
+//                try FileManager.default.removeItem(atPath: videoFileURL.path)
+//                print("Removed old video")
+//            } catch let removeError{
+//                print("couldn't remove file at path", removeError)
+//            }
 //        }
-        
-        let start = CMTimeMakeWithSeconds(0.0, preferredTimescale: 0)
-        let range = CMTimeRangeMake(start: start, duration: avasset.duration)
-        exportSession.timeRange = range
-        exportSession.exportAsynchronously(completionHandler: {() -> Void in
-            switch exportSession.status {
-            case .failed:
-                print(exportSession.error ?? "NO ERROR")
-            case .cancelled:
-                print("Export canceled")
-            case .completed:
-                //Video conversion finished
-                let endDate = Date()
-                
-                let time = endDate.timeIntervalSince(startDate)
-                print(time)
-                print("Successful!")
-                print(exportSession.outputURL ?? "NO OUTPUT URL")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
-                    onComplete?()
-                }
-                
-                
-            default: break
-            }
-        })
-    }
+//
+//        assetExportSession.exportAsset(asset: avasset, quality: quality, toFileURL: videoFileURL, onProgress: { [weak self] progress in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self = self else { return }
+//                self.stateObserver?(.convertingToMP4(progress))
+//            }
+//        }, onComplete: { [weak self] isSuccess in
+//            DispatchQueue.main.async { [weak self] in
+//                guard let self = self else { return }
+//                if isSuccess {
+//                    onComplete?()
+//                    self.hideHUD()
+//                } else {
+//
+//                }
+//            }
+//        })
+//
+//    }
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
-        controller.canDismissOnPan = false
+        controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)

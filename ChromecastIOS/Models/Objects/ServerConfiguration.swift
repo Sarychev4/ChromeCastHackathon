@@ -8,9 +8,7 @@
 import Foundation
 import CSSystemInfoHelper
 
-enum Port: UInt {
-    case app = 10101
-}
+
 
 
 //let ChromeCastImageURL = URL(string: "http://localhost:\(Port.app.rawValue)/image")

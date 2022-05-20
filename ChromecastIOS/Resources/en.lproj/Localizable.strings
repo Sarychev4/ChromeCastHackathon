@@ -7,6 +7,22 @@
 */
 
 /*
+ - ChromeCast
+ */
+
+"Screen.Mirror.Quality.Optimized" = "Optimized";
+"Screen.Mirror.Quality.Balanced" = "Balanced";
+"Screen.Mirror.Quality.Best" = "Best";
+
+/*
+ - Media Player
+ */
+
+"Media.Player.Title" = "Media";
+"Media.Player.Load.iCloud" = "Downloading from iCloud";
+"Media.Player.Converting.Video" = "Preparing...";
+
+/*
  - Reachabality
 */
 
@@ -17,6 +33,7 @@
 
 
 "Common.Continue" = "Continue";
+"Common.Cancel" = "Cancel";
 
 "MoreTermOfService" = "Terms of Use";
 "MorePrivacyPolicy" = "Privacy Policy";
