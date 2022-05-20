@@ -60,7 +60,7 @@ class YouTubeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         mediaControlView.alpha = 0
         
         searchBar.delegate = self
@@ -123,16 +123,16 @@ class YouTubeViewController: BaseViewController {
             videos = array
         }
         
+        searchBar.searchTextField.textColor = UIColor(named: "labelColorDark")
+        
+        tableView.contentInset.top = 20
         tableView.reloadData()
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        tableView.contentInset.top = activityIndicator.frame.origin.y - 24
-        if videos.count > 0 {
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .none, animated: false)
-        }
+
     }
     
     /*
@@ -153,9 +153,8 @@ class YouTubeViewController: BaseViewController {
                         self.currentVideo = video
                         let resolution = self.getBestQuality(for: video)
                         if let downloadUrl = video.streamURLs[resolution.youtubeQuality] {
-                            /*
-                             
-                             */
+                            ChromeCastService.shared.displayIPTVBeam(with: downloadUrl)
+                            self.startVideoProgressTimer()
                             self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"
                             self.mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")
                         }
@@ -302,6 +301,7 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
             print(">>>\(videos.count)")
             let cell = tableView.dequeueReusableCell(withIdentifier: YouTubeCell.Identifier, for: indexPath) as! YouTubeCell
             let item = videos[indexPath.row]
+            cell.sectionNameView.isHidden = true
             cell.videoDescLabel.text = item.snippet?.title
             cell.channelNameLabel.text = item.snippet?.channelTitle
             let playPauseImage = selectedIndex == indexPath.row ? UIImage(named: "PausePlayerIcon") : UIImage(named: "PlayPlayerIcon")
@@ -319,7 +319,9 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("CELL TOUCHED")
         if isSuggestionsOnView {
+            print("CELL SELECTED")
             let suggestionText = suggestions[indexPath.row]
             searchBar.text = suggestionText
             suggestions.removeAll()
@@ -332,24 +334,52 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension YouTubeViewController: UIScrollViewDelegate {
-    private func setupNavigationAnimations() {
-        navigationBarShadowView.alpha = 0
-        navigationBarAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeIn, animations: { [weak self] in
-            guard let self = self else { return }
-            self.navigationBarShadowView.alpha = 1
-        })
-        animator = ScrollViewAnimator(minAnchor: 0, maxAnchor: 50, animator: navigationBarAnimator!)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
-        animator?.handleAnimation(with: currentPosition)
-    }
-    
-}
 
 extension YouTubeViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        if text == "" {
+            self.searchBar.endEditing(true)
+        } else {
+        pageToken = nil
+        requestVideos(for: text)
+        suggestions.removeAll()
+        tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        if text == "" {
+            self.searchBar.endEditing(true)
+        } else {
+            pageToken = nil
+            requestVideos(for: text)
+            suggestions.removeAll()
+            self.searchBar.endEditing(true)
+        }
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let text = searchBar.text else { return }
+        if text != "" {
+        AutoComplete.getQuerySuggestions(text) { [weak self] (result, error) in
+            guard let self = self else { return }
+            
+            self.suggestions.removeAll()
+            
+            if let result = result {
+                self.suggestions.append(contentsOf: result)
+            }
+            
+            self.tableView.reloadData()
+        }
+        print(isSuggestionsOnView)
+        print("textDidChange")
+    }
+    }
     
 }
 

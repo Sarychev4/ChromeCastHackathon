@@ -79,7 +79,6 @@
 		DD5232AD281ACF0C004AF0AA /* PremiumDiscountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AB281ACF0C004AF0AA /* PremiumDiscountViewController.xib */; };
 		DD5232B0281ACF22004AF0AA /* PremuimLifeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */; };
 		DD5232B1281ACF22004AF0AA /* PremuimLifeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */; };
-		DD55A67B2832EF2400B99C17 /* YouTubeSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55A67A2832EF2400B99C17 /* YouTubeSearchManager.swift */; };
 		DD55A67D2832EF8900B99C17 /* YoutubeSearchCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */; };
 		DD69DCAA281A8EF80010E4B3 /* MediaLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */; };
 		DD69DCAB281A8EF80010E4B3 /* MediaLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */; };
@@ -117,6 +116,7 @@
 		DD92BAE22837273400ACD358 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE12837273400ACD358 /* CustomSlider.swift */; };
 		DD92BAE428372E1600ACD358 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */; };
 		DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE5283731A000ACD358 /* WebMediaSearchManager.swift */; };
+		DD92BAE82837893D00ACD358 /* AutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE72837893D00ACD358 /* AutoComplete.swift */; };
 		DDA72045282AC2B300CF4DC3 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72043282AC2B300CF4DC3 /* CommentView.swift */; };
 		DDA72048282AC2EC00CF4DC3 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA72047282AC2EC00CF4DC3 /* CommentView.xib */; };
 		DDA7204A282AC47700CF4DC3 /* SKPproduct+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */; };
@@ -315,7 +315,6 @@
 		DD5232AB281ACF0C004AF0AA /* PremiumDiscountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumDiscountViewController.xib; sourceTree = "<group>"; };
 		DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremuimLifeTimeViewController.swift; sourceTree = "<group>"; };
 		DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremuimLifeTimeViewController.xib; sourceTree = "<group>"; };
-		DD55A67A2832EF2400B99C17 /* YouTubeSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearchManager.swift; sourceTree = "<group>"; };
 		DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchCodable.swift; sourceTree = "<group>"; };
 		DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewController.swift; sourceTree = "<group>"; };
 		DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaLibraryViewController.xib; sourceTree = "<group>"; };
@@ -353,6 +352,7 @@
 		DD92BAE12837273400ACD358 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		DD92BAE5283731A000ACD358 /* WebMediaSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMediaSearchManager.swift; sourceTree = "<group>"; };
+		DD92BAE72837893D00ACD358 /* AutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoComplete.swift; sourceTree = "<group>"; };
 		DDA72043282AC2B300CF4DC3 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		DDA72047282AC2EC00CF4DC3 /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
 		DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKPproduct+Extension.swift"; sourceTree = "<group>"; };
@@ -749,11 +749,11 @@
 				DD03EFB0282AA4580075F70E /* DataManager.swift */,
 				DDED96ED282C54510088E4E6 /* IPTVManager.swift */,
 				DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */,
-				DD55A67A2832EF2400B99C17 /* YouTubeSearchManager.swift */,
 				DD92BAD52836677500ACD358 /* DeviceManager.swift */,
 				DD92BAD92836C78F00ACD358 /* VideoConverter.swift */,
 				DD92BADD2837117C00ACD358 /* VideoPlayerManager.swift */,
 				DD92BAE5283731A000ACD358 /* WebMediaSearchManager.swift */,
+				DD92BAE72837893D00ACD358 /* AutoComplete.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1528,6 +1528,7 @@
 				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
 				DD92BADE2837117C00ACD358 /* VideoPlayerManager.swift in Sources */,
 				DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */,
+				DD92BAE82837893D00ACD358 /* AutoComplete.swift in Sources */,
 				DD92BAE428372E1600ACD358 /* UserDefaults+Extension.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
 				DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */,
@@ -1541,7 +1542,6 @@
 				DD92BAD82836AC2700ACD358 /* ConnectButton.swift in Sources */,
 				DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */,
 				DDCF125A28229C23009019D4 /* MirrorSettingsViewController.swift in Sources */,
-				DD55A67B2832EF2400B99C17 /* YouTubeSearchManager.swift in Sources */,
 				E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */,
 				DDA7205D282C35A400CF4DC3 /* IPTVStreamsViewController.swift in Sources */,
 				DDED96F0282C63010088E4E6 /* ScrollViewAnimator.swift in Sources */,
