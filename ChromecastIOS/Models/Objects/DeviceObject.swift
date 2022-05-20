@@ -13,4 +13,5 @@ class DeviceObject: Object {
     @Persisted var deviceUniqueID: String = ""
     @Persisted var friendlyName: String = ""
     @Persisted var modelName: String = ""
+    @Persisted var isConnected: Bool = false
 }

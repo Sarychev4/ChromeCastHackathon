@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MirrorViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="backInteractiveView" destination="3b6-ld-I3Y" id="C0A-RT-8O8"/>
+                <outlet property="connectInteractiveView" destination="EE3-KM-519" id="D4L-lz-Hae"/>
                 <outlet property="qualityContainer" destination="9ba-LH-SMB" id="L4X-H1-vtO"/>
                 <outlet property="showHideImageView" destination="t7u-BW-eaD" id="piT-FN-DXF"/>
                 <outlet property="showHideInteractiveView" destination="mJb-W2-r0E" id="WZO-zC-pfS"/>
@@ -34,13 +35,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgC-j3-eOS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="24"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3b6-ld-I3Y" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="32" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="W4P-FI-kRS">
-                                                            <rect key="frame" x="16" y="4" width="16" height="16"/>
+                                                            <rect key="frame" x="0.0" y="4" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="6JJ-lD-85D"/>
                                                                 <constraint firstAttribute="width" constant="16" id="uWs-XE-H5j"/>
@@ -50,11 +51,11 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="W4P-FI-kRS" secondAttribute="trailing" id="VTF-9z-nNz"/>
-                                                        <constraint firstItem="W4P-FI-kRS" firstAttribute="leading" secondItem="3b6-ld-I3Y" secondAttribute="leading" constant="16" id="Xwq-b6-kbt"/>
+                                                        <constraint firstItem="W4P-FI-kRS" firstAttribute="leading" secondItem="3b6-ld-I3Y" secondAttribute="leading" id="Xwq-b6-kbt"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8L-wS-u3l">
-                                                    <rect key="frame" x="32" y="0.0" width="344" height="24"/>
+                                                    <rect key="frame" x="16" y="0.0" width="344" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mirror" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSz-bQ-hmu">
                                                             <rect key="frame" x="147.5" y="2" width="49" height="20.5"/>
@@ -69,10 +70,10 @@
                                                         <constraint firstItem="eSz-bQ-hmu" firstAttribute="centerY" secondItem="H8L-wS-u3l" secondAttribute="centerY" id="vf9-zg-mOM"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-KM-519" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="376" y="0.0" width="38" height="24"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-KM-519" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
+                                                    <rect key="frame" x="360" y="0.0" width="22" height="24"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="vmx-V6-Kqa">
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="vmx-V6-Kqa">
                                                             <rect key="frame" x="0.0" y="3" width="22" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18" id="8Bo-dN-MnA"/>
@@ -83,7 +84,9 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="vmx-V6-Kqa" firstAttribute="leading" secondItem="EE3-KM-519" secondAttribute="leading" id="Hac-Bj-KY5"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vmx-V6-Kqa" secondAttribute="trailing" constant="16" id="ngr-i1-zJp"/>
+                                                        <constraint firstItem="vmx-V6-Kqa" firstAttribute="centerY" secondItem="EE3-KM-519" secondAttribute="centerY" id="REn-hs-Kq8"/>
+                                                        <constraint firstItem="vmx-V6-Kqa" firstAttribute="centerX" secondItem="EE3-KM-519" secondAttribute="centerX" id="gqC-rv-UAa"/>
+                                                        <constraint firstAttribute="trailing" secondItem="vmx-V6-Kqa" secondAttribute="trailing" id="ngr-i1-zJp"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -97,8 +100,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="EgC-j3-eOS" secondAttribute="bottom" constant="9" id="G5s-vq-ERE"/>
-                                        <constraint firstAttribute="trailing" secondItem="EgC-j3-eOS" secondAttribute="trailing" id="P3p-Sf-koL"/>
-                                        <constraint firstItem="EgC-j3-eOS" firstAttribute="leading" secondItem="JNC-t4-bBx" secondAttribute="leading" id="ipg-m5-PnF"/>
+                                        <constraint firstAttribute="trailing" secondItem="EgC-j3-eOS" secondAttribute="trailing" constant="16" id="P3p-Sf-koL"/>
+                                        <constraint firstItem="EgC-j3-eOS" firstAttribute="leading" secondItem="JNC-t4-bBx" secondAttribute="leading" constant="16" id="ipg-m5-PnF"/>
                                         <constraint firstItem="EgC-j3-eOS" firstAttribute="top" secondItem="JNC-t4-bBx" secondAttribute="top" id="wht-Um-1iO"/>
                                     </constraints>
                                 </view>

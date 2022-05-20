@@ -10,6 +10,7 @@ import UIKit
 class MirrorViewController: BaseViewController {
 
     @IBOutlet weak var backInteractiveView: InteractiveView!
+    @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var showHideInteractiveView: InteractiveView!
     @IBOutlet weak var showHideImageView: UIImageView!
     @IBOutlet weak var qualityContainer: UIStackView!
@@ -35,6 +36,26 @@ class MirrorViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
+        connectInteractiveView.didTouchAction = { [weak self] in
+            guard self == self else { return }
+            self?.presentDevices(postAction: nil)
+        }
+        
     }
+    
+    private func presentDevices(postAction: (() -> ())?) {
+        let controller = ListDevicesViewController()
+        controller.canDismissOnPan = true
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let _ = self else { return }
+            postAction?()
+        }
+        present(controller, animated: false, completion: nil)
+    }
+    
 
 }

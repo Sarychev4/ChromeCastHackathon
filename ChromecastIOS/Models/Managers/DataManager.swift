@@ -75,6 +75,15 @@ class DataManager: NSObject {
         
         setupRealm()
         
+        var streamInfo = Realm.GroupShared.object(ofType: StreamConfiguration.self, forPrimaryKey: StreamConfiguration.PrimaryKey)
+        if streamInfo == nil {
+            streamInfo = StreamConfiguration()
+            streamInfo!.id = StreamConfiguration.PrimaryKey
+            try? Realm.GroupShared.write {
+                Realm.GroupShared.add(streamInfo!)
+            }
+        }
+        
         let realm = try! Realm()
         realm.beginWrite()
         

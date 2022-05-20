@@ -28,10 +28,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0C-sv-KAL">
-                    <rect key="frame" x="0.0" y="367.5" width="414" height="528.5"/>
+                    <rect key="frame" x="0.0" y="535.5" width="414" height="360.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zva-EQ-N49">
-                            <rect key="frame" x="16" y="32" width="382" height="464.5"/>
+                            <rect key="frame" x="16" y="32" width="382" height="296.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3W-Ui-dzV">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="59.5"/>
@@ -64,7 +64,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDg-cx-fI4">
-                                    <rect key="frame" x="0.0" y="59.5" width="382" height="236"/>
+                                    <rect key="frame" x="0.0" y="59.5" width="382" height="68"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7Q-5T-mNc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                             <rect key="frame" x="8" y="0.0" width="366" height="76.5"/>
@@ -84,11 +84,11 @@ your TV is not on the list, please reboot it
                                         <constraint firstItem="a7Q-5T-mNc" firstAttribute="leading" secondItem="lDg-cx-fI4" secondAttribute="leading" constant="8" id="5ma-3b-bic"/>
                                         <constraint firstItem="a7Q-5T-mNc" firstAttribute="top" secondItem="lDg-cx-fI4" secondAttribute="top" id="ffg-am-Kh3"/>
                                         <constraint firstAttribute="trailing" secondItem="a7Q-5T-mNc" secondAttribute="trailing" constant="8" id="iuT-fr-DwS"/>
-                                        <constraint firstAttribute="height" constant="236" id="zHJ-7Z-ahd"/>
+                                        <constraint firstAttribute="height" constant="68" id="zHJ-7Z-ahd"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0o-CZ-vZf">
-                                    <rect key="frame" x="0.0" y="295.5" width="382" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="127.5" width="382" height="0.0"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ImO-5w-wZX">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="0.0"/>
@@ -113,7 +113,7 @@ your TV is not on the list, please reboot it
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wL-PW-9oB">
-                                    <rect key="frame" x="0.0" y="295.5" width="382" height="169"/>
+                                    <rect key="frame" x="0.0" y="127.5" width="382" height="169"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTz-yw-0wl">
                                             <rect key="frame" x="90.5" y="20" width="201" height="36"/>

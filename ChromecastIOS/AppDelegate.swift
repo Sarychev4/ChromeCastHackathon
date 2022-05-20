@@ -29,10 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var serverError: NSError?
         let htmlStreamPort: UInt = Port.app.rawValue
         
-//        server?.mount("/faq", fileAtPath:  Bundle.main.bundlePath.appending("/FAQ.html"))
-        
-        
-        server?.get("/image", block: { [weak self] (req, res, next) in
+        server?.mount("/faq", fileAtPath:  Bundle.main.bundlePath.appending("/FAQ.html"))
+        server?.get("/image/:id", block: { [weak self] (req, res, next) in
             guard let _ = self else { return }
             guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
             let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
@@ -42,9 +40,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             res.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
             res.send(data)
         })
-        //        server?.mount("/image", fileAtPath: imageFileURL.path, options: .followSymlinks, fileName: nil, contentType: nil,  contentDisposition: .attachment)
-        //        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
-        //        server?.mount("/video", fileAtPath: videoFileURL.path, options: .followSymlinks, fileName: nil, contentType: nil,  contentDisposition: .attachment)
+        
+//        server?.get("/video/:id", block: { [weak self] (req, res, next) in
+//            guard let _ = self else { return }
+//            guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+//            let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
+//            guard let videoData = NSData(contentsOfFile: videoFileURL.path) else { return }
+//            //NSData(contentsOf: videoFileURL)
+//            res.setValue("video/mp4", forHTTPHeaderField: "Content-type")
+//            res.setValue("\(videoData.count)", forHTTPHeaderField: "Content-Length")
+//            res.send(videoData)
+//        })
+        
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false}
+        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
+        server?.mount("/video/:id", fileAtPath: videoFileURL.path, options: .followSymlinks, fileName: nil, contentType: nil,  contentDisposition: .attachment)
+
         server?.get("/") { (req, res, next) in
             res.send("Hello world!")
         }
