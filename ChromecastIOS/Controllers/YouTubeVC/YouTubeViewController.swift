@@ -133,7 +133,7 @@ class YouTubeViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     /*
@@ -155,6 +155,7 @@ class YouTubeViewController: BaseViewController {
                         let resolution = self.getBestQuality(for: video)
                         if let downloadUrl = video.streamURLs[resolution.youtubeQuality] {
                             ChromeCastService.shared.displayIPTVBeam(with: downloadUrl)
+                            
                             self.startVideoProgressTimer()
                             self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"
                             self.mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")
@@ -180,7 +181,7 @@ class YouTubeViewController: BaseViewController {
                 let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
                 
                 guard let currentTime = remoteMediaClient?.mediaStatus?.streamPosition else { return }
-                print(currentTime)
+                //print(currentTime)
                 
                     if self.currentTime == 0 && currentTime > TimeInterval(2) {
                         // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит

@@ -85,9 +85,20 @@ class ChromeCastService: NSObject {
         mediaInfoBuilder.metadata = metadata
         let mediaInformation = mediaInfoBuilder.build()
         let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+//        GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
+//        GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
+       
         remoteMediaClient?.loadMedia(mediaInformation)
+        remoteMediaClient?.add(self)
     }
 
+}
+
+extension ChromeCastService: GCKRemoteMediaClientListener {
+    func remoteMediaClient(_ client: GCKRemoteMediaClient, didUpdate mediaStatus: GCKMediaStatus?) {
+        guard let mediaStatus = mediaStatus else { return }
+        print(">>> remoteMediaClient time: \(mediaStatus.streamPosition), state: \(mediaStatus.playerState.rawValue))")
+    }
 }
 
 extension ChromeCastService: GCKLoggerDelegate {
