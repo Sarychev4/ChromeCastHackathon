@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -60,9 +61,44 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="youTubeTemp" translatesAutoresizingMaskIntoConstraints="NO" id="HkT-1C-dX4">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZX-1N-Bnu">
                                                 <rect key="frame" x="0.0" y="0.0" width="313" height="181.5"/>
-                                            </imageView>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="youTubeTemp" translatesAutoresizingMaskIntoConstraints="NO" id="HkT-1C-dX4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="313" height="181.5"/>
+                                                    </imageView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3y2-12-TrQ" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <rect key="frame" x="106.5" y="41" width="100" height="100"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlayPlayerIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zab-8T-Cqu">
+                                                                <rect key="frame" x="26" y="26" width="48" height="48"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="48" id="Jot-BG-JLv"/>
+                                                                    <constraint firstAttribute="height" constant="48" id="rSP-ew-BOK"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="zab-8T-Cqu" firstAttribute="centerY" secondItem="3y2-12-TrQ" secondAttribute="centerY" id="2F2-q5-tzH"/>
+                                                            <constraint firstItem="zab-8T-Cqu" firstAttribute="centerY" secondItem="3y2-12-TrQ" secondAttribute="centerY" id="Dap-2Y-ZEE"/>
+                                                            <constraint firstAttribute="width" constant="100" id="ILA-iz-vkD"/>
+                                                            <constraint firstItem="zab-8T-Cqu" firstAttribute="centerX" secondItem="3y2-12-TrQ" secondAttribute="centerX" id="bPN-XG-Nta"/>
+                                                            <constraint firstItem="zab-8T-Cqu" firstAttribute="centerX" secondItem="3y2-12-TrQ" secondAttribute="centerX" id="cjw-Sp-dNE"/>
+                                                            <constraint firstAttribute="height" constant="100" id="ohs-8H-ggf"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="HkT-1C-dX4" secondAttribute="bottom" id="0Eo-da-i06"/>
+                                                    <constraint firstItem="3y2-12-TrQ" firstAttribute="centerX" secondItem="fZX-1N-Bnu" secondAttribute="centerX" id="Ffo-kw-RDZ"/>
+                                                    <constraint firstItem="HkT-1C-dX4" firstAttribute="leading" secondItem="fZX-1N-Bnu" secondAttribute="leading" id="eaw-sF-UQZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HkT-1C-dX4" secondAttribute="trailing" id="fum-tl-0dH"/>
+                                                    <constraint firstItem="HkT-1C-dX4" firstAttribute="top" secondItem="fZX-1N-Bnu" secondAttribute="top" id="owB-Nf-F9b"/>
+                                                    <constraint firstItem="3y2-12-TrQ" firstAttribute="centerY" secondItem="fZX-1N-Bnu" secondAttribute="centerY" id="yBe-F4-fK8"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harry Styles - As It Was (Official Video)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1I-7i-NMc">
                                                 <rect key="frame" x="16" y="193.5" width="281" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -80,18 +116,18 @@
                                         <constraints>
                                             <constraint firstItem="Gsq-Kt-gYc" firstAttribute="leading" secondItem="mut-qi-eda" secondAttribute="leading" constant="16" id="3Pc-pi-fVk"/>
                                             <constraint firstItem="Gsq-Kt-gYc" firstAttribute="top" secondItem="T1I-7i-NMc" secondAttribute="bottom" constant="6" id="50x-ul-2br"/>
+                                            <constraint firstItem="fZX-1N-Bnu" firstAttribute="leading" secondItem="mut-qi-eda" secondAttribute="leading" id="7Qv-ws-fYL"/>
                                             <constraint firstAttribute="trailing" secondItem="VIA-Gn-YE7" secondAttribute="trailing" id="C1V-PK-kCx"/>
-                                            <constraint firstAttribute="trailing" secondItem="HkT-1C-dX4" secondAttribute="trailing" id="LmM-SU-uat"/>
+                                            <constraint firstItem="T1I-7i-NMc" firstAttribute="top" secondItem="fZX-1N-Bnu" secondAttribute="bottom" constant="12" id="Ji9-Qd-hg2"/>
                                             <constraint firstAttribute="bottom" secondItem="Gsq-Kt-gYc" secondAttribute="bottom" constant="16" id="MlB-Yg-bbw"/>
                                             <constraint firstItem="T1I-7i-NMc" firstAttribute="leading" secondItem="mut-qi-eda" secondAttribute="leading" constant="16" id="NwZ-0i-d7C"/>
+                                            <constraint firstItem="fZX-1N-Bnu" firstAttribute="top" secondItem="mut-qi-eda" secondAttribute="top" id="Qub-lt-MLr"/>
                                             <constraint firstItem="VIA-Gn-YE7" firstAttribute="leading" secondItem="mut-qi-eda" secondAttribute="leading" id="URX-Kj-uBA"/>
-                                            <constraint firstItem="HkT-1C-dX4" firstAttribute="top" secondItem="mut-qi-eda" secondAttribute="top" id="Y4b-ab-E5R"/>
                                             <constraint firstAttribute="trailing" secondItem="T1I-7i-NMc" secondAttribute="trailing" constant="16" id="as1-hV-QcJ"/>
                                             <constraint firstAttribute="trailing" secondItem="Gsq-Kt-gYc" secondAttribute="trailing" constant="16" id="dQk-Da-7zF"/>
                                             <constraint firstAttribute="bottom" secondItem="VIA-Gn-YE7" secondAttribute="bottom" id="fWy-Yq-VAG"/>
-                                            <constraint firstItem="HkT-1C-dX4" firstAttribute="leading" secondItem="mut-qi-eda" secondAttribute="leading" id="hQU-SZ-gUT"/>
                                             <constraint firstItem="VIA-Gn-YE7" firstAttribute="top" secondItem="mut-qi-eda" secondAttribute="top" id="iOc-EZ-zSP"/>
-                                            <constraint firstItem="T1I-7i-NMc" firstAttribute="top" secondItem="HkT-1C-dX4" secondAttribute="bottom" constant="12" id="nQy-Ng-V5n"/>
+                                            <constraint firstAttribute="trailing" secondItem="fZX-1N-Bnu" secondAttribute="trailing" id="jbo-FO-YYm"/>
                                             <constraint firstAttribute="height" constant="271" id="y94-YX-Sra"/>
                                         </constraints>
                                     </view>
@@ -121,6 +157,8 @@
                 <outlet property="backgroundShadow" destination="VIA-Gn-YE7" id="Ld7-y4-tvS"/>
                 <outlet property="channelNameLabel" destination="Gsq-Kt-gYc" id="S6M-BN-Yoq"/>
                 <outlet property="containerView" destination="mut-qi-eda" id="hDi-7f-icd"/>
+                <outlet property="playButtonIcon" destination="zab-8T-Cqu" id="psW-Zv-Dlf"/>
+                <outlet property="playPauseInteractiveView" destination="3y2-12-TrQ" id="wjC-66-JEd"/>
                 <outlet property="sectionNameLabel" destination="See-SO-vGx" id="vAe-Cw-cIV"/>
                 <outlet property="sectionNameView" destination="AEE-EF-66x" id="m5S-hC-6o6"/>
                 <outlet property="videoDescLabel" destination="T1I-7i-NMc" id="qZO-53-HG5"/>
@@ -130,6 +168,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="PlayPlayerIcon" width="48" height="48"/>
         <image name="youTubeTemp" width="343" height="193"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -140,5 +179,8 @@
         <namedColor name="labelColorGrayPunk">
             <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -113,6 +113,10 @@
 		DD92BADA2836C78F00ACD358 /* VideoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAD92836C78F00ACD358 /* VideoConverter.swift */; };
 		DD92BADC2836F6FE00ACD358 /* StreamConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BADB2836F6FE00ACD358 /* StreamConfiguration.swift */; };
 		DD92BADE2837117C00ACD358 /* VideoPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BADD2837117C00ACD358 /* VideoPlayerManager.swift */; };
+		DD92BAE02837268E00ACD358 /* MediaControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BADF2837268E00ACD358 /* MediaControlView.swift */; };
+		DD92BAE22837273400ACD358 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE12837273400ACD358 /* CustomSlider.swift */; };
+		DD92BAE428372E1600ACD358 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */; };
+		DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE5283731A000ACD358 /* WebMediaSearchManager.swift */; };
 		DDA72045282AC2B300CF4DC3 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72043282AC2B300CF4DC3 /* CommentView.swift */; };
 		DDA72048282AC2EC00CF4DC3 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA72047282AC2EC00CF4DC3 /* CommentView.xib */; };
 		DDA7204A282AC47700CF4DC3 /* SKPproduct+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */; };
@@ -345,6 +349,10 @@
 		DD92BAD92836C78F00ACD358 /* VideoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoConverter.swift; sourceTree = "<group>"; };
 		DD92BADB2836F6FE00ACD358 /* StreamConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamConfiguration.swift; sourceTree = "<group>"; };
 		DD92BADD2837117C00ACD358 /* VideoPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerManager.swift; sourceTree = "<group>"; };
+		DD92BADF2837268E00ACD358 /* MediaControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaControlView.swift; sourceTree = "<group>"; };
+		DD92BAE12837273400ACD358 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		DD92BAE5283731A000ACD358 /* WebMediaSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMediaSearchManager.swift; sourceTree = "<group>"; };
 		DDA72043282AC2B300CF4DC3 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		DDA72047282AC2EC00CF4DC3 /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
 		DDA72049282AC47700CF4DC3 /* SKPproduct+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKPproduct+Extension.swift"; sourceTree = "<group>"; };
@@ -745,6 +753,7 @@
 				DD92BAD52836677500ACD358 /* DeviceManager.swift */,
 				DD92BAD92836C78F00ACD358 /* VideoConverter.swift */,
 				DD92BADD2837117C00ACD358 /* VideoPlayerManager.swift */,
+				DD92BAE5283731A000ACD358 /* WebMediaSearchManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1130,6 +1139,8 @@
 				DDA72043282AC2B300CF4DC3 /* CommentView.swift */,
 				DDA72047282AC2EC00CF4DC3 /* CommentView.xib */,
 				DD92BAD72836AC2700ACD358 /* ConnectButton.swift */,
+				DD92BADF2837268E00ACD358 /* MediaControlView.swift */,
+				DD92BAE12837273400ACD358 /* CustomSlider.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1148,6 +1159,7 @@
 				DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */,
 				E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */,
 				DD6E98B02830036000A72DF3 /* Date+Extension.swift */,
+				DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1515,6 +1527,8 @@
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
 				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
 				DD92BADE2837117C00ACD358 /* VideoPlayerManager.swift in Sources */,
+				DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */,
+				DD92BAE428372E1600ACD358 /* UserDefaults+Extension.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
 				DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */,
 				DD55A67D2832EF8900B99C17 /* YoutubeSearchCodable.swift in Sources */,
@@ -1561,6 +1575,7 @@
 				DDA72051282BB33E00CF4DC3 /* LoadingViewController.swift in Sources */,
 				DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */,
 				DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */,
+				DD92BAE22837273400ACD358 /* CustomSlider.swift in Sources */,
 				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */,
 				DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */,
@@ -1610,6 +1625,7 @@
 				DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */,
 				DDA7204E282ACC2600CF4DC3 /* Realm+Extension.swift in Sources */,
 				DDD6E3722832F998000C5AB9 /* YouTubeCell.swift in Sources */,
+				DD92BAE02837268E00ACD358 /* MediaControlView.swift in Sources */,
 				DD03EFB5282AB0090075F70E /* Locale+Extension.swift in Sources */,
 				DDED96F4282E77620088E4E6 /* DetectedUrl.swift in Sources */,
 				DD923ADF2812F3C70034E5D3 /* CellPassiveMeasurement.swift in Sources */,

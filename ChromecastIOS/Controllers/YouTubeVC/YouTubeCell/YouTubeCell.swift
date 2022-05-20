@@ -18,6 +18,8 @@ class YouTubeCell: UITableViewCell {
     @IBOutlet weak var videoDescLabel: UILabel!
     @IBOutlet weak var channelNameLabel: UILabel!
     
+    @IBOutlet weak var playPauseInteractiveView: InteractiveView!
+    @IBOutlet weak var playButtonIcon: UIImageView!
     var didPlayTap: (() -> ())?
     
     override func awakeFromNib() {
