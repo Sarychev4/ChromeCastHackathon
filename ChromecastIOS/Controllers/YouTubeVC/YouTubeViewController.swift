@@ -8,6 +8,7 @@
 import UIKit
 import Player
 import XCDYouTubeKit_kbexdev
+import GoogleCast
 
 class YouTubeViewController: BaseViewController {
 
@@ -176,43 +177,43 @@ class YouTubeViewController: BaseViewController {
             guard let self = self else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-//                DeviceManager.shared.connectableDevice?.mediaControl()?.getPositionWithSuccess({ [weak self] (currentTime) in
-//                    guard let self = self else { return }
-//                    if self.currentTime == 0 && currentTime > TimeInterval(2) {
-//                        // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
-//                        return
-//                    }
-//                    self.mediaControlView.playPauseInteractiveView.isEnabled = true
-//                    let videoDuration = Int(self.currentVideo?.duration ?? 0)
-//                    
-//                    if currentTime > 0 {
-//                        
-//                        if currentTime != self.currentTime {
-//                            self.state = .playing
-//                        } else {
-//                            // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
-//                            //На Року оно закрывается. Поэтому надо обрабатывать все кейсы
-//                            if abs(TimeInterval(videoDuration) - currentTime) < 0.9 {
-//                                self.state = .stopped
-//                                timer.invalidate()
-//                            } else {
-//                                self.state = .paused
-//                            }
-//                        }
-//                    } else if self.currentTime > 0 {
-//                        // Кейс когда предыдущий запрос был не 0, а следующий 0 это когда видео закончилось.
-//                        self.state = .stopped
-//                    }
-//                    self.currentTime = currentTime
-//                    let currentTime = Int(currentTime)
-//                    
-//                    self.mediaControlView.progressView.value = Float(currentTime)/Float(videoDuration)
-//                    self.mediaControlView.currentPlayTimeLabel.text = currentTime.durationText
-//                }, failure: { (error) in
-//                    
-//                })
-            }
-        })
+                let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+                
+                guard let currentTime = remoteMediaClient?.mediaStatus?.streamPosition else { return }
+                print(currentTime)
+                
+                    if self.currentTime == 0 && currentTime > TimeInterval(2) {
+                        // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
+                        return
+                    }
+                    self.mediaControlView.playPauseInteractiveView.isEnabled = true
+                    let videoDuration = Int(self.currentVideo?.duration ?? 0)
+                    
+                    if currentTime > 0 {
+                        
+                        if currentTime != self.currentTime {
+                            self.state = .playing
+                        } else {
+                            // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
+                            //На Року оно закрывается. Поэтому надо обрабатывать все кейсы
+                            if abs(TimeInterval(videoDuration) - currentTime) < 0.9 {
+                                self.state = .stopped
+                                timer.invalidate()
+                            } else {
+                                self.state = .paused
+                            }
+                        }
+                    } else if self.currentTime > 0 {
+                        // Кейс когда предыдущий запрос был не 0, а следующий 0 это когда видео закончилось.
+                        self.state = .stopped
+                    }
+                    self.currentTime = currentTime
+                    let currentTimePlayer = Int(currentTime)
+                    
+                    self.mediaControlView.progressView.value = Float(currentTimePlayer)/Float(videoDuration)
+                    self.mediaControlView.currentPlayTimeLabel.text = currentTimePlayer.durationText
+                }
+            })
     }
     
     private func getQualities(from video: XCDYouTubeVideo) -> [ResolutionType] {
@@ -319,9 +320,7 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("CELL TOUCHED")
         if isSuggestionsOnView {
-            print("CELL SELECTED")
             let suggestionText = suggestions[indexPath.row]
             searchBar.text = suggestionText
             suggestions.removeAll()
