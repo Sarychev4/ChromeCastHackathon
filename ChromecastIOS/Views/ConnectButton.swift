@@ -12,7 +12,9 @@ import RealmSwift
 class ConnectButton: InteractiveView {
     
     deinit {
-    
+        if timer?.isValid == true {
+            timer?.invalidate()
+        }
     }
        
     /*
@@ -21,6 +23,8 @@ class ConnectButton: InteractiveView {
      
     var iconImageView: UIImageView?
     private var devicesNotificationToken: NotificationToken?
+    
+    var timer: Timer?
     
     /*
      MARK: - Lifecycle
@@ -53,6 +57,11 @@ class ConnectButton: InteractiveView {
                 break
             }
         }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            self.setupColor()
+        })
     }
     
     private func setupImageView() {
