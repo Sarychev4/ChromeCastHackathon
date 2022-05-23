@@ -54,13 +54,13 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pv8-wp-t8g">
-                                    <rect key="frame" x="20" y="0.0" width="374" height="79"/>
+                                    <rect key="frame" x="14" y="0.0" width="386" height="79"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RY4-Zr-USi">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="386" height="33"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4c9-6M-5PG">
-                                                    <rect key="frame" x="6" y="0.0" width="362" height="24"/>
+                                                    <rect key="frame" x="6" y="0.0" width="374" height="24"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHF-Aq-gUn" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
@@ -80,10 +80,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDm-II-MXB">
-                                                            <rect key="frame" x="16" y="0.0" width="324" height="24"/>
+                                                            <rect key="frame" x="16" y="0.0" width="336" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-VH-eJR">
-                                                                    <rect key="frame" x="129" y="2" width="66" height="20.5"/>
+                                                                    <rect key="frame" x="135" y="2" width="66" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-db-wch" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="340" y="0.0" width="22" height="24"/>
+                                                            <rect key="frame" x="352" y="0.0" width="22" height="24"/>
                                                             <subviews>
                                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="dBa-5s-NKG">
                                                                     <rect key="frame" x="0.0" y="3" width="22" height="18"/>
@@ -129,10 +129,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0D-CR-Cx6">
-                                            <rect key="frame" x="0.0" y="33" width="374" height="46"/>
+                                            <rect key="frame" x="0.0" y="33" width="386" height="46"/>
                                             <subviews>
                                                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="C4d-X1-hCE">
-                                                    <rect key="frame" x="-2" y="0.0" width="378" height="46"/>
+                                                    <rect key="frame" x="-2" y="0.0" width="390" height="46"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </searchBar>
                                             </subviews>
@@ -151,12 +151,12 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Adr-w7-JMB" firstAttribute="top" secondItem="66j-Cq-WnG" secondAttribute="top" constant="-100" id="5T0-xl-OoP"/>
-                                <constraint firstItem="pv8-wp-t8g" firstAttribute="leading" secondItem="66j-Cq-WnG" secondAttribute="leading" constant="20" id="PYR-Yl-gYL"/>
+                                <constraint firstItem="pv8-wp-t8g" firstAttribute="leading" secondItem="66j-Cq-WnG" secondAttribute="leading" constant="14" id="PYR-Yl-gYL"/>
                                 <constraint firstAttribute="trailing" secondItem="Adr-w7-JMB" secondAttribute="trailing" id="S7T-JV-3vx"/>
                                 <constraint firstAttribute="bottom" secondItem="Adr-w7-JMB" secondAttribute="bottom" id="V7U-VP-TkT"/>
                                 <constraint firstItem="pv8-wp-t8g" firstAttribute="top" secondItem="66j-Cq-WnG" secondAttribute="top" id="VyN-iW-kTK"/>
                                 <constraint firstAttribute="bottom" secondItem="pv8-wp-t8g" secondAttribute="bottom" id="ZEx-f0-dHR"/>
-                                <constraint firstAttribute="trailing" secondItem="pv8-wp-t8g" secondAttribute="trailing" constant="20" id="lDB-Nm-5Xc"/>
+                                <constraint firstAttribute="trailing" secondItem="pv8-wp-t8g" secondAttribute="trailing" constant="14" id="lDB-Nm-5Xc"/>
                                 <constraint firstItem="Adr-w7-JMB" firstAttribute="leading" secondItem="66j-Cq-WnG" secondAttribute="leading" id="wfx-Vs-ipa"/>
                             </constraints>
                         </view>

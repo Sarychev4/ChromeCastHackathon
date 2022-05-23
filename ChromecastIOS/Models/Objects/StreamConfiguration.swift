@@ -42,6 +42,7 @@ enum StreamEvent: String {
 
 enum Port: UInt {
     case app = 10101
+    case htmlStreamPort = 8088
 }
 
 @objc
@@ -170,8 +171,7 @@ enum ConnectedDeviceType: Int, PersistableEnum {
     case unknown, roku, webOS, chromeCast, fireTV, samsung, dlna, airplay
 }
 
-@objc
-enum MirroringInAppState: Int, PersistableEnum {
+@objc enum MirroringInAppState: Int, PersistableEnum {
     case mirroringNotStarted
     case mirroringStarted
 }

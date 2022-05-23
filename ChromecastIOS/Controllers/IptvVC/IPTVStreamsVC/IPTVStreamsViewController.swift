@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import GoogleCast
 
 class IPTVStreamsViewController: BaseViewController {
 
@@ -112,11 +113,26 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func didSelectCell(at indexPath: IndexPath) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        guard let stream = self.streams?[indexPath.row] else { return }
-        print(">>>BeamStream")
-        ChromeCastService.shared.displayIPTVBeam(with: URL(string: stream.url)!)
-       
+        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.iptv.rawValue, with: { [weak self] success in
+            guard let self = self, success == true else { return }
+            self.connectIfNeeded { [weak self] in
+                guard let self = self, let stream = self.streams?[indexPath.row] else { return }
+                ChromeCastService.shared.displayVideo(with: URL(string: stream.url)!)
+            }
+        })
     }
+    
+    private func connectIfNeeded(onComplete: Closure?) {
+        guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
+            onComplete?()
+            return
+        }
+        presentDevices {
+            onComplete?()
+        }
+    }
+    
+    
     
 }
 

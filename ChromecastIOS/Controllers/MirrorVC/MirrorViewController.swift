@@ -6,11 +6,20 @@
 //
 
 import UIKit
+import ReplayKit
+import RealmSwift
+import Agregator
+import Network
+import Dispatch
+import MBProgressHUD
+import GoogleCast
 
 class MirrorViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
+    
+    @IBOutlet weak var rotationSwitch: UISwitch!
     
     @IBOutlet weak var showHideImageView: UIImageView!
     @IBOutlet weak var qualityContainer: UIStackView!
@@ -30,9 +39,103 @@ class MirrorViewController: BaseViewController {
     @IBOutlet weak var bestLabel: DefaultLabel!
     @IBOutlet weak var bestImageView: UIImageView!
     
-    private var isHide = true
+    
+    @IBOutlet weak var broadCastView: RPSystemBroadcastPickerView!
+    @IBOutlet weak var mirrorActionLabel: DefaultLabel!
+    
+    var mirroringButton: UIButton? {
+        return broadCastView.subviews.first(where: { $0 is UIButton }) as? UIButton
+    }
+    
+    var didFinishAction: Closure?
+    
+    private var settingsNotificationsToken: NotificationToken?
+    private var applicationNotificationToken: NotificationToken!
+    private var mirroringStateToken: NotificationToken?
+    private var nwPathMonitor: NWPathMonitor?
+    
+    private var state: MirroringInAppState = .mirroringNotStarted {
+        didSet {
+            try? Settings.current.realm?.write {
+                Settings.current.mirroringState = state
+            }
+            
+            switch state {
+            case .mirroringStarted:
+                let image = UIImage(named: "TapToStopMirroring")!
+                mirroringButton?.setImage(image, for: .normal)
+                mirrorActionLabel.text = NSLocalizedString("Screen.Mirror.Action.Tap.Stop", comment: "")
+//                if isDLNADeviceConnected() {
+//                    updateMirroringStreamURL()
+//                }
+            case .mirroringNotStarted:
+                let image = UIImage(named: "TapToStartMirroring")!
+                mirroringButton?.setImage(image, for: .normal)
+                mirrorActionLabel.text = NSLocalizedString("Screen.Mirror.Action.Tap.Start", comment: "")
+                
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNavigationSection()
+        setupSettingsSection()
+        
+        setupMirrotingSection()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+       
+    }
+    
+    @IBAction func rotationChanged(_ sender: UISwitch) {
+    }
+
+    @IBAction func startBroadcastClicked(_ sender: UIButton) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        switch state {
+        case .mirroringNotStarted:
+            if GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue == 2 {
+                self.showSystemMirroringScreen()
+            } else {
+                presentDevices(postAction: { [weak self] in
+                    guard let self = self else { return }
+                    self.startBroadcastClicked(sender)
+                })
+            }
+        case .mirroringStarted:
+            showSystemMirroringScreen()
+        }
+    }
+    
+    private func setupMirrotingSection() {
+        mirroringButton?.setImage(nil, for: .normal)
+        //temp as
+//        broadCastView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
+    }
+    
+    private func showSystemMirroringScreen() {
+        mirroringButton?.sendActions(for: .allTouchEvents)
+    }
+    
+    
+    private func setupNavigationSection() {
+        backInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.navigation?.popViewController(self, animated: true)
+        }
+        
+        connectInteractiveView.didTouchAction = { [weak self] in
+            guard self == self else { return }
+            self?.presentDevices(postAction: nil)
+        }
+    }
+    
+    private func setupSettingsSection() {
+        
+        rotationSwitch.isOn = StreamConfiguration.current.isAutoRotate
         
         optimizedImageView.isHidden = true
         balancedImageView.isHidden = true
@@ -49,9 +152,6 @@ class MirrorViewController: BaseViewController {
                 self.showHideImageView.image = UIImage(named: "show")
             }
         }
-        
-        
-        
         
         optimizedInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
@@ -93,18 +193,8 @@ class MirrorViewController: BaseViewController {
             }
         }
         
-        backInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            self.navigation?.popViewController(self, animated: true)
-        }
-        
-        connectInteractiveView.didTouchAction = { [weak self] in
-            guard self == self else { return }
-            self?.presentDevices(postAction: nil)
-        }
-        
+       
         updateUIbasedOnQuality()
-        
     }
     
     private func updateUIbasedOnQuality(){
@@ -145,6 +235,8 @@ class MirrorViewController: BaseViewController {
         }
         present(controller, animated: false, completion: nil)
     }
+    
+    
     
     
 }

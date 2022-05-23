@@ -13,6 +13,7 @@ import DeviceKit
 import Realm
 import RealmSwift
 import Alamofire
+import GoogleCast
 
 class BrowserViewController: BaseViewController {
 
@@ -139,10 +140,10 @@ class BrowserViewController: BaseViewController {
         
         detectedUrlsInteractiveView.didTouchAction = { [weak self] in
             guard let self = self, let detectedUrls = self.detectedUrls, detectedUrls.count > 0 else { return }
-//            self.connectIfNeeded { [weak self] in
-//                guard let self = self else { return }
+            self.connectIfNeeded { [weak self] in
+                guard let self = self else { return }
                 self.presentDetectedUrlsScreen(postAction: nil)
-//            }
+            }
         }
     }
     
@@ -302,24 +303,28 @@ class BrowserViewController: BaseViewController {
     
     //temp as
     private func castToTV(_ url: String?) {
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        guard let urlString = url, let url = URL(string: urlString) else { return }
-        let scriptSource = webVideoStop
-        self.webView.evaluateJavaScript(scriptSource) { (object, error) in }
-        ChromeCastService.shared.displayIPTVBeam(with: url)
         
-//        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.browser.rawValue, with: { [weak self] success in
-//            guard let self = self, success == true else { return }
-//            self.connectIfNeeded { [weak self] in
-//                guard let self = self else { return }
-//                guard let urlString = url, let url = URL(string: urlString) else { return }
-//                let scriptSource = webVideoStop
-//                self.webView.evaluateJavaScript(scriptSource) { (object, error) in }
-//            //BEAM temp as
-//            ChromeCastService.shared.displayIPTVBeam(with: url)
-////                DeviceManager.shared.beamBrowserVideo(at: url, mimeType: url.mimeType(), title: nil, onConnect: nil)
-//            }
-//        })
+        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.browser.rawValue, with: { [weak self] success in
+            guard let self = self, success == true else { return }
+            self.connectIfNeeded { [weak self] in
+                guard let self = self else { return }
+                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                guard let urlString = url, let url = URL(string: urlString) else { return }
+                let scriptSource = webVideoStop
+                self.webView.evaluateJavaScript(scriptSource) { (object, error) in }
+                ChromeCastService.shared.displayVideo(with: url)
+            }
+        })
+    }
+    
+    private func connectIfNeeded(onComplete: Closure?) {
+        guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
+            onComplete?()
+            return
+        }
+        presentDevices {
+            onComplete?()
+        }
     }
 
 

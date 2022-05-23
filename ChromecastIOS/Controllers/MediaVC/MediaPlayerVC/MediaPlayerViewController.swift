@@ -138,7 +138,7 @@ class MediaPlayerViewController: BaseViewController {
         hideHUD()
         let ipAddress = ServerConfiguration.shared.deviceIPAddress()
         guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
-        ChromeCastService.shared.displayIPTVBeam(with: url)
+        ChromeCastService.shared.displayVideo(with: url)
     }
     
     private func castImageToTV() {

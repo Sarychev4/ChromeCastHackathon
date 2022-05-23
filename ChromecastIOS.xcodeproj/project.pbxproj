@@ -141,6 +141,7 @@
 		DDAE265D2818724C00355735 /* DeviceCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE265C2818724C00355735 /* DeviceCellView.xib */; };
 		DDAE265F281874A600355735 /* DeviceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE265E281874A600355735 /* DeviceCellView.swift */; };
 		DDAE2661281927C000355735 /* DotsActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE2660281927C000355735 /* DotsActivityIndicator.swift */; };
+		DDBCDBE9283B830E00AB626A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E86F70A9282A442D0000A5C7 /* GoogleService-Info.plist */; };
 		DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */; };
 		DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */; };
 		DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */; };
@@ -179,6 +180,7 @@
 		DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */; };
 		DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */; };
 		DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */; };
+		DDEFA0DC283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */; };
 		DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */; };
 		DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */; };
 		DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */; };
@@ -202,7 +204,6 @@
 		DDF59C10280F4B7B00CE2E2B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */; };
 		DDF59C14280F5E1F00CE2E2B /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59C12280F5E1F00CE2E2B /* MainCell.swift */; };
 		DDF59C15280F5E1F00CE2E2B /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF59C13280F5E1F00CE2E2B /* MainCell.xib */; };
-		E86F70AA282A442D0000A5C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E86F70A9282A442D0000A5C7 /* GoogleService-Info.plist */; };
 		E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8964313280EB5A700E6E287 /* ReplayKit.framework */; };
 		E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8964316280EB5A700E6E287 /* SampleHandler.swift */; };
 		E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89642B4280EAF7700E6E287 /* AppDelegate.swift */; };
@@ -412,6 +413,7 @@
 		DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrlCell.swift; sourceTree = "<group>"; };
 		DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedUrlCell.xib; sourceTree = "<group>"; };
 		DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInfoExtractor.swift; sourceTree = "<group>"; };
+		DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+Extension.swift"; sourceTree = "<group>"; };
 		DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTestConnectionViewController.swift; sourceTree = "<group>"; };
 		DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialTestConnectionViewController.xib; sourceTree = "<group>"; };
 		DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreviewImageViewController.swift; sourceTree = "<group>"; };
@@ -1127,7 +1129,6 @@
 			isa = PBXGroup;
 			children = (
 				DDF59BF5280F30A100CE2E2B /* InteractiveView.swift */,
-				DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */,
 				DDF59BF7280F30AF00CE2E2B /* DefaultView.swift */,
 				DDF59C01280F41AD00CE2E2B /* RoundedView.swift */,
 				DDF59C03280F459600CE2E2B /* DropShadowView.swift */,
@@ -1160,6 +1161,8 @@
 				E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */,
 				DD6E98B02830036000A72DF3 /* Date+Extension.swift */,
 				DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */,
+				DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */,
+				DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1335,6 +1338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDBCDBE9283B830E00AB626A /* GoogleService-Info.plist in Resources */,
 				DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */,
 				DDED96F5282E785C0088E4E6 /* JavaScripts.swift in Resources */,
 				DDED96EA282C496F0088E4E6 /* SplashAnimation.json in Resources */,
@@ -1384,7 +1388,6 @@
 				DDCE0A1228116FAE004E9C18 /* MediaPlayerViewController.xib in Resources */,
 				DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */,
 				DD19E4BB2812ABD900931489 /* huron_river.JPG in Resources */,
-				E86F70AA282A442D0000A5C7 /* GoogleService-Info.plist in Resources */,
 				DD19E4A72812ABD900931489 /* barton_nature_leeve.JPG in Resources */,
 				DDCF125B28229C23009019D4 /* MirrorSettingsViewController.xib in Resources */,
 				DDF59BFE280F323500CE2E2B /* UINavigationContainer.xib in Resources */,
@@ -1526,6 +1529,7 @@
 				DD923AD62812E6DF0034E5D3 /* CellAnimationMeasurement.swift in Sources */,
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
 				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
+				DDEFA0DC283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift in Sources */,
 				DD92BADE2837117C00ACD358 /* VideoPlayerManager.swift in Sources */,
 				DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */,
 				DD92BAE82837893D00ACD358 /* AutoComplete.swift in Sources */,

@@ -133,7 +133,7 @@ class YouTubeViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     /*
@@ -143,6 +143,8 @@ class YouTubeViewController: BaseViewController {
     private func playVideo(at index: Int, resolution: ResolutionType? = nil) {
         SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.youtube.rawValue, with: { [weak self] success in
             guard let self = self, success == true else { return }
+            self.connectIfNeeded { [weak self] in
+                guard let self = self else { return }
                 self.selectedIndex = index
                 self.state = .stopped
                 self.tableView.reloadData()
@@ -150,19 +152,30 @@ class YouTubeViewController: BaseViewController {
                 if let videoId = item.id?.videoID {
                     XCDYouTubeClient.default().getVideoWithIdentifier(videoId) { [weak self] (video, error) in
                         guard let self = self, let video = video else { return }
-                        self.mediaControlView.alpha = 1
+//                        self.mediaControlView.alpha = 1
                         self.currentVideo = video
                         let resolution = self.getBestQuality(for: video)
                         if let downloadUrl = video.streamURLs[resolution.youtubeQuality] {
-                            ChromeCastService.shared.displayIPTVBeam(with: downloadUrl)
+                            ChromeCastService.shared.displayYouTubeVideo(with: downloadUrl)
+                            
                             self.startVideoProgressTimer()
                             self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"
                             self.mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")
                         }
                     }
                 }
-            
+            }
         })
+    }
+    
+    private func connectIfNeeded(onComplete: Closure?) {
+        guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
+            onComplete?()
+            return
+        }
+        presentDevices {
+            onComplete?()
+        }
     }
     
     
@@ -180,7 +193,7 @@ class YouTubeViewController: BaseViewController {
                 let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
                 
                 guard let currentTime = remoteMediaClient?.mediaStatus?.streamPosition else { return }
-                print(currentTime)
+                //print(currentTime)
                 
                     if self.currentTime == 0 && currentTime > TimeInterval(2) {
                         // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
@@ -299,7 +312,6 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.suggestionLabel.text = suggestions[indexPath.row]
             return cell
         } else {
-            print(">>>\(videos.count)")
             let cell = tableView.dequeueReusableCell(withIdentifier: YouTubeCell.Identifier, for: indexPath) as! YouTubeCell
             let item = videos[indexPath.row]
             cell.sectionNameView.isHidden = true

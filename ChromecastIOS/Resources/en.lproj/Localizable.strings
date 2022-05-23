@@ -7,12 +7,15 @@
 */
 
 /*
- - ChromeCast
+ - Mirror
  */
 
 "Screen.Mirror.Quality.Optimized" = "Optimized";
 "Screen.Mirror.Quality.Balanced" = "Balanced";
 "Screen.Mirror.Quality.Best" = "Best";
+
+"Screen.Mirror.Action.Tap.Start" = "Tap to Start Mirroring";
+"Screen.Mirror.Action.Tap.Stop" = "Tap to Stop Mirroring";
 
 /*
  - Media Player

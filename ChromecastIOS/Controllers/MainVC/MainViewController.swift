@@ -80,13 +80,7 @@ class MainViewController: BaseViewController {
     var isFileMngr = false
     
     @IBAction func testCastImageButtonTapped(_ sender: Any) {
-//        ChromeCastService.shared.displayImage(with: URL(string: "http://risovach.ru/upload/2014/03/mem/s-dr-karoch_45066550_orig_.jpeg")!)
-        // URL(string: "http://localhost:\(Port.app.rawValue)/image")
-        //http://127.0.0.1/image.jpeg
-        //192.168.1.34
-        //scheme://host:port
-        //http://192.168.1.34:10101/image.jpeg worked!
-        //
+
         let networkInterfaces = CSSystemInfoHelper.shared.networkInterfaces!
         guard let interface = CSSystemInfoHelper.shared.networkInterfaces?.filter({ $0.name == "en0" && $0.familyName == "AF_INET" }).first else { return }
         let ipAddress = interface.address
@@ -94,12 +88,10 @@ class MainViewController: BaseViewController {
         print("MY ADDRESS \(ipAddress)")
         
         guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
-        ChromeCastService.shared.displayIPTVBeam(with: url)
+        ChromeCastService.shared.displayVideo(with: url)
 
         let request = URLRequest(url: URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/:id")!)
         webView.load(request)
-        
-        print(ChromeCastService.shared.screenMirroringChannel ?? "CHANNEL IS DEAD")
         
         testImageView.image = loadImageFromDiskWith(fileName: "imageForCasting.jpeg")
     }
