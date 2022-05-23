@@ -27,11 +27,12 @@ class SampleHandler: RPBroadcastSampleHandler {
         
         observeStreamInfoProperties()
         
-        guard streamConfiguration.deviceIp.isEmpty == false else { return }
+//        guard streamConfiguration.deviceIp.isEmpty == false else { return }
         setupHTMLStream()
         
         try? streamConfiguration.realm?.write {
             streamConfiguration.event = StreamEvent.broadcastStarted.rawValue
+            print(">>> broadcast \(streamConfiguration.event)")
         }
     }
     

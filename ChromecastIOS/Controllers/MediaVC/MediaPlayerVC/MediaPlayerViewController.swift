@@ -373,6 +373,18 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case hdCollectionView:
+            break
+        case thumbnailCollectionView:
+            hdCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        default:
+            break
+        }
+    }
 }
 //MARK: - CollectionView Delegate
 
