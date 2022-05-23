@@ -4,23 +4,28 @@
 //
 //  Created by Artsiom Sarychau on 19.04.2022.
 //
- 
+
 import UIKit
 
 extension UIView {
-   static var nib: UINib {
-      return UINib(nibName: "\(self)", bundle: nil)
-   }
-
-   static func fromNib() -> Self? {
-      return nib.instantiate() as? Self
-   }
+    static var nib: UINib {
+        return UINib(nibName: "\(self)", bundle: nil)
+    }
+    
+    static func fromNib() -> Self? {
+        return nib.instantiate() as? Self
+    }
+    
+    var allSubviews: [UIView] {
+        return self.subviews.flatMap { [$0] + $0.allSubviews }
+    }
+    
 }
 
 extension UINib {
-   func instantiate() -> Any? {
-      return instantiate(withOwner: nil, options: nil).first
-   }
+    func instantiate() -> Any? {
+        return instantiate(withOwner: nil, options: nil).first
+    }
 }
 
 public extension UIView {
@@ -87,7 +92,7 @@ extension UIView {
 }
 
 extension UIView {
-   
+    
     func addDropShadow() {
         let vw = self
         if vw.layer.shadowRadius != 5 {
@@ -108,7 +113,7 @@ extension UIView {
         viewWithShadow.layer.shadowOffset = shadowOffset
         viewWithShadow.layer.shadowOpacity = Float(shadowOpacity)
         viewWithShadow.layer.masksToBounds = false
-//        viewWithShadow.layer.shouldRasterize = true
+        //        viewWithShadow.layer.shouldRasterize = true
         let shadowPath = customPath ??  UIBezierPath(roundedRect: viewWithShadow.bounds, cornerRadius: viewWithShadow.layer.cornerRadius)
         viewWithShadow.layer.shadowPath = shadowPath.cgPath
         viewWithShadow.layer.shouldRasterize = true
@@ -134,7 +139,7 @@ public extension UIView {
             layer.borderColor = color.cgColor
         }
     }
-
+    
     /// SwifterSwift: Border width of view; also inspectable from Storyboard.
     @IBInspectable var borderWidth: CGFloat {
         get {
@@ -145,15 +150,15 @@ public extension UIView {
         }
     }
 }
- 
-extension NSObject {
-  var className: String {
-    return String(describing: type(of: self))
-  }
 
-  class var className: String {
-    return String(describing: self)
-  }
+extension NSObject {
+    var className: String {
+        return String(describing: type(of: self))
+    }
+    
+    class var className: String {
+        return String(describing: self)
+    }
 }
 
 extension UITableViewHeaderFooterView {

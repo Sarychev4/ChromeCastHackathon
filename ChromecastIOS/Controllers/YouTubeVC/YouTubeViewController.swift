@@ -154,7 +154,7 @@ class YouTubeViewController: BaseViewController {
                         self.currentVideo = video
                         let resolution = self.getBestQuality(for: video)
                         if let downloadUrl = video.streamURLs[resolution.youtubeQuality] {
-                            ChromeCastService.shared.displayIPTVBeam(with: downloadUrl)
+                            ChromeCastService.shared.displayYouTubeVideo(with: downloadUrl)
                             
                             self.startVideoProgressTimer()
                             self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"

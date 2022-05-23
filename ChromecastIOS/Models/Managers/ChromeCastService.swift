@@ -8,6 +8,7 @@
 import Foundation
 import GoogleCast
 import RealmSwift
+import UIKit
 
 class ChromeCastService: NSObject {
     
@@ -48,7 +49,7 @@ class ChromeCastService: NSObject {
         self.sessionManager!.add(self)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-//            self.sessionManager?.endSessionAndStopCasting(true)
+            //            self.sessionManager?.endSessionAndStopCasting(true)
         }
     }
     
@@ -85,19 +86,53 @@ class ChromeCastService: NSObject {
         mediaInfoBuilder.metadata = metadata
         let mediaInformation = mediaInfoBuilder.build()
         let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
-//        GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
-//        GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
-       
+        //        GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
+        //        GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
+        
         remoteMediaClient?.loadMedia(mediaInformation)
         remoteMediaClient?.add(self)
     }
+    
+    func displayYouTubeVideo(with url: URL) {
+        let metadata = GCKMediaMetadata(metadataType: .movie)
+        let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: url)
+        mediaInfoBuilder.contentType = "video/mp4" //mediaInfo.mimeType
+        mediaInfoBuilder.streamType = GCKMediaStreamType.none
+        mediaInfoBuilder.metadata = metadata
+        let mediaInformation = mediaInfoBuilder.build()
+        
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        remoteMediaClient?.loadMedia(mediaInformation)
+        remoteMediaClient?.add(self)
+        
+        GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
+        
+        let defaultMediaVC = GCKCastContext.sharedInstance().defaultExpandedMediaControlsViewController
+        defaultMediaVC.modalPresentationStyle = .fullScreen
+        defaultMediaVC.view.allSubviews.forEach ({
+            if $0.className == "GCKUICastButton" {
+                $0.layer.opacity = 0
+                $0.layer.isHidden = true
+                $0.isUserInteractionEnabled = false
+                let imageView = $0.subviews.first as? UIImageView
+                imageView?.layer.isHidden = true
+                imageView?.layer.opacity = 0
+            }
+        })
+        
+        GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
+    }
+    
+}
 
+extension ChromeCastService: GCKRequestDelegate {
+    
 }
 
 extension ChromeCastService: GCKRemoteMediaClientListener {
     func remoteMediaClient(_ client: GCKRemoteMediaClient, didUpdate mediaStatus: GCKMediaStatus?) {
         guard let mediaStatus = mediaStatus else { return }
-        print(">>> remoteMediaClient time: \(mediaStatus.streamPosition), state: \(mediaStatus.playerState.rawValue))")
+        //        print(">>> remoteMediaClient time: \(mediaStatus.streamPosition), state: \(mediaStatus.playerState.rawValue))")
     }
 }
 
@@ -135,7 +170,7 @@ extension ChromeCastService: GCKDiscoveryManagerListener {
         try! realm.write {
             realm.add(deviceObj, update: .all)
         }
-    
+        
         self.foundedDevices.append(device)
         print(">>>ChromeCast: Newly-discovered device \(device.friendlyName ?? "No friendly name") has been inserted into the list of devices.")
     }
@@ -162,7 +197,7 @@ extension ChromeCastService: GCKDiscoveryManagerListener {
 
 //MARK: - SessionManagerListener GCKSession
 extension ChromeCastService: GCKSessionManagerListener {
-
+    
     func sessionManager(_ sessionManager: GCKSessionManager, willStart session: GCKSession) {
         print(">>>ChromeCast: Session is about to be started")
     }
