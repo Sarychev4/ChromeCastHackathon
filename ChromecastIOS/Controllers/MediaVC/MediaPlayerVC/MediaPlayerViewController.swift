@@ -422,6 +422,18 @@ extension MediaPlayerViewController: CollectionViewCellSize {
         return nil
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case hdCollectionView:
+            break
+        case thumbnailCollectionView:
+            hdCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        default:
+            break
+        }
+    }
+   
     fileprivate func cellSize(forHDImage size: CGSize) -> CGSize? {
         let ratio = size.height / size.width
         if (ratio < hdCollectionViewRatio) {

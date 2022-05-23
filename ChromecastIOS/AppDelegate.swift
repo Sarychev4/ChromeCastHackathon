@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var server: CRHTTPServer?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        GIDSignIn.sharedInstance().clientID = "719393243681-q159h4ibja392l88iiuba6nb8o8q0qeh.apps.googleusercontent.com"
+         
         
         /*
          */

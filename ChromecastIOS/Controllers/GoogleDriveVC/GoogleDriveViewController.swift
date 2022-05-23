@@ -85,25 +85,36 @@ class GoogleDriveViewController: BaseViewController {
     }
     
     private func isUserAlreadySigned() -> Bool {
-        return GIDSignIn.sharedInstance().hasAuthInKeychain()
+        return GIDSignIn.sharedInstance.hasPreviousSignIn()
     }
     
     private func signOut() {
-        GIDSignIn.sharedInstance()?.disconnect()
+        GIDSignIn.sharedInstance.disconnect()
     }
     
     private func signIn() {
-        GIDSignIn.sharedInstance()?.signIn()
+        let config = GIDConfiguration(clientID: "719393243681-q159h4ibja392l88iiuba6nb8o8q0qeh.apps.googleusercontent.com")
+        
+//        GIDSignIn.sharedInstance.scopes = [kGTLRAuthScopeDrive]
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+            if let _ = error {
+                
+            } else {
+                print("Authenticate successfully")
+                let service = GTLRDriveService()
+                service.authorizer = user?.authentication.fetcherAuthorizer()
+                self.googleAPIs = GoogleDriveAPI(service: service)
+    //            self.loadAllFilesAndFolders()
+                self.loadFilesInRootFolder()
+            }
+        }
     }
     
     
     
     
     private func setupGoogleSignIn() {
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDrive]
-        GIDSignIn.sharedInstance()?.signInSilently()
+//        GIDSignIn.sharedInstance?.signInSilently()
         
         googleSignInButtonInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
@@ -194,27 +205,7 @@ class GoogleDriveViewController: BaseViewController {
     
 }
 
-extension GoogleDriveViewController: GIDSignInDelegate {
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let _ = error {
-            
-        } else {
-            print("Authenticate successfully")
-            let service = GTLRDriveService()
-            service.authorizer = user.authentication.fetcherAuthorizer()
-            self.googleAPIs = GoogleDriveAPI(service: service)
-//            self.loadAllFilesAndFolders()
-            self.loadFilesInRootFolder()
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        print("Did disconnect to user")
-    }
-}
-
-extension GoogleDriveViewController: GIDSignInUIDelegate {}
+//extension GoogleDriveViewController: GIDSignInUIDelegate {}
 
 extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
