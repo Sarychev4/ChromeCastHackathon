@@ -114,7 +114,7 @@ class TutorialConnectViewController: BaseViewController {
         let maxWidth = UIScreen.main.bounds.width - 80
         let duration = Double.random(in: range)
         let ticksCount = max(1, toPercent * 100 - Double(currentProgress)) //Мы ниже делим на ticksCount, поэтому нельзя чтобы было 0
-        print("Interval: \(duration / ticksCount)")
+        
         startProgressTimer(withInterval: duration / ticksCount)
         progressWidthConstraint.constant = maxWidth * toPercent
         
