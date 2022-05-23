@@ -78,7 +78,7 @@ class ChromeCastService: NSObject {
         }
     }
     
-    func displayIPTVBeam(with url: URL) {
+    func displayVideo(with url: URL) {
         let metadata = GCKMediaMetadata(metadataType: .movie)
         let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: url)
         mediaInfoBuilder.contentType = "video/mp4" //mediaInfo.mimeType

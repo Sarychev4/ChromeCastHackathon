@@ -259,7 +259,7 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
                     if mimeType == "image/jpeg" {
                         ChromeCastService.shared.displayImage(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
                     } else if mimeType == "video/mp4" {
-                        ChromeCastService.shared.displayIPTVBeam(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
+                        ChromeCastService.shared.displayVideo(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
                     } else {
                         //temp as
                         guard let thumbnailImageLink = file.thumbnailLink else { return }
