@@ -110,9 +110,6 @@ class GoogleDriveViewController: BaseViewController {
         }
     }
     
-    
-    
-    
     private func setupGoogleSignIn() {
 //        GIDSignIn.sharedInstance?.signInSilently()
         

@@ -386,7 +386,7 @@ extension BrowserViewController: UISearchBarDelegate {
     }
 }
 
-extension BrowserViewController: WKNavigationDelegate, UIScrollViewDelegate {
+extension BrowserViewController: UIWebViewDelegate, UIScrollViewDelegate {
     private func setupNavigationAnimations() {
         navigationBarShadowView.alpha = 0
         navigationBarAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeOut, animations: { [weak self] in
