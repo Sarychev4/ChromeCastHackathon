@@ -152,7 +152,7 @@ class YouTubeViewController: BaseViewController {
                 if let videoId = item.id?.videoID {
                     XCDYouTubeClient.default().getVideoWithIdentifier(videoId) { [weak self] (video, error) in
                         guard let self = self, let video = video else { return }
-                        self.mediaControlView.alpha = 1
+//                        self.mediaControlView.alpha = 1
                         self.currentVideo = video
                         let resolution = self.getBestQuality(for: video)
                         if let downloadUrl = video.streamURLs[resolution.youtubeQuality] {
