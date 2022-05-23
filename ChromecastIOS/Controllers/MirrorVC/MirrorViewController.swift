@@ -90,7 +90,20 @@ class MirrorViewController: BaseViewController {
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        state = Settings.current.mirroringState
+        
+    }
+    
     @IBAction func rotationChanged(_ sender: UISwitch) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        let isRotationEnabled = sender.isOn
+        
+        try? StreamConfiguration.current.realm?.write {
+            StreamConfiguration.current.isAutoRotate = isRotationEnabled
+        }
     }
 
     @IBAction func startBroadcastClicked(_ sender: UIButton) {
@@ -113,7 +126,7 @@ class MirrorViewController: BaseViewController {
     private func setupMirrotingSection() {
         mirroringButton?.setImage(nil, for: .normal)
         //temp as
-//        broadCastView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
+        broadCastView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
     }
     
     private func showSystemMirroringScreen() {

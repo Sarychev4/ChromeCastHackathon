@@ -10,6 +10,7 @@ import GoogleCast
 import RealmSwift
 import UIKit
 import Agregator
+import CSSystemInfoHelper
 
 class ChromeCastService: NSObject {
     
@@ -55,6 +56,8 @@ class ChromeCastService: NSObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             //            self.sessionManager?.endSessionAndStopCasting(true)
         }
+        
+        observeStreamConfiguration()
     }
     
     func connect(to deviceID: String, onComplete: ClosureBool?) {
@@ -139,9 +142,9 @@ class ChromeCastService: NSObject {
         }
     }
     
-    func displayStream(with url: URL?) {
-        guard let url = url?.absoluteString else { return }
-        let params = ["type": "stream", "url": url]
+    func displayStream(with url: URL) {
+        print("diplay stream runned")
+        let params = ["type": "stream", "url": url.absoluteString]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
             guard let convertedString = String(data: jsonData, encoding: String.Encoding.utf8) else {return}
@@ -172,7 +175,12 @@ class ChromeCastService: NSObject {
                                     ]
                                 //                                    .merging(device.commonEventParams) { (current, _) in current }
                             )
-                            self.displayStream(with: URL.HTML_STREAM_FRAME_URL)
+                            
+                            guard let deviceIP = CSSystemInfoHelper.ipAddress else { return }
+                            guard let url = URL(string: "http://\(deviceIP):\(Port.htmlStreamPort.rawValue)/screenmirror") else { return }
+                            
+                            self.displayStream(with: url)
+                            
                         case .broadcastFinished:
                             AgregatorLogger.shared.log(
                                 eventName: "Mirroring stop",

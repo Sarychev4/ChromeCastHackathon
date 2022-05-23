@@ -156,6 +156,9 @@
                                                                 </label>
                                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYH-MY-mWC">
                                                                     <rect key="frame" x="333" y="2.5" width="51" height="31"/>
+                                                                    <connections>
+                                                                        <action selector="rotationChanged:" destination="-1" eventType="valueChanged" id="jUN-NV-kwn"/>
+                                                                    </connections>
                                                                 </switch>
                                                             </subviews>
                                                             <constraints>
@@ -420,6 +423,9 @@
                                                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                                             <state key="normal" title="Button"/>
                                                                                             <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                                                            <connections>
+                                                                                                <action selector="startBroadcastClicked:" destination="-1" eventType="touchUpInside" id="oPB-WQ-SIl"/>
+                                                                                            </connections>
                                                                                         </button>
                                                                                     </subviews>
                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
