@@ -213,6 +213,19 @@
 		E8964343280EB75D00E6E287 /* MirroringExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E8964312280EB5A700E6E287 /* MirroringExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E8CFAEC4282AED8B002C3B87 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */; };
 		E8CFAEC6282AEE94002C3B87 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */; };
+		E8E5FA80283BF87800B4B6FF /* StreamConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BADB2836F6FE00ACD358 /* StreamConfiguration.swift */; };
+		E8E5FA81283BF8A300B4B6FF /* Realm+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7204D282ACC2600CF4DC3 /* Realm+Extension.swift */; };
+		E8E5FA82283BF8AF00B4B6FF /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */; };
+		E8E5FA84283BF8E000B4B6FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */; };
+		E8E5FA85283BF90A00B4B6FF /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */; };
+		E8E5FA88283BF9A800B4B6FF /* HTMLStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA87283BF9A800B4B6FF /* HTMLStreamManager.swift */; };
+		E8E5FA8A283BF9CE00B4B6FF /* HTTPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA89283BF9CD00B4B6FF /* HTTPServer.swift */; };
+		E8E5FA8C283BF9E100B4B6FF /* JPEGEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA8B283BF9E100B4B6FF /* JPEGEncoder.swift */; };
+		E8E5FA8D283BFA2F00B4B6FF /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */; };
+		E8E5FA8F283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */; };
+		E8E5FA90283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */; };
+		E8E5FA92283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */; };
+		E8E5FA93283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -453,6 +466,12 @@
 		E8C16011280FFA9700995934 /* MirroringExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MirroringExtension.entitlements; sourceTree = "<group>"; };
 		E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E8E5FA87283BF9A800B4B6FF /* HTMLStreamManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLStreamManager.swift; sourceTree = "<group>"; };
+		E8E5FA89283BF9CD00B4B6FF /* HTTPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPServer.swift; sourceTree = "<group>"; };
+		E8E5FA8B283BF9E100B4B6FF /* JPEGEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEGEncoder.swift; sourceTree = "<group>"; };
+		E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImageProperty+extension.swift"; sourceTree = "<group>"; };
+		E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VTCompressionSession+Extension.swift"; sourceTree = "<group>"; };
 		EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromecastIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -463,6 +482,7 @@
 			files = (
 				E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */,
 				5C79DB51145C97265C38D971 /* Pods_MirroringExtension.framework in Frameworks */,
+				E8E5FA84283BF8E000B4B6FF /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +500,7 @@
 		504D1222731237FE33320495 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */,
 				EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */,
 				E8964313280EB5A700E6E287 /* ReplayKit.framework */,
 				E896431F280EB5A700E6E287 /* UIKit.framework */,
@@ -745,7 +766,10 @@
 		DD5232A3281ACE8F004AF0AA /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E8E5FA8B283BF9E100B4B6FF /* JPEGEncoder.swift */,
+				E8E5FA87283BF9A800B4B6FF /* HTMLStreamManager.swift */,
 				DD5232A4281ACEA2004AF0AA /* SubscriptionSpotsManager.swift */,
+				E8E5FA89283BF9CD00B4B6FF /* HTTPServer.swift */,
 				DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */,
 				DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */,
 				DD03EFB0282AA4580075F70E /* DataManager.swift */,
@@ -1151,6 +1175,7 @@
 			children = (
 				E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */,
 				DDF59BFF280F32A400CE2E2B /* UIViewController+Extension.swift */,
+				E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */,
 				DDF59C0D280F48D500CE2E2B /* UIFont+Extension.swift */,
 				DD19E48A2812AB9A00931489 /* UIImage+Extension.swift */,
 				DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */,
@@ -1163,6 +1188,7 @@
 				DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */,
 				DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */,
 				DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */,
+				E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1516,7 +1542,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8E5FA8A283BF9CE00B4B6FF /* HTTPServer.swift in Sources */,
+				E8E5FA81283BF8A300B4B6FF /* Realm+Extension.swift in Sources */,
+				E8E5FA93283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */,
+				E8E5FA8C283BF9E100B4B6FF /* JPEGEncoder.swift in Sources */,
+				E8E5FA80283BF87800B4B6FF /* StreamConfiguration.swift in Sources */,
+				E8E5FA90283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */,
+				E8E5FA88283BF9A800B4B6FF /* HTMLStreamManager.swift in Sources */,
 				E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */,
+				E8E5FA85283BF90A00B4B6FF /* URL+Extension.swift in Sources */,
+				E8E5FA82283BF8AF00B4B6FF /* Bundle+Extension.swift in Sources */,
+				E8E5FA8D283BFA2F00B4B6FF /* CMSampleBuffer+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1535,6 +1571,7 @@
 				DD92BAE82837893D00ACD358 /* AutoComplete.swift in Sources */,
 				DD92BAE428372E1600ACD358 /* UserDefaults+Extension.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
+				E8E5FA92283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */,
 				DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */,
 				DD55A67D2832EF8900B99C17 /* YoutubeSearchCodable.swift in Sources */,
 				DD19E4892812AA5700931489 /* PhotoModel.swift in Sources */,
@@ -1603,6 +1640,7 @@
 				DD5232B0281ACF22004AF0AA /* PremuimLifeTimeViewController.swift in Sources */,
 				DDF59BEC280F2E9600CE2E2B /* MainViewController.swift in Sources */,
 				DD23EAE02811947A00DB7D44 /* SettingsViewController.swift in Sources */,
+				E8E5FA8F283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */,
 				DDF59BF1280F2F0B00CE2E2B /* BaseViewController.swift in Sources */,
 				DD03EFAA282A63F10075F70E /* LocalNetworkPermissionsManager.swift in Sources */,
 				DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */,

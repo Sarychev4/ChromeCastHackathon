@@ -5,6 +5,7 @@ inhibit_all_warnings!
 def common_pods_for_target  
   pod 'CocoaAsyncSocket' 
   pod 'Criollo', :git => 'git@github.com:mirroringcontact/Criollo.git'
+  pod 'CSSystemInfoHelper', '~> 2.0'
 end
 
 target 'MirroringExtension' do
@@ -15,17 +16,17 @@ end
 
 target 'ChromecastIOS' do
   use_frameworks!
-  common_pods_for_target 
+  common_pods_for_target
   pod 'AdvancedPageControl'
   pod 'Starscream', '~> 4.0.0'
   pod 'Agregator', :git => 'git@github.com:mirroringcontact/common.git'
-  pod 'Player' 
-  pod 'Kingfisher'  
+  pod 'Player'
+  pod 'Kingfisher'
   pod 'ReachabilitySwift'
   pod "NextLevelSessionExporter", "~> 0.4.5"
   pod 'google-cast-sdk-no-bluetooth'
   pod 'LNZCollectionLayouts'
-  pod 'XCDYouTubeKit-kbexdev', :git => 'https://github.com/kbex-dev/XCDYouTubeKit.git' 
+  pod 'XCDYouTubeKit-kbexdev', :git => 'https://github.com/kbex-dev/XCDYouTubeKit.git'
   pod 'IndicateKit', '~> 1.0.5'
   pod 'lottie-ios'
   pod 'Firebase/Core'
@@ -33,7 +34,6 @@ target 'ChromecastIOS' do
   pod 'Firebase/Messaging'
   pod 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
   pod 'GoogleSignIn', '~> 4.1.1'
-  pod 'CSSystemInfoHelper', '~> 2.0'
   pod "NextLevelSessionExporter", "~> 0.4.5"
 end 
 

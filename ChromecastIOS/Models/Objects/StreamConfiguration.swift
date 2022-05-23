@@ -35,9 +35,7 @@ class StreamConfiguration: Object {
 
 enum StreamEvent: String {
     case broadcastStarted = "broadcastStartedEvent"
-    case broadcastFinished = "broadcastFinishedEvent"
-    case webAppStarted = "channel_started"
-    case webAppStreamStarted = "sharing_started"
+    case broadcastFinished = "broadcastFinishedEvent" 
 }
 
 enum Port: UInt {

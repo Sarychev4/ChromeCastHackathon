@@ -9,6 +9,7 @@ import Foundation
 import GoogleCast
 import RealmSwift
 import UIKit
+import Agregator
 
 class ChromeCastService: NSObject {
     
@@ -25,6 +26,9 @@ class ChromeCastService: NSObject {
     var currentConnectedDeviceID: String?
     
     var connectFinished: ClosureBool?
+    
+    
+    private var notificationToken: NotificationToken!
     
     private override init(){
         
@@ -123,6 +127,70 @@ class ChromeCastService: NSObject {
         GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
     }
     
+    func stopWebApp() {
+        let params = ["type": "stop"]
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
+            guard let convertedString = String(data: jsonData, encoding: String.Encoding.utf8) else {return}
+            screenMirroringChannel?.sendTextMessage(convertedString, error: nil)
+        } catch {
+            print(error.localizedDescription)
+            print(">>>\(error.localizedDescription)")
+        }
+    }
+    
+    func displayStream(with url: URL?) {
+        guard let url = url?.absoluteString else { return }
+        let params = ["type": "stream", "url": url]
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
+            guard let convertedString = String(data: jsonData, encoding: String.Encoding.utf8) else {return}
+            screenMirroringChannel?.sendTextMessage(convertedString, error: nil)
+        } catch {
+            print(error.localizedDescription)
+            print(">>>\(error.localizedDescription)")
+        }
+    }
+    
+    
+    
+    private func observeStreamConfiguration() {
+        notificationToken = StreamConfiguration.current.observe { (changes) in
+            switch changes {
+            case .error(_): break
+            case .change(_, let properties):
+                for property in properties {
+                    if property.name == #keyPath(StreamConfiguration.event), let value = property.newValue as? String, let event = StreamEvent(rawValue: value) {
+                        switch event {
+                        case .broadcastStarted:
+                            AgregatorLogger.shared.log(
+                                eventName: "Mirroring start",
+                                parameters:
+                                    [
+                                        "Quality": StreamConfiguration.current.resolutionType.eventTitle,
+                                        "Sound": StreamConfiguration.current.isSoundOn ? "on" : "off"
+                                    ]
+                                //                                    .merging(device.commonEventParams) { (current, _) in current }
+                            )
+                            self.displayStream(with: URL.HTML_STREAM_FRAME_URL)
+                        case .broadcastFinished:
+                            AgregatorLogger.shared.log(
+                                eventName: "Mirroring stop",
+                                parameters:
+                                    [
+                                        "Quality": StreamConfiguration.current.resolutionType.eventTitle,
+                                        "Sound": StreamConfiguration.current.isSoundOn ? "on" : "off"
+                                    ]
+                                //                                    .merging(device.commonEventParams) { (current, _) in current }
+                            )
+                            self.stopWebApp()
+                        }
+                    }
+                }
+            case .deleted: break
+            }
+        }
+    }
 }
 
 extension ChromeCastService: GCKRequestDelegate {

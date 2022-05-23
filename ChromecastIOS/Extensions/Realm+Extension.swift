@@ -8,6 +8,8 @@
 import RealmSwift
 import Foundation
 
+let AppGroupId = "group.chromecast.ios"
+
 extension Realm {
     static var GroupShared: Realm! {
         let config = Realm.Configuration(fileURL: .GroupRealmFile, schemaVersion: UInt64(Bundle.main.buildVersionNumber)!)

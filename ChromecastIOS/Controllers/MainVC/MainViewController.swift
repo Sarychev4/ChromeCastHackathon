@@ -81,8 +81,8 @@ class MainViewController: BaseViewController {
     
     @IBAction func testCastImageButtonTapped(_ sender: Any) {
 
-        let networkInterfaces = CSSystemInfoHelper.shared.networkInterfaces!
-        guard let interface = CSSystemInfoHelper.shared.networkInterfaces?.filter({ $0.name == "en0" && $0.familyName == "AF_INET" }).first else { return }
+        let networkInterfaces = CSSystemInfoHelper.shared.networkInterfaces
+        guard let interface = networkInterfaces?.filter({ $0.name == "en0" && $0.familyName == "AF_INET" }).first else { return }
         let ipAddress = interface.address
 
         print("MY ADDRESS \(ipAddress)")
