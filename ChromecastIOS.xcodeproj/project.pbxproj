@@ -180,6 +180,7 @@
 		DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */; };
 		DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */; };
 		DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */; };
+		DDEFA0DC283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */; };
 		DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */; };
 		DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */; };
 		DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */; };
@@ -412,6 +413,7 @@
 		DDED96FC282E7BAC0088E4E6 /* DetectedUrlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedUrlCell.swift; sourceTree = "<group>"; };
 		DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedUrlCell.xib; sourceTree = "<group>"; };
 		DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInfoExtractor.swift; sourceTree = "<group>"; };
+		DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+Extension.swift"; sourceTree = "<group>"; };
 		DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTestConnectionViewController.swift; sourceTree = "<group>"; };
 		DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialTestConnectionViewController.xib; sourceTree = "<group>"; };
 		DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreviewImageViewController.swift; sourceTree = "<group>"; };
@@ -1160,6 +1162,7 @@
 				DD6E98B02830036000A72DF3 /* Date+Extension.swift */,
 				DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */,
 				DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */,
+				DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1526,6 +1529,7 @@
 				DD923AD62812E6DF0034E5D3 /* CellAnimationMeasurement.swift in Sources */,
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
 				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
+				DDEFA0DC283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift in Sources */,
 				DD92BADE2837117C00ACD358 /* VideoPlayerManager.swift in Sources */,
 				DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */,
 				DD92BAE82837893D00ACD358 /* AutoComplete.swift in Sources */,

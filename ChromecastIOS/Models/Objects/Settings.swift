@@ -97,6 +97,12 @@ class Settings: Object {
     
     @Persisted var introRatingType: String = "stars"
     
+    /*
+     MARK: - Connection with TV
+     */
+    
+    @Persisted var mirroringState: MirroringInAppState = .mirroringNotStarted
+    
     @Persisted var supportEmail: String = "supportsm@appflair.io"
     
 }

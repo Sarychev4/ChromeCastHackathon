@@ -312,7 +312,6 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.suggestionLabel.text = suggestions[indexPath.row]
             return cell
         } else {
-            print(">>>\(videos.count)")
             let cell = tableView.dequeueReusableCell(withIdentifier: YouTubeCell.Identifier, for: indexPath) as! YouTubeCell
             let item = videos[indexPath.row]
             cell.sectionNameView.isHidden = true
