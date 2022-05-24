@@ -10,6 +10,7 @@ import AudioToolbox
 import Photos
 import MBProgressHUD
 import GoogleCast
+import Agregator
 
 enum State {
     case convertingToMP4(_ progress: Float)
@@ -36,6 +37,8 @@ class MediaPlayerViewController: BaseViewController {
     var assets: [PHAsset] = []
     var assetExportSession = VideoConverter()
     
+    private var iCloudRequestID: PHImageRequestID?
+    
     private var HUD: MBProgressHUD? {
         if _HUD == nil {
             let HUD = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -53,19 +56,59 @@ class MediaPlayerViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let hdCellNib = UINib(nibName: HDCell.Identifier, bundle: .main)
-        hdCollectionView.register(hdCellNib, forCellWithReuseIdentifier: HDCell.Identifier)
-        
-        let thumbnailCellNib = UINib(nibName: ThumbnailCell.Identifier, bundle: .main)
-        thumbnailCollectionView.register(thumbnailCellNib, forCellWithReuseIdentifier: ThumbnailCell.Identifier)
-        
+        //
+        setupNavigationSection()
+        registerUICollectionsCells()
         setupHDCollectionView()
-        setupThumbnailCollectionView()//thumbnailCollectionView.dataSource = self
+        setupThumbnailCollectionView()
+        synchronizeFlowLayoutOfCollections()
         
         
-        flowLayoutSyncManager.register(hdCollectionView)
-        flowLayoutSyncManager.register(thumbnailCollectionView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            guard let self = self else { return }
+            self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
+            self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
+            let asset = self.assets[self.selectedIndex]
+            let resources = PHAssetResource.assetResources(for: asset)
+            self.currentAssetNameLabel.text = resources.first?.originalFilename
+        }
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        castToTV()
+    }
+    
+    private func castToTV() {
+        guard presentedViewController == nil else { return }
+        
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        stopObservePlayerState()
+        videoPlayerManager.stop()
+        
+        let currentAsset = assets[selectedIndex]
+        if currentAsset.mediaType == .image {
+            connectIfNeeded { [weak self] in
+                guard let self = self else { return }
+                self.prepareAsset(at: self.selectedIndex) { [weak self] image in
+                    guard let self = self, let image = image else { return }
+                    self.castPhotoToTV(image)
+                }
+            }
+        } else if currentAsset.mediaType == .video {
+            connectIfNeeded { [weak self] in
+                guard let self = self else { return }
+                self.castVideoToTV()
+            }
+            
+        }
+        
+        print(">>> cast to TV, mediaType: \(currentAsset.mediaType)")
+    }
+    
+    
+    private func setupNavigationSection() {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.navigation?.popViewController(self, animated: true)
@@ -80,36 +123,6 @@ class MediaPlayerViewController: BaseViewController {
             guard let self = self else { return }
             self.presentSettings(postAction: nil)
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            guard let self = self else { return }
-            self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
-            self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
-            let asset = self.assets[self.selectedIndex]
-            let resources = PHAssetResource.assetResources(for: asset)
-            self.currentAssetNameLabel.text = resources.first?.originalFilename
-        }
-        
-        qualityShadow.layer.cornerRadius = 15
-        
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        //        if let layout = thumbnailCollectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
-        //            layout.unfoldCurrentCell()
-        //        }
-        
-        self.connectIfNeeded { [weak self] in
-            guard let self = self else { return }
-            if self.assets[self.selectedIndex].mediaType == .image {
-                self.saveImageToDirectory(onComplete: self.castImageToTV)
-            } else {
-                self.saveVideoToDirectory(onComplete: self.castVideoToTV)
-            }
-        }
-        
     }
     
     private func showHUD() {
@@ -121,90 +134,7 @@ class MediaPlayerViewController: BaseViewController {
         _HUD = nil
     }
     
-    private func stopObservePlayerState() {
-        videoPlayerManager.stateObserver = nil
-    }
-    
-    
-    private func observeVideoPlayerState() {
-        videoPlayerManager.stateObserver = { [weak self] state in
-            guard let self = self else { return }
-            switch state {
-            case .convertingToMP4(let progress):
-                self.HUD?.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
-                self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
-                break
-            }
-        }
-    }
-    
-    private func castVideoToTV() {
-        stopObservePlayerState()
-        hideHUD()
-        let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
-        ChromeCastService.shared.displayVideo(with: url)
-    }
-    
-    private func castImageToTV() {
-        let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(UUID().uuidString)") else { return }
-        ChromeCastService.shared.displayImage(with: url)
-    }
-    
-    private func saveImageToDirectory(onComplete: Closure?) {
-        guard presentedViewController == nil else { return }
-        
-        let currentAsset = assets[selectedIndex]
-        image(for: currentAsset, size: PHImageManagerMaximumSize) { (image, need) in
-            
-            guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-            let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
-            guard let imageToCast = image else { return }
-            guard let data = imageToCast.jpegData(compressionQuality: 0.9) else { return }
-            
-            if FileManager.default.fileExists(atPath: imageFileURL.path) {
-                do {
-                    try FileManager.default.removeItem(atPath: imageFileURL.path)
-                    print("Removed old image")
-                } catch let removeError {
-                    print("couldn't remove file at path", removeError)
-                }
-            }
-            
-            do {
-                try data.write(to: imageFileURL)
-            } catch let error {
-                print("error saving file with error", error)
-            }
-            
-            onComplete?()
-        }
-    }
-    
-    private func saveVideoToDirectory(onComplete: Closure?) {
-        
-        observeVideoPlayerState()
-        
-        let currentAsset = assets[selectedIndex]
-        
-        let options = PHVideoRequestOptions()
-        options.isNetworkAccessAllowed = true
-        options.deliveryMode = .highQualityFormat
-        options.version = .original
-        
-        imageManager.requestAVAsset(forVideo: currentAsset, options: options) { [weak self] (avasset, audiomix, info) in
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                guard let avasset = avasset else { return }
-                //                self.convertVideoToMP4(avasset, onComplete: onComplete)
-                self.videoPlayerManager.convertVideoToMP4(avasset, onComplete: onComplete)
-            }
-        }
-    }
-    
-    
-    private func presentDevices(postAction: (() -> ())?) {
+    private func presentDevices(postAction: Closure?) {
         let controller = ListDevicesViewController()
         controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
@@ -218,7 +148,7 @@ class MediaPlayerViewController: BaseViewController {
         present(controller, animated: false, completion: nil)
     }
     
-    private func presentSettings(postAction: (() -> ())?) {
+    private func presentSettings(postAction: Closure?) {
         let controller = MirrorSettingsViewController()
         controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
@@ -242,11 +172,164 @@ class MediaPlayerViewController: BaseViewController {
         }
     }
     
+}
+
+//MARK: - Photo
+extension MediaPlayerViewController {
+    
+    private func prepareAsset(at index: Int, onComplete: ((UIImage?) -> ())?) {
+        let asset = assets[index]
+        imageManager.checkICloudStatus(for: asset) { [weak self] isPhotoInICloud in
+            guard let self = self else { return }
+            if isPhotoInICloud {
+                //Показываю прогресс
+                self.HUD?.button.addTarget(self, action: #selector(self.cancelDownloadFromICloud(_:)), for: .touchUpInside)
+            }
+            self.iCloudRequestID = self.imageManager.image(for: asset,
+                                                              size: PHImageManagerMaximumSize,
+                                                              contentMode: .aspectFit,
+                                                              progressHandler: { [weak self] progress in
+                guard let self = self else { return }
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.HUD?.progressObject?.completedUnitCount = progress
+                }
+            }, completion: { [weak self] image in
+                guard let self = self, let image = image else { return }
+                self.hideHUD()
+                onComplete?(image)
+            })
+        }
+    }
+    
+    @objc fileprivate func cancelDownloadFromICloud(_ sender: Any) {
+        if let iCloudRequestID = self.iCloudRequestID {
+            imageManager.cancelImageRequest(iCloudRequestID)
+        }
+        hideHUD()
+    }
+    
+    private func castPhotoToTV(_ image: UIImage) {
+        guard presentedViewController == nil else { return }
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
+        let compression = Settings.current.photosResolution.localImageCompression
+        guard let data = image.jpegData(compressionQuality: compression) else { return }
+        
+        if FileManager.default.fileExists(atPath: imageFileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: imageFileURL.path)
+                print("Removed old image")
+            } catch let removeError {
+                print("couldn't remove file at path", removeError)
+            }
+        }
+        do {
+            try data.write(to: imageFileURL)
+            let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+            guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(UUID().uuidString)") else { return }
+            ChromeCastService.shared.displayImage(with: url)
+        } catch let error {
+            print("error saving file with error", error)
+        }
+    }
+}
+
+//MARK: - Video
+extension MediaPlayerViewController {
+    
+    private func castVideoToTV() {
+        
+        observeVideoPlayerState()
+        
+        let asset = assets[selectedIndex]
+        if videoPlayerManager.asset != asset {
+            videoPlayerManager.stop()
+        }
+        
+        let state = videoPlayerManager.state
+        switch state {
+        case .none:
+            //Подключаем ТВ если не подключен
+            connectIfNeeded { [weak self] in
+                guard let self = self else { return }
+                //Запускаем процесс подготовки файла. Все остальное смотри в videoPlayerManager.stateObserver
+                self.videoPlayerManager.prepareAssetForCastToTV(asset)
+            }
+        case .playing:
+            //Если текущее состояние playing - значит надо поставить на паузу
+            print(">>>VideoPlayer state .playing")
+        case .paused:
+            //Если текущее состояние paused - значит надо восстановить воспроизведение
+            print(">>>VideoPlayer state .paused")
+        default:
+            break
+        }
+    }
+    
+    private func observeVideoPlayerState() {
+        videoPlayerManager.stateObserver = { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .none:
+                self.hideHUD()
+                self.hdCollectionView.reloadData()
+            case .iCloudDownloading(let progress):
+                self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
+                self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
+            case .convertingToMP4(let progress):
+                self.HUD?.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
+                self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
+                break
+            case .readyForTV:
+                self.hideHUD()
+                self.connectIfNeeded { [weak self] in
+                    guard let _ = self else { return }
+                    let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+                    ChromeCastService.shared.displayVideo(with: url)
+                }
+            case .playing:
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.hdCollectionView.reloadData()
+                }
+            case .paused:
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.hdCollectionView.reloadData()
+                }
+            }
+        }
+        videoPlayerManager.imageManager = imageManager
+    }
+    
+    private func stopObservePlayerState() {
+        videoPlayerManager.stateObserver = nil
+    }
+    
+    
+    
+    @objc fileprivate func cancelPrepareVideo(_ sender: Any) {
+        videoPlayerManager.cancelPreparing()
+    }
+}
+
+//MARK: - UICollectionViewLayout
+extension MediaPlayerViewController {
     override func viewDidLayoutSubviews() {
         setupHDCollectionViewMeasurement()
         hdCollectionView.collectionViewLayout.invalidateLayout()
         setupThumbnailCollectionViewMeasurement()
         thumbnailCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    private func registerUICollectionsCells() {
+        let hdCellNib = UINib(nibName: HDCell.Identifier, bundle: .main)
+        hdCollectionView.register(hdCellNib, forCellWithReuseIdentifier: HDCell.Identifier)
+        
+        let thumbnailCellNib = UINib(nibName: ThumbnailCell.Identifier, bundle: .main)
+        thumbnailCollectionView.register(thumbnailCellNib, forCellWithReuseIdentifier: ThumbnailCell.Identifier)
     }
     
     fileprivate func setupHDCollectionView() {
@@ -292,10 +375,14 @@ class MediaPlayerViewController: BaseViewController {
             layout.shouldLayoutEverything = true
         }
     }
+    
+    private func synchronizeFlowLayoutOfCollections() {
+        flowLayoutSyncManager.register(hdCollectionView)
+        flowLayoutSyncManager.register(thumbnailCollectionView)
+    }
 }
 
-//MARK: UICollectionViewDataSource
-
+//MARK: - UICollectionViewDataSource
 extension MediaPlayerViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -343,7 +430,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             image(for: asset, size: CGSize(width: 23, height: 49)) { (image, needd) in
                 cell.photoImageView.image = image
             }
-
+            
             return cell
         default:
             return UICollectionViewCell()
@@ -361,21 +448,14 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             let asset = self.assets[self.selectedIndex]
             let resources = PHAssetResource.assetResources(for: asset)
             self.currentAssetNameLabel.text = resources.first?.originalFilename
-            self.connectIfNeeded { [weak self] in
-                guard let self = self else { return }
-                if self.assets[self.selectedIndex].mediaType == .image {
-                    self.saveImageToDirectory(onComplete: self.castImageToTV)
-                } else {
-                    self.saveVideoToDirectory(onComplete: self.castVideoToTV)
-                }
-            }
+            self.castToTV()
         default:
             break
         }
     }
 }
-//MARK: - CollectionView Delegate
 
+//MARK: - CollectionView Delegate
 extension MediaPlayerViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView {
@@ -398,14 +478,7 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
                 let asset = self.assets[self.selectedIndex]
                 let resources = PHAssetResource.assetResources(for: asset)
                 self.currentAssetNameLabel.text = resources.first?.originalFilename
-                self.connectIfNeeded { [weak self] in
-                    guard let self = self else { return }
-                    if self.assets[self.selectedIndex].mediaType == .image {
-                        self.saveImageToDirectory(onComplete: self.castImageToTV)
-                    } else {
-                        self.saveVideoToDirectory(onComplete: self.castVideoToTV)
-                    }
-                }
+                self.castToTV()
             }
             
         } else {
@@ -415,14 +488,7 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
                 let asset = self.assets[self.selectedIndex]
                 let resources = PHAssetResource.assetResources(for: asset)
                 self.currentAssetNameLabel.text = resources.first?.originalFilename
-                self.connectIfNeeded { [weak self] in
-                    guard let self = self else { return }
-                    if self.assets[self.selectedIndex].mediaType == .image {
-                        self.saveImageToDirectory(onComplete: self.castImageToTV)
-                    } else {
-                        self.saveVideoToDirectory(onComplete: self.castVideoToTV)
-                    }
-                }
+                self.castToTV()
             }
         }
     }
@@ -438,15 +504,7 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
             guard let thumbPage = index?.row else { return }
             if thumbPage != selectedIndex {
                 selectedIndex = thumbPage
-                
-                self.connectIfNeeded { [weak self] in
-                    guard let self = self else { return }
-                    if self.assets[self.selectedIndex].mediaType == .image {
-                        self.saveImageToDirectory(onComplete: self.castImageToTV)
-                    } else {
-                        self.saveVideoToDirectory(onComplete: self.castVideoToTV)
-                    }
-                }
+                self.castToTV()
             }
         }
         
@@ -510,5 +568,54 @@ extension MediaPlayerViewController {
                        completion(image, isDegraded)
                    }
                })
+    }
+}
+
+extension PHCachingImageManager {
+    @discardableResult
+    func image(for asset: PHAsset,
+               size: CGSize,
+               contentMode: PHImageContentMode,
+               progressHandler: ((Int64) -> ())? = nil,
+               completion: @escaping ((UIImage?) -> Void)) -> PHImageRequestID {
+        
+        let options = PHImageRequestOptions()
+        options.isNetworkAccessAllowed = true
+        options.deliveryMode = .highQualityFormat
+        options.progressHandler = { [weak self] (progress, error, data, info) in
+            guard let _ = self else { return }
+            progressHandler?(Int64(progress * 100))
+        }
+        
+        return self.requestImage(
+            for: asset,
+               targetSize: size,
+               contentMode: contentMode,
+               options: options,
+               resultHandler: { [weak self] (image, info) in
+                   guard let _ = self else { return }
+                   let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
+                   if isDegraded {
+                       return
+                   }
+                   let result = image?.fixedOrientation()
+                   DispatchQueue.main.async {
+                       completion(result)
+                   }
+               })
+    }
+    
+    func checkICloudStatus(for asset: PHAsset,
+                           completion: @escaping ((_ isPhotoInICloud: Bool) -> Void)) {
+        let options = PHImageRequestOptions()
+        options.isNetworkAccessAllowed = false
+        options.deliveryMode = .highQualityFormat
+        options.version = .original
+        options.resizeMode = .none
+        requestImageDataAndOrientation(for: asset, options: options) { imageData, _, _, _ in
+            DispatchQueue.main.async {
+                completion(imageData == nil)
+            }
+        }
     }
 }

@@ -97,10 +97,10 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             guard let self = self else { return }
             guard let device = self.detectedDevices?[index] else { return }
             print(">>>is connected \(device.isConnected)")
-            if device.isConnected {
-                self.didFinishAction?()
-                self.dismiss(animated: true, completion: nil)
-            } else {
+//            if device.isConnected {
+//                self.didFinishAction?()
+//                self.dismiss(animated: true, completion: nil)
+//            } else {
                 ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
                     guard let self = self else { return }
 
@@ -118,7 +118,7 @@ class ListDevicesViewController: AFFloatingPanelViewController {
                         }
                     }
                 })
-            }
+//            }
             
         }
         devicesStackView.addArrangedSubview(cellView)
