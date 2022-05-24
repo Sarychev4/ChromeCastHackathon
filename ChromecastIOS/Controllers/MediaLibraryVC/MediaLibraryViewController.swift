@@ -153,7 +153,6 @@ class MediaLibraryViewController: BaseViewController {
             }
             self.albumsStackView.addArrangedSubview(view)
             self.albumViewsArray.append(view)
-            print(index)
         }
         updateUI()
     }

@@ -9,6 +9,7 @@ import UIKit
 import AudioToolbox
 import Photos
 import MBProgressHUD
+import GoogleCast
 
 enum State {
     case convertingToMP4(_ progress: Float)
@@ -100,11 +101,15 @@ class MediaPlayerViewController: BaseViewController {
         //            layout.unfoldCurrentCell()
         //        }
         
-        if assets[selectedIndex].mediaType == .image {
-            saveImageToDirectory(onComplete: castImageToTV)
-        } else {
-            saveVideoToDirectory(onComplete: castVideoToTV)
+        self.connectIfNeeded { [weak self] in
+            guard let self = self else { return }
+            if self.assets[self.selectedIndex].mediaType == .image {
+                self.saveImageToDirectory(onComplete: self.castImageToTV)
+            } else {
+                self.saveVideoToDirectory(onComplete: self.castVideoToTV)
+            }
         }
+        
     }
     
     private func showHUD() {
@@ -227,6 +232,16 @@ class MediaPlayerViewController: BaseViewController {
         present(controller, animated: false, completion: nil)
     }
     
+    private func connectIfNeeded(onComplete: Closure?) {
+        guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
+            onComplete?()
+            return
+        }
+        presentDevices {
+            onComplete?()
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         setupHDCollectionViewMeasurement()
         hdCollectionView.collectionViewLayout.invalidateLayout()
@@ -343,10 +358,16 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             hdCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             self.selectedIndex = indexPath.row
-            if assets[selectedIndex].mediaType == .image {
-                saveImageToDirectory(onComplete: castImageToTV)
-            } else {
-                saveVideoToDirectory(onComplete: castVideoToTV)
+            let asset = self.assets[self.selectedIndex]
+            let resources = PHAssetResource.assetResources(for: asset)
+            self.currentAssetNameLabel.text = resources.first?.originalFilename
+            self.connectIfNeeded { [weak self] in
+                guard let self = self else { return }
+                if self.assets[self.selectedIndex].mediaType == .image {
+                    self.saveImageToDirectory(onComplete: self.castImageToTV)
+                } else {
+                    self.saveVideoToDirectory(onComplete: self.castVideoToTV)
+                }
             }
         default:
             break
@@ -368,12 +389,41 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
         if let collectionView = scrollView as? UICollectionView,
            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
             layout.unfoldCurrentCell()
+            
+            let center = self.view.convert(collectionView.center, to: collectionView)
+            let index =  collectionView.indexPathForItem(at: CGPoint(x: center.x, y: 0))
+            guard let thumbPage = index?.row else { return }
+            if thumbPage != selectedIndex {
+                selectedIndex = thumbPage
+                let asset = self.assets[self.selectedIndex]
+                let resources = PHAssetResource.assetResources(for: asset)
+                self.currentAssetNameLabel.text = resources.first?.originalFilename
+                self.connectIfNeeded { [weak self] in
+                    guard let self = self else { return }
+                    if self.assets[self.selectedIndex].mediaType == .image {
+                        self.saveImageToDirectory(onComplete: self.castImageToTV)
+                    } else {
+                        self.saveVideoToDirectory(onComplete: self.castVideoToTV)
+                    }
+                }
+            }
+            
         } else {
             let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
             if page != selectedIndex {
                 selectedIndex = page
+                let asset = self.assets[self.selectedIndex]
+                let resources = PHAssetResource.assetResources(for: asset)
+                self.currentAssetNameLabel.text = resources.first?.originalFilename
+                self.connectIfNeeded { [weak self] in
+                    guard let self = self else { return }
+                    if self.assets[self.selectedIndex].mediaType == .image {
+                        self.saveImageToDirectory(onComplete: self.castImageToTV)
+                    } else {
+                        self.saveVideoToDirectory(onComplete: self.castVideoToTV)
+                    }
+                }
             }
-            print(">>>Page \(page)")
         }
     }
     
@@ -382,7 +432,24 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
            let collectionView = scrollView as? UICollectionView,
            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
             layout.unfoldCurrentCell()
+            
+            let center = self.view.convert(collectionView.center, to: collectionView)
+            let index =  collectionView.indexPathForItem(at: CGPoint(x: center.x, y: 0))
+            guard let thumbPage = index?.row else { return }
+            if thumbPage != selectedIndex {
+                selectedIndex = thumbPage
+                
+                self.connectIfNeeded { [weak self] in
+                    guard let self = self else { return }
+                    if self.assets[self.selectedIndex].mediaType == .image {
+                        self.saveImageToDirectory(onComplete: self.castImageToTV)
+                    } else {
+                        self.saveVideoToDirectory(onComplete: self.castVideoToTV)
+                    }
+                }
+            }
         }
+        
     }
 }
 
