@@ -33,14 +33,14 @@ class TutorialAccessToNetworkViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         AgregatorLogger.shared.log(eventName: "Tutorial_shown",
                                    parameters: ["Tutorial Step": nameForEvents, "Source": source])
         
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self, self.isAnimating == false else { return }
-           
+            
             if self.allowClicked {
                 LocalNetworkPermissionsManager.shared.checkUserPermissonsLocalNetwork(onComplete: { (success) in
                     if success {
@@ -78,7 +78,7 @@ class TutorialAccessToNetworkViewController: BaseViewController {
                 }
             }
         }
-
+        
         /*
          */
         
@@ -101,6 +101,8 @@ class TutorialAccessToNetworkViewController: BaseViewController {
             object: nil)
         /*
          */
+        
+        savePreviewImageToDirectory()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -118,7 +120,7 @@ class TutorialAccessToNetworkViewController: BaseViewController {
             isAlertShown = true
         }
     }
-     
+    
     @objc private func didBecomeActiveNotification() {
         if isAlertShown {
             finishProcessing()
@@ -155,6 +157,30 @@ class TutorialAccessToNetworkViewController: BaseViewController {
             self.continueInteractiveView.bounce(onComplete: nil)
         }
     }
+    
+    private func savePreviewImageToDirectory() {
+        guard presentedViewController == nil else { return }
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
+        guard let imageToCast = UIImage(named: "tutorialPreviewImage") else { return }
+        guard let data = imageToCast.jpegData(compressionQuality: 1.0) else { return }
+        
+        if FileManager.default.fileExists(atPath: imageFileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: imageFileURL.path)
+                print("Removed old image")
+            } catch let removeError {
+                print("couldn't remove file at path", removeError)
+            }
+        }
+        
+        do {
+            try data.write(to: imageFileURL)
+        } catch let error {
+            print("error saving file with error", error)
+        }
+    }
+    
     
 }
 

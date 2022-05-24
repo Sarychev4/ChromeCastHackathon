@@ -33,7 +33,9 @@ class TutorialTestConnectionViewController: BaseViewController {
         continueInteractiveView.cornerRadius = 8 * SizeFactor
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            ChromeCastService.shared.displayImage(with: URL(string: "https://www.wallpaperflare.com/static/204/345/205/cat-grass-lie-down-striped-wallpaper.jpg")!)
+            let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+            guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(UUID().uuidString)") else { return }
+            ChromeCastService.shared.displayImage(with: url)
             self.didFinishAction?()
         }
         
