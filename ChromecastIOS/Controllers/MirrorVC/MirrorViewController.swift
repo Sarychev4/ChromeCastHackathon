@@ -80,6 +80,8 @@ class MirrorViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        observeMirroringState()
+        
         setupNavigationSection()
         setupSettingsSection()
         
@@ -96,6 +98,12 @@ class MirrorViewController: BaseViewController {
         state = Settings.current.mirroringState
         
     }
+    
+    @objc private func willEnterForegroundAction() {
+        connectIfNeeded(onComplete: nil)
+    }
+    
+    
     
     @IBAction func rotationChanged(_ sender: UISwitch) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -123,6 +131,16 @@ class MirrorViewController: BaseViewController {
         }
     }
     
+    private func connectIfNeeded(onComplete: Closure?) {
+        guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
+            onComplete?()
+            return
+        }
+        presentDevices {
+            onComplete?()
+        }
+    }
+    
     private func setupMirrotingSection() {
         mirroringButton?.setImage(nil, for: .normal)
         //temp as
@@ -144,6 +162,31 @@ class MirrorViewController: BaseViewController {
             guard self == self else { return }
             self?.presentDevices(postAction: nil)
         }
+    }
+    
+    private func observeMirroringState() {
+        mirroringStateToken = StreamConfiguration.current.observe({ [weak self] (changes) in
+            guard let self = self else { return }
+            switch changes {
+            case .error(_): break
+            case .change(_, let properties):
+                for property in properties {
+                    if property.name == #keyPath(StreamConfiguration.resolutionType) {
+                        self.updateUIbasedOnQuality()
+                    }
+                    
+                    if property.name == #keyPath(StreamConfiguration.event),  let value = property.newValue as? String,  let event = StreamEvent(rawValue: value) {
+                        switch event {
+                        case .broadcastStarted:
+                            self.state = .mirroringStarted
+                        case .broadcastFinished:
+                            self.state = .mirroringNotStarted
+                        }
+                    }
+                }
+            case .deleted: break
+            }
+        })
     }
     
     private func setupSettingsSection() {
