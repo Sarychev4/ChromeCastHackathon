@@ -46,7 +46,7 @@ class MediaPlayerViewController: BaseViewController {
         }
         return _HUD
     }
-   
+    
     private var _HUD: MBProgressHUD?
     
     override func viewDidLoad() {
@@ -169,7 +169,6 @@ class MediaPlayerViewController: BaseViewController {
             
             do {
                 try data.write(to: imageFileURL)
-                print("IMAGE SIZE \(data.count)")
             } catch let error {
                 print("error saving file with error", error)
             }
@@ -193,47 +192,12 @@ class MediaPlayerViewController: BaseViewController {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 guard let avasset = avasset else { return }
-//                self.convertVideoToMP4(avasset, onComplete: onComplete)
+                //                self.convertVideoToMP4(avasset, onComplete: onComplete)
                 self.videoPlayerManager.convertVideoToMP4(avasset, onComplete: onComplete)
             }
         }
     }
     
-//    private func convertVideoToMP4(_ avasset: AVAsset, onComplete: Closure?) {
-//        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-//        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
-//        let quality = Settings.current.videosResolution
-//
-//        stateObserver?(.convertingToMP4(0))
-//
-//        if FileManager.default.fileExists(atPath: videoFileURL.path) {
-//            do {
-//                try FileManager.default.removeItem(atPath: videoFileURL.path)
-//                print("Removed old video")
-//            } catch let removeError{
-//                print("couldn't remove file at path", removeError)
-//            }
-//        }
-//
-//        assetExportSession.exportAsset(asset: avasset, quality: quality, toFileURL: videoFileURL, onProgress: { [weak self] progress in
-//            guard let self = self else { return }
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self = self else { return }
-//                self.stateObserver?(.convertingToMP4(progress))
-//            }
-//        }, onComplete: { [weak self] isSuccess in
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self = self else { return }
-//                if isSuccess {
-//                    onComplete?()
-//                    self.hideHUD()
-//                } else {
-//
-//                }
-//            }
-//        })
-//
-//    }
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
@@ -357,17 +321,14 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
         case thumbnailCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCell.Identifier, for: indexPath) as! ThumbnailCell
             let asset = assets[indexPath.row]
-            //            if let image = thumbnailPhotoModel.photo(at: indexPath.row) {
             cell.photoHeightConstraint.constant = 49
             cell.photoWidthConstraint.constant = 23
             cell.clipsToBounds = true
             cell.photoImageView.contentMode = .scaleAspectFit
-            //            asset.pixelWidth //temp as
             image(for: asset, size: CGSize(width: 23, height: 49)) { (image, needd) in
                 cell.photoImageView.image = image
             }
-            //                cell.photoImageView.image = image
-            //            }
+
             return cell
         default:
             return UICollectionViewCell()
@@ -381,6 +342,12 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
         case thumbnailCollectionView:
             hdCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.selectedIndex = indexPath.row
+            if assets[selectedIndex].mediaType == .image {
+                saveImageToDirectory(onComplete: castImageToTV)
+            } else {
+                saveVideoToDirectory(onComplete: castVideoToTV)
+            }
         default:
             break
         }
@@ -392,24 +359,29 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView {
             flowLayoutSyncManager.masterCollectionView = collectionView
-            if let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior { //temp as
+            if let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
                 layout.foldCurrentCell()
             }
         }
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView,
-           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{ //temp as
+           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
             layout.unfoldCurrentCell()
+        } else {
+            let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
+            if page != selectedIndex {
+                selectedIndex = page
+            }
+            print(">>>Page \(page)")
         }
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate,
            let collectionView = scrollView as? UICollectionView,
-           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{ //temp as
+           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
             layout.unfoldCurrentCell()
-            print(self.selectedIndex)
         }
     }
 }
@@ -431,9 +403,8 @@ extension MediaPlayerViewController: CollectionViewCellSize {
         default:
             return nil
         }
-        return nil
-    } 
-   
+    }
+    
     fileprivate func cellSize(forHDImage size: CGSize) -> CGSize? {
         let ratio = size.height / size.width
         if (ratio < hdCollectionViewRatio) {
@@ -456,14 +427,6 @@ extension MediaPlayerViewController: CollectionViewCellSize {
 }
 
 extension MediaPlayerViewController {
-    
-    /*
-     image(for: asset, size: CGSize(width: 109, height: 109)) { (image, needd) in
-     cell.previewImageView.image = image
-     }
-     
-     private let imageManager = PHCachingImageManager()
-     */
     
     @discardableResult func image(for asset: PHAsset, size: CGSize, completion: @escaping ((UIImage?, Bool) -> Void)) -> PHImageRequestID {
         return imageManager.requestImage(
