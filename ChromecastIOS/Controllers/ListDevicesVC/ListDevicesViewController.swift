@@ -132,17 +132,20 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     }
     
     private func handleTapOnRefreshButton() {
-        //temp as
-        
-        
-        self.rotate(self.refreshIcon)
-        
-//        self.showAlertLocalNetworkPermissionRequired { [weak self] in
-//            guard let _ = self else { return }
-//            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-//            guard UIApplication.shared.canOpenURL(settingsURL) else { return }
-//            UIApplication.shared.open(settingsURL, completionHandler: nil)
-//        }
+        LocalNetworkPermissionsManager.shared.checkUserPermissonsLocalNetwork(onComplete: { [weak self] (success) in
+            guard let self = self else { return }
+            if success {
+                ChromeCastService.shared.startDiscovery()
+                self.rotate(self.refreshIcon)
+            } else {
+                self.showAlertLocalNetworkPermissionRequired { [weak self] in
+                    guard let _ = self else { return }
+                    guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                    guard UIApplication.shared.canOpenURL(settingsURL) else { return }
+                    UIApplication.shared.open(settingsURL, completionHandler: nil)
+                }
+            }
+        })
     }
     
     private func rotate(_ targetView: UIView) {

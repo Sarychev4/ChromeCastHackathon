@@ -70,49 +70,14 @@ class MainViewController: BaseViewController {
         }
     }
     
+    @IBOutlet weak var needHelpInteractiveLabel: InteractiveLabel!
+    
+    
     var tabs: [Tab] = []
     //    var source: String!
     var nameForEvents: String { return "Menu screen" }
     
-    @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var testImageView: UIImageView!
-    
-    var isFileMngr = false
-    
-    @IBAction func testCastImageButtonTapped(_ sender: Any) {
 
-        let networkInterfaces = CSSystemInfoHelper.shared.networkInterfaces
-        guard let interface = networkInterfaces?.filter({ $0.name == "en0" && $0.familyName == "AF_INET" }).first else { return }
-        let ipAddress = interface.address
-
-        print("MY ADDRESS \(ipAddress)")
-        
-        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
-        ChromeCastService.shared.displayVideo(with: url)
-
-        let request = URLRequest(url: URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/:id")!)
-        webView.load(request)
-        
-        testImageView.image = loadImageFromDiskWith(fileName: "imageForCasting.jpeg")
-    }
-    
-    func loadImageFromDiskWith(fileName: String) -> UIImage? {
-
-      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-
-        if let dirPath = paths.first {
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(fileName)
-            let image = UIImage(contentsOfFile: imageUrl.path)
-            return image
-
-        }
-
-        return nil
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,6 +96,8 @@ class MainViewController: BaseViewController {
         
         collectionView.contentInset.top = 0
         setupTabs()
+        //temp as
+//        setupHelpSection()
     }
     
     private func setupTabs() {
@@ -187,13 +154,7 @@ class MainViewController: BaseViewController {
         case .media:
             let viewController = MediaLibraryViewController()
             viewController.hidesBottomBarWhenPushed = true
-            //                       viewController.flowLayoutSyncManager = FlowLayoutSyncManager()
             navigation?.pushViewController(viewController, animated: .left)
-            
-            //            let viewController = MediaViewController()
-            //            viewController.hidesBottomBarWhenPushed = true
-            //            viewController.flowLayoutSyncManager = FlowLayoutSyncManager() //temp as important
-            //            navigation?.pushViewController(viewController, animated: .left)
         case .browser:
             let viewController = BrowserViewController()
             viewController.hidesBottomBarWhenPushed = true
@@ -214,6 +175,25 @@ class MainViewController: BaseViewController {
             let viewController = GooglePhotosViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigation?.pushViewController(viewController, animated: .left)
+        }
+    }
+    
+    private func setupHelpSection() {
+//        needHelpInteractiveLabel.attributedText = NSAttributedString(string: NSLocalizedString("Screen.Main.NeedHelp.Title", comment: ""), attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        
+        needHelpInteractiveLabel.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.checkInternetConnection {
+                let viewController = HelpViewController()
+                viewController.title = NSLocalizedString("MoreFAQ", comment: "")
+                viewController.url = ChromeCastFAQURL
+                self.present(viewController, animated: true, completion: nil)
+                
+                viewController.didFinishAction = { [weak self] in
+                    guard let _ = self else { return }
+                    viewController.dismiss(animated: true)
+                }
+            }
         }
     }
     

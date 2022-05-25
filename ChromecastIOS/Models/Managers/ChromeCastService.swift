@@ -65,6 +65,12 @@ class ChromeCastService: NSObject {
         listenVolumeButton()
     }
     
+    func startDiscovery() {
+        let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
+        deviceScanner.add(self)
+        deviceScanner.startDiscovery()
+    }
+    
     func listenVolumeButton() {
        do {
         try audioSession.setActive(true)

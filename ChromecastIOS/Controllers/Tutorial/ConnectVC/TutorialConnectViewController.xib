@@ -48,7 +48,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWq-3Z-8Tg">
                                     <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Hi there!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WT-zv-hl0" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="_Let's set up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8WT-zv-hl0" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                             <color key="textColor" name="labelColorDark"/>
@@ -71,9 +71,10 @@
                                     <rect key="frame" x="0.0" y="50" width="334" height="81.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy2-IG-cdu" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="41"/>
-                                            <string key="text">_Let’s complete a few steps 
-together to get started.</string>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="61"/>
+                                            <string key="text">_Please wait while we're setting up
+the connection. This process will
+finish shortly</string>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" name="labelColorGrayPunk"/>
                                             <nil key="highlightedColor"/>

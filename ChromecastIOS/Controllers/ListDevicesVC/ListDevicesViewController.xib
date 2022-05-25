@@ -42,7 +42,7 @@
                                             <color key="textColor" name="labelColorDark"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ListDevices.Title"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.ListDevices.Title"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-HT-csX" customClass="DotsActivityIndicator" customModule="ChromecastIOS" customModuleProvider="target">
@@ -75,7 +75,7 @@ your TV is not on the list, please reboot it
                                             <color key="textColor" name="labelColorGrayPunk"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ListDevices.Attention"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.ListDevices.Attention"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
@@ -124,7 +124,7 @@ your TV is not on the list, please reboot it
                                                     <color key="textColor" name="labelColorGrayPunk"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ListDevices.Subtitle"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.ListDevices.Subtitle"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
@@ -169,7 +169,7 @@ your TV is not on the list, please reboot it
                                             <color key="textColor" name="labelColorDark"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Tutorial.ListDevices.Action"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.ListDevices.Action"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>

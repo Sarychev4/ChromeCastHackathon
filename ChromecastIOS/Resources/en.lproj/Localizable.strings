@@ -7,41 +7,6 @@
 */
 
 /*
- - Mirror
- */
-
-"Screen.Mirror.Quality.Optimized" = "Optimized";
-"Screen.Mirror.Quality.Balanced" = "Balanced";
-"Screen.Mirror.Quality.Best" = "Best";
-
-"Screen.Mirror.Action.Tap.Start" = "Tap to Start Mirroring";
-"Screen.Mirror.Action.Tap.Stop" = "Tap to Stop Mirroring";
-
-/*
- - Media Player
- */
-
-"Media.Player.Title" = "Media";
-"Media.Player.Load.iCloud" = "Downloading from iCloud";
-"Media.Player.Converting.Video" = "Preparing...";
-
-/*
- - Reachabality
-*/
-
-"Reachabality.NoInternet.Title" = "Oh my!";
-"Reachabality.NoInternet.Message" = "No internet connection.\nPlease check your internet settings.";
-"Reachabality.NoInternet.OKButton.Title" = "OK";
-
-
-
-"Common.Continue" = "Continue";
-"Common.Cancel" = "Cancel";
-
-"MoreTermOfService" = "Terms of Use";
-"MorePrivacyPolicy" = "Privacy Policy";
-"MoreFAQ" = "FAQ";
-/*
  - Tutorial
  */
 
@@ -60,11 +25,6 @@
 "Tutorial.Connect.Title" = "Let's set up";
 "Tutorial.Connect.Subtitle" = "Please wait while we're setting up\nthe connection. This process will\nfinish shortly";
 "Tutorial.Connect.Action" = "Continue";
-
-"Tutorial.ListDevices.Title" = "Select your device";
-"Tutorial.ListDevices.Subtitle" = "Doesn't see your device?";
-"Tutorial.ListDevices.Action" = "Tap to refresh";
-"Tutorial.ListDevices.Attention" = "Make sure your phone and Smart TV are\nconnected to the same Wi-Fi network. If\nyour TV is not on the list, please reboot it\n(power reset) and try again.";
 
 "Tutorial.TestConnection.Title" = "Test Connection";
 "Tutorial.TestConnection.Subtitle" = "In order to make sure you have a\ngood connection. Tap the button\nbelow to test it. You should see an\nimage";
@@ -86,53 +46,20 @@
 "Tutorial.ThankYou.Title" = "Thank You";
 "Tutorial.ThankYou.Subtitle" = "We appreciate the feedback you\nshared. With your help, we’re able to\nmake better products for you.";
 "Tutorial.EverythingReady.Action" = "Start";
-/*
- - Main Screen
- */
-
-"Screen.Main.Banner.Title" = "Unlock Premium
-Features";
-"Screen.Main.Banner.Title.2" = "Device Not Connected";
-
-"Screen.Main.Title" = "Start Mirroring";
-"Screen.Main.Tap.Title" = "Tap to start";
-
-"Screen.Main.Tab.Browser.Title" = "Browser";
-"Screen.Main.Tab.Browser.Subtitle" = "Cast from websites";
-
-"Screen.Main.Tab.MediaLibrary.Title" = "Media";
-"Screen.Menu.Tab.MediaLibrary.Subtitle" = "Cast photos & videos";
-
-"Screen.Main.Tab.IPTV.Title" = "IPTV";
-"Screen.Menu.Tab.IPTV.Subtitle" = "Watch TV channels";
-
-"Screen.Main.Tab.Youtube.Title" = "YouTube";
-"Screen.Menu.Tab.Youtube.Subtitle" = "Watch YouTube";
-
-"Screen.Main.Tab.GoogleDrive.Title" = "Google Drive";
-"Screen.Main.Tab.GoogleDrive.Subtitle" = "Explore Drive";
-
-"Screen.Main.Tab.GooglePhotos.Title" = "Google Photos";
-"Screen.Main.Tab.GooglePhotos.Subtitle" = "Explore Photos";
 
 /*
- 
+ - Settings View Controller
  */
-"Screen.Main.Tabbar.Title" = "Tap to start";
 
-
-/*
- 
- */
-"Alert.Permissions.Denied.Library.Title" = "Access to Library";
-"Alert.Permissions.Denied.Library.Message" = "Chromecast uses Library to cast media.";
-"Alert.Permissions.Denied.Library.Continue" = "Continue";
-
-
-/*
- 
- */
-"MirrorSettings.Title" = "Mirror Settings";
+"Screen.Settings.Title" = "Settings";
+"Screen.Settings.Banner.Title" = "Get Premium access";
+"Screen.Settings.Banner.Subtitle" = "No limits. Best experience.";
+"Screen.Settings.Section.FAQ.Title" = "FAQ";
+"Screen.Settings.Section.RestorePurchases.Title" = "Restore Purchases";
+"Screen.Settings.Section.PrivacyPolicy.Title" = "Privacy Policy";
+"Screen.Settings.Section.TermsOfUse.Title" = "Terms of Use";
+"Screen.Settings.Section.SendUsANote.Title" = "Send us a note";
+"Screen.Settings.Help.Title" = "Need help?";
 
 /*
  - Subscriptions
@@ -164,6 +91,56 @@ Features";
 "SubscriptionComment2" = "So far I’m loving it.\nWay better to see all the info on a bigger screen";
 "SubscriptionCommentName2" = "by JD891";
 
+/*
+ - Main Screen
+ */
+
+"Screen.Main.Banner.Title" = "Unlock Premium
+Features";
+"Screen.Main.Banner.Title.2" = "Device Not Connected";
+
+
+"Screen.Main.Title" = "Select category";
+"Screen.Main.Premium" = "Go Premium"
+"Screen.Main.NeedHelp.Title" = "Need help?"
+"Screen.Main.Tap.Title" = "Tap to mirror";
+
+
+"Screen.Main.Tab.Browser.Title" = "Browser";
+"Screen.Main.Tab.Browser.Subtitle" = "Cast from websites";
+
+"Screen.Main.Tab.MediaLibrary.Title" = "Media";
+"Screen.Menu.Tab.MediaLibrary.Subtitle" = "Cast photos & videos";
+
+"Screen.Main.Tab.IPTV.Title" = "IPTV";
+"Screen.Menu.Tab.IPTV.Subtitle" = "Watch TV channels";
+
+"Screen.Main.Tab.Youtube.Title" = "YouTube";
+"Screen.Menu.Tab.Youtube.Subtitle" = "Watch YouTube";
+
+"Screen.Main.Tab.GoogleDrive.Title" = "Google Drive";
+"Screen.Main.Tab.GoogleDrive.Subtitle" = "Explore Drive";
+
+"Screen.Main.Tab.GooglePhotos.Title" = "Google Photos";
+"Screen.Main.Tab.GooglePhotos.Subtitle" = "Explore Photos";
+
+/*
+ - Mirror View Controller
+ */
+
+"Screen.Mirror.Title" = "Mirror";
+"Screen.Mirror.AutoRotate" = "Auto-rotate";
+
+"Screen.Mirror.Quality.Title" = "Quality";
+"Screen.Mirror.ChoosenQualiry.Title" = "Optimized";
+
+"Screen.Mirror.Quality.Optimized" = "Optimized";
+"Screen.Mirror.Quality.Balanced" = "Balanced";
+"Screen.Mirror.Quality.Best" = "Best";
+
+"Screen.Mirror.Action.Tap.Start" = "Tap to Start Mirroring";
+"Screen.Mirror.Action.Tap.Stop" = "Tap to Stop Mirroring";
+
 /*IPTV*/
 
 "IPTVSectionTitleUser" = "My channels";
@@ -179,15 +156,49 @@ Features";
 
 
 /*
- - Screen Settings
+ - Media Player
  */
 
-"Screen.Settings.Title" = "Settings";
-"Screen.Settings.Banner.Title" = "Get Premium access";
-"Screen.Settings.Banner.Subtitle" = "No limits. Best experience.";
-"Screen.Settings.Section.FAQ.Title" = "FAQ";
-"Screen.Settings.Section.RestorePurchases.Title" = "Restore Purchases";
-"Screen.Settings.Section.PrivacyPolicy.Title" = "Privacy Policy";
-"Screen.Settings.Section.TermsOfUse.Title" = "Terms of Use";
-"Screen.Settings.Section.SendUsANote.Title" = "Send us a note";
-"Screen.Settings.Help.Title" = "Need help?";
+"Media.Player.Title" = "Media";
+"Media.Player.Load.iCloud" = "Downloading from iCloud";
+"Media.Player.Converting.Video" = "Preparing...";
+
+/*
+ - Reachabality
+*/
+
+"Reachabality.NoInternet.Title" = "Oh my!";
+"Reachabality.NoInternet.Message" = "No internet connection.\nPlease check your internet settings.";
+"Reachabality.NoInternet.OKButton.Title" = "OK";
+
+"Common.Continue" = "Continue";
+"Common.Cancel" = "Cancel";
+
+"MoreTermOfService" = "Terms of Use";
+"MorePrivacyPolicy" = "Privacy Policy";
+"MoreFAQ" = "FAQ";
+
+
+
+/*
+ - List Devices
+ */
+
+"Screen.ListDevices.Title" = "Select your device";
+"Screen.ListDevices.Subtitle" = "Doesn't see your device?";
+"Screen.ListDevices.Attention" = "Make sure your phone and Smart TV are\nconnected to the same Wi-Fi network. If\nyour TV is not on the list, please reboot it\n(power reset) and try again.";
+"Screen.ListDevices.Action" = "Tap to refresh";
+
+/*
+ - Alert Setting
+ */
+
+"Alert.Permissions.Denied.LocalNetwork.Title" = "Allow Access";
+"Alert.Permissions.Denied.LocalNetwork.Message" = "Please allow access to “Local Network” to proceed.";
+"Alert.Permissions.Denied.LocalNetwork.Continue" = "Continue";
+
+"Alert.Permissions.Denied.Library.Title" = "Access to Library";
+"Alert.Permissions.Denied.Library.Message" = "Screen Mirror uses Library to cast media.";
+"Alert.Permissions.Denied.Library.Continue" = "Continue";
+
+
