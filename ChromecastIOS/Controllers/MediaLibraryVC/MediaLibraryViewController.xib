@@ -73,10 +73,10 @@
                                             <rect key="frame" x="16" y="0.0" width="382" height="24"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ta2-iJ-BU3" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="vO5-A1-qgR">
-                                                            <rect key="frame" x="0.0" y="4" width="16" height="16"/>
+                                                            <rect key="frame" x="4" y="4" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="16" id="IHk-NB-kj1"/>
                                                                 <constraint firstAttribute="height" constant="16" id="oZ0-Po-wnm"/>
@@ -85,15 +85,15 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="vO5-A1-qgR" firstAttribute="leading" secondItem="ta2-iJ-BU3" secondAttribute="leading" id="HpB-9z-eUC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vO5-A1-qgR" secondAttribute="trailing" id="yXi-ab-GRU"/>
+                                                        <constraint firstAttribute="width" constant="24" id="DqU-SQ-fC1"/>
+                                                        <constraint firstItem="vO5-A1-qgR" firstAttribute="centerX" secondItem="ta2-iJ-BU3" secondAttribute="centerX" id="nGG-Dy-Wzx"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Pt-2v-4wu">
-                                                    <rect key="frame" x="16" y="0.0" width="344" height="24"/>
+                                                    <rect key="frame" x="24" y="0.0" width="336" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Media" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYf-x0-4eC">
-                                                            <rect key="frame" x="148" y="2" width="48.5" height="20.5"/>
+                                                            <rect key="frame" x="144" y="2" width="48.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>

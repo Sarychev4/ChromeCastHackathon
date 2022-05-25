@@ -36,10 +36,10 @@
                                             <rect key="frame" x="16" y="0.0" width="382" height="24"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODo-Kc-XIw" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="22" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Xe2-3K-aFC">
-                                                            <rect key="frame" x="6" y="4" width="16" height="16"/>
+                                                            <rect key="frame" x="4" y="4" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="16" id="Rhs-sB-Vym"/>
                                                                 <constraint firstAttribute="height" constant="16" id="Sgi-72-Nmp"/>
@@ -48,15 +48,15 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="Xe2-3K-aFC" firstAttribute="leading" secondItem="ODo-Kc-XIw" secondAttribute="leading" constant="6" id="0OY-UG-eqb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Xe2-3K-aFC" secondAttribute="trailing" id="ZYC-Vw-5fg"/>
+                                                        <constraint firstItem="Xe2-3K-aFC" firstAttribute="centerX" secondItem="ODo-Kc-XIw" secondAttribute="centerX" id="715-eM-pPj"/>
+                                                        <constraint firstAttribute="width" constant="24" id="do0-mz-hux"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ay7-1M-qI0">
-                                                    <rect key="frame" x="22" y="0.0" width="332" height="24"/>
+                                                    <rect key="frame" x="24" y="0.0" width="334" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open websites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOa-Of-jK4">
-                                                            <rect key="frame" x="107" y="2" width="118" height="20.5"/>
+                                                            <rect key="frame" x="108" y="2" width="118" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -69,10 +69,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2K-Iv-7vs" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="354" y="0.0" width="28" height="24"/>
+                                                    <rect key="frame" x="358" y="0.0" width="24" height="24"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="Mo6-YP-EEq">
-                                                            <rect key="frame" x="0.0" y="3" width="22" height="18"/>
+                                                            <rect key="frame" x="1" y="3" width="22" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="22" id="eOp-iO-qCV"/>
                                                                 <constraint firstAttribute="height" constant="18" id="wgy-Cb-wZL"/>
@@ -81,8 +81,8 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="Mo6-YP-EEq" secondAttribute="trailing" constant="6" id="jLe-tv-AvW"/>
-                                                        <constraint firstItem="Mo6-YP-EEq" firstAttribute="leading" secondItem="o2K-Iv-7vs" secondAttribute="leading" id="qO9-km-xS4"/>
+                                                        <constraint firstItem="Mo6-YP-EEq" firstAttribute="centerX" secondItem="o2K-Iv-7vs" secondAttribute="centerX" id="4Xb-0E-Uoj"/>
+                                                        <constraint firstAttribute="width" constant="24" id="W4U-vj-Jmm"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

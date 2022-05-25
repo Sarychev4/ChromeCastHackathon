@@ -67,19 +67,19 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bnc-h9-Ijg">
-                                    <rect key="frame" x="20" y="0.0" width="374" height="79"/>
+                                    <rect key="frame" x="10" y="0.0" width="394" height="79"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iwG-UU-GAp">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="33"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfh-yF-o6Z">
-                                                    <rect key="frame" x="6" y="0.0" width="362" height="24"/>
+                                                    <rect key="frame" x="6" y="0.0" width="382" height="24"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-aE-oa6" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-xi-fnI">
-                                                                    <rect key="frame" x="0.0" y="4" width="16" height="16"/>
+                                                                    <rect key="frame" x="4" y="4" width="16" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="16" id="8WS-zC-4PG"/>
                                                                         <constraint firstAttribute="height" constant="16" id="eS8-BZ-TDu"/>
@@ -88,22 +88,22 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="b7T-xi-fnI" firstAttribute="leading" secondItem="8Ub-aE-oa6" secondAttribute="leading" id="XQr-cj-PZL"/>
-                                                                <constraint firstAttribute="trailing" secondItem="b7T-xi-fnI" secondAttribute="trailing" id="jCv-BP-YOI"/>
+                                                                <constraint firstItem="b7T-xi-fnI" firstAttribute="centerX" secondItem="8Ub-aE-oa6" secondAttribute="centerX" id="ZaX-vo-kIE"/>
+                                                                <constraint firstAttribute="width" constant="24" id="dqT-hJ-WFs"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jc8-ux-eo4">
-                                                            <rect key="frame" x="16" y="0.0" width="44" height="24"/>
+                                                            <rect key="frame" x="24" y="0.0" width="44" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="44" id="7y7-y0-xBc"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOp-XT-RV8">
-                                                            <rect key="frame" x="60" y="0.0" width="236" height="24"/>
+                                                            <rect key="frame" x="68" y="0.0" width="248" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IPTV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fys-bM-kqH" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                                    <rect key="frame" x="99" y="2" width="38" height="20.5"/>
+                                                                    <rect key="frame" x="105" y="2" width="38" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTD-Yc-XOv" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="296" y="0.0" width="24" height="24"/>
+                                                            <rect key="frame" x="316" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-xk-5ft">
                                                                     <rect key="frame" x="4" y="4" width="16" height="16"/>
@@ -135,14 +135,14 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkT-Ov-9ZD">
-                                                            <rect key="frame" x="320" y="0.0" width="20" height="24"/>
+                                                            <rect key="frame" x="340" y="0.0" width="20" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="pQa-Iy-5Oi"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cb-Ez-CXv" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="340" y="0.0" width="22" height="24"/>
+                                                            <rect key="frame" x="360" y="0.0" width="22" height="24"/>
                                                             <subviews>
                                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="uNG-I2-dJt">
                                                                     <rect key="frame" x="0.0" y="3" width="22" height="18"/>
@@ -176,10 +176,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgP-56-KjK">
-                                            <rect key="frame" x="0.0" y="33" width="374" height="46"/>
+                                            <rect key="frame" x="0.0" y="33" width="394" height="46"/>
                                             <subviews>
                                                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="iyG-8b-A8i">
-                                                    <rect key="frame" x="-2" y="0.0" width="378" height="46"/>
+                                                    <rect key="frame" x="-2" y="0.0" width="398" height="46"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </searchBar>
                                             </subviews>
@@ -197,12 +197,12 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="bnc-h9-Ijg" firstAttribute="leading" secondItem="PC6-42-ctV" secondAttribute="leading" constant="20" id="5xm-ou-ST0"/>
+                                <constraint firstItem="bnc-h9-Ijg" firstAttribute="leading" secondItem="PC6-42-ctV" secondAttribute="leading" constant="10" id="5xm-ou-ST0"/>
                                 <constraint firstAttribute="trailing" secondItem="Kg0-Jm-r2t" secondAttribute="trailing" id="CKM-iK-J4O"/>
                                 <constraint firstItem="Kg0-Jm-r2t" firstAttribute="leading" secondItem="PC6-42-ctV" secondAttribute="leading" id="J9q-5W-bWc"/>
                                 <constraint firstItem="Kg0-Jm-r2t" firstAttribute="top" secondItem="PC6-42-ctV" secondAttribute="top" constant="-100" id="Lsj-YT-RwQ"/>
                                 <constraint firstAttribute="bottom" secondItem="bnc-h9-Ijg" secondAttribute="bottom" id="Xzf-GZ-uLr"/>
-                                <constraint firstAttribute="trailing" secondItem="bnc-h9-Ijg" secondAttribute="trailing" constant="20" id="fCF-Mn-x19"/>
+                                <constraint firstAttribute="trailing" secondItem="bnc-h9-Ijg" secondAttribute="trailing" constant="10" id="fCF-Mn-x19"/>
                                 <constraint firstItem="bnc-h9-Ijg" firstAttribute="top" secondItem="PC6-42-ctV" secondAttribute="top" id="sfY-fC-AmB"/>
                                 <constraint firstAttribute="bottom" secondItem="Kg0-Jm-r2t" secondAttribute="bottom" id="vCS-Vj-x8C"/>
                             </constraints>
