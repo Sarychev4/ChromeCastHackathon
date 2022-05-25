@@ -11,6 +11,7 @@ import RealmSwift
 import UIKit
 import Agregator
 import CSSystemInfoHelper
+import AVFAudio
 
 class ChromeCastService: NSObject {
     
@@ -28,6 +29,9 @@ class ChromeCastService: NSObject {
     
     var connectFinished: ClosureBool?
     
+    var outputVolumeObserve: NSKeyValueObservation?
+    
+    let audioSession = AVAudioSession.sharedInstance()
     
     private var notificationToken: NotificationToken!
     
@@ -58,7 +62,26 @@ class ChromeCastService: NSObject {
         }
         
         observeStreamConfiguration()
+        listenVolumeButton()
     }
+    
+    func listenVolumeButton() {
+       do {
+        try audioSession.setActive(true)
+       } catch {
+        print("some error")
+       }
+       audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+      if keyPath == "outputVolume" {
+          let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+          remoteMediaClient?.setStreamVolume(audioSession.outputVolume)
+      }
+    }
+    
+   
     
     func connect(to deviceID: String, onComplete: ClosureBool?) {
         let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
@@ -110,6 +133,7 @@ class ChromeCastService: NSObject {
         
         let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
         remoteMediaClient?.loadMedia(mediaInformation)
+        
         remoteMediaClient?.add(self)
         
         GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
@@ -129,6 +153,8 @@ class ChromeCastService: NSObject {
         
         GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
     }
+    
+    
     
     func stopWebApp() {
         let params = ["type": "stop"]
