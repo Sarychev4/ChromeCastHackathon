@@ -182,7 +182,7 @@
  */
 
 "Screen.ListDevices.Title" = "Select your device";
-"Screen.ListDevices.Subtitle" = "Doesn't see your device?";
+"Screen.ListDevices.Subtitle" = "Don't see your device?";
 "Screen.ListDevices.Attention" = "Make sure your phone and Smart TV are\nconnected to the same Wi-Fi network. If\nyour TV is not on the list, please reboot it\n(power reset) and try again.";
 "Screen.ListDevices.Action" = "Tap to refresh";
 
