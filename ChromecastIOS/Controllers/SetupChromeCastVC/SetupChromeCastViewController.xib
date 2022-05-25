@@ -102,10 +102,121 @@
                                 <constraint firstItem="Zto-Z5-feg" firstAttribute="leading" secondItem="ba4-fk-kPC" secondAttribute="leading" constant="10" id="piF-O8-32y"/>
                             </constraints>
                         </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lCi-X4-8eR">
+                            <rect key="frame" x="16" y="109" width="382" height="548"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-h1-vTd">
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7T-c3-6sk" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
+                                            <string key="text">_Don't see your Chromecast in
+the list? You first need to
+Setup Chromecast. Its quite easy. Just follow this Tutorial
+Video</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="P7T-c3-6sk" secondAttribute="trailing" id="24X-iT-1T3"/>
+                                        <constraint firstItem="P7T-c3-6sk" firstAttribute="top" secondItem="6b9-h1-vTd" secondAttribute="top" id="E3e-h1-RPm"/>
+                                        <constraint firstAttribute="bottom" secondItem="P7T-c3-6sk" secondAttribute="bottom" id="EZE-J4-AMU"/>
+                                        <constraint firstItem="P7T-c3-6sk" firstAttribute="leading" secondItem="6b9-h1-vTd" secondAttribute="leading" id="uSl-DW-Gab"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdZ-Ps-kU6">
+                                    <rect key="frame" x="0.0" y="128" width="382" height="220"/>
+                                    <subviews>
+                                        <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apW-tP-Wcb">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="220"/>
+                                            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="220" id="0fG-OG-8mh"/>
+                                            </constraints>
+                                            <wkWebViewConfiguration key="configuration">
+                                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                <wkPreferences key="preferences"/>
+                                            </wkWebViewConfiguration>
+                                        </wkWebView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="apW-tP-Wcb" firstAttribute="leading" secondItem="pdZ-Ps-kU6" secondAttribute="leading" id="CLF-tx-COv"/>
+                                        <constraint firstItem="apW-tP-Wcb" firstAttribute="top" secondItem="pdZ-Ps-kU6" secondAttribute="top" id="ClV-s4-8c6"/>
+                                        <constraint firstAttribute="bottom" secondItem="apW-tP-Wcb" secondAttribute="bottom" id="pLS-42-q6w"/>
+                                        <constraint firstAttribute="trailing" secondItem="apW-tP-Wcb" secondAttribute="trailing" id="qQ5-Re-2Bf"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQb-nI-kd6">
+                                    <rect key="frame" x="0.0" y="348" width="382" height="72"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pde-R4-3o7">
+                                            <rect key="frame" x="148" y="24" width="86.5" height="24"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We2-33-aA1" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="86.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" name="MainBackground"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Button"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <constraints>
+                                                <constraint firstItem="We2-33-aA1" firstAttribute="leading" secondItem="pde-R4-3o7" secondAttribute="leading" id="ARV-9o-iIM"/>
+                                                <constraint firstAttribute="height" constant="24" id="ZYb-tN-E4C"/>
+                                                <constraint firstAttribute="trailing" secondItem="We2-33-aA1" secondAttribute="trailing" id="pYm-zy-lKf"/>
+                                                <constraint firstItem="We2-33-aA1" firstAttribute="top" secondItem="pde-R4-3o7" secondAttribute="top" id="zy8-Mk-FOp"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="pde-R4-3o7" firstAttribute="centerX" secondItem="fQb-nI-kd6" secondAttribute="centerX" id="7PT-Sg-HIR"/>
+                                        <constraint firstItem="pde-R4-3o7" firstAttribute="centerY" secondItem="fQb-nI-kd6" secondAttribute="centerY" id="GlU-f7-UYI"/>
+                                        <constraint firstItem="pde-R4-3o7" firstAttribute="top" secondItem="fQb-nI-kd6" secondAttribute="top" constant="24" id="gvK-Vj-SfX"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5C-aK-BWV">
+                                    <rect key="frame" x="0.0" y="420" width="382" height="128"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed4-KL-uIy" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
+                                            <string key="text">If you face any problem, tap
+here to Troubleshoot</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" name="labelColorDark"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle2"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Ed4-KL-uIy" secondAttribute="trailing" id="3Uk-Qd-E0p"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ed4-KL-uIy" secondAttribute="bottom" id="7Vs-uW-iqg"/>
+                                        <constraint firstItem="Ed4-KL-uIy" firstAttribute="leading" secondItem="O5C-aK-BWV" secondAttribute="leading" id="hPm-Cb-4JS"/>
+                                        <constraint firstItem="Ed4-KL-uIy" firstAttribute="top" secondItem="O5C-aK-BWV" secondAttribute="top" id="roO-uV-LXk"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="lCi-X4-8eR" secondAttribute="trailing" constant="16" id="ASe-Ff-W16"/>
                         <constraint firstItem="ba4-fk-kPC" firstAttribute="top" secondItem="gDq-GH-y06" secondAttribute="top" constant="52" id="EXh-Nh-udY"/>
+                        <constraint firstItem="lCi-X4-8eR" firstAttribute="top" secondItem="ba4-fk-kPC" secondAttribute="bottom" constant="24" id="WVe-cg-Cif"/>
+                        <constraint firstItem="lCi-X4-8eR" firstAttribute="leading" secondItem="gDq-GH-y06" secondAttribute="leading" constant="16" id="YF2-st-3w8"/>
                         <constraint firstItem="ba4-fk-kPC" firstAttribute="leading" secondItem="gDq-GH-y06" secondAttribute="leading" id="a5d-kg-EQn"/>
                         <constraint firstAttribute="trailing" secondItem="ba4-fk-kPC" secondAttribute="trailing" id="hmN-yH-lTh"/>
                     </constraints>
@@ -119,7 +230,7 @@
                 <constraint firstItem="gDq-GH-y06" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="d91-bc-5bn"/>
                 <constraint firstAttribute="bottom" secondItem="gDq-GH-y06" secondAttribute="bottom" id="lBX-hG-hwL"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="81"/>
+            <point key="canvasLocation" x="137.68115942028987" y="80.357142857142847"/>
         </view>
     </objects>
     <resources>
@@ -127,8 +238,14 @@
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

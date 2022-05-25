@@ -177,8 +177,6 @@
 "MorePrivacyPolicy" = "Privacy Policy";
 "MoreFAQ" = "FAQ";
 
-
-
 /*
  - List Devices
  */
@@ -201,5 +199,18 @@
 "Alert.Permissions.Denied.Library.Continue" = "Continue";
 
 
+/*
+ - Mirror Settings
+ */
 
 "Mirror.Settings.Title" = "Mirror Settings";
+
+/*
+ - Setup ChromeCast
+ */
+
+"Screen.SetupChromacast.Title" = "Setup Chromacast";
+"Screen.SetupChromacast.Subtitle" = "Don't see your Chromecast in\nthe list? You first need to\n Setup Chromecast. Its quite easy. Just follow this Tutorial\n Video";
+
+"Screen.SetupChromacast.Button" = "Start setup";
+"Screen.SetupChromacast.Subtitle2" = "If you face any problem, tap\nhere to Troubleshoot";

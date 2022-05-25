@@ -298,7 +298,7 @@
                                                                     <constraints>
                                                                         <constraint firstItem="tYX-7w-bEX" firstAttribute="leading" secondItem="xeM-av-tcq" secondAttribute="leading" id="4MV-bv-VZj"/>
                                                                         <constraint firstAttribute="trailing" secondItem="tYX-7w-bEX" secondAttribute="trailing" id="4b1-yV-kcA"/>
-                                                                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="tYX-7w-bEX" secondAttribute="bottom" constant="16" id="Cpe-jl-DRU"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="tYX-7w-bEX" secondAttribute="bottom" constant="16" id="Cpe-jl-DRU"/>
                                                                         <constraint firstItem="tYX-7w-bEX" firstAttribute="top" relation="lessThanOrEqual" secondItem="xeM-av-tcq" secondAttribute="top" constant="12" id="Lle-jL-hw9"/>
                                                                     </constraints>
                                                                 </view>
