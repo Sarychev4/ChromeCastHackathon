@@ -18,6 +18,7 @@
                 <outlet property="hdCollectionView" destination="eY6-JC-eZO" id="Pwh-5n-hlX"/>
                 <outlet property="qualityInteractiveView" destination="Goo-JW-89m" id="3eX-xm-DDw"/>
                 <outlet property="qualityShadow" destination="fDo-h4-awW" id="HoC-TV-Oq3"/>
+                <outlet property="qualityTitleLabel" destination="6ly-Xa-Ytf" id="i3g-Ey-N1Z"/>
                 <outlet property="thumbnailCollectionView" destination="Zkq-uT-BZJ" id="lnX-PX-cA3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -189,7 +190,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="JSr-7V-oaE" secondAttribute="trailing" id="qf7-zA-25D"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balanced" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ly-Xa-Ytf">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balanced" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ly-Xa-Ytf" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="34" y="0.0" width="76.5" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                             <color key="textColor" name="labelColorDark"/>

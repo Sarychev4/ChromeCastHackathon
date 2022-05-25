@@ -20,9 +20,11 @@ class HDCell: UICollectionViewCell {
     @IBOutlet weak var playVideoInteractiveImageView: InteractiveImageView!
     @IBOutlet weak var nextVideoInteractiveImageView: InteractiveImageView!
     
+    
+    @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var currentPlayTimeLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
-    @IBOutlet weak var progressView: CustomSlider!
+    @IBOutlet weak var progressView: UISlider!
     
     var prevAction: (() -> ())?
     var nextAction: (() -> ())?
@@ -62,8 +64,7 @@ class HDCell: UICollectionViewCell {
         /*
          */
         
-        
-        playVideoInteractiveImageView.didTouchAction = { [weak self] in
+        previousVideoInteractiveImageView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.prevAction?()
         }

@@ -50,7 +50,7 @@
                                             <color key="textColor" name="labelColorDark"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="MirrorSettings.Title"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Mirror.Settings.Title"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>

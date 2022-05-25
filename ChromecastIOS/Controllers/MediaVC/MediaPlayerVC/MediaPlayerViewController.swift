@@ -24,6 +24,7 @@ class MediaPlayerViewController: BaseViewController {
     @IBOutlet weak var hdCollectionView: CellConfiguratedCollectionView!
     @IBOutlet weak var thumbnailCollectionView: CellConfiguratedCollectionView!
     @IBOutlet weak var qualityInteractiveView: InteractiveView!
+    @IBOutlet weak var qualityTitleLabel: DefaultLabel!
     @IBOutlet weak var qualityShadow: DropShadowView!
     
     private var videoPlayerManager = VideoPlayerManager.shared
@@ -36,6 +37,8 @@ class MediaPlayerViewController: BaseViewController {
     var selectedIndex: Int = 0
     var assets: [PHAsset] = []
     var assetExportSession = VideoConverter()
+    
+    private var delayBetweenCastTimer: Timer? //Чтобы не кастить фотки при каждом свайпе - делаю делей на 0.7 секунды
     
     private var iCloudRequestID: PHImageRequestID?
     
@@ -71,8 +74,8 @@ class MediaPlayerViewController: BaseViewController {
             let asset = self.assets[self.selectedIndex]
             let resources = PHAssetResource.assetResources(for: asset)
             self.currentAssetNameLabel.text = resources.first?.originalFilename
+            //self.handleAsset(at: self.selectedIndex)
         }
-        
         
     }
     
@@ -105,6 +108,46 @@ class MediaPlayerViewController: BaseViewController {
         }
         
         print(">>> cast to TV, mediaType: \(currentAsset.mediaType)")
+    }
+    
+    
+    private func handleAsset(at index: Int) {
+        AgregatorLogger.shared.log(eventName: "Media player handle asset", parameters: nil)
+        
+        guard index >= 0, index < assets.count else { return }
+        let asset = assets[index]
+        let resources = PHAssetResource.assetResources(for: asset)
+        currentAssetNameLabel.text = resources.first?.originalFilename
+        
+        selectedIndex = index
+        scrollTo(index: index, animated: true)
+        setupQualityView(forMediaType: asset.mediaType)
+        startDelayBetweenCastTimer()
+
+    }
+    
+    private func scrollTo(index: Int, animated: Bool) {
+        let indexPath = IndexPath(row: index, section: 0)
+        hdCollectionView.scrollToItem(at: indexPath, at:.centeredHorizontally, animated: animated)
+        thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
+    }
+    
+    private func setupQualityView(forMediaType type: PHAssetMediaType) {
+        qualityTitleLabel.text = type == .image ? Settings.current.photosResolution.localizedValue : Settings.current.videosResolution.localizedValue
+    }
+    
+    private func startDelayBetweenCastTimer() {
+        stopDelayBetweenCastTimer()
+        
+        delayBetweenCastTimer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { [weak self] (timer) in
+            guard let self = self else { return }
+            self.castToTV()
+        })
+    }
+    
+    private func stopDelayBetweenCastTimer() {
+        delayBetweenCastTimer?.invalidate()
+        delayBetweenCastTimer = nil
     }
     
     
@@ -269,6 +312,14 @@ extension MediaPlayerViewController {
         }
     }
     
+    private func mediaCellPrevClicked() {
+        handleAsset(at: selectedIndex - 1)
+    }
+    
+    private func mediaCellNextClicked() {
+        handleAsset(at: selectedIndex + 1)
+    }
+    
     private func mediaCellRewindClicked(seconds: TimeInterval){
         let options = GCKMediaSeekOptions()
         options.interval = seconds
@@ -429,10 +480,11 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
                 cell.photoImageView?.contentMode = .scaleAspectFit
                 if asset.mediaType == .image {
                     cell.playerButtonsContainer.isHidden = true
+                    cell.progressContainerView.isHidden = true
                 } else {
                     cell.setup(with: asset, state: videoPlayerManager.state, currentTime: videoPlayerManager.currentTime)
-//                    cell.prevAction = prevAction
-//                    cell.nextAction = nextAction
+                    cell.prevAction = mediaCellPrevClicked
+                    cell.nextAction = mediaCellNextClicked
                     cell.playOrPauseAction = self.castVideoToTV
                     cell.rewindAction = mediaCellRewindClicked(seconds:)
                 }

@@ -95,14 +95,13 @@
  - Main Screen
  */
 
-"Screen.Main.Banner.Title" = "Unlock Premium
-Features";
+"Screen.Main.Banner.Title" = "Unlock Premium\nFeatures";
 "Screen.Main.Banner.Title.2" = "Device Not Connected";
 
 
 "Screen.Main.Title" = "Select category";
-"Screen.Main.Premium" = "Go Premium"
-"Screen.Main.NeedHelp.Title" = "Need help?"
+"Screen.Main.Premium" = "Go Premium";
+"Screen.Main.NeedHelp.Title" = "Need help?";
 "Screen.Main.Tap.Title" = "Tap to mirror";
 
 
@@ -202,3 +201,5 @@ Features";
 "Alert.Permissions.Denied.Library.Continue" = "Continue";
 
 
+
+"Mirror.Settings.Title" = "Mirror Settings";
