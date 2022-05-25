@@ -11,6 +11,8 @@ import Photos
 import RealmSwift
 import NextLevelSessionExporter
 import MobileCoreServices
+import GoogleCast
+import Player
 
 class VideoPlayerManager: NSObject {
     
@@ -35,7 +37,8 @@ class VideoPlayerManager: NSObject {
     }
     
     static let shared = VideoPlayerManager()
-    
+    var videoProgressTimer: Timer?
+    var currentTime: TimeInterval = 0
     var assetExportSession = VideoConverter()
     var stateObserver: ((_ state: VideoPlayerManager.State) -> ())?
     
@@ -137,7 +140,52 @@ class VideoPlayerManager: NSObject {
         })
     }
     
+    func startObserveVideoProgress() {
+        var dropRequestCount = 0
+        stopVideoProgressTimer()
+        videoProgressTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] (timer) in
+            guard let self = self else { return }
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+                guard let currentTimeOnTV = remoteMediaClient?.mediaStatus?.streamPosition else { return }
+                
+                    print("currentTimeOnTV: \(currentTimeOnTV), phone: \(self.currentTime)")
+                    if self.currentTime == 0 && currentTimeOnTV > TimeInterval(1), dropRequestCount == 0 {
+                        dropRequestCount += 1
+                        // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
+                        return
+                    }
+
+                    let videoDuration = Int(self.asset?.duration ?? 0)
+                    
+                    if currentTimeOnTV > 0 {
+                        
+                        if currentTimeOnTV != self.currentTime {
+                            self.currentTime = currentTimeOnTV
+                            self.state = .playing
+                        } else {
+                            // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
+                            //На Року оно закрывается. Поэтому надо обрабатывать все кейсы
+                            // Тут проверяем что если до конца осталось меньше секунды, значит видео закончилось, если больше значит видео зависло на паузе
+                            if abs(TimeInterval(videoDuration) - currentTimeOnTV) < 0.9 {
+                                self.state = .none
+                            } else {
+                                self.state = .paused
+                            }
+                        }
+                    } else if self.currentTime > 0 {
+                        print("currentTime: \(currentTimeOnTV)")
+                        // Кейс когда предыдущий запрос был не 0, а следующий 0 это когда видео закончилось.
+                        self.state = .none
+                    }
+                }
+        })
+    }
     
-    
+    fileprivate func stopVideoProgressTimer() {
+        videoProgressTimer?.invalidate()
+        videoProgressTimer = nil
+    }
     
 }

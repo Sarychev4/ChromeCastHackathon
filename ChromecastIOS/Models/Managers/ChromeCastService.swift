@@ -77,8 +77,18 @@ class ChromeCastService: NSObject {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
       if keyPath == "outputVolume" {
           let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
-          remoteMediaClient?.setStreamVolume(audioSession.outputVolume)
+          remoteMediaClient?.setStreamVolume(audioSession.outputVolume) 
       }
+    }
+    
+    func pauseVideo() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        remoteMediaClient?.pause()
+    }
+    
+    func playVideo() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        remoteMediaClient?.play()
     }
     
    

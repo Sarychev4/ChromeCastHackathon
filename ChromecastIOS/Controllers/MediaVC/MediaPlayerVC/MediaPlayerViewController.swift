@@ -258,14 +258,24 @@ extension MediaPlayerViewController {
             }
         case .playing:
             //Если текущее состояние playing - значит надо поставить на паузу
+            ChromeCastService.shared.pauseVideo()
             print(">>>VideoPlayer state .playing")
         case .paused:
             //Если текущее состояние paused - значит надо восстановить воспроизведение
+            ChromeCastService.shared.playVideo()
             print(">>>VideoPlayer state .paused")
         default:
             break
         }
     }
+    
+    private func mediaCellRewindClicked(seconds: TimeInterval){
+        let options = GCKMediaSeekOptions()
+        options.interval = seconds
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        remoteMediaClient?.seek(with: options)
+    }
+    
     
     private func observeVideoPlayerState() {
         videoPlayerManager.stateObserver = { [weak self] state in
@@ -288,6 +298,10 @@ extension MediaPlayerViewController {
                     let ipAddress = ServerConfiguration.shared.deviceIPAddress()
                     guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
                     ChromeCastService.shared.displayVideo(with: url)
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.videoPlayerManager.startObserveVideoProgress()
+                    }
                 }
             case .playing:
                 DispatchQueue.main.async { [weak self] in
@@ -405,7 +419,9 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             let asset = assets[indexPath.row]
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HDCell.Identifier, for: indexPath) as! HDCell
-            //            if let image = hdPhotoModel.photo(at: indexPath.row),
+            
+            
+            
             if let size = self.collectionView(hdCollectionView, sizeForItemAt: indexPath) {
                 cell.photoWidthConstraint.constant = size.width
                 cell.photoHeightConstraint.constant = size.height
@@ -413,12 +429,19 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
                 cell.photoImageView?.contentMode = .scaleAspectFit
                 if asset.mediaType == .image {
                     cell.playerButtonsContainer.isHidden = true
+                } else {
+                    cell.setup(with: asset, state: videoPlayerManager.state, currentTime: videoPlayerManager.currentTime)
+//                    cell.prevAction = prevAction
+//                    cell.nextAction = nextAction
+                    cell.playOrPauseAction = self.castVideoToTV
+                    cell.rewindAction = mediaCellRewindClicked(seconds:)
                 }
-                //                cell.photoImageView?.image = image
                 image(for: asset, size: CGSize(width: size.width, height: size.height)) { (image, needd) in
                     cell.photoImageView?.image = image
                 }
             }
+            
+            
             return cell
         case thumbnailCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCell.Identifier, for: indexPath) as! ThumbnailCell

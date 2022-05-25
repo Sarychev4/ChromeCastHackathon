@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,17 +39,70 @@
                             </imageView>
                         </subviews>
                     </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OG2-RN-YPF">
+                        <rect key="frame" x="24" y="169" width="239" height="24"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgY-kj-MSn">
+                                <rect key="frame" x="0.0" y="0.0" width="13" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" name="labelColorDark"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lo-zY-PjI">
+                                <rect key="frame" x="14" y="0.0" width="3.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" name="labelColorDark"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wT-Os-g2B">
+                                <rect key="frame" x="18.5" y="0.0" width="13" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" name="labelColorDark"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZI3-wC-XLP" customClass="CustomSlider" customModule="ChromecastIOS" customModuleProvider="target">
+                                <rect key="frame" x="-2" y="-4" width="243" height="31"/>
+                                <color key="minimumTrackTintColor" name="labelColorGrayPunk"/>
+                                <color key="maximumTrackTintColor" name="labelColorGrayPunk"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZI3-wC-XLP" firstAttribute="leading" secondItem="OG2-RN-YPF" secondAttribute="leading" id="3Nf-mI-xht"/>
+                            <constraint firstItem="0lo-zY-PjI" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="9Qk-bE-FvP"/>
+                            <constraint firstItem="0lo-zY-PjI" firstAttribute="leading" secondItem="AgY-kj-MSn" secondAttribute="trailing" constant="1" id="JVe-sz-UkU"/>
+                            <constraint firstAttribute="trailing" secondItem="ZI3-wC-XLP" secondAttribute="trailing" id="Mhz-LC-bQp"/>
+                            <constraint firstItem="0wT-Os-g2B" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="Q4Z-0s-HCV"/>
+                            <constraint firstItem="AgY-kj-MSn" firstAttribute="leading" secondItem="OG2-RN-YPF" secondAttribute="leading" id="W6h-ju-nGo"/>
+                            <constraint firstItem="0wT-Os-g2B" firstAttribute="leading" secondItem="0lo-zY-PjI" secondAttribute="trailing" constant="1" id="YPa-9R-XHz"/>
+                            <constraint firstAttribute="height" constant="24" id="b8d-T2-QBj"/>
+                            <constraint firstItem="AgY-kj-MSn" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="nv7-T1-Wlx"/>
+                            <constraint firstAttribute="bottom" secondItem="ZI3-wC-XLP" secondAttribute="bottom" constant="-2" id="oEg-DG-18B"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1AX-Q3-pbF"/>
+                <constraint firstAttribute="trailing" secondItem="OG2-RN-YPF" secondAttribute="trailing" constant="24" id="GUv-26-Bmq"/>
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TmO-yV-zUW"/>
+                <constraint firstAttribute="bottom" secondItem="OG2-RN-YPF" secondAttribute="bottom" constant="16" id="Xrw-XY-df7"/>
+                <constraint firstItem="OG2-RN-YPF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="cyZ-N2-toh"/>
                 <constraint firstItem="a5S-m5-QGl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="etl-dV-QnD"/>
                 <constraint firstItem="a5S-m5-QGl" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qmr-LS-Cfh"/>
             </constraints>
             <size key="customSize" width="287" height="209"/>
             <connections>
+                <outlet property="currentPlayTimeLabel" destination="AgY-kj-MSn" id="uRG-hr-Qfv"/>
                 <outlet property="nextVideoInteractiveImageView" destination="c4J-7C-pp1" id="pzh-ff-Vdf"/>
                 <outlet property="photoHeightConstraint" destination="LIs-bt-GMB" id="Kgs-vI-QQt"/>
                 <outlet property="photoImageView" destination="Dno-CX-3Iv" id="CRf-52-tCe"/>
@@ -56,6 +110,8 @@
                 <outlet property="playVideoInteractiveImageView" destination="Tz9-Id-yKV" id="ag8-Cl-hs7"/>
                 <outlet property="playerButtonsContainer" destination="a5S-m5-QGl" id="XPc-Yr-Tkb"/>
                 <outlet property="previousVideoInteractiveImageView" destination="ieT-g6-qL3" id="8yr-jU-2ob"/>
+                <outlet property="progressView" destination="ZI3-wC-XLP" id="u16-tq-wgW"/>
+                <outlet property="remainingTimeLabel" destination="0wT-Os-g2B" id="GYq-Wu-42C"/>
             </connections>
             <point key="canvasLocation" x="134" y="125"/>
         </collectionViewCell>
@@ -64,5 +120,11 @@
         <image name="nextVideo" width="36" height="36"/>
         <image name="playVideo" width="48" height="48"/>
         <image name="previousVideo" width="36" height="36"/>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorGrayPunk">
+            <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
