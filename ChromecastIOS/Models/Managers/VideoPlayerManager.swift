@@ -148,7 +148,7 @@ class VideoPlayerManager: NSObject {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
-                guard let currentTimeOnTV = remoteMediaClient?.mediaStatus?.streamPosition else { return }
+                guard let currentTimeOnTV = remoteMediaClient?.approximateStreamPosition() else { return }
                 
                     print("currentTimeOnTV: \(currentTimeOnTV), phone: \(self.currentTime)")
                     if self.currentTime == 0 && currentTimeOnTV > TimeInterval(1), dropRequestCount == 0 {
