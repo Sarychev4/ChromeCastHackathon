@@ -164,7 +164,23 @@ class MediaPlayerViewController: BaseViewController {
         
         qualityInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            self.presentSettings(postAction: nil)
+            self.presentSettings(postAction: {
+                self.updateUIbasedOnQuality()
+            })
+        }
+    }
+    
+    private func updateUIbasedOnQuality(){
+        let currentQuality = StreamConfiguration.current.resolutionType
+        switch currentQuality {
+        case .low:
+            qualityTitleLabel.text = NSLocalizedString("Screen.Mirror.Quality.Optimized", comment: "")
+        case .medium:
+            qualityTitleLabel.text = NSLocalizedString("Screen.Mirror.Quality.Balanced", comment: "")
+        case .high:
+            qualityTitleLabel.text = NSLocalizedString("Screen.Mirror.Quality.Best", comment: "")
+        default:
+            break
         }
     }
     
@@ -198,7 +214,7 @@ class MediaPlayerViewController: BaseViewController {
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
         controller.modalPresentationStyle = .overCurrentContext
-        controller.didFinishAction = {  [weak self] in
+        controller.didFinishAction = { [weak self] in
             guard let _ = self else { return }
             postAction?()
         }

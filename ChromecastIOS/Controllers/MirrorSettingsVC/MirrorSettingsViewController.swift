@@ -29,7 +29,7 @@ class MirrorSettingsViewController: AFFloatingPanelViewController {
     @IBOutlet weak var bestImageView: UIImageView!
     
     private var isHide = true
-    var didFinishAction: (() -> ())?
+    var didFinishAction: Closure?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,28 +39,35 @@ class MirrorSettingsViewController: AFFloatingPanelViewController {
     
     private func setupSettingsSection() {
         
-        optimizedImageView.isHidden = true
-        balancedImageView.isHidden = true
-        bestImageView.isHidden = true
+//        optimizedImageView.isHidden = true
+//        balancedImageView.isHidden = true
+//        bestImageView.isHidden = true
         
-        qualityContainer.isHidden = true
+//        qualityContainer.isHidden = true
         
         qualityInteractiveView.didTouchAction = {
-            if self.qualityContainer.isHidden == true {
-                self.qualityContainer.isHidden = false
-                self.showHideImageView.image = UIImage(named: "hide")
-            } else {
-                self.qualityContainer.isHidden = true
-                self.showHideImageView.image = UIImage(named: "show")
-            }
+//            if self.qualityContainer.isHidden == true {
+//                self.qualityContainer.isHidden = false
+//                self.showHideImageView.image = UIImage(named: "hide")
+//            } else {
+//                self.qualityContainer.isHidden = true
+//                self.showHideImageView.image = UIImage(named: "show")
+//            }
         }
         
         optimizedInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            try? StreamConfiguration.current.realm?.write {
-                StreamConfiguration.current.resolutionType = .low
+            
+            DispatchQueue.main.async {
+                try? StreamConfiguration.current.realm?.write {
+                    StreamConfiguration.current.resolutionType = .low
+                }
             }
-            self.updateUIbasedOnQuality()
+            
+            self.hidePanel { [weak self] in
+                guard let self = self else { return }
+                self.didFinishAction?()
+            }
         }
         
         balancedInteractiveView.didTouchAction = { [weak self] in
@@ -72,9 +79,11 @@ class MirrorSettingsViewController: AFFloatingPanelViewController {
                         try? StreamConfiguration.current.realm?.write {
                             StreamConfiguration.current.resolutionType = .medium
                         }
-                        self.updateUIbasedOnQuality()
                     }
-                    
+                    self.hidePanel { [weak self] in
+                        guard let self = self else { return }
+                        self.didFinishAction?()
+                    }
                 }
             }
         }
@@ -88,9 +97,11 @@ class MirrorSettingsViewController: AFFloatingPanelViewController {
                         try? StreamConfiguration.current.realm?.write {
                             StreamConfiguration.current.resolutionType = .high
                         }
-                        self.updateUIbasedOnQuality()
                     }
-                    
+                    self.hidePanel { [weak self] in
+                        guard let self = self else { return }
+                        self.didFinishAction?()
+                    }
                 }
             }
         }
