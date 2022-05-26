@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoogleDriveViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="7n2-Jl-e7f" id="tW8-Tp-Sea"/>
                 <outlet property="backInteractiveView" destination="iol-bl-t6m" id="ofb-cZ-ejL"/>
                 <outlet property="collectionView" destination="9iU-K2-vC5" id="6hm-yY-VMj"/>
                 <outlet property="connectInteractiveView" destination="s8e-9v-wGH" id="HbL-dt-sjv"/>
@@ -282,10 +283,16 @@
                                 <constraint firstAttribute="bottom" secondItem="VCm-MH-v6v" secondAttribute="bottom" id="mOM-u6-gFW"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-Jl-e7f">
+                            <rect key="frame" x="197" y="293" width="20" height="20"/>
+                            <color key="color" name="labelColorDark"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
+                        <constraint firstItem="7n2-Jl-e7f" firstAttribute="centerX" secondItem="wCU-RA-QVz" secondAttribute="centerX" id="0GO-c0-Gy0"/>
                         <constraint firstItem="lp2-h9-0bK" firstAttribute="leading" secondItem="wCU-RA-QVz" secondAttribute="leading" id="CO0-5a-P9u"/>
+                        <constraint firstItem="7n2-Jl-e7f" firstAttribute="top" secondItem="EMr-w0-K1W" secondAttribute="bottom" constant="16" id="F3d-Dc-yo0"/>
                         <constraint firstItem="EMr-w0-K1W" firstAttribute="leading" secondItem="wCU-RA-QVz" secondAttribute="leading" id="HUg-wY-noE"/>
                         <constraint firstItem="lp2-h9-0bK" firstAttribute="top" secondItem="EMr-w0-K1W" secondAttribute="bottom" constant="-10" id="LKQ-Pd-BlH"/>
                         <constraint firstAttribute="trailing" secondItem="EMr-w0-K1W" secondAttribute="trailing" id="PcJ-Tn-ZxR"/>

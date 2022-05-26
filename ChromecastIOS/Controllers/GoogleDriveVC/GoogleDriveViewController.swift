@@ -24,6 +24,7 @@ class GoogleDriveViewController: BaseViewController {
     @IBOutlet weak var googleSignInButtonInteractiveView: InteractiveView!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var dataSource: [GTLRDrive_File] = []
     var isSubfolder: Bool = false
@@ -55,6 +56,12 @@ class GoogleDriveViewController: BaseViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        setupSearchBar()
+    }
+    
+    private func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.searchTextField.textColor = UIColor.black.withAlphaComponent(0.8)
     }
     
     private func updateUI() {
@@ -149,7 +156,9 @@ class GoogleDriveViewController: BaseViewController {
     }
     
     private func loadFilesInRootFolder() {
-        self.googleAPIs?.listFiles("root", onCompleted: { (response, error) in
+        activityIndicator.startAnimating()
+        self.googleAPIs?.listFiles("root", onCompleted: { [weak self] (response, error) in
+            guard let self = self else { return }
             print("Response \(response)")
             guard let files = response?.files else { return }
             for file in files {
@@ -161,18 +170,22 @@ class GoogleDriveViewController: BaseViewController {
             }
             print(error)
             print(files)
+            self.activityIndicator.stopAnimating()
         })
     }
     
     private func loadFilesInSpecificFolder(folderName: String) {
-        self.googleAPIs?.search(folderName, onCompleted: { (fileItem, error) in
+        activityIndicator.startAnimating()
+        self.googleAPIs?.search(folderName, onCompleted: { [weak self] (fileItem, error) in
+            guard let self = self else { return }
             guard error == nil, fileItem != nil else {
                 return
             }
             guard let folderID = fileItem?.identifier else {
                 return
             }
-            self.googleAPIs?.listFiles(folderID, onCompleted: { (response, error) in
+            self.googleAPIs?.listFiles(folderID, onCompleted: { [weak self] (response, error) in
+                guard let self = self else { return }
                 guard let files = response?.files else { return }
                 for file in files {
                     print(">>>>>>>>>>>>>>>>>>>>")
@@ -183,12 +196,15 @@ class GoogleDriveViewController: BaseViewController {
                 }
                 print(error)
                 print(files)
+                self.activityIndicator.stopAnimating()
             })
         })
     }
     
     private func loadAllFilesAndFolders() {
-        self.googleAPIs?.allFilesAndFolders(onCompleted: { (response, error) in
+        activityIndicator.startAnimating()
+        self.googleAPIs?.allFilesAndFolders(onCompleted: { [weak self] (response, error) in
+            guard let self = self else { return }
             print("All files Response \(response)")
             print("All files error \(error?.localizedDescription)")
             guard let files = response?.files else { return }
@@ -199,6 +215,7 @@ class GoogleDriveViewController: BaseViewController {
                 print(">>>>>>>>>>>>>>>>>>>>")
                 self.dataSource.append(file)
                 self.collectionView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
             
         })
@@ -234,8 +251,6 @@ class GoogleDriveViewController: BaseViewController {
     
 }
 
-//extension GoogleDriveViewController: GIDSignInUIDelegate {}
-
 extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -267,24 +282,31 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
                     guard let self = self else { return }
                     self.handleTapOnCell(at: indexPath)
                 }
-            } else {
+            } else if file.mimeType == "image/jpeg" {
                 guard let imageUrlString = file.thumbnailLink else { return }
                 guard let imageUrl:URL = URL(string: imageUrlString) else { return }
                 guard let imageData = try? Data(contentsOf: imageUrl) else { return }
                 cell.fileImageView.image = UIImage(data: imageData)
                 cell.didChooseCell = { [weak self] in
+                    guard let _ = self else { return }
                     guard let file_id = file.identifier else { return }
-                    guard let mimeType = file.mimeType else { return }
-                    //temp as
-                    if mimeType == "image/jpeg" {
-                        ChromeCastService.shared.displayImage(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
-                    } else if mimeType == "video/mp4" {
-                        ChromeCastService.shared.displayVideo(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
-                    } else {
-                        //temp as
-                        guard let thumbnailImageLink = file.thumbnailLink else { return }
-                        ChromeCastService.shared.displayImage(with: URL(string: thumbnailImageLink)!)
-                    }
+                    ChromeCastService.shared.displayImage(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
+                }
+            } else if file.mimeType == "video/mp4" {
+                guard let imageUrlString = file.thumbnailLink else { return }
+                guard let imageUrl:URL = URL(string: imageUrlString) else { return }
+                guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+                cell.fileImageView.image = UIImage(data: imageData)
+                cell.didChooseCell = { [weak self] in
+                    guard let _ = self else { return }
+                    guard let file_id = file.identifier else { return }
+                    ChromeCastService.shared.displayVideo(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
+                }
+            } else {
+                //temp as
+                cell.fileImageView.image = UIImage(named: "documentFileIcon")!
+                cell.didChooseCell = { [weak self] in
+                    
                 }
             }
         }
@@ -292,26 +314,6 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
     //14a1vBv3cfvZ--8J11xClnwZB5IUTt0Fr
     //WORKED VIDEO LINK https://drive.google.com/uc?id=14a1vBv3cfvZ--8J11xClnwZB5IUTt0Fr
     //WORKED IMAGE LINK https://drive.google.com/uc?id=1_VdDNwB7yHWU9FCNkFGOM8Ym3XgkUU-_
-    
-    //https://docs.google.com/document/d/FILE_ID/export?format=doc
-    //image/jpeg
-    //testlink  https://docs.google.com/document/d/1_VdDNwB7yHWU9FCNkFGOM8Ym3XgkUU-_/export?format=image/jpeg
-    //    >>>webContentLink https://drive.google.com/uc?id=FILE_ID&export=download
-    //    >>>webViewLink  https://drive.google.com/file/d/FILE_ID/view?usp=drivesdk
-    //          //https://drive.google.com/file/d/1_VdDNwB7yHWU9FCNkFGOM8Ym3XgkUU-_/view
-    //        //https://drive.google.com/uc?export=view&id=1_VdDNwB7yHWU9FCNkFGOM8Ym3XgkUU-_
-    //        //https://drive.google.com/file/d/1_VdDNwB7yHWU9FCNkFGOM8Ym3XgkUU-_/view?usp=drivesdk
-    //        //https://drive.google.com/uc?id=1fKKOVct2v0c5lvY0h1PnQBECL70cBq-t&export=download
-    //https://drive.google.com/file/d/1_VdDNwB7yHWU9FCNkFGOM8Ym3XgkUU-_/view?usp=sharing
-    //        ChromeCastService.shared.displayImage(with: URL(string: "https://drive.google.com/file/d/1_VdDNwB7yHWU9FCNkFGOM8Ym3XgkUU-_/view?usp=drivesdk")!)
-    ////    https://drive.google.com/file/d/14a1vBv3cfvZ--8J11xClnwZB5IUTt0Fr/view?usp=sharing
-    //        //https://drive.google.com/file/d/14a1vBv3cfvZ--8J11xClnwZB5IUTt0Fr/view?usp=drivesdk
-    //        //https://drive.google.com/uc?id=14a1vBv3cfvZ--8J11xClnwZB5IUTt0Fr&export=download
-    //
-    ////        ChromeCastService.shared.displayIPTVBeam(with: URL(string: "https://doc-0k-74-docs.googleusercontent.com/docs/securesc/7m5gmj65d2fuu6t3fpe0o9cu8ob1fpmi/8sepu34kss45hqjurj2qr9naqa2soafc/1652545725000/17616169246755069778/17616169246755069778/14a1vBv3cfvZ--8J11xClnwZB5IUTt0Fr?ax=ACxEAsbZXgDlF42WKcZH4oUvXnMq0ZExA4QoCue1Kmg3EiOMBAAwFOKjqfygT11dndkK3-nfwp3rHLoErKa4G9XYQx8GmJ2Efq_BGw0y_fwRYiyJ2pNrEDPfekYpYHkpKMMAAIo8toqsWTdKUQ_g2tvAU01hS1Z_Nz6FtSEe12D6_zzBbkC36iUU9RNpbAb9XT-dR39EUKc5j-o7uRW845uXoR9fQMyJjobv7Lz-JXP8oSXELUtebi8SNHIGqUj_XV_Cc_pKfx_JwqpevtY2wXNTRjlwgJTvnTaQBmNB2g5R9lrLRZ2LBgeFwJSYI4BoSb0tU96SzcZcxZJPp-2nbz1pDFlReEoAUkajz-c2I-cw6TLQDGaXs6a4P2AA4byTrmhMA-ujyoseF_GHf1nn5krGU-IgTbqtkfz-c8EK9v5pFxVeGTBvm70Rc5PlCQcSH8aGNdKKHNFavabFY6lPGIaP115B-va2ZXjSZIaZA5GysSiei7RoB6TQ6CN1NJ0AzhfZcoG5J7Bivwwn2Mz6FzwsiFTvR_mATxidT01IHEj9g-T8hVAGG8OpecTezhbYapjBNPobpQYuRBvBvM85y_AQ4WQGXKksGSXyIxCN0IR0fTZTR78ANakjf1hZR512T0EzZ068zgPvxTodigShIrzCeDfYaxua5wJ4oAqYs1uesYbRBkx2MDuR3YVtpLXyTrVFXf9zAW2sJQUy8vO65NpeekRSMkkQiEZJH7jg1lJ4oLwFoLEjEMQ&authuser=0")!)
-    //
-    //
-    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: сellWidth, height: 168)
@@ -326,3 +328,4 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
 }
+
