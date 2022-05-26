@@ -97,6 +97,13 @@ class Settings: Object {
     
     @Persisted var introRatingType: String = "stars"
     
+    
+    /*
+     MARK: - Browse And Cast
+     */
+    
+    @Persisted var isTipWasShown: Bool = false
+    
     /*
      MARK: - Connection with TV
      */

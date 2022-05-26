@@ -214,3 +214,10 @@
 
 "Screen.SetupChromacast.Button" = "Start setup";
 "Screen.SetupChromacast.Subtitle2" = "If you face any problem, tap\nhere to Troubleshoot";
+
+/*
+ - Browser
+ */
+
+"Screen.Browser.Tip" = "Tap here to watch this video";
+

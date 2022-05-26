@@ -14,6 +14,7 @@ import Realm
 import RealmSwift
 import Alamofire
 import GoogleCast
+import ZMJTipView
 
 class BrowserViewController: BaseViewController {
 
@@ -326,6 +327,26 @@ class BrowserViewController: BaseViewController {
             onComplete?()
         }
     }
+    
+    private func showTipView() {
+        let preferences = ZMJPreferences()
+        preferences.drawing.font = UIFont.systemFont(ofSize: 14)
+        preferences.drawing.textAlignment = .center
+        preferences.drawing.backgroundColor = UIColor(hexString: "FBBB05")
+        preferences.positioning.maxWidth = 130
+//        preferences.positioning.bubbleVInset = 34
+        preferences.drawing.arrowPosition = .bottom
+        
+        preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialAlpha = 0;
+        preferences.animating.showDuration = 1;
+        preferences.animating.dismissDuration = 1;
+        
+        let title = NSLocalizedString("Screen.Browser.Tip", comment: "")
+        let tipView = ZMJTipView(text: title, preferences: preferences, delegate: nil)
+        tipView?.show(animated: true, for: self.detectedUrlsInteractiveView, withinSuperview: nil)
+    }
 
 
 }
@@ -426,6 +447,13 @@ extension BrowserViewController: WKScriptMessageHandler {
         let realm = try! Realm()
         try! realm.write {
             realm.add(detectedUrl, update: .all)
+        }
+        
+        if Settings.current.isTipWasShown == false {
+            self.showTipView()
+            try! Settings.current.realm?.write {
+                Settings.current.isTipWasShown = true
+            }
         }
         
         detectedUrlsInteractiveView.bounce { }

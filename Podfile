@@ -35,6 +35,7 @@ target 'ChromecastIOS' do
   pod 'GoogleAPIClientForREST/Drive'#, '~> 1.2.1'
   pod 'GoogleSignIn'#, '~> 4.1.1'
   pod "NextLevelSessionExporter", "~> 0.4.5"
+  pod 'ZMJTipView'
 end 
 
  post_install do |installer_representation|
