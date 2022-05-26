@@ -60,7 +60,7 @@ class GoogleDriveViewController: BaseViewController {
     }
     
     private func setupSearchBar() {
-        searchBar.delegate = self
+//        searchBar.delegate = self
         searchBar.searchTextField.textColor = UIColor.black.withAlphaComponent(0.8)
     }
     

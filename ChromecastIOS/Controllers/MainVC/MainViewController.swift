@@ -169,9 +169,12 @@ class MainViewController: BaseViewController {
             viewController.hidesBottomBarWhenPushed = true
             self.navigation?.pushViewController(viewController, animated: .left)
         case .youtube:
+            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.youtube.rawValue, with: { [weak self] success in
+                guard let self = self, success == true else { return }
             let viewController = YouTubeViewController()
             viewController.hidesBottomBarWhenPushed = true
             self.navigation?.pushViewController(viewController, animated: .left)
+            })
         case .googleDrive:
             let viewController = GoogleDriveViewController()
             viewController.hidesBottomBarWhenPushed = true

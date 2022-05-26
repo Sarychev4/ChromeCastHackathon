@@ -141,8 +141,8 @@ class YouTubeViewController: BaseViewController {
      */
     
     private func playVideo(at index: Int, resolution: ResolutionType? = nil) {
-        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.youtube.rawValue, with: { [weak self] success in
-            guard let self = self, success == true else { return }
+//        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.youtube.rawValue, with: { [weak self] success in
+//            guard let self = self, success == true else { return }
             self.connectIfNeeded { [weak self] in
                 guard let self = self else { return }
                 self.selectedIndex = index
@@ -165,7 +165,7 @@ class YouTubeViewController: BaseViewController {
                     }
                 }
             }
-        })
+//        })
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
