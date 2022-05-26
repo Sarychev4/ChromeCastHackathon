@@ -117,7 +117,7 @@ extension ThumbnailMasterFlowLayout {
         for itemIndex in 0 ..< cellCount {
             if rect.contains(normalCenterPoints[itemIndex]) {
                 let indexPath = IndexPath(item: itemIndex, section: 0)
-                guard let layoutAttributes = layoutAttributesForItem(at: indexPath) else { return }
+                guard let layoutAttributes = layoutAttributesForItem(at: indexPath) else { return nil }
                 let attributes = layoutAttributes
                 allAttributes.append(attributes)
             }

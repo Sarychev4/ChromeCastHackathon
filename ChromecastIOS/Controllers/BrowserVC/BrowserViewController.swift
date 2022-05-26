@@ -163,7 +163,7 @@ class BrowserViewController: BaseViewController {
                     webView.loadFileURL(indexURL, allowingReadAccessTo: indexURL)
                 }
             } else {
-                guard let currentTabUrl = URL(string: currentTab.link)
+                guard let currentTabUrl = URL(string: currentTab.link) else { return }
                 webView.load(URLRequest(url: currentTabUrl))
             }
         }
