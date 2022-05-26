@@ -53,6 +53,11 @@ class MainViewController: BaseViewController {
                 }//temp vr 1
                 return
             #endif
+                
+                SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.banner.rawValue, with: { [weak self] success in
+                    guard let self = self else { return }
+                    self.collectionView.reloadData()
+                })
             }
         }
     }
