@@ -15,6 +15,7 @@
                 <outlet property="activityIndicator" destination="UfF-Rx-7s2" id="r6O-sm-ZHB"/>
                 <outlet property="continueInteractiveView" destination="kT7-wI-sVr" id="1Dn-hZ-pRa"/>
                 <outlet property="continueLabel" destination="F6T-Ep-i8E" id="6jK-zQ-TCy"/>
+                <outlet property="dontSeeImageInteractiveLabel" destination="euY-Lf-AOJ" id="kwv-E0-fJl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -140,7 +141,7 @@ established</string>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76u-XU-28F">
                             <rect key="frame" x="40" y="842" width="334" height="54"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_I don't see the image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euY-Lf-AOJ" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_I don't see the image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euY-Lf-AOJ" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                     <rect key="frame" x="81" y="18" width="172.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" name="AppleBlue"/>

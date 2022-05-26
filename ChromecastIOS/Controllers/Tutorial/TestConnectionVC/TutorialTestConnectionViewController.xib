@@ -15,6 +15,7 @@
                 <outlet property="activityIndicator" destination="YXa-HZ-KZ7" id="E31-Hl-CZ7"/>
                 <outlet property="continueInteractiveView" destination="dqh-Ji-ul4" id="gAZ-aI-scn"/>
                 <outlet property="continueLabel" destination="FDK-B9-scP" id="fID-ir-1wH"/>
+                <outlet property="dontSeeImageInteractiveLabel" destination="7fB-UY-arc" id="ygP-jM-ogh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -141,7 +142,7 @@ image</string>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkr-kU-RS5" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                             <rect key="frame" x="40" y="842" width="334" height="54"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Don't see the image?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fB-UY-arc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Don't see the image?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fB-UY-arc" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                     <rect key="frame" x="80" y="18" width="174.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" name="AppleBlue"/>

@@ -6,13 +6,18 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupChromeCastViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="backInteractiveView" destination="nUA-2j-17Q" id="MEO-aI-jxp"/>
+                <outlet property="continueInteractiveView" destination="pde-R4-3o7" id="C9f-h0-cTC"/>
+                <outlet property="imageView" destination="CYU-CW-p85" id="UNc-vu-9nK"/>
+                <outlet property="playInteractiveView" destination="E5S-Yp-xSB" id="bSn-MN-Api"/>
+                <outlet property="tapHereForHelpInteractiveLabel" destination="etX-Q7-HzR" id="631-hv-dje"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="apW-tP-Wcb" id="0J9-lk-07g"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,13 +32,13 @@
                             <rect key="frame" x="0.0" y="52" width="414" height="33"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zto-Z5-feg">
-                                    <rect key="frame" x="10" y="0.0" width="394" height="33"/>
+                                    <rect key="frame" x="16" y="0.0" width="382" height="33"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-lH-1vx">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="33"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="33"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFr-bD-Hug">
-                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="24"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUA-2j-17Q" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -54,10 +59,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBN-5r-vmt">
-                                                            <rect key="frame" x="24" y="0.0" width="346" height="24"/>
+                                                            <rect key="frame" x="24" y="0.0" width="334" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Chromecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imO-eu-teq" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                                    <rect key="frame" x="99" y="2" width="148" height="20.5"/>
+                                                                    <rect key="frame" x="93" y="2" width="148" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -70,7 +75,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-g8-pbd">
-                                                            <rect key="frame" x="370" y="0.0" width="24" height="24"/>
+                                                            <rect key="frame" x="358" y="0.0" width="24" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="0uT-ZJ-LVh"/>
@@ -98,70 +103,115 @@
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Zto-Z5-feg" secondAttribute="bottom" id="EGc-0E-yis"/>
                                 <constraint firstItem="Zto-Z5-feg" firstAttribute="top" secondItem="ba4-fk-kPC" secondAttribute="top" id="GJ6-fm-jZt"/>
-                                <constraint firstAttribute="trailing" secondItem="Zto-Z5-feg" secondAttribute="trailing" constant="10" id="QHR-Vt-kGI"/>
-                                <constraint firstItem="Zto-Z5-feg" firstAttribute="leading" secondItem="ba4-fk-kPC" secondAttribute="leading" constant="10" id="piF-O8-32y"/>
+                                <constraint firstAttribute="trailing" secondItem="Zto-Z5-feg" secondAttribute="trailing" constant="16" id="QHR-Vt-kGI"/>
+                                <constraint firstItem="Zto-Z5-feg" firstAttribute="leading" secondItem="ba4-fk-kPC" secondAttribute="leading" constant="16" id="piF-O8-32y"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lCi-X4-8eR">
-                            <rect key="frame" x="16" y="109" width="382" height="548"/>
+                            <rect key="frame" x="40" y="109" width="334" height="727"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6b9-h1-vTd">
-                                    <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="132.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7T-c3-6sk" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
-                                            <string key="text">_Don't see your Chromecast in
-the list? You first need to
-Setup Chromecast. Its quite easy. Just follow this Tutorial
-Video</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="57.5"/>
+                                            <string key="text">_Can’t find your
+Chromecast in the list?</string>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                            <color key="textColor" name="labelColorDark"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle.1"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5X-Qq-Tdn" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="71.5" width="334" height="41"/>
+                                            <string key="text">_Follow the steps in the video to set
+everything up.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" name="labelColorGrayPunk"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle.2"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="MainBackground"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="P7T-c3-6sk" secondAttribute="trailing" id="24X-iT-1T3"/>
-                                        <constraint firstItem="P7T-c3-6sk" firstAttribute="top" secondItem="6b9-h1-vTd" secondAttribute="top" id="E3e-h1-RPm"/>
-                                        <constraint firstAttribute="bottom" secondItem="P7T-c3-6sk" secondAttribute="bottom" id="EZE-J4-AMU"/>
-                                        <constraint firstItem="P7T-c3-6sk" firstAttribute="leading" secondItem="6b9-h1-vTd" secondAttribute="leading" id="uSl-DW-Gab"/>
+                                        <constraint firstAttribute="trailing" secondItem="U5X-Qq-Tdn" secondAttribute="trailing" id="0wt-2h-7Ej"/>
+                                        <constraint firstItem="U5X-Qq-Tdn" firstAttribute="top" secondItem="P7T-c3-6sk" secondAttribute="bottom" constant="14" id="FdU-9i-ExC"/>
+                                        <constraint firstItem="P7T-c3-6sk" firstAttribute="top" secondItem="6b9-h1-vTd" secondAttribute="top" id="Fi1-es-XV9"/>
+                                        <constraint firstItem="P7T-c3-6sk" firstAttribute="leading" secondItem="6b9-h1-vTd" secondAttribute="leading" id="Tae-SY-cjQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="P7T-c3-6sk" secondAttribute="trailing" id="dAo-Sd-BhA"/>
+                                        <constraint firstAttribute="bottom" secondItem="U5X-Qq-Tdn" secondAttribute="bottom" constant="20" id="mQa-am-EiQ"/>
+                                        <constraint firstItem="U5X-Qq-Tdn" firstAttribute="leading" secondItem="6b9-h1-vTd" secondAttribute="leading" id="pXu-pO-mw8"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdZ-Ps-kU6">
-                                    <rect key="frame" x="0.0" y="128" width="382" height="220"/>
+                                    <rect key="frame" x="0.0" y="132.5" width="334" height="166"/>
                                     <subviews>
                                         <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apW-tP-Wcb">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="166"/>
                                             <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="220" id="0fG-OG-8mh"/>
+                                                <constraint firstAttribute="height" constant="166" id="Ksc-HE-kyU"/>
                                             </constraints>
                                             <wkWebViewConfiguration key="configuration">
                                                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                                 <wkPreferences key="preferences"/>
                                             </wkWebViewConfiguration>
                                         </wkWebView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="videoChromecast" translatesAutoresizingMaskIntoConstraints="NO" id="CYU-CW-p85">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="166"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5S-Yp-xSB" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="145" y="61" width="44" height="44"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playVideo" translatesAutoresizingMaskIntoConstraints="NO" id="dg5-PK-7ZV">
+                                                    <rect key="frame" x="-2" y="-2" width="48" height="48"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="LI8-dP-4n0"/>
+                                                <constraint firstItem="dg5-PK-7ZV" firstAttribute="centerY" secondItem="E5S-Yp-xSB" secondAttribute="centerY" id="Msh-Kk-eDz"/>
+                                                <constraint firstItem="dg5-PK-7ZV" firstAttribute="centerX" secondItem="E5S-Yp-xSB" secondAttribute="centerX" id="eta-jO-bpd"/>
+                                                <constraint firstAttribute="height" constant="44" id="lPK-2H-UId"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="MainBackground"/>
                                     <constraints>
+                                        <constraint firstItem="CYU-CW-p85" firstAttribute="top" secondItem="pdZ-Ps-kU6" secondAttribute="top" id="BGO-ew-UQP"/>
                                         <constraint firstItem="apW-tP-Wcb" firstAttribute="leading" secondItem="pdZ-Ps-kU6" secondAttribute="leading" id="CLF-tx-COv"/>
                                         <constraint firstItem="apW-tP-Wcb" firstAttribute="top" secondItem="pdZ-Ps-kU6" secondAttribute="top" id="ClV-s4-8c6"/>
+                                        <constraint firstItem="E5S-Yp-xSB" firstAttribute="centerY" secondItem="pdZ-Ps-kU6" secondAttribute="centerY" id="G9t-1E-iHu"/>
+                                        <constraint firstAttribute="bottom" secondItem="CYU-CW-p85" secondAttribute="bottom" id="Grg-Dn-9dX"/>
+                                        <constraint firstItem="E5S-Yp-xSB" firstAttribute="centerX" secondItem="pdZ-Ps-kU6" secondAttribute="centerX" id="LvY-iv-uQv"/>
+                                        <constraint firstAttribute="trailing" secondItem="CYU-CW-p85" secondAttribute="trailing" id="O52-qf-KO2"/>
+                                        <constraint firstItem="CYU-CW-p85" firstAttribute="leading" secondItem="pdZ-Ps-kU6" secondAttribute="leading" id="b2O-nq-EwV"/>
                                         <constraint firstAttribute="bottom" secondItem="apW-tP-Wcb" secondAttribute="bottom" id="pLS-42-q6w"/>
                                         <constraint firstAttribute="trailing" secondItem="apW-tP-Wcb" secondAttribute="trailing" id="qQ5-Re-2Bf"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ki7-NX-MBg">
+                                    <rect key="frame" x="0.0" y="298.5" width="334" height="336.5"/>
+                                    <color key="backgroundColor" name="MainBackground"/>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQb-nI-kd6">
-                                    <rect key="frame" x="0.0" y="348" width="382" height="72"/>
+                                    <rect key="frame" x="0.0" y="635" width="334" height="68"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pde-R4-3o7">
-                                            <rect key="frame" x="148" y="24" width="86.5" height="24"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pde-R4-3o7" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="48"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Setup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We2-33-aA1" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="86.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We2-33-aA1" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                    <rect key="frame" x="140.5" y="0.0" width="53.5" height="48"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                     <color key="textColor" name="MainBackground"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -169,61 +219,92 @@ Video</string>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <color key="backgroundColor" name="AppleBlue"/>
                                             <constraints>
-                                                <constraint firstItem="We2-33-aA1" firstAttribute="leading" secondItem="pde-R4-3o7" secondAttribute="leading" id="ARV-9o-iIM"/>
-                                                <constraint firstAttribute="height" constant="24" id="ZYb-tN-E4C"/>
-                                                <constraint firstAttribute="trailing" secondItem="We2-33-aA1" secondAttribute="trailing" id="pYm-zy-lKf"/>
+                                                <constraint firstItem="We2-33-aA1" firstAttribute="centerY" secondItem="pde-R4-3o7" secondAttribute="centerY" id="SOY-9U-gyT"/>
+                                                <constraint firstItem="We2-33-aA1" firstAttribute="centerX" secondItem="pde-R4-3o7" secondAttribute="centerX" id="SvM-nE-y7I"/>
+                                                <constraint firstAttribute="height" constant="48" id="ZMe-fw-X76"/>
                                                 <constraint firstItem="We2-33-aA1" firstAttribute="top" secondItem="pde-R4-3o7" secondAttribute="top" id="zy8-Mk-FOp"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="MainBackground"/>
                                     <constraints>
-                                        <constraint firstItem="pde-R4-3o7" firstAttribute="centerX" secondItem="fQb-nI-kd6" secondAttribute="centerX" id="7PT-Sg-HIR"/>
-                                        <constraint firstItem="pde-R4-3o7" firstAttribute="centerY" secondItem="fQb-nI-kd6" secondAttribute="centerY" id="GlU-f7-UYI"/>
-                                        <constraint firstItem="pde-R4-3o7" firstAttribute="top" secondItem="fQb-nI-kd6" secondAttribute="top" constant="24" id="gvK-Vj-SfX"/>
+                                        <constraint firstAttribute="bottom" secondItem="pde-R4-3o7" secondAttribute="bottom" constant="20" id="2NT-fc-kv7"/>
+                                        <constraint firstAttribute="trailing" secondItem="pde-R4-3o7" secondAttribute="trailing" id="UO5-TL-OgQ"/>
+                                        <constraint firstItem="pde-R4-3o7" firstAttribute="leading" secondItem="fQb-nI-kd6" secondAttribute="leading" id="bOQ-yk-skv"/>
+                                        <constraint firstItem="pde-R4-3o7" firstAttribute="top" secondItem="fQb-nI-kd6" secondAttribute="top" id="gvK-Vj-SfX"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5C-aK-BWV">
-                                    <rect key="frame" x="0.0" y="420" width="382" height="128"/>
+                                    <rect key="frame" x="0.0" y="703" width="334" height="24"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed4-KL-uIy" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="128"/>
-                                            <string key="text">If you face any problem, tap
-here to Troubleshoot</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" name="labelColorDark"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle2"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Gl8-32-wzq">
+                                            <rect key="frame" x="46.5" y="0.0" width="241" height="24"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Still having issues?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed4-KL-uIy" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="7" width="125.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <color key="textColor" name="labelColorDark"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle.3"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gr3-je-OR9">
+                                                    <rect key="frame" x="125.5" y="7" width="4" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap here for help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etX-Q7-HzR" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                    <rect key="frame" x="129.5" y="7" width="111.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <color key="textColor" name="AppleBlue"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.SetupChromacast.Subtitle.4"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="47K-MK-fpk"/>
+                                            </constraints>
+                                        </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" name="MainBackground"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Ed4-KL-uIy" secondAttribute="trailing" id="3Uk-Qd-E0p"/>
-                                        <constraint firstAttribute="bottom" secondItem="Ed4-KL-uIy" secondAttribute="bottom" id="7Vs-uW-iqg"/>
-                                        <constraint firstItem="Ed4-KL-uIy" firstAttribute="leading" secondItem="O5C-aK-BWV" secondAttribute="leading" id="hPm-Cb-4JS"/>
-                                        <constraint firstItem="Ed4-KL-uIy" firstAttribute="top" secondItem="O5C-aK-BWV" secondAttribute="top" id="roO-uV-LXk"/>
+                                        <constraint firstItem="Gl8-32-wzq" firstAttribute="top" secondItem="O5C-aK-BWV" secondAttribute="top" id="Pad-gt-esx"/>
+                                        <constraint firstItem="Gl8-32-wzq" firstAttribute="centerX" secondItem="O5C-aK-BWV" secondAttribute="centerX" id="YUM-7U-EuZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gl8-32-wzq" secondAttribute="bottom" id="gG6-n2-OID"/>
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="6b9-h1-vTd" firstAttribute="leading" secondItem="lCi-X4-8eR" secondAttribute="leading" id="E8W-6F-hBU"/>
+                                <constraint firstAttribute="trailing" secondItem="6b9-h1-vTd" secondAttribute="trailing" id="Fh7-cZ-Nme"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="lCi-X4-8eR" secondAttribute="trailing" constant="16" id="ASe-Ff-W16"/>
+                        <constraint firstAttribute="trailing" secondItem="lCi-X4-8eR" secondAttribute="trailing" constant="40" id="ASe-Ff-W16"/>
+                        <constraint firstAttribute="bottom" secondItem="lCi-X4-8eR" secondAttribute="bottom" constant="60" id="Chc-pn-7nk"/>
                         <constraint firstItem="ba4-fk-kPC" firstAttribute="top" secondItem="gDq-GH-y06" secondAttribute="top" constant="52" id="EXh-Nh-udY"/>
                         <constraint firstItem="lCi-X4-8eR" firstAttribute="top" secondItem="ba4-fk-kPC" secondAttribute="bottom" constant="24" id="WVe-cg-Cif"/>
-                        <constraint firstItem="lCi-X4-8eR" firstAttribute="leading" secondItem="gDq-GH-y06" secondAttribute="leading" constant="16" id="YF2-st-3w8"/>
+                        <constraint firstItem="lCi-X4-8eR" firstAttribute="leading" secondItem="gDq-GH-y06" secondAttribute="leading" constant="40" id="YF2-st-3w8"/>
                         <constraint firstItem="ba4-fk-kPC" firstAttribute="leading" secondItem="gDq-GH-y06" secondAttribute="leading" id="a5d-kg-EQn"/>
                         <constraint firstAttribute="trailing" secondItem="ba4-fk-kPC" secondAttribute="trailing" id="hmN-yH-lTh"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="MainBackground"/>
             <constraints>
                 <constraint firstItem="gDq-GH-y06" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bca-Xj-FGn"/>
                 <constraint firstItem="gDq-GH-y06" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="E0x-Hx-gxx"/>
@@ -235,17 +316,19 @@ here to Troubleshoot</string>
     </objects>
     <resources>
         <image name="backArrow" width="16" height="16"/>
+        <image name="playVideo" width="48" height="48"/>
+        <image name="videoChromecast" width="295" height="166"/>
+        <namedColor name="AppleBlue">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="labelColorDark">
             <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="labelColorGrayPunk">
+            <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -18,6 +18,8 @@ class TutorialPreviewImageViewController: BaseViewController {
     @IBOutlet weak var continueLabel: DefaultLabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var dontSeeImageInteractiveLabel: InteractiveLabel!
+    
     var didFinishAction: (() -> ())?
     var source: String!
     var nameForEvents: String {
@@ -47,6 +49,18 @@ class TutorialPreviewImageViewController: BaseViewController {
         
         /*
          */
+        
+        dontSeeImageInteractiveLabel.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            let viewController = SetupChromeCastViewController()
+            viewController.modalPresentationStyle = .fullScreen
+            
+            if let navController = self.navigationController {
+                navController.pushViewController(viewController, animated: true)
+            } else {
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

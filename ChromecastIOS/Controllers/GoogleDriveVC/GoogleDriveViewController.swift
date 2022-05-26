@@ -371,7 +371,9 @@ extension GoogleDriveViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 0 {
-            
+            dataSource.filter { <#GTLRDrive_File#> in
+                <#code#>
+            }
         }
     }
     

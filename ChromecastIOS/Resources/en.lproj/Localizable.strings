@@ -210,11 +210,11 @@
  */
 
 "Screen.SetupChromacast.Title" = "Setup Chromacast";
-"Screen.SetupChromacast.Subtitle" = "Don't see your Chromecast in\nthe list? You first need to\n Setup Chromecast. Its quite easy. Just follow this Tutorial\n Video";
-
-"Screen.SetupChromacast.Button" = "Start setup";
-"Screen.SetupChromacast.Subtitle2" = "If you face any problem, tap\nhere to Troubleshoot";
-
+"Screen.SetupChromacast.Subtitle.1" = "Can’t find your\nChromecast in the list?";
+"Screen.SetupChromacast.Subtitle.2" = "Follow the steps in the video to set\neverything up.";
+"Screen.SetupChromacast.Button" = "Set up";
+"Screen.SetupChromacast.Subtitle.3" = "Still having issues?";
+"Screen.SetupChromacast.Subtitle.4" = "Tap here for help";
 /*
  - Browser
  */
