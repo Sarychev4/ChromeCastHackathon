@@ -112,10 +112,14 @@ class ListDevicesViewController: AFFloatingPanelViewController {
                             device.isConnected = true
                             realm.add(device, update: .all)
                         }
-                        self.dismiss(animated: true, completion: nil)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.hidePanel { [weak self] in
+                            guard let self = self else { return }
                             self.didFinishAction?()
                         }
+//                        self.dismiss(animated: true, completion: nil)
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//
+//                        }
                     }
                 })
 //            }
