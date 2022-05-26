@@ -60,7 +60,7 @@ class GoogleDriveViewController: BaseViewController {
     }
     
     private func setupSearchBar() {
-//        searchBar.delegate = self
+        searchBar.delegate = self
         searchBar.searchTextField.textColor = UIColor.black.withAlphaComponent(0.8)
     }
     
@@ -86,7 +86,8 @@ class GoogleDriveViewController: BaseViewController {
         
         moreActionsInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            self.signOut()
+            //            self.signOut()
+            self.showActionSheet()
         }
         
         connectInteractiveView.didTouchAction = { [weak self] in
@@ -248,6 +249,23 @@ class GoogleDriveViewController: BaseViewController {
         self.navigation?.pushViewController(viewController, animated: .left)
     }
     
+    func showActionSheet() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
+        alert.addAction(UIAlertAction(title: "Log out from Google account", style: .destructive, handler: { [weak self] (_) in
+            guard let self = self else { return }
+            self.signOut()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            
+        })
+    }
+    
     
 }
 
@@ -329,3 +347,33 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
     
 }
 
+extension GoogleDriveViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        if text == "" {
+            self.searchBar.endEditing(true)
+        } else {
+            
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        if text == "" {
+            self.searchBar.endEditing(true)
+        } else {
+            
+            self.searchBar.endEditing(true)
+        }
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count > 0 {
+            
+        }
+    }
+    
+    
+}
