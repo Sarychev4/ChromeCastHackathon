@@ -404,6 +404,7 @@ extension BrowserViewController: UISearchBarDelegate {
             searchTextOnGoogle(text: text)
             print(">>> Text Field was edited GOOGLE")
         }
+        self.searchBar.endEditing(true)
     }
 }
 
