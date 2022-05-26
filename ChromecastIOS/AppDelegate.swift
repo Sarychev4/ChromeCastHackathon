@@ -12,6 +12,9 @@ import GoogleCast
 import Firebase
 import GoogleSignIn
 import Criollo
+import AppTrackingTransparency
+import AdSupport
+import ApphudSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -89,6 +92,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loadingViewController = LoadingViewController()
         loadingViewController.didFinishAction = { [weak self] in
             guard let self = self else { return }
+            
+//            if #available(iOS 14, *) {
+//                ATTrackingManager.requestTrackingAuthorization { status in
+//                    guard status == .authorized else {return}
+//                    let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+//                    Apphud.setAdvertisingIdentifier(idfa)
+//                }
+//            }
+            
             
             if Settings.current.isIntroCompleted {
                 DataManager.shared.setupSpecialOfferTimer()

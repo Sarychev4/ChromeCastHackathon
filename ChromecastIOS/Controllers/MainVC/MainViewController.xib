@@ -79,7 +79,7 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crown" translatesAutoresizingMaskIntoConstraints="NO" id="zwg-tQ-25c">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crown" translatesAutoresizingMaskIntoConstraints="NO" id="zwg-tQ-25c">
                                                             <rect key="frame" x="24" y="11" width="18" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="18" id="wmk-lq-TtD"/>
@@ -350,9 +350,9 @@
         </view>
     </objects>
     <resources>
+        <image name="Crown" width="18" height="18"/>
         <image name="Ellipse" width="98" height="98"/>
         <image name="cast" width="44" height="36"/>
-        <image name="crown" width="18" height="18"/>
         <image name="logo" width="42" height="42"/>
         <image name="settings" width="48" height="48"/>
         <namedColor name="MainBackground">
