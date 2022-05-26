@@ -91,7 +91,8 @@ extension HDFlowLayout {
         for itemIndex in 0 ..< cellCount {
             if rect.intersects(cellEstimatedFrames[itemIndex]) {
                 let indexPath = IndexPath(item: itemIndex, section: 0)
-                let attributes = layoutAttributesForItem(at: indexPath)!
+                guard let layoutAttributes = layoutAttributesForItem(at: indexPath) else { return nil }
+                let attributes = layoutAttributes
                 allAttributes.append(attributes)
             }
         }

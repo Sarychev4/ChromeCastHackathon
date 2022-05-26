@@ -101,8 +101,7 @@ class MainViewController: BaseViewController {
         
         collectionView.contentInset.top = 0
         setupTabs()
-        //temp as
-//        setupHelpSection()
+        setupHelpSection()
     }
     
     private func setupTabs() {
@@ -187,20 +186,15 @@ class MainViewController: BaseViewController {
     }
     
     private func setupHelpSection() {
-//        needHelpInteractiveLabel.attributedText = NSAttributedString(string: NSLocalizedString("Screen.Main.NeedHelp.Title", comment: ""), attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
-        
         needHelpInteractiveLabel.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.checkInternetConnection {
-                let viewController = HelpViewController()
-                viewController.title = NSLocalizedString("MoreFAQ", comment: "")
-                viewController.url = ChromeCastFAQURL
-                self.present(viewController, animated: true, completion: nil)
-                
-                viewController.didFinishAction = { [weak self] in
-                    guard let _ = self else { return }
-                    viewController.dismiss(animated: true)
+                let viewController = SetupChromeCastViewController()
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.hideInteractiveViewCompletion = {
+                    viewController.backInteractiveView.isHidden = true
                 }
+                self.present(viewController, animated: true, completion: nil)
             }
         }
     }

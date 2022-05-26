@@ -308,7 +308,8 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
                 cell.didChooseCell = { [weak self] in
                     guard let _ = self else { return }
                     guard let file_id = file.identifier else { return }
-                    ChromeCastService.shared.displayImage(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
+                    guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
+                    ChromeCastService.shared.displayImage(with: urlWithFileID)
                 }
             } else if file.mimeType == "video/mp4" {
                 guard let imageUrlString = file.thumbnailLink else { return }
@@ -318,13 +319,13 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
                 cell.didChooseCell = { [weak self] in
                     guard let _ = self else { return }
                     guard let file_id = file.identifier else { return }
-                    ChromeCastService.shared.displayVideo(with: URL(string: "https://drive.google.com/uc?id=\(file_id)")!)
+                    guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
+                    ChromeCastService.shared.displayVideo(with: urlWithFileID)
                 }
             } else {
-                //temp as
                 cell.fileImageView.image = UIImage(named: "documentFileIcon")!
                 cell.didChooseCell = { [weak self] in
-                    
+                    guard let _ = self else { return }
                 }
             }
         }
@@ -371,9 +372,9 @@ extension GoogleDriveViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 0 {
-            dataSource.filter { <#GTLRDrive_File#> in
-                <#code#>
-            }
+//            dataSource.filter {  in
+//                
+//            }
         }
     }
     

@@ -11,6 +11,7 @@ import WebKit
 class SetupChromeCastViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
+    @IBOutlet weak var closeInteractiveView: InteractiveView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var playInteractiveView: InteractiveView!
@@ -18,21 +19,34 @@ class SetupChromeCastViewController: BaseViewController {
     @IBOutlet weak var continueInteractiveView: InteractiveView!
     @IBOutlet weak var tapHereForHelpInteractiveLabel: InteractiveLabel!
     
-    var didFinishAction: (() -> ())?
+    var hideInteractiveViewCompletion: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
-        let url = URL(string: "https://www.youtube.com/embed/6YmWCbgZuts")!
+        hideInteractiveViewCompletion?()
+        
+        guard let url = URL(string: "https://www.youtube.com/embed/6YmWCbgZuts") else { return }
         let urlRequest = URLRequest(url: url)
         self.webView.load(urlRequest)
         self.webView.layer.opacity = 0
         
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            self.navigationController.popViewController(self, animated: true)
+            if let navController = self.navigationController {
+                navController.popViewController(animated: true)
+            } else {
+                self.navigation?.popViewController(self, animated: true)
+            }
+            
         }
+        
+        closeInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        
         
         playInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
@@ -44,11 +58,6 @@ class SetupChromeCastViewController: BaseViewController {
             } completion: { success in
                 
             }
-        }
-        
-        continueInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            self.didFinishAction?()
         }
         
         tapHereForHelpInteractiveLabel.didTouchAction = { [weak self] in

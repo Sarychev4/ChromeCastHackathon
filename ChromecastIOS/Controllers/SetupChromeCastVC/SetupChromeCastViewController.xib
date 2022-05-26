@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetupChromeCastViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="backInteractiveView" destination="nUA-2j-17Q" id="MEO-aI-jxp"/>
+                <outlet property="closeInteractiveView" destination="4T1-g8-pbd" id="W1x-6m-8jU"/>
                 <outlet property="continueInteractiveView" destination="pde-R4-3o7" id="C9f-h0-cTC"/>
                 <outlet property="imageView" destination="CYU-CW-p85" id="UNc-vu-9nK"/>
                 <outlet property="playInteractiveView" destination="E5S-Yp-xSB" id="bSn-MN-Api"/>
@@ -58,11 +59,15 @@
                                                                 <constraint firstItem="MlE-Jd-9VP" firstAttribute="centerX" secondItem="nUA-2j-17Q" secondAttribute="centerX" id="uiC-1L-r2P"/>
                                                             </constraints>
                                                         </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALe-CZ-bHf">
+                                                            <rect key="frame" x="24" y="0.0" width="93" height="24"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBN-5r-vmt">
-                                                            <rect key="frame" x="24" y="0.0" width="334" height="24"/>
+                                                            <rect key="frame" x="117" y="0.0" width="148" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Chromecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imO-eu-teq" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                                    <rect key="frame" x="93" y="2" width="148" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="2" width="148" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -70,20 +75,33 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="imO-eu-teq" firstAttribute="centerY" secondItem="nBN-5r-vmt" secondAttribute="centerY" id="Zqj-g5-fIH"/>
-                                                                <constraint firstItem="imO-eu-teq" firstAttribute="centerX" secondItem="nBN-5r-vmt" secondAttribute="centerX" id="xO1-tw-EGt"/>
+                                                                <constraint firstItem="imO-eu-teq" firstAttribute="top" secondItem="nBN-5r-vmt" secondAttribute="top" constant="2" id="DB1-rH-CnS"/>
+                                                                <constraint firstItem="imO-eu-teq" firstAttribute="leading" secondItem="nBN-5r-vmt" secondAttribute="leading" id="KF8-4D-RWb"/>
+                                                                <constraint firstAttribute="trailing" secondItem="imO-eu-teq" secondAttribute="trailing" id="aAv-y8-NeZ"/>
+                                                                <constraint firstItem="imO-eu-teq" firstAttribute="centerY" secondItem="nBN-5r-vmt" secondAttribute="centerY" id="nZi-D7-dI4"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-g8-pbd">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-vw-7mP">
+                                                            <rect key="frame" x="265" y="0.0" width="93" height="24"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-g8-pbd" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="358" y="0.0" width="24" height="24"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="M1c-x9-29O">
+                                                                    <rect key="frame" x="4" y="4" width="16" height="16"/>
+                                                                </imageView>
+                                                            </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="0uT-ZJ-LVh"/>
+                                                                <constraint firstItem="M1c-x9-29O" firstAttribute="centerX" secondItem="4T1-g8-pbd" secondAttribute="centerX" id="2R1-Kt-dEr"/>
+                                                                <constraint firstItem="M1c-x9-29O" firstAttribute="centerY" secondItem="4T1-g8-pbd" secondAttribute="centerY" id="hVe-aV-rCR"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="MlE-Jd-9VP" firstAttribute="centerY" secondItem="imO-eu-teq" secondAttribute="centerY" id="RZk-ux-bUU"/>
+                                                        <constraint firstItem="nBN-5r-vmt" firstAttribute="centerX" secondItem="lFr-bD-Hug" secondAttribute="centerX" id="L8p-rl-Pf4"/>
                                                         <constraint firstAttribute="height" constant="24" id="xp7-3g-oSE"/>
                                                     </constraints>
                                                 </stackView>
@@ -117,7 +135,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="57.5"/>
                                             <string key="text">_Can’t find your
 Chromecast in the list?</string>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                             <color key="textColor" name="labelColorDark"/>
                                             <nil key="highlightedColor"/>
                                             <userDefinedRuntimeAttributes>
@@ -316,6 +334,7 @@ everything up.</string>
     </objects>
     <resources>
         <image name="backArrow" width="16" height="16"/>
+        <image name="close" width="16" height="16"/>
         <image name="playVideo" width="48" height="48"/>
         <image name="videoChromecast" width="295" height="166"/>
         <namedColor name="AppleBlue">

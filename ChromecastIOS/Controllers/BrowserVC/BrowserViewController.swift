@@ -153,7 +153,8 @@ class BrowserViewController: BaseViewController {
             if let indexURL = Bundle.main.url(forResource: "Index", withExtension:"html") {
                 webView.loadFileURL(indexURL, allowingReadAccessTo: indexURL)
             } else {
-                webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
+                guard let googleUrl = URL(string: "https://www.google.com") else { return }
+                webView.load(URLRequest(url: googleUrl))
             }
         } else {
             let currentTab = BrowserTab.current
@@ -162,7 +163,8 @@ class BrowserViewController: BaseViewController {
                     webView.loadFileURL(indexURL, allowingReadAccessTo: indexURL)
                 }
             } else {
-                webView.load(URLRequest(url: URL(string: currentTab.link)!))
+                guard let currentTabUrl = URL(string: currentTab.link)
+                webView.load(URLRequest(url: currentTabUrl))
             }
         }
     }
@@ -232,7 +234,8 @@ class BrowserViewController: BaseViewController {
             guard let indexURL = Bundle.main.url(forResource: "Index", withExtension:"html") else { return }
             webView.loadFileURL(indexURL, allowingReadAccessTo: indexURL)
         } else {
-            webView.load(URLRequest(url: URL(string: currentTab.link)!))
+            guard let currentTabUrl = URL(string: currentTab.link) else { return }
+            webView.load(URLRequest(url: currentTabUrl))
         }
     }
     
@@ -385,7 +388,8 @@ extension BrowserViewController: UISearchBarDelegate {
         func searchTextOnGoogle(text: String) {
             let textComponent = text.components(separatedBy: " ")
             let searchString = textComponent.joined(separator: "+")
-            var urlComps = URLComponents(string: "https://www.google.com/search")!
+            guard let googleSearchUrlComponents = URLComponents(string: "https://www.google.com/search") else { return }
+            var urlComps = googleSearchUrlComponents
             urlComps.queryItems = [URLQueryItem(name: "q", value: searchString)]
             let url = urlComps.url!
             let urlRequest = URLRequest(url: url)

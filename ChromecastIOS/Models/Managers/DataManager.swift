@@ -230,8 +230,8 @@ class DataManager: NSObject {
     
     func checkConnection(with completeBlock: @escaping ((_ responseStatus: ResponseStatus) -> ())) {
         
-        let url = URL(string: "https://google.com")!
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: TimeoutInterval)
+        guard let googleUrl = URL(string: "https://google.com") else { return }
+        let request = URLRequest(url: googleUrl, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: TimeoutInterval)
         
         let configuration = URLSessionConfiguration.ephemeral
         configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData

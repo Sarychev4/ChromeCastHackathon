@@ -41,6 +41,7 @@ class ChromeCastService: NSObject {
     
     func initialize() {
         print(">>>ChromeCast Service was initialized")
+        clearAllDevices()
         let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
         let options = GCKCastOptions(discoveryCriteria: criteria)
         options.disableDiscoveryAutostart = true
@@ -63,6 +64,14 @@ class ChromeCastService: NSObject {
         
         observeStreamConfiguration()
         listenVolumeButton()
+    }
+    
+    func clearAllDevices() {
+        let realm = try! Realm()
+        let deviceObjs = realm.objects(DeviceObject.self)
+        try! realm.write({
+            realm.delete(deviceObjs)
+        })
     }
     
     func startDiscovery() {
@@ -196,8 +205,6 @@ class ChromeCastService: NSObject {
             print(">>>\(error.localizedDescription)")
         }
     }
-    
-    
     
     private func observeStreamConfiguration() {
         notificationToken = StreamConfiguration.current.observe { (changes) in

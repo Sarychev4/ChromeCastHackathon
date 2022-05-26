@@ -50,7 +50,7 @@ class HTMLStreamManager {
 
 extension HTMLStreamManager: JPEGEncoderDelegate {
     func jpegSampleOutput(video sampleBuffer: CMSampleBuffer) {
-        let blockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer)!
+        guard let blockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer) else { return }
         let length = CMBlockBufferGetDataLength(blockBuffer)
         let bytes = UnsafeMutablePointer<Int16>.allocate(capacity: length)
         defer { bytes.deallocate() }

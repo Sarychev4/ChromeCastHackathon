@@ -179,15 +179,14 @@ class SettingsViewController: BaseViewController {
         needHelpInteractiveLabel.attributedText = NSAttributedString(string: NSLocalizedString("Screen.Settings.Help.Title", comment: ""), attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
         
         needHelpInteractiveLabel.didTouchAction = { [weak self] in
-            self?.checkInternetConnection {
-                let viewController = HelpViewController()
-                viewController.title = NSLocalizedString("MoreFAQ", comment: "")
-                viewController.url = ChromeCastFAQURL
-                self?.navigationController?.pushViewController(viewController, animated: true)
-                
-                viewController.didFinishAction = { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
+            guard let self = self else { return }
+            self.checkInternetConnection {
+                let viewController = SetupChromeCastViewController()
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.hideInteractiveViewCompletion = {
+                    viewController.closeInteractiveView.isHidden = true
                 }
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }

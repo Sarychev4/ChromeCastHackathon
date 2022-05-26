@@ -55,15 +55,16 @@ class TutorialTestConnectionViewController: BaseViewController {
         
         dontSeeImageInteractiveLabel.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            let viewController = SetupChromeCastViewController()
-            viewController.modalPresentationStyle = .fullScreen
-            
-            if let navController = self.navigationController {
-                navController.pushViewController(viewController, animated: true)
-            } else {
-                self.present(viewController, animated: true, completion: nil)
+            self.checkInternetConnection {
+                let viewController = SetupChromeCastViewController()
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.hideInteractiveViewCompletion = {
+                    viewController.closeInteractiveView.isHidden = true
+                }
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

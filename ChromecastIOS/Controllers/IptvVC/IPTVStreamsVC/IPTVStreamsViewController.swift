@@ -117,7 +117,8 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
             guard let self = self, success == true else { return }
             self.connectIfNeeded { [weak self] in
                 guard let self = self, let stream = self.streams?[indexPath.row] else { return }
-                ChromeCastService.shared.displayVideo(with: URL(string: stream.url)!)
+                guard let streamUrl = URL(string: stream.url) else { return }
+                ChromeCastService.shared.displayVideo(with: streamUrl)
             }
         })
     }

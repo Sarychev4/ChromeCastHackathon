@@ -75,7 +75,8 @@ class ThumbnailSlaveFlowLayout: UICollectionViewFlowLayout, CellBasicMeasurement
             if rect.contains(estimatedCenterPoints[itemIndex]) ||
                 rect.contains(estimatedCenterPoints[itemIndex]){
                 let indexPath = IndexPath(item: itemIndex, section: 0)
-                let attributes = layoutAttributesForItem(at: indexPath)!
+                guard let layoutAttributes = layoutAttributesForItem(at: indexPath) else { return }
+                let attributes = layoutAttributes
                 allAttributes.append(attributes)
             }
         }
