@@ -74,12 +74,13 @@ class IPTVPlayListsViewController: BaseViewController {
 
         if freePlaylists?.count == 0 {
             activityIndicator.startAnimating()
+            iptvService.getListIPTV { [weak self] in
+                guard let self = self else { return }
+                self.activityIndicator.stopAnimating()
+            }
         }
 
-        iptvService.getListIPTV { [weak self] in
-            guard let self = self else { return }
-            self.activityIndicator.stopAnimating()
-        }
+        
         
         /*
          */
