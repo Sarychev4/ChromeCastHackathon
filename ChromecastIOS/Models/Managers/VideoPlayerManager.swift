@@ -164,7 +164,6 @@ class VideoPlayerManager: NSObject {
                         if currentTimeOnTV != self.currentTime {
                             self.currentTime = currentTimeOnTV
                             self.state = .playing
-                            print(">>>Playing")
                         } else {
                             // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
                             //На Року оно закрывается. Поэтому надо обрабатывать все кейсы
@@ -176,7 +175,6 @@ class VideoPlayerManager: NSObject {
                             }
                         }
                     } else if self.currentTime > 0 {
-                        print("currentTime: \(currentTimeOnTV)")
                         // Кейс когда предыдущий запрос был не 0, а следующий 0 это когда видео закончилось.
                         self.state = .none
                     }

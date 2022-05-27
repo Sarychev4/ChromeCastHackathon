@@ -23,6 +23,11 @@
                             <constraint firstAttribute="height" constant="72" id="afe-5u-LT0"/>
                             <constraint firstAttribute="width" constant="240" id="p2e-Hn-SVV"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
             </view>

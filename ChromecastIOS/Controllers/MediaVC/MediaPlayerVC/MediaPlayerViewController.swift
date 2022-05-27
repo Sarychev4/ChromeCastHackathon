@@ -444,8 +444,8 @@ extension MediaPlayerViewController {
     
     fileprivate func setupThumbnailCollectionViewMeasurement() {
         thumbnailCollectionView.cellNormalWidth = 30
-        thumbnailCollectionView.cellFullSpacing = 15
-        thumbnailCollectionView.cellNormalSpacing = 2
+        thumbnailCollectionView.cellFullSpacing = 8
+        thumbnailCollectionView.cellNormalSpacing = 1
         thumbnailCollectionView.cellHeight = thumbnailCollectionView.frame.size.height
         thumbnailCollectionView.cellMaximumWidth = thumbnailMaximumWidth
         thumbnailCollectionViewThinnestRatio = thumbnailCollectionView.cellHeight / thumbnailCollectionView.cellNormalWidth
@@ -485,30 +485,13 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HDCell.Identifier, for: indexPath) as! HDCell
             
-            
-            
             if let size = self.collectionView(hdCollectionView, sizeForItemAt: indexPath) {
-                cell.photoWidthConstraint.constant = size.width
-                cell.photoHeightConstraint.constant = size.height
-                cell.clipsToBounds = true
-                cell.photoImageView?.contentMode = .scaleAspectFit
-                if asset.mediaType == .image {
-                    cell.playerButtonsContainer.isHidden = true
-                    cell.progressContainerView.isHidden = true
-                } else {
-                    print(">>>SETUP")
-                    print(videoPlayerManager.currentTime)
-                    cell.setup(with: asset, state: videoPlayerManager.state, currentTime: videoPlayerManager.currentTime)
-                    cell.prevAction = mediaCellPrevClicked
-                    cell.nextAction = mediaCellNextClicked
-                    cell.playOrPauseAction = self.castVideoToTV
-                    cell.rewindAction = mediaCellRewindClicked(seconds:)
-                }
-                image(for: asset, size: CGSize(width: size.width, height: size.height)) { (image, needd) in
-                    cell.photoImageView?.image = image
-                }
+                cell.setupCell(with: asset, state: videoPlayerManager.state, currentTime: videoPlayerManager.currentTime, size: size)
+                cell.prevAction = mediaCellPrevClicked
+                cell.nextAction = mediaCellNextClicked
+                cell.playOrPauseAction = self.castVideoToTV
+                cell.rewindAction = mediaCellRewindClicked(seconds:)
             }
-            
             
             return cell
         case thumbnailCollectionView:
@@ -517,7 +500,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             cell.photoHeightConstraint.constant = 49
             cell.photoWidthConstraint.constant = 23
             cell.clipsToBounds = true
-            cell.photoImageView.contentMode = .scaleAspectFit
+            cell.photoImageView.contentMode = .scaleAspectFill
             image(for: asset, size: CGSize(width: 23, height: 49)) { (image, needd) in
                 cell.photoImageView.image = image
             }
@@ -540,6 +523,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             let resources = PHAssetResource.assetResources(for: asset)
             self.currentAssetNameLabel.text = resources.first?.originalFilename
             self.castToTV()
+            
         default:
             break
         }
@@ -612,9 +596,9 @@ extension MediaPlayerViewController: CollectionViewCellSize {
             //            }
             return CGSize(width: UIScreen.main.bounds.size.width, height: hdCollectionView.frame.height)
         case thumbnailCollectionView:
-            //            if let size = thumbnailPhotoModel.photoSize(at: indexPath.row) {
-            //                return cellSize(forThumbImage: size)
-            //            }
+//                        if let size = thumbnailPhotoModel.photoSize(at: indexPath.row) {
+//                            return cellSize(forThumbImage: size)
+//                        }
             return cellSize(forThumbImage: CGSize(width: 24, height: 49)) //CGSize(width: 24, height: 49)
         default:
             return nil

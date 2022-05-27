@@ -12,35 +12,76 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HDCell" id="gTV-IL-0wX" customClass="HDCell" customModule="ChromecastIOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="287" height="209"/>
+            <rect key="frame" x="0.0" y="0.0" width="297" height="264"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="287" height="209"/>
+                <rect key="frame" x="0.0" y="0.0" width="297" height="264"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dno-CX-3Iv">
-                        <rect key="frame" x="23.5" y="40.5" width="240" height="128"/>
+                        <rect key="frame" x="28.5" y="68" width="240" height="128"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="128" id="LIs-bt-GMB"/>
                             <constraint firstAttribute="width" constant="240" id="PAE-mv-iUh"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="a5S-m5-QGl">
-                        <rect key="frame" x="33.5" y="80.5" width="220" height="48"/>
+                        <rect key="frame" x="38.5" y="110" width="220" height="44"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previousVideo" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-g6-qL3" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="36" height="48"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playVideo" translatesAutoresizingMaskIntoConstraints="NO" id="Tz9-Id-yKV" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
-                                <rect key="frame" x="86" y="0.0" width="48" height="48"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextVideo" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-7C-pp1" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
-                                <rect key="frame" x="184" y="0.0" width="36" height="48"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-eE-Nio">
+                                <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previousVideo" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-g6-qL3" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="4" width="36" height="36"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="YHr-LY-NhN"/>
+                                    <constraint firstItem="ieT-g6-qL3" firstAttribute="centerY" secondItem="hSW-eE-Nio" secondAttribute="centerY" id="Z3R-aa-feQ"/>
+                                    <constraint firstItem="ieT-g6-qL3" firstAttribute="centerX" secondItem="hSW-eE-Nio" secondAttribute="centerX" id="fBv-BF-Cgv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imB-rP-zGN">
+                                <rect key="frame" x="86" y="0.0" width="44" height="44"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playVideo" translatesAutoresizingMaskIntoConstraints="NO" id="Tz9-Id-yKV" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="-2" width="48" height="48"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="JO1-0R-HLT"/>
+                                    <constraint firstItem="Tz9-Id-yKV" firstAttribute="centerY" secondItem="imB-rP-zGN" secondAttribute="centerY" id="Lgt-dh-rmW"/>
+                                    <constraint firstItem="Tz9-Id-yKV" firstAttribute="centerX" secondItem="imB-rP-zGN" secondAttribute="centerX" id="XzF-BM-zK4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDw-SM-xIb">
+                                <rect key="frame" x="180" y="0.0" width="40" height="44"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextVideo" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-7C-pp1" customClass="InteractiveImageView" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="4" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="UDd-ru-MKg"/>
+                                            <constraint firstAttribute="width" constant="36" id="obb-23-6fQ"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="c4J-7C-pp1" firstAttribute="centerY" secondItem="MDw-SM-xIb" secondAttribute="centerY" id="904-tq-MKp"/>
+                                    <constraint firstItem="c4J-7C-pp1" firstAttribute="centerX" secondItem="MDw-SM-xIb" secondAttribute="centerX" id="sJZ-LD-bku"/>
+                                </constraints>
+                            </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="AZX-mR-XEg"/>
+                            <constraint firstItem="MDw-SM-xIb" firstAttribute="centerY" secondItem="a5S-m5-QGl" secondAttribute="centerY" id="B9Y-m7-wo7"/>
+                            <constraint firstAttribute="width" constant="220" id="mLW-sR-ILv"/>
+                        </constraints>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OG2-RN-YPF">
-                        <rect key="frame" x="24" y="161" width="239" height="40"/>
+                        <rect key="frame" x="24" y="209" width="249" height="25"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgY-kj-MSn">
                                 <rect key="frame" x="0.0" y="0.0" width="13" height="12"/>
@@ -61,7 +102,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TOq-Nc-ToC">
-                                <rect key="frame" x="-2" y="10" width="243" height="31"/>
+                                <rect key="frame" x="-2" y="5" width="253" height="31"/>
+                                <color key="minimumTrackTintColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="maximumTrackTintColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,10 +123,10 @@
                             <constraint firstItem="0wT-Os-g2B" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="Q4Z-0s-HCV"/>
                             <constraint firstItem="AgY-kj-MSn" firstAttribute="leading" secondItem="OG2-RN-YPF" secondAttribute="leading" id="W6h-ju-nGo"/>
                             <constraint firstItem="0wT-Os-g2B" firstAttribute="leading" secondItem="0lo-zY-PjI" secondAttribute="trailing" constant="1" id="YPa-9R-XHz"/>
-                            <constraint firstAttribute="height" constant="40" id="b8d-T2-QBj"/>
+                            <constraint firstAttribute="height" constant="25" id="b8d-T2-QBj"/>
                             <constraint firstItem="TOq-Nc-ToC" firstAttribute="leading" secondItem="OG2-RN-YPF" secondAttribute="leading" id="dON-2I-Yco"/>
                             <constraint firstItem="AgY-kj-MSn" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="nv7-T1-Wlx"/>
-                            <constraint firstAttribute="bottom" secondItem="TOq-Nc-ToC" secondAttribute="bottom" id="qwk-qD-iSZ"/>
+                            <constraint firstAttribute="bottom" secondItem="TOq-Nc-ToC" secondAttribute="bottom" constant="-10" id="qwk-qD-iSZ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -85,12 +136,12 @@
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1AX-Q3-pbF"/>
                 <constraint firstAttribute="trailing" secondItem="OG2-RN-YPF" secondAttribute="trailing" constant="24" id="GUv-26-Bmq"/>
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TmO-yV-zUW"/>
-                <constraint firstAttribute="bottom" secondItem="OG2-RN-YPF" secondAttribute="bottom" constant="8" id="Xrw-XY-df7"/>
                 <constraint firstItem="OG2-RN-YPF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="cyZ-N2-toh"/>
-                <constraint firstItem="a5S-m5-QGl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="etl-dV-QnD"/>
+                <constraint firstItem="OG2-RN-YPF" firstAttribute="top" secondItem="a5S-m5-QGl" secondAttribute="bottom" constant="55" id="oIg-L8-guE"/>
                 <constraint firstItem="a5S-m5-QGl" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qmr-LS-Cfh"/>
+                <constraint firstItem="a5S-m5-QGl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="x36-2M-Jl5"/>
             </constraints>
-            <size key="customSize" width="287" height="209"/>
+            <size key="customSize" width="297" height="264"/>
             <connections>
                 <outlet property="currentPlayTimeLabel" destination="AgY-kj-MSn" id="uRG-hr-Qfv"/>
                 <outlet property="nextVideoInteractiveImageView" destination="c4J-7C-pp1" id="pzh-ff-Vdf"/>
@@ -101,10 +152,10 @@
                 <outlet property="playerButtonsContainer" destination="a5S-m5-QGl" id="XPc-Yr-Tkb"/>
                 <outlet property="previousVideoInteractiveImageView" destination="ieT-g6-qL3" id="8yr-jU-2ob"/>
                 <outlet property="progressContainerView" destination="OG2-RN-YPF" id="luq-qF-HZC"/>
-                <outlet property="progressView" destination="TOq-Nc-ToC" id="gHa-cv-qM4"/>
+                <outlet property="progressView" destination="TOq-Nc-ToC" id="IUw-cw-Yw1"/>
                 <outlet property="remainingTimeLabel" destination="0wT-Os-g2B" id="GYq-Wu-42C"/>
             </connections>
-            <point key="canvasLocation" x="132.60869565217394" y="124.88839285714285"/>
+            <point key="canvasLocation" x="139.85507246376812" y="160.71428571428569"/>
         </collectionViewCell>
     </objects>
     <resources>
