@@ -150,7 +150,7 @@ class VideoPlayerManager: NSObject {
                 let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
                 guard let currentTimeOnTV = remoteMediaClient?.approximateStreamPosition() else { return }
                 
-                    print("currentTimeOnTV: \(currentTimeOnTV), phone: \(self.currentTime)")
+//                    print("currentTimeOnTV: \(currentTimeOnTV), phone: \(self.currentTime)")
                     if self.currentTime == 0 && currentTimeOnTV > TimeInterval(1), dropRequestCount == 0 {
                         dropRequestCount += 1
                         // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
@@ -164,6 +164,7 @@ class VideoPlayerManager: NSObject {
                         if currentTimeOnTV != self.currentTime {
                             self.currentTime = currentTimeOnTV
                             self.state = .playing
+                            print(">>>Playing")
                         } else {
                             // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
                             //На Року оно закрывается. Поэтому надо обрабатывать все кейсы

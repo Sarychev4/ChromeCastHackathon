@@ -389,8 +389,6 @@ extension MediaPlayerViewController {
         videoPlayerManager.stateObserver = nil
     }
     
-    
-    
     @objc fileprivate func cancelPrepareVideo(_ sender: Any) {
         videoPlayerManager.cancelPreparing()
     }
@@ -498,6 +496,8 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
                     cell.playerButtonsContainer.isHidden = true
                     cell.progressContainerView.isHidden = true
                 } else {
+                    print(">>>SETUP")
+                    print(videoPlayerManager.currentTime)
                     cell.setup(with: asset, state: videoPlayerManager.state, currentTime: videoPlayerManager.currentTime)
                     cell.prevAction = mediaCellPrevClicked
                     cell.nextAction = mediaCellNextClicked

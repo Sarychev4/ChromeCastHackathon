@@ -39,16 +39,19 @@ class HDCell: UICollectionViewCell {
     func setup(with asset: PHAsset, state: VideoPlayerManager.State, currentTime: Double) {
        
         let videoDuration = asset.duration
-        let currentTimeRoundedInt = Int(currentTime / 1000)
-        let currentTimeDouble = currentTime / 1000
+        let currentTimeDouble = currentTime
+        
         progressView.maximumValue = Float(videoDuration)
         progressView.minimumValue = Float(0)
         progressView.value = Float(videoDuration - currentTimeDouble) > 1 ? Float(currentTimeDouble) : Float(videoDuration)
-        currentPlayTimeLabel.text = currentTimeRoundedInt.durationText
+        
+        currentPlayTimeLabel.text = currentTimeDouble.durationText
         remainingTimeLabel.text = "\(videoDuration.durationText)"
         
         print(">>> ***")
-        print(">>> VIDEODUrAtiON\(videoDuration)")
+        print(">>> VIDEO currentTimeDouble \(currentTimeDouble)")
+        print(">>> progressView.value \(progressView.value)")
+        print(">>> VIDEO duration\(videoDuration)")
         print(">>> CURRENT TIME \(currentTime)")
         print(">>> ***")
         if state.isSameAs(.playing) {
