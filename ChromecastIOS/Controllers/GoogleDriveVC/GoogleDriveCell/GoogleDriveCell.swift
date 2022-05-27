@@ -26,5 +26,34 @@ class GoogleDriveCell: UICollectionViewCell {
         }
         
     }
+    
+    func setup(name: String?, date: String?, fileSize: NSNumber?, mimeType: String?, thumbnailLinkString: String?) {
+        
+        guard let name = name, let date = date, let mimeType = mimeType else {
+            return
+        }
+        self.fileLabel.text = name
+        self.dateLabel.text = date
+        
+        if let fileSize = fileSize {
+            self.dataSizeLabel.text = ByteCountFormatter.string(fromByteCount: Int64(truncating: fileSize), countStyle: .memory)
+        } else {
+            self.dataSizeLabel.isHidden = true
+        }
+        
+        if mimeType == "application/vnd.google-apps.folder" {
+            self.fileImageView.image = UIImage(named: "folderIcon")!
+        } else if mimeType == "image/jpeg" || mimeType == "video/mp4" {
+            guard let imageUrlString = thumbnailLinkString else { return }
+            guard let imageUrl:URL = URL(string: imageUrlString) else { return }
+            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+            self.fileImageView.image = UIImage(data: imageData)
+        } else if mimeType == "video/mp4" {
+            
+        } else {
+            self.fileImageView.image = UIImage(named: "documentFileIcon")!
+        }
+        
+    }
 
 }

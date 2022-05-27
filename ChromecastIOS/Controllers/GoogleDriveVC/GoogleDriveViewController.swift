@@ -33,8 +33,11 @@ class GoogleDriveViewController: BaseViewController {
     
     private let сellWidth = (UIScreen.main.bounds.width - 48 * SizeFactor) / 3
     
+    var filteredDataSource: [GTLRDrive_File] = []
     fileprivate var googleAPIs: GoogleDriveAPI?
-    
+    var isSearchBarIsEmpty: Bool {
+        return searchBar.text?.isEmpty ?? false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +59,11 @@ class GoogleDriveViewController: BaseViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        
         setupSearchBar()
     }
+    
+
     
     private func setupSearchBar() {
         searchBar.delegate = self
@@ -272,7 +278,13 @@ class GoogleDriveViewController: BaseViewController {
 extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        if isSearchBarIsEmpty {
+            return dataSource.count
+        } else {
+            print("Filtered Items count:\(filteredDataSource.count)")
+            return filteredDataSource.count
+        }
+        
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoogleDriveCell.Identifier, for: indexPath) as! GoogleDriveCell
@@ -281,51 +293,43 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? GoogleDriveCell {
-            let file = dataSource[indexPath.row]
-            
-            cell.fileLabel.text = file.name
-            cell.dateLabel.text = file.modifiedTime?.date.toString()
-            
-            
-            if let fileSize = file.size {
-                cell.dataSizeLabel.text = ByteCountFormatter.string(fromByteCount: Int64(fileSize), countStyle: .memory)
+            var file = GTLRDrive_File()
+            if filteredDataSource.isEmpty {
+                file = dataSource[indexPath.row]
             } else {
-                cell.dataSizeLabel.isHidden = true
+                file = filteredDataSource[indexPath.row]
             }
+            
+            cell.setup(name: file.name, date: file.modifiedTime?.date.toString(), fileSize: file.size, mimeType: file.mimeType, thumbnailLinkString: file.thumbnailLink)
             
             
             if file.mimeType == "application/vnd.google-apps.folder" {
-                cell.fileImageView.image = UIImage(named: "folderIcon")!
                 cell.didChooseCell = { [weak self] in
                     guard let self = self else { return }
+                    self.searchBar.endEditing(true)
                     self.handleTapOnCell(at: indexPath)
+                    
                 }
             } else if file.mimeType == "image/jpeg" {
-                guard let imageUrlString = file.thumbnailLink else { return }
-                guard let imageUrl:URL = URL(string: imageUrlString) else { return }
-                guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-                cell.fileImageView.image = UIImage(data: imageData)
                 cell.didChooseCell = { [weak self] in
-                    guard let _ = self else { return }
+                    guard let self = self else { return }
+                    self.searchBar.endEditing(true)
                     guard let file_id = file.identifier else { return }
                     guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
                     ChromeCastService.shared.displayImage(with: urlWithFileID)
                 }
             } else if file.mimeType == "video/mp4" {
-                guard let imageUrlString = file.thumbnailLink else { return }
-                guard let imageUrl:URL = URL(string: imageUrlString) else { return }
-                guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-                cell.fileImageView.image = UIImage(data: imageData)
                 cell.didChooseCell = { [weak self] in
-                    guard let _ = self else { return }
+                    guard let self = self else { return }
+                    self.searchBar.endEditing(true)
                     guard let file_id = file.identifier else { return }
                     guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
                     ChromeCastService.shared.displayVideo(with: urlWithFileID)
                 }
             } else {
-                cell.fileImageView.image = UIImage(named: "documentFileIcon")!
                 cell.didChooseCell = { [weak self] in
-                    guard let _ = self else { return }
+                    guard let self = self else { return }
+                    self.searchBar.endEditing(true)
                 }
             }
         }
@@ -355,27 +359,23 @@ extension GoogleDriveViewController: UISearchBarDelegate {
         if text == "" {
             self.searchBar.endEditing(true)
         } else {
-            
+           
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else { return }
-        if text == "" {
-            self.searchBar.endEditing(true)
-        } else {
-            
-            self.searchBar.endEditing(true)
-        }
+        self.searchBar.endEditing(true)
     }
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 0 {
-//            dataSource.filter {  in
-//                
-//            }
+            filteredDataSource = dataSource.filter { $0.name?.contains(searchText) ?? false}
+            collectionView.reloadData()
+        } else {
+           collectionView.reloadData()
         }
+        
     }
     
     
