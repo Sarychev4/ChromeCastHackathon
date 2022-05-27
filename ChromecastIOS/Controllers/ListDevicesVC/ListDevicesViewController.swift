@@ -169,7 +169,9 @@ class ListDevicesViewController: AFFloatingPanelViewController {
         let alertView = AlertViewController(
             alertTitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Title", comment: ""),
             alertSubtitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Subtitle", comment: ""),
-            continueAction: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Continue", comment: "")
+            continueAction: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Continue", comment: ""),
+            leftAction: nil,
+            rightAction: nil
         )
         
         alertView.continueClicked = {

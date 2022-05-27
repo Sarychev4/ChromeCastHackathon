@@ -18,6 +18,7 @@
                 <outlet property="mirrorInteractiveView" destination="f8J-PE-0Pi" id="rcJ-mt-aAN"/>
                 <outlet property="needHelpInteractiveLabel" destination="Kl0-mV-ytr" id="P88-6Y-UWT"/>
                 <outlet property="settingsInteractiveView" destination="6bg-bX-Ipf" id="fBl-uh-jgJ"/>
+                <outlet property="systemBroadcastPickerView" destination="ZRD-jr-IXg" id="8M7-Bq-iKc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,6 +27,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRD-jr-IXg" customClass="RPSystemBroadcastPickerView">
+                    <rect key="frame" x="-300" y="384" width="240" height="128"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="bwx-4v-qcq"/>
+                        <constraint firstAttribute="height" constant="128" id="toz-BJ-t63"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xZ-qH-kpo">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
@@ -341,7 +350,9 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="ZRD-jr-IXg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="G4Q-5w-3Lg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3xZ-qH-kpo" secondAttribute="trailing" id="NEM-MR-KtE"/>
+                <constraint firstItem="3xZ-qH-kpo" firstAttribute="leading" secondItem="ZRD-jr-IXg" secondAttribute="trailing" constant="60" id="OBE-KS-uW8"/>
                 <constraint firstItem="3xZ-qH-kpo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UuI-Jk-H3j"/>
                 <constraint firstItem="3xZ-qH-kpo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cCJ-PN-2AQ"/>
                 <constraint firstAttribute="bottom" secondItem="3xZ-qH-kpo" secondAttribute="bottom" id="djN-i3-9wG"/>

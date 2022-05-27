@@ -14,18 +14,31 @@ class AlertViewController: BaseViewController {
     @IBOutlet weak var titleLabel: DefaultLabel!
     @IBOutlet weak var subtitleLabel: DefaultLabel!
     @IBOutlet weak var continueLabel: DefaultLabel!
-    
     @IBOutlet weak var continueInteractiveView: InteractiveView!
+    
+    @IBOutlet weak var yesNoContainer: UIStackView!
+    
+    @IBOutlet weak var noInteractiveLabel: InteractiveLabel!
+    @IBOutlet weak var yesInteractiveLabel: InteractiveLabel!
+  
     private var alertTitle: String?
     private var alertSubtitle: String?
+    
     private var continueAction: String?
+    private var leftAction: String?
+    private var rightAction: String?
     
     var continueClicked: (() -> ())?
+    var noClicked: (() -> Void)?
+    var yesClicked: (() -> Void)?
     
-    init(alertTitle: String?, alertSubtitle: String?, continueAction: String?){
+    init(alertTitle: String?, alertSubtitle: String?, continueAction: String?, leftAction: String?, rightAction: String?){
         self.alertTitle = alertTitle
         self.alertSubtitle = alertSubtitle
         self.continueAction = continueAction
+        self.leftAction = leftAction
+        self.rightAction = rightAction
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,7 +55,24 @@ class AlertViewController: BaseViewController {
         titleLabel.text = alertTitle
         subtitleLabel.text = alertSubtitle
         continueLabel.text = continueAction
+        noInteractiveLabel.text = leftAction
+        yesInteractiveLabel.text = rightAction
         
+        if continueAction == nil {
+            continueInteractiveView.isHidden = true
+        } else {
+            yesNoContainer.isHidden = true
+        }
+        
+        yesInteractiveLabel.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.yesClicked?()
+        }
+        
+        noInteractiveLabel.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.noClicked?()
+        }
         
         continueInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }

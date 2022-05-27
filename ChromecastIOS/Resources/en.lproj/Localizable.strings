@@ -221,3 +221,11 @@
 
 "Screen.Browser.Tip" = "Tap here to watch this video";
 
+/*
+- Alert BroadCast
+ */
+
+"AlertCloseBroadcastTitle" = "Stop mirroring?";
+"AlertCloseBroadcastSubtitle" = "You need to stop mirroring to proceed";
+"AlertCloseBroadcastCancel" = "Cancel";
+"AlertCloseBroadcastStop" = "Stop";

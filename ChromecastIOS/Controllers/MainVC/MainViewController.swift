@@ -11,6 +11,8 @@ import Criollo
 import WebKit
 import CSSystemInfoHelper
 import GoogleCast
+import ReplayKit
+import SystemConfiguration.CaptiveNetwork
 
 struct Tab {
     var title: String
@@ -24,6 +26,8 @@ enum MenuButtonType {
 }
 
 class MainViewController: BaseViewController {
+    
+    @IBOutlet weak var systemBroadcastPickerView: RPSystemBroadcastPickerView!
     
     @IBOutlet weak var settingsInteractiveView: InteractiveView! {
         didSet {
@@ -152,6 +156,11 @@ class MainViewController: BaseViewController {
     
     private func handleTapOnCell(at indexPath: IndexPath) {
         
+        if UIScreen.main.isCaptured {
+            showAlertStopMirroring()
+            return
+        }
+        
         let buttonType = tabs[indexPath.row].type
         
         switch buttonType {
@@ -211,6 +220,30 @@ class MainViewController: BaseViewController {
             postAction?()
         }
         present(controller, animated: false, completion: nil)
+    }
+    
+    private func showAlertStopMirroring() {
+        let alertView = AlertViewController(alertTitle: NSLocalizedString("AlertCloseBroadcastTitle", comment: ""),
+                                            alertSubtitle: NSLocalizedString("AlertCloseBroadcastSubtitle", comment: ""),
+                                            continueAction: nil,
+                                            leftAction: NSLocalizedString("AlertCloseBroadcastCancel", comment: ""),
+                                            rightAction: NSLocalizedString("AlertCloseBroadcastStop", comment: ""))
+        
+        alertView.noClicked = { [weak self, weak alertView] in
+            guard let _ = self else { return }
+            alertView?.dismiss()
+        }
+        
+        alertView.yesClicked = { [weak self, weak alertView] in
+            guard let self = self else { return }
+            self.systemBroadcastPickerView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
+            if let mirroringButton = self.systemBroadcastPickerView.subviews.first(where: { $0 is UIButton }) as? UIButton {
+                mirroringButton.sendActions(for: .allTouchEvents)
+            }
+            alertView?.dismiss()
+        }
+        
+        alertView.present(from: self)
     }
     
 }

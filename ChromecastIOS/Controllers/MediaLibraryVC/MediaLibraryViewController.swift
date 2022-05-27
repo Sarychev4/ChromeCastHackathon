@@ -178,7 +178,9 @@ class MediaLibraryViewController: BaseViewController {
         let alertView = AlertViewController(
             alertTitle: NSLocalizedString("Alert.Permissions.Denied.Library.Title", comment: ""),
             alertSubtitle: NSLocalizedString("Alert.Permissions.Denied.Library.Message", comment: ""),
-            continueAction: NSLocalizedString("Alert.Permissions.Denied.Library.Continue", comment: "")
+            continueAction: NSLocalizedString("Alert.Permissions.Denied.Library.Continue", comment: ""),
+            leftAction: nil,
+            rightAction: nil
         )
         
         alertView.continueClicked = {
