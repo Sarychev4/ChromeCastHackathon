@@ -27,7 +27,8 @@ class SetupChromeCastViewController: BaseViewController {
         
         hideInteractiveViewCompletion?()
         
-        guard let url = URL(string: "https://www.youtube.com/embed/6YmWCbgZuts") else { return }
+    
+        guard let url = URL(string: "https://www.youtube.com/embed/3553FfDSS7w") else { return }
         let urlRequest = URLRequest(url: url)
         self.webView.load(urlRequest)
         self.webView.layer.opacity = 0
