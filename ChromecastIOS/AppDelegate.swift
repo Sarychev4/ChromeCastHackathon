@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
          
-        
         /*
          */
+        
         server = CRHTTPServer()
         var serverError: NSError?
         
@@ -41,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             res.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
             res.send(data)
         })
-
 
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false}
         let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
@@ -69,10 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             apphudAPIKey: "app_HARkZgrMoU5oAsLqx1fGcyPFQGhL8b",
             appsFlyerAPIKey: "mVN6DoQzLUCxz7gLjQivSY"
         )
-        
-        /*
-         */
-        
         
         /*
          */

@@ -17,7 +17,6 @@ class IPTVStreamsViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var navigationTitleLabel: DefaultLabel!
-    @IBOutlet weak var addNewInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
