@@ -7,7 +7,7 @@
 
 import UIKit
 import Photos
-import Player
+//import Player
 
 class HDCell: UICollectionViewCell {
     

@@ -20,9 +20,8 @@ target 'ChromecastIOS' do
   use_frameworks!
   common_pods_for_target
   pod 'AdvancedPageControl'
-  pod 'Starscream', '~> 4.0.0'
   pod 'Agregator', :git => 'git@github.com:mirroringcontact/common.git'
-  pod 'Player'
+#  pod 'Player'
   pod 'Kingfisher'
   pod 'ReachabilitySwift'
   pod "NextLevelSessionExporter", "~> 0.4.5"
