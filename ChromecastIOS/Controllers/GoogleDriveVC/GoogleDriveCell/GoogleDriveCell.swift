@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GoogleDriveCell: UICollectionViewCell {
 
@@ -43,11 +44,12 @@ class GoogleDriveCell: UICollectionViewCell {
         
         if mimeType == "application/vnd.google-apps.folder" {
             self.fileImageView.image = UIImage(named: "folderIcon")!
-        } else if mimeType == "image/jpeg" || mimeType == "video/mp4" {
+        } else if mimeType == "image/jpeg" || mimeType == "video/mp4" || mimeType == "image/png" {
             guard let imageUrlString = thumbnailLinkString else { return }
             guard let imageUrl:URL = URL(string: imageUrlString) else { return }
-            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-            self.fileImageView.image = UIImage(data: imageData)
+//            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+//            self.fileImageView.image = UIImage(data: imageData)
+            self.fileImageView.kf.setImage(with: imageUrl)
         } else if mimeType == "video/mp4" {
             
         } else {

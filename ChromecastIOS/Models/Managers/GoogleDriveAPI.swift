@@ -59,6 +59,17 @@ class GoogleDriveAPI {
         }
     }
     
+    public func shareFile(_ file: GTLRDrive_File, onCompleted: @escaping (Error?) -> ()) {
+        guard let fileId = file.identifier else { return }
+        let anyOne = GTLRDrive_Permission()
+        anyOne.type = "anyone"
+        anyOne.role = "reader"
+        let query = GTLRDriveQuery_PermissionsCreate.query(withObject: anyOne, fileId: fileId)
+        self.service.executeQuery(query) { (ticket, result, error) in
+            onCompleted(error)
+        }
+    }
+    
     private func upload(_ folderID: String, fileName: String, data: Data, MIMEType: String, onCompleted: ((String?, Error?) -> ())?) {
         let file = GTLRDrive_File()
         file.name = fileName
