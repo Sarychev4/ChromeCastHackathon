@@ -70,15 +70,23 @@ class SetupChromeCastViewController: BaseViewController {
                 viewController.modalPresentationStyle = .fullScreen
                 
                 if let navController = self.navigationController {
+                    viewController.didFinishAction = { [weak self] in
+                        guard let self = self else { return }
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     navController.pushViewController(viewController, animated: true)
+                    
                 } else {
+                    viewController.didFinishAction = { [weak self] in
+                        guard let _ = self else { return }
+                        viewController.dismiss(animated: true, completion: nil)
+                    }
                     self.present(viewController, animated: true, completion: nil)
+                    
                 }
                 
                 
-                viewController.didFinishAction = { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
-                }
+                
             }
         }
         
