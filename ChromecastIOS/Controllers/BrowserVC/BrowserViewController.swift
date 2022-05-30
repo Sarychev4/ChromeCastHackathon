@@ -43,6 +43,9 @@ class BrowserViewController: BaseViewController {
     private var scrollViewAnimator: ScrollViewAnimator?
     private var extractor = MediaInfoExtractor()
     
+    private var isTipWasShown = false
+    private var tipView: ZMJTipView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,6 +73,7 @@ class BrowserViewController: BaseViewController {
     private func setupNavigationSection() {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
+            self.tipView?.isHidden = true
             self.navigation?.popViewController(self, animated: true)
         }
         
@@ -347,8 +351,10 @@ class BrowserViewController: BaseViewController {
         preferences.animating.dismissDuration = 1;
         
         let title = NSLocalizedString("Screen.Browser.Tip", comment: "")
-        let tipView = ZMJTipView(text: title, preferences: preferences, delegate: nil)
-        tipView?.show(animated: true, for: self.detectedUrlsInteractiveView, withinSuperview: nil)
+        guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
+        self.tipView = tipView2
+        self.tipView?.show(animated: true, for: self.detectedUrlsInteractiveView, withinSuperview: nil)
+
     }
 
 
@@ -454,11 +460,9 @@ extension BrowserViewController: WKScriptMessageHandler {
             realm.add(detectedUrl, update: .all)
         }
         
-        if Settings.current.isTipWasShown == false {
+        if isTipWasShown == false {
             self.showTipView()
-            try! Settings.current.realm?.write {
-                Settings.current.isTipWasShown = true
-            }
+            isTipWasShown = true
         }
         
         detectedUrlsInteractiveView.bounce { }
