@@ -62,6 +62,7 @@ class VideoPlayerManager: NSObject {
             state = .readyForTV
             return
         }
+        stopVideoProgressTimer()
         downloadFromiCloud()
     }
     
