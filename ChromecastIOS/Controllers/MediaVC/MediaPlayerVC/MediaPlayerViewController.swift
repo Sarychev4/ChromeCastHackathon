@@ -271,7 +271,7 @@ extension MediaPlayerViewController {
     private func castPhotoToTV(_ image: UIImage) {
         guard presentedViewController == nil else { return }
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
+        let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpg")
         let compression = Settings.current.photosResolution.localImageCompression
         guard let data = image.jpegData(compressionQuality: compression) else { return }
         
@@ -285,12 +285,18 @@ extension MediaPlayerViewController {
         }
         do {
             try data.write(to: imageFileURL)
-            let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-            guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(UUID().uuidString)") else { return }
-            ChromeCastService.shared.displayImage(with: url)
+            
+            
         } catch let error {
             print("error saving file with error", error)
         }
+        
+        let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+        
+       
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image") else { return }
+        ChromeCastService.shared.displayImage(with: url)
+        print(">>>File url \(url)")
     }
 }
 
@@ -363,7 +369,8 @@ extension MediaPlayerViewController {
                 self.connectIfNeeded { [weak self] in
                     guard let _ = self else { return }
                     let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+//                    \(UUID().uuidString)
+                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video") else { return }
                     ChromeCastService.shared.displayVideo(with: url)
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }

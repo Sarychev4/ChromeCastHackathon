@@ -7,7 +7,6 @@
 
 import UIKit
 import Agregator
-import Criollo
 import WebKit
 import CSSystemInfoHelper
 import GoogleCast

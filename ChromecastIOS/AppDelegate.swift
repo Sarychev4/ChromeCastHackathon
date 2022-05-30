@@ -11,46 +11,67 @@ import Agregator
 import GoogleCast
 import Firebase
 import GoogleSignIn
-import Criollo
 import AppTrackingTransparency
 import AdSupport
 import ApphudSDK
+import GCDWebServer
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var server: CRHTTPServer?
+//    var server: CRHTTPServer?
+    var webServer: GCDWebServer?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
          
         /*
          */
         
-        server = CRHTTPServer()
-        var serverError: NSError?
+        webServer = GCDWebServer()
         
-        server?.mount("/faq", fileAtPath:  Bundle.main.bundlePath.appending("/FAQ.html"))
-        server?.get("/image/:id", block: { [weak self] (req, res, next) in
-            guard let _ = self else { return }
+//        let websitePath = Bundle.main.bundlePath.appending("/FAQ.html")
+//
+//        webServer?.addGETHandler(forBasePath: "/", directoryPath: websitePath, indexFilename: nil, cacheAge: 3600, allowRangeRequests: true)
+//        webServer?.addHandler(forMethod: "GET", pathRegex: "/.*html", request: GCDWebServerRequest.self, processBlock: { req in
+//            let response = GCDWebServerDataResponse(htmlTemplate: websitePath, variables: ["value":"variable"])
+//            return response
+//        })
+//
+//        webServer?.addHandler(forMethod: "GET", path: "/image", request: GCDWebServerRequest.self, processBlock: { req in
+//            return GCDWebServerResponse(redirect: URL(string: "index.html")!, permanent: false)
+//        })
+//
+        webServer?.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: {request in
+                    return GCDWebServerDataResponse(html:"<html><body><p>Hello World</p></body></html>")
+        })
+        
+        webServer?.addHandler(forMethod: "GET", path: "/faq", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
+
+            let faqPath = Bundle.main.bundlePath.appending("/FAQ.html")
+            let response = GCDWebServerFileResponse(file: faqPath, byteRange: request.byteRange)
+            complitionBlock(response)
+        })
+    
+        webServer?.addHandler(forMethod: "GET", path: "/image/", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
+            
             guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-            let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
-            guard let image = UIImage(contentsOfFile: imageFileURL.path) else { return }
-            guard let data = image.jpegData(compressionQuality: 0.9) else { return }
-            res.setValue("image/jpeg", forHTTPHeaderField: "Content-type")
-            res.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
-            res.send(data)
+            let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpg")
+            let response = GCDWebServerFileResponse(file: imageFileURL.path, byteRange: request.byteRange)
+            complitionBlock(response)
         })
 
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return false}
-        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
-        server?.mount("/video/:id", fileAtPath: videoFileURL.path, options: .followSymlinks, fileName: nil, contentType: nil,  contentDisposition: .attachment)
-
-        server?.get("/") { (req, res, next) in
-            res.send("Hello world!")
-        }
+        webServer?.addHandler(forMethod: "GET", path: "/video", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
         
-        server?.startListening(&serverError, portNumber: Port.app.rawValue)
+            guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+            let imageFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
+            let response = GCDWebServerFileResponse(file: imageFileURL.path, byteRange: request.byteRange)
+            complitionBlock(response)
+        })
+        
+//        GCDWebServerOption_AutomaticallySuspendInBackground
+        webServer?.start(withPort: Port.app.rawValue, bonjourName: "GCD web server")
+        print("Visit \(webServer?.serverURL) in your web browser")
         
         UIApplication.shared.isIdleTimerDisabled = true
         

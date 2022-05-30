@@ -36,6 +36,7 @@ target 'ChromecastIOS' do
   pod 'GoogleSignIn'#, '~> 4.1.1'
   pod "NextLevelSessionExporter", "~> 0.4.5"
   pod 'ZMJTipView'
+  pod "GCDWebServer", "~> 3.0"
 end 
 
  post_install do |installer_representation|

@@ -163,7 +163,7 @@ class TutorialAccessToNetworkViewController: BaseViewController {
     private func savePreviewImageToDirectory() {
         guard presentedViewController == nil else { return }
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpeg")
+        let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpg")
         guard let imageToCast = UIImage(named: "tutorialPreviewImage") else { return }
         guard let data = imageToCast.jpegData(compressionQuality: 1.0) else { return }
         
