@@ -8,6 +8,7 @@
 import UIKit
 import GoogleSignIn
 import GoogleAPIClientForREST
+import GoogleCast
 
 class GoogleDriveViewController: BaseViewController {
     
@@ -242,18 +243,51 @@ class GoogleDriveViewController: BaseViewController {
         present(controller, animated: false, completion: nil)
     }
     
-    func handleTapOnCell(at indexPath: IndexPath) {
+    func handleTapOnCell(with file: GTLRDrive_File) {
         
-        guard let name = dataSource[indexPath.row].name else { return }
+        guard let fileType = file.mimeType else { return }
+        switch fileType {
+        case "application/vnd.google-apps.folder":
+            guard let fileName = file.name else { return }
+            let viewController = GoogleDriveViewController()
+            viewController.titleOfSubViewController = fileName
+            viewController.hidesBottomBarWhenPushed = true
+            viewController.googleAPIs = self.googleAPIs
+            viewController.isSubfolder = true
+            viewController.subFolder = fileName
+            self.navigation?.pushViewController(viewController, animated: .left)
+        case "image/jpeg":
+            self.connectIfNeeded { [weak self] in
+                guard let _ = self else { return }
+                guard let file_id = file.identifier else { return }
+                guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
+                ChromeCastService.shared.displayImage(with: urlWithFileID)
+            }
+        case "video/mp4":
+            self.connectIfNeeded { [weak self] in
+                guard let _ = self else { return }
+            guard let file_id = file.identifier else { return }
+            guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
+            ChromeCastService.shared.displayVideo(with: urlWithFileID)
+            }
+        default:
+            print(">>>FileType: \(fileType)")
+        }
         
-        let viewController = GoogleDriveViewController()
-        viewController.titleOfSubViewController = name
-        viewController.hidesBottomBarWhenPushed = true
-        viewController.googleAPIs = self.googleAPIs
-        viewController.isSubfolder = true
-        viewController.subFolder = name
-        self.navigation?.pushViewController(viewController, animated: .left)
+       
     }
+    
+    private func connectIfNeeded(onComplete: Closure?) {
+        guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
+            onComplete?()
+            return
+        }
+        presentDevices {
+            onComplete?()
+        }
+    }
+    
+    
     
     func showActionSheet() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -301,36 +335,10 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
             }
             
             cell.setup(name: file.name, date: file.modifiedTime?.date.toString(), fileSize: file.size, mimeType: file.mimeType, thumbnailLinkString: file.thumbnailLink)
-            
-            
-            if file.mimeType == "application/vnd.google-apps.folder" {
-                cell.didChooseCell = { [weak self] in
+            cell.didChooseCell = { [weak self] in
                     guard let self = self else { return }
                     self.searchBar.endEditing(true)
-                    self.handleTapOnCell(at: indexPath)
-                    
-                }
-            } else if file.mimeType == "image/jpeg" {
-                cell.didChooseCell = { [weak self] in
-                    guard let self = self else { return }
-                    self.searchBar.endEditing(true)
-                    guard let file_id = file.identifier else { return }
-                    guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
-                    ChromeCastService.shared.displayImage(with: urlWithFileID)
-                }
-            } else if file.mimeType == "video/mp4" {
-                cell.didChooseCell = { [weak self] in
-                    guard let self = self else { return }
-                    self.searchBar.endEditing(true)
-                    guard let file_id = file.identifier else { return }
-                    guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
-                    ChromeCastService.shared.displayVideo(with: urlWithFileID)
-                }
-            } else {
-                cell.didChooseCell = { [weak self] in
-                    guard let self = self else { return }
-                    self.searchBar.endEditing(true)
-                }
+                    self.handleTapOnCell(with: file)
             }
         }
     }
