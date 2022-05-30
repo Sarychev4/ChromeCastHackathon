@@ -99,12 +99,6 @@ class Settings: Object {
     
     
     /*
-     MARK: - Browse And Cast
-     */
-    
-    @Persisted var isTipWasShown: Bool = false
-    
-    /*
      MARK: - Connection with TV
      */
     

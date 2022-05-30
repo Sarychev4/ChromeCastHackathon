@@ -206,6 +206,7 @@
 		DDF59C10280F4B7B00CE2E2B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */; };
 		DDF59C14280F5E1F00CE2E2B /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59C12280F5E1F00CE2E2B /* MainCell.swift */; };
 		DDF59C15280F5E1F00CE2E2B /* MainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF59C13280F5E1F00CE2E2B /* MainCell.xib */; };
+		E825B03128451F610034589B /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAE328372E1600ACD358 /* UserDefaults+Extension.swift */; };
 		E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8964313280EB5A700E6E287 /* ReplayKit.framework */; };
 		E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8964316280EB5A700E6E287 /* SampleHandler.swift */; };
 		E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89642B4280EAF7700E6E287 /* AppDelegate.swift */; };
@@ -1571,6 +1572,7 @@
 				E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */,
 				E8E5FA85283BF90A00B4B6FF /* URL+Extension.swift in Sources */,
 				E8E5FA82283BF8AF00B4B6FF /* Bundle+Extension.swift in Sources */,
+				E825B03128451F610034589B /* UserDefaults+Extension.swift in Sources */,
 				E8E5FA8D283BFA2F00B4B6FF /* CMSampleBuffer+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1860,7 +1862,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
@@ -1887,7 +1889,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
@@ -1918,7 +1920,7 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1954,7 +1956,7 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
