@@ -39,9 +39,11 @@ class MirrorViewController: BaseViewController {
     @IBOutlet weak var bestLabel: DefaultLabel!
     @IBOutlet weak var bestImageView: UIImageView!
     
+    @IBOutlet weak var needHelpInteractiveLabel: InteractiveLabel!
     
     @IBOutlet weak var broadCastView: RPSystemBroadcastPickerView!
     @IBOutlet weak var mirrorActionLabel: DefaultLabel!
+    
     
     var mirroringButton: UIButton? {
         return broadCastView.subviews.first(where: { $0 is UIButton }) as? UIButton
@@ -246,6 +248,18 @@ class MirrorViewController: BaseViewController {
                     }
                     
                 }
+            }
+        }
+        
+        needHelpInteractiveLabel.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.checkInternetConnection {
+                let viewController = SetupChromeCastViewController()
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.hideInteractiveViewCompletion = {
+                    viewController.backInteractiveView.isHidden = true
+                }
+                self.present(viewController, animated: true, completion: nil)
             }
         }
         

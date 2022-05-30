@@ -25,7 +25,7 @@ public typealias ClosureBool = (Bool) -> Void
 public typealias ClosureURL = (URL?, Error?) -> Void
 public typealias ClosureSuccess = (Bool?, Error?) -> Void
 
-let ChromeCastFAQURL = URL(string: "http://localhost:\(Port.app.rawValue)/faq")
+let ChromeCastFAQURL = URL(string: "http://\(ServerConfiguration.shared.deviceIPAddress()):\(Port.app.rawValue)/faq")
 
 let TermsOfUse = URL(string: "http://appflair.io/terms-of-use.html")!
 let PrivacyPolicy = URL(string: "http://appflair.io/privacy-policy.html")!
