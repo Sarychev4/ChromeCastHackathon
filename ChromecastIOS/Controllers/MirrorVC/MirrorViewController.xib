@@ -22,6 +22,7 @@
                 <outlet property="broadCastView" destination="YHI-D0-Hyx" id="cXI-Fs-uwT"/>
                 <outlet property="connectInteractiveView" destination="EE3-KM-519" id="D4L-lz-Hae"/>
                 <outlet property="mirrorActionLabel" destination="Lc8-N7-RZE" id="23r-yZ-1jG"/>
+                <outlet property="needHelpInteractiveLabel" destination="N76-kc-bfR" id="RTa-j6-dww"/>
                 <outlet property="optimizedImageView" destination="4Gq-in-Tbx" id="tcr-7j-z6X"/>
                 <outlet property="optimizedInteractiveView" destination="QaD-y4-QT2" id="8tG-OO-Ie9"/>
                 <outlet property="optimizedLabel" destination="dOd-d8-MNa" id="rgn-2Q-bTK"/>
@@ -368,11 +369,14 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Help?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N76-kc-bfR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Help?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N76-kc-bfR" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="260" width="382" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.Settings.Help.Title"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
                                             <constraints>

@@ -81,19 +81,17 @@ class SettingsViewController: BaseViewController {
          */
         
         faqInteractiveView.didTouchAction = { [weak self] in
-            self?.checkInternetConnection { [weak self] in
-                guard let self = self else { return }
-                let viewController = HelpViewController()
-                viewController.title = NSLocalizedString("MoreFAQ", comment: "")
-                viewController.url = ChromeCastFAQURL
-                self.navigationController?.pushViewController(viewController, animated: true)
-                
-                viewController.didFinishAction = { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
+            guard let self = self else { return }
+            self.checkInternetConnection {
+                let viewController = SetupChromeCastViewController()
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.hideInteractiveViewCompletion = {
+                    viewController.closeInteractiveView.isHidden = true
                 }
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
-            
         }
+        
         
         /*
          */

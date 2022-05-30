@@ -30,18 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         webServer = GCDWebServer()
         
-//        let websitePath = Bundle.main.bundlePath.appending("/FAQ.html")
-//
-//        webServer?.addGETHandler(forBasePath: "/", directoryPath: websitePath, indexFilename: nil, cacheAge: 3600, allowRangeRequests: true)
-//        webServer?.addHandler(forMethod: "GET", pathRegex: "/.*html", request: GCDWebServerRequest.self, processBlock: { req in
-//            let response = GCDWebServerDataResponse(htmlTemplate: websitePath, variables: ["value":"variable"])
-//            return response
-//        })
-//
-//        webServer?.addHandler(forMethod: "GET", path: "/image", request: GCDWebServerRequest.self, processBlock: { req in
-//            return GCDWebServerResponse(redirect: URL(string: "index.html")!, permanent: false)
-//        })
-//
         webServer?.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: {request in
                     return GCDWebServerDataResponse(html:"<html><body><p>Hello World</p></body></html>")
         })
@@ -60,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             complitionBlock(response)
         })
 
-        webServer?.addHandler(forMethod: "GET", path: "/video", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
+        webServer?.addHandler(forMethod: "GET", pathRegex: "/video/.*", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
         
             guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
             let imageFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")

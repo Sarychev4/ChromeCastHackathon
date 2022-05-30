@@ -46,7 +46,7 @@ class MediaPlayerViewController: BaseViewController {
         if _HUD == nil {
             let HUD = MBProgressHUD.showAdded(to: self.view, animated: true)
             HUD.mode = .determinate
-            HUD.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
+            HUD.label.text = NSLocalizedString("Media.Player.Load.iCloud", comment: "")
             HUD.button.setTitle(NSLocalizedString("Common.Cancel", comment: ""), for: .normal)
             HUD.progressObject = Progress(totalUnitCount: 100)
             _HUD = HUD
@@ -369,8 +369,7 @@ extension MediaPlayerViewController {
                 self.connectIfNeeded { [weak self] in
                     guard let _ = self else { return }
                     let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-//                    \(UUID().uuidString)
-                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video") else { return }
+                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
                     ChromeCastService.shared.displayVideo(with: url)
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
