@@ -294,7 +294,7 @@ extension MediaPlayerViewController {
         let ipAddress = ServerConfiguration.shared.deviceIPAddress()
         
        
-        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image") else { return }
+        guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(UUID().uuidString)") else { return }
         ChromeCastService.shared.displayImage(with: url)
         print(">>>File url \(url)")
     }

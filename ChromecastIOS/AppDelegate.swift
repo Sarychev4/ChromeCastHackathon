@@ -53,8 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             complitionBlock(response)
         })
     
-        webServer?.addHandler(forMethod: "GET", path: "/image/", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
-            
+        webServer?.addHandler(forMethod: "GET", pathRegex: "/image/.*", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
             guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
             let imageFileURL = documentsDirectory.appendingPathComponent("imageForCasting.jpg")
             let response = GCDWebServerFileResponse(file: imageFileURL.path, byteRange: request.byteRange)

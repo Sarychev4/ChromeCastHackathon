@@ -212,7 +212,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging
-  - GCDWebServer (~> 3.0)
+  - GCDWebServer
   - google-cast-sdk-no-bluetooth
   - GoogleAPIClientForREST/Drive
   - GoogleSignIn
@@ -343,6 +343,6 @@ SPEC CHECKSUMS:
   XCDYouTubeKit-kbexdev: d6bdf492b85a547fe8605568359ec2e91980a465
   ZMJTipView: c51b687cd307b5329d09760e8b95e5e37d01cd63
 
-PODFILE CHECKSUM: 6bda4a899f3ed72f2410a95f0d1238eb9cf23e6d
+PODFILE CHECKSUM: 1eb99e9ce9ad1230161127a0ba155ef579465b9f
 
 COCOAPODS: 1.11.3
