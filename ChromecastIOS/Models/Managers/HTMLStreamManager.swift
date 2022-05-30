@@ -22,8 +22,11 @@ class HTMLStreamManager {
     }
     
     private func setupHTTPServer() {
-        httpServer = HTTPServer() 
-        httpServer?.start()
+        httpServer = HTTPServer()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.httpServer?.start()
+        }
     }
     
     func encode(_ sampleBuffer: CMSampleBuffer, resolution: ResolutionType, orientation: CGImagePropertyOrientation) {

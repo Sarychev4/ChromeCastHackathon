@@ -6,6 +6,7 @@ def common_pods_for_target
   pod 'CocoaAsyncSocket' 
   pod 'Criollo', :git => 'git@github.com:mirroringcontact/Criollo.git'
   pod 'CSSystemInfoHelper', '~> 2.0'
+  pod "GCDWebServer"
 end
 
 target 'MirroringExtension' do
@@ -43,6 +44,7 @@ end
         target.build_configurations.each do |config|
             config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
             config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+            config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
         end
   end
  end

@@ -14,13 +14,12 @@ class SampleHandler: RPBroadcastSampleHandler {
     private var resolution: ResolutionType = .low
     private var orientation: CGImagePropertyOrientation = .up
     private var isAutoRotate: Bool = true
-    private var isSoundOn: Bool = true
-
+    private var isSoundOn: Bool = true 
     private var streamConfiguration: StreamConfiguration! { StreamConfiguration.current }
 
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         print(">>> broadcast Started")
-        
+         
         resolution = streamConfiguration.resolutionType
         isAutoRotate = streamConfiguration.isAutoRotate
         isSoundOn = streamConfiguration.isSoundOn

@@ -15,7 +15,7 @@ import AVFAudio
 
 class ChromeCastService: NSObject {
     
-    let kReceiverAppID = "2C5BA44D"
+    let kReceiverAppID = "2C5BA44D"//temp vr 1!!!! // "785537D5"// "D7506266""2C5BA44D"
     let kDebugLoggingEnabled = true
     
     static let shared = ChromeCastService()

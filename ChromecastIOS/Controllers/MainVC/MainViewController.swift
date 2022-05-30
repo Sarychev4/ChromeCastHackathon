@@ -12,7 +12,7 @@ import WebKit
 import CSSystemInfoHelper
 import GoogleCast
 import ReplayKit
-import SystemConfiguration.CaptiveNetwork
+import SystemConfiguration.CaptiveNetwork 
 
 struct Tab {
     var title: String
