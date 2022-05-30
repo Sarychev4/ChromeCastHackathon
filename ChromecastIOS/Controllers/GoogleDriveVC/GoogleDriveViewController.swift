@@ -173,6 +173,9 @@ class GoogleDriveViewController: BaseViewController {
                 print(">>>>>>>>>>>>>>>>>>>>")
                 print(">>>id: \(file.identifier!) \n >>>filename: \(file.name!) \n>>>mimetype: \(file.mimeType!) >>>file size: \(file.size) \n>>>iconlink: \(file.iconLink!) \n>>>thumbnaillink: \(file.thumbnailLink) \n>>>contentHints.thumbnail \(file.contentHints?.thumbnail?.image) \n>>>webContentLink \(file.webContentLink)\n>>>webViewLink  \(file.webViewLink)\n>>>fileExtension \(file.fileExtension)")
                 print(">>>>>>>>>>>>>>>>>>>>")
+                self.googleAPIs?.shareFile(file, onCompleted: { error in
+                    print("Permissions error: \(error?.localizedDescription)")
+                })
                 self.dataSource.append(file)
                 self.collectionView.reloadData()
             }
@@ -196,9 +199,9 @@ class GoogleDriveViewController: BaseViewController {
                 guard let self = self else { return }
                 guard let files = response?.files else { return }
                 for file in files {
-                    print(">>>>>>>>>>>>>>>>>>>>")
-                    print(">>>id: \(file.identifier!) \n>>>filename: \(file.name!) \n>>>mimetype: \(file.mimeType!) >>>file size: \(file.size) \n>>>iconlink: \(file.iconLink!) \n>>>thumbnaillink: \(file.thumbnailLink) \n>>>contentHints.thumbnail \(file.contentHints?.thumbnail?.image) \n>>>webContentLink \(file.webContentLink)\n>>>webViewLink  \(file.webViewLink)\n>>>fileExtension \(file.fileExtension)")
-                    print(">>>>>>>>>>>>>>>>>>>>")
+                    self.googleAPIs?.shareFile(file, onCompleted: { error in
+                        print("Permissions error: \(error?.localizedDescription)")
+                    })
                     self.dataSource.append(file)
                     self.collectionView.reloadData()
                 }
@@ -217,10 +220,9 @@ class GoogleDriveViewController: BaseViewController {
             print("All files error \(error?.localizedDescription)")
             guard let files = response?.files else { return }
             for file in files {
-                
-                print(">>>>>>>>>>>>>>>>>>>>")
-                print(">>>id: \(file.identifier!) \n>>>filename: \(file.name!) \n>>>mimetype: \(file.mimeType!)\n>>>file size: \(file.size) \n>>>iconlink: \(file.iconLink!) \n>>>thumbnaillink: \(file.thumbnailLink) \n>>>contentHints.thumbnail \(file.contentHints?.thumbnail?.image) \n>>>webContentLink \(file.webContentLink)\n>>>webViewLink  \(file.webViewLink)\n>>>fileExtension \(file.fileExtension)")
-                print(">>>>>>>>>>>>>>>>>>>>")
+                self.googleAPIs?.shareFile(file, onCompleted: { error in
+                    print("Permissions error: \(error?.localizedDescription)")
+                })
                 self.dataSource.append(file)
                 self.collectionView.reloadData()
                 self.activityIndicator.stopAnimating()
@@ -263,6 +265,13 @@ class GoogleDriveViewController: BaseViewController {
                 guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
                 ChromeCastService.shared.displayImage(with: urlWithFileID)
             }
+        case "image/png":
+            self.connectIfNeeded { [weak self] in
+                guard let _ = self else { return }
+                guard let file_id = file.identifier else { return }
+                guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
+                ChromeCastService.shared.displayImage(with: urlWithFileID)
+            }
         case "video/mp4":
             self.connectIfNeeded { [weak self] in
                 guard let _ = self else { return }
@@ -295,6 +304,7 @@ class GoogleDriveViewController: BaseViewController {
         alert.addAction(UIAlertAction(title: "Log out from Google account", style: .destructive, handler: { [weak self] (_) in
             guard let self = self else { return }
             self.signOut()
+            self.navigation?.popViewController(self, animated: true)
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
