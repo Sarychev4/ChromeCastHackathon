@@ -7,15 +7,10 @@
 
 import Foundation
 import CSSystemInfoHelper
-
-extension URL {
-    static let GroupFolder = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroupId)!
-    static let GroupRealmFile = GroupFolder.appendingPathComponent("GroupShared.realm") 
-}
-
+ 
 extension URL {
     static var HTML_STREAM_FRAME_URL: URL? {
-        return URL(string: "http://\(CSSystemInfoHelper.ipAddress):\(Port.htmlStreamPort.rawValue)/screenmirror")
+        return URL(string: "http://\(String(describing: CSSystemInfoHelper.ipAddress)):\(Port.htmlStreamPort.rawValue)/screenmirror")
     }
 }
 

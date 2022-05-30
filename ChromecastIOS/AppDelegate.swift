@@ -76,14 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             apphudAPIKey: "app_HARkZgrMoU5oAsLqx1fGcyPFQGhL8b",
             appsFlyerAPIKey: "mVN6DoQzLUCxz7gLjQivSY"
         )
-        
-        /*
-         */
-        
-        var realmConfig = Realm.Configuration()
-        realmConfig.schemaVersion = 1
-        Realm.Configuration.defaultConfiguration = realmConfig
-        
+         
         /*
          */
         
@@ -121,7 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = loadingViewController
         window!.makeKeyAndVisible()
         
-        print("Realm is here: \(Realm.Configuration.defaultConfiguration.fileURL!.path)")
         
         return true
     }
