@@ -1305,6 +1305,8 @@
 			dependencies = (
 			);
 			name = MirroringExtension;
+			packageProductDependencies = (
+			);
 			productName = MirroringExtension;
 			productReference = E8964312280EB5A700E6E287 /* MirroringExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1356,6 +1358,8 @@
 				de,
 			);
 			mainGroup = E89642A8280EAF7700E6E287;
+			packageReferences = (
+			);
 			productRefGroup = E89642B2280EAF7700E6E287 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1856,7 +1860,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
@@ -1883,7 +1887,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
