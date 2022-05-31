@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MirrorSettingsViewController" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaSettingsViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
                 <outlet property="balancedImageView" destination="VwP-29-odU" id="liF-cd-VcX"/>
                 <outlet property="balancedInteractiveView" destination="ycy-hB-olZ" id="sFP-Pt-9wu"/>

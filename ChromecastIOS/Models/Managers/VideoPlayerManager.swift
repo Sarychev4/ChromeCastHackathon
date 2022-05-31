@@ -75,6 +75,8 @@ class VideoPlayerManager: NSObject {
     }
     
     func stop() {
+        currentTime = 0
+        stopVideoProgressTimer()
         cancelPreparing()
         state = .none
     }

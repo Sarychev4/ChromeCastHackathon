@@ -248,6 +248,8 @@ extension MediaLibraryViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let player = MediaPlayerViewController()
+        let item = dataSource[albumIndex]
+        player.navigationTitle = item.album.localizedTitle
         player.selectedIndex = indexPath.row
         player.flowLayoutSyncManager = FlowLayoutSyncManager()
         player.assets = dataSource[albumIndex].images

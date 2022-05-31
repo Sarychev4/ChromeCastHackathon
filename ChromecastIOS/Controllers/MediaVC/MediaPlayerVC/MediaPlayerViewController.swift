@@ -21,13 +21,16 @@ class MediaPlayerViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
+    
+    @IBOutlet weak var navigationBarTitle: UILabel!
     @IBOutlet weak var currentAssetNameLabel: DefaultLabel!
     @IBOutlet weak var hdCollectionView: CellConfiguratedCollectionView!
     @IBOutlet weak var thumbnailCollectionView: CellConfiguratedCollectionView!
     @IBOutlet weak var qualityInteractiveView: InteractiveView!
     @IBOutlet weak var qualityTitleLabel: DefaultLabel!
     @IBOutlet weak var qualityShadow: DropShadowView!
-    
+   
+    var navigationTitle: String?
     private var videoPlayerManager = VideoPlayerManager.shared
     var hdCollectionViewRatio: CGFloat = 0
     var thumbnailCollectionViewThinnestRatio: CGFloat = 0
@@ -81,8 +84,15 @@ class MediaPlayerViewController: BaseViewController {
         
     }
     
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            stopDelayBetweenCastTimer()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        castToTV()
+        handleAsset(at: selectedIndex)
     }
     
     private func castToTV() {
@@ -175,6 +185,11 @@ class MediaPlayerViewController: BaseViewController {
     
     
     private func setupNavigationSection() {
+        
+        if let navTitle = self.navigationTitle {
+            navigationBarTitle.text = navTitle
+        }
+       
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.navigation?.popViewController(self, animated: true)
@@ -213,7 +228,9 @@ class MediaPlayerViewController: BaseViewController {
     
     private func hideHUD() {
         _HUD?.hide(animated: true)
+        HUD?.hide(animated: true)
         _HUD = nil
+        
     }
     
     private func presentDevices(postAction: Closure?) {
@@ -231,17 +248,36 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private func presentSettings(postAction: Closure?) {
-        let controller = MirrorSettingsViewController()
+        let asset = assets[selectedIndex]
+        let controller = MediaSettingsViewController()
         controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
         controller.modalPresentationStyle = .overCurrentContext
-        controller.didFinishAction = { [weak self] in
-            guard let _ = self else { return }
+        if asset.mediaType == .image {
+            controller.currentResolution = Settings.current.photosResolution
+        } else if asset.mediaType == .video {
+            controller.currentResolution = Settings.current.videosResolution
+        }
+        controller.didFinishAction = { [weak self] (resolution) in
+            guard let self = self else { return }
+
+            self.updateResolution(for: asset.mediaType, newResolution: resolution)
+            
             postAction?()
         }
         present(controller, animated: false, completion: nil)
+    }
+    
+    private func updateResolution(for mediaType: PHAssetMediaType, newResolution: ResolutionType) {
+        Settings.current.realm?.beginWrite()
+        if mediaType == .image {
+            Settings.current.photosResolution = newResolution
+        } else if mediaType == .video {
+            Settings.current.videosResolution = newResolution
+        }
+        try? Settings.current.realm?.commitWrite()
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
@@ -551,7 +587,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             let asset = self.assets[self.selectedIndex]
             let resources = PHAssetResource.assetResources(for: asset)
             self.currentAssetNameLabel.text = resources.first?.originalFilename
-            self.castToTV()
+            self.handleAsset(at: selectedIndex)
             
         default:
             break
@@ -582,7 +618,7 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
                 let asset = self.assets[self.selectedIndex]
                 let resources = PHAssetResource.assetResources(for: asset)
                 self.currentAssetNameLabel.text = resources.first?.originalFilename
-                self.castToTV()
+                self.handleAsset(at: selectedIndex)
             }
             
         } else {
@@ -592,7 +628,7 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
                 let asset = self.assets[self.selectedIndex]
                 let resources = PHAssetResource.assetResources(for: asset)
                 self.currentAssetNameLabel.text = resources.first?.originalFilename
-                self.castToTV()
+                self.handleAsset(at: selectedIndex)
             }
         }
     }
@@ -608,7 +644,7 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
             guard let thumbPage = index?.row else { return }
             if thumbPage != selectedIndex {
                 selectedIndex = thumbPage
-                self.castToTV()
+                self.handleAsset(at: selectedIndex)
             }
         }
         
