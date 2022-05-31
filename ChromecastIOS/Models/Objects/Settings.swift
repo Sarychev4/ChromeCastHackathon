@@ -73,9 +73,9 @@ class Settings: Object {
     
     //MARK: - Media Cast Settings
     
-    @Persisted var photosResolution: ResolutionType = .medium
+    @objc @Persisted var photosResolution: ResolutionType = .medium
     
-    @Persisted var videosResolution: ResolutionType = .medium
+    @objc @Persisted var videosResolution: ResolutionType = .medium
     
     @Persisted var youtubeResolution: ResolutionType = .medium
     

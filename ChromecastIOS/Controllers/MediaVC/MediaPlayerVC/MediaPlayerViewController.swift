@@ -11,6 +11,7 @@ import Photos
 import MBProgressHUD
 import GoogleCast
 import Agregator
+import RealmSwift
 
 enum State {
     case convertingToMP4(_ progress: Float)
@@ -55,6 +56,7 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private var _HUD: MBProgressHUD?
+    private var settingsObserver: NotificationToken!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +67,7 @@ class MediaPlayerViewController: BaseViewController {
         setupHDCollectionView()
         setupThumbnailCollectionView()
         synchronizeFlowLayoutOfCollections()
-        
+        observeSettings()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             guard let self = self else { return }
@@ -108,6 +110,27 @@ class MediaPlayerViewController: BaseViewController {
         }
         
         print(">>> cast to TV, mediaType: \(currentAsset.mediaType)")
+    }
+    
+    private func observeSettings() {
+        settingsObserver = Settings.current.observe {  [weak self] changes in
+            guard let self = self else { return }
+            switch changes {
+            case .error(_): break
+            case .change(_, let properties):
+                for property in properties {
+                    if property.name == #keyPath(Settings.photosResolution){
+                        self.handleAsset(at: self.selectedIndex)
+                    }
+                    
+                    if property.name == #keyPath(Settings.videosResolution) {
+                        UserDefaults.standard.lastCompressedAssetId = nil
+                        self.handleAsset(at: self.selectedIndex)
+                    }
+                }
+            case .deleted: break
+            }
+        }
     }
     
     
