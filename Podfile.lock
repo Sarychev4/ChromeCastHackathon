@@ -190,7 +190,6 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - NextLevelSessionExporter (0.4.6)
-  - Player (0.14.0)
   - PromisesObjC (2.1.0)
   - Protobuf (3.20.1)
   - ReachabilitySwift (5.0.0)
@@ -199,7 +198,6 @@ PODS:
   - Realm/Headers (10.26.0)
   - RealmSwift (10.26.0):
     - Realm (= 10.26.0)
-  - Starscream (4.0.4)
   - XCDYouTubeKit-kbexdev (2.16.0)
   - ZMJTipView (0.1.7)
 
@@ -221,10 +219,8 @@ DEPENDENCIES:
   - LNZCollectionLayouts
   - lottie-ios
   - NextLevelSessionExporter (~> 0.4.5)
-  - Player
   - ReachabilitySwift
   - RealmSwift
-  - Starscream (~> 4.0.0)
   - XCDYouTubeKit-kbexdev (from `https://github.com/kbex-dev/XCDYouTubeKit.git`)
   - ZMJTipView
 
@@ -266,13 +262,11 @@ SPEC REPOS:
     - MBProgressHUD
     - nanopb
     - NextLevelSessionExporter
-    - Player
     - PromisesObjC
     - Protobuf
     - ReachabilitySwift
     - Realm
     - RealmSwift
-    - Starscream
     - ZMJTipView
 
 EXTERNAL SOURCES:
@@ -333,16 +327,14 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   NextLevelSessionExporter: 4d8aa5e617f1c709724f2453efe5d4628480f65a
-  Player: 37e0acc16ea1495fc241df88fe9f089367513331
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   Protobuf: b60ec2f51ad74765f44d0c09d2e0579d7de21745
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Realm: 97bc2540088e1e88a4b2051ba4b8eac85be0039a
   RealmSwift: 1bc3cbcb1681c5a9262df5883280123aa2d1d4cf
-  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   XCDYouTubeKit-kbexdev: d6bdf492b85a547fe8605568359ec2e91980a465
   ZMJTipView: c51b687cd307b5329d09760e8b95e5e37d01cd63
 
-PODFILE CHECKSUM: 0d31c13cb5594967440ea6c21b53211a703fd55e
+PODFILE CHECKSUM: daadc87165a2c119008ab50f3531bba0871c5c21
 
 COCOAPODS: 1.11.3

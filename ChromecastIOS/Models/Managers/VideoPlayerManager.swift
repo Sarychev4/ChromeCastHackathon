@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import Player
+//import Player
 import Photos
 import RealmSwift
 import NextLevelSessionExporter
 import MobileCoreServices
 import GoogleCast
-import Player
 
 class VideoPlayerManager: NSObject {
     
@@ -63,6 +62,7 @@ class VideoPlayerManager: NSObject {
             state = .readyForTV
             return
         }
+        stopVideoProgressTimer()
         downloadFromiCloud()
     }
     

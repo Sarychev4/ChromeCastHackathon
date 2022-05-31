@@ -6,9 +6,14 @@
 //
 
 import UIKit
-import Player
+//import Player
 import XCDYouTubeKit_kbexdev
 import GoogleCast
+enum PlaybackState {
+    case playing
+    case paused
+    case stopped
+}
 
 class YouTubeViewController: BaseViewController {
 
@@ -39,7 +44,7 @@ class YouTubeViewController: BaseViewController {
     private var navigationBarAnimator: UIViewPropertyAnimator?
     private var animator: ScrollViewAnimator?
     
-    private var state: Player.PlaybackState? {
+    private var state: PlaybackState? {
         didSet {
             if let state = state {
                 if state == .playing {
