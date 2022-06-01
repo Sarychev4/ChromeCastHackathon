@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import GPhotos
 import GoogleCast
 
 class GooglePhotosViewController: BaseViewController {
