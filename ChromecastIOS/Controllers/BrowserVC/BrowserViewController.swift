@@ -29,7 +29,7 @@ class BrowserViewController: BaseViewController {
     @IBOutlet weak var webForwardInteractiveView: InteractiveView!
     @IBOutlet weak var openWebsitesInteractiveView: InteractiveView!
     @IBOutlet weak var detectedUrlsInteractiveView: InteractiveView!
-    @IBOutlet weak var detectedUrlsLabel: UILabel!
+    @IBOutlet weak var detectedUrlsLabel: DefaultLabel!
     
     @IBOutlet weak var playDetectevUrlsImageView: UIView!
     

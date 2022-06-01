@@ -95,8 +95,8 @@
                                                                 <constraint firstAttribute="width" constant="18" id="z3n-Ba-giC"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-gu-J26" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="52" y="11.5" width="82.5" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Go Premium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCj-gu-J26" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                            <rect key="frame" x="52" y="11.5" width="90.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <color key="textColor" name="labelColorDark"/>
                                                             <nil key="highlightedColor"/>

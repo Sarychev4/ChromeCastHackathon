@@ -140,8 +140,37 @@
 "Screen.Mirror.Action.Tap.Start" = "Tap to Start Mirroring";
 "Screen.Mirror.Action.Tap.Stop" = "Tap to Stop Mirroring";
 
-/*IPTV*/
+/*
+ - Browser
+ */
 
+"Screen.Browser.Title" = "Mirror";
+"Screen.Browser.NoVideoDeteced" = "No Video Detected";
+
+/*
+ - OpenWebsites
+ */
+
+"Screen.OpenWebsites.Title" = "Open Websites";
+"Screen.OpenWebsites.TapToClear" = "Tap To Clear";
+
+/*
+ - Media Library
+ */
+"Screen.MediaLibrary.Title" = "Media";
+
+/*
+ - Media Player
+ */
+
+"Media.Player.Load.iCloud" = "Downloading from iCloud";
+"Media.Player.Converting.Video" = "Preparing...";
+
+
+/*
+ - IPTV
+ */
+"IPTVTitle" = "IPTV";
 "IPTVSectionTitleUser" = "My channels";
 "IPTVSectionTitleFree" = "Popular channels";
 
@@ -153,14 +182,40 @@
 "IPTVEditTitle" = "Edit";
 "IPTVDoneTitle" = "Done";
 
-
 /*
- - Media Player
+ - YouTube
  */
 
-"Media.Player.Title" = "Media";
-"Media.Player.Load.iCloud" = "Downloading from iCloud";
-"Media.Player.Converting.Video" = "Preparing...";
+"Screen.YouTube.Title" = "YouTube";
+
+/*
+ - GoogleDrive
+ */
+
+"Screen.GoogleDrive.Title" = "Google Drive";
+"Screen.GoogleDrive.SignIn.Title" = "Sign in with Google to continue";
+"Screen.GoogleDrive.SignIn.SubTitle" = "All your data is securely protected";
+"Screen.GoogleDrive.LogOut" = "Log out from Google account";
+
+/*
+ - GooglePhotos
+ */
+
+"Screen.GooglePhotos.Title" = "Google Photos";
+"Screen.GooglePhotos.SignIn.Title" = "Sign in with Google to continue";
+"Screen.GooglePhotos.SignIn.SubTitle" = "All your data is securely protected";
+"Screen.GooglePhotos.LogOut" = "Log out from Google account";
+
+/*
+ - Setup ChromeCast
+ */
+
+"Screen.SetupChromacast.Title" = "Setup Chromacast";
+"Screen.SetupChromacast.Subtitle.1" = "Can’t find your\nChromecast in the list?";
+"Screen.SetupChromacast.Subtitle.2" = "Follow the steps in the video to set\neverything up.";
+"Screen.SetupChromacast.Button" = "Set up";
+"Screen.SetupChromacast.Subtitle.3" = "Still having issues?";
+"Screen.SetupChromacast.Subtitle.4" = "Tap here for help";
 
 /*
  - Reachabality
@@ -205,16 +260,7 @@
 
 "Mirror.Settings.Title" = "Mirror Settings";
 
-/*
- - Setup ChromeCast
- */
 
-"Screen.SetupChromacast.Title" = "Setup Chromacast";
-"Screen.SetupChromacast.Subtitle.1" = "Can’t find your\nChromecast in the list?";
-"Screen.SetupChromacast.Subtitle.2" = "Follow the steps in the video to set\neverything up.";
-"Screen.SetupChromacast.Button" = "Set up";
-"Screen.SetupChromacast.Subtitle.3" = "Still having issues?";
-"Screen.SetupChromacast.Subtitle.4" = "Tap here for help";
 /*
  - Browser
  */

@@ -301,13 +301,13 @@ class GoogleDriveViewController: BaseViewController {
     func showActionSheet() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
-        alert.addAction(UIAlertAction(title: "Log out from Google account", style: .destructive, handler: { [weak self] (_) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Screen.GoogleDrive.LogOut", comment: ""), style: .destructive, handler: { [weak self] (_) in
             guard let self = self else { return }
             self.signOut()
             self.navigation?.popViewController(self, animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Common.Cancel", comment: ""), style: .cancel, handler: { (_) in
             
         }))
         

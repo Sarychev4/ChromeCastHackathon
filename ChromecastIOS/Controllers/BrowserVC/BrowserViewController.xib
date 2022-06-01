@@ -15,7 +15,7 @@
                 <outlet property="backInteractiveView" destination="FHF-Aq-gUn" id="fEH-Ft-vdf"/>
                 <outlet property="connectInteractiveView" destination="Kdf-db-wch" id="i92-bv-cQb"/>
                 <outlet property="detectedUrlsInteractiveView" destination="nlE-ep-pqx" id="e9b-hU-3cp"/>
-                <outlet property="detectedUrlsLabel" destination="qdK-tY-Z1Y" id="6Bn-Mv-Z4I"/>
+                <outlet property="detectedUrlsLabel" destination="qdK-tY-Z1Y" id="b5r-Vx-2wT"/>
                 <outlet property="navigationBarShadowView" destination="Adr-w7-JMB" id="bWs-hl-kQ8"/>
                 <outlet property="openWebsitesInteractiveView" destination="l1P-tr-t0f" id="rGx-ae-XKz"/>
                 <outlet property="playDetectevUrlsImageView" destination="Yjt-ML-a7B" id="bUi-b4-Igb"/>
@@ -82,11 +82,14 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDm-II-MXB">
                                                             <rect key="frame" x="24" y="0.0" width="334" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-VH-eJR">
-                                                                    <rect key="frame" x="134" y="2" width="66" height="20.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Browser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-VH-eJR" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                    <rect key="frame" x="129.5" y="2" width="75.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.Browser.Title"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -245,11 +248,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="exQ-Ps-08I">
                                                     <rect key="frame" x="0.0" y="0.0" width="151.5" height="24"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Video Detected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdK-tY-Z1Y">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_No Video Detected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdK-tY-Z1Y" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="122.5" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="labelColorGrayPunk"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.Browser.NoVideoDeteced"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yjt-ML-a7B">
                                                             <rect key="frame" x="129.5" y="0.0" width="22" height="24"/>
