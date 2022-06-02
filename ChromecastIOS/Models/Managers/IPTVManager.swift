@@ -37,7 +37,7 @@ class IPTVManager {
     }
     
     func getListIPTV(onComplete: @escaping Closure) {
-        AF.request(iptvUrl).responseJSON { [weak self] response in
+        Alamofire.request(iptvUrl).responseJSON { [weak self] response in
             guard let self = self, let json = response.value as? [[String: Any]]
             else { onComplete(); return }
             let streams = self.parse(streams: json)
@@ -105,7 +105,7 @@ class IPTVManager {
     
     private func downloadAndParsePlayslist(_ channelUrl: String, onComplete: @escaping ([IPTVStream]) -> Void) {
         guard let url = URL(string: "https://tv.wonny.net/m3u?url=\(channelUrl)") else { return }
-        AF.request(url).responseJSON { (response) in
+        Alamofire.request(url).responseJSON { (response) in
             var result: [IPTVStream] = []
             if let arrayOfChannels = response.value as? [[String: Any]] {
                 for channelDictinary in arrayOfChannels {

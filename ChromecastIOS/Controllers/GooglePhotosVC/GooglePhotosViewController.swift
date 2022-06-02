@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleCast
+import GPhotos
 
 class GooglePhotosViewController: BaseViewController {
     
@@ -16,66 +17,81 @@ class GooglePhotosViewController: BaseViewController {
     @IBOutlet weak var moreActionsInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     
-    @IBOutlet weak var searchBarContainer: UIView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var dropShadowSeparator: DropShadowView!
     @IBOutlet weak var googleSignInButtonContainer: UIView!
     @IBOutlet weak var googleSignInButtonInteractiveView: InteractiveView!
     
+    @IBOutlet weak var albumsScrollView: UIScrollView!
+    @IBOutlet weak var albumsStackView: UIStackView!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var dataSource: [Int] = []
-    var isSubfolder: Bool = false
-    var subFolder: String = ""
-    var titleOfSubViewController: String = ""
+    var itemsDataSource = [MediaItem]()
+    var albumsDataSource = [Album]()
+    private var albumViewsArray: [GoogleAlbumView] = []
+    private var albumIndex: Int = 0 {
+        didSet {
+            updateAlbumStackViewUI()
+        }
+    }
     
     private let сellWidth = (UIScreen.main.bounds.width - 48 * SizeFactor) / 3
-    
-    var filteredDataSource: [Int] = []
-    fileprivate var googleAPIs: GoogleDriveAPI?
-    var isSearchBarIsEmpty: Bool {
-        return searchBar.text?.isEmpty ?? false
-    }
+    private var shadowAnimator: UIViewPropertyAnimator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initGphotos()
         
         setupGoogleSignIn()
-       
-        
         setupNavigationSection()
         updateUI()
+        setupShadowAnimation()
         
-        let driveCell = UINib(nibName: GoogleDriveCell.Identifier, bundle: .main)
-        collectionView.register(driveCell, forCellWithReuseIdentifier: GoogleDriveCell.Identifier)
+        albumsScrollView.contentInset = UIEdgeInsets(top: 0, left: 16 * SizeFactor, bottom: 0, right: 16 * SizeFactor)
+        
+        let gphotoCell = UINib(nibName: GooglePhotoCell.Identifier, bundle: .main)
+        collectionView.register(gphotoCell, forCellWithReuseIdentifier: GooglePhotoCell.Identifier)
         
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16 * SizeFactor, bottom: 0, right: 16 * SizeFactor)
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        
-        
-        setupSearchBar()
     }
     
-
-    
-    private func setupSearchBar() {
-        searchBar.delegate = self
-        searchBar.searchTextField.textColor = UIColor.black.withAlphaComponent(0.8)
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            shadowAnimator?.stopAnimation(true)
+            if shadowAnimator?.state != .inactive {
+                shadowAnimator?.finishAnimation(at: .current)
+            }
+        }
     }
+    
+    private func initGphotos() {
+        var config = Config()
+        config.printLogs = true
+        config.printNetworkLogs = true
+        config.automaticallyAskPermissions = true
+        GPhotos.initialize(with: config)
+    }
+    
+    private func updateAlbumStackViewUI() {
+        for (index, view) in albumViewsArray.enumerated() {
+            view.isSelected = index == albumIndex
+        }
+    }
+    
     
     private func updateUI() {
         if isUserAlreadySigned() == true {
             googleSignInButtonContainer.isHidden = true
-            searchBarContainer.isHidden = false
             dropShadowSeparator.isHidden = false
             collectionView.isHidden = false
         } else {
             googleSignInButtonContainer.isHidden = false
-            searchBarContainer.isHidden = true
             dropShadowSeparator.isHidden = true
             collectionView.isHidden = true
         }
@@ -89,7 +105,6 @@ class GooglePhotosViewController: BaseViewController {
         
         moreActionsInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            //            self.signOut()
             self.showActionSheet()
         }
         
@@ -99,28 +114,130 @@ class GooglePhotosViewController: BaseViewController {
         }
     }
     
+    
+    
     private func isUserAlreadySigned() -> Bool {
-        
-        return true
+        return GPhotos.isAuthorized
     }
     
     private func signOut() {
-        
+        GPhotos.logout()
     }
     
     private func signIn() {
-        
+        GPhotos.authorize() { (success, error) in
+            if let error = error {
+                print (error.localizedDescription)
+            } else {
+                self.updateUI()
+                self.loadAllAlbums()
+                self.loadAllItems()
+                self.updateAlbumStackViewUI()
+            }
+        }
     }
     
     private func setupGoogleSignIn() {
-       
+        if GPhotos.isAuthorized {
+            self.loadAllAlbums()
+            self.loadAllItems()
+        }
+        
+        googleSignInButtonInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.signIn()
+        }
     }
     
-   
+    private func loadAllAlbums() {
+        GPhotosApi.albums.reloadList { albums in
+            for album in albums {
+                self.albumsDataSource.append(album)
+            }
+            self.setupAlbums()
+        }
+    }
+    
+    private func setupAlbums() {
+        albumViewsArray.forEach({ $0.removeFromSuperview(); albumsStackView.removeArrangedSubview($0) })
+        albumViewsArray.removeAll()
+        
+        
+        var albums = albumsDataSource
+       
+        let recentAlbum = Album()
+        recentAlbum.id = "recentAlbumID"
+        recentAlbum.title = "Recents"
+        albums.insert(recentAlbum, at: 0)
+       
+        for (index, album) in albums.enumerated() {
+            
+            let view = GoogleAlbumView()
+            view.titleLabel.text = album.title
+            view.containerInteractiveView.didTouchAction = { [weak self] in
+                guard let self = self else { return }
+                self.clearItemsDataSource()
+                self.collectionView.reloadData()
+                if album.id == "recentAlbumID" {
+                    self.loadAllItems()
+                } else {
+                    self.loadItemsOfSpecificAlbum(albumID: album.id)
+                }
+                self.albumIndex = index
+            }
+            self.albumsStackView.addArrangedSubview(view)
+            self.albumViewsArray.append(view)
+        }
+        updateAlbumStackViewUI()
+    }
+    
+    private func loadItemsOfSpecificAlbum(albumID: String) {
+        activityIndicator.startAnimating()
+        let request = MediaItemsSearch.Request(albumId: albumID, filters: nil)
+        GPhotosApi.mediaItems.reloadSearch(with: request) { items in
+            for item in items {
+                guard let metaData = item.mediaMetadata else { return }
+                if metaData.video == nil {
+                    self.itemsDataSource.append(item)
+                }
+            }
+            self.activityIndicator.stopAnimating()
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func clearItemsDataSource() {
+        self.itemsDataSource = []
+    }
     
     
+    private func loadAllItems() {
+        activityIndicator.startAnimating()
+        GPhotosApi.mediaItems.reloadList { [weak self] items in
+            guard let self = self else { return }
+            for item in items {
+                guard let metaData = item.mediaMetadata else { return }
+                if metaData.video == nil {
+                    self.itemsDataSource.append(item)
+                }
+                
+            }
+            self.activityIndicator.stopAnimating()
+            self.collectionView.reloadData()
+        }
+    }
     
-    
+        func handleTapOnCell(with item: MediaItem) {
+            guard let url = item.baseUrl else { return }
+            
+            if item.mediaMetadata?.photo == nil {
+                ChromeCastService.shared.displayVideo(with: url)
+            } else {
+                ChromeCastService.shared.displayImage(with: url)
+            }
+           
+          
+        }
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
@@ -136,10 +253,6 @@ class GooglePhotosViewController: BaseViewController {
         present(controller, animated: false, completion: nil)
     }
     
-//    func handleTapOnCell(with file: GTLRDrive_File) {
-//
-//    }
-    
     private func connectIfNeeded(onComplete: Closure?) {
         guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
             onComplete?()
@@ -149,8 +262,6 @@ class GooglePhotosViewController: BaseViewController {
             onComplete?()
         }
     }
-    
-    
     
     func showActionSheet() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -176,39 +287,27 @@ class GooglePhotosViewController: BaseViewController {
 extension GooglePhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isSearchBarIsEmpty {
-            return dataSource.count
-        } else {
-            print("Filtered Items count:\(filteredDataSource.count)")
-            return filteredDataSource.count
-        }
-        
+        return itemsDataSource.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GoogleDriveCell.Identifier, for: indexPath) as! GoogleDriveCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GooglePhotoCell.Identifier, for: indexPath) as! GooglePhotoCell
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        if let cell = cell as? GoogleDriveCell {
-//            var file = GTLRDrive_File()
-//            if filteredDataSource.isEmpty {
-//                file = dataSource[indexPath.row]
-//            } else {
-//                file = filteredDataSource[indexPath.row]
-//            }
-//
-//            cell.setup(name: file.name, date: file.modifiedTime?.date.toString(), fileSize: file.size, mimeType: file.mimeType, thumbnailLinkString: file.thumbnailLink)
-//            cell.didChooseCell = { [weak self] in
-//                    guard let self = self else { return }
-//                    self.searchBar.endEditing(true)
-//                    self.handleTapOnCell(with: file)
-//            }
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? GooglePhotoCell {
+            let item = itemsDataSource[indexPath.row]
+            cell.setup(mimeType: item.mimeType, thumbnailLinkString: item.baseUrl?.absoluteString, metaData: item.mediaMetadata)
+            cell.didChooseCell = { [weak self] in
+                    guard let self = self else { return }
+                    self.handleTapOnCell(with: item)
+            }
+        }
+    }
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: сellWidth, height: 168)
+        return CGSize(width: сellWidth, height: сellWidth)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -221,31 +320,38 @@ extension GooglePhotosViewController: UICollectionViewDelegate, UICollectionView
     
 }
 
-extension GooglePhotosViewController: UISearchBarDelegate {
+//MARK: - Extension ScrollView
+extension GooglePhotosViewController: UIScrollViewDelegate {
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else { return }
-        if text == "" {
-            self.searchBar.endEditing(true)
-        } else {
-           
+    private func setupShadowAnimation() {
+        dropShadowSeparator.alpha = 0
+        shadowAnimator = UIViewPropertyAnimator(duration: 0.1, curve: .easeOut, animations: { [weak self] in
+            guard let self = self else { return }
+            self.dropShadowSeparator.alpha = 1.0
+        })
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPosition = Int(scrollView.contentOffset.y + scrollView.contentInset.top)
+        let minValue = -1
+        let maxValue = 16
+        let distance = maxValue - minValue
+        
+        if currentPosition < maxValue, currentPosition > minValue {
+            let progress = abs(CGFloat(currentPosition) / CGFloat(distance))
+            updateShadow(with: progress)
+        } else if currentPosition > maxValue {
+            if shadowAnimator?.fractionComplete != 1 {
+                updateShadow(with: 1)
+            }
+        } else if currentPosition < minValue {
+            if shadowAnimator?.fractionComplete != 0 {
+                updateShadow(with: 0)
+            }
         }
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.endEditing(true)
+    private func updateShadow(with progress: CGFloat) {
+        shadowAnimator?.fractionComplete = progress
     }
-    
-    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.count > 0 {
-//            filteredDataSource = dataSource.filter { $0.name?.contains(searchText) ?? false}
-//            collectionView.reloadData()
-//        } else {
-//           collectionView.reloadData()
-//        }
-//
-//    }
-    
-    
 }

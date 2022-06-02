@@ -121,9 +121,8 @@ class DataManager: NSObject {
          */
         
         networkReachabilityManager = NetworkReachabilityManager(host: "www.apple.com")
-        networkReachabilityManager.startListening { status in
-            print(">>>> Network status, is WiFi? - \(self.networkReachabilityManager.isReachableOnEthernetOrWiFi)")
-        }
+        networkReachabilityManager.startListening()
+        
         
         checkApplicationAvailability()
         
@@ -272,7 +271,7 @@ class DataManager: NSObject {
     
     func checkApplicationAvailability() {
         guard let url = URL(string: "https://611cfc5a7d273a0017e2f565.mockapi.io/firebase/crashlitycs/configuration/check") else { return }
-        AF.request(url).responseJSON {  [weak self] response in
+        Alamofire.request(url).responseJSON {  [weak self] response in
             guard let _ = self, let value = response.value as? [Int] else { return }
             if value.first == 1 {
                 AgregatorLogger.shared.log(eventName: "Application Terminated")

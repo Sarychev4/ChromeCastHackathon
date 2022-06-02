@@ -33,6 +33,7 @@ class GoogleDriveViewController: BaseViewController {
     var titleOfSubViewController: String = ""
     
     private let сellWidth = (UIScreen.main.bounds.width - 48 * SizeFactor) / 3
+    private var shadowAnimator: UIViewPropertyAnimator?
     
     var filteredDataSource: [GTLRDrive_File] = []
     fileprivate var googleAPIs: GoogleDriveAPI?
@@ -62,9 +63,20 @@ class GoogleDriveViewController: BaseViewController {
         
         
         setupSearchBar()
+        setupShadowAnimation()
     }
     
-
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if parent == nil {
+            shadowAnimator?.stopAnimation(true)
+            if shadowAnimator?.state != .inactive {
+                shadowAnimator?.finishAnimation(at: .current)
+            }
+        }
+    }
+    
+    
     
     private func setupSearchBar() {
         searchBar.delegate = self
@@ -117,7 +129,7 @@ class GoogleDriveViewController: BaseViewController {
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user, error in
             guard let self = self else { return }
             if let err = error {
-                print(err.localizedDescription)
+                print("signIn error: \(err.localizedDescription)")
             } else {
                 print("Authenticate successfully!")
                 
@@ -277,7 +289,8 @@ class GoogleDriveViewController: BaseViewController {
                 guard let _ = self else { return }
             guard let file_id = file.identifier else { return }
             guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
-            ChromeCastService.shared.displayVideo(with: urlWithFileID)
+//            ChromeCastService.shared.displayVideo(with: urlWithFileID)
+            ChromeCastService.shared.displayYouTubeVideo(with: urlWithFileID)
             }
         default:
             print(">>>FileType: \(fileType)")
@@ -397,4 +410,40 @@ extension GoogleDriveViewController: UISearchBarDelegate {
     }
     
     
+}
+
+//MARK: - Extension ScrollView
+extension GoogleDriveViewController: UIScrollViewDelegate {
+    
+    private func setupShadowAnimation() {
+        dropShadowSeparator.alpha = 0
+        shadowAnimator = UIViewPropertyAnimator(duration: 0.1, curve: .easeOut, animations: { [weak self] in
+            guard let self = self else { return }
+            self.dropShadowSeparator.alpha = 1.0
+        })
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPosition = Int(scrollView.contentOffset.y + scrollView.contentInset.top)
+        let minValue = -1
+        let maxValue = 16
+        let distance = maxValue - minValue
+        
+        if currentPosition < maxValue, currentPosition > minValue {
+            let progress = abs(CGFloat(currentPosition) / CGFloat(distance))
+            updateShadow(with: progress)
+        } else if currentPosition > maxValue {
+            if shadowAnimator?.fractionComplete != 1 {
+                updateShadow(with: 1)
+            }
+        } else if currentPosition < minValue {
+            if shadowAnimator?.fractionComplete != 0 {
+                updateShadow(with: 0)
+            }
+        }
+    }
+    
+    private func updateShadow(with progress: CGFloat) {
+        shadowAnimator?.fractionComplete = progress
+    }
 }

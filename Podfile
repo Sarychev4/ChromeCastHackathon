@@ -7,6 +7,7 @@ def common_pods_for_target
   pod 'Criollo', :git => 'git@github.com:mirroringcontact/Criollo.git'
   pod 'CSSystemInfoHelper', '~> 2.0'
   pod "GCDWebServer"
+  pod 'GPhotos', :path => '../ChromecastIOS/Libs/GPhotosSDK'
 end
 
 target 'MirroringExtension' do
@@ -22,6 +23,7 @@ target 'ChromecastIOS' do
   pod 'AdvancedPageControl'
   pod 'Agregator', :git => 'git@github.com:mirroringcontact/common.git'
 #  pod 'Player'
+  pod 'Alamofire'
   pod 'Kingfisher'
   pod 'ReachabilitySwift'
   pod "NextLevelSessionExporter", "~> 0.4.5"

@@ -80,6 +80,10 @@
 		DD5232B0281ACF22004AF0AA /* PremuimLifeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */; };
 		DD5232B1281ACF22004AF0AA /* PremuimLifeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */; };
 		DD55A67D2832EF8900B99C17 /* YoutubeSearchCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */; };
+		DD5F403E2848B7AD0064B934 /* GooglePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F403C2848B7AD0064B934 /* GooglePhotoCell.swift */; };
+		DD5F403F2848B7AD0064B934 /* GooglePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5F403D2848B7AD0064B934 /* GooglePhotoCell.xib */; };
+		DD5F40472848BC460064B934 /* GoogleAlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5F40462848BC460064B934 /* GoogleAlbumView.xib */; };
+		DD5F40492848BCCA0064B934 /* GoogleAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F40482848BCCA0064B934 /* GoogleAlbumView.swift */; };
 		DD69DCAA281A8EF80010E4B3 /* MediaLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */; };
 		DD69DCAB281A8EF80010E4B3 /* MediaLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */; };
 		DD6E98A9282FC04D00A72DF3 /* GoogleDriveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */; };
@@ -333,6 +337,10 @@
 		DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremuimLifeTimeViewController.swift; sourceTree = "<group>"; };
 		DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremuimLifeTimeViewController.xib; sourceTree = "<group>"; };
 		DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchCodable.swift; sourceTree = "<group>"; };
+		DD5F403C2848B7AD0064B934 /* GooglePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePhotoCell.swift; sourceTree = "<group>"; };
+		DD5F403D2848B7AD0064B934 /* GooglePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GooglePhotoCell.xib; sourceTree = "<group>"; };
+		DD5F40462848BC460064B934 /* GoogleAlbumView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleAlbumView.xib; sourceTree = "<group>"; };
+		DD5F40482848BCCA0064B934 /* GoogleAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAlbumView.swift; sourceTree = "<group>"; };
 		DD69DCA8281A8EF80010E4B3 /* MediaLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewController.swift; sourceTree = "<group>"; };
 		DD69DCA9281A8EF80010E4B3 /* MediaLibraryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaLibraryViewController.xib; sourceTree = "<group>"; };
 		DD6E98A8282FC04D00A72DF3 /* GoogleDriveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveAPI.swift; sourceTree = "<group>"; };
@@ -790,6 +798,24 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		DD5F403B2848B7850064B934 /* GooglePhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F403C2848B7AD0064B934 /* GooglePhotoCell.swift */,
+				DD5F403D2848B7AD0064B934 /* GooglePhotoCell.xib */,
+			);
+			path = GooglePhotoCell;
+			sourceTree = "<group>";
+		};
+		DD5F40452848BC160064B934 /* GoogleAlbumView */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F40482848BCCA0064B934 /* GoogleAlbumView.swift */,
+				DD5F40462848BC460064B934 /* GoogleAlbumView.xib */,
+			);
+			path = GoogleAlbumView;
+			sourceTree = "<group>";
+		};
 		DD69DCA7281A8ED50010E4B3 /* MediaLibraryVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1006,6 +1032,8 @@
 		DDCE0A0328116E9A004E9C18 /* GooglePhotosVC */ = {
 			isa = PBXGroup;
 			children = (
+				DD5F40452848BC160064B934 /* GoogleAlbumView */,
+				DD5F403B2848B7850064B934 /* GooglePhotoCell */,
 				DDCE0A0828116EF9004E9C18 /* GooglePhotosViewController.swift */,
 				DDCE0A0928116EF9004E9C18 /* GooglePhotosViewController.xib */,
 			);
@@ -1410,6 +1438,7 @@
 				DD923AF52816B3F40034E5D3 /* TutorialWifiViewController.xib in Resources */,
 				DD19E4AF2812ABD900931489 /* barton_nature_area_bridge_hd.JPG in Resources */,
 				DD5232AD281ACF0C004AF0AA /* PremiumDiscountViewController.xib in Resources */,
+				DD5F40472848BC460064B934 /* GoogleAlbumView.xib in Resources */,
 				DD19E4AB2812ABD900931489 /* bird_hills_nature_tree_hd.JPG in Resources */,
 				DD19E4AA2812ABD900931489 /* vertical_strip_hd.png in Resources */,
 				DD523299281A9906004AF0AA /* AlbumView.xib in Resources */,
@@ -1436,6 +1465,7 @@
 				DD19E4A72812ABD900931489 /* barton_nature_leeve.JPG in Resources */,
 				DDCF125B28229C23009019D4 /* MediaSettingsViewController.xib in Resources */,
 				DDF59BFE280F323500CE2E2B /* UINavigationContainer.xib in Resources */,
+				DD5F403F2848B7AD0064B934 /* GooglePhotoCell.xib in Resources */,
 				DDA72052282BB33E00CF4DC3 /* LoadingViewController.xib in Resources */,
 				DD19E4B22812ABD900931489 /* willowtree_apartment_sunset_hd.jpg in Resources */,
 				DD23EAE12811947A00DB7D44 /* SettingsViewController.xib in Resources */,
@@ -1589,6 +1619,7 @@
 				DDEFA0DC283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift in Sources */,
 				DD92BADE2837117C00ACD358 /* VideoPlayerManager.swift in Sources */,
 				DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */,
+				DD5F40492848BCCA0064B934 /* GoogleAlbumView.swift in Sources */,
 				DD92BAE82837893D00ACD358 /* AutoComplete.swift in Sources */,
 				DD92BAE428372E1600ACD358 /* UserDefaults+Extension.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
@@ -1680,6 +1711,7 @@
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
 				DD6E98B12830036000A72DF3 /* Date+Extension.swift in Sources */,
 				DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */,
+				DD5F403E2848B7AD0064B934 /* GooglePhotoCell.swift in Sources */,
 				DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */,
 				DD92BADA2836C78F00ACD358 /* VideoConverter.swift in Sources */,
 				DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */,

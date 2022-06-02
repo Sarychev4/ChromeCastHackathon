@@ -164,7 +164,7 @@ class ChromeCastService: NSObject {
         GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
         
         let defaultMediaVC = GCKCastContext.sharedInstance().defaultExpandedMediaControlsViewController
-//        defaultMediaVC.modalPresentationStyle = .fullScreen
+        defaultMediaVC.modalPresentationStyle = .fullScreen
         defaultMediaVC.view.allSubviews.forEach ({
             if $0.className == "GCKUICastButton" {
                 $0.layer.opacity = 0

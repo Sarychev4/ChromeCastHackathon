@@ -10,7 +10,6 @@ import RealmSwift
 import Agregator
 import GoogleCast
 import Firebase
-import GoogleSignIn
 import AppTrackingTransparency
 import AdSupport
 import ApphudSDK
