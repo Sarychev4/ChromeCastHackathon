@@ -73,8 +73,8 @@ class GooglePhotosViewController: BaseViewController {
     private func initGphotos() {
         var config = Config()
         config.printLogs = true
-        config.printNetworkLogs = true
-        config.automaticallyAskPermissions = true
+        config.printNetworkLogs = false
+        config.automaticallyAskPermissions = false
         GPhotos.initialize(with: config)
     }
     
@@ -125,24 +125,24 @@ class GooglePhotosViewController: BaseViewController {
     }
     
     private func signIn() {
-        var scopes: Set = [AuthScope.openId,AuthScope.sharing,AuthScope.readDevData, AuthScope.readAndAppend]
+        let scopes: Set = [AuthScope.readDevData, AuthScope.readAndAppend]
         GPhotos.authorize(with: scopes) { (success, error) in
-            if let error = error {
-                print ("Authorize error: \(error.localizedDescription)")
-            } else {
-                print(success)
-                self.updateUI()
-                self.loadAllAlbums()
-                self.loadAllItems()
-                self.updateAlbumStackViewUI()
+                    if let error = error {
+                        print ("Authorize error: \(error.localizedDescription)")
+                    } else {
+                        self.updateUI()
+                        self.loadAllAlbums()
+                        self.loadAllItems()
+                        self.updateAlbumStackViewUI()
+                    }
             }
         }
-        GPhotos.authorize()
-    }
+
     
     private func setupGoogleSignIn() {
         print("GPhotos.isAuthorized  \(GPhotos.isAuthorized)")
         if GPhotos.isAuthorized {
+            
             self.loadAllAlbums()
             self.loadAllItems()
         }

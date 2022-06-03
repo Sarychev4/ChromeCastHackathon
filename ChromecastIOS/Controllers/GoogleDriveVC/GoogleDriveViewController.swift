@@ -125,7 +125,6 @@ class GoogleDriveViewController: BaseViewController {
     
     private func signIn() {
         let config = GIDConfiguration(clientID: "719393243681-q159h4ibja392l88iiuba6nb8o8q0qeh.apps.googleusercontent.com")
-        
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user, error in
             guard let self = self else { return }
             if let err = error {
