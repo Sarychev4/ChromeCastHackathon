@@ -60,6 +60,7 @@ class TutorialConnectViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        continueInteractiveView.isUserInteractionEnabled = false
         self.startProcessingAnimation()
     }
     
@@ -129,6 +130,7 @@ class TutorialConnectViewController: BaseViewController {
             } else {
                 self.stopProgressTimer()
             }
+            self.continueInteractiveView.isUserInteractionEnabled = true
         }
     }
     
