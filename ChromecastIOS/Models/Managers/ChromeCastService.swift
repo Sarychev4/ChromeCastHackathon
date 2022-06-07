@@ -148,12 +148,14 @@ class ChromeCastService: NSObject {
         remoteMediaClient?.add(self)
     }
     
-    func displayYouTubeVideo(with url: URL) {
+    func displayYouTubeVideo(with url: URL, previewImage: URL) {
         let metadata = GCKMediaMetadata(metadataType: .movie)
+        metadata.addImage(GCKImage(url: previewImage, width: 60, height: 60) )
         let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: url)
         mediaInfoBuilder.contentType = "video/mp4" //mediaInfo.mimeType
         mediaInfoBuilder.streamType = GCKMediaStreamType.none
         mediaInfoBuilder.metadata = metadata
+        
         let mediaInformation = mediaInfoBuilder.build()
         
         let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient

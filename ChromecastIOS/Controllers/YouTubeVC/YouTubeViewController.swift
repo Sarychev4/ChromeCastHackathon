@@ -16,7 +16,7 @@ enum PlaybackState {
 }
 
 class YouTubeViewController: BaseViewController {
-
+    
     deinit {
         print(">>> deinit YouTubeViewController")
     }
@@ -113,10 +113,10 @@ class YouTubeViewController: BaseViewController {
                 self.playVideo(at: self.selectedIndex)
             } else if self.state == .paused {
                 //temp
-//                DeviceManager.shared.mediaControlPlayVideo()
+                //                DeviceManager.shared.mediaControlPlayVideo()
             } else if self.state == .playing {
                 //temp
-//                DeviceManager.shared.mediaControlPauseVideo()
+                //                DeviceManager.shared.mediaControlPauseVideo()
             }
             self.mediaControlView.playPauseInteractiveView.isEnabled = false
         }
@@ -125,7 +125,7 @@ class YouTubeViewController: BaseViewController {
          */
         
         if let data = UserDefaults.standard.youtubeLastResponse,
-            let array = try? JSONDecoder().decode([YoutubeItem].self, from: data), array.count > 0 {
+           let array = try? JSONDecoder().decode([YoutubeItem].self, from: data), array.count > 0 {
             videos = array
         }
         
@@ -146,31 +146,31 @@ class YouTubeViewController: BaseViewController {
      */
     
     private func playVideo(at index: Int, resolution: ResolutionType? = nil) {
-//        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.youtube.rawValue, with: { [weak self] success in
-//            guard let self = self, success == true else { return }
-            self.connectIfNeeded { [weak self] in
-                guard let self = self else { return }
-                self.selectedIndex = index
-                self.state = .stopped
-                self.tableView.reloadData()
-                let item = self.videos[index]
-                if let videoId = item.id?.videoID {
-                    XCDYouTubeClient.default().getVideoWithIdentifier(videoId) { [weak self] (video, error) in
-                        guard let self = self, let video = video else { return }
-//                        self.mediaControlView.alpha = 1
-                        self.currentVideo = video
-                        let resolution = self.getBestQuality(for: video)
-                        if let downloadUrl = video.streamURLs[resolution.youtubeQuality] {
-                            ChromeCastService.shared.displayYouTubeVideo(with: downloadUrl)
-                            
-                            self.startVideoProgressTimer()
-                            self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"
-                            self.mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")
-                        }
+        self.connectIfNeeded { [weak self] in
+            guard let self = self else { return }
+            self.selectedIndex = index
+            self.state = .stopped
+            self.tableView.reloadData()
+            let item = self.videos[index]
+            if let videoId = item.id?.videoID {
+                XCDYouTubeClient.default().getVideoWithIdentifier(videoId) { [weak self] (video, error) in
+                    guard let self = self, let video = video else { return }
+                    //                        self.mediaControlView.alpha = 1
+                    self.currentVideo = video
+                    let resolution = self.getBestQuality(for: video)
+                    if let downloadUrl = video.streamURLs[resolution.youtubeQuality],
+                       let urlString = item.snippet?.thumbnails?.high?.url,
+                       let previewImageUrl = URL(string: urlString) {
+                        
+                        ChromeCastService.shared.displayYouTubeVideo(with: downloadUrl, previewImage: previewImageUrl)
+                        
+                        self.startVideoProgressTimer()
+                        self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"
+                        self.mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")
                     }
                 }
             }
-//        })
+        }
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
@@ -200,57 +200,57 @@ class YouTubeViewController: BaseViewController {
                 guard let currentTime = remoteMediaClient?.mediaStatus?.streamPosition else { return }
                 //print(currentTime)
                 
-                    if self.currentTime == 0 && currentTime > TimeInterval(2) {
-                        // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
-                        return
-                    }
-                    self.mediaControlView.playPauseInteractiveView.isEnabled = true
-                    let videoDuration = Int(self.currentVideo?.duration ?? 0)
-                    
-                    if currentTime > 0 {
-                        
-                        if currentTime != self.currentTime {
-                            self.state = .playing
-                        } else {
-                            // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
-                            //На Року оно закрывается. Поэтому надо обрабатывать все кейсы
-                            if abs(TimeInterval(videoDuration) - currentTime) < 0.9 {
-                                self.state = .stopped
-                                timer.invalidate()
-                            } else {
-                                self.state = .paused
-                            }
-                        }
-                    } else if self.currentTime > 0 {
-                        // Кейс когда предыдущий запрос был не 0, а следующий 0 это когда видео закончилось.
-                        self.state = .stopped
-                    }
-                    self.currentTime = currentTime
-                    let currentTimePlayer = Int(currentTime)
-                    
-                    self.mediaControlView.progressView.value = Float(currentTimePlayer)/Float(videoDuration)
-                    self.mediaControlView.currentPlayTimeLabel.text = currentTimePlayer.durationText
+                if self.currentTime == 0 && currentTime > TimeInterval(2) {
+                    // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
+                    return
                 }
-            })
+                self.mediaControlView.playPauseInteractiveView.isEnabled = true
+                let videoDuration = Int(self.currentVideo?.duration ?? 0)
+                
+                if currentTime > 0 {
+                    
+                    if currentTime != self.currentTime {
+                        self.state = .playing
+                    } else {
+                        // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
+                        //На Року оно закрывается. Поэтому надо обрабатывать все кейсы
+                        if abs(TimeInterval(videoDuration) - currentTime) < 0.9 {
+                            self.state = .stopped
+                            timer.invalidate()
+                        } else {
+                            self.state = .paused
+                        }
+                    }
+                } else if self.currentTime > 0 {
+                    // Кейс когда предыдущий запрос был не 0, а следующий 0 это когда видео закончилось.
+                    self.state = .stopped
+                }
+                self.currentTime = currentTime
+                let currentTimePlayer = Int(currentTime)
+                
+                self.mediaControlView.progressView.value = Float(currentTimePlayer)/Float(videoDuration)
+                self.mediaControlView.currentPlayTimeLabel.text = currentTimePlayer.durationText
+            }
+        })
     }
     
     private func getQualities(from video: XCDYouTubeVideo) -> [ResolutionType] {
         var result: [ResolutionType] = []
-
+        
         if let _ = video.streamURLs[ResolutionType.low.youtubeQuality] {
             result.append(.low)
         }
-
+        
         if let _ = video.streamURLs[ResolutionType.medium.youtubeQuality] {
             result.append(.medium)
         }
-
+        
         if let _ = video.streamURLs[ResolutionType.high.youtubeQuality] {
             result.append(.high)
         }
         return result
     }
-
+    
     private func getBestQuality(for video: XCDYouTubeVideo) -> ResolutionType {
         if let _ = video.streamURLs[ResolutionType.high.youtubeQuality] {
             return .high
@@ -297,7 +297,7 @@ class YouTubeViewController: BaseViewController {
         }
         present(controller, animated: false, completion: nil)
     }
-
+    
 }
 
 extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -358,10 +358,10 @@ extension YouTubeViewController: UISearchBarDelegate {
         if text == "" {
             self.searchBar.endEditing(true)
         } else {
-        pageToken = nil
-        requestVideos(for: text)
-        suggestions.removeAll()
-        tableView.reloadData()
+            pageToken = nil
+            requestVideos(for: text)
+            suggestions.removeAll()
+            tableView.reloadData()
         }
     }
     
@@ -381,20 +381,20 @@ extension YouTubeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let text = searchBar.text else { return }
         if text != "" {
-        AutoComplete.getQuerySuggestions(text) { [weak self] (result, error) in
-            guard let self = self else { return }
-            
-            self.suggestions.removeAll()
-            
-            if let result = result {
-                self.suggestions.append(contentsOf: result)
+            AutoComplete.getQuerySuggestions(text) { [weak self] (result, error) in
+                guard let self = self else { return }
+                
+                self.suggestions.removeAll()
+                
+                if let result = result {
+                    self.suggestions.append(contentsOf: result)
+                }
+                
+                self.tableView.reloadData()
             }
-            
-            self.tableView.reloadData()
+            print(isSuggestionsOnView)
+            print("textDidChange")
         }
-        print(isSuggestionsOnView)
-        print("textDidChange")
-    }
     }
     
 }

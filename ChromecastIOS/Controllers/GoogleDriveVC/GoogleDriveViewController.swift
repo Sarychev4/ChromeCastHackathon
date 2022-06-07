@@ -286,10 +286,11 @@ class GoogleDriveViewController: BaseViewController {
         case "video/mp4":
             self.connectIfNeeded { [weak self] in
                 guard let _ = self else { return }
-            guard let file_id = file.identifier else { return }
-            guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
-//            ChromeCastService.shared.displayVideo(with: urlWithFileID)
-            ChromeCastService.shared.displayYouTubeVideo(with: urlWithFileID)
+            guard let file_id = file.identifier,
+                  let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)"),
+                  let imageUrlString = file.thumbnailLink,
+                  let previewImageUrl = URL(string: imageUrlString) else { return }
+            ChromeCastService.shared.displayYouTubeVideo(with: urlWithFileID, previewImage: previewImageUrl)
             }
         default:
             print(">>>FileType: \(fileType)")
