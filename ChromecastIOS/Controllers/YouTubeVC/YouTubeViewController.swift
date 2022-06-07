@@ -66,7 +66,6 @@ class YouTubeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mediaControlView.alpha = 0
         
         searchBar.delegate = self
