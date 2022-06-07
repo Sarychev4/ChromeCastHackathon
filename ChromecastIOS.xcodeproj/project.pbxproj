@@ -1952,7 +1952,7 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1988,7 +1988,7 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
