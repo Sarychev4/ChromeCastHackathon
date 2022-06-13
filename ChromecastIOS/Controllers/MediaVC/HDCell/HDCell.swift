@@ -28,6 +28,7 @@ class HDCell: UICollectionViewCell {
     @IBOutlet weak var progressView: UISlider!
     
     private let imageManager = PHCachingImageManager()
+    private var lastImageRequest: PHImageRequestID?
     
     var prevAction: (() -> ())?
     var nextAction: (() -> ())?
@@ -41,21 +42,34 @@ class HDCell: UICollectionViewCell {
     
     func setupCell(with asset: PHAsset, state: VideoPlayerManager.State, currentTime: Double, size: CGSize) {
        
-        self.photoWidthConstraint.constant = size.width
-        self.photoHeightConstraint.constant = size.height
-        self.clipsToBounds = true
-        self.photoImageView?.contentMode = .scaleAspectFit
+        photoWidthConstraint.constant = size.width
+        photoHeightConstraint.constant = size.height
+        clipsToBounds = true
+        photoImageView?.contentMode = .scaleAspectFit
         
-        image(for: asset, size: CGSize(width: size.width, height: size.height)) { (image, needd) in
-            self.photoImageView?.image = image
+        if let lastImageRequest = lastImageRequest {
+            imageManager.cancelImageRequest(lastImageRequest)
+            photoImageView?.image = nil
         }
+        
+        lastImageRequest = imageManager.image(for: asset,
+                                size: PHImageManagerMaximumSize,
+                                contentMode: .aspectFit,
+                                progressHandler: {progress in
+        }, completion: { [weak self] image in
+            guard let self = self, let image = image else { return }
+            self.photoImageView?.image = image
+        })
+//        image(for: asset, size: CGSize(width: size.width, height: size.height)) { (image, needd) in
+//            self.photoImageView?.image = image
+//        }
        
         if asset.mediaType == .image {
-            self.playerButtonsContainer.isHidden = true
-            self.progressContainerView.isHidden = true
+            playerButtonsContainer.isHidden = true
+            progressContainerView.isHidden = true
         } else {
-            self.playerButtonsContainer.isHidden = false
-            self.progressContainerView.isHidden = false
+            playerButtonsContainer.isHidden = false
+            progressContainerView.isHidden = false
             setupVideo(with: asset, state: state, currentTime: currentTime)
         }
 
@@ -102,24 +116,4 @@ class HDCell: UICollectionViewCell {
         self.rewindAction?(TimeInterval(sender.value))
     }
 
-}
-
-extension HDCell {
-    
-    @discardableResult func image(for asset: PHAsset, size: CGSize, completion: @escaping ((UIImage?, Bool) -> Void)) -> PHImageRequestID {
-        return imageManager.requestImage(
-            for: asset,
-               targetSize: size, //PHImageManagerMaximumSize
-               contentMode: .aspectFill,
-               options: nil,
-               resultHandler: { (image, info) in
-                   let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
-                   if isDegraded {
-                       return
-                   }
-                   DispatchQueue.main.async {
-                       completion(image, isDegraded)
-                   }
-               })
-    }
 }
