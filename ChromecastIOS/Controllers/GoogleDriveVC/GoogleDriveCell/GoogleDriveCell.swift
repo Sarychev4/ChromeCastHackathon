@@ -47,8 +47,6 @@ class GoogleDriveCell: UICollectionViewCell {
         } else if mimeType == "image/jpeg" || mimeType == "video/mp4" || mimeType == "image/png" {
             guard let imageUrlString = thumbnailLinkString else { return }
             guard let imageUrl:URL = URL(string: imageUrlString) else { return }
-//            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-//            self.fileImageView.image = UIImage(data: imageData)
             self.fileImageView.kf.setImage(with: imageUrl)
         } else if mimeType == "video/mp4" {
             

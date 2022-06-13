@@ -73,8 +73,8 @@ class GooglePhotosViewController: BaseViewController {
     private func initGphotos() {
         var config = Config()
         config.printLogs = true
-        config.printNetworkLogs = true
-        config.automaticallyAskPermissions = true
+        config.printNetworkLogs = false
+        config.automaticallyAskPermissions = false
         GPhotos.initialize(with: config)
     }
     
@@ -125,9 +125,10 @@ class GooglePhotosViewController: BaseViewController {
     }
     
     private func signIn() {
-        GPhotos.authorize() { (success, error) in
+        let scopes: Set = [AuthScope.readDevData, AuthScope.readAndAppend]
+        GPhotos.authorize(with: scopes) { (success, error) in
             if let error = error {
-                print (error.localizedDescription)
+                print ("Authorize error: \(error.localizedDescription)")
             } else {
                 self.updateUI()
                 self.loadAllAlbums()
@@ -137,8 +138,11 @@ class GooglePhotosViewController: BaseViewController {
         }
     }
     
+    
     private func setupGoogleSignIn() {
+        print("GPhotos.isAuthorized  \(GPhotos.isAuthorized)")
         if GPhotos.isAuthorized {
+            
             self.loadAllAlbums()
             self.loadAllItems()
         }
@@ -164,12 +168,12 @@ class GooglePhotosViewController: BaseViewController {
         
         
         var albums = albumsDataSource
-       
+        
         let recentAlbum = Album()
         recentAlbum.id = "recentAlbumID"
         recentAlbum.title = "Recents"
         albums.insert(recentAlbum, at: 0)
-       
+        
         for (index, album) in albums.enumerated() {
             
             let view = GoogleAlbumView()
@@ -227,17 +231,19 @@ class GooglePhotosViewController: BaseViewController {
         }
     }
     
-        func handleTapOnCell(with item: MediaItem) {
-            guard let url = item.baseUrl else { return }
-            
+    func handleTapOnCell(with item: MediaItem) {
+        guard let url = item.baseUrl else { return }
+        
+        self.connectIfNeeded { [weak self] in
+            guard let self = self else { return }
             if item.mediaMetadata?.photo == nil {
                 ChromeCastService.shared.displayVideo(with: url)
             } else {
                 ChromeCastService.shared.displayImage(with: url)
             }
-           
-          
+            
         }
+    }
     
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
@@ -300,12 +306,12 @@ extension GooglePhotosViewController: UICollectionViewDelegate, UICollectionView
             let item = itemsDataSource[indexPath.row]
             cell.setup(mimeType: item.mimeType, thumbnailLinkString: item.baseUrl?.absoluteString, metaData: item.mediaMetadata)
             cell.didChooseCell = { [weak self] in
-                    guard let self = self else { return }
-                    self.handleTapOnCell(with: item)
+                guard let self = self else { return }
+                self.handleTapOnCell(with: item)
             }
         }
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: сellWidth, height: сellWidth)
     }
