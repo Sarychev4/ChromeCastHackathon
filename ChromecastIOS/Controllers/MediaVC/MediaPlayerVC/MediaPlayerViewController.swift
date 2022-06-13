@@ -104,9 +104,9 @@ class MediaPlayerViewController: BaseViewController {
         
         let currentAsset = assets[selectedIndex]
         if currentAsset.mediaType == .image {
-            connectIfNeeded { [weak self] in
+            prepareAsset(at: self.selectedIndex) { [weak self] image in
                 guard let self = self else { return }
-                self.prepareAsset(at: self.selectedIndex) { [weak self] image in
+                self.connectIfNeeded { [weak self] in
                     guard let self = self, let image = image else { return }
                     self.castPhotoToTV(image)
                 }
@@ -227,8 +227,7 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private func hideHUD() {
-        _HUD?.hide(animated: true)
-        HUD?.hide(animated: true)
+        _HUD?.hide(animated: true) 
         _HUD = nil
         
     }
