@@ -7,7 +7,7 @@ def common_pods_for_target
   pod 'Criollo', :git => 'git@github.com:mirroringcontact/Criollo.git'
   pod 'CSSystemInfoHelper', '~> 2.0'
   pod "GCDWebServer"
-  pod 'GPhotos', :path => '../ChromecastIOS/Libs/GPhotosSDK'
+  pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
 end
 
 target 'MirroringExtension' do
