@@ -46,10 +46,10 @@ class HDCell: UICollectionViewCell {
         photoHeightConstraint.constant = size.height
         clipsToBounds = true
         photoImageView?.contentMode = .scaleAspectFit
+        photoImageView?.image = nil
         
         if let lastImageRequest = lastImageRequest {
             imageManager.cancelImageRequest(lastImageRequest)
-            photoImageView?.image = nil
         }
         
         lastImageRequest = imageManager.image(for: asset,
@@ -60,9 +60,6 @@ class HDCell: UICollectionViewCell {
             guard let self = self, let image = image else { return }
             self.photoImageView?.image = image
         })
-//        image(for: asset, size: CGSize(width: size.width, height: size.height)) { (image, needd) in
-//            self.photoImageView?.image = image
-//        }
        
         if asset.mediaType == .image {
             playerButtonsContainer.isHidden = true
