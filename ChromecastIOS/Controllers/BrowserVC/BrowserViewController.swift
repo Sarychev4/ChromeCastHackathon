@@ -74,6 +74,7 @@ class BrowserViewController: BaseViewController {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.tipView?.isHidden = true
+            ChromeCastService.shared.stopWebApp()
             self.navigation?.popViewController(self, animated: true)
         }
         

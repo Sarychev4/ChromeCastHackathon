@@ -100,6 +100,7 @@ class GooglePhotosViewController: BaseViewController {
     private func setupNavigationSection() {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
+            ChromeCastService.shared.stopWebApp()
             self.navigation?.popViewController(self, animated: true)
         }
         
