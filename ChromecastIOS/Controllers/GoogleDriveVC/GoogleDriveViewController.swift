@@ -187,9 +187,9 @@ class GoogleDriveViewController: BaseViewController {
                 print(">>>>>>>>>>>>>>>>>>>>")
                 print(">>>id: \(file.identifier!) \n >>>filename: \(file.name!) \n>>>mimetype: \(file.mimeType!) >>>file size: \(file.size) \n>>>iconlink: \(file.iconLink!) \n>>>thumbnaillink: \(file.thumbnailLink) \n>>>contentHints.thumbnail \(file.contentHints?.thumbnail?.image) \n>>>webContentLink \(file.webContentLink)\n>>>webViewLink  \(file.webViewLink)\n>>>fileExtension \(file.fileExtension)")
                 print(">>>>>>>>>>>>>>>>>>>>")
-                self.googleAPIs?.shareFile(file, onCompleted: { error in
-                    print("Permissions error: \(error?.localizedDescription)")
-                })
+//                self.googleAPIs?.shareFile(file, onCompleted: { error in
+//                    print("Permissions error: \(error?.localizedDescription)")
+//                })
                 self.dataSource.append(file)
                 self.collectionView.reloadData()
             }
@@ -213,9 +213,9 @@ class GoogleDriveViewController: BaseViewController {
                 guard let self = self else { return }
                 guard let files = response?.files else { return }
                 for file in files {
-                    self.googleAPIs?.shareFile(file, onCompleted: { error in
-                        print("Permissions error: \(error?.localizedDescription)")
-                    })
+//                    self.googleAPIs?.shareFile(file, onCompleted: { error in
+//                        print("Permissions error: \(error?.localizedDescription)")
+//                    })
                     self.dataSource.append(file)
                     self.collectionView.reloadData()
                 }
@@ -234,9 +234,6 @@ class GoogleDriveViewController: BaseViewController {
             print("All files error \(error?.localizedDescription)")
             guard let files = response?.files else { return }
             for file in files {
-                self.googleAPIs?.shareFile(file, onCompleted: { error in
-                    print("Permissions error: \(error?.localizedDescription)")
-                })
                 self.dataSource.append(file)
                 self.collectionView.reloadData()
                 self.activityIndicator.stopAnimating()
@@ -274,27 +271,47 @@ class GoogleDriveViewController: BaseViewController {
             self.navigation?.pushViewController(viewController, animated: .left)
         case "image/jpeg":
             self.connectIfNeeded { [weak self] in
-                guard let _ = self else { return }
+                guard let self = self else { return }
                 guard let file_id = file.identifier else { return }
                 guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
-                ChromeCastService.shared.displayImage(with: urlWithFileID)
+                self.googleAPIs?.shareFile(file, onCompleted: { error in
+                    if let err = error {
+                        print("Permissions error: \(err.localizedDescription)")
+                    } else {
+                        ChromeCastService.shared.displayImage(with: urlWithFileID)
+                    }
+                })
+                
             }
         case "image/png":
             self.connectIfNeeded { [weak self] in
-                guard let _ = self else { return }
+                guard let self = self else { return }
                 guard let file_id = file.identifier else { return }
                 guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
-                ChromeCastService.shared.displayImage(with: urlWithFileID)
+                self.googleAPIs?.shareFile(file, onCompleted: { error in
+                    if let err = error {
+                        print("Permissions error: \(err.localizedDescription)")
+                    } else {
+                        ChromeCastService.shared.displayImage(with: urlWithFileID)
+                    }
+                })
             }
         case "video/mp4":
             self.connectIfNeeded { [weak self] in
-                guard let _ = self else { return }
+                guard let self = self else { return }
             guard let file_id = file.identifier,
                   let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)"),
                   let imageUrlString = file.thumbnailLink,
                   let previewImageUrl = URL(string: imageUrlString) else { return }
-                ChromeCastService.shared.displayVideo(with: urlWithFileID, previewImage: previewImageUrl)
-                ChromeCastService.shared.showDefaultMediaVC()
+                self.googleAPIs?.shareFile(file, onCompleted: { error in
+                    if let err = error {
+                        print("Permissions error: \(err.localizedDescription)")
+                    } else {
+                        ChromeCastService.shared.displayVideo(with: urlWithFileID, previewImage: previewImageUrl)
+                        ChromeCastService.shared.showDefaultMediaVC()
+                    }
+                })
+                
             }
         default:
             print(">>>FileType: \(fileType)")
