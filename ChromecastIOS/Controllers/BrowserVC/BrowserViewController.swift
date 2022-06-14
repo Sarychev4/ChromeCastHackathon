@@ -139,6 +139,7 @@ class BrowserViewController: BaseViewController {
             if BrowserTab.current.link.hasPrefix("file:") == false {
                 self.createSnapshotOfCurrentPage()
             }
+            self.tipView?.isHidden = true
             let viewController = OpenWebsitesViewController()
             self.navigation?.pushViewController(viewController, animated: .left)
         }
