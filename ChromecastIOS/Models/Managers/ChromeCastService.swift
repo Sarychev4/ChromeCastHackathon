@@ -44,6 +44,11 @@ class ChromeCastService: NSObject {
         clearAllDevices()
         let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
         let options = GCKCastOptions(discoveryCriteria: criteria)
+        let launchOptions = GCKLaunchOptions(relaunchIfRunning: true)
+        launchOptions.androidReceiverCompatible = false
+        options.launchOptions = launchOptions
+        options.suspendSessionsWhenBackgrounded = false
+        options.disableAnalyticsLogging = true
         options.disableDiscoveryAutostart = true
         options.stopReceiverApplicationWhenEndingSession = true;
         options.physicalVolumeButtonsWillControlDeviceVolume = true;
