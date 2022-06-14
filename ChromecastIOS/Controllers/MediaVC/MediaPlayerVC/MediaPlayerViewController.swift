@@ -72,10 +72,19 @@ class MediaPlayerViewController: BaseViewController {
         synchronizeFlowLayoutOfCollections()
         observeSettings()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+        hdCollectionView.alpha = 0
+        thumbnailCollectionView.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
             guard let self = self else { return }
-            self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
-            self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
+            if self.selectedIndex > 0 {
+                self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
+                self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
+                UIView.animate(withDuration: 0.2 ) { [weak self] in
+                    guard let self = self else { return }
+                    self.hdCollectionView.alpha = 1
+                    self.thumbnailCollectionView.alpha = 1
+                }
+            }
             let asset = self.assets[self.selectedIndex]
             let resources = PHAssetResource.assetResources(for: asset)
             self.currentAssetNameLabel.text = resources.first?.originalFilename

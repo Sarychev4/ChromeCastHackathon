@@ -2,12 +2,9 @@
 #platform :ios, '9.0'
 inhibit_all_warnings!
 
-def common_pods_for_target  
-  pod 'CocoaAsyncSocket' 
-  pod 'Criollo', :git => 'git@github.com:mirroringcontact/Criollo.git'
+def common_pods_for_target
   pod 'CSSystemInfoHelper', '~> 2.0'
   pod "GCDWebServer"
-  pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
 end
 
 target 'MirroringExtension' do
@@ -16,14 +13,12 @@ target 'MirroringExtension' do
   pod 'RealmSwift'
 end
 
-
 target 'ChromecastIOS' do
   use_frameworks!
   common_pods_for_target
+  pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
   pod 'AdvancedPageControl'
   pod 'Agregator', :git => 'git@github.com:mirroringcontact/common.git'
-#  pod 'Player'
-  pod 'Alamofire'
   pod 'Kingfisher'
   pod 'ReachabilitySwift'
   pod "NextLevelSessionExporter", "~> 0.4.5"
@@ -35,8 +30,8 @@ target 'ChromecastIOS' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Messaging'
-  pod 'GoogleAPIClientForREST/Drive'#, '~> 1.2.1'
-  pod 'GoogleSignIn'#, '~> 4.1.1'
+  pod 'GoogleAPIClientForREST/Drive'
+  pod 'GoogleSignIn'
   pod "NextLevelSessionExporter", "~> 0.4.5"
   pod 'ZMJTipView'
 end 
