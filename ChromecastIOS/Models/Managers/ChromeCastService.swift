@@ -29,6 +29,8 @@ class ChromeCastService: NSObject {
     
     var connectFinished: ClosureBool?
     
+    var isSessionResumed: Bool = false
+    
     var outputVolumeObserve: NSKeyValueObservation?
     
     let audioSession = AVAudioSession.sharedInstance()
@@ -391,11 +393,13 @@ extension ChromeCastService: GCKSessionManagerListener {
     
     func sessionManager(_ sessionManager: GCKSessionManager, didFailToStart session: GCKSession, withError error: Error) {
         connectFinished?(false)
+        self.isSessionResumed = false
         print(">>>ChromeCast: Session has failed to start with Error: \(error.localizedDescription)")
     }
     
     func sessionManager(_ sessionManager: GCKSessionManager, didFailToStart session: GCKCastSession, withError error: Error) {
         connectFinished?(false)
+        self.isSessionResumed = false
         print(">>>ChromeCast: Cast Session has failed to start with Error: \(error.localizedDescription)")
     }
     
@@ -427,6 +431,7 @@ extension ChromeCastService: GCKSessionManagerListener {
     func sessionManager(_ sessionManager: GCKSessionManager, didResumeSession session: GCKSession) {
         print(">>>ChromeCast: Session has been successfully resumed.")
         connectFinished?(true)
+        self.isSessionResumed = true
     }
     
     func sessionManager(_ sessionManager: GCKSessionManager, didResumeCastSession session: GCKCastSession) {
@@ -434,6 +439,7 @@ extension ChromeCastService: GCKSessionManagerListener {
         self.screenMirroringChannel = GCKCastChannel(namespace:"urn:x-cast:com.mirroring.screen.sharing")
         sessionManager.currentCastSession?.add(screenMirroringChannel!)
         connectFinished?(true)
+        self.isSessionResumed = true
     }
     
     /*
