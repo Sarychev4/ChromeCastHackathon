@@ -292,7 +292,8 @@ class GoogleDriveViewController: BaseViewController {
                   let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)"),
                   let imageUrlString = file.thumbnailLink,
                   let previewImageUrl = URL(string: imageUrlString) else { return }
-            ChromeCastService.shared.displayYouTubeVideo(with: urlWithFileID, previewImage: previewImageUrl)
+                ChromeCastService.shared.displayVideo(with: urlWithFileID, previewImage: previewImageUrl)
+                ChromeCastService.shared.showDefaultMediaVC()
             }
         default:
             print(">>>FileType: \(fileType)")

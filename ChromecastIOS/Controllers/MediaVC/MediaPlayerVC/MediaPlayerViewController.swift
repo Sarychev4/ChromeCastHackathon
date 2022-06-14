@@ -430,6 +430,7 @@ extension MediaPlayerViewController {
                     let ipAddress = ServerConfiguration.shared.deviceIPAddress()
                     guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
                     ChromeCastService.shared.displayVideo(with: url)
+                    ChromeCastService.shared.showDefaultMediaVC()
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.videoPlayerManager.startObserveVideoProgress()

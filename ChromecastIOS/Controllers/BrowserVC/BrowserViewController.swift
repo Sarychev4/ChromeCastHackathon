@@ -148,8 +148,9 @@ class BrowserViewController: BaseViewController {
             guard let self = self, let detectedUrls = self.detectedUrls, detectedUrls.count > 0 else { return }
             self.connectIfNeeded { [weak self] in
                 guard let self = self else { return }
-                self.presentDetectedUrlsScreen(postAction: nil)
                 self.tipView?.isHidden = true
+                self.presentDetectedUrlsScreen(postAction: nil)
+                
             }
         }
     }
@@ -322,7 +323,8 @@ class BrowserViewController: BaseViewController {
                 guard let urlString = url, let url = URL(string: urlString) else { return }
                 let scriptSource = webVideoStop
                 self.webView.evaluateJavaScript(scriptSource) { (object, error) in }
-                ChromeCastService.shared.displayVideoWithPlayer(with: url)
+                ChromeCastService.shared.displayVideo(with: url)
+                ChromeCastService.shared.showDefaultMediaVC()
             }
         })
     }

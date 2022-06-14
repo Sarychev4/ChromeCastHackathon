@@ -9,6 +9,7 @@ import UIKit
 //import Player
 import XCDYouTubeKit_kbexdev
 import GoogleCast
+import SwiftUI
 enum PlaybackState {
     case playing
     case paused
@@ -160,9 +161,8 @@ class YouTubeViewController: BaseViewController {
                     if let downloadUrl = video.streamURLs[resolution.youtubeQuality],
                        let urlString = item.snippet?.thumbnails?.high?.url,
                        let previewImageUrl = URL(string: urlString) {
-                        
-                        ChromeCastService.shared.displayYouTubeVideo(with: downloadUrl, previewImage: previewImageUrl)
-                        
+                        ChromeCastService.shared.displayVideo(with: downloadUrl, previewImage: previewImageUrl)
+                        ChromeCastService.shared.showDefaultMediaVC()
                         self.startVideoProgressTimer()
                         self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"
                         self.mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")

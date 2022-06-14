@@ -238,6 +238,8 @@ class GooglePhotosViewController: BaseViewController {
             guard let self = self else { return }
             if item.mediaMetadata?.photo == nil {
                 ChromeCastService.shared.displayVideo(with: url)
+                ChromeCastService.shared.showDefaultMediaVC()
+                
             } else {
                 ChromeCastService.shared.displayImage(with: url)
             }
