@@ -100,6 +100,7 @@ class GooglePhotosViewController: BaseViewController {
     private func setupNavigationSection() {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
+            ChromeCastService.shared.stopWebApp()
             self.navigation?.popViewController(self, animated: true)
         }
         
@@ -235,6 +236,8 @@ class GooglePhotosViewController: BaseViewController {
             guard let self = self else { return }
             if item.mediaMetadata?.photo == nil {
                 ChromeCastService.shared.displayVideo(with: url)
+                ChromeCastService.shared.showDefaultMediaVC()
+                
             } else {
                 ChromeCastService.shared.displayImage(with: url)
             }
