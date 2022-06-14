@@ -150,6 +150,39 @@ class ChromeCastService: NSObject {
         remoteMediaClient?.add(self)
     }
     
+    func displayVideoWithPlayer(with url: URL) {
+        let metadata = GCKMediaMetadata(metadataType: .movie)
+//        metadata.addImage(GCKImage(url: url, width: 60, height: 60) )
+        let mediaInfoBuilder = GCKMediaInformationBuilder(contentURL: url)
+        mediaInfoBuilder.contentType = "video/mp4" //mediaInfo.mimeType
+        mediaInfoBuilder.streamType = GCKMediaStreamType.none
+        mediaInfoBuilder.metadata = metadata
+        
+        let mediaInformation = mediaInfoBuilder.build()
+        
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        remoteMediaClient?.loadMedia(mediaInformation)
+        
+        remoteMediaClient?.add(self)
+        
+        GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
+        
+        let defaultMediaVC = GCKCastContext.sharedInstance().defaultExpandedMediaControlsViewController
+//        defaultMediaVC.modalPresentationStyle = .fullScreen
+        defaultMediaVC.view.allSubviews.forEach ({
+            if $0.className == "GCKUICastButton" {
+                $0.layer.opacity = 0
+                $0.layer.isHidden = true
+                $0.isUserInteractionEnabled = false
+                let imageView = $0.subviews.first as? UIImageView
+                imageView?.layer.isHidden = true
+                imageView?.layer.opacity = 0
+            }
+        })
+        
+        GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
+    }
+    
     func displayYouTubeVideo(with url: URL, previewImage: URL) {
         let metadata = GCKMediaMetadata(metadataType: .movie)
         metadata.addImage(GCKImage(url: previewImage, width: 60, height: 60) )

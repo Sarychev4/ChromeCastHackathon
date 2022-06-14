@@ -322,7 +322,7 @@ class BrowserViewController: BaseViewController {
                 guard let urlString = url, let url = URL(string: urlString) else { return }
                 let scriptSource = webVideoStop
                 self.webView.evaluateJavaScript(scriptSource) { (object, error) in }
-                ChromeCastService.shared.displayVideo(with: url)
+                ChromeCastService.shared.displayVideoWithPlayer(with: url)
             }
         })
     }
