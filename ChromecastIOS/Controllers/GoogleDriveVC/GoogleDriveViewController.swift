@@ -28,6 +28,8 @@ class GoogleDriveViewController: BaseViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var dataSource: [GTLRDrive_File] = []
+    var filteredDataSource: [GTLRDrive_File] = []
+    
     var isSubfolder: Bool = false
     var subFolder: String = ""
     var titleOfSubViewController: String = ""
@@ -35,7 +37,7 @@ class GoogleDriveViewController: BaseViewController {
     private let сellWidth = (UIScreen.main.bounds.width - 48 * SizeFactor) / 3
     private var shadowAnimator: UIViewPropertyAnimator?
     
-    var filteredDataSource: [GTLRDrive_File] = []
+    
     fileprivate var googleAPIs: GoogleDriveAPI?
     var isSearchBarIsEmpty: Bool {
         return searchBar.text?.isEmpty ?? false
@@ -404,6 +406,7 @@ extension GoogleDriveViewController: UISearchBarDelegate {
             filteredDataSource = dataSource.filter { $0.name?.contains(searchText) ?? false}
             collectionView.reloadData()
         } else {
+            filteredDataSource.removeAll()
            collectionView.reloadData()
         }
         

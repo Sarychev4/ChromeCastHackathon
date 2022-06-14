@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import CoreMedia
+import MBProgressHUD
 
 class ListDevicesViewController: AFFloatingPanelViewController {
     
@@ -17,6 +18,8 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     @IBOutlet weak var refereshInteractiveView: InteractiveView!
     @IBOutlet weak var refreshIcon: UIImageView!
     @IBOutlet weak var attentionContainer: UIView!
+    
+    @IBOutlet weak var helpInteractiveLabel: InteractiveLabel!
     
     private var detectedDevices: Results<DeviceObject>?
     private var devicesNotificationToken: NotificationToken?
@@ -33,6 +36,19 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             self.handleTapOnRefreshButton()
         }
         
+        helpInteractiveLabel.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.checkInternetConnection {
+                let viewController = SetupChromeCastViewController()
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.hideInteractiveViewCompletion = {
+                    viewController.backInteractiveView.isHidden = true
+                }
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
+        
+        
         addDevicesObserver()
         
     }
@@ -46,6 +62,8 @@ class ListDevicesViewController: AFFloatingPanelViewController {
         } else {
             attentionContainer.isHidden = true
             guard let detectedDevices = detectedDevices else { return }
+            devicesStackView.subviews.forEach({ $0.removeFromSuperview() })
+
             for (index, elem) in detectedDevices.enumerated() {
                 self.populateStackView(tvName: elem.friendlyName, index: index)
             }
@@ -97,14 +115,13 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             guard let self = self else { return }
             guard let device = self.detectedDevices?[index] else { return }
             print(">>>is connected \(device.isConnected)")
-//            if device.isConnected {
-//                self.didFinishAction?()
-//                self.dismiss(animated: true, completion: nil)
-//            } else {
+            if device.isConnected || ChromeCastService.shared.isSessionResumed == true {
+                self.didFinishAction?()
+                self.dismiss(animated: true, completion: nil)
+            } else {
                 ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
                     guard let self = self else { return }
 
-                    
                     if success {
                         let realm = try! Realm()
                         
@@ -116,13 +133,9 @@ class ListDevicesViewController: AFFloatingPanelViewController {
                             guard let self = self else { return }
                             self.didFinishAction?()
                         }
-//                        self.dismiss(animated: true, completion: nil)
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//
-//                        }
                     }
                 })
-//            }
+            }
             
         }
         devicesStackView.addArrangedSubview(cellView)
@@ -168,7 +181,7 @@ class ListDevicesViewController: AFFloatingPanelViewController {
         
         let alertView = AlertViewController(
             alertTitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Title", comment: ""),
-            alertSubtitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Subtitle", comment: ""),
+            alertSubtitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Message", comment: ""),
             continueAction: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Continue", comment: ""),
             leftAction: nil,
             rightAction: nil

@@ -139,6 +139,7 @@ class BrowserViewController: BaseViewController {
             if BrowserTab.current.link.hasPrefix("file:") == false {
                 self.createSnapshotOfCurrentPage()
             }
+            self.tipView?.isHidden = true
             let viewController = OpenWebsitesViewController()
             self.navigation?.pushViewController(viewController, animated: .left)
         }
@@ -148,6 +149,7 @@ class BrowserViewController: BaseViewController {
             self.connectIfNeeded { [weak self] in
                 guard let self = self else { return }
                 self.presentDetectedUrlsScreen(postAction: nil)
+                self.tipView?.isHidden = true
             }
         }
     }
@@ -320,7 +322,7 @@ class BrowserViewController: BaseViewController {
                 guard let urlString = url, let url = URL(string: urlString) else { return }
                 let scriptSource = webVideoStop
                 self.webView.evaluateJavaScript(scriptSource) { (object, error) in }
-                ChromeCastService.shared.displayVideo(with: url)
+                ChromeCastService.shared.displayVideoWithPlayer(with: url)
             }
         })
     }
