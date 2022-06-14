@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import CoreMedia
+import MBProgressHUD
 
 class ListDevicesViewController: AFFloatingPanelViewController {
     
@@ -17,6 +18,8 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     @IBOutlet weak var refereshInteractiveView: InteractiveView!
     @IBOutlet weak var refreshIcon: UIImageView!
     @IBOutlet weak var attentionContainer: UIView!
+    
+    @IBOutlet weak var helpInteractiveLabel: InteractiveLabel!
     
     private var detectedDevices: Results<DeviceObject>?
     private var devicesNotificationToken: NotificationToken?
@@ -33,6 +36,19 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             self.handleTapOnRefreshButton()
         }
         
+        helpInteractiveLabel.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.checkInternetConnection {
+                let viewController = SetupChromeCastViewController()
+                viewController.modalPresentationStyle = .fullScreen
+                viewController.hideInteractiveViewCompletion = {
+                    viewController.backInteractiveView.isHidden = true
+                }
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
+        
+        
         addDevicesObserver()
         
     }
@@ -46,6 +62,8 @@ class ListDevicesViewController: AFFloatingPanelViewController {
         } else {
             attentionContainer.isHidden = true
             guard let detectedDevices = detectedDevices else { return }
+            devicesStackView.subviews.forEach({ $0.removeFromSuperview() })
+
             for (index, elem) in detectedDevices.enumerated() {
                 self.populateStackView(tvName: elem.friendlyName, index: index)
             }

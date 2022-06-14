@@ -14,6 +14,7 @@
                 <outlet property="attentionContainer" destination="lDg-cx-fI4" id="ewx-Rc-JMs"/>
                 <outlet property="devicesStackView" destination="ImO-5w-wZX" id="Tr6-4d-Hph"/>
                 <outlet property="dotsIndicatorView" destination="Bbo-HT-csX" id="xdb-2A-qjD"/>
+                <outlet property="helpInteractiveLabel" destination="Rm5-Er-NL7" id="jFj-u7-bc2"/>
                 <outlet property="panelView" destination="Z0C-sv-KAL" id="JXl-kl-c8d"/>
                 <outlet property="panelViewBottomConstraint" destination="pbc-7d-Dlf" id="ZDb-2K-Qlb"/>
                 <outlet property="panelViewContentBottomConstraint" destination="nac-gu-5Bl" id="yru-SK-Wfh"/>
@@ -118,7 +119,7 @@ your TV is not on the list, please reboot it
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTz-yw-0wl">
                                             <rect key="frame" x="99.5" y="20" width="183" height="36"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Don't see your device?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm5-Er-NL7" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Don't see your device?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm5-Er-NL7" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="183" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="labelColorGrayPunk"/>
