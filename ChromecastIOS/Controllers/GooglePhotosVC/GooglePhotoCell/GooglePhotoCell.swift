@@ -39,7 +39,7 @@ class GooglePhotoCell: UICollectionViewCell {
         self.previewImageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.3))])
         
         guard let metaData = metaData else { return }
-        if let isVideo = metaData.video {
+        if let _ = metaData.video {
             itemInfoView.isHidden = false
         } else {
             itemInfoView.isHidden = true

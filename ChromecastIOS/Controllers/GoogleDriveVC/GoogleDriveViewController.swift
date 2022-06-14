@@ -183,7 +183,7 @@ class GoogleDriveViewController: BaseViewController {
         activityIndicator.startAnimating()
         self.googleAPIs?.listFiles("root", onCompleted: { [weak self] (response, error) in
             guard let self = self else { return }
-            print("Response \(response)")
+            print("Response \(String(describing: response))")
             guard let files = response?.files else { return }
             for file in files {
                 print(">>>>>>>>>>>>>>>>>>>>")

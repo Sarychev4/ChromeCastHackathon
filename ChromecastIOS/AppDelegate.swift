@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        GCDWebServerOption_AutomaticallySuspendInBackground
         webServer?.start(withPort: Port.app.rawValue, bonjourName: "GCD web server")
-        print("Visit \(webServer?.serverURL) in your web browser")
+        print("Visit \(String(describing: webServer?.serverURL)) in your web browser")
         
         UIApplication.shared.isIdleTimerDisabled = true
         

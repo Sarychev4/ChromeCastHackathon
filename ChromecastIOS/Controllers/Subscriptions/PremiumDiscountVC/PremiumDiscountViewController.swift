@@ -110,7 +110,7 @@ class PremiumDiscountViewController: BaseViewController {
         if let value = spot?.getSpecialOfferValue(for: "discount_value") as? NSNumber {
             let intValue = Int(value.floatValue * 100)
             
-            let string = "-\(intValue)%"
+//            let string = "-\(intValue)%"
            // percentsLabel.text = string
         }
         
