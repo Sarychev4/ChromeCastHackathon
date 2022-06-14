@@ -149,6 +149,7 @@ class BrowserViewController: BaseViewController {
             self.connectIfNeeded { [weak self] in
                 guard let self = self else { return }
                 self.presentDetectedUrlsScreen(postAction: nil)
+                self.tipView?.isHidden = true
             }
         }
     }
