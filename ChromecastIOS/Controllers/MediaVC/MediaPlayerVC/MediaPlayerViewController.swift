@@ -79,7 +79,7 @@ class MediaPlayerViewController: BaseViewController {
             if self.selectedIndex > 0 {
                 self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
                 self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
-                UIView.animate(withDuration: 0.2) { [weak self] in
+                UIView.animate(withDuration: 0.2 ) { [weak self] in
                     guard let self = self else { return }
                     self.hdCollectionView.alpha = 1
                     self.thumbnailCollectionView.alpha = 1

@@ -5,13 +5,11 @@
 //  Created by Vital on 12.11.21.
 //
 
-import Foundation
-import Criollo
+import Foundation 
 import UIKit
 import GCDWebServer
     
 class HTTPServer: NSObject {
-    private var htmlServer = CRHTTPServer()
     private var httpServer: GCDWebServer?
     private var responseWaitDataClosure: ((Data) -> Void)?
 
