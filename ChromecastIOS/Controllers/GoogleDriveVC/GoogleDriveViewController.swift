@@ -269,7 +269,8 @@ class GoogleDriveViewController: BaseViewController {
             viewController.isSubfolder = true
             viewController.subFolder = fileName
             self.navigation?.pushViewController(viewController, animated: .left)
-        case "image/jpeg":
+            
+        case "image/jpeg", "image/png", "image/jpg":
             self.connectIfNeeded { [weak self] in
                 guard let self = self else { return }
                 guard let file_id = file.identifier else { return }
@@ -282,19 +283,6 @@ class GoogleDriveViewController: BaseViewController {
                     }
                 })
                 
-            }
-        case "image/png":
-            self.connectIfNeeded { [weak self] in
-                guard let self = self else { return }
-                guard let file_id = file.identifier else { return }
-                guard let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)") else { return }
-                self.googleAPIs?.shareFile(file, onCompleted: { error in
-                    if let err = error {
-                        print("Permissions error: \(err.localizedDescription)")
-                    } else {
-                        ChromeCastService.shared.displayImage(with: urlWithFileID)
-                    }
-                })
             }
         case "video/mp4":
             self.connectIfNeeded { [weak self] in
