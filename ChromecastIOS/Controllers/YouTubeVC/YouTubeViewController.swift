@@ -400,7 +400,6 @@ extension YouTubeViewController: UISearchBarDelegate {
             selectedIndex = -1
             tableView.reloadData()
         }
-        print(">>>>111111")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -415,7 +414,6 @@ extension YouTubeViewController: UISearchBarDelegate {
             selectedIndex = -1
             tableView.reloadData()
         }
-        print(">>>>222222")
     }
     
     

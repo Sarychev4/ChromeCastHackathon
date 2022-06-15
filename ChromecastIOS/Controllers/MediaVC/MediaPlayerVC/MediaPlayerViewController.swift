@@ -245,7 +245,6 @@ class MediaPlayerViewController: BaseViewController {
         _HUD?.hide(animated: true)
         HUD?.hide(animated: true)
         _HUD = nil
-        
     }
     
     private func presentDevices(postAction: Closure?) {
@@ -487,9 +486,7 @@ extension MediaPlayerViewController {
     }
     
     @objc fileprivate func cancelPrepareVideo(_ sender: Any) {
-        hideHUD()
         videoPlayerManager.cancelPreparing()
-        
     }
 }
 
