@@ -85,7 +85,7 @@ class OpenWebsitesViewController: BaseViewController {
         let offset: CGFloat = 68 //* SizeFactor // отступы слева/справа/сверху
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
-        let coff = screenHeight/screenWidth
+//        let coff = screenHeight/screenWidth
         let cellWidth = screenWidth - offset * 2
         let cellHeight = websitesCollectionView.frame.height - 44//cellWidth * coff //screenHeight - 44 * SizeFactor - offset * 2
         let size = CGSize(width: cellWidth, height: cellHeight)

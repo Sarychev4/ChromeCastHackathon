@@ -87,12 +87,12 @@ class GooglePhotosViewController: BaseViewController {
     
     private func updateUI() {
         if isUserAlreadySigned() == true {
-            googleSignInButtonContainer.isHidden = true
-            dropShadowSeparator.isHidden = false
+//            googleSignInButtonContainer.isHidden = true
+//            dropShadowSeparator.isHidden = false
             collectionView.isHidden = false
         } else {
-            googleSignInButtonContainer.isHidden = false
-            dropShadowSeparator.isHidden = true
+//            googleSignInButtonContainer.isHidden = false
+//            dropShadowSeparator.isHidden = true
             collectionView.isHidden = true
         }
     }
@@ -127,8 +127,10 @@ class GooglePhotosViewController: BaseViewController {
     
     private func signIn() {
         let scopes: Set = [AuthScope.readDevData, AuthScope.readAndAppend]
-        GPhotos.authorize(with: scopes) { (success, error) in
+        GPhotos.authorize(with: scopes) { [weak self] success, error in
+            guard let self = self else { return }
             if let error = error {
+                self.navigation?.popViewController(self, animated: true)
                 print ("Authorize error: \(error.localizedDescription)")
             } else {
                 self.updateUI()
@@ -137,20 +139,15 @@ class GooglePhotosViewController: BaseViewController {
                 self.updateAlbumStackViewUI()
             }
         }
-    }
-    
+    } 
     
     private func setupGoogleSignIn() {
         print("GPhotos.isAuthorized  \(GPhotos.isAuthorized)")
         if GPhotos.isAuthorized {
-            
-            self.loadAllAlbums()
-            self.loadAllItems()
-        }
-        
-        googleSignInButtonInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            self.signIn()
+            loadAllAlbums()
+            loadAllItems()
+        } else {
+            signIn()
         }
     }
     
@@ -236,7 +233,7 @@ class GooglePhotosViewController: BaseViewController {
         guard let url = item.baseUrl else { return }
         
         self.connectIfNeeded { [weak self] in
-            guard let self = self else { return }
+            guard let _ = self else { return }
             if item.mediaMetadata?.photo == nil {
                 ChromeCastService.shared.displayVideo(with: url)
                 ChromeCastService.shared.showDefaultMediaVC()

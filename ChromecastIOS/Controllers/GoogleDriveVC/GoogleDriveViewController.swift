@@ -87,14 +87,14 @@ class GoogleDriveViewController: BaseViewController {
     
     private func updateUI() {
         if isUserAlreadySigned() == true {
-            googleSignInButtonContainer.isHidden = true
+//            googleSignInButtonContainer.isHidden = true
             searchBarContainer.isHidden = false
-            dropShadowSeparator.isHidden = false
+//            dropShadowSeparator.isHidden = false
             collectionView.isHidden = false
         } else {
-            googleSignInButtonContainer.isHidden = false
+//            googleSignInButtonContainer.isHidden = false
             searchBarContainer.isHidden = true
-            dropShadowSeparator.isHidden = true
+//            dropShadowSeparator.isHidden = true
             collectionView.isHidden = true
         }
     }
@@ -131,9 +131,10 @@ class GoogleDriveViewController: BaseViewController {
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user, error in
             guard let self = self else { return }
             if let err = error {
-                print("signIn error: \(err.localizedDescription)")
+                self.navigation?.popViewController(self, animated: true)
+                print(">>> signIn error: \(err.localizedDescription)")
             } else {
-                print("Authenticate successfully!")
+                print(">>> Authenticate successfully!")
                 
                 GIDSignIn.sharedInstance.addScopes(
                     [kGTLRAuthScopeDrive],
@@ -158,11 +159,13 @@ class GoogleDriveViewController: BaseViewController {
     private func setupGoogleSignIn() {
         //        GIDSignIn.sharedInstance?.signInSilently()
         
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+        GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
+            guard let self = self else { return }
             if let err = error {
+                self.signIn()
                 print(err.localizedDescription)
             } else {
-                print("SIGN in restore")
+                print(">>> SIGN in restore")
                 self.updateUI()
                 let service = GTLRDriveService()
                 service.authorizer = user?.authentication.fetcherAuthorizer()
@@ -171,17 +174,16 @@ class GoogleDriveViewController: BaseViewController {
             }
         }
         
-        googleSignInButtonInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            self.signIn()
-        }
+//        if isUserAlreadySigned() == false {
+//            signIn()
+//        }
     }
     
     private func loadFilesInRootFolder() {
         activityIndicator.startAnimating()
         self.googleAPIs?.listFiles("root", onCompleted: { [weak self] (response, error) in
             guard let self = self else { return }
-            print("Response \(response)")
+            print("Response \(String(describing: response))")
             guard let files = response?.files else { return }
             for file in files {
                 print(">>>>>>>>>>>>>>>>>>>>")

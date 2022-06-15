@@ -36,10 +36,10 @@ class GooglePhotoCell: UICollectionViewCell {
     func setup(mimeType: String?, thumbnailLinkString: String?, metaData: MediaMetadata?) {
         guard let imageUrlString = thumbnailLinkString else { return }
         guard let imageUrl:URL = URL(string: imageUrlString) else { return }
-        self.previewImageView.kf.setImage(with: imageUrl)
+        self.previewImageView.kf.setImage(with: imageUrl, options: [.transition(.fade(0.3))])
         
         guard let metaData = metaData else { return }
-        if let isVideo = metaData.video {
+        if let _ = metaData.video {
             itemInfoView.isHidden = false
         } else {
             itemInfoView.isHidden = true

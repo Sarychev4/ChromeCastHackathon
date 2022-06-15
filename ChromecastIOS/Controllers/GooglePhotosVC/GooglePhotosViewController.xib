@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,10 +34,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9h2-wq-VDs">
-                            <rect key="frame" x="0.0" y="293" width="414" height="603"/>
+                            <rect key="frame" x="0.0" y="147" width="414" height="749"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="P38-Zs-Fuy">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="749"/>
                                     <color key="backgroundColor" name="MainBackground"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mwZ-qW-cq1">
                                         <size key="itemSize" width="128" height="128"/>
@@ -56,10 +56,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRd-8M-CJN">
-                            <rect key="frame" x="0.0" y="52" width="414" height="251"/>
+                            <rect key="frame" x="0.0" y="52" width="414" height="105"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOd-qv-xmU" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="-100" width="414" height="351"/>
+                                    <rect key="frame" x="0.0" y="-100" width="414" height="205"/>
                                     <color key="backgroundColor" name="MainBackground"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
@@ -71,7 +71,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AQz-J9-COg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="251"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spC-jz-BM2">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
@@ -179,7 +179,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Q0x-xj-9kg" secondAttribute="bottom" constant="9" id="uxS-ph-XYw"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRp-qI-MNF">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRp-qI-MNF">
                                             <rect key="frame" x="0.0" y="33" width="414" height="146"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkB-BU-M3I" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
@@ -256,7 +256,7 @@
                                             </constraints>
                                         </view>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaO-oZ-tad">
-                                            <rect key="frame" x="0.0" y="179" width="414" height="72"/>
+                                            <rect key="frame" x="0.0" y="33" width="414" height="72"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLP-CO-X68">
                                                     <rect key="frame" x="0.0" y="14" width="0.0" height="44"/>
@@ -304,7 +304,7 @@
                             </constraints>
                         </view>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="rzz-mr-sa7">
-                            <rect key="frame" x="197" y="319" width="20" height="20"/>
+                            <rect key="frame" x="197" y="173" width="20" height="20"/>
                             <color key="color" name="labelColorDark"/>
                         </activityIndicatorView>
                     </subviews>
