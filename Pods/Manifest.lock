@@ -19,7 +19,7 @@ PODS:
   - AppAuth/Core (1.5.0)
   - AppAuth/ExternalUserAgent (1.5.0):
     - AppAuth/Core
-  - ApphudSDK (2.8.2)
+  - ApphudSDK (2.8.1)
   - AppsFlyerFramework (6.6.1):
     - AppsFlyerFramework/Main (= 6.6.1)
   - AppsFlyerFramework/Main (6.6.1)
@@ -182,7 +182,7 @@ PODS:
   - GTMSessionFetcher/Full (1.7.2):
     - GTMSessionFetcher/Core (= 1.7.2)
   - IndicateKit (1.0.5)
-  - Kingfisher (7.2.3)
+  - Kingfisher (7.2.2)
   - LNZCollectionLayouts (1.2.2)
   - lottie-ios (3.3.0)
   - MBProgressHUD (1.2.0)
@@ -201,11 +201,11 @@ PODS:
   - PromisesObjC (2.1.0)
   - Protobuf (3.21.1)
   - ReachabilitySwift (5.0.0)
-  - Realm (10.28.1):
-    - Realm/Headers (= 10.28.1)
-  - Realm/Headers (10.28.1)
-  - RealmSwift (10.28.1):
-    - Realm (= 10.28.1)
+  - Realm (10.27.0):
+    - Realm/Headers (= 10.27.0)
+  - Realm/Headers (10.27.0)
+  - RealmSwift (10.27.0):
+    - Realm (= 10.27.0)
   - Result (4.1.0)
   - XCDYouTubeKit-kbexdev (2.16.0)
   - ZMJTipView (0.1.7)
@@ -304,7 +304,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
   AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
-  ApphudSDK: ee6f8bfd433aabf11d3bec9de72c541bc561d2f7
+  ApphudSDK: 57787f96e58dd0b921be6d453b0bb856864d394e
   AppsFlyerFramework: 5e4b385a27dc6179e132b1617f76809412eb2f88
   CSSystemInfoHelper: 4042fd3366678b5d07335b9df2d6529d4eea0c4d
   DeviceKit: 834dd8aa1be53cd85364d8f49aa5d98bfac397c4
@@ -330,7 +330,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
   IndicateKit: 7bf5096b3f768c4d5a7cf5e81771c8bda88b2ce4
-  Kingfisher: 8c2cbe0c11ea4d481542895112682a99e058468e
+  Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
   LNZCollectionLayouts: 509d8143a70db014f2094ae7052ec879ab988dab
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -341,8 +341,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
   Protobuf: 9e88c1e667d75aa2491d211f26ccddde4e8ad4cf
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  Realm: f4674e0e7ee537f67a78d79bd8319bc777d61d06
-  RealmSwift: 0e0e4786685c4442bf56d3831dfefb5fa05d6fd6
+  Realm: 9ca328bd7e700cc19703799785e37f77d1a130f2
+  RealmSwift: 271de77b09a73c5e46ee3252283878153bd5d288
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   XCDYouTubeKit-kbexdev: d6bdf492b85a547fe8605568359ec2e91980a465
   ZMJTipView: c51b687cd307b5329d09760e8b95e5e37d01cd63

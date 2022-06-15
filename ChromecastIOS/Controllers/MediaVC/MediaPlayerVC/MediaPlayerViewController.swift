@@ -19,6 +19,10 @@ enum State {
 
 class MediaPlayerViewController: BaseViewController {
     
+    deinit {
+        print(">>> deinit MediaPlayerViewController")
+    }
+    
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     
@@ -76,7 +80,7 @@ class MediaPlayerViewController: BaseViewController {
         thumbnailCollectionView.alpha = 0
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
             guard let self = self else { return }
-            if self.selectedIndex > 0 {
+//            if self.selectedIndex > 0 {
                 self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
                 self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
                 UIView.animate(withDuration: 0.2 ) { [weak self] in
@@ -84,7 +88,7 @@ class MediaPlayerViewController: BaseViewController {
                     self.hdCollectionView.alpha = 1
                     self.thumbnailCollectionView.alpha = 1
                 }
-            }
+//            }
             let asset = self.assets[self.selectedIndex]
             let resources = PHAssetResource.assetResources(for: asset)
             self.currentAssetNameLabel.text = resources.first?.originalFilename
@@ -123,10 +127,10 @@ class MediaPlayerViewController: BaseViewController {
         } else if currentAsset.mediaType == .video {
             
             //temp as
-//            connectIfNeeded { [weak self] in
-//                guard let self = self else { return }
-//                self.castVideoToTV()
-//            }
+            connectIfNeeded { [weak self] in
+                guard let self = self else { return }
+                self.castVideoToTV()
+            }
             
         }
         
@@ -238,7 +242,8 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private func hideHUD() {
-        _HUD?.hide(animated: true) 
+        _HUD?.hide(animated: true)
+        HUD?.hide(animated: true)
         _HUD = nil
         
     }
@@ -334,8 +339,9 @@ extension MediaPlayerViewController {
     @objc fileprivate func cancelDownloadFromICloud(_ sender: Any) {
         if let iCloudRequestID = self.iCloudRequestID {
             imageManager.cancelImageRequest(iCloudRequestID)
+            hideHUD()
         }
-        hideHUD()
+        
     }
     
     private func castPhotoToTV(_ image: UIImage) {
@@ -391,6 +397,19 @@ extension MediaPlayerViewController {
                 //Запускаем процесс подготовки файла. Все остальное смотри в videoPlayerManager.stateObserver
                 self.videoPlayerManager.prepareAssetForCastToTV(asset)
             }
+        case .readyForTV:
+            self.connectIfNeeded { [weak self] in
+                guard let _ = self else { return }
+                let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+                guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+                ChromeCastService.shared.displayVideo(with: url)
+                ChromeCastService.shared.showDefaultMediaVC()
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    //temp as
+                    self.videoPlayerManager.startObserveVideoProgress()
+                }
+            }
         case .playing:
             //Если текущее состояние playing - значит надо поставить на паузу
             ChromeCastService.shared.pauseVideo()
@@ -398,6 +417,7 @@ extension MediaPlayerViewController {
         case .paused:
             //Если текущее состояние paused - значит надо восстановить воспроизведение
             ChromeCastService.shared.playVideo()
+            ChromeCastService.shared.showDefaultMediaVC()
             print(">>>VideoPlayer state .paused")
         default:
             break
@@ -435,19 +455,18 @@ extension MediaPlayerViewController {
                 break
             case .readyForTV:
                 self.hideHUD()
-                self.connectIfNeeded { [weak self] in
-                    guard let _ = self else { return }
-                    let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
-                    ChromeCastService.shared.displayVideo(with: url)
-                    ChromeCastService.shared.showDefaultMediaVC()
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        //temp as
-                        self.videoPlayerManager.startObserveVideoProgress()
-//                        self.videoPlayerManager.playVideo()
-                    }
-                }
+//                self.connectIfNeeded { [weak self] in
+//                    guard let _ = self else { return }
+//                    let ipAddress = ServerConfiguration.shared.deviceIPAddress()
+//                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+//                    ChromeCastService.shared.displayVideo(with: url)
+//                    ChromeCastService.shared.showDefaultMediaVC()
+//                    DispatchQueue.main.async { [weak self] in
+//                        guard let self = self else { return }
+//                        //temp as
+//                        self.videoPlayerManager.startObserveVideoProgress()
+//                    }
+//                }
             case .playing:
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
@@ -468,7 +487,9 @@ extension MediaPlayerViewController {
     }
     
     @objc fileprivate func cancelPrepareVideo(_ sender: Any) {
+        hideHUD()
         videoPlayerManager.cancelPreparing()
+        
     }
 }
 
