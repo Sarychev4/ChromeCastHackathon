@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,70 +79,17 @@
                             <constraint firstAttribute="width" constant="220" id="mLW-sR-ILv"/>
                         </constraints>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OG2-RN-YPF">
-                        <rect key="frame" x="24" y="209" width="249" height="25"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgY-kj-MSn">
-                                <rect key="frame" x="0.0" y="0.0" width="13" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" name="labelColorDark"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lo-zY-PjI">
-                                <rect key="frame" x="14" y="0.0" width="3.5" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" name="labelColorDark"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wT-Os-g2B">
-                                <rect key="frame" x="18.5" y="0.0" width="13" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" name="labelColorDark"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TOq-Nc-ToC">
-                                <rect key="frame" x="-2" y="5" width="253" height="31"/>
-                                <color key="minimumTrackTintColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="maximumTrackTintColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </slider>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="0lo-zY-PjI" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="9Qk-bE-FvP"/>
-                            <constraint firstAttribute="trailing" secondItem="TOq-Nc-ToC" secondAttribute="trailing" id="IKU-WW-SCO"/>
-                            <constraint firstItem="0lo-zY-PjI" firstAttribute="leading" secondItem="AgY-kj-MSn" secondAttribute="trailing" constant="1" id="JVe-sz-UkU"/>
-                            <constraint firstItem="0wT-Os-g2B" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="Q4Z-0s-HCV"/>
-                            <constraint firstItem="AgY-kj-MSn" firstAttribute="leading" secondItem="OG2-RN-YPF" secondAttribute="leading" id="W6h-ju-nGo"/>
-                            <constraint firstItem="0wT-Os-g2B" firstAttribute="leading" secondItem="0lo-zY-PjI" secondAttribute="trailing" constant="1" id="YPa-9R-XHz"/>
-                            <constraint firstAttribute="height" constant="25" id="b8d-T2-QBj"/>
-                            <constraint firstItem="TOq-Nc-ToC" firstAttribute="leading" secondItem="OG2-RN-YPF" secondAttribute="leading" id="dON-2I-Yco"/>
-                            <constraint firstItem="AgY-kj-MSn" firstAttribute="top" secondItem="OG2-RN-YPF" secondAttribute="top" id="nv7-T1-Wlx"/>
-                            <constraint firstAttribute="bottom" secondItem="TOq-Nc-ToC" secondAttribute="bottom" constant="-10" id="qwk-qD-iSZ"/>
-                        </constraints>
-                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1AX-Q3-pbF"/>
-                <constraint firstAttribute="trailing" secondItem="OG2-RN-YPF" secondAttribute="trailing" constant="24" id="GUv-26-Bmq"/>
                 <constraint firstItem="Dno-CX-3Iv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TmO-yV-zUW"/>
-                <constraint firstItem="OG2-RN-YPF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="cyZ-N2-toh"/>
-                <constraint firstItem="OG2-RN-YPF" firstAttribute="top" secondItem="a5S-m5-QGl" secondAttribute="bottom" constant="55" id="oIg-L8-guE"/>
                 <constraint firstItem="a5S-m5-QGl" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="qmr-LS-Cfh"/>
                 <constraint firstItem="a5S-m5-QGl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="x36-2M-Jl5"/>
             </constraints>
             <size key="customSize" width="297" height="264"/>
             <connections>
-                <outlet property="currentPlayTimeLabel" destination="AgY-kj-MSn" id="uRG-hr-Qfv"/>
                 <outlet property="nextVideoInteractiveImageView" destination="c4J-7C-pp1" id="pzh-ff-Vdf"/>
                 <outlet property="photoHeightConstraint" destination="LIs-bt-GMB" id="Kgs-vI-QQt"/>
                 <outlet property="photoImageView" destination="Dno-CX-3Iv" id="CRf-52-tCe"/>
@@ -151,9 +97,6 @@
                 <outlet property="playVideoInteractiveImageView" destination="Tz9-Id-yKV" id="ag8-Cl-hs7"/>
                 <outlet property="playerButtonsContainer" destination="a5S-m5-QGl" id="XPc-Yr-Tkb"/>
                 <outlet property="previousVideoInteractiveImageView" destination="ieT-g6-qL3" id="8yr-jU-2ob"/>
-                <outlet property="progressContainerView" destination="OG2-RN-YPF" id="luq-qF-HZC"/>
-                <outlet property="progressView" destination="TOq-Nc-ToC" id="IUw-cw-Yw1"/>
-                <outlet property="remainingTimeLabel" destination="0wT-Os-g2B" id="GYq-Wu-42C"/>
             </connections>
             <point key="canvasLocation" x="139.85507246376812" y="160.71428571428569"/>
         </collectionViewCell>
@@ -162,8 +105,5 @@
         <image name="nextVideo" width="36" height="36"/>
         <image name="playVideo" width="48" height="48"/>
         <image name="previousVideo" width="36" height="36"/>
-        <namedColor name="labelColorDark">
-            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

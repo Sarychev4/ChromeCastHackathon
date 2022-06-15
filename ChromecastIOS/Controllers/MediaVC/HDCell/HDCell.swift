@@ -21,12 +21,6 @@ class HDCell: UICollectionViewCell {
     @IBOutlet weak var playVideoInteractiveImageView: InteractiveImageView!
     @IBOutlet weak var nextVideoInteractiveImageView: InteractiveImageView!
     
-    
-    @IBOutlet weak var progressContainerView: UIView!
-    @IBOutlet weak var currentPlayTimeLabel: UILabel!
-    @IBOutlet weak var remainingTimeLabel: UILabel!
-    @IBOutlet weak var progressView: UISlider!
-    
     private let imageManager = PHCachingImageManager()
     private var lastImageRequest: PHImageRequestID?
     
@@ -63,10 +57,8 @@ class HDCell: UICollectionViewCell {
        
         if asset.mediaType == .image {
             playerButtonsContainer.isHidden = true
-            progressContainerView.isHidden = true
         } else {
             playerButtonsContainer.isHidden = false
-            progressContainerView.isHidden = false
             setupVideo(with: asset, state: state, currentTime: currentTime)
         }
 
@@ -77,21 +69,11 @@ class HDCell: UICollectionViewCell {
         let videoDuration = asset.duration
         let currentTimeDouble = currentTime
         
-        progressView.maximumValue = Float(videoDuration)
-        progressView.minimumValue = Float(0)
-        progressView.value = Float(videoDuration - currentTimeDouble) > 1 ? Float(currentTimeDouble) : Float(videoDuration)
-        
-        currentPlayTimeLabel.text = currentTimeDouble.durationText
-        remainingTimeLabel.text = "\(videoDuration.durationText)"
-
         if state.isSameAs(.playing) {
             playVideoInteractiveImageView.image = UIImage(named: "PausePlayerIcon")
         } else {
             playVideoInteractiveImageView.image = UIImage(named: "PlayPlayerIcon")
         }
-
-        
-        progressView.addTarget(self, action: #selector(changeSlider), for: .valueChanged)
  
         previousVideoInteractiveImageView.didTouchAction = { [weak self] in
             guard let self = self else { return }

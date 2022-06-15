@@ -142,6 +142,10 @@ class VideoPlayerManager: NSObject {
         })
     }
     
+    func playVideo() {
+        state = .playing
+    }
+    
     func startObserveVideoProgress() {
         var dropRequestCount = 0
         stopVideoProgressTimer()

@@ -121,10 +121,12 @@ class MediaPlayerViewController: BaseViewController {
                 }
             }
         } else if currentAsset.mediaType == .video {
-            connectIfNeeded { [weak self] in
-                guard let self = self else { return }
-                self.castVideoToTV()
-            }
+            
+            //temp as
+//            connectIfNeeded { [weak self] in
+//                guard let self = self else { return }
+//                self.castVideoToTV()
+//            }
             
         }
         
@@ -417,7 +419,6 @@ extension MediaPlayerViewController {
         remoteMediaClient?.seek(with: options)
     }
     
-    
     private func observeVideoPlayerState() {
         videoPlayerManager.stateObserver = { [weak self] state in
             guard let self = self else { return }
@@ -442,7 +443,9 @@ extension MediaPlayerViewController {
                     ChromeCastService.shared.showDefaultMediaVC()
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
+                        //temp as
                         self.videoPlayerManager.startObserveVideoProgress()
+//                        self.videoPlayerManager.playVideo()
                     }
                 }
             case .playing:
