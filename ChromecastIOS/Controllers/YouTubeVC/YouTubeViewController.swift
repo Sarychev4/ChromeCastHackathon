@@ -134,6 +134,7 @@ class YouTubeViewController: BaseViewController {
         
         tableView.contentInset.top = 20
         tableView.reloadData()
+        
     }
     
     
@@ -146,11 +147,44 @@ class YouTubeViewController: BaseViewController {
      MARK: - Player Methods
      */
     
+    private func cellClicked(at index: Int) {
+        self.connectIfNeeded { [weak self] in
+            guard let self = self else { return }
+            print(">>>\(index)")
+            print(">>>\(self.selectedIndex)")
+            print(">>>\(self.state)")
+
+            if self.selectedIndex != index && self.state == .paused { //если новая ячейка и ничего не играет
+                self.playVideo(at: index)
+            } else if self.selectedIndex != index && self.state == .playing { //если новая ячейка и видео уже играет
+                self.playVideo(at: index)
+            } else if self.selectedIndex == index && self.state == .paused { //eсли старая ячейка и ничего не играет
+                ChromeCastService.shared.showDefaultMediaVC()
+            } else if self.selectedIndex == index && self.state == .playing { //eсли старая ячейка и видео уже играет
+                ChromeCastService.shared.showDefaultMediaVC()
+            } else {
+                self.playVideo(at: index)
+            }
+            
+            
+        }
+    }
+    
+    private func pauseVideo() {
+        self.connectIfNeeded { [weak self] in
+            guard let self = self else { return }
+            ChromeCastService.shared.pauseVideo()
+            self.state = .paused
+        }
+    }
+    
+    
     private func playVideo(at index: Int, resolution: ResolutionType? = nil) {
         self.connectIfNeeded { [weak self] in
             guard let self = self else { return }
+            
             self.selectedIndex = index
-            self.state = .stopped
+            self.state = .playing
             self.tableView.reloadData()
             let item = self.videos[index]
             if let videoId = item.id?.videoID {
@@ -330,7 +364,9 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
             }
             cell.didPlayTap = { [weak self] in
                 guard let self = self else { return }
-                self.playVideo(at: indexPath.row)
+                //temp as
+                self.cellClicked(at: indexPath.row)
+                //                self.playVideo(at: indexPath.row)
             }
             return cell
         }
@@ -361,8 +397,10 @@ extension YouTubeViewController: UISearchBarDelegate {
             pageToken = nil
             requestVideos(for: text)
             suggestions.removeAll()
+            selectedIndex = -1
             tableView.reloadData()
         }
+        print(">>>>111111")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -374,7 +412,10 @@ extension YouTubeViewController: UISearchBarDelegate {
             requestVideos(for: text)
             suggestions.removeAll()
             self.searchBar.endEditing(true)
+            selectedIndex = -1
+            tableView.reloadData()
         }
+        print(">>>>222222")
     }
     
     
