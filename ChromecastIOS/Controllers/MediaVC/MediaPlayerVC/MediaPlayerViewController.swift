@@ -337,7 +337,7 @@ extension MediaPlayerViewController {
                 }
             }, completion: { [weak self] image in
                 guard let self = self, let image = image else { return }
-                self.hideHUD()
+//                self.hideHUD()
                 self.hdCollectionView.reloadData()
                 onComplete?(image)
             })
