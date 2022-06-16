@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Agregator
 
 class MediaSettingsViewController: AFFloatingPanelViewController {
 
@@ -34,7 +35,9 @@ class MediaSettingsViewController: AFFloatingPanelViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        AgregatorLogger.shared.log(eventName: "Media_settings", parameters: nil)
+        
         setupSettingsSection()
     }
     

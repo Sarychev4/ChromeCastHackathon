@@ -4,7 +4,7 @@ inhibit_all_warnings!
 
 def common_pods_for_target
   pod 'CSSystemInfoHelper', '~> 2.0'
-  pod "GCDWebServer"
+  pod "GCDWebServer", :git => 'git@github.com:Sarychev4/GCDWebServer.git'
 end
 
 target 'MirroringExtension' do

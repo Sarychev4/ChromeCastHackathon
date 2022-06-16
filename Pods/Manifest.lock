@@ -217,7 +217,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging
-  - GCDWebServer
+  - "GCDWebServer (from `git@github.com:Sarychev4/GCDWebServer.git`)"
   - google-cast-sdk-no-bluetooth
   - GoogleAPIClientForREST/Drive
   - GoogleSignIn
@@ -253,7 +253,6 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseMessaging
     - FirebaseRemoteConfig
-    - GCDWebServer
     - google-cast-sdk-no-bluetooth
     - GoogleAPIClientForREST
     - GoogleAppMeasurement
@@ -282,6 +281,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Agregator:
     :git: "git@github.com:mirroringcontact/common.git"
+  GCDWebServer:
+    :git: "git@github.com:Sarychev4/GCDWebServer.git"
   GPhotos:
     :git: https://github.com/deivitaka/GPhotos.git
   XCDYouTubeKit-kbexdev:
@@ -291,6 +292,9 @@ CHECKOUT OPTIONS:
   Agregator:
     :commit: fc6176adc6e72abadd135bd2c2a0bff7ed6dafcc
     :git: "git@github.com:mirroringcontact/common.git"
+  GCDWebServer:
+    :commit: cceb800aaecd722b226a7a1ebdfd686ac25fa3c4
+    :git: "git@github.com:Sarychev4/GCDWebServer.git"
   GPhotos:
     :commit: 8703c9223a55800730a21f059dd8e63830794962
     :git: https://github.com/deivitaka/GPhotos.git
@@ -319,7 +323,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: a91c74276b544524ce144c8315d8cdbce2dbe30b
   FirebaseMessaging: 0bf5caa621182ccc66ba3be3b15e68d800d98e9f
   FirebaseRemoteConfig: ebd0eb74b9a0593ab2a3f0788a5be5595b46a05c
-  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
+  GCDWebServer: f5590602d75d912fb63660e57c4939d57b8fe85b
   google-cast-sdk-no-bluetooth: 5313156110d6e71fa336f6d742f1ee641e91fdca
   GoogleAPIClientForREST: 2abe83bae1085d28f94ccc30a49fc7950d721fb9
   GoogleAppMeasurement: 8ecc717f2abe3f9ee95a5d38db08827852894acc
@@ -347,6 +351,6 @@ SPEC CHECKSUMS:
   XCDYouTubeKit-kbexdev: d6bdf492b85a547fe8605568359ec2e91980a465
   ZMJTipView: c51b687cd307b5329d09760e8b95e5e37d01cd63
 
-PODFILE CHECKSUM: 262b3a269820d8cffc0cf7342dd4b24ea3fefa34
+PODFILE CHECKSUM: ec6b0e838f7aae177bd9a09252c096d7ce139ec4
 
 COCOAPODS: 1.11.3

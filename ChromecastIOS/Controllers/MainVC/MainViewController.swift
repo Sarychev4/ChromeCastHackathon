@@ -31,6 +31,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var settingsInteractiveView: InteractiveView! {
         didSet {
             settingsInteractiveView.didTouchAction = {
+                AgregatorLogger.shared.log(eventName: "Setting", parameters: ["Source": "Main_screen"])
                 let settingsViewController = SettingsViewController()
                 let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
                 navigationController.modalPresentationStyle = .fullScreen
@@ -56,7 +57,7 @@ class MainViewController: BaseViewController {
                 }//temp vr 1
                 return
             #endif
-                
+                AgregatorLogger.shared.log(eventName: "Banner tap", parameters: ["Source": "Main_screen"])
                 SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.banner.rawValue, with: { [weak self] success in
                     guard let self = self else { return }
                     self.collectionView.reloadData()
@@ -73,6 +74,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var mirrorInteractiveView: InteractiveView! {
         didSet {
             mirrorInteractiveView.didTouchAction = {
+                AgregatorLogger.shared.log(eventName: "Mirroring tap", parameters: nil)
                 self.navigation?.pushViewController(MirrorViewController(), animated: .left)
             }
         }
@@ -89,6 +91,8 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AgregatorLogger.shared.log(eventName: "Main screen", parameters: nil)
+        
         ChromeCastService.shared.initialize()
         
         collectionView.delegate = self
@@ -96,6 +100,7 @@ class MainViewController: BaseViewController {
         
         connectInteractiveView.didTouchAction = { [weak self] in
             guard self == self else { return }
+            AgregatorLogger.shared.log(eventName: "Connect", parameters: ["Source": "Main_screen"])
             self?.presentDevices(postAction: nil)
         }
         
@@ -159,6 +164,9 @@ class MainViewController: BaseViewController {
             showAlertStopMirroring()
             return
         }
+        
+        let cellTitle = tabs[indexPath.row].title
+        AgregatorLogger.shared.log(eventName: cellTitle, parameters: nil)
         
         let buttonType = tabs[indexPath.row].type
         
