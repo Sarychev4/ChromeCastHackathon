@@ -104,6 +104,6 @@ class Settings: Object {
     
     @Persisted var mirroringState: MirroringInAppState = .mirroringNotStarted
     
-    @Persisted var supportEmail: String = "supportsm@appflair.io"
+    @Persisted var supportEmail: String = "contact@go2020apps.com"
     
 }

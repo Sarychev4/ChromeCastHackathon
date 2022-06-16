@@ -104,6 +104,10 @@ class TutorialContainerViewController: BaseViewController {
             guard let self = self else { return }
             self.pushViewController(self.testConnectionController(source: controller.source))
         }
+        controller.didCancelAction = { [weak self] in
+            guard let self = self else { return }
+            self.didFinishAction?()
+        }
         return controller
     }
     

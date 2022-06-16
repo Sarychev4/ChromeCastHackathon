@@ -196,7 +196,7 @@ let DefaultAppConfiguration = """
   "tutorial_questions_enabled": false,
   "tutorial_rating_enabled": false,
   "tutorial_rating_type": "stars",
-  "support_email": "supportsm@appflair.io",
+  "support_email": "contact@go2020apps.com",
   "hide_close_button_for_attributedUser": false,
   "web_apps": {
     "chromecast": {

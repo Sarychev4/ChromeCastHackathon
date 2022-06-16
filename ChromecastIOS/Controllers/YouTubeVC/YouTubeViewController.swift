@@ -31,6 +31,7 @@ class YouTubeViewController: BaseViewController {
     @IBOutlet weak var emptyImageView: UIImageView!
     @IBOutlet weak var mediaControlView: MediaControlView!
     
+    @IBOutlet weak var searchTip: DefaultLabel!
     
     private var videos: [YoutubeItem] = []
     private var suggestions: [String] = []
@@ -67,8 +68,8 @@ class YouTubeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mediaControlView.alpha = 0
         
+        mediaControlView.alpha = 0
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -140,8 +141,9 @@ class YouTubeViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    
     }
+    
     
     /*
      MARK: - Player Methods
@@ -339,9 +341,11 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSuggestionsOnView {
             emptyImageView.isHidden = true
+            searchTip.isHidden = true
             return suggestions.count
         }
         emptyImageView.isHidden = videos.count > 0 || isLoading == true
+        searchTip.isHidden = videos.count > 0
         return videos.count
     }
     

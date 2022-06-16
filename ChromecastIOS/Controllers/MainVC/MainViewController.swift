@@ -27,50 +27,10 @@ enum MenuButtonType {
 class MainViewController: BaseViewController {
     
     @IBOutlet weak var systemBroadcastPickerView: RPSystemBroadcastPickerView!
-    
-    @IBOutlet weak var settingsInteractiveView: InteractiveView! {
-        didSet {
-            settingsInteractiveView.didTouchAction = {
-                AgregatorLogger.shared.log(eventName: "Setting", parameters: ["Source": "Main_screen"])
-                let settingsViewController = SettingsViewController()
-                let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
-                navigationController.modalPresentationStyle = .fullScreen
-                self.present(navigationController, animated: true, completion: nil)
-            }
-        }
-    }
-    
-
-    
-    
-    @IBOutlet weak var goToPremiumInteractiveView: InteractiveView! {
-        didSet {
-            goToPremiumInteractiveView.didTouchAction = {
-                
-            #if DEBUG //1
-                try! AgregatorApplication.current.realm?.write {
-                    if AgregatorApplication.current.subscriptionState == .active {
-                        AgregatorApplication.current.subscriptionState = .none
-                    } else {
-                        AgregatorApplication.current.subscriptionState = .active
-                    }
-                }//temp vr 1
-                return
-            #endif
-                AgregatorLogger.shared.log(eventName: "Banner tap", parameters: ["Source": "Main_screen"])
-                SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.banner.rawValue, with: { [weak self] success in
-                    guard let self = self else { return }
-                    self.collectionView.reloadData()
-                })
-            }
-        }
-    }
-    
+    @IBOutlet weak var settingsInteractiveView: InteractiveView!
+    @IBOutlet weak var goToPremiumInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var mirrorInteractiveView: InteractiveView! {
         didSet {
             mirrorInteractiveView.didTouchAction = {
@@ -110,6 +70,40 @@ class MainViewController: BaseViewController {
         collectionView.contentInset.top = 0
         setupTabs()
         setupHelpSection()
+        setupHeaderSection()
+    }
+    
+    private func setupHeaderSection() {
+        
+        settingsInteractiveView.didTouchAction = {
+            AgregatorLogger.shared.log(eventName: "Setting", parameters: ["Source": "Main_screen"])
+            let settingsViewController = SettingsViewController()
+            let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: true, completion: nil)
+        }
+        
+        goToPremiumInteractiveView.isHidden = AgregatorApplication.current.subscriptionState == .active
+        goToPremiumInteractiveView.didTouchAction = {
+            
+        #if DEBUG //1
+//            try! AgregatorApplication.current.realm?.write {
+//                if AgregatorApplication.current.subscriptionState == .active {
+//                    AgregatorApplication.current.subscriptionState = .none
+//                } else {
+//                    AgregatorApplication.current.subscriptionState = .active
+//                }
+//            }//temp vr 1
+//            return
+        #endif
+            AgregatorLogger.shared.log(eventName: "Banner tap", parameters: ["Source": "Main_screen"])
+            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.banner.rawValue, with: { [weak self] success in
+                guard let self = self else { return }
+                self.goToPremiumInteractiveView.isHidden = AgregatorApplication.current.subscriptionState == .active
+                self.collectionView.reloadData()
+            })
+        }
+        
     }
     
     private func setupTabs() {

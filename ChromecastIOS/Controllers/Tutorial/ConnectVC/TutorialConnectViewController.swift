@@ -24,6 +24,8 @@ class TutorialConnectViewController: BaseViewController {
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
     
     var didFinishAction: (() -> ())?
+    var didCancelAction: Closure?
+    
     var source: String!
     var nameForEvents: String { return "Let's set up screen" }
     
@@ -81,12 +83,12 @@ class TutorialConnectViewController: BaseViewController {
         if isShortAnimation ==  true {
             showShortAnimation { [weak self] in
                 guard let self = self else { return }
-                self.presentDevices()
+                self.finishStep()
             }
         } else {
             showLongAnimation { [weak self] in
                 guard let self = self else { return }
-                self.presentDevices()
+                self.finishStep()
             }
         }
     }
@@ -151,6 +153,16 @@ class TutorialConnectViewController: BaseViewController {
     private func stopProgressTimer() {
         progressTimer?.invalidate()
         progressTimer = nil
+    }
+    
+    private func finishStep() {
+        let realm = try! Realm()
+        let detectedDevices = realm.objects(DeviceObject.self)
+        if detectedDevices.isEmpty {
+            didCancelAction?()
+        } else {
+            presentDevices()
+        }
     }
     
     private func presentDevices() {
