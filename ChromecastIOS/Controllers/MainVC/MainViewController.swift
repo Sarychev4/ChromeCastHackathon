@@ -165,38 +165,41 @@ class MainViewController: BaseViewController {
             return
         }
         
-        let cellTitle = tabs[indexPath.row].title
-        AgregatorLogger.shared.log(eventName: cellTitle, parameters: nil)
-        
         let buttonType = tabs[indexPath.row].type
         
         switch buttonType {
         case .media:
             let viewController = MediaLibraryViewController()
             viewController.hidesBottomBarWhenPushed = true
+            AgregatorLogger.shared.log(eventName: "Media", parameters: ["Source": "Main_screen"])
             navigation?.pushViewController(viewController, animated: .left)
         case .browser:
             let viewController = BrowserViewController()
             viewController.hidesBottomBarWhenPushed = true
+            AgregatorLogger.shared.log(eventName: "Browser", parameters: ["Source": "Main_screen"])
             navigation?.pushViewController(viewController, animated: .left)
         case .iptv:
             let viewController = IPTVPlayListsViewController()
             viewController.hidesBottomBarWhenPushed = true
+            AgregatorLogger.shared.log(eventName: "IPTV", parameters: ["Source": "Main_screen"])
             self.navigation?.pushViewController(viewController, animated: .left)
         case .youtube:
             SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.youtube.rawValue, with: { [weak self] success in
                 guard let self = self, success == true else { return }
             let viewController = YouTubeViewController()
             viewController.hidesBottomBarWhenPushed = true
+            AgregatorLogger.shared.log(eventName: "YouTube", parameters: ["Source": "Main_screen"])
             self.navigation?.pushViewController(viewController, animated: .left)
             })
         case .googleDrive:
             let viewController = GoogleDriveViewController()
             viewController.hidesBottomBarWhenPushed = true
+            AgregatorLogger.shared.log(eventName: "GoogleDrive", parameters: ["Source": "Main_screen"])
             self.navigation?.pushViewController(viewController, animated: .left)
         case .googlePhotos:
             let viewController = GooglePhotosViewController()
             viewController.hidesBottomBarWhenPushed = true
+            AgregatorLogger.shared.log(eventName: "GooglePhotos", parameters: ["Source": "Main_screen"])
             self.navigation?.pushViewController(viewController, animated: .left)
         }
     }
