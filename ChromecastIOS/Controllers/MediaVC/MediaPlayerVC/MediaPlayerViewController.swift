@@ -245,7 +245,7 @@ class MediaPlayerViewController: BaseViewController {
     
     private func hideHUD() {
         _HUD?.hide(animated: true)
-        HUD?.hide(animated: true)
+//        HUD?.hide(animated: true)
         _HUD = nil
     }
     
@@ -333,7 +333,7 @@ extension MediaPlayerViewController {
                 guard let self = self else { return }
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    self.HUD?.progressObject?.completedUnitCount = progress
+                    self._HUD?.progressObject?.completedUnitCount = progress
                 }
             }, completion: { [weak self] image in
                 guard let self = self, let image = image else { return }
