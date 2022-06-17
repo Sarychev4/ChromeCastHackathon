@@ -41,7 +41,7 @@ class MediaLibraryViewController: BaseViewController {
         
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            ChromeCastService.shared.stopWebApp()
+//            ChromeCastService.shared.stopWebApp()
             self.navigation?.popViewController(self, animated: true)
         }
         
