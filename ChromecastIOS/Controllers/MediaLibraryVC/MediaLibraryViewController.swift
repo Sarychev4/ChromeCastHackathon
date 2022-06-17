@@ -20,6 +20,8 @@ class MediaLibraryViewController: BaseViewController {
     @IBOutlet weak var albumsStackView: UIStackView!
     @IBOutlet weak var assetsCollectionView: UICollectionView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     private var albumViewsArray: [AlbumView] = []
     private var dataSource: [(album: PHAssetCollection, images:[PHAsset])] = []
     private var albumIndex: Int = 0 {
@@ -57,8 +59,13 @@ class MediaLibraryViewController: BaseViewController {
         assetsCollectionView.dataSource = self
         assetsCollectionView.delegate = self
         
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+            self.requestAccessPermition()
+        }
+        
         setupShadowAnimation()
-        requestAccessPermition()
+        activityIndicator.startAnimating()
         
     }
     
@@ -76,7 +83,10 @@ class MediaLibraryViewController: BaseViewController {
     private func requestAccessPermition() {
         
         if PHPhotoLibrary.authorizationStatus() == .authorized {
-            setupAlbums()
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.setupAlbums()
+            }
         } else {
             if #available(iOS 14, *) {
                 PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] (status) in
@@ -123,6 +133,7 @@ class MediaLibraryViewController: BaseViewController {
     }
     
     private func setupAlbums() {
+        
         AgregatorLogger.shared.log(eventName: "Media_setup_albums", parameters: nil)
         
         albumViewsArray.forEach({ $0.removeFromSuperview(); albumsStackView.removeArrangedSubview($0) })
@@ -168,7 +179,9 @@ class MediaLibraryViewController: BaseViewController {
         for (index, view) in albumViewsArray.enumerated() {
             view.isSelected = index == albumIndex
         }
+        
         assetsCollectionView.reloadData()
+        activityIndicator.stopAnimating()
     }
     
     func fetchAssets(in album: PHAssetCollection) -> [PHAsset] {

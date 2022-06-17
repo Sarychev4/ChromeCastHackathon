@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaLibraryViewController" customModule="ChromecastIOS" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="5Kb-fI-tAh" id="dBo-oD-UNK"/>
                 <outlet property="albumsScrollView" destination="b2w-si-2po" id="DvK-Z0-KdR"/>
                 <outlet property="albumsStackView" destination="Yfg-sX-i15" id="LTt-ti-7i0"/>
                 <outlet property="assetsCollectionView" destination="MBK-F1-NbR" id="YxT-LT-SGG"/>
@@ -189,6 +190,10 @@
                                 <constraint firstAttribute="trailing" secondItem="xvm-pm-RHW" secondAttribute="trailing" id="tE0-uW-CFT"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5Kb-fI-tAh">
+                            <rect key="frame" x="197" y="172" width="20" height="20"/>
+                            <color key="color" name="labelColorDark"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
@@ -197,6 +202,8 @@
                         <constraint firstItem="YtI-A8-p1t" firstAttribute="leading" secondItem="eQ0-xd-ehK" secondAttribute="leading" id="A9T-PF-4nb"/>
                         <constraint firstAttribute="trailing" secondItem="YtI-A8-p1t" secondAttribute="trailing" id="Avz-By-IAf"/>
                         <constraint firstItem="YtI-A8-p1t" firstAttribute="top" secondItem="eQ0-xd-ehK" secondAttribute="top" constant="52" id="E05-pS-mzL"/>
+                        <constraint firstItem="5Kb-fI-tAh" firstAttribute="centerX" secondItem="eQ0-xd-ehK" secondAttribute="centerX" id="LiV-Nf-Wwc"/>
+                        <constraint firstItem="5Kb-fI-tAh" firstAttribute="top" secondItem="YtI-A8-p1t" secondAttribute="bottom" constant="24" id="fTD-5s-9QF"/>
                         <constraint firstAttribute="trailing" secondItem="pt7-BK-NDM" secondAttribute="trailing" id="jPY-0c-XIC"/>
                         <constraint firstAttribute="bottom" secondItem="pt7-BK-NDM" secondAttribute="bottom" id="qw8-rG-sxp"/>
                     </constraints>
@@ -218,6 +225,9 @@
         <image name="cast" width="44" height="36"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
