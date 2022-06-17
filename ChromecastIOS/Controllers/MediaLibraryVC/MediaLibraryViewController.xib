@@ -191,7 +191,7 @@
                             </constraints>
                         </view>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5Kb-fI-tAh">
-                            <rect key="frame" x="197" y="172" width="20" height="20"/>
+                            <rect key="frame" x="197" y="438" width="20" height="20"/>
                             <color key="color" name="labelColorDark"/>
                         </activityIndicatorView>
                     </subviews>
@@ -203,7 +203,7 @@
                         <constraint firstAttribute="trailing" secondItem="YtI-A8-p1t" secondAttribute="trailing" id="Avz-By-IAf"/>
                         <constraint firstItem="YtI-A8-p1t" firstAttribute="top" secondItem="eQ0-xd-ehK" secondAttribute="top" constant="52" id="E05-pS-mzL"/>
                         <constraint firstItem="5Kb-fI-tAh" firstAttribute="centerX" secondItem="eQ0-xd-ehK" secondAttribute="centerX" id="LiV-Nf-Wwc"/>
-                        <constraint firstItem="5Kb-fI-tAh" firstAttribute="top" secondItem="YtI-A8-p1t" secondAttribute="bottom" constant="24" id="fTD-5s-9QF"/>
+                        <constraint firstItem="5Kb-fI-tAh" firstAttribute="centerY" secondItem="eQ0-xd-ehK" secondAttribute="centerY" id="eaQ-nK-RCB"/>
                         <constraint firstAttribute="trailing" secondItem="pt7-BK-NDM" secondAttribute="trailing" id="jPY-0c-XIC"/>
                         <constraint firstAttribute="bottom" secondItem="pt7-BK-NDM" secondAttribute="bottom" id="qw8-rG-sxp"/>
                     </constraints>

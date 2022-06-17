@@ -238,6 +238,11 @@ extension MediaLibraryViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssetCell.Identifier, for: indexPath) as! AssetCell
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.4) { [weak self] in
+            guard let _ = self else { return }
+            cell.alpha = 1
+        }
         return cell
     }
     

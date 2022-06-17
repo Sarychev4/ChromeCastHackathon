@@ -23,6 +23,19 @@ class AlbumView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
+        
+        dropShadowBackgroundView.alpha = 0
+        containerInteractiveView.alpha = 0
+        titleLabel.alpha = 0
+        
+        UIView.animate(withDuration: 0.4) { [weak self] in
+            guard let self = self else { return }
+            self.dropShadowBackgroundView.alpha = 1
+            self.containerInteractiveView.alpha = 1
+            self.titleLabel.alpha = 1
+            
+        }
+        
     }
     
     required init?(coder: NSCoder) {

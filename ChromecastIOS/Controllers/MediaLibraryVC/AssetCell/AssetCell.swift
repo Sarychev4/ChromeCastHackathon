@@ -37,6 +37,7 @@ class AssetCell: UICollectionViewCell {
         super.awakeFromNib()
         
         containerView.cornerRadius = 10
+
     }
 
 }
