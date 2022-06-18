@@ -87,14 +87,14 @@ class MainViewController: BaseViewController {
         goToPremiumInteractiveView.didTouchAction = {
             
         #if DEBUG //1
-//            try! AgregatorApplication.current.realm?.write {
-//                if AgregatorApplication.current.subscriptionState == .active {
-//                    AgregatorApplication.current.subscriptionState = .none
-//                } else {
-//                    AgregatorApplication.current.subscriptionState = .active
-//                }
-//            }//temp vr 1
-//            return
+            try! AgregatorApplication.current.realm?.write {
+                if AgregatorApplication.current.subscriptionState == .active {
+                    AgregatorApplication.current.subscriptionState = .none
+                } else {
+                    AgregatorApplication.current.subscriptionState = .active
+                }
+            }//temp vr 1
+            return
         #endif
             AgregatorLogger.shared.log(eventName: "Banner tap", parameters: ["Source": "Main_screen"])
             SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.banner.rawValue, with: { [weak self] success in

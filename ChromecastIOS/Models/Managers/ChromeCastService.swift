@@ -71,6 +71,22 @@ class ChromeCastService: NSObject {
         
         observeStreamConfiguration()
         listenVolumeButton()
+        createPlayerObject()
+    }
+    
+    func createPlayerObject() {
+        let realm = try! Realm()
+        let playerStates = realm.objects(PlayerState.self)
+            if playerStates.isEmpty {
+                let playerState = PlayerState()
+                playerState.state = 0
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(playerState)
+                }
+                print(">>> New Player State was added to the REALM")
+
+            }
     }
     
     func clearAllDevices() {
@@ -250,7 +266,17 @@ extension ChromeCastService: GCKRequestDelegate {
 extension ChromeCastService: GCKRemoteMediaClientListener {
     func remoteMediaClient(_ client: GCKRemoteMediaClient, didUpdate mediaStatus: GCKMediaStatus?) {
         guard let mediaStatus = mediaStatus else { return }
-        //        print(">>> remoteMediaClient time: \(mediaStatus.streamPosition), state: \(mediaStatus.playerState.rawValue))")
+        
+        let realm = try! Realm()
+        if let playerState = realm.objects(PlayerState.self).first {
+            if playerState.state != mediaStatus.playerState.rawValue {
+                try! realm.write {
+                    playerState.state = mediaStatus.playerState.rawValue
+                }
+            }
+           
+        }
+//        print(">>> remoteMediaClient time: \(mediaStatus.streamPosition), state: \(mediaStatus.playerState.rawValue))")
     }
 }
 

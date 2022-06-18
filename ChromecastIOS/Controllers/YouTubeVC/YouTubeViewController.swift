@@ -10,6 +10,9 @@ import UIKit
 import XCDYouTubeKit_kbexdev
 import GoogleCast
 import SwiftUI
+import RealmSwift
+import ZMJTipView
+
 enum PlaybackState {
     case playing
     case paused
@@ -24,12 +27,13 @@ class YouTubeViewController: BaseViewController {
     
     @IBOutlet weak var navigationBarShadowView: DropShadowView!
     @IBOutlet weak var backInteractiveView: InteractiveView!
+    
+    @IBOutlet weak var resumeVideoButton: ResumeVideoView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var emptyImageView: UIImageView!
-    @IBOutlet weak var mediaControlView: MediaControlView!
     
     @IBOutlet weak var searchTip: DefaultLabel!
     
@@ -40,26 +44,15 @@ class YouTubeViewController: BaseViewController {
     private var lastSuccessQuery: String?
     private var isLoading = false
     private var currentVideo: XCDYouTubeVideo?
-    private var videoProgressTimer: Timer?
-    private var currentTime: TimeInterval = 0
+
+    private var isTipWasShown = false
+    private var tipView: ZMJTipView?
     
     private var navigationBarAnimator: UIViewPropertyAnimator?
     private var animator: ScrollViewAnimator?
     
-    private var state: PlaybackState? {
-        didSet {
-            if let state = state {
-                if state == .playing {
-                    mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")
-                } else if state == .paused  {
-                    mediaControlView.playButtonIcon.image = UIImage(named: "PlayIcon")
-                } else if state == .stopped {
-                    currentTime = 0
-                    mediaControlView.playButtonIcon.image = UIImage(named: "PlayIcon")
-                }
-            }
-        }
-    }
+    private var playerStateNotificationToken: NotificationToken?
+    private var state: PlaybackState?
     
     private var isSuggestionsOnView: Bool {
         guard let searchText = searchBar.text, searchText.isEmpty == false, suggestions.count > 0 else { return false }
@@ -68,8 +61,7 @@ class YouTubeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mediaControlView.alpha = 0
+   
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -84,8 +76,16 @@ class YouTubeViewController: BaseViewController {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
 //            ChromeCastService.shared.stopWebApp()
+            self.tipView?.isHidden = true
             self.navigation?.popViewController(self, animated: true)
         }
+        
+        resumeVideoButton.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.tipView?.isHidden = true
+            ChromeCastService.shared.showDefaultMediaVC()
+        }
+        
         
         connectInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
@@ -94,37 +94,7 @@ class YouTubeViewController: BaseViewController {
         
         /*
          */
-        
-        let sliderThumb = UIImage(named: "SliderThumb")!
-        mediaControlView.progressView.setThumbImage(sliderThumb, for: .normal)
-        mediaControlView.progressView.setThumbImage(sliderThumb, for: .highlighted)
-        
-        mediaControlView.prevInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self, self.selectedIndex > 1 else { return }
-            self.playVideo(at: self.selectedIndex - 1)
-        }
-        
-        mediaControlView.forwardInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self, self.selectedIndex < self.videos.count - 1 else { return }
-            self.playVideo(at: self.selectedIndex + 1)
-        }
-        
-        mediaControlView.playPauseInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            if self.state == .stopped || self.state == nil {
-                self.playVideo(at: self.selectedIndex)
-            } else if self.state == .paused {
-                //temp
-                //                DeviceManager.shared.mediaControlPlayVideo()
-            } else if self.state == .playing {
-                //temp
-                //                DeviceManager.shared.mediaControlPauseVideo()
-            }
-            self.mediaControlView.playPauseInteractiveView.isEnabled = false
-        }
-        
-        /*
-         */
+
         
         if let data = UserDefaults.standard.youtubeLastResponse,
            let array = try? JSONDecoder().decode([YoutubeItem].self, from: data), array.count > 0 {
@@ -136,6 +106,13 @@ class YouTubeViewController: BaseViewController {
         tableView.contentInset.top = 20
         tableView.reloadData()
         
+        setupPlayerStateObserver()
+        showHideResumeButton()
+        
+        searchTip.isHidden = true
+        if videos.isEmpty {
+            searchTip.isHidden = false
+        }
     }
     
     
@@ -144,18 +121,79 @@ class YouTubeViewController: BaseViewController {
     
     }
     
+    private func showHideResumeButton() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        guard let playerState = remoteMediaClient?.mediaStatus?.playerState.rawValue else {
+            resumeVideoButton.isHidden = true
+            return
+        }
+        if playerState == 0 || playerState == 1 {
+            resumeVideoButton.isHidden = true
+        } else {
+            resumeVideoButton.isHidden = false
+        }
+    }
     
-    /*
-     MARK: - Player Methods
-     */
+    private func setupPlayerStateObserver() {
+        let realm = try! Realm()
+        if let playerStateObj = realm.objects(PlayerState.self).first {
+            playerStateNotificationToken = playerStateObj.observe { [weak self] changes in
+                guard let self = self else { return }
+                switch changes {
+                case .change(let object, let properties):
+                    for property in properties {
+                        print(">>> PlayerStateObj state \(properties)")
+                        print(">>> PlayerStateObj Property '\(property.name)' of object \(object) changed to '\(property.newValue!)'")
+                        let newVal = property.newValue as? Int
+                        
+                        switch newVal {
+                        case 1:
+                            self.state = .stopped
+                            self.tipView?.isHidden = true
+                            self.selectedIndex = -1
+                            self.tableView.reloadData()
+                        case 2:
+                            self.state = .playing
+                        case 3:
+                            self.state = .paused
+                        default:
+                            print("")
+                        }
+                    }
+                case .error(let error):
+                    print(">>> PlayerStateObj An error occurred: \(error)")
+                case .deleted:
+                    print(">>> PlayerStateObj was deleted.")
+                }
+            }
+        }
+    }
+    
+    private func showTipView() {
+        let preferences = ZMJPreferences()
+        preferences.drawing.font = UIFont.systemFont(ofSize: 14)
+        preferences.drawing.textAlignment = .center
+        preferences.drawing.backgroundColor = UIColor(hexString: "FBBB05")
+        preferences.positioning.maxWidth = 130
+//        preferences.positioning.bubbleVInset = 34
+        preferences.drawing.arrowPosition = .top
+        
+        preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialAlpha = 0;
+        preferences.animating.showDuration = 1;
+        preferences.animating.dismissDuration = 1;
+        
+        let title = NSLocalizedString("Common.ResumeVideo.Tip", comment: "")
+        guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
+        self.tipView = tipView2
+        self.tipView?.show(animated: true, for: self.resumeVideoButton, withinSuperview: nil)
+    }
     
     private func cellClicked(at index: Int) {
+        self.tipView?.isHidden = true
         self.connectIfNeeded { [weak self] in
             guard let self = self else { return }
-            print(">>>\(index)")
-            print(">>>\(self.selectedIndex)")
-            print(">>>\(self.state)")
-
             if self.selectedIndex != index && self.state == .paused { //если новая ячейка и ничего не играет
                 self.playVideo(at: index)
             } else if self.selectedIndex != index && self.state == .playing { //если новая ячейка и видео уже играет
@@ -167,8 +205,6 @@ class YouTubeViewController: BaseViewController {
             } else {
                 self.playVideo(at: index)
             }
-            
-            
         }
     }
     
@@ -179,7 +215,6 @@ class YouTubeViewController: BaseViewController {
             self.state = .paused
         }
     }
-    
     
     private func playVideo(at index: Int, resolution: ResolutionType? = nil) {
         self.connectIfNeeded { [weak self] in
@@ -192,17 +227,17 @@ class YouTubeViewController: BaseViewController {
             if let videoId = item.id?.videoID {
                 XCDYouTubeClient.default().getVideoWithIdentifier(videoId) { [weak self] (video, error) in
                     guard let self = self, let video = video else { return }
-                    //                        self.mediaControlView.alpha = 1
                     self.currentVideo = video
                     let resolution = self.getBestQuality(for: video)
                     if let downloadUrl = video.streamURLs[resolution.youtubeQuality],
                        let urlString = item.snippet?.thumbnails?.high?.url,
                        let previewImageUrl = URL(string: urlString) {
+                        if self.isTipWasShown == false {
+                            self.showTipView()
+                            self.isTipWasShown = true
+                        }
                         ChromeCastService.shared.displayVideo(with: downloadUrl, previewImage: previewImageUrl)
                         ChromeCastService.shared.showDefaultMediaVC()
-                        self.startVideoProgressTimer()
-                        self.mediaControlView.remainingTimeLabel.text = "\(video.duration.durationText)"
-                        self.mediaControlView.playButtonIcon.image = UIImage(named: "PauseIcon")
                     }
                 }
             }
@@ -217,57 +252,6 @@ class YouTubeViewController: BaseViewController {
         presentDevices {
             onComplete?()
         }
-    }
-    
-    
-    private func stopVideoProgressTimer() {
-        videoProgressTimer?.invalidate()
-        videoProgressTimer = nil
-    }
-    
-    private func startVideoProgressTimer() {
-        stopVideoProgressTimer()
-        videoProgressTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] (timer) in
-            guard let self = self else { return }
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
-                
-                guard let currentTime = remoteMediaClient?.mediaStatus?.streamPosition else { return }
-                //print(currentTime)
-                
-                if self.currentTime == 0 && currentTime > TimeInterval(2) {
-                    // Это кейс когда переключили с одного видео на другой, а инфа устаревшая про предыдущее видео все еще доходит
-                    return
-                }
-                self.mediaControlView.playPauseInteractiveView.isEnabled = true
-                let videoDuration = Int(self.currentVideo?.duration ?? 0)
-                
-                if currentTime > 0 {
-                    
-                    if currentTime != self.currentTime {
-                        self.state = .playing
-                    } else {
-                        // НА FireTV когда заканчивается видео - оно висит на последней секунде, будто на паузе
-                        //На Року оно закрывается. Поэтому надо обрабатывать все кейсы
-                        if abs(TimeInterval(videoDuration) - currentTime) < 0.9 {
-                            self.state = .stopped
-                            timer.invalidate()
-                        } else {
-                            self.state = .paused
-                        }
-                    }
-                } else if self.currentTime > 0 {
-                    // Кейс когда предыдущий запрос был не 0, а следующий 0 это когда видео закончилось.
-                    self.state = .stopped
-                }
-                self.currentTime = currentTime
-                let currentTimePlayer = Int(currentTime)
-                
-                self.mediaControlView.progressView.value = Float(currentTimePlayer)/Float(videoDuration)
-                self.mediaControlView.currentPlayTimeLabel.text = currentTimePlayer.durationText
-            }
-        })
     }
     
     private func getQualities(from video: XCDYouTubeVideo) -> [ResolutionType] {
@@ -345,7 +329,7 @@ extension YouTubeViewController: UITableViewDelegate, UITableViewDataSource {
             return suggestions.count
         }
         emptyImageView.isHidden = videos.count > 0 || isLoading == true
-        searchTip.isHidden = videos.count > 0
+        
         return videos.count
     }
     
@@ -420,23 +404,17 @@ extension YouTubeViewController: UISearchBarDelegate {
         }
     }
     
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let text = searchBar.text else { return }
         if text != "" {
             AutoComplete.getQuerySuggestions(text) { [weak self] (result, error) in
                 guard let self = self else { return }
-                
                 self.suggestions.removeAll()
-                
                 if let result = result {
                     self.suggestions.append(contentsOf: result)
                 }
-                
                 self.tableView.reloadData()
             }
-            print(isSuggestionsOnView)
-            print("textDidChange")
         }
     }
     

@@ -70,6 +70,7 @@
 		DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1F2817FA9700E67AB0 /* youtube_ico.png */; };
 		DD345D262817FA9700E67AB0 /* veoh_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D202817FA9700E67AB0 /* veoh_ico.png */; };
 		DD345D272817FA9700E67AB0 /* vimeo_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D212817FA9700E67AB0 /* vimeo_ico.png */; };
+		DD346DEA285DEBA9000FFF53 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD346DE9285DEBA9000FFF53 /* PlayerState.swift */; };
 		DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD523296281A98F4004AF0AA /* AlbumView.swift */; };
 		DD523299281A9906004AF0AA /* AlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD523298281A9906004AF0AA /* AlbumView.xib */; };
 		DD52329D281AAE26004AF0AA /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52329B281AAE26004AF0AA /* AssetCell.swift */; };
@@ -148,6 +149,7 @@
 		DDB35989283E870600605B56 /* SetupChromeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB35987283E870600605B56 /* SetupChromeCastViewController.swift */; };
 		DDB3598A283E870600605B56 /* SetupChromeCastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */; };
 		DDBCDBE9283B830E00AB626A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E86F70A9282A442D0000A5C7 /* GoogleService-Info.plist */; };
+		DDBE7196285E087400383511 /* ResumeVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE7195285E087400383511 /* ResumeVideoView.swift */; };
 		DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */; };
 		DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */; };
 		DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */; };
@@ -327,6 +329,7 @@
 		DD345D1F2817FA9700E67AB0 /* youtube_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube_ico.png; sourceTree = "<group>"; };
 		DD345D202817FA9700E67AB0 /* veoh_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = veoh_ico.png; sourceTree = "<group>"; };
 		DD345D212817FA9700E67AB0 /* vimeo_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vimeo_ico.png; sourceTree = "<group>"; };
+		DD346DE9285DEBA9000FFF53 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 		DD523296281A98F4004AF0AA /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
 		DD523298281A9906004AF0AA /* AlbumView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumView.xib; sourceTree = "<group>"; };
 		DD52329B281AAE26004AF0AA /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
@@ -404,6 +407,7 @@
 		DDAE2660281927C000355735 /* DotsActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsActivityIndicator.swift; sourceTree = "<group>"; };
 		DDB35987283E870600605B56 /* SetupChromeCastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupChromeCastViewController.swift; sourceTree = "<group>"; };
 		DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupChromeCastViewController.xib; sourceTree = "<group>"; };
+		DDBE7195285E087400383511 /* ResumeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeVideoView.swift; sourceTree = "<group>"; };
 		DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorViewController.xib; sourceTree = "<group>"; };
 		DDCE09F9281064C2004E9C18 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
@@ -546,6 +550,7 @@
 				DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */,
 				DDD6E3C82833BEEC000C5AB9 /* ServerConfiguration.swift */,
 				DD92BADB2836F6FE00ACD358 /* StreamConfiguration.swift */,
+				DD346DE9285DEBA9000FFF53 /* PlayerState.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -1209,6 +1214,7 @@
 				DD92BAD72836AC2700ACD358 /* ConnectButton.swift */,
 				DD92BADF2837268E00ACD358 /* MediaControlView.swift */,
 				DD92BAE12837273400ACD358 /* CustomSlider.swift */,
+				DDBE7195285E087400383511 /* ResumeVideoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1621,6 +1627,7 @@
 				DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */,
 				DD5F40492848BCCA0064B934 /* GoogleAlbumView.swift in Sources */,
 				DD92BAE82837893D00ACD358 /* AutoComplete.swift in Sources */,
+				DD346DEA285DEBA9000FFF53 /* PlayerState.swift in Sources */,
 				DD92BAE428372E1600ACD358 /* UserDefaults+Extension.swift in Sources */,
 				DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */,
 				E8E5FA92283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */,
@@ -1653,6 +1660,7 @@
 				DD19E4C42812AC8E00931489 /* HDCell.swift in Sources */,
 				DDAE2661281927C000355735 /* DotsActivityIndicator.swift in Sources */,
 				DD923ADB2812F08E0034E5D3 /* FlowLayoutSyncManager.swift in Sources */,
+				DDBE7196285E087400383511 /* ResumeVideoView.swift in Sources */,
 				DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */,
 				DD923AEC2816B39B0034E5D3 /* TutorialWelcomeViewController.swift in Sources */,
 				DDCE0A0A28116EF9004E9C18 /* GooglePhotosViewController.swift in Sources */,
