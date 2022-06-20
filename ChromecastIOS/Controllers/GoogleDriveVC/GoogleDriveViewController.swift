@@ -362,6 +362,8 @@ class GoogleDriveViewController: BaseViewController {
                         print("Permissions error: \(err.localizedDescription)")
                     } else {
                         if self.isTipWasShown == false {
+                            self.resumeVideoInteractiveView.isHidden = false
+                            self.spaceView.isHidden = false
                             self.showTipView()
                             self.isTipWasShown = true
                         }
@@ -380,6 +382,7 @@ class GoogleDriveViewController: BaseViewController {
         preferences.positioning.maxWidth = 130
 //        preferences.positioning.bubbleVInset = 34
         preferences.drawing.arrowPosition = .top
+        preferences.drawing.arrowHeight = 0
         
         preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
         preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);

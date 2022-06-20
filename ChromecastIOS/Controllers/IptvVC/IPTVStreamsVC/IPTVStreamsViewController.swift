@@ -148,6 +148,7 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
                 guard let self = self, let stream = self.streams?[indexPath.row] else { return }
                 guard let streamUrl = URL(string: stream.url) else { return }
                 if self.isTipWasShown == false {
+                    self.resumeVideoInteractiveView.isHidden = false
                     self.showTipView()
                     self.isTipWasShown = true
                 }
@@ -205,6 +206,7 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
         preferences.positioning.maxWidth = 130
 //        preferences.positioning.bubbleVInset = 34
         preferences.drawing.arrowPosition = .top
+        preferences.drawing.arrowHeight = 0
         
         preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
         preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);

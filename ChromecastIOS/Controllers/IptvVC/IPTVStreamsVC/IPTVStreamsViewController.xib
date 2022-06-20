@@ -88,7 +88,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="DZY-hU-hYu"/>
                                                         <constraint firstItem="u4C-OY-spx" firstAttribute="centerX" secondItem="Wtp-zq-V0i" secondAttribute="centerX" id="I1t-yr-bV8"/>

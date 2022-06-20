@@ -118,7 +118,7 @@
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-jn-ash" customClass="ResumeVideoView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="318" y="0.0" width="24" height="24"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="TvV-W0-V5Y"/>
                                                             </constraints>

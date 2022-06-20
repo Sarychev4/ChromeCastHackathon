@@ -12,6 +12,7 @@ import MBProgressHUD
 import GoogleCast
 import Agregator
 import RealmSwift
+import ZMJTipView
 
 enum State {
     case convertingToMP4(_ progress: Float)
@@ -25,6 +26,8 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
+    
+    @IBOutlet weak var resumeVideoInteractiveView: ResumeVideoView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     
     @IBOutlet weak var navigationBarTitle: UILabel!
@@ -44,8 +47,13 @@ class MediaPlayerViewController: BaseViewController {
     var flowLayoutSyncManager: FlowLayoutSyncManager!
     private let imageManager = PHCachingImageManager()
     var selectedIndex: Int = 0
+    var playingVideoIndex: Int = -1
+    
     var assets: [PHAsset] = []
     var assetExportSession = VideoConverter()
+    
+    private var isTipWasShown = false
+    private var tipView: ZMJTipView?
     
     private var delayBetweenCastTimer: Timer? //Чтобы не кастить фотки при каждом свайпе - делаю делей на 0.7 секунды
     
@@ -96,6 +104,8 @@ class MediaPlayerViewController: BaseViewController {
             self.currentAssetNameLabel.text = resources.first?.originalFilename
             //self.handleAsset(at: self.selectedIndex)
         }
+        
+        showHideResumeButton()
         
     }
     
@@ -160,6 +170,19 @@ class MediaPlayerViewController: BaseViewController {
         }
     }
     
+    private func showHideResumeButton() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        guard let playerState = remoteMediaClient?.mediaStatus?.playerState.rawValue else {
+            resumeVideoInteractiveView.isHidden = true
+            return
+        }
+        if playerState == 0 || playerState == 1 {
+            resumeVideoInteractiveView.isHidden = true
+        } else {
+            resumeVideoInteractiveView.isHidden = false
+        }
+    }
+    
     
     private func handleAsset(at index: Int) {
         AgregatorLogger.shared.log(eventName: "Media player handle asset", parameters: nil)
@@ -209,7 +232,14 @@ class MediaPlayerViewController: BaseViewController {
        
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
+            self.tipView?.isHidden = true
             self.navigation?.popViewController(self, animated: true)
+        }
+        
+        resumeVideoInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.tipView?.isHidden = true
+            ChromeCastService.shared.showDefaultMediaVC()
         }
         
         connectInteractiveView.didTouchAction = { [weak self] in
@@ -313,7 +343,30 @@ class MediaPlayerViewController: BaseViewController {
         }
     }
     
+    private func showTipView() {
+        let preferences = ZMJPreferences()
+        preferences.drawing.font = UIFont.systemFont(ofSize: 14)
+        preferences.drawing.textAlignment = .center
+        preferences.drawing.backgroundColor = UIColor(hexString: "FBBB05")
+        preferences.positioning.maxWidth = 130
+//        preferences.positioning.bubbleVInset = 34
+        preferences.drawing.arrowPosition = .top
+        preferences.drawing.arrowHeight = 0
+        
+        preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialAlpha = 0;
+        preferences.animating.showDuration = 1;
+        preferences.animating.dismissDuration = 1;
+        
+        let title = NSLocalizedString("Common.ResumeVideo.Tip", comment: "")
+        guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
+        self.tipView = tipView2
+        self.tipView?.show(animated: true, for: self.resumeVideoInteractiveView, withinSuperview: nil)
+    }
+    
 }
+
 
 //MARK: - Photo
 extension MediaPlayerViewController {
@@ -389,6 +442,7 @@ extension MediaPlayerViewController {
     
     private func castVideoToTV() {
         
+        playingVideoIndex = selectedIndex
         observeVideoPlayerState()
         
         let asset = assets[selectedIndex]
@@ -407,15 +461,20 @@ extension MediaPlayerViewController {
             }
         case .readyForTV:
             self.connectIfNeeded { [weak self] in
-                guard let _ = self else { return }
+                guard let self = self else { return }
                 let ipAddress = ServerConfiguration.shared.deviceIPAddress()
                 guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+                if self.isTipWasShown == false {
+                    self.resumeVideoInteractiveView.isHidden = false
+                    self.showTipView()
+                    self.isTipWasShown = true
+                }
                 ChromeCastService.shared.displayVideo(with: url)
                 ChromeCastService.shared.showDefaultMediaVC()
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     //temp as
-                    self.videoPlayerManager.startObserveVideoProgress()
+                    self.videoPlayerManager.startObserveVideoState()
                 }
             }
         case .playing:
@@ -453,6 +512,7 @@ extension MediaPlayerViewController {
             switch state {
             case .none:
                 self.hideHUD()
+                self.tipView?.isHidden = true
                 self.hdCollectionView.reloadData()
             case .iCloudDownloading(let progress):
                 self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
@@ -463,18 +523,6 @@ extension MediaPlayerViewController {
                 break
             case .readyForTV:
                 self.hideHUD()
-//                self.connectIfNeeded { [weak self] in
-//                    guard let _ = self else { return }
-//                    let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-//                    guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
-//                    ChromeCastService.shared.displayVideo(with: url)
-//                    ChromeCastService.shared.showDefaultMediaVC()
-//                    DispatchQueue.main.async { [weak self] in
-//                        guard let self = self else { return }
-//                        //temp as
-//                        self.videoPlayerManager.startObserveVideoProgress()
-//                    }
-//                }
             case .playing:
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
@@ -591,11 +639,11 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HDCell.Identifier, for: indexPath) as! HDCell
             
             if let size = self.collectionView(hdCollectionView, sizeForItemAt: indexPath) {
-                cell.setupCell(with: asset, state: videoPlayerManager.state, currentTime: videoPlayerManager.currentTime, size: size)
+                cell.setupCell(with: asset, state: videoPlayerManager.state, size: size, isVideoOfCellPlaying: selectedIndex == playingVideoIndex )
                 cell.prevAction = mediaCellPrevClicked
                 cell.nextAction = mediaCellNextClicked
                 cell.playOrPauseAction = self.castVideoToTV
-                cell.rewindAction = mediaCellRewindClicked(seconds:)
+//                cell.rewindAction = mediaCellRewindClicked(seconds:)
             }
             
             return cell
