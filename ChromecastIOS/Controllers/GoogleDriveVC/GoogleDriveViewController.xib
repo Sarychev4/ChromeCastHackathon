@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,8 +20,10 @@
                 <outlet property="googleSignInButtonContainer" destination="l2k-F6-PgO" id="a4g-GA-j1E"/>
                 <outlet property="googleSignInButtonInteractiveView" destination="ZGR-mn-vTe" id="XPm-8c-xaA"/>
                 <outlet property="moreActionsInteractiveView" destination="Syb-ZJ-sHK" id="PKN-Mq-lUg"/>
+                <outlet property="resumeVideoInteractiveView" destination="RPU-BJ-HNX" id="Ski-YQ-yg8"/>
                 <outlet property="searchBar" destination="RK4-Pt-K6x" id="Ed4-SO-388"/>
                 <outlet property="searchBarContainer" destination="Adg-HT-NG2" id="Wgd-5A-1gd"/>
+                <outlet property="spaceView" destination="3oU-8f-9nu" id="28X-yc-A5f"/>
                 <outlet property="titleLabel" destination="b7o-S6-Vbi" id="QRh-ID-5hC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -97,18 +100,11 @@
                                                                 <constraint firstAttribute="width" constant="24" id="KJa-v6-eTG"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYk-Ct-8fE">
-                                                            <rect key="frame" x="24" y="0.0" width="44" height="24"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="44" id="1hz-VA-ZDd"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="py7-qj-wSK">
-                                                            <rect key="frame" x="68" y="0.0" width="248" height="24"/>
+                                                            <rect key="frame" x="24" y="0.0" width="256" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Google Drive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7o-S6-Vbi" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                                    <rect key="frame" x="68.5" y="2" width="111.5" height="20.5"/>
+                                                                    <rect key="frame" x="111.5" y="2" width="111.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -120,11 +116,10 @@
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstItem="b7o-S6-Vbi" firstAttribute="centerY" secondItem="py7-qj-wSK" secondAttribute="centerY" id="5vG-13-wdX"/>
-                                                                <constraint firstItem="b7o-S6-Vbi" firstAttribute="centerX" secondItem="py7-qj-wSK" secondAttribute="centerX" id="f7R-RM-bqE"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syb-ZJ-sHK" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="316" y="0.0" width="24" height="24"/>
+                                                            <rect key="frame" x="280" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more" translatesAutoresizingMaskIntoConstraints="NO" id="2N3-IP-1Qw">
                                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -139,10 +134,35 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rgc-FR-wtU">
-                                                            <rect key="frame" x="340" y="0.0" width="20" height="24"/>
+                                                            <rect key="frame" x="304" y="0.0" width="16" height="24"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="20" id="ZY1-fh-5qh"/>
+                                                                <constraint firstAttribute="width" constant="16" id="ZY1-fh-5qh"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPU-BJ-HNX" customClass="ResumeVideoView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                            <rect key="frame" x="320" y="0.0" width="24" height="24"/>
+                                                            <subviews>
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-gT-3ZR">
+                                                                    <rect key="frame" x="1" y="3" width="22" height="18"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="18" id="4En-CG-W8E"/>
+                                                                        <constraint firstAttribute="width" constant="22" id="Bj2-Tc-ivQ"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="24" id="P36-vw-8iE"/>
+                                                                <constraint firstItem="Mf7-gT-3ZR" firstAttribute="centerX" secondItem="RPU-BJ-HNX" secondAttribute="centerX" id="UrZ-sz-R21"/>
+                                                                <constraint firstItem="Mf7-gT-3ZR" firstAttribute="centerY" secondItem="RPU-BJ-HNX" secondAttribute="centerY" id="m5D-tR-7kt"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oU-8f-9nu">
+                                                            <rect key="frame" x="344" y="0.0" width="16" height="24"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="16" id="xoU-gP-lNp"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8e-9v-wGH" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
@@ -304,6 +324,7 @@
                         <constraint firstItem="EMr-w0-K1W" firstAttribute="leading" secondItem="wCU-RA-QVz" secondAttribute="leading" id="HUg-wY-noE"/>
                         <constraint firstItem="lp2-h9-0bK" firstAttribute="top" secondItem="EMr-w0-K1W" secondAttribute="bottom" constant="-10" id="LKQ-Pd-BlH"/>
                         <constraint firstAttribute="trailing" secondItem="EMr-w0-K1W" secondAttribute="trailing" id="PcJ-Tn-ZxR"/>
+                        <constraint firstItem="b7o-S6-Vbi" firstAttribute="centerX" secondItem="wCU-RA-QVz" secondAttribute="centerX" id="QXv-8e-hnd"/>
                         <constraint firstAttribute="trailing" secondItem="lp2-h9-0bK" secondAttribute="trailing" id="hA4-az-iUP"/>
                         <constraint firstItem="EMr-w0-K1W" firstAttribute="top" secondItem="wCU-RA-QVz" secondAttribute="top" constant="52" id="kTD-FN-KFi"/>
                         <constraint firstAttribute="bottom" secondItem="lp2-h9-0bK" secondAttribute="bottom" id="ktM-DN-IeF"/>
@@ -335,5 +356,8 @@
         <namedColor name="labelColorGrayPunk">
             <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
