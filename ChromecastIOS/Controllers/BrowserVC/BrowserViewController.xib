@@ -19,6 +19,7 @@
                 <outlet property="navigationBarShadowView" destination="Adr-w7-JMB" id="bWs-hl-kQ8"/>
                 <outlet property="openWebsitesInteractiveView" destination="l1P-tr-t0f" id="rGx-ae-XKz"/>
                 <outlet property="playDetectevUrlsImageView" destination="Yjt-ML-a7B" id="bUi-b4-Igb"/>
+                <outlet property="resumeVideoInteractiveView" destination="cF7-l2-o0H" id="r5f-dS-LB9"/>
                 <outlet property="searchBar" destination="C4d-X1-hCE" id="1J8-ZJ-uNl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webBackInteractveView" destination="ppf-k0-HC0" id="PuA-xv-9Pa"/>
@@ -80,7 +81,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDm-II-MXB">
-                                                            <rect key="frame" x="24" y="0.0" width="334" height="24"/>
+                                                            <rect key="frame" x="24" y="0.0" width="294" height="24"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Browser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-VH-eJR" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
                                                                     <rect key="frame" x="129.5" y="2" width="75.5" height="20.5"/>
@@ -94,8 +95,32 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="jvI-VH-eJR" firstAttribute="centerX" secondItem="MDm-II-MXB" secondAttribute="centerX" id="giZ-jW-W7q"/>
                                                                 <constraint firstItem="jvI-VH-eJR" firstAttribute="centerY" secondItem="MDm-II-MXB" secondAttribute="centerY" id="hoB-of-gM9"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cF7-l2-o0H" customClass="ResumeVideoView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                            <rect key="frame" x="318" y="0.0" width="24" height="24"/>
+                                                            <subviews>
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="Hfy-Ap-9li">
+                                                                    <rect key="frame" x="1" y="3" width="22" height="18"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="18" id="1Ki-AT-waU"/>
+                                                                        <constraint firstAttribute="width" constant="22" id="iM5-jV-gcA"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="24" id="4H8-zG-zkn"/>
+                                                                <constraint firstItem="Hfy-Ap-9li" firstAttribute="centerY" secondItem="cF7-l2-o0H" secondAttribute="centerY" id="Mqy-KE-atg"/>
+                                                                <constraint firstItem="Hfy-Ap-9li" firstAttribute="centerX" secondItem="cF7-l2-o0H" secondAttribute="centerX" id="d61-eJ-bib"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gH9-1P-NcV">
+                                                            <rect key="frame" x="342" y="0.0" width="16" height="24"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="16" id="m0c-p8-QPt"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-db-wch" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
@@ -321,6 +346,7 @@
                         <constraint firstAttribute="trailing" secondItem="gJV-V5-PK0" secondAttribute="trailing" id="eNT-3C-S1x"/>
                         <constraint firstItem="2hB-VT-PR6" firstAttribute="leading" secondItem="YUe-iY-EZg" secondAttribute="leading" id="fSe-p1-aGT"/>
                         <constraint firstItem="2hB-VT-PR6" firstAttribute="top" secondItem="66j-Cq-WnG" secondAttribute="bottom" id="nX6-r9-a9V"/>
+                        <constraint firstItem="jvI-VH-eJR" firstAttribute="centerX" secondItem="YUe-iY-EZg" secondAttribute="centerX" id="twY-fG-KvX"/>
                         <constraint firstAttribute="trailing" secondItem="66j-Cq-WnG" secondAttribute="trailing" id="y2a-Yw-Ozm"/>
                     </constraints>
                 </view>
