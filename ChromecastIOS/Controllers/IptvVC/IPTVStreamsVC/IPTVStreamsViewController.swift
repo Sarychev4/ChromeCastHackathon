@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import GoogleCast
+import ZMJTipView
 
 class IPTVStreamsViewController: BaseViewController {
 
@@ -17,9 +18,17 @@ class IPTVStreamsViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var navigationTitleLabel: DefaultLabel!
+    
+    @IBOutlet weak var resumeVideoInteractiveView: ResumeVideoView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
+    private var state: PlaybackState?
+    private var selectedIndex: Int = -1
+    
+    private var isTipWasShown = false
+    private var tipView: ZMJTipView?
     
     var playlistId: String!
     
@@ -56,7 +65,11 @@ class IPTVStreamsViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
-        
+        resumeVideoInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.tipView?.isHidden = true
+            ChromeCastService.shared.showDefaultMediaVC()
+        }
         
         connectInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
@@ -66,6 +79,22 @@ class IPTVStreamsViewController: BaseViewController {
         navigationTitleLabel.text = playlist?.name
         
         searchBar.searchTextField.textColor = UIColor(named: "labelColorDark")
+        
+        setupPlayerStateObserver()
+        showHideResumeButton()
+    }
+    
+    private func showHideResumeButton() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        guard let playerState = remoteMediaClient?.mediaStatus?.playerState.rawValue else {
+            resumeVideoInteractiveView.isHidden = true
+            return
+        }
+        if playerState == 0 || playerState == 1 {
+            resumeVideoInteractiveView.isHidden = true
+        } else {
+            resumeVideoInteractiveView.isHidden = false
+        }
     }
     
     
@@ -112,15 +141,81 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func didSelectCell(at indexPath: IndexPath) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        let index = indexPath.row
         SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.iptv.rawValue, with: { [weak self] success in
             guard let self = self, success == true else { return }
             self.connectIfNeeded { [weak self] in
                 guard let self = self, let stream = self.streams?[indexPath.row] else { return }
                 guard let streamUrl = URL(string: stream.url) else { return }
-                ChromeCastService.shared.displayVideo(with: streamUrl)
-                ChromeCastService.shared.showDefaultMediaVC()
+                if self.isTipWasShown == false {
+                    self.showTipView()
+                    self.isTipWasShown = true
+                }
+                
+                if self.selectedIndex != index && self.state == .paused { //если новая ячейка и ничего не играет
+                    self.selectedIndex = index
+                    self.state = .playing
+                    ChromeCastService.shared.displayVideo(with: streamUrl)
+                    ChromeCastService.shared.showDefaultMediaVC()
+                } else if self.selectedIndex != index && self.state == .playing { //если новая ячейка и видео уже играет
+                    self.selectedIndex = index
+                    self.state = .playing
+                    ChromeCastService.shared.displayVideo(with: streamUrl)
+                    ChromeCastService.shared.showDefaultMediaVC()
+                } else if self.selectedIndex == index && self.state == .paused { //eсли старая ячейка и ничего не играет
+                    ChromeCastService.shared.showDefaultMediaVC()
+                } else if self.selectedIndex == index && self.state == .playing { //eсли старая ячейка и видео уже играет
+                    ChromeCastService.shared.showDefaultMediaVC()
+                } else {
+                    self.selectedIndex = index
+                    self.state = .playing
+                    ChromeCastService.shared.displayVideo(with: streamUrl)
+                    ChromeCastService.shared.showDefaultMediaVC()
+                }
+                
             }
         })
+    }
+    
+    private func setupPlayerStateObserver() {
+        ChromeCastService.shared.observePlayerState { state in
+            switch state {
+            case 1:
+                self.state = .stopped
+                self.tipView?.isHidden = true
+                self.selectedIndex = -1
+                
+            case 2:
+                self.state = .playing
+            case 3:
+                self.state = .paused
+            case 0:
+                self.tipView?.isHidden = true
+            default:
+                print("")
+            }
+        }
+    }
+    
+    private func showTipView() {
+        let preferences = ZMJPreferences()
+        preferences.drawing.font = UIFont.systemFont(ofSize: 14)
+        preferences.drawing.textAlignment = .center
+        preferences.drawing.backgroundColor = UIColor(hexString: "FBBB05")
+        preferences.positioning.maxWidth = 130
+//        preferences.positioning.bubbleVInset = 34
+        preferences.drawing.arrowPosition = .top
+        
+        preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialAlpha = 0;
+        preferences.animating.showDuration = 1;
+        preferences.animating.dismissDuration = 1;
+        
+        let title = NSLocalizedString("Common.ResumeVideo.Tip", comment: "")
+        guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
+        self.tipView = tipView2
+        self.tipView?.show(animated: true, for: self.resumeVideoInteractiveView, withinSuperview: nil)
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
