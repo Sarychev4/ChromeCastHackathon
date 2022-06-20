@@ -14,6 +14,8 @@ import Agregator
 class MediaLibraryViewController: BaseViewController {
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
+    
+    @IBOutlet weak var resumeVideoInteractiveView: ResumeVideoView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var separatorShadowView: DropShadowView!
     @IBOutlet weak var albumsScrollView: UIScrollView!
@@ -65,6 +67,7 @@ class MediaLibraryViewController: BaseViewController {
         }
         
         setupShadowAnimation()
+        showHideResumeButton()
         activityIndicator.startAnimating()
         
     }
@@ -129,6 +132,19 @@ class MediaLibraryViewController: BaseViewController {
                     }
                 }
             }
+        }
+    }
+    
+    private func showHideResumeButton() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        guard let playerState = remoteMediaClient?.mediaStatus?.playerState.rawValue else {
+            resumeVideoInteractiveView.isHidden = true
+            return
+        }
+        if playerState == 0 || playerState == 1 {
+            resumeVideoInteractiveView.isHidden = true
+        } else {
+            resumeVideoInteractiveView.isHidden = false
         }
     }
     

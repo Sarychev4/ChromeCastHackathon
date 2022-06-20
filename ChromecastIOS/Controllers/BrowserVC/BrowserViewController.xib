@@ -101,8 +101,9 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cF7-l2-o0H" customClass="ResumeVideoView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="318" y="0.0" width="24" height="24"/>
                                                             <subviews>
-                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="Hfy-Ap-9li">
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resumeVideoPause" translatesAutoresizingMaskIntoConstraints="NO" id="Hfy-Ap-9li">
                                                                     <rect key="frame" x="1" y="3" width="22" height="18"/>
+                                                                    <color key="tintColor" red="0.14117647058823529" green="0.15686274509803921" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18" id="1Ki-AT-waU"/>
                                                                         <constraint firstAttribute="width" constant="22" id="iM5-jV-gcA"/>
@@ -368,6 +369,7 @@
         <image name="cast" width="44" height="36"/>
         <image name="forwardArrow" width="16" height="16"/>
         <image name="playUrls" width="22" height="22"/>
+        <image name="resumeVideoPause" width="24" height="24"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

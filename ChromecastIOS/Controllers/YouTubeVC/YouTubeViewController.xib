@@ -118,8 +118,20 @@
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-jn-ash" customClass="ResumeVideoView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="318" y="0.0" width="24" height="24"/>
+                                                            <subviews>
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resumeVideoPause" translatesAutoresizingMaskIntoConstraints="NO" id="9UO-GH-tBD">
+                                                                    <rect key="frame" x="1" y="3" width="22" height="18"/>
+                                                                    <color key="tintColor" name="labelColorDark"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="22" id="g5J-aQ-YwT"/>
+                                                                        <constraint firstAttribute="height" constant="18" id="ihM-Ok-VXp"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstItem="9UO-GH-tBD" firstAttribute="centerX" secondItem="f5U-jn-ash" secondAttribute="centerX" id="Dnt-ma-cGV"/>
+                                                                <constraint firstItem="9UO-GH-tBD" firstAttribute="centerY" secondItem="f5U-jn-ash" secondAttribute="centerY" id="LUz-6z-fVm"/>
                                                                 <constraint firstAttribute="width" constant="24" id="TvV-W0-V5Y"/>
                                                             </constraints>
                                                         </view>
@@ -134,10 +146,9 @@
                                                             <rect key="frame" x="358" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="Mol-iR-5Yp">
-                                                                    <rect key="frame" x="1" y="3" width="22" height="18"/>
+                                                                    <rect key="frame" x="1" y="-6" width="22" height="36"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="22" id="RAf-Gb-9nQ"/>
-                                                                        <constraint firstAttribute="height" constant="18" id="RyK-My-RDo"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
@@ -241,12 +252,16 @@
     <resources>
         <image name="backArrow" width="16" height="16"/>
         <image name="cast" width="44" height="36"/>
+        <image name="resumeVideoPause" width="24" height="24"/>
         <image name="youtube_empty" width="152" height="152.5"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SubTitleColor">
             <color red="0.50599998235702515" green="0.51399999856948853" blue="0.54500001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="labelColorDark">
+            <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

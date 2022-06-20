@@ -22,7 +22,7 @@
                 <outlet property="resumeVideoInteractiveView" destination="RPU-BJ-HNX" id="Ski-YQ-yg8"/>
                 <outlet property="searchBar" destination="RK4-Pt-K6x" id="Ed4-SO-388"/>
                 <outlet property="searchBarContainer" destination="Adg-HT-NG2" id="Wgd-5A-1gd"/>
-                <outlet property="spaceView" destination="3oU-8f-9nu" id="28X-yc-A5f"/>
+                <outlet property="spaceView" destination="3oU-8f-9nu" id="IE3-K1-ejN"/>
                 <outlet property="titleLabel" destination="b7o-S6-Vbi" id="QRh-ID-5hC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -142,7 +142,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPU-BJ-HNX" customClass="ResumeVideoView" customModule="ChromecastIOS" customModuleProvider="target">
                                                             <rect key="frame" x="320" y="0.0" width="24" height="24"/>
                                                             <subviews>
-                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-gT-3ZR">
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resumeVideoPause" translatesAutoresizingMaskIntoConstraints="NO" id="Mf7-gT-3ZR">
                                                                     <rect key="frame" x="1" y="3" width="22" height="18"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18" id="4En-CG-W8E"/>
@@ -346,6 +346,7 @@
         <image name="backArrow" width="16" height="16"/>
         <image name="cast" width="44" height="36"/>
         <image name="more" width="24" height="24"/>
+        <image name="resumeVideoPause" width="24" height="24"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -37,7 +37,7 @@ class ResumeVideoView: InteractiveView {
          */
         
         setupImageView()
-        
+        showHide()
         /*
          */
         
@@ -45,7 +45,7 @@ class ResumeVideoView: InteractiveView {
         
         
         let realm = try! Realm()
-        if let playerStateObj = realm.objects(DeviceObject.self).first {
+        if let playerStateObj = realm.objects(PlayerState.self).first {
             playerNotificationToken = playerStateObj.observe { [weak self] changes in
                 guard let self = self else { return }
                 switch changes {
@@ -68,8 +68,8 @@ class ResumeVideoView: InteractiveView {
     private func setupImageView() {
         guard iconImageView == nil else { return }
         let imageView = UIImageView(frame: CGRect(origin: .zero, size: .zero))
-        imageView.image = UIImage(named: "castIcon")?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .black
+        imageView.image = UIImage(named: "resumeVideoPlay")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = UIColor(hexString: "24282C") //.black
         addSubview(imageView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -91,8 +91,15 @@ class ResumeVideoView: InteractiveView {
         if playerState == 0 || playerState == 1 {
             self.isHidden = true
         } else {
+            if playerState == 3 {
+                iconImageView?.image = UIImage(named: "resumeVideoPause")?.withRenderingMode(.alwaysTemplate)
+            } else {
+                iconImageView?.image = UIImage(named: "resumeVideoPlay")?.withRenderingMode(.alwaysTemplate)
+            }
             self.isHidden = false
         }
+        
+        
     }
     
     /*
