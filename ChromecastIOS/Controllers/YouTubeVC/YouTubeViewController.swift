@@ -13,12 +13,6 @@ import SwiftUI
 import RealmSwift
 import ZMJTipView
 
-enum PlaybackState {
-    case playing
-    case paused
-    case stopped
-}
-
 class YouTubeViewController: BaseViewController {
     
     deinit {
@@ -28,7 +22,7 @@ class YouTubeViewController: BaseViewController {
     @IBOutlet weak var navigationBarShadowView: DropShadowView!
     @IBOutlet weak var backInteractiveView: InteractiveView!
     
-    @IBOutlet weak var resumeVideoButton: ResumeVideoView!
+    @IBOutlet weak var resumeVideoInteractiveView: ResumeVideoView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -51,7 +45,6 @@ class YouTubeViewController: BaseViewController {
     private var navigationBarAnimator: UIViewPropertyAnimator?
     private var animator: ScrollViewAnimator?
     
-    private var playerStateNotificationToken: NotificationToken?
     private var state: PlaybackState?
     
     private var isSuggestionsOnView: Bool {
@@ -80,7 +73,7 @@ class YouTubeViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
-        resumeVideoButton.didTouchAction = { [weak self] in
+        resumeVideoInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.tipView?.isHidden = true
             ChromeCastService.shared.showDefaultMediaVC()
@@ -124,47 +117,30 @@ class YouTubeViewController: BaseViewController {
     private func showHideResumeButton() {
         let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
         guard let playerState = remoteMediaClient?.mediaStatus?.playerState.rawValue else {
-            resumeVideoButton.isHidden = true
+            resumeVideoInteractiveView.isHidden = true
             return
         }
         if playerState == 0 || playerState == 1 {
-            resumeVideoButton.isHidden = true
+            resumeVideoInteractiveView.isHidden = true
         } else {
-            resumeVideoButton.isHidden = false
+            resumeVideoInteractiveView.isHidden = false
         }
     }
     
     private func setupPlayerStateObserver() {
-        let realm = try! Realm()
-        if let playerStateObj = realm.objects(PlayerState.self).first {
-            playerStateNotificationToken = playerStateObj.observe { [weak self] changes in
-                guard let self = self else { return }
-                switch changes {
-                case .change(let object, let properties):
-                    for property in properties {
-                        print(">>> PlayerStateObj state \(properties)")
-                        print(">>> PlayerStateObj Property '\(property.name)' of object \(object) changed to '\(property.newValue!)'")
-                        let newVal = property.newValue as? Int
-                        
-                        switch newVal {
-                        case 1:
-                            self.state = .stopped
-                            self.tipView?.isHidden = true
-                            self.selectedIndex = -1
-                            self.tableView.reloadData()
-                        case 2:
-                            self.state = .playing
-                        case 3:
-                            self.state = .paused
-                        default:
-                            print("")
-                        }
-                    }
-                case .error(let error):
-                    print(">>> PlayerStateObj An error occurred: \(error)")
-                case .deleted:
-                    print(">>> PlayerStateObj was deleted.")
-                }
+        ChromeCastService.shared.observePlayerState { state in
+            switch state {
+            case 1:
+                self.state = .stopped
+                self.tipView?.isHidden = true
+                self.selectedIndex = -1
+                self.tableView.reloadData()
+            case 2:
+                self.state = .playing
+            case 3:
+                self.state = .paused
+            default:
+                print("")
             }
         }
     }
@@ -187,7 +163,7 @@ class YouTubeViewController: BaseViewController {
         let title = NSLocalizedString("Common.ResumeVideo.Tip", comment: "")
         guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
         self.tipView = tipView2
-        self.tipView?.show(animated: true, for: self.resumeVideoButton, withinSuperview: nil)
+        self.tipView?.show(animated: true, for: self.resumeVideoInteractiveView, withinSuperview: nil)
     }
     
     private func cellClicked(at index: Int) {

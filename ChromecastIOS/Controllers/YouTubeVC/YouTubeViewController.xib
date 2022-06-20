@@ -17,7 +17,7 @@
                 <outlet property="connectInteractiveView" destination="hkX-pO-5qb" id="esq-x4-ZuF"/>
                 <outlet property="emptyImageView" destination="XWH-7C-VBK" id="RdB-fk-wiX"/>
                 <outlet property="navigationBarShadowView" destination="2i1-Hg-Jhf" id="SqV-W7-ttj"/>
-                <outlet property="resumeVideoButton" destination="f5U-jn-ash" id="Hhk-cr-pVg"/>
+                <outlet property="resumeVideoInteractiveView" destination="f5U-jn-ash" id="dfG-AI-KKA"/>
                 <outlet property="searchBar" destination="tfh-SY-PC5" id="ZQQ-ci-7tv"/>
                 <outlet property="searchTip" destination="cF3-hd-N48" id="XaH-i6-Pfo"/>
                 <outlet property="tableView" destination="jOU-i8-SOd" id="MQN-1l-nAT"/>
