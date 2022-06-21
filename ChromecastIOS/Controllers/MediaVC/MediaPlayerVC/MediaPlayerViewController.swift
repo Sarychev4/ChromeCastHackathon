@@ -758,10 +758,12 @@ extension PHCachingImageManager {
                contentMode: PHImageContentMode,
                progressHandler: ((Int64) -> ())? = nil,
                completion: @escaping ((UIImage?) -> Void)) -> PHImageRequestID {
-        
+
         let options = PHImageRequestOptions()
         options.isNetworkAccessAllowed = true
         options.deliveryMode = .highQualityFormat
+        options.version = .original
+        options.resizeMode = .none
         options.progressHandler = { [weak self] (progress, error, data, info) in
             guard let _ = self else { return }
             progressHandler?(Int64(progress * 100))
@@ -777,6 +779,9 @@ extension PHCachingImageManager {
                    let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
                    if isDegraded {
                        return
+                   }
+                   if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber, isIniCloud.boolValue == true {
+                       print(">>>> icloud!!")
                    }
                    let result = image?.fixedOrientation()
                    DispatchQueue.main.async {

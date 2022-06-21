@@ -29,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E89642B0280EAF7700E6E287"
-               BuildableName = "ChromecastIOS.app"
-               BlueprintName = "ChromecastIOS"
+               BlueprintIdentifier = "E8964332280EB75D00E6E287"
+               BuildableName = "Chromecast iOS.app"
+               BlueprintName = "Chromecast iOS"
                ReferencedContainer = "container:ChromecastIOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E89642B0280EAF7700E6E287"
-            BuildableName = "ChromecastIOS.app"
-            BlueprintName = "ChromecastIOS"
+            BlueprintIdentifier = "E8964332280EB75D00E6E287"
+            BuildableName = "Chromecast iOS.app"
+            BlueprintName = "Chromecast iOS"
             ReferencedContainer = "container:ChromecastIOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -79,9 +79,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E89642B0280EAF7700E6E287"
-            BuildableName = "ChromecastIOS.app"
-            BlueprintName = "ChromecastIOS"
+            BlueprintIdentifier = "E8964332280EB75D00E6E287"
+            BuildableName = "Chromecast iOS.app"
+            BlueprintName = "Chromecast iOS"
             ReferencedContainer = "container:ChromecastIOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -193,7 +193,7 @@
  */
 
 "Screen.GoogleDrive.Title" = "Google Drive";
-"Screen.GoogleDrive.SignIn.Title" = "Sign in with Google to continue";
+"Screen.GoogleDrive.SignIn.Title" = "Sign in with Google";
 "Screen.GoogleDrive.SignIn.SubTitle" = "All your data is securely protected";
 "Screen.GoogleDrive.LogOut" = "Log out from Google account";
 
@@ -202,7 +202,7 @@
  */
 
 "Screen.GooglePhotos.Title" = "Google Photos";
-"Screen.GooglePhotos.SignIn.Title" = "Sign in with Google to continue";
+"Screen.GooglePhotos.SignIn.Title" = "Sign in with Google";
 "Screen.GooglePhotos.SignIn.SubTitle" = "All your data is securely protected";
 "Screen.GooglePhotos.LogOut" = "Log out from Google account";
 

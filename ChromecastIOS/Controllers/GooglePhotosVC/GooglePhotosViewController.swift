@@ -8,6 +8,7 @@
 import UIKit
 import GoogleCast
 import GPhotos
+import GoogleSignIn
 
 class GooglePhotosViewController: BaseViewController {
     
@@ -20,7 +21,8 @@ class GooglePhotosViewController: BaseViewController {
     @IBOutlet weak var dropShadowSeparator: DropShadowView!
     @IBOutlet weak var googleSignInButtonContainer: UIView!
     @IBOutlet weak var googleSignInButtonInteractiveView: InteractiveView!
-    
+    @IBOutlet weak var googleSignInButton: GIDSignInButton!
+        
     @IBOutlet weak var albumsScrollView: UIScrollView!
     @IBOutlet weak var albumsStackView: UIStackView!
     
@@ -58,6 +60,11 @@ class GooglePhotosViewController: BaseViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+//        googleSignInButtonInteractiveView.didTouchAction = { [weak self] in
+//            guard let self = self else { return }
+//            self.signIn()
+//        } 
+        googleSignInButton.style = .wide
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -87,11 +94,11 @@ class GooglePhotosViewController: BaseViewController {
     
     private func updateUI() {
         if isUserAlreadySigned() == true {
-//            googleSignInButtonContainer.isHidden = true
+            googleSignInButtonContainer.isHidden = true
 //            dropShadowSeparator.isHidden = false
             collectionView.isHidden = false
         } else {
-//            googleSignInButtonContainer.isHidden = false
+            googleSignInButtonContainer.isHidden = false
 //            dropShadowSeparator.isHidden = true
             collectionView.isHidden = true
         }
@@ -126,11 +133,11 @@ class GooglePhotosViewController: BaseViewController {
     }
     
     private func signIn() {
-        let scopes: Set = [AuthScope.readDevData, AuthScope.readAndAppend]
+        let scopes: Set = [AuthScope.readAndAppend]
         GPhotos.authorize(with: scopes) { [weak self] success, error in
             guard let self = self else { return }
             if let error = error {
-                self.navigation?.popViewController(self, animated: true)
+//                self.navigation?.popViewController(self, animated: true)
                 print ("Authorize error: \(error.localizedDescription)")
             } else {
                 self.updateUI()
@@ -146,8 +153,6 @@ class GooglePhotosViewController: BaseViewController {
         if GPhotos.isAuthorized {
             loadAllAlbums()
             loadAllItems()
-        } else {
-            signIn()
         }
     }
     
@@ -287,7 +292,9 @@ class GooglePhotosViewController: BaseViewController {
         })
     }
     
-    
+    @IBAction func googleSignInClicked(_ sender: Any) {
+        signIn()
+    }
 }
 
 extension GooglePhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoogleDriveViewController" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoogleDriveViewController" customModule="Chromecast_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="7n2-Jl-e7f" id="tW8-Tp-Sea"/>
                 <outlet property="backInteractiveView" destination="iol-bl-t6m" id="ofb-cZ-ejL"/>
                 <outlet property="collectionView" destination="9iU-K2-vC5" id="6hm-yY-VMj"/>
                 <outlet property="connectInteractiveView" destination="s8e-9v-wGH" id="HbL-dt-sjv"/>
                 <outlet property="dropShadowSeparator" destination="VCm-MH-v6v" id="aV4-E7-DPa"/>
+                <outlet property="googleSignInButton" destination="v7E-Z7-QLa" id="BtT-vI-KSp"/>
                 <outlet property="googleSignInButtonContainer" destination="l2k-F6-PgO" id="a4g-GA-j1E"/>
                 <outlet property="googleSignInButtonInteractiveView" destination="ZGR-mn-vTe" id="XPm-8c-xaA"/>
                 <outlet property="moreActionsInteractiveView" destination="Syb-ZJ-sHK" id="PKN-Mq-lUg"/>
@@ -34,10 +40,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lp2-h9-0bK">
-                            <rect key="frame" x="0.0" y="121" width="414" height="775"/>
+                            <rect key="frame" x="0.0" y="177" width="414" height="719"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9iU-K2-vC5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="775"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="719"/>
                                     <color key="backgroundColor" name="MainBackground"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z9V-lx-S8M">
                                         <size key="itemSize" width="128" height="128"/>
@@ -56,10 +62,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMr-w0-K1W">
-                            <rect key="frame" x="0.0" y="52" width="414" height="79"/>
+                            <rect key="frame" x="0.0" y="52" width="414" height="135"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCm-MH-v6v" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="-100" width="414" height="179"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCm-MH-v6v" customClass="DropShadowView" customModule="Chromecast_iOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="-100" width="414" height="235"/>
                                     <color key="backgroundColor" name="MainBackground"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
@@ -71,7 +77,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zm9-M5-Jgs">
-                                    <rect key="frame" x="10" y="0.0" width="394" height="79"/>
+                                    <rect key="frame" x="10" y="0.0" width="394" height="135"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KzS-FF-e4J">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="33"/>
@@ -79,7 +85,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcW-df-TnQ">
                                                     <rect key="frame" x="6" y="0.0" width="382" height="24"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iol-bl-t6m" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iol-bl-t6m" customClass="InteractiveView" customModule="Chromecast_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="SVr-ql-ZMA">
@@ -107,7 +113,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="py7-qj-wSK">
                                                             <rect key="frame" x="68" y="0.0" width="248" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Google Drive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7o-S6-Vbi" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Google Drive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7o-S6-Vbi" customClass="DefaultLabel" customModule="Chromecast_iOS" customModuleProvider="target">
                                                                     <rect key="frame" x="68.5" y="2" width="111.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -123,7 +129,7 @@
                                                                 <constraint firstItem="b7o-S6-Vbi" firstAttribute="centerX" secondItem="py7-qj-wSK" secondAttribute="centerX" id="f7R-RM-bqE"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syb-ZJ-sHK" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syb-ZJ-sHK" customClass="InteractiveView" customModule="Chromecast_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="316" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more" translatesAutoresizingMaskIntoConstraints="NO" id="2N3-IP-1Qw">
@@ -145,7 +151,7 @@
                                                                 <constraint firstAttribute="width" constant="20" id="ZY1-fh-5qh"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8e-9v-wGH" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8e-9v-wGH" customClass="ConnectButton" customModule="Chromecast_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="360" y="0.0" width="22" height="24"/>
                                                             <subviews>
                                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="4hP-GC-a0G">
@@ -196,15 +202,15 @@
                                                 <constraint firstAttribute="trailing" secondItem="RK4-Pt-K6x" secondAttribute="trailing" constant="-2" id="k8r-DY-5D3"/>
                                             </constraints>
                                         </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2k-F6-PgO">
-                                            <rect key="frame" x="0.0" y="79" width="394" height="146"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2k-F6-PgO">
+                                            <rect key="frame" x="0.0" y="79" width="394" height="56"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CwW-pD-sQ4" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="6" y="6" width="382" height="134"/>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CwW-pD-sQ4" customClass="DropShadowView" customModule="Chromecast_iOS" customModuleProvider="target">
+                                                    <rect key="frame" x="6" y="6" width="382" height="44"/>
                                                     <color key="backgroundColor" name="MainBackground"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="20"/>
+                                                            <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                                             <real key="value" value="3"/>
@@ -214,47 +220,48 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGR-mn-vTe" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="6" y="6" width="382" height="134"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGR-mn-vTe" customClass="InteractiveView" customModule="Chromecast_iOS" customModuleProvider="target">
+                                                    <rect key="frame" x="6" y="6" width="382" height="44"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoogleLogo" translatesAutoresizingMaskIntoConstraints="NO" id="tXt-Ij-heA">
-                                                            <rect key="frame" x="26" y="26" width="36" height="36"/>
+                                                            <rect key="frame" x="26" y="4" width="36" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="36" id="HPa-sr-Zji"/>
                                                                 <constraint firstAttribute="width" constant="36" id="nZG-Fq-qmc"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Sign in with Google to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwP-xc-i3h" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="26" y="76" width="252" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.54000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Sign in with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wwP-xc-i3h" customClass="DefaultLabel" customModule="Chromecast_iOS" customModuleProvider="target">
+                                                            <rect key="frame" x="86" y="2.5" width="288" height="39"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="33"/>
                                                             <color key="textColor" name="labelColorDark"/>
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.GoogleDrive.SignIn.Title"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_All your data is securely protected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpe-Lv-pXz" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="26" y="100.5" width="200.5" height="14.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" name="labelColorGrayPunk"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.GoogleDrive.SignIn.SubTitle"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7E-Z7-QLa" customClass="GIDSignInButton">
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <connections>
+                                                                <action selector="googleSignInClicked:" destination="-1" eventType="touchUpInside" id="dxb-2r-6d2"/>
+                                                            </connections>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="Rpe-Lv-pXz" firstAttribute="top" secondItem="wwP-xc-i3h" secondAttribute="bottom" constant="4" id="5iL-pV-YPS"/>
-                                                        <constraint firstItem="tXt-Ij-heA" firstAttribute="top" secondItem="ZGR-mn-vTe" secondAttribute="top" constant="26" id="9C5-CN-Avo"/>
+                                                        <constraint firstItem="v7E-Z7-QLa" firstAttribute="leading" secondItem="ZGR-mn-vTe" secondAttribute="leading" id="09c-QG-4Ow"/>
+                                                        <constraint firstAttribute="trailing" secondItem="v7E-Z7-QLa" secondAttribute="trailing" id="1Sf-ar-dTF"/>
                                                         <constraint firstItem="tXt-Ij-heA" firstAttribute="leading" secondItem="ZGR-mn-vTe" secondAttribute="leading" constant="26" id="E5t-Gx-siJ"/>
-                                                        <constraint firstItem="wwP-xc-i3h" firstAttribute="top" secondItem="tXt-Ij-heA" secondAttribute="bottom" constant="14" id="Miy-MP-JFd"/>
-                                                        <constraint firstItem="Rpe-Lv-pXz" firstAttribute="leading" secondItem="ZGR-mn-vTe" secondAttribute="leading" constant="26" id="TGY-gt-MRP"/>
-                                                        <constraint firstItem="wwP-xc-i3h" firstAttribute="leading" secondItem="ZGR-mn-vTe" secondAttribute="leading" constant="26" id="wyl-Oc-TAd"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wwP-xc-i3h" secondAttribute="trailing" constant="8" id="K5Q-kw-toT"/>
+                                                        <constraint firstItem="wwP-xc-i3h" firstAttribute="centerY" secondItem="ZGR-mn-vTe" secondAttribute="centerY" id="LQR-po-7s0"/>
+                                                        <constraint firstItem="tXt-Ij-heA" firstAttribute="centerY" secondItem="ZGR-mn-vTe" secondAttribute="centerY" id="SEB-Go-TYK"/>
+                                                        <constraint firstItem="v7E-Z7-QLa" firstAttribute="top" secondItem="ZGR-mn-vTe" secondAttribute="top" id="SQV-nI-bGK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="v7E-Z7-QLa" secondAttribute="bottom" id="lzD-Z9-YTf"/>
+                                                        <constraint firstItem="wwP-xc-i3h" firstAttribute="leading" secondItem="tXt-Ij-heA" secondAttribute="trailing" constant="24" id="ogC-fh-Yzl"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="20"/>
+                                                            <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -265,7 +272,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="ZGR-mn-vTe" secondAttribute="bottom" constant="6" id="8Wy-Cq-kng"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZGR-mn-vTe" secondAttribute="trailing" constant="6" id="BRq-5F-KR4"/>
                                                 <constraint firstItem="ZGR-mn-vTe" firstAttribute="leading" secondItem="l2k-F6-PgO" secondAttribute="leading" constant="6" id="CyN-fg-RUa"/>
-                                                <constraint firstAttribute="height" constant="146" id="DSd-Fc-AuV"/>
+                                                <constraint firstAttribute="height" constant="56" id="DSd-Fc-AuV"/>
                                                 <constraint firstAttribute="bottom" secondItem="CwW-pD-sQ4" secondAttribute="bottom" constant="6" id="Khe-ht-KWH"/>
                                                 <constraint firstItem="ZGR-mn-vTe" firstAttribute="top" secondItem="l2k-F6-PgO" secondAttribute="top" constant="6" id="igC-e4-sy1"/>
                                                 <constraint firstItem="CwW-pD-sQ4" firstAttribute="top" secondItem="l2k-F6-PgO" secondAttribute="top" constant="6" id="v6b-Su-g2F"/>
@@ -292,7 +299,7 @@
                             </constraints>
                         </view>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-Jl-e7f">
-                            <rect key="frame" x="197" y="147" width="20" height="20"/>
+                            <rect key="frame" x="197" y="203" width="20" height="20"/>
                             <color key="color" name="labelColorDark"/>
                         </activityIndicatorView>
                     </subviews>
@@ -318,7 +325,7 @@
                 <constraint firstItem="wCU-RA-QVz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RSH-i6-Ifh"/>
                 <constraint firstItem="wCU-RA-QVz" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VpY-av-uy5"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="48"/>
+            <point key="canvasLocation" x="137.68115942028987" y="47.544642857142854"/>
         </view>
     </objects>
     <resources>
@@ -331,9 +338,6 @@
         </namedColor>
         <namedColor name="labelColorDark">
             <color red="0.14100000262260437" green="0.15700000524520874" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="labelColorGrayPunk">
-            <color red="0.52499997615814209" green="0.52499997615814209" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

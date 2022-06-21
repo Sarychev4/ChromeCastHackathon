@@ -23,7 +23,7 @@ class GoogleDriveViewController: BaseViewController {
     @IBOutlet weak var dropShadowSeparator: DropShadowView!
     @IBOutlet weak var googleSignInButtonContainer: UIView!
     @IBOutlet weak var googleSignInButtonInteractiveView: InteractiveView!
-    
+    @IBOutlet weak var googleSignInButton: GIDSignInButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -49,8 +49,8 @@ class GoogleDriveViewController: BaseViewController {
         if isSubfolder == false {
             setupGoogleSignIn()
         } else {
-            self.titleLabel.text = self.titleOfSubViewController
-            self.loadFilesInSpecificFolder(folderName: subFolder)
+            titleLabel.text = titleOfSubViewController
+            loadFilesInSpecificFolder(folderName: subFolder)
         }
         
         setupNavigationSection()
@@ -62,7 +62,12 @@ class GoogleDriveViewController: BaseViewController {
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16 * SizeFactor, bottom: 0, right: 16 * SizeFactor)
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+         
+//        googleSignInButtonInteractiveView.didTouchAction = { [weak self] in
+//            guard let self = self else { return }
+//            self.signIn()
+//        }
+        googleSignInButton.style = .wide
         
         setupSearchBar()
         setupShadowAnimation()
@@ -87,12 +92,12 @@ class GoogleDriveViewController: BaseViewController {
     
     private func updateUI() {
         if isUserAlreadySigned() == true {
-//            googleSignInButtonContainer.isHidden = true
+            googleSignInButtonContainer.isHidden = true
             searchBarContainer.isHidden = false
 //            dropShadowSeparator.isHidden = false
             collectionView.isHidden = false
         } else {
-//            googleSignInButtonContainer.isHidden = false
+            googleSignInButtonContainer.isHidden = false
             searchBarContainer.isHidden = true
 //            dropShadowSeparator.isHidden = true
             collectionView.isHidden = true
@@ -131,7 +136,7 @@ class GoogleDriveViewController: BaseViewController {
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [weak self] user, error in
             guard let self = self else { return }
             if let err = error {
-                self.navigation?.popViewController(self, animated: true)
+//                self.navigation?.popViewController(self, animated: true)
                 print(">>> signIn error: \(err.localizedDescription)")
             } else {
                 print(">>> Authenticate successfully!")
@@ -161,8 +166,7 @@ class GoogleDriveViewController: BaseViewController {
         
         GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
             guard let self = self else { return }
-            if let err = error {
-                self.signIn()
+            if let err = error { 
                 print(err.localizedDescription)
             } else {
                 print(">>> SIGN in restore")
@@ -173,10 +177,6 @@ class GoogleDriveViewController: BaseViewController {
                 self.loadFilesInRootFolder()
             }
         }
-        
-//        if isUserAlreadySigned() == false {
-//            signIn()
-//        }
     }
     
     private func loadFilesInRootFolder() {
@@ -340,6 +340,9 @@ class GoogleDriveViewController: BaseViewController {
         })
     }
     
+    @IBAction func googleSignInClicked(_ sender: Any) {
+        signIn()
+    }
     
 }
 

@@ -473,7 +473,7 @@
 		E8964316280EB5A700E6E287 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
 		E8964318280EB5A700E6E287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E896431F280EB5A700E6E287 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		E8964347280EB75D00E6E287 /* ChromecastIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromecastIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8964347280EB75D00E6E287 /* Chromecast iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chromecast iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E896434C280EBB1F00E6E287 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8C16010280FFA6200995934 /* ChromecastIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChromecastIOS.entitlements; sourceTree = "<group>"; };
 		E8C16011280FFA9700995934 /* MirroringExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MirroringExtension.entitlements; sourceTree = "<group>"; };
@@ -1269,7 +1269,7 @@
 			isa = PBXGroup;
 			children = (
 				E8964312280EB5A700E6E287 /* MirroringExtension.appex */,
-				E8964347280EB75D00E6E287 /* ChromecastIOS.app */,
+				E8964347280EB75D00E6E287 /* Chromecast iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1340,9 +1340,9 @@
 			productReference = E8964312280EB5A700E6E287 /* MirroringExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		E8964332280EB75D00E6E287 /* ChromecastIOS */ = {
+		E8964332280EB75D00E6E287 /* Chromecast iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8964344280EB75D00E6E287 /* Build configuration list for PBXNativeTarget "ChromecastIOS" */;
+			buildConfigurationList = E8964344280EB75D00E6E287 /* Build configuration list for PBXNativeTarget "Chromecast iOS" */;
 			buildPhases = (
 				E8964335280EB75D00E6E287 /* [CP] Check Pods Manifest.lock */,
 				E8964336280EB75D00E6E287 /* Sources */,
@@ -1357,9 +1357,9 @@
 			dependencies = (
 				E8964333280EB75D00E6E287 /* PBXTargetDependency */,
 			);
-			name = ChromecastIOS;
+			name = "Chromecast iOS";
 			productName = ChromecastIOS;
-			productReference = E8964347280EB75D00E6E287 /* ChromecastIOS.app */;
+			productReference = E8964347280EB75D00E6E287 /* Chromecast iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1393,7 +1393,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E8964332280EB75D00E6E287 /* ChromecastIOS */,
+				E8964332280EB75D00E6E287 /* Chromecast iOS */,
 				E8964311280EB5A700E6E287 /* MirroringExtension */,
 			);
 		};
@@ -2034,7 +2034,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8964344280EB75D00E6E287 /* Build configuration list for PBXNativeTarget "ChromecastIOS" */ = {
+		E8964344280EB75D00E6E287 /* Build configuration list for PBXNativeTarget "Chromecast iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8964345280EB75D00E6E287 /* Debug */,
