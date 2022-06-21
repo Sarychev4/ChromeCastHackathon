@@ -225,6 +225,10 @@
 "Reachabality.NoInternet.Message" = "No internet connection.\nPlease check your internet settings.";
 "Reachabality.NoInternet.OKButton.Title" = "OK";
 
+/*
+ - Common
+ */
+"Common.ResumeVideo.Tip" = "Tap here to resume video";
 "Common.Continue" = "Continue";
 "Common.Cancel" = "Cancel";
 

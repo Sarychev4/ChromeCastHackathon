@@ -36,6 +36,7 @@ class ChromeCastService: NSObject {
     let audioSession = AVAudioSession.sharedInstance()
     
     private var notificationToken: NotificationToken!
+    private var playerStateNotificationToken: NotificationToken?
     
     private override init(){
         
@@ -71,6 +72,22 @@ class ChromeCastService: NSObject {
         
         observeStreamConfiguration()
         listenVolumeButton()
+        createPlayerObject()
+    }
+    
+    func createPlayerObject() {
+        let realm = try! Realm()
+        let playerStates = realm.objects(PlayerState.self)
+            if playerStates.isEmpty {
+                let playerState = PlayerState()
+                playerState.state = .idle
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(playerState)
+                }
+                print(">>> New Player State was added to the REALM")
+
+            }
     }
     
     func clearAllDevices() {
@@ -199,6 +216,32 @@ class ChromeCastService: NSObject {
         }
     }
     
+    func observePlayerState(onComplete: @escaping ((Int) -> ())) {
+        let realm = try! Realm()
+        if let playerStateObj = realm.objects(PlayerState.self).first {
+            playerStateNotificationToken = playerStateObj.observe { [weak self] changes in
+                guard let _ = self else { return }
+                switch changes {
+                case .change(let object, let properties):
+                    for property in properties {
+                        if property.name == #keyPath(PlayerState.state) {
+                            if let newVal = property.newValue as? Int {
+                                onComplete(newVal)
+                            }
+                        }
+                        
+                    }
+                case .error(let error):
+                    print(">>> PlayerStateObj An error occurred: \(error)")
+                    onComplete(0)
+                case .deleted:
+                    onComplete(0)
+                    print(">>> PlayerStateObj was deleted.")
+                }
+            }
+        }
+    }
+    
     private func observeStreamConfiguration() {
         notificationToken = StreamConfiguration.current.observe { (changes) in
             switch changes {
@@ -250,7 +293,16 @@ extension ChromeCastService: GCKRequestDelegate {
 extension ChromeCastService: GCKRemoteMediaClientListener {
     func remoteMediaClient(_ client: GCKRemoteMediaClient, didUpdate mediaStatus: GCKMediaStatus?) {
         guard let mediaStatus = mediaStatus else { return }
-        //        print(">>> remoteMediaClient time: \(mediaStatus.streamPosition), state: \(mediaStatus.playerState.rawValue))")
+        let realm = try! Realm()
+        if let playerState = realm.objects(PlayerState.self).first {
+            if playerState.state.rawValue != mediaStatus.playerState.rawValue {
+                try! realm.write {
+                    playerState.state = PlayerCurrentState(rawValue: mediaStatus.playerState.rawValue) ?? .unknown
+                }
+            }
+           
+        }
+//        print(">>> remoteMediaClient time: \(mediaStatus.streamPosition), state: \(mediaStatus.playerState.rawValue))")
     }
 }
 

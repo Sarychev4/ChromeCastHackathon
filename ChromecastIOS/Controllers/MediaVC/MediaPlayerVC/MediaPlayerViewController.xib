@@ -20,6 +20,7 @@
                 <outlet property="qualityInteractiveView" destination="Goo-JW-89m" id="3eX-xm-DDw"/>
                 <outlet property="qualityShadow" destination="fDo-h4-awW" id="HoC-TV-Oq3"/>
                 <outlet property="qualityTitleLabel" destination="6ly-Xa-Ytf" id="i3g-Ey-N1Z"/>
+                <outlet property="resumeVideoInteractiveView" destination="JHQ-UB-dqO" id="sbV-1h-SMX"/>
                 <outlet property="thumbnailCollectionView" destination="Zkq-uT-BZJ" id="lnX-PX-cA3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -59,10 +60,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CvP-5d-C8N">
-                                                    <rect key="frame" x="24" y="0.0" width="336" height="24"/>
+                                                    <rect key="frame" x="24" y="0.0" width="296" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Media" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JY-VD-6pz">
-                                                            <rect key="frame" x="144" y="2" width="48.5" height="20.5"/>
+                                                            <rect key="frame" x="143" y="2" width="48.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -70,8 +71,33 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="9JY-VD-6pz" firstAttribute="centerX" secondItem="CvP-5d-C8N" secondAttribute="centerX" id="KHd-Po-00m"/>
                                                         <constraint firstItem="9JY-VD-6pz" firstAttribute="centerY" secondItem="CvP-5d-C8N" secondAttribute="centerY" id="fBY-y1-LEb"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHQ-UB-dqO" customClass="ResumeVideoView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                    <rect key="frame" x="320" y="0.0" width="24" height="24"/>
+                                                    <subviews>
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resumeVideoPause" translatesAutoresizingMaskIntoConstraints="NO" id="eDk-rN-K9Y">
+                                                            <rect key="frame" x="1" y="3" width="22" height="18"/>
+                                                            <color key="tintColor" name="labelColorDark"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="18" id="b0M-wk-gXp"/>
+                                                                <constraint firstAttribute="width" constant="22" id="bVP-Qe-CgP"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="24" id="4Sj-Yr-mlH"/>
+                                                        <constraint firstItem="eDk-rN-K9Y" firstAttribute="centerY" secondItem="JHQ-UB-dqO" secondAttribute="centerY" id="BLJ-9G-9iW"/>
+                                                        <constraint firstItem="eDk-rN-K9Y" firstAttribute="centerX" secondItem="JHQ-UB-dqO" secondAttribute="centerX" id="Uqc-dl-Duz"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyK-iw-nfh">
+                                                    <rect key="frame" x="344" y="0.0" width="16" height="24"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="16" id="ceO-2F-bME"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ig-TR-ReZ" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
@@ -249,6 +275,7 @@
                     <color key="backgroundColor" name="MainBackground"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="iRQ-z5-uAN" secondAttribute="trailing" id="OwC-tB-cdZ"/>
+                        <constraint firstItem="9JY-VD-6pz" firstAttribute="centerX" secondItem="7eI-2a-AIO" secondAttribute="centerX" id="Wmx-xq-YFD"/>
                         <constraint firstItem="iRQ-z5-uAN" firstAttribute="top" secondItem="7eI-2a-AIO" secondAttribute="top" constant="52" id="YI7-G3-kq2"/>
                         <constraint firstItem="iRQ-z5-uAN" firstAttribute="leading" secondItem="7eI-2a-AIO" secondAttribute="leading" id="kxa-ho-hll"/>
                         <constraint firstAttribute="bottom" secondItem="iRQ-z5-uAN" secondAttribute="bottom" constant="24" id="vzl-oE-pQM"/>
@@ -270,6 +297,7 @@
         <image name="backArrow" width="16" height="16"/>
         <image name="cast" width="44" height="36"/>
         <image name="quality" width="48" height="48"/>
+        <image name="resumeVideoPause" width="24" height="24"/>
         <image name="show" width="48" height="48"/>
         <namedColor name="MainBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

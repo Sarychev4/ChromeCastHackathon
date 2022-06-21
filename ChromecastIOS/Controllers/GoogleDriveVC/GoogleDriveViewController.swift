@@ -9,6 +9,7 @@ import UIKit
 import GoogleSignIn
 import GoogleAPIClientForREST
 import GoogleCast
+import ZMJTipView
 
 class GoogleDriveViewController: BaseViewController {
     
@@ -16,6 +17,10 @@ class GoogleDriveViewController: BaseViewController {
     
     @IBOutlet weak var titleLabel: DefaultLabel!
     @IBOutlet weak var moreActionsInteractiveView: InteractiveView!
+    
+    @IBOutlet weak var resumeVideoInteractiveView: ResumeVideoView!
+    @IBOutlet weak var spaceView: UIView!
+    
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     
     @IBOutlet weak var searchBarContainer: UIView!
@@ -26,6 +31,12 @@ class GoogleDriveViewController: BaseViewController {
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private var isTipWasShown = false
+    private var tipView: ZMJTipView?
+    
+    private var state: PlaybackState?
+    private var selectedIndex: Int = -1
     
     var dataSource: [GTLRDrive_File] = []
     var filteredDataSource: [GTLRDrive_File] = []
@@ -71,6 +82,10 @@ class GoogleDriveViewController: BaseViewController {
         
         setupSearchBar()
         setupShadowAnimation()
+        
+        setupPlayerStateObserver()
+        showHideResumeButton()
+        
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -111,15 +126,37 @@ class GoogleDriveViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
+        resumeVideoInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.tipView?.isHidden = true
+            ChromeCastService.shared.showDefaultMediaVC()
+        }
+        
+        
         moreActionsInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            //            self.signOut()
             self.showActionSheet()
         }
         
         connectInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.presentDevices(postAction: nil)
+        }
+    }
+    
+    private func showHideResumeButton() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        guard let playerState = remoteMediaClient?.mediaStatus?.playerState.rawValue else {
+            resumeVideoInteractiveView.isHidden = true
+            spaceView.isHidden = true
+            return
+        }
+        if playerState == 0 || playerState == 1 {
+            resumeVideoInteractiveView.isHidden = true
+            spaceView.isHidden = true
+        } else {
+            resumeVideoInteractiveView.isHidden = false
+            spaceView.isHidden = false
         }
     }
     
@@ -258,7 +295,7 @@ class GoogleDriveViewController: BaseViewController {
         present(controller, animated: false, completion: nil)
     }
     
-    func handleTapOnCell(with file: GTLRDrive_File) {
+    func handleTapOnCell(with file: GTLRDrive_File, at index: Int) {
         
         guard let fileType = file.mimeType else { return }
         switch fileType {
@@ -287,8 +324,35 @@ class GoogleDriveViewController: BaseViewController {
                 
             }
         case "video/mp4":
+            self.tipView?.isHidden = true
             self.connectIfNeeded { [weak self] in
                 guard let self = self else { return }
+                if self.selectedIndex != index && self.state == .paused { //если новая ячейка и ничего не играет
+                    self.playVideo(with: file, at: index)
+                } else if self.selectedIndex != index && self.state == .playing { //если новая ячейка и видео уже играет
+                    self.playVideo(with: file, at: index)
+                } else if self.selectedIndex == index && self.state == .paused { //eсли старая ячейка и ничего не играет
+                    ChromeCastService.shared.showDefaultMediaVC()
+                } else if self.selectedIndex == index && self.state == .playing { //eсли старая ячейка и видео уже играет
+                    ChromeCastService.shared.showDefaultMediaVC()
+                } else {
+                    self.playVideo(with: file, at: index)
+                }
+            }
+        default:
+            print(">>>FileType: \(fileType)")
+        }
+        
+       
+    }
+    
+    private func playVideo(with file: GTLRDrive_File, at index: Int) {
+        self.connectIfNeeded { [weak self] in
+            guard let self = self else { return }
+            
+            self.selectedIndex = index
+            self.state = .playing
+            
             guard let file_id = file.identifier,
                   let urlWithFileID = URL(string: "https://drive.google.com/uc?id=\(file_id)"),
                   let imageUrlString = file.thumbnailLink,
@@ -297,17 +361,59 @@ class GoogleDriveViewController: BaseViewController {
                     if let err = error {
                         print("Permissions error: \(err.localizedDescription)")
                     } else {
+                        if self.isTipWasShown == false {
+                            self.resumeVideoInteractiveView.isHidden = false
+                            self.spaceView.isHidden = false
+                            self.showTipView()
+                            self.isTipWasShown = true
+                        }
                         ChromeCastService.shared.displayVideo(with: urlWithFileID, previewImage: previewImageUrl)
                         ChromeCastService.shared.showDefaultMediaVC()
                     }
                 })
-                
-            }
-        default:
-            print(">>>FileType: \(fileType)")
         }
+    }
+    
+    private func showTipView() {
+        let preferences = ZMJPreferences()
+        preferences.drawing.font = UIFont.systemFont(ofSize: 14)
+        preferences.drawing.textAlignment = .center
+        preferences.drawing.backgroundColor = UIColor(hexString: "FBBB05")
+        preferences.positioning.maxWidth = 130
+//        preferences.positioning.bubbleVInset = 34
+        preferences.drawing.arrowPosition = .top
+        preferences.drawing.arrowHeight = 0
         
-       
+        preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialAlpha = 0;
+        preferences.animating.showDuration = 1;
+        preferences.animating.dismissDuration = 1;
+        
+        let title = NSLocalizedString("Common.ResumeVideo.Tip", comment: "")
+        guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
+        self.tipView = tipView2
+        self.tipView?.show(animated: true, for: self.resumeVideoInteractiveView, withinSuperview: nil)
+    }
+    
+    private func setupPlayerStateObserver() {
+        ChromeCastService.shared.observePlayerState { state in
+            switch state {
+            case 1:
+                self.spaceView.isHidden = true
+                self.state = .stopped
+                self.tipView?.isHidden = true
+                self.selectedIndex = -1
+            case 2:
+                self.state = .playing
+                self.spaceView.isHidden = false
+            case 3:
+                self.state = .paused
+                self.spaceView.isHidden = false
+            default:
+                print("")
+            }
+        }
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
@@ -375,7 +481,7 @@ extension GoogleDriveViewController: UICollectionViewDelegate, UICollectionViewD
             cell.didChooseCell = { [weak self] in
                     guard let self = self else { return }
                     self.searchBar.endEditing(true)
-                    self.handleTapOnCell(with: file)
+                self.handleTapOnCell(with: file, at: indexPath.row)
             }
         }
     }

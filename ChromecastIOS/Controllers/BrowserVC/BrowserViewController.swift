@@ -21,6 +21,7 @@ class BrowserViewController: BaseViewController {
     @IBOutlet weak var navigationBarShadowView: DropShadowView!
     @IBOutlet weak var backInteractiveView: InteractiveView!
     
+    @IBOutlet weak var resumeVideoInteractiveView: ResumeVideoView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var webViewContainer: UIView!
@@ -46,6 +47,9 @@ class BrowserViewController: BaseViewController {
     private var isTipWasShown = false
     private var tipView: ZMJTipView?
     
+    private var isResumeVideoTipWasShown = false
+    private var resumeVideoTipView: ZMJTipView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,6 +64,7 @@ class BrowserViewController: BaseViewController {
         
         setupNavigationAnimations()
 
+        showHideResumeButton()
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -78,6 +83,13 @@ class BrowserViewController: BaseViewController {
             self.navigation?.popViewController(self, animated: true)
         }
         
+        resumeVideoInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            self.tipView?.isHidden = true
+            self.resumeVideoTipView?.isHidden = true
+            ChromeCastService.shared.showDefaultMediaVC()
+        }
+        
         connectInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             self.presentDevices(postAction: nil)
@@ -87,6 +99,19 @@ class BrowserViewController: BaseViewController {
     private func setupSearchBar() {
         searchBar.delegate = self
         searchBar.searchTextField.textColor = UIColor.black.withAlphaComponent(0.8)
+    }
+    
+    private func showHideResumeButton() {
+        let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+        guard let playerState = remoteMediaClient?.mediaStatus?.playerState.rawValue else {
+            resumeVideoInteractiveView.isHidden = true
+            return
+        }
+        if playerState == 0 || playerState == 1 {
+            resumeVideoInteractiveView.isHidden = true
+        } else {
+            resumeVideoInteractiveView.isHidden = false
+        }
     }
     
     //MARK: - Setup WebView
@@ -324,6 +349,11 @@ class BrowserViewController: BaseViewController {
                 guard let urlString = url, let url = URL(string: urlString) else { return }
                 let scriptSource = webVideoStop
                 self.webView.evaluateJavaScript(scriptSource) { (object, error) in }
+                self.resumeVideoInteractiveView.isHidden = false
+                if self.isResumeVideoTipWasShown == false {
+                    self.showResumeVideoTipView()
+                    self.isResumeVideoTipWasShown = true
+                }
                 ChromeCastService.shared.displayVideo(with: url)
                 ChromeCastService.shared.showDefaultMediaVC()
             }
@@ -359,6 +389,29 @@ class BrowserViewController: BaseViewController {
         guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
         self.tipView = tipView2
         self.tipView?.show(animated: true, for: self.detectedUrlsInteractiveView, withinSuperview: nil)
+
+    }
+    
+    private func showResumeVideoTipView() {
+        let preferences = ZMJPreferences()
+        preferences.drawing.font = UIFont.systemFont(ofSize: 14)
+        preferences.drawing.textAlignment = .center
+        preferences.drawing.backgroundColor = UIColor(hexString: "FBBB05")
+        preferences.positioning.maxWidth = 130
+//        preferences.positioning.bubbleVInset = 34
+        preferences.drawing.arrowPosition = .top
+        preferences.drawing.arrowHeight = 0
+        
+        preferences.animating.dismissTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialTransform = CGAffineTransform(translationX: 100, y: 0);
+        preferences.animating.showInitialAlpha = 0;
+        preferences.animating.showDuration = 1;
+        preferences.animating.dismissDuration = 1;
+        
+        let title = NSLocalizedString("Common.ResumeVideo.Tip", comment: "")
+        guard let tipView2 = ZMJTipView(text: title, preferences: preferences, delegate: nil) else { return }
+        self.resumeVideoTipView = tipView2
+        self.resumeVideoTipView?.show(animated: true, for: self.resumeVideoInteractiveView, withinSuperview: nil)
 
     }
 

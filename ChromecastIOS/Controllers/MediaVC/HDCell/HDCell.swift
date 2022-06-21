@@ -34,7 +34,7 @@ class HDCell: UICollectionViewCell {
         
     }
     
-    func setupCell(with asset: PHAsset, state: VideoPlayerManager.State, currentTime: Double, size: CGSize) {
+    func setupCell(with asset: PHAsset, state: VideoPlayerManager.State, size: CGSize, isVideoOfCellPlaying: Bool) {
        
         photoWidthConstraint.constant = size.width
         photoHeightConstraint.constant = size.height
@@ -59,17 +59,14 @@ class HDCell: UICollectionViewCell {
             playerButtonsContainer.isHidden = true
         } else {
             playerButtonsContainer.isHidden = false
-            setupVideo(with: asset, state: state, currentTime: currentTime)
+            setupVideo(with: asset, state: state, isVideoOfCellPlaying: isVideoOfCellPlaying )
         }
 
     }
     
-    private func setupVideo(with asset: PHAsset, state: VideoPlayerManager.State, currentTime: Double) {
+    private func setupVideo(with asset: PHAsset, state: VideoPlayerManager.State, isVideoOfCellPlaying: Bool) {
         
-        let videoDuration = asset.duration
-        let currentTimeDouble = currentTime
-        
-        if state.isSameAs(.playing) {
+        if state.isSameAs(.playing) && isVideoOfCellPlaying == true {
             playVideoInteractiveImageView.image = UIImage(named: "PausePlayerIcon")
         } else {
             playVideoInteractiveImageView.image = UIImage(named: "PlayPlayerIcon")
@@ -91,8 +88,8 @@ class HDCell: UICollectionViewCell {
         }
     }
     
-    @objc func changeSlider(sender: UISlider) {
-        self.rewindAction?(TimeInterval(sender.value))
-    }
+//    @objc func changeSlider(sender: UISlider) {
+//        self.rewindAction?(TimeInterval(sender.value))
+//    }
 
 }
