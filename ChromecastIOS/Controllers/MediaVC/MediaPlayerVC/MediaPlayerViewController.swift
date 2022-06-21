@@ -67,6 +67,7 @@ class MediaPlayerViewController: BaseViewController {
             HUD.button.setTitle(NSLocalizedString("Common.Cancel", comment: ""), for: .normal)
             HUD.progressObject = Progress(totalUnitCount: 100)
             _HUD = HUD
+            print(">>>> HUD shown")
         }
         return _HUD
     }
@@ -129,8 +130,9 @@ class MediaPlayerViewController: BaseViewController {
         
         let currentAsset = assets[selectedIndex]
         if currentAsset.mediaType == .image {
-            prepareAsset(at: self.selectedIndex) { [weak self] image in
+            prepareAsset(at: selectedIndex) { [weak self] image in
                 guard let self = self else { return }
+//                self.hdCollectionView.reloadData() 
                 self.connectIfNeeded { [weak self] in
                     guard let self = self, let image = image else { return }
                     self.castPhotoToTV(image)
@@ -277,6 +279,8 @@ class MediaPlayerViewController: BaseViewController {
         _HUD?.hide(animated: true)
 //        HUD?.hide(animated: true)
         _HUD = nil
+        
+        print(">>>> HUD hide")
     }
     
     private func presentDevices(postAction: Closure?) {
@@ -377,31 +381,37 @@ extension MediaPlayerViewController {
             guard let self = self else { return }
             if isPhotoInICloud {
                 //Показываю прогресс
+                print(">>>> photos from iCLoud")
                 self.HUD?.button.addTarget(self, action: #selector(self.cancelDownloadFromICloud(_:)), for: .touchUpInside)
             }
             self.iCloudRequestID = self.imageManager.image(for: asset,
                                                               size: PHImageManagerMaximumSize,
-                                                              contentMode: .aspectFit,
+                                                              contentMode: .aspectFill,
                                                               progressHandler: { [weak self] progress in
                 guard let self = self else { return }
+                print(">>>> photos from iCLoud progress: \(progress)")
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    self._HUD?.progressObject?.completedUnitCount = progress
+                    if progress == 100 {
+                        self.hideHUD()
+                    } else {
+                        self._HUD?.progressObject?.completedUnitCount = progress
+                    }
                 }
             }, completion: { [weak self] image in
                 guard let self = self, let image = image else { return }
+                print(">>>> photos from iCLoud ready")
                 self.hideHUD()
-                self.hdCollectionView.reloadData()
                 onComplete?(image)
             })
         }
     }
     
     @objc fileprivate func cancelDownloadFromICloud(_ sender: Any) {
-        if let iCloudRequestID = self.iCloudRequestID {
+        if let iCloudRequestID = iCloudRequestID {
             imageManager.cancelImageRequest(iCloudRequestID)
-            hideHUD()
         }
+        hideHUD()
         
     }
     
@@ -453,14 +463,10 @@ extension MediaPlayerViewController {
         let state = videoPlayerManager.state
         switch state {
         case .none:
-            //Подключаем ТВ если не подключен
-            connectIfNeeded { [weak self] in
-                guard let self = self else { return }
-                //Запускаем процесс подготовки файла. Все остальное смотри в videoPlayerManager.stateObserver
-                self.videoPlayerManager.prepareAssetForCastToTV(asset)
-            }
+            //Запускаем процесс подготовки файла. Все остальное смотри в videoPlayerManager.stateObserver
+            videoPlayerManager.prepareAssetForCastToTV(asset)
         case .readyForTV:
-            self.connectIfNeeded { [weak self] in
+            connectIfNeeded { [weak self] in
                 guard let self = self else { return }
                 let ipAddress = ServerConfiguration.shared.deviceIPAddress()
                 guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
@@ -511,24 +517,30 @@ extension MediaPlayerViewController {
             guard let self = self else { return }
             switch state {
             case .none:
+                print(">>>> state none")
                 self.hideHUD()
                 self.tipView?.isHidden = true
-                self.hdCollectionView.reloadData()
+//                self.hdCollectionView.reloadData()
             case .iCloudDownloading(let progress):
+                print(">>>> state icloud: \(progress)")
                 self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
-                self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
+                self._HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
             case .convertingToMP4(let progress):
+                print(">>>> state convert: \(progress)")
                 self.HUD?.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
                 self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
                 break
             case .readyForTV:
+                print(">>>> state ready to TV")
                 self.hideHUD()
+//                self.castVideoToTV()
             case .playing:
+                print(">>>> state playing")
                 DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.hdCollectionView.reloadData()
+                    self?.hdCollectionView.reloadData()
                 }
             case .paused:
+                print(">>>> state paused")
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     self.hdCollectionView.reloadData()
@@ -804,20 +816,23 @@ extension PHCachingImageManager {
     func image(for asset: PHAsset,
                size: CGSize,
                contentMode: PHImageContentMode,
+               devliveryMode: PHImageRequestOptionsDeliveryMode = .highQualityFormat,
+               resizeMode: PHImageRequestOptionsResizeMode = .none,
+               isNetworkAccessAllowed: Bool = true,
                progressHandler: ((Int64) -> ())? = nil,
                completion: @escaping ((UIImage?) -> Void)) -> PHImageRequestID {
 
         let options = PHImageRequestOptions()
-        options.isNetworkAccessAllowed = true
-        options.deliveryMode = .highQualityFormat
+        options.isNetworkAccessAllowed = isNetworkAccessAllowed
+        options.deliveryMode = devliveryMode
+        options.resizeMode = resizeMode
         options.version = .original
-        options.resizeMode = .none
         options.progressHandler = { [weak self] (progress, error, data, info) in
             guard let _ = self else { return }
             progressHandler?(Int64(progress * 100))
         }
         
-        return self.requestImage(
+        return requestImage(
             for: asset,
                targetSize: size,
                contentMode: contentMode,
@@ -826,10 +841,8 @@ extension PHCachingImageManager {
                    guard let _ = self else { return }
                    let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
                    if isDegraded {
+                       print(">>>> state isDegraded!!")
                        return
-                   }
-                   if let isIniCloud = info?[PHImageResultIsInCloudKey] as? NSNumber, isIniCloud.boolValue == true {
-                       print(">>>> icloud!!")
                    }
                    let result = image?.fixedOrientation()
                    DispatchQueue.main.async {
@@ -838,17 +851,25 @@ extension PHCachingImageManager {
                })
     }
     
-    func checkICloudStatus(for asset: PHAsset,
-                           completion: @escaping ((_ isPhotoInICloud: Bool) -> Void)) {
+    func checkICloudStatus(for asset: PHAsset, completion: @escaping ((_ isPhotoInICloud: Bool) -> Void)) {
         let options = PHImageRequestOptions()
         options.isNetworkAccessAllowed = false
         options.deliveryMode = .highQualityFormat
         options.version = .original
         options.resizeMode = .none
-        requestImageDataAndOrientation(for: asset, options: options) { imageData, _, _, _ in
-            DispatchQueue.main.async {
-                completion(imageData == nil)
-            }
-        }
+        requestImage(
+            for: asset,
+            targetSize: PHImageManagerMaximumSize,
+            contentMode: .aspectFit,
+            options: options,
+            resultHandler: { [weak self] (image, info) in
+                guard let _ = self else { return }
+                let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
+                if isDegraded { return }
+                DispatchQueue.main.async {
+                    print(">>>> icloud!! \(info?[PHImageResultIsInCloudKey] != nil)")
+                    completion(info?[PHImageResultIsInCloudKey] != nil)
+                }
+            })
     }
 }

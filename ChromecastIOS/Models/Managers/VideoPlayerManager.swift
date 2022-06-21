@@ -68,6 +68,7 @@ class VideoPlayerManager: NSObject {
         if let iCloudRequestId = iCloudRequestId {
             imageManager.cancelImageRequest(iCloudRequestId)
         }
+        print(">>>> cancel prepare \(iCloudRequestId)")
         assetExportSession.cancelExport()
         state = .none
     }
@@ -87,6 +88,10 @@ class VideoPlayerManager: NSObject {
                 guard let self = self else { return }
                 self.state = .iCloudDownloading(progress)
             }
+        }
+        
+        if let iCloudRequestId = iCloudRequestId {
+            imageManager.cancelImageRequest(iCloudRequestId)
         }
         
         // Делаю запрос на видео из галереи и если оно не скачано - скачиваю
@@ -123,6 +128,7 @@ class VideoPlayerManager: NSObject {
             guard let self = self else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
+                guard self.state.isSameAs(.none) == false else { return }
                 self.stateObserver?(.convertingToMP4(progress))
             }
         }, onComplete: { [weak self] isSuccess in
