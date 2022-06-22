@@ -189,11 +189,14 @@ class MediaPlayerViewController: BaseViewController {
     
     private func handleAsset(at index: Int) {
         AgregatorLogger.shared.log(eventName: "Media player handle asset", parameters: nil)
-        
+    
         guard index >= 0, index < assets.count else { return }
         let asset = assets[index]
         let resources = PHAssetResource.assetResources(for: asset)
         currentAssetNameLabel.text = resources.first?.originalFilename
+
+        videoPlayerManager.stop()
+        cancelDownloadImageFromICloud()
         
         selectedIndex = index
         scrollTo(index: index, animated: true)
