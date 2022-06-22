@@ -38,14 +38,12 @@ class ChromeCastService: NSObject {
     private var notificationToken: NotificationToken!
     private var playerStateNotificationToken: NotificationToken?
     private var timeProgressTimer: Timer?
-    private var timeSlider: UISlider?
     
     private override init(){
         
     }
     
     func initialize() {
-        startObserveVideoTimeProgress()
         print(">>>ChromeCast Service was initialized")
         clearAllDevices()
         let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
@@ -133,8 +131,6 @@ class ChromeCastService: NSObject {
         remoteMediaClient?.play()
     }
     
-   
-    
     func connect(to deviceID: String, onComplete: ClosureBool?) {
         let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
         guard let device = deviceScanner.device(withUniqueID: deviceID) else { return }
@@ -188,32 +184,17 @@ class ChromeCastService: NSObject {
                 imageView?.layer.opacity = 0
             }
         })
-        
+         
         GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
     }
     
     private func startObserveVideoTimeProgress() {
         stopObserveVideoTimeProgress()
-        
-        GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
-        let defaultMediaVC = GCKCastContext.sharedInstance().defaultExpandedMediaControlsViewController
-        defaultMediaVC.view.allSubviews.forEach ({
-            print(">>>> slider views: \($0)")
-            if $0.className == "GCKUICastButton" {
-                $0.layer.opacity = 0
-                $0.layer.isHidden = true
-                $0.isUserInteractionEnabled = false
-                let imageView = $0.subviews.first as? UIImageView
-                imageView?.layer.isHidden = true
-                imageView?.layer.opacity = 0
-            }
-            if $0.className == "GCKUICastSlider" {
-                self.timeSlider = $0 as! UISlider
-            }
-        })
         timeProgressTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (timer) in
             guard let self = self else { return }
-            print(">>>> slider time: \(String(describing: self.timeSlider?.value))")
+            let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
+            let value = remoteMediaClient?.approximateStreamPosition()
+            print(">>>> slider time: \(String(describing: value))")
         })
     }
     
@@ -324,6 +305,11 @@ extension ChromeCastService: GCKRequestDelegate {
 extension ChromeCastService: GCKRemoteMediaClientListener {
     func remoteMediaClient(_ client: GCKRemoteMediaClient, didUpdate mediaStatus: GCKMediaStatus?) {
         guard let mediaStatus = mediaStatus else { return }
+//        if mediaStatus.playerState == .playing {
+//            startObserveVideoTimeProgress()
+//        } else {
+//            stopObserveVideoTimeProgress()
+//        }
         let realm = try! Realm()
         if let playerState = realm.objects(PlayerState.self).first {
             if playerState.state.rawValue != mediaStatus.playerState.rawValue {
