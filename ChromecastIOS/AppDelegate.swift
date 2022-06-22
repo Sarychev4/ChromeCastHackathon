@@ -39,6 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let response = GCDWebServerFileResponse(file: faqPath, byteRange: request.byteRange)
             complitionBlock(response)
         })
+        
+        webServer?.addHandler(forMethod: "GET", pathRegex: "/playerPreviewImage/.*", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
+            guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+            let imageFileURL = documentsDirectory.appendingPathComponent("previewImage.jpg")
+            let response = GCDWebServerFileResponse(file: imageFileURL.path, byteRange: request.byteRange)
+            complitionBlock(response)
+        })
     
         webServer?.addHandler(forMethod: "GET", pathRegex: "/image/.*", request: GCDWebServerRequest.self, asyncProcessBlock: { request, complitionBlock in
             guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }

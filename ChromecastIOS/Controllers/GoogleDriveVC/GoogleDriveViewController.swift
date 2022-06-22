@@ -123,6 +123,7 @@ class GoogleDriveViewController: BaseViewController {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
 //            ChromeCastService.shared.stopWebApp()
+            self.tipView?.isHidden = true
             self.navigation?.popViewController(self, animated: true)
         }
         
