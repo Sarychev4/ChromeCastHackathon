@@ -22,6 +22,7 @@ class VideoPlayerManager: NSObject {
         case readyForTV
         case playing
         case paused
+        case cancelled
         func isSameAs(_ type: Self) -> Bool {
               switch self {
               case .none: if case .none = type { return true }
@@ -30,6 +31,7 @@ class VideoPlayerManager: NSObject {
               case .readyForTV: if case .readyForTV = type { return true }
               case .playing: if case .playing = type { return true }
               case .paused: if case .paused = type { return true }
+              case .cancelled: if case .cancelled = type { return true }
               }
               return false
            }
@@ -70,7 +72,7 @@ class VideoPlayerManager: NSObject {
         }
         print(">>>> cancel prepare \(iCloudRequestId)")
         assetExportSession.cancelExport()
-        state = .none
+        state = .cancelled
     }
     
     func stop() {
@@ -128,7 +130,7 @@ class VideoPlayerManager: NSObject {
             guard let self = self else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                guard self.state.isSameAs(.none) == false else { return }
+                guard self.state.isSameAs(.cancelled) == false else { return }
                 self.stateObserver?(.convertingToMP4(progress))
             }
         }, onComplete: { [weak self] isSuccess in

@@ -55,7 +55,7 @@ class MediaPlayerViewController: BaseViewController {
     private var isTipWasShown = false
     private var tipView: ZMJTipView?
     
-    private var delayBetweenCastTimer: Timer? //Чтобы не кастить фотки при каждом свайпе - делаю делей на 0.7 секунды
+    private var delayBetweenCastTimer: Timer? //Чтобы не кастить фотки при каждом свайпе - делаю делей на 0.5 секунды
     
     private var iCloudRequestID: PHImageRequestID?
     
@@ -214,7 +214,7 @@ class MediaPlayerViewController: BaseViewController {
     private func startDelayBetweenCastTimer() {
         stopDelayBetweenCastTimer()
         
-        delayBetweenCastTimer = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: false, block: { [weak self] (timer) in
+        delayBetweenCastTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] (timer) in
             guard let self = self else { return }
             self.castToTV()
         })
@@ -377,17 +377,11 @@ extension MediaPlayerViewController {
     
     private func prepareAsset(at index: Int, onComplete: ((UIImage?) -> ())?) {
         let asset = assets[index]
-        imageManager.checkICloudStatus(for: asset) { [weak self] isPhotoInICloud in
-            guard let self = self else { return }
-            if isPhotoInICloud {
-                //Показываю прогресс
-                print(">>>> photos from iCLoud")
-                self.HUD?.button.addTarget(self, action: #selector(self.cancelDownloadFromICloud(_:)), for: .touchUpInside)
-            }
-            self.iCloudRequestID = self.imageManager.image(for: asset,
-                                                              size: PHImageManagerMaximumSize,
-                                                              contentMode: .aspectFill,
-                                                              progressHandler: { [weak self] progress in
+        iCloudRequestID = imageManager.image(
+            for: asset,
+            size: PHImageManagerMaximumSize,
+            contentMode: .aspectFill,
+            progressHandler: { [weak self] progress in
                 guard let self = self else { return }
                 print(">>>> photos from iCLoud progress: \(progress)")
                 DispatchQueue.main.async { [weak self] in
@@ -395,6 +389,7 @@ extension MediaPlayerViewController {
                     if progress == 100 {
                         self.hideHUD()
                     } else {
+                        self.HUD?.button.addTarget(self, action: #selector(self.cancelDownloadFromICloud(_:)), for: .touchUpInside)
                         self._HUD?.progressObject?.completedUnitCount = progress
                     }
                 }
@@ -402,9 +397,20 @@ extension MediaPlayerViewController {
                 guard let self = self, let image = image else { return }
                 print(">>>> photos from iCLoud ready")
                 self.hideHUD()
+                self.reloadCurrentHDCell()
                 onComplete?(image)
             })
-        }
+    }
+    
+    private func reloadCurrentHDCell() {
+        let indexPath = IndexPath(row: selectedIndex, section: 0)
+        guard let cell = hdCollectionView.cellForItem(at: indexPath) as? HDCell,
+              let size = collectionView(hdCollectionView, sizeForItemAt: indexPath),
+                selectedIndex < assets.count
+        else { return }
+        
+        let asset = assets[selectedIndex]
+        cell.setupCell(with: asset, state: videoPlayerManager.state, size: size, isVideoOfCellPlaying: selectedIndex == playingVideoIndex )
     }
     
     @objc fileprivate func cancelDownloadFromICloud(_ sender: Any) {
@@ -423,24 +429,12 @@ extension MediaPlayerViewController {
         guard let data = image.jpegData(compressionQuality: compression) else { return }
         
         if FileManager.default.fileExists(atPath: imageFileURL.path) {
-            do {
-                try FileManager.default.removeItem(atPath: imageFileURL.path)
-                print("Removed old image")
-            } catch let removeError {
-                print("couldn't remove file at path", removeError)
-            }
+            try? FileManager.default.removeItem(atPath: imageFileURL.path)
+            print("Removed old image")
         }
-        do {
-            try data.write(to: imageFileURL)
-            
-            
-        } catch let error {
-            print("error saving file with error", error)
-        }
+        try? data.write(to: imageFileURL)
         
         let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-        
-       
         guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/image/\(UUID().uuidString)") else { return }
         ChromeCastService.shared.displayImage(with: url)
         print(">>>File url \(url)")
@@ -463,7 +457,7 @@ extension MediaPlayerViewController {
         let state = videoPlayerManager.state
         switch state {
         case .none:
-            //Запускаем процесс подготовки файла. Все остальное смотри в videoPlayerManager.stateObserver
+            //Запускаем процесс подготовки файла. Затем начинают последовательно отрабатывать state в функции observeVideoPlayerState
             videoPlayerManager.prepareAssetForCastToTV(asset)
         case .readyForTV:
             connectIfNeeded { [weak self] in
@@ -497,6 +491,11 @@ extension MediaPlayerViewController {
         }
     }
     
+    private func mediaCellPlayClicked() {
+        stopDelayBetweenCastTimer() // кейс когда свайпнул вправо и сразу нажал на play. Начинается двойной preparing. Поэтому вырубаем таймер если на ячейке нажали play.
+        castVideoToTV()
+    }
+    
     private func mediaCellPrevClicked() {
         handleAsset(at: selectedIndex - 1)
     }
@@ -516,7 +515,7 @@ extension MediaPlayerViewController {
         videoPlayerManager.stateObserver = { [weak self] state in
             guard let self = self else { return }
             switch state {
-            case .none:
+            case .none, .cancelled:
                 print(">>>> state none")
                 self.hideHUD()
                 self.tipView?.isHidden = true
@@ -533,7 +532,8 @@ extension MediaPlayerViewController {
             case .readyForTV:
                 print(">>>> state ready to TV")
                 self.hideHUD()
-//                self.castVideoToTV()
+                self.reloadCurrentHDCell()
+                self.castVideoToTV()
             case .playing:
                 print(">>>> state playing")
                 DispatchQueue.main.async { [weak self] in
@@ -654,7 +654,7 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
                 cell.setupCell(with: asset, state: videoPlayerManager.state, size: size, isVideoOfCellPlaying: selectedIndex == playingVideoIndex )
                 cell.prevAction = mediaCellPrevClicked
                 cell.nextAction = mediaCellNextClicked
-                cell.playOrPauseAction = self.castVideoToTV
+                cell.playOrPauseAction = mediaCellPlayClicked
 //                cell.rewindAction = mediaCellRewindClicked(seconds:)
             }
             
@@ -857,19 +857,30 @@ extension PHCachingImageManager {
         options.deliveryMode = .highQualityFormat
         options.version = .original
         options.resizeMode = .none
-        requestImage(
-            for: asset,
-            targetSize: PHImageManagerMaximumSize,
-            contentMode: .aspectFit,
-            options: options,
-            resultHandler: { [weak self] (image, info) in
-                guard let _ = self else { return }
-                let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
-                if isDegraded { return }
-                DispatchQueue.main.async {
-                    print(">>>> icloud!! \(info?[PHImageResultIsInCloudKey] != nil)")
-                    completion(info?[PHImageResultIsInCloudKey] != nil)
-                }
-            })
+        requestImageDataAndOrientation(for: asset, options: options) { imageData, _, _, _ in
+            DispatchQueue.main.async {
+                completion(imageData == nil)
+            }
+        }
+        
+        //        let options = PHImageRequestOptions()
+        //        options.isNetworkAccessAllowed = false
+        //        options.deliveryMode = .highQualityFormat
+        //        options.version = .original
+        //        options.resizeMode = .none
+        ////        requestImage(
+        ////            for: asset,
+        ////            targetSize: PHImageManagerMaximumSize,
+        ////            contentMode: .aspectFit,
+        ////            options: options,
+        ////            resultHandler: { [weak self] (image, info) in
+        //                guard let _ = self else { return }
+        //                let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
+        //                if isDegraded { return }
+        //                DispatchQueue.main.async {
+        //                    print(">>>> icloud!! \(info?[PHImageResultIsInCloudKey] != nil)")
+        //                    completion(info?[PHImageResultIsInCloudKey] != nil)
+        //                }
+        //            })
     }
 }

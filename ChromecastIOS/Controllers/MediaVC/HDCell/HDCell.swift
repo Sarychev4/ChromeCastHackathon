@@ -23,7 +23,7 @@ class HDCell: UICollectionViewCell {
     
     private let imageManager = PHCachingImageManager()
     private var lowQualityImageRequest: PHImageRequestID?
-//    private var highQualityImageRequest: PHImageRequestID?
+    private var highQualityImageRequest: PHImageRequestID?
     
     var prevAction: (() -> ())?
     var nextAction: (() -> ())?
@@ -47,9 +47,9 @@ class HDCell: UICollectionViewCell {
             imageManager.cancelImageRequest(lowQualityImageRequest)
         }
         
-//        if let highQualityImageRequest = highQualityImageRequest {
-//            imageManager.cancelImageRequest(highQualityImageRequest)
-//        }
+        if let highQualityImageRequest = highQualityImageRequest {
+            imageManager.cancelImageRequest(highQualityImageRequest)
+        }
         
         print(">>>> state HD Cell: start")
         lowQualityImageRequest = imageManager.requestImage(
@@ -61,19 +61,18 @@ class HDCell: UICollectionViewCell {
                 guard let self = self, let image = image else { return }
                 self.photoImageView?.image = image
             })
-        
-//        highQualityImageRequest = imageManager.requestImage(
-//            for: asset,
-//            targetSize: PHImageManagerMaximumSize,
-//            contentMode: .aspectFit,
-//            options: nil,
-//            resultHandler: { [weak self] image, info in
-//                guard let self = self, let image = image else { return }
-//                self.photoImageView?.image = image
-//            })
-       
         if asset.mediaType == .image {
             playerButtonsContainer.isHidden = true
+            highQualityImageRequest = imageManager.image(
+                for: asset,
+                size: PHImageManagerMaximumSize,
+                contentMode: .aspectFill,
+                isNetworkAccessAllowed: false,
+                progressHandler: nil,
+                completion: { [weak self] image in
+                    guard let self = self, let image = image else { return }
+                    self.photoImageView?.image = image
+                })
         } else {
             playerButtonsContainer.isHidden = false
             setupVideo(with: asset, state: state, isVideoOfCellPlaying: isVideoOfCellPlaying )

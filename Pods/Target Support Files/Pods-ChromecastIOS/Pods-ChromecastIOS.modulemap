@@ -1,6 +1,0 @@
-framework module Pods_ChromecastIOS {
-  umbrella header "Pods-ChromecastIOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

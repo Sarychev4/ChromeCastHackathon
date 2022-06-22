@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C79DB51145C97265C38D971 /* Pods_MirroringExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */; };
+		90EF9B5699B3CF6A697C5CAC /* Pods_Chromecast_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27656C232EC5EC3B2D76789D /* Pods_Chromecast_iOS.framework */; };
 		DD03EFAA282A63F10075F70E /* LocalNetworkPermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */; };
 		DD03EFAC282AA2EC0075F70E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFAB282AA2EC0075F70E /* Settings.swift */; };
 		DD03EFAE282AA4280075F70E /* SubscriptionSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFAD282AA4280075F70E /* SubscriptionSpot.swift */; };
@@ -216,7 +217,6 @@
 		E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8964313280EB5A700E6E287 /* ReplayKit.framework */; };
 		E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8964316280EB5A700E6E287 /* SampleHandler.swift */; };
 		E8964338280EB75D00E6E287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89642B4280EAF7700E6E287 /* AppDelegate.swift */; };
-		E896433B280EB75D00E6E287 /* Pods_ChromecastIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */; };
 		E896433D280EB75D00E6E287 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E89642BF280EAF7900E6E287 /* LaunchScreen.storyboard */; };
 		E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89642BD280EAF7900E6E287 /* Assets.xcassets */; };
 		E8964343280EB75D00E6E287 /* MirroringExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E8964312280EB5A700E6E287 /* MirroringExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -263,9 +263,12 @@
 
 /* Begin PBXFileReference section */
 		15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.debug.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		27656C232EC5EC3B2D76789D /* Pods_Chromecast_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chromecast_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.release.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.release.xcconfig"; sourceTree = "<group>"; };
 		315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirroringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		329CCC095ED3990F9162CC75 /* Pods-Chromecast iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast iOS.debug.xcconfig"; path = "Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3E6B40AE5B01FA94F58DD536 /* Pods-ChromecastIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.debug.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		7036A02DE1999D185C4E2DE6 /* Pods-Chromecast iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast iOS.release.xcconfig"; path = "Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS.release.xcconfig"; sourceTree = "<group>"; };
 		9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.release.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.release.xcconfig"; sourceTree = "<group>"; };
 		DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkPermissionsManager.swift; sourceTree = "<group>"; };
 		DD03EFAB282AA2EC0075F70E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -489,7 +492,6 @@
 		E8E5FA8B283BF9E100B4B6FF /* JPEGEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEGEncoder.swift; sourceTree = "<group>"; };
 		E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImageProperty+extension.swift"; sourceTree = "<group>"; };
 		E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VTCompressionSession+Extension.swift"; sourceTree = "<group>"; };
-		EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChromecastIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -507,7 +509,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E896433B280EB75D00E6E287 /* Pods_ChromecastIOS.framework in Frameworks */,
+				90EF9B5699B3CF6A697C5CAC /* Pods_Chromecast_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,10 +520,10 @@
 			isa = PBXGroup;
 			children = (
 				E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */,
-				EE623EF1029B0BEF77C911A2 /* Pods_ChromecastIOS.framework */,
 				E8964313280EB5A700E6E287 /* ReplayKit.framework */,
 				E896431F280EB5A700E6E287 /* UIKit.framework */,
 				315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */,
+				27656C232EC5EC3B2D76789D /* Pods_Chromecast_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -533,6 +535,8 @@
 				9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */,
 				15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */,
 				2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */,
+				329CCC095ED3990F9162CC75 /* Pods-Chromecast iOS.debug.xcconfig */,
+				7036A02DE1999D185C4E2DE6 /* Pods-Chromecast iOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1340,8 +1344,6 @@
 			dependencies = (
 			);
 			name = MirroringExtension;
-			packageProductDependencies = (
-			);
 			productName = MirroringExtension;
 			productReference = E8964312280EB5A700E6E287 /* MirroringExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -1393,8 +1395,6 @@
 				de,
 			);
 			mainGroup = E89642A8280EAF7700E6E287;
-			packageReferences = (
-			);
 			productRefGroup = E89642B2280EAF7700E6E287 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1519,15 +1519,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9D8BDC54077DA9B1897DDAEC /* [CP] Check Pods Manifest.lock */ = {
@@ -1567,7 +1567,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ChromecastIOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Chromecast iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1580,15 +1580,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1952,7 +1952,7 @@
 		};
 		E8964345280EB75D00E6E287 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E6B40AE5B01FA94F58DD536 /* Pods-ChromecastIOS.debug.xcconfig */;
+			baseConfigurationReference = 329CCC095ED3990F9162CC75 /* Pods-Chromecast iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1988,7 +1988,7 @@
 		};
 		E8964346280EB75D00E6E287 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */;
+			baseConfigurationReference = 7036A02DE1999D185C4E2DE6 /* Pods-Chromecast iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

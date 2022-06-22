@@ -37,12 +37,15 @@ class ChromeCastService: NSObject {
     
     private var notificationToken: NotificationToken!
     private var playerStateNotificationToken: NotificationToken?
+    private var timeProgressTimer: Timer?
+    private var timeSlider: UISlider?
     
     private override init(){
         
     }
     
     func initialize() {
+        startObserveVideoTimeProgress()
         print(">>>ChromeCast Service was initialized")
         clearAllDevices()
         let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
@@ -189,7 +192,35 @@ class ChromeCastService: NSObject {
         GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
     }
     
+    private func startObserveVideoTimeProgress() {
+        stopObserveVideoTimeProgress()
+        
+        GCKCastContext.sharedInstance().useDefaultExpandedMediaControls = true
+        let defaultMediaVC = GCKCastContext.sharedInstance().defaultExpandedMediaControlsViewController
+        defaultMediaVC.view.allSubviews.forEach ({
+            print(">>>> slider views: \($0)")
+            if $0.className == "GCKUICastButton" {
+                $0.layer.opacity = 0
+                $0.layer.isHidden = true
+                $0.isUserInteractionEnabled = false
+                let imageView = $0.subviews.first as? UIImageView
+                imageView?.layer.isHidden = true
+                imageView?.layer.opacity = 0
+            }
+            if $0.className == "GCKUICastSlider" {
+                self.timeSlider = $0 as! UISlider
+            }
+        })
+        timeProgressTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (timer) in
+            guard let self = self else { return }
+            print(">>>> slider time: \(String(describing: self.timeSlider?.value))")
+        })
+    }
     
+    private func stopObserveVideoTimeProgress() {
+        timeProgressTimer?.invalidate()
+        timeProgressTimer = nil
+    }
     
     func stopWebApp() {
         let params = ["type": "stop"]
