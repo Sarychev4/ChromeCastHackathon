@@ -9,8 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceCellView" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceCellView" customModule="Chromecast_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="0wf-HA-ocp" id="cOy-2K-lq9"/>
                 <outlet property="containerDropShadowView" destination="KDr-N0-2M6" id="vSf-d4-rLa"/>
                 <outlet property="containerInteractiveView" destination="oi6-r3-btA" id="iVK-NW-ly9"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="gS0-bk-Si1"/>
@@ -23,10 +24,10 @@
             <rect key="frame" x="0.0" y="0.0" width="378" height="76"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-N0-2M6" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDr-N0-2M6" customClass="DropShadowView" customModule="Chromecast_iOS" customModuleProvider="target">
                     <rect key="frame" x="4" y="4" width="370" height="68"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oi6-r3-btA" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oi6-r3-btA" customClass="InteractiveView" customModule="Chromecast_iOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="370" height="68"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yourTV" translatesAutoresizingMaskIntoConstraints="NO" id="Jgo-VY-Bet">
@@ -42,11 +43,17 @@
                                     <color key="textColor" name="labelColorDark"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="0wf-HA-ocp">
+                                    <rect key="frame" x="334" y="24" width="20" height="20"/>
+                                    <color key="tintColor" name="labelColorDark"/>
+                                </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="gdW-5Q-mnv" firstAttribute="centerY" secondItem="Jgo-VY-Bet" secondAttribute="centerY" id="9So-8a-NAP"/>
+                                <constraint firstItem="0wf-HA-ocp" firstAttribute="centerY" secondItem="oi6-r3-btA" secondAttribute="centerY" id="Agw-dS-ke7"/>
                                 <constraint firstItem="Jgo-VY-Bet" firstAttribute="leading" secondItem="oi6-r3-btA" secondAttribute="leading" constant="16" id="OTP-m4-3IZ"/>
+                                <constraint firstAttribute="trailing" secondItem="0wf-HA-ocp" secondAttribute="trailing" constant="16" id="fmC-bl-8ji"/>
                                 <constraint firstItem="gdW-5Q-mnv" firstAttribute="leading" secondItem="Jgo-VY-Bet" secondAttribute="trailing" constant="12" id="jN7-0P-d6b"/>
                                 <constraint firstItem="Jgo-VY-Bet" firstAttribute="centerY" secondItem="oi6-r3-btA" secondAttribute="centerY" id="vat-jj-Pjh"/>
                             </constraints>

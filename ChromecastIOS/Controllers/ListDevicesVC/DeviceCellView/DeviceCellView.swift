@@ -15,6 +15,7 @@ class DeviceCellView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var containerInteractiveView: InteractiveView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

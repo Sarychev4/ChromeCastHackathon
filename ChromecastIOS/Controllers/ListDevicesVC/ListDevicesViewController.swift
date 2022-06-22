@@ -117,11 +117,13 @@ class ListDevicesViewController: AFFloatingPanelViewController {
         cellView.containerInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             guard let device = self.detectedDevices?[index] else { return }
+            cellView.activityIndicator.startAnimating()
             print(">>>is connected \(device.isConnected)")
             if device.isConnected || ChromeCastService.shared.isSessionResumed == true {
                 self.hidePanel { [weak self] in
                     guard let self = self else { return }
                     self.didFinishAction?()
+                    cellView.activityIndicator.stopAnimating()
                 }
             } else {
                 ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
@@ -136,6 +138,7 @@ class ListDevicesViewController: AFFloatingPanelViewController {
                         }
                         self.hidePanel { [weak self] in
                             guard let self = self else { return }
+                            cellView.activityIndicator.stopAnimating()
                             self.didFinishAction?()
                         }
                     }
