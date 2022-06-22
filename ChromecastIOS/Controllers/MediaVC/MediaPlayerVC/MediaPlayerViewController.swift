@@ -519,7 +519,7 @@ extension MediaPlayerViewController {
                 print(">>>> state none")
                 self.hideHUD()
                 self.tipView?.isHidden = true
-//                self.hdCollectionView.reloadData()
+                self.reloadCurrentHDCell() 
             case .iCloudDownloading(let progress):
                 print(">>>> state icloud: \(progress)")
                 self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
