@@ -92,9 +92,9 @@ class ResumeVideoView: InteractiveView {
             self.isHidden = true
         } else {
             if playerState == 3 {
-                iconImageView?.image = UIImage(named: "resumeVideoPause")?.withRenderingMode(.alwaysTemplate)
-            } else {
                 iconImageView?.image = UIImage(named: "resumeVideoPlay")?.withRenderingMode(.alwaysTemplate)
+            } else {
+                iconImageView?.image = UIImage(named: "resumeVideoPause")?.withRenderingMode(.alwaysTemplate)
             }
             self.isHidden = false
         }
