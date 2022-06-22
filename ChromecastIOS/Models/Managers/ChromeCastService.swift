@@ -191,7 +191,7 @@ class ChromeCastService: NSObject {
     private func startObserveVideoTimeProgress() {
         stopObserveVideoTimeProgress()
         timeProgressTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { [weak self] (timer) in
-            guard let self = self else { return }
+            guard let _ = self else { return }
             let remoteMediaClient = GCKCastContext.sharedInstance().sessionManager.currentCastSession?.remoteMediaClient
             let value = remoteMediaClient?.approximateStreamPosition()
             print(">>>> slider time: \(String(describing: value))")

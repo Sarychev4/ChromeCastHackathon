@@ -448,8 +448,31 @@ extension MediaPlayerViewController {
     }
 }
 
+
+
 //MARK: - Video
 extension MediaPlayerViewController {
+    
+    private func savePreviewImageOfVideoToServer() {
+        let asset = assets[selectedIndex]
+        imageManager.requestImage(
+            for: asset,
+            targetSize: PHImageManagerMaximumSize,
+               contentMode: .aspectFill,
+               options: nil) { [weak self] image, info in
+                   guard let _ = self, let image = image else { return }
+                   guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+                   let imageFileURL = documentsDirectory.appendingPathComponent("previewImage.jpg")
+                   let compression = Settings.current.photosResolution.localImageCompression
+                   guard let data = image.jpegData(compressionQuality: compression) else { return }
+                   
+                   if FileManager.default.fileExists(atPath: imageFileURL.path) {
+                       try? FileManager.default.removeItem(atPath: imageFileURL.path)
+                       print(">>>>! Removed old preview image")
+                   }
+                   try? data.write(to: imageFileURL)
+               }
+    }
     
     private func castVideoToTV() {
         
@@ -469,14 +492,17 @@ extension MediaPlayerViewController {
         case .readyForTV:
             connectIfNeeded { [weak self] in
                 guard let self = self else { return }
+                self.savePreviewImageOfVideoToServer()
                 let ipAddress = ServerConfiguration.shared.deviceIPAddress()
                 guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+                guard let previewImageURL = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/playerPreviewImage/\(UUID().uuidString)") else { return }
+                print(">>>\(previewImageURL)")
                 if self.isTipWasShown == false {
                     self.resumeVideoInteractiveView.isHidden = false
                     self.showTipView()
                     self.isTipWasShown = true
                 }
-                ChromeCastService.shared.displayVideo(with: url)
+                ChromeCastService.shared.displayVideo(with: url, previewImage: previewImageURL)
                 ChromeCastService.shared.showDefaultMediaVC()
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
@@ -532,7 +558,7 @@ extension MediaPlayerViewController {
                 self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
                 self._HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
             case .convertingToMP4(let progress):
-                print(">>>> state convert: \(progress)")
+//                print(">>>> state convert: \(progress)")
                 self.HUD?.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
                 self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
                 break
