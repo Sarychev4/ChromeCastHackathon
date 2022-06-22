@@ -154,10 +154,10 @@ class MainViewController: BaseViewController {
     
     private func handleTapOnCell(at indexPath: IndexPath) {
         
-//        if UIScreen.main.isCaptured {
-//            showAlertStopMirroring()
-//            return
-//        }
+        if UIScreen.main.isCaptured {
+            showAlertStopMirroring()
+            return
+        }
         
         let buttonType = tabs[indexPath.row].type
         
