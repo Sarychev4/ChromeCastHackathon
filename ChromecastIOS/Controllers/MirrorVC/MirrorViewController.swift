@@ -147,6 +147,7 @@ class MirrorViewController: BaseViewController {
         mirroringButton?.setImage(nil, for: .normal)
         //temp as
         broadCastView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
+        broadCastView.showsMicrophoneButton = false
     }
     
     private func showSystemMirroringScreen() {
