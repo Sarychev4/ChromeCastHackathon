@@ -127,6 +127,7 @@ class MediaPlayerViewController: BaseViewController {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         stopObservePlayerState()
         videoPlayerManager.stop()
+        cancelDownloadImageFromICloud()
         
         let currentAsset = assets[selectedIndex]
         if currentAsset.mediaType == .image {
@@ -414,11 +415,14 @@ extension MediaPlayerViewController {
     }
     
     @objc fileprivate func cancelDownloadFromICloud(_ sender: Any) {
+        cancelDownloadImageFromICloud()
+    }
+    
+    private func cancelDownloadImageFromICloud() {
         if let iCloudRequestID = iCloudRequestID {
             imageManager.cancelImageRequest(iCloudRequestID)
         }
         hideHUD()
-        
     }
     
     private func castPhotoToTV(_ image: UIImage) {
