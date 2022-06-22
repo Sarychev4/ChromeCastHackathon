@@ -22,7 +22,8 @@ class HDCell: UICollectionViewCell {
     @IBOutlet weak var nextVideoInteractiveImageView: InteractiveImageView!
     
     private let imageManager = PHCachingImageManager()
-    private var lastImageRequest: PHImageRequestID?
+    private var lowQualityImageRequest: PHImageRequestID?
+//    private var highQualityImageRequest: PHImageRequestID?
     
     var prevAction: (() -> ())?
     var nextAction: (() -> ())?
@@ -42,18 +43,34 @@ class HDCell: UICollectionViewCell {
         photoImageView?.contentMode = .scaleAspectFit
         photoImageView?.image = nil
         
-        if let lastImageRequest = lastImageRequest {
-            imageManager.cancelImageRequest(lastImageRequest)
+        if let lowQualityImageRequest = lowQualityImageRequest {
+            imageManager.cancelImageRequest(lowQualityImageRequest)
         }
         
-        lastImageRequest = imageManager.image(for: asset,
-                                size: PHImageManagerMaximumSize,
-                                contentMode: .aspectFit,
-                                progressHandler: {progress in
-        }, completion: { [weak self] image in
-            guard let self = self, let image = image else { return }
-            self.photoImageView?.image = image
-        })
+//        if let highQualityImageRequest = highQualityImageRequest {
+//            imageManager.cancelImageRequest(highQualityImageRequest)
+//        }
+        
+        print(">>>> state HD Cell: start")
+        lowQualityImageRequest = imageManager.requestImage(
+            for: asset,
+            targetSize: CGSize(width: 300, height: 300),
+            contentMode: .aspectFill,
+            options: nil,
+            resultHandler: { [weak self] image, info in
+                guard let self = self, let image = image else { return }
+                self.photoImageView?.image = image
+            })
+        
+//        highQualityImageRequest = imageManager.requestImage(
+//            for: asset,
+//            targetSize: PHImageManagerMaximumSize,
+//            contentMode: .aspectFit,
+//            options: nil,
+//            resultHandler: { [weak self] image, info in
+//                guard let self = self, let image = image else { return }
+//                self.photoImageView?.image = image
+//            })
        
         if asset.mediaType == .image {
             playerButtonsContainer.isHidden = true
