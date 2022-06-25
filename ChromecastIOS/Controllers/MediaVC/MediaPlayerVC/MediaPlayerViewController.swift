@@ -218,7 +218,7 @@ class MediaPlayerViewController: BaseViewController {
     private func startDelayBetweenCastTimer() {
         stopDelayBetweenCastTimer()
         
-        delayBetweenCastTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] (timer) in
+        delayBetweenCastTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] (timer) in
             guard let self = self else { return }
             self.castToTV()
         })
@@ -695,11 +695,11 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
         case thumbnailCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCell.Identifier, for: indexPath) as! ThumbnailCell
             let asset = assets[indexPath.row]
-            cell.photoHeightConstraint.constant = 49
-            cell.photoWidthConstraint.constant = 23
+//            cell.photoHeightConstraint.constant = 49
+//            cell.photoWidthConstraint.constant = 23
             cell.clipsToBounds = true
             cell.photoImageView.contentMode = .scaleAspectFill
-            image(for: asset, size: CGSize(width: 23, height: 49)) { (image, needd) in
+            image(for: asset, size: cell.photoImageView.frame.size) { (image, needd) in
                 cell.photoImageView.image = image
             }
             
@@ -794,10 +794,13 @@ extension MediaPlayerViewController: CollectionViewCellSize {
             //            }
             return CGSize(width: UIScreen.main.bounds.size.width, height: hdCollectionView.frame.height)
         case thumbnailCollectionView:
-//                        if let size = thumbnailPhotoModel.photoSize(at: indexPath.row) {
-//                            return cellSize(forThumbImage: size)
-//                        }
-            return cellSize(forThumbImage: CGSize(width: 24, height: 49)) //CGSize(width: 24, height: 49)
+            let asset = assets[indexPath.row]
+            let maxHeight = CGFloat(49)
+            let photoWidth = CGFloat(asset.pixelWidth)
+            let photoHeight = CGFloat(asset.pixelHeight)
+            let scale = maxHeight / photoHeight
+            let calculatedWidth = photoWidth * scale
+            return CGSize(width: calculatedWidth, height: maxHeight)
         default:
             return nil
         }
