@@ -714,13 +714,22 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
         case hdCollectionView:
             break
         case thumbnailCollectionView:
-            hdCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+             
+            scrollViewWillBeginDragging(thumbnailCollectionView)
+            
+            hdCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
             thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            self.selectedIndex = indexPath.row
-            let asset = self.assets[self.selectedIndex]
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {  [weak self] in
+                guard let self = self else { return }
+                self.scrollViewDidEndDecelerating(self.thumbnailCollectionView)
+            }
+        
+            selectedIndex = indexPath.row
+            let asset = assets[selectedIndex]
             let resources = PHAssetResource.assetResources(for: asset)
-            self.currentAssetNameLabel.text = resources.first?.originalFilename
-            self.handleAsset(at: selectedIndex)
+            currentAssetNameLabel.text = resources.first?.originalFilename
+            handleAsset(at: selectedIndex)
             
         default:
             break
