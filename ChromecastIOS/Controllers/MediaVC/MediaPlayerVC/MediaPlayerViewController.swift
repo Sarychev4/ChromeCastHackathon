@@ -740,6 +740,8 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
 //MARK: - CollectionView Delegate
 extension MediaPlayerViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        videoPlayerManager.stop()
+        cancelDownloadImageFromICloud()
         if let collectionView = scrollView as? UICollectionView {
             flowLayoutSyncManager.masterCollectionView = collectionView
             if let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
