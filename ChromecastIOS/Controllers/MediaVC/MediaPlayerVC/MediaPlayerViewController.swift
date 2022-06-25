@@ -468,7 +468,7 @@ extension MediaPlayerViewController {
                    
                    if FileManager.default.fileExists(atPath: imageFileURL.path) {
                        try? FileManager.default.removeItem(atPath: imageFileURL.path)
-                       print(">>>>! Removed old preview image")
+                       print(">>> Removed old preview image")
                    }
                    try? data.write(to: imageFileURL)
                }
