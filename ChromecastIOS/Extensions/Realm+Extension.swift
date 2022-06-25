@@ -14,7 +14,7 @@ let GroupFolder = FileManager.default.containerURL(forSecurityApplicationGroupId
 
 extension Realm {
     static var GroupShared: Realm! {
-        let streamConfigURL = GroupFolder.appendingPathComponent("GroupShared.rrealm")
+        let streamConfigURL = GroupFolder.appendingPathComponent("GroupShared.realm")
         let config = Realm.Configuration(fileURL: streamConfigURL, schemaVersion: UInt64(Bundle.main.buildVersionNumber)!)
         return try! Realm(configuration: config)
     }
