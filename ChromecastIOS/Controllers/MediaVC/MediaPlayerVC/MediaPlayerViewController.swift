@@ -274,32 +274,28 @@ class MediaPlayerViewController: BaseViewController {
             break
         }
     }
-    
-    private func showHUD() {
-        HUD?.show(animated: true)
-    }
-    
+     
     private func hideHUD() {
         _HUD?.hide(animated: true)
-//        HUD?.hide(animated: true)
         _HUD = nil
         
         print(">>>> HUD hide")
     }
     
     private func presentDevices(postAction: Closure?) {
-        AgregatorLogger.shared.log(eventName: "Media player device list", parameters: nil)
-        let controller = ListDevicesViewController()
-        controller.canDismissOnPan = true
-        controller.isInteractiveBackground = false
-        controller.grabberState = .inside
-        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
-        controller.modalPresentationStyle = .overCurrentContext
-        controller.didFinishAction = {  [weak self] in
-            guard let _ = self else { return }
-            postAction?()
-        }
-        present(controller, animated: false, completion: nil)
+//        temp vr 1!!
+//        AgregatorLogger.shared.log(eventName: "Media player device list", parameters: nil)
+//        let controller = ListDevicesViewController()
+//        controller.canDismissOnPan = true
+//        controller.isInteractiveBackground = false
+//        controller.grabberState = .inside
+//        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+//        controller.modalPresentationStyle = .overCurrentContext
+//        controller.didFinishAction = {  [weak self] in
+//            guard let _ = self else { return }
+//            postAction?()
+//        }
+//        present(controller, animated: false, completion: nil)
     }
     
     private func presentSettings(postAction: Closure?) {
@@ -407,6 +403,8 @@ extension MediaPlayerViewController {
     }
     
     private func reloadCurrentHDCell() {
+        hdCollectionView.reloadData()
+        return 
         let indexPath = IndexPath(row: selectedIndex, section: 0)
         guard let cell = hdCollectionView.cellForItem(at: indexPath) as? HDCell,
               let size = collectionView(hdCollectionView, sizeForItemAt: indexPath),
@@ -414,7 +412,7 @@ extension MediaPlayerViewController {
         else { return }
         
         let asset = assets[selectedIndex]
-        cell.setupCell(with: asset, state: videoPlayerManager.state, size: size, isVideoOfCellPlaying: selectedIndex == playingVideoIndex )
+        cell.setupCell(with: asset, state: videoPlayerManager.state, size: size, isVideoOfCellPlaying: selectedIndex == playingVideoIndex, isCurrentDisplayingCell: true)
     }
     
     @objc fileprivate func cancelDownloadFromICloud(_ sender: Any) {
@@ -554,11 +552,14 @@ extension MediaPlayerViewController {
                 self.tipView?.isHidden = true
                 self.reloadCurrentHDCell() 
             case .iCloudDownloading(let progress):
+                guard progress < 1 else { return }  // Это чтобы не появлялся HUD на долю секунды
                 print(">>>> state icloud: \(progress)")
                 self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
                 self._HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
             case .convertingToMP4(let progress):
-//                print(">>>> state convert: \(progress)")
+                guard progress < 1, progress > 0 else { return } // Это чтобы не появлялся HUD на долю секунды
+                print(">>>> state convert: \(progress)")
+                self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
                 self.HUD?.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
                 self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
                 break
@@ -682,9 +683,8 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
             let asset = assets[indexPath.row]
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HDCell.Identifier, for: indexPath) as! HDCell
-            
             if let size = self.collectionView(hdCollectionView, sizeForItemAt: indexPath) {
-                cell.setupCell(with: asset, state: videoPlayerManager.state, size: size, isVideoOfCellPlaying: selectedIndex == playingVideoIndex )
+                cell.setupCell(with: asset, state: videoPlayerManager.state, size: size, isVideoOfCellPlaying: selectedIndex == playingVideoIndex, isCurrentDisplayingCell: indexPath.row == selectedIndex)
                 cell.prevAction = mediaCellPrevClicked
                 cell.nextAction = mediaCellNextClicked
                 cell.playOrPauseAction = mediaCellPlayClicked
@@ -695,8 +695,6 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
         case thumbnailCollectionView:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThumbnailCell.Identifier, for: indexPath) as! ThumbnailCell
             let asset = assets[indexPath.row]
-//            cell.photoHeightConstraint.constant = 49
-//            cell.photoWidthConstraint.constant = 23
             cell.clipsToBounds = true
             cell.photoImageView.contentMode = .scaleAspectFill
             image(for: asset, size: cell.photoImageView.frame.size) { (image, needd) in

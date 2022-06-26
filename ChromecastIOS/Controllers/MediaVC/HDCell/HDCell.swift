@@ -7,6 +7,7 @@
 
 import UIKit
 import Photos
+import Agregator
 //import Player
 
 class HDCell: UICollectionViewCell {
@@ -35,13 +36,15 @@ class HDCell: UICollectionViewCell {
         
     }
     
-    func setupCell(with asset: PHAsset, state: VideoPlayerManager.State, size: CGSize, isVideoOfCellPlaying: Bool) {
+    func setupCell(with asset: PHAsset, state: VideoPlayerManager.State, size: CGSize, isVideoOfCellPlaying: Bool, isCurrentDisplayingCell: Bool) {
        
         photoWidthConstraint.constant = size.width
         photoHeightConstraint.constant = size.height
         clipsToBounds = true
         photoImageView?.contentMode = .scaleAspectFit
-        photoImageView?.image = nil
+        if isCurrentDisplayingCell == false {
+            photoImageView?.image = nil
+        }
         
         if let lowQualityImageRequest = lowQualityImageRequest {
             imageManager.cancelImageRequest(lowQualityImageRequest)
@@ -51,33 +54,17 @@ class HDCell: UICollectionViewCell {
             imageManager.cancelImageRequest(highQualityImageRequest)
         }
         
-        print(">>>> state HD Cell: start")
-        lowQualityImageRequest = imageManager.requestImage(
-            for: asset,
-            targetSize: CGSize(width: 300, height: 300),
-            contentMode: .aspectFill,
-            options: nil,
-            resultHandler: { [weak self] image, info in
-                guard let self = self, let image = image else { return }
-                self.photoImageView?.image = image
-            })
         if asset.mediaType == .image {
             playerButtonsContainer.isHidden = true
-            highQualityImageRequest = imageManager.image(
-                for: asset,
-                size: PHImageManagerMaximumSize,
-                contentMode: .aspectFill,
-                isNetworkAccessAllowed: false,
-                progressHandler: nil,
-                completion: { [weak self] image in
-                    guard let self = self, let image = image else { return }
-                    self.photoImageView?.image = image
-                })
+            tryHighQuality(for: asset, onComplete: { [weak self] success in
+                guard let self = self, success == false else { return }
+                self.setLowQuality(for: asset)
+            })
         } else {
+            setLowQuality(for: asset)
             playerButtonsContainer.isHidden = false
             setupVideo(with: asset, state: state, isVideoOfCellPlaying: isVideoOfCellPlaying )
         }
-
     }
     
     private func setupVideo(with asset: PHAsset, state: VideoPlayerManager.State, isVideoOfCellPlaying: Bool) {
@@ -102,6 +89,36 @@ class HDCell: UICollectionViewCell {
             guard let self = self else { return }
             self.playOrPauseAction?()
         }
+    }
+    
+    private func tryHighQuality(for asset: PHAsset, onComplete: ClosureBool?) {
+        highQualityImageRequest = imageManager.image(
+            for: asset,
+            size: PHImageManagerMaximumSize,
+            contentMode: .aspectFit,
+            isNetworkAccessAllowed: false,
+            progressHandler: nil,
+            completion: { [weak self] image in
+                guard let self = self, let image = image else {
+                    onComplete?(false)
+                    return
+                }
+                self.photoImageView?.image = image
+                onComplete?(true)
+            })
+    }
+    
+    private func setLowQuality(for asset: PHAsset) {
+        lowQualityImageRequest = imageManager.requestImage(
+            for: asset,
+            targetSize: CGSize(width: 300, height: 300),
+            contentMode: .aspectFit,
+            options: nil,
+            resultHandler: { [weak self] image, info in
+                let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool ?? false
+                guard isDegraded == false, let self = self else { return }
+                self.photoImageView?.image = image
+            })
     }
     
 //    @objc func changeSlider(sender: UISlider) {

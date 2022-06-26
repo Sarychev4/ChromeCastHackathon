@@ -44,6 +44,11 @@ class VideoPlayerManager: NSObject {
     
     var imageManager: PHCachingImageManager!
     var asset: PHAsset?
+    var convertedVideoFileURL: URL? {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let videoFileURL = documentsDirectory?.appendingPathComponent("videoForCasting.mp4")
+        return videoFileURL
+    }
     
     private(set) var state: VideoPlayerManager.State = .none {
         didSet {
@@ -58,8 +63,9 @@ class VideoPlayerManager: NSObject {
     //MARK: - Actions
     
     func prepareAssetForCastToTV(_ asset: PHAsset) {
+        guard let videoFileURL = convertedVideoFileURL else { return }
         self.asset = asset
-        if asset.localIdentifier == UserDefaults.standard.lastCompressedAssetId {
+        if asset.localIdentifier == UserDefaults.standard.lastCompressedAssetId, FileManager.default.fileExists(atPath: videoFileURL.path) {
             state = .readyForTV
             return
         }
@@ -103,7 +109,7 @@ class VideoPlayerManager: NSObject {
                 guard let avasset = avasset else {
                     self.state = .none
                     return
-                }
+                } 
                 self.convertVideoToMP4(avasset)
             }
         }
@@ -111,8 +117,7 @@ class VideoPlayerManager: NSObject {
     
     // onComplete: Closure?
     func convertVideoToMP4(_ avasset: AVAsset) {
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let videoFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
+        guard let videoFileURL = convertedVideoFileURL else { return }
         let quality = Settings.current.videosResolution
         
         stateObserver?(.convertingToMP4(0))

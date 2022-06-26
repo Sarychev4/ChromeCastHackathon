@@ -25,6 +25,7 @@ PODS:
   - AppsFlyerFramework/Main (6.6.1)
   - CSSystemInfoHelper (2.0.1)
   - DeviceKit (4.6.0)
+  - ffmpeg-kit-ios-min (4.5.1)
   - Firebase/Analytics (9.1.0):
     - Firebase/Core
   - Firebase/Auth (9.1.0):
@@ -214,6 +215,7 @@ DEPENDENCIES:
   - AdvancedPageControl
   - "Agregator (from `git@github.com:mirroringcontact/common.git`)"
   - CSSystemInfoHelper (~> 2.0)
+  - ffmpeg-kit-ios-min
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging
@@ -242,6 +244,7 @@ SPEC REPOS:
     - AppsFlyerFramework
     - CSSystemInfoHelper
     - DeviceKit
+    - ffmpeg-kit-ios-min
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -312,6 +315,7 @@ SPEC CHECKSUMS:
   AppsFlyerFramework: 5e4b385a27dc6179e132b1617f76809412eb2f88
   CSSystemInfoHelper: 4042fd3366678b5d07335b9df2d6529d4eea0c4d
   DeviceKit: 834dd8aa1be53cd85364d8f49aa5d98bfac397c4
+  ffmpeg-kit-ios-min: c8ec0ae5671e44c87eead15134db82d29633bcf1
   Firebase: 91c243d75573ac6e7c9735ec859b72bffb61347d
   FirebaseABTesting: 0573c1477dd2fb8204a1d317f8968ea171c6dccc
   FirebaseAnalytics: bf11064790ac96804df1df9ddc0ae45af950d9fc
@@ -351,6 +355,6 @@ SPEC CHECKSUMS:
   XCDYouTubeKit-kbexdev: d6bdf492b85a547fe8605568359ec2e91980a465
   ZMJTipView: c51b687cd307b5329d09760e8b95e5e37d01cd63
 
-PODFILE CHECKSUM: 81e5247fc4958d243c9a66870028826cd25d8368
+PODFILE CHECKSUM: ad4858438ebe72b3b716aef6499b3998d4b6b405
 
 COCOAPODS: 1.11.3

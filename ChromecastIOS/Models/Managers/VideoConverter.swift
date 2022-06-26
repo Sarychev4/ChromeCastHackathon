@@ -8,7 +8,7 @@
 import Foundation
 import NextLevelSessionExporter
 import Photos
-
+import ffmpegkit
 
 class VideoConverter: NSObject {
     private var exporter: NextLevelSessionExporter?
@@ -27,7 +27,44 @@ class VideoConverter: NSObject {
             onComplete(false)
             return
         }
-        
+//        if let urlAsset = asset as? AVURLAsset {
+//            let assetDuration = Float(CMTimeGetSeconds(urlAsset.duration))
+//            let input = urlAsset.url.absoluteString
+//            let output = fileURL.absoluteString
+//            let command = "-re -i \(input) -map 0:0 -map 0:1 -vcodec copy -c:a copy -f mp4 -movflags faststart+frag_keyframe+separate_moof+omit_tfhd_offset+empty_moov \(output)"
+////            let command = "-re -i \(input) -sc_threshold 0 -b_strategy 0 -use_timeline 1 -single_file 1 -use_template 1 -adaptation_sets 'id=0,streams=v id=1,streams=a' -f dash \(fileURL.deletingLastPathComponent())dash.mpd"
+////            -re -i .\video-h264.mkv -map 0 -map 0 -c:a aac -c:v libx264 -b:v:0 800k -b:v:1 300k -s:v:1 320x170 -profile:v:1 baseline -profile:v:0 main -bf 1 -keyint_min 120 -g 120 -sc_threshold 0 -b_strategy 0 -ar:a:1 22050 -use_timeline 1 -single_file 1 -use_template 1 -window_size 5 -adaptation_sets "id=0,streams=v id=1,streams=a" -f dash out.mpd
+//            
+//            print(">>>> output mp4: \(output)")
+//            FFmpegKit.executeAsync(command) { [weak self] session in
+//                guard let self = self, let state = session?.getState() else { return }
+//                print(">>>> session: \(String(describing: session?.getState().rawValue))")
+//                
+//                switch state {
+//                case .created, .running:
+//                    break
+//                case .failed:
+//                    onComplete(false)
+//                case .completed:
+//                    onComplete(true)
+//                @unknown default:
+//                    break
+//                }
+//            } withLogCallback: { log in
+//                print(">>> ffmpeg: \(log?.getMessage() ?? "")")
+//            } withStatisticsCallback: { statistics in
+//                guard let statistics = statistics else { return }
+//                let timeInMilliseconds = Float(statistics.getTime())
+//                print(">>> ffmpeg progress: \(statistics.getTime())")
+//                if timeInMilliseconds > 0 {
+//                    let percentage = timeInMilliseconds/(assetDuration*1000)
+//                    print(">>> ffmpeg percentage: \(percentage)")
+//                    onProgress(min(percentage, 1))
+//                }
+//            }
+//            return
+//        }
+
         let size = videoTrack.naturalSize
         
         exporter = NextLevelSessionExporter(withAsset: asset)
@@ -100,6 +137,14 @@ class VideoConverter: NSObject {
             
         })
         
+    }
+    
+    func getUrlFromPHAsset(asset: PHAsset, callBack: @escaping (_ url: URL?) -> Void) {
+        asset.requestContentEditingInput(with: PHContentEditingInputRequestOptions(), completionHandler: { [weak self]  contentEditingInput, dictInfo in
+            guard let strURL = (contentEditingInput!.audiovisualAsset as? AVURLAsset)?.url.absoluteString  else { return }
+            print("VIDEO URL: \(strURL)")
+            callBack(URL.init(string: strURL))
+        })
     }
     
     func cancelExport() {
