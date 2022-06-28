@@ -285,7 +285,7 @@ class YouTubeViewController: BaseViewController {
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
         controller.canDismissOnPan = true
-        controller.isInteractiveBackground = false
+        controller.isInteractiveBackground = true
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
         controller.modalPresentationStyle = .overCurrentContext

@@ -53,6 +53,7 @@ class DetectedUrlsViewController: AFFloatingPanelViewController {
     private func presentDevices(postAction: Closure?) {
         let controller = ListDevicesViewController()
         controller.modalPresentationStyle = .overCurrentContext
+        controller.isInteractiveBackground = true
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
         controller.didFinishAction = {

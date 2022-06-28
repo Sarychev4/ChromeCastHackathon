@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IPTVPlayListsViewController" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IPTVPlayListsViewController" customModule="Chromecast_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="KPe-0u-E7M" id="ZN9-2G-8sq"/>
                 <outlet property="addCategoryInteractiveView" destination="wTD-Yc-XOv" id="EeQ-E7-c9Q"/>
@@ -55,7 +55,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PC6-42-ctV">
                             <rect key="frame" x="0.0" y="52" width="414" height="79"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kg0-Jm-r2t" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kg0-Jm-r2t" customClass="DropShadowView" customModule="Chromecast_iOS" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="-100" width="414" height="179"/>
                                     <color key="backgroundColor" name="MainBackground"/>
                                     <userDefinedRuntimeAttributes>
@@ -76,7 +76,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfh-yF-o6Z">
                                                     <rect key="frame" x="6" y="0.0" width="382" height="24"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-aE-oa6" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-aE-oa6" customClass="InteractiveView" customModule="Chromecast_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backArrow" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-xi-fnI">
@@ -103,7 +103,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOp-XT-RV8">
                                                             <rect key="frame" x="68" y="0.0" width="248" height="24"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_IPTV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fys-bM-kqH" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_IPTV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fys-bM-kqH" customClass="DefaultLabel" customModule="Chromecast_iOS" customModuleProvider="target">
                                                                     <rect key="frame" x="100" y="2" width="48" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -119,7 +119,7 @@
                                                                 <constraint firstItem="fys-bM-kqH" firstAttribute="centerY" secondItem="OOp-XT-RV8" secondAttribute="centerY" id="RQd-94-8oD"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTD-Yc-XOv" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTD-Yc-XOv" customClass="InteractiveView" customModule="Chromecast_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="316" y="0.0" width="24" height="24"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="LdD-xk-5ft">
@@ -145,7 +145,7 @@
                                                                 <constraint firstAttribute="width" constant="20" id="pQa-Iy-5Oi"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cb-Ez-CXv" customClass="ConnectButton" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cb-Ez-CXv" customClass="ConnectButton" customModule="Chromecast_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="360" y="0.0" width="22" height="24"/>
                                                             <subviews>
                                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="uNG-I2-dJt">
