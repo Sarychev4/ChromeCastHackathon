@@ -16,6 +16,7 @@ class IPTVStreamsViewController: BaseViewController {
         print(">>> deinit IPTVStreamsViewController")
     }
     
+    @IBOutlet weak var navigationBarShadowView: DropShadowView!
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var navigationTitleLabel: DefaultLabel!
     
@@ -78,6 +79,7 @@ class IPTVStreamsViewController: BaseViewController {
         
         navigationTitleLabel.text = playlist?.name
         
+        setupNavigationAnimations()
         searchBar.searchTextField.textColor = UIColor(named: "labelColorDark")
         
         setupPlayerStateObserver()
@@ -109,7 +111,7 @@ class IPTVStreamsViewController: BaseViewController {
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
         controller.canDismissOnPan = true
-        controller.isInteractiveBackground = false
+        controller.isInteractiveBackground = true
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
         controller.modalPresentationStyle = .overCurrentContext
@@ -241,5 +243,22 @@ extension IPTVStreamsViewController: UISearchBarDelegate {
             streams = streams?.filter("\(#keyPath(IPTVStream.name)) CONTAINS[cd] '\(searchText)'")
         }
         tableView.reloadData()
+    }
+}
+
+
+extension IPTVStreamsViewController: UIScrollViewDelegate {
+    private func setupNavigationAnimations() {
+        navigationBarShadowView.alpha = 0
+        navigationBarAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeIn, animations: { [weak self] in
+            guard let self = self else { return }
+            self.navigationBarShadowView.alpha = 1
+        })
+        animator = ScrollViewAnimator(minAnchor: 0, maxAnchor: 50, animator: navigationBarAnimator!)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
+        animator?.handleAnimation(with: currentPosition)
     }
 }
