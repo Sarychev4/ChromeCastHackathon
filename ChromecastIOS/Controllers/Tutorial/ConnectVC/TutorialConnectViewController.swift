@@ -80,7 +80,7 @@ class TutorialConnectViewController: BaseViewController {
     private func startProcessingAnimation() {
         guard currentProgress < 100 else { return }
         
-        if isShortAnimation ==  true {
+        if isShortAnimation == true {
             showShortAnimation { [weak self] in
                 guard let self = self else { return }
                 self.finishStep()
