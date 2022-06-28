@@ -105,6 +105,7 @@ class IPTVManager {
     
     private func downloadAndParsePlayslist(_ channelUrl: String, onComplete: @escaping ([IPTVStream]) -> Void) {
         guard let url = URL(string: "https://tv.wonny.net/m3u?url=\(channelUrl)") else { return }
+//        guard let url = URL(string: "https://tv.wonny.net/m3u?url=http://vk.com/playlist.m3u8") else { return }
         Alamofire.request(url).responseJSON { (response) in
             var result: [IPTVStream] = []
             if let arrayOfChannels = response.value as? [[String: Any]] {
