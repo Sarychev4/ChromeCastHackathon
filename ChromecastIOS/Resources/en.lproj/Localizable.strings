@@ -236,6 +236,8 @@
 "MorePrivacyPolicy" = "Privacy Policy";
 "MoreFAQ" = "FAQ";
 
+"NoWifiTitle" = "No WiFi connection";
+"NoWifiSubtitle" = "Connect to a WiFi network to proceed.";
 /*
  - List Devices
  */

@@ -12,6 +12,8 @@ import UIKit
 import Agregator
 import CSSystemInfoHelper
 import AVFAudio
+import Network
+import Indicate
 
 class ChromeCastService: NSObject {
     
@@ -22,22 +24,19 @@ class ChromeCastService: NSObject {
     
     var foundedDevices: [GCKDevice] = []
     var screenMirroringChannel: GCKCastChannel?
-    
     var sessionManager: GCKSessionManager?
-    
     var currentConnectedDeviceID: String?
-    
     var connectFinished: ClosureBool?
-    
     var isSessionResumed: Bool = false
-    
     var outputVolumeObserve: NSKeyValueObservation?
-    
     let audioSession = AVAudioSession.sharedInstance()
     
     private var notificationToken: NotificationToken!
     private var playerStateNotificationToken: NotificationToken?
     private var timeProgressTimer: Timer?
+    private var nwPathMonitor: NWPathMonitor?
+    private var isWifiConnected: Bool?
+    private var isWiFiFound = false
     
     private override init(){
         
@@ -100,6 +99,15 @@ class ChromeCastService: NSObject {
     }
     
     func startDiscovery() {
+        
+        /*
+         */
+        
+        observeWiFi()
+        
+        /*
+         */
+        
         let deviceScanner = GCKCastContext.sharedInstance().discoveryManager
         deviceScanner.add(self)
         deviceScanner.startDiscovery()
@@ -138,6 +146,56 @@ class ChromeCastService: NSObject {
         startNewSession(with: device)
         self.connectFinished = onComplete
         
+    }
+    
+    private func observeWiFi() {
+        guard nwPathMonitor == nil else { return }
+        nwPathMonitor = NWPathMonitor()
+        nwPathMonitor?.pathUpdateHandler = { [weak self] path in
+            guard let self = self else { return }
+//            CSSystemInfoHelper.shared.update()
+            let isWifiConnected = path.usesInterfaceType(.wifi)
+            guard self.isWifiConnected == nil || self.isWifiConnected != isWifiConnected else { return }
+            self.isWifiConnected = isWifiConnected
+            if isWifiConnected == false {
+                self.showNoWiFiToast()
+                //Не отправлять WiFi_lost если до этого не было WiFi_found
+                if self.isWiFiFound {
+                    AgregatorLogger.shared.log(eventName: "WiFi lost")
+                }
+//                if let connectableDevice = self.connectableDevice {
+//                    self.disconnect(connectableDevice)
+//                }
+//                self.discoveryManager.clearDeviceList()
+            } else {
+                self.isWiFiFound = true
+                AgregatorLogger.shared.log(eventName: "WiFi found")
+                self.startDiscovery()
+            }
+        }
+
+        nwPathMonitor?.start(queue: .main)
+    }
+    
+    private func showNoWiFiToast() {
+        guard let view = TopViewController?.view else { return }
+        let content = Indicate.Content(
+            title: .init(value: NSLocalizedString("NoWifiTitle", comment: ""), alignment: .natural),
+            attachment: .image(.init(value: UIImage(named: "IconWiFiRed")))
+        )
+        
+        let config = Indicate.Configuration(
+            duration: 10,
+            size: CGSize(width: 300, height: 75),
+            titleColor: .red,
+            backgroundColor: .white,
+            titleFont: .systemFont(ofSize: 18))
+            .with(tap: { controller in
+                controller.dismiss()
+            })
+        
+        let controller = Indicate.PresentationController(content: content, configuration: config)
+        controller.present(in: view)
     }
     
     func startNewSession(with device: GCKDevice){
