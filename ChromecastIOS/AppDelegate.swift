@@ -60,6 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let imageFileURL = documentsDirectory.appendingPathComponent("videoForCasting.mp4")
             let response = GCDWebServerFileResponse(file: imageFileURL.path, byteRange: request.byteRange)
             complitionBlock(response)
+
+//            guard let assetPath = UserDefaults.standard.lastVideoAssetPath else { return } //temp vr 1!!!
+//            let response = GCDWebServerFileResponse(file: assetPath, byteRange: request.byteRange)
+//            complitionBlock(response)
         })
         
 //        GCDWebServerOption_AutomaticallySuspendInBackground
@@ -95,15 +99,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loadingViewController.didFinishAction = { [weak self] in
             guard let self = self else { return }
             
-//            if #available(iOS 14, *) {
-//                ATTrackingManager.requestTrackingAuthorization { status in
-//                    guard status == .authorized else {return}
-//                    let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-//                    Apphud.setAdvertisingIdentifier(idfa)
-//                }
-//            }
+            if #available(iOS 14, *) {
+                ATTrackingManager.requestTrackingAuthorization { status in
+                    guard status == .authorized else {return}
+                    let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+                    Apphud.setAdvertisingIdentifier(idfa)
+                }
+            }
             
-            
+            DataManager.shared.updateData()
             if Settings.current.isIntroCompleted {
                 DataManager.shared.setupSpecialOfferTimer()
                 SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.sessionStart.rawValue) { [weak self] success in
