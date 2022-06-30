@@ -91,19 +91,13 @@ class MediaPlayerViewController: BaseViewController {
         thumbnailCollectionView.alpha = 0
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
             guard let self = self else { return }
-//            if self.selectedIndex > 0 {
-                self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
-                self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
-                UIView.animate(withDuration: 0.2 ) { [weak self] in
-                    guard let self = self else { return }
-                    self.hdCollectionView.alpha = 1
-                    self.thumbnailCollectionView.alpha = 1
-                }
-//            }
-            let asset = self.assets[self.selectedIndex]
-            let resources = PHAssetResource.assetResources(for: asset)
-            self.currentAssetNameLabel.text = resources.first?.originalFilename
-            //self.handleAsset(at: self.selectedIndex)
+            self.hdCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
+            self.thumbnailCollectionView.scrollToItem(at: IndexPath(row: self.selectedIndex, section: 0), at:.centeredHorizontally, animated: false)
+            UIView.animate(withDuration: 0.2 ) { [weak self] in
+                guard let self = self else { return }
+                self.hdCollectionView.alpha = 1
+                self.thumbnailCollectionView.alpha = 1
+            }
         }
         
         showHideResumeButton()
@@ -118,6 +112,7 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         handleAsset(at: selectedIndex)
     }
     
@@ -133,15 +128,12 @@ class MediaPlayerViewController: BaseViewController {
         if currentAsset.mediaType == .image {
             prepareAsset(at: selectedIndex) { [weak self] image in
                 guard let self = self else { return }
-//                self.hdCollectionView.reloadData() 
                 self.connectIfNeeded { [weak self] in
                     guard let self = self, let image = image else { return }
                     self.castPhotoToTV(image)
                 }
             }
         } else if currentAsset.mediaType == .video {
-            
-            //temp as
             connectIfNeeded { [weak self] in
                 guard let self = self else { return }
                 self.castVideoToTV()
@@ -201,14 +193,13 @@ class MediaPlayerViewController: BaseViewController {
         selectedIndex = index
         scrollTo(index: index, animated: true)
         setupQualityView(forMediaType: asset.mediaType)
-        startDelayBetweenCastTimer()
-
+        startDelayBetweenCastTimer() 
     }
     
     private func scrollTo(index: Int, animated: Bool) {
         let indexPath = IndexPath(row: index, section: 0)
-        hdCollectionView.scrollToItem(at: indexPath, at:.centeredHorizontally, animated: animated)
         thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: animated)
+        hdCollectionView.scrollToItem(at: indexPath, at:.centeredHorizontally, animated: animated) 
     }
     
     private func setupQualityView(forMediaType type: PHAssetMediaType) {
@@ -228,8 +219,7 @@ class MediaPlayerViewController: BaseViewController {
         delayBetweenCastTimer?.invalidate()
         delayBetweenCastTimer = nil
     }
-    
-    
+     
     private func setupNavigationSection() {
         
         if let navTitle = self.navigationTitle {
@@ -283,19 +273,18 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private func presentDevices(postAction: Closure?) {
-//        temp vr 1!!
-//        AgregatorLogger.shared.log(eventName: "Media player device list", parameters: nil)
-//        let controller = ListDevicesViewController()
-//        controller.canDismissOnPan = true
-//        controller.isInteractiveBackground = false
-//        controller.grabberState = .inside
-//        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
-//        controller.modalPresentationStyle = .overCurrentContext
-//        controller.didFinishAction = {  [weak self] in
-//            guard let _ = self else { return }
-//            postAction?()
-//        }
-//        present(controller, animated: false, completion: nil)
+        AgregatorLogger.shared.log(eventName: "Media player device list", parameters: nil)
+        let controller = ListDevicesViewController()
+        controller.canDismissOnPan = true
+        controller.isInteractiveBackground = false
+        controller.grabberState = .inside
+        controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.didFinishAction = {  [weak self] in
+            guard let _ = self else { return }
+            postAction?()
+        }
+        present(controller, animated: false, completion: nil)
     }
     
     private func presentSettings(postAction: Closure?) {
@@ -404,7 +393,7 @@ extension MediaPlayerViewController {
     
     private func reloadCurrentHDCell() {
         hdCollectionView.reloadData()
-        return 
+        return
         let indexPath = IndexPath(row: selectedIndex, section: 0)
         guard let cell = hdCollectionView.cellForItem(at: indexPath) as? HDCell,
               let size = collectionView(hdCollectionView, sizeForItemAt: indexPath),
@@ -580,7 +569,7 @@ extension MediaPlayerViewController {
                     self.hdCollectionView.reloadData()
                 }
             }
-        }
+        } 
         videoPlayerManager.imageManager = imageManager
     }
     
@@ -710,25 +699,19 @@ extension MediaPlayerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case hdCollectionView:
+            guard indexPath.row >= 0, indexPath.row < assets.count else { return }
+            let asset = assets[indexPath.row]
+            guard asset.mediaType == .image else { return }
+            handleAsset(at: indexPath.row)
             break
         case thumbnailCollectionView:
-             
-            scrollViewWillBeginDragging(thumbnailCollectionView)
-            
-            hdCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            scrollViewWillBeginDragging(thumbnailCollectionView)//схлопываю текущую центральную ячейку
             thumbnailCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {  [weak self] in
                 guard let self = self else { return }
-                self.scrollViewDidEndDecelerating(self.thumbnailCollectionView)
-            }
-        
-            selectedIndex = indexPath.row
-            let asset = assets[selectedIndex]
-            let resources = PHAssetResource.assetResources(for: asset)
-            currentAssetNameLabel.text = resources.first?.originalFilename
-            handleAsset(at: selectedIndex)
-            
+                self.scrollViewDidEndDecelerating(self.thumbnailCollectionView)//раскрываю текущую центральную ячеейку
+            } 
+            handleAsset(at: indexPath.row)
         default:
             break
         }
@@ -747,30 +730,23 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
             }
         }
     }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView,
            let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
             layout.unfoldCurrentCell()
             
-            let center = self.view.convert(collectionView.center, to: collectionView)
-            let index =  collectionView.indexPathForItem(at: CGPoint(x: center.x, y: 0))
+            let center = view.convert(collectionView.center, to: collectionView)
+            let index = collectionView.indexPathForItem(at: CGPoint(x: center.x, y: 0))
             guard let thumbPage = index?.row else { return }
             if thumbPage != selectedIndex {
-                selectedIndex = thumbPage
-                let asset = self.assets[self.selectedIndex]
-                let resources = PHAssetResource.assetResources(for: asset)
-                self.currentAssetNameLabel.text = resources.first?.originalFilename
-                self.handleAsset(at: selectedIndex)
+                handleAsset(at: thumbPage)
             }
             
         } else {
             let page = Int(scrollView.contentOffset.x / scrollView.frame.width)
             if page != selectedIndex {
-                selectedIndex = page
-                let asset = self.assets[self.selectedIndex]
-                let resources = PHAssetResource.assetResources(for: asset)
-                self.currentAssetNameLabel.text = resources.first?.originalFilename
-                self.handleAsset(at: selectedIndex)
+                handleAsset(at: page)
             }
         }
     }
@@ -778,15 +754,14 @@ extension MediaPlayerViewController: UICollectionViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate,
            let collectionView = scrollView as? UICollectionView,
-           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior{
+           let layout = collectionView.collectionViewLayout as? ThumbnailFlowLayoutDraggingBehavior {
             layout.unfoldCurrentCell()
             
-            let center = self.view.convert(collectionView.center, to: collectionView)
-            let index =  collectionView.indexPathForItem(at: CGPoint(x: center.x, y: 0))
+            let center = view.convert(collectionView.center, to: collectionView)
+            let index = collectionView.indexPathForItem(at: CGPoint(x: center.x, y: 0))
             guard let thumbPage = index?.row else { return }
             if thumbPage != selectedIndex {
-                selectedIndex = thumbPage
-                self.handleAsset(at: selectedIndex)
+                handleAsset(at: thumbPage)
             }
         }
         
@@ -798,40 +773,19 @@ extension MediaPlayerViewController: CollectionViewCellSize {
     func collectionView(_ collectionView: UICollectionView, sizeForItemAt indexPath: IndexPath) -> CGSize? {
         switch collectionView {
         case hdCollectionView:
-            //            if let size = hdPhotoModel.photoSize(at: indexPath.row) {
-            //                return cellSize(forHDImage: size)
-            //            }
             return CGSize(width: UIScreen.main.bounds.size.width, height: hdCollectionView.frame.height)
         case thumbnailCollectionView:
+            guard indexPath.row >= 0, indexPath.row < assets.count else { return nil }
             let asset = assets[indexPath.row]
             let maxHeight = CGFloat(49)
+            let minWidth = CGFloat(28)
             let photoWidth = CGFloat(asset.pixelWidth)
             let photoHeight = CGFloat(asset.pixelHeight)
             let scale = maxHeight / photoHeight
             let calculatedWidth = photoWidth * scale
-            return CGSize(width: calculatedWidth, height: maxHeight)
+            return CGSize(width: max(minWidth, calculatedWidth), height: maxHeight)
         default:
             return nil
-        }
-    }
-    
-    fileprivate func cellSize(forHDImage size: CGSize) -> CGSize? {
-        let ratio = size.height / size.width
-        if (ratio < hdCollectionViewRatio) {
-            return CGSize(width: hdCollectionView.frame.size.width, height: hdCollectionView.frame.size.width * ratio)
-        } else {
-            return CGSize(width: hdCollectionView.frame.size.height / ratio, height: hdCollectionView.frame.size.height)
-        }
-    }
-    
-    fileprivate func cellSize(forThumbImage size: CGSize) -> CGSize? {
-        let ratio = size.height / size.width
-        if (ratio > thumbnailCollectionViewThinnestRatio) {
-            return CGSize(width: thumbnailCollectionView.cellNormalWidth, height: thumbnailCollectionView.cellHeight)
-        } else if ratio < thumbnailCollectionViewThickestRatio {
-            return CGSize(width: thumbnailCollectionView.cellMaximumWidth, height: thumbnailCollectionView.cellHeight)
-        } else {
-            return CGSize(width: thumbnailCollectionView.frame.size.height / ratio, height: thumbnailCollectionView.frame.size.height)
         }
     }
 }
