@@ -149,7 +149,12 @@ class MainViewController: BaseViewController {
             type: .googlePhotos
         )
         
-        tabs = [browser, media, iptv, youtube, googleDrive, googlePhotos]
+        if Settings.current.googleButtonsEnabled {
+            tabs = [browser, media, iptv, youtube, googleDrive, googlePhotos]
+        } else {
+            tabs = [browser, media, iptv, youtube]
+        }
+        
     }
     
     private func handleTapOnCell(at indexPath: IndexPath) {

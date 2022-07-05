@@ -418,6 +418,10 @@ class DataManager: NSObject {
             Settings.current.introRatingType = introRatingType
         }
         
+        if let googleButtonsEnabled = dictionary["google_buttons_enabled"] as? Bool {
+            Settings.current.googleButtonsEnabled = googleButtonsEnabled
+        }
+        
         try! realm.commitWrite()
         
         /*
