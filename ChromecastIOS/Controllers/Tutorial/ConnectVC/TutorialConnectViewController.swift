@@ -32,9 +32,7 @@ class TutorialConnectViewController: BaseViewController {
     private var isAnimating: Bool = false
     private var progressTimer: Timer?
     private var currentProgress: Int = 0
-    
-    private var isShortAnimation: Bool =  false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,13 +78,15 @@ class TutorialConnectViewController: BaseViewController {
     private func startProcessingAnimation() {
         guard currentProgress < 100 else { return }
         
-        if isShortAnimation == true {
-            showShortAnimation { [weak self] in
+        let realm = try! Realm()
+        let detectedDevices = realm.objects(DeviceObject.self)
+        if detectedDevices.isEmpty {
+            showLongAnimation { [weak self] in
                 guard let self = self else { return }
                 self.finishStep()
             }
         } else {
-            showLongAnimation { [weak self] in
+            showShortAnimation { [weak self] in
                 guard let self = self else { return }
                 self.finishStep()
             }
