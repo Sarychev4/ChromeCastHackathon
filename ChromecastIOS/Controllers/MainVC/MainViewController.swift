@@ -70,7 +70,9 @@ class MainViewController: BaseViewController {
         mirrorInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             AgregatorLogger.shared.log(eventName: "Mirroring tap", parameters: nil)
-            self.navigation?.pushViewController(MirrorViewController(), animated: .left)
+            let vc = MirrorViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigation?.pushViewController(vc, animated: .left)
         }
     }
     

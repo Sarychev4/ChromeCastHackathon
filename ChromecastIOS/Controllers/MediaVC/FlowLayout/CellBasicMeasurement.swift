@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CellBasicMeasurement: class {
+protocol CellBasicMeasurement: AnyObject {
     var currentCellIndex: Int { get }
     var cellMaximumWidth: CGFloat { get }
 }

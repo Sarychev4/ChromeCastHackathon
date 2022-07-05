@@ -88,7 +88,8 @@ class UINavigationContainer: BaseViewController {
             controllerThatWillBeDeleted.remove()
             self.view.isUserInteractionEnabled = true
         })
-        print(currenVC, currenVC.hidesBottomBarWhenPushed)
+        
+        print(">>>UINavigationContainer", currenVC, currenVC.hidesBottomBarWhenPushed)
     }
     
     private func addRecognizerOnViewOfController(_ controller: UIViewController){

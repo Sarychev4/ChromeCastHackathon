@@ -87,7 +87,7 @@ class MirrorViewController: BaseViewController {
         setupNavigationSection()
         setupSettingsSection()
         
-        setupMirrotingSection()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,7 +96,7 @@ class MirrorViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        setupMirrotingSection()
         state = Settings.current.mirroringState
         
     }
@@ -144,7 +144,9 @@ class MirrorViewController: BaseViewController {
     }
     
     private func setupMirrotingSection() {
-        mirroringButton?.setImage(nil, for: .normal)
+        if let mirroringButton = mirroringButton {
+            mirroringButton.setImage(nil, for: .normal)
+        }
         //temp as
         broadCastView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
         broadCastView.showsMicrophoneButton = false
