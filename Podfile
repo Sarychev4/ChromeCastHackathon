@@ -34,7 +34,8 @@ target 'Chromecast iOS' do
   pod 'GoogleSignIn'
   pod "NextLevelSessionExporter", "~> 0.4.5"
   pod 'ZMJTipView'
-  pod 'ffmpeg-kit-ios-min'
+#  pod 'ffmpeg-kit-ios-min'
+#pod 'ffmpeg-kit-ios-https-gpl'
 end 
 
  post_install do |installer_representation|

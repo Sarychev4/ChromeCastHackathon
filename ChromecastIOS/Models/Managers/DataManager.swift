@@ -170,7 +170,7 @@ class DataManager: NSObject {
 //        }
     }
     
-    private func updateData() {
+    func updateData() {
         getConfiguration(with: nil)
     }
     
