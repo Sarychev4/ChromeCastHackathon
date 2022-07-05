@@ -33,7 +33,7 @@ class TutorialConnectViewController: BaseViewController {
     private var progressTimer: Timer?
     private var currentProgress: Int = 0
     
-    private var isShortAnimation: Bool =  true //3 sec
+    private var isShortAnimation: Bool =  false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +80,7 @@ class TutorialConnectViewController: BaseViewController {
     private func startProcessingAnimation() {
         guard currentProgress < 100 else { return }
         
-        if isShortAnimation ==  true {
+        if isShortAnimation == true {
             showShortAnimation { [weak self] in
                 guard let self = self else { return }
                 self.finishStep()
@@ -103,9 +103,9 @@ class TutorialConnectViewController: BaseViewController {
     
     private func showLongAnimation(onComplete: @escaping () -> ()) {
         animateWithRandomDuration(in: 1..<2, toPercent: 0.35) { [weak self] in
-            self?.animateWithRandomDuration(in: 1..<2, toPercent: 0.45) { [weak self] in
-                self?.animateWithRandomDuration(in: 2..<4, toPercent: 0.7) { [weak self] in
-                    self?.animateWithRandomDuration(in: 1..<2, toPercent: 1) {
+            self?.animateWithRandomDuration(in: 2..<3, toPercent: 0.45) { [weak self] in
+                self?.animateWithRandomDuration(in: 4..<5, toPercent: 0.7) { [weak self] in
+                    self?.animateWithRandomDuration(in: 0..<1, toPercent: 1) {
                         onComplete()
                     }
                 }

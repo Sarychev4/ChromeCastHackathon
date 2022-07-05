@@ -20,10 +20,13 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     @IBOutlet weak var refreshIcon: UIImageView!
     @IBOutlet weak var attentionContainer: UIView!
     
+    @IBOutlet weak var noDeviceFoundedLabel: DefaultLabel!
     @IBOutlet weak var helpInteractiveLabel: InteractiveLabel!
     
     private var detectedDevices: Results<DeviceObject>?
     private var devicesNotificationToken: NotificationToken?
+    
+    private let isVerySmallScreen = UIScreen.main.bounds.size.height <= 568
     
     var didFinishAction: (() -> ())?
     
@@ -53,6 +56,10 @@ class ListDevicesViewController: AFFloatingPanelViewController {
         
         
         addDevicesObserver()
+        
+        if isVerySmallScreen {
+            noDeviceFoundedLabel.font = noDeviceFoundedLabel.font.withSize(14)
+        }
         
     }
     

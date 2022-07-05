@@ -9,12 +9,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListDevicesViewController" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListDevicesViewController" customModule="Chromecast_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="attentionContainer" destination="lDg-cx-fI4" id="ewx-Rc-JMs"/>
                 <outlet property="devicesStackView" destination="ImO-5w-wZX" id="Tr6-4d-Hph"/>
                 <outlet property="dotsIndicatorView" destination="Bbo-HT-csX" id="xdb-2A-qjD"/>
                 <outlet property="helpInteractiveLabel" destination="Rm5-Er-NL7" id="jFj-u7-bc2"/>
+                <outlet property="noDeviceFoundedLabel" destination="a7Q-5T-mNc" id="PZJ-qg-xjs"/>
                 <outlet property="panelView" destination="Z0C-sv-KAL" id="JXl-kl-c8d"/>
                 <outlet property="panelViewBottomConstraint" destination="pbc-7d-Dlf" id="ZDb-2K-Qlb"/>
                 <outlet property="panelViewContentBottomConstraint" destination="nac-gu-5Bl" id="yru-SK-Wfh"/>
@@ -37,7 +38,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3W-Ui-dzV">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="59.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Select your device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBz-78-Scz" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Select your device" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBz-78-Scz" customClass="DefaultLabel" customModule="Chromecast_iOS" customModuleProvider="target">
                                             <rect key="frame" x="108.5" y="0.0" width="165" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <color key="textColor" name="labelColorDark"/>
@@ -46,7 +47,7 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.ListDevices.Title"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-HT-csX" customClass="DotsActivityIndicator" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-HT-csX" customClass="DotsActivityIndicator" customModule="Chromecast_iOS" customModuleProvider="target">
                                             <rect key="frame" x="175" y="41.5" width="32" height="8"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -67,7 +68,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDg-cx-fI4">
                                     <rect key="frame" x="0.0" y="59.5" width="382" height="68"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7Q-5T-mNc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7Q-5T-mNc" customClass="DefaultLabel" customModule="Chromecast_iOS" customModuleProvider="target">
                                             <rect key="frame" x="8" y="0.0" width="366" height="76.5"/>
                                             <string key="text">_Make sure your phone and Smart TV are connected to the same Wi-Fi network. If
 your TV is not on the list, please reboot it
@@ -83,9 +84,9 @@ your TV is not on the list, please reboot it
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="a7Q-5T-mNc" firstAttribute="leading" secondItem="lDg-cx-fI4" secondAttribute="leading" constant="8" id="5ma-3b-bic"/>
+                                        <constraint firstAttribute="bottom" secondItem="a7Q-5T-mNc" secondAttribute="bottom" constant="-8.5" id="9bi-29-zeA"/>
                                         <constraint firstItem="a7Q-5T-mNc" firstAttribute="top" secondItem="lDg-cx-fI4" secondAttribute="top" id="ffg-am-Kh3"/>
                                         <constraint firstAttribute="trailing" secondItem="a7Q-5T-mNc" secondAttribute="trailing" constant="8" id="iuT-fr-DwS"/>
-                                        <constraint firstAttribute="height" constant="68" id="zHJ-7Z-ahd"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0o-CZ-vZf">
@@ -119,7 +120,7 @@ your TV is not on the list, please reboot it
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTz-yw-0wl">
                                             <rect key="frame" x="99.5" y="20" width="183" height="36"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Don't see your device?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm5-Er-NL7" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Don't see your device?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rm5-Er-NL7" customClass="InteractiveLabel" customModule="Chromecast_iOS" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="183" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="labelColorGrayPunk"/>
@@ -139,7 +140,7 @@ your TV is not on the list, please reboot it
                                                 <constraint firstItem="Rm5-Er-NL7" firstAttribute="leading" secondItem="XTz-yw-0wl" secondAttribute="leading" id="q5n-mr-nvV"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-2C-Te7" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q8-2C-Te7" customClass="DropShadowView" customModule="Chromecast_iOS" customModuleProvider="target">
                                             <rect key="frame" x="167" y="88" width="48" height="48"/>
                                             <color key="backgroundColor" name="MainBackground"/>
                                             <constraints>
@@ -150,7 +151,7 @@ your TV is not on the list, please reboot it
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-oZ-3B4" customClass="RoundedView" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-oZ-3B4" customClass="RoundedView" customModule="Chromecast_iOS" customModuleProvider="target">
                                             <rect key="frame" x="167" y="88" width="48" height="48"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refresh" translatesAutoresizingMaskIntoConstraints="NO" id="sSD-3g-BzS">
@@ -164,7 +165,7 @@ your TV is not on the list, please reboot it
                                                 <constraint firstItem="sSD-3g-BzS" firstAttribute="centerX" secondItem="l0D-oZ-3B4" secondAttribute="centerX" id="oNJ-bv-3Tm"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Tap to refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ex-NP-uer" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Tap to refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ex-NP-uer" customClass="DefaultLabel" customModule="Chromecast_iOS" customModuleProvider="target">
                                             <rect key="frame" x="141.5" y="152" width="99.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                             <color key="textColor" name="labelColorDark"/>

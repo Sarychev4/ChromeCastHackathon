@@ -11,17 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainCell" id="gTV-IL-0wX" customClass="MainCell" customModule="ChromecastIOS" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainCell" id="gTV-IL-0wX" customClass="MainCell" customModule="Chromecast_iOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="178" height="146"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="178" height="146"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yq-os-JMf" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yq-os-JMf" customClass="InteractiveView" customModule="Chromecast_iOS" customModuleProvider="target">
                         <rect key="frame" x="6" y="6" width="166" height="134"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eko-ef-X77" customClass="DropShadowView" customModule="ChromecastIOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eko-ef-X77" customClass="DropShadowView" customModule="Chromecast_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="166" height="134"/>
                                 <color key="backgroundColor" name="MainBackground"/>
                                 <userDefinedRuntimeAttributes>
@@ -37,7 +37,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-Df-0gv">
-                                <rect key="frame" x="24" y="24" width="110" height="86"/>
+                                <rect key="frame" x="28" y="24" width="110" height="86"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNc-jv-jHC">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="36"/>
@@ -45,8 +45,7 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="browser" translatesAutoresizingMaskIntoConstraints="NO" id="Uqa-oC-6Lf">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="A0j-GU-fpx"/>
-                                                    <constraint firstAttribute="width" constant="36" id="IwB-Ml-6eZ"/>
+                                                    <constraint firstAttribute="width" secondItem="Uqa-oC-6Lf" secondAttribute="height" multiplier="1:1" id="c2e-Yh-BPf"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -54,7 +53,7 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Uqa-oC-6Lf" secondAttribute="bottom" id="2un-aj-4u3"/>
                                             <constraint firstItem="Uqa-oC-6Lf" firstAttribute="leading" secondItem="bNc-jv-jHC" secondAttribute="leading" id="7nM-FR-mnF"/>
-                                            <constraint firstAttribute="height" constant="36" id="Er4-3C-M0y"/>
+                                            <constraint firstItem="Uqa-oC-6Lf" firstAttribute="height" secondItem="bNc-jv-jHC" secondAttribute="height" id="9pp-eV-eLT"/>
                                             <constraint firstItem="Uqa-oC-6Lf" firstAttribute="top" secondItem="bNc-jv-jHC" secondAttribute="top" id="M3I-Ui-Te8"/>
                                         </constraints>
                                     </view>
@@ -84,7 +83,6 @@
                                         <constraints>
                                             <constraint firstItem="z4x-Fy-bsK" firstAttribute="top" secondItem="44b-J1-YUR" secondAttribute="bottom" constant="4" id="EAz-37-KMW"/>
                                             <constraint firstAttribute="height" constant="50" id="MRr-vV-RrS"/>
-                                            <constraint firstAttribute="trailing" secondItem="z4x-Fy-bsK" secondAttribute="trailing" constant="1" id="TNY-CC-qI9"/>
                                             <constraint firstItem="z4x-Fy-bsK" firstAttribute="leading" secondItem="RpC-E0-ljn" secondAttribute="leading" id="evs-Sh-etP"/>
                                             <constraint firstItem="44b-J1-YUR" firstAttribute="top" secondItem="RpC-E0-ljn" secondAttribute="top" constant="12" id="tZb-4S-f2U"/>
                                             <constraint firstItem="44b-J1-YUR" firstAttribute="leading" secondItem="RpC-E0-ljn" secondAttribute="leading" id="u0J-6M-3WW"/>
@@ -92,16 +90,21 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="44b-J1-YUR" firstAttribute="height" secondItem="bNc-jv-jHC" secondAttribute="height" multiplier="0.569444" id="jRO-Gj-E3W"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="P6H-Df-0gv" firstAttribute="centerY" secondItem="5yq-os-JMf" secondAttribute="centerY" id="8ca-Oy-9Q1"/>
                             <constraint firstItem="eko-ef-X77" firstAttribute="leading" secondItem="5yq-os-JMf" secondAttribute="leading" id="CHV-vI-9jh"/>
-                            <constraint firstItem="P6H-Df-0gv" firstAttribute="leading" secondItem="5yq-os-JMf" secondAttribute="leading" constant="24" id="ElO-R0-NV8"/>
+                            <constraint firstItem="P6H-Df-0gv" firstAttribute="centerX" secondItem="5yq-os-JMf" secondAttribute="centerX" id="LQn-3W-PXS"/>
                             <constraint firstItem="eko-ef-X77" firstAttribute="top" secondItem="5yq-os-JMf" secondAttribute="top" id="b2A-iH-svY"/>
                             <constraint firstAttribute="bottom" secondItem="eko-ef-X77" secondAttribute="bottom" id="bhr-cA-rTV"/>
                             <constraint firstAttribute="trailing" secondItem="eko-ef-X77" secondAttribute="trailing" id="eNI-Is-h27"/>
+                            <constraint firstItem="bNc-jv-jHC" firstAttribute="height" secondItem="5yq-os-JMf" secondAttribute="height" multiplier="0.268657" id="olo-ox-Ddj"/>
+                            <constraint firstItem="P6H-Df-0gv" firstAttribute="width" secondItem="5yq-os-JMf" secondAttribute="width" multiplier="0.662651" id="qmz-EI-L19"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -120,8 +123,9 @@
                 <outlet property="imageView" destination="Uqa-oC-6Lf" id="xAd-95-WyY"/>
                 <outlet property="subtitleLabel" destination="z4x-Fy-bsK" id="sqP-Nh-p1q"/>
                 <outlet property="titleLabel" destination="44b-J1-YUR" id="uak-pK-rI2"/>
+                <outlet property="verticalTextSapceConstraint" destination="tZb-4S-f2U" id="HnZ-Hu-sUg"/>
             </connections>
-            <point key="canvasLocation" x="200.72463768115944" y="87.053571428571431"/>
+            <point key="canvasLocation" x="200.00000000000003" y="87.053571428571431"/>
         </collectionViewCell>
     </objects>
     <resources>

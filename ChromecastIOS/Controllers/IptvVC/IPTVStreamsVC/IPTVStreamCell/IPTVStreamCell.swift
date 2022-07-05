@@ -23,7 +23,6 @@ class IPTVStreamCell: UITableViewCell {
     }
     
     @IBAction func contentClicked(_ sender: Any) {
-        print("GGGGGG")
         didTouchAction?()
     }
     

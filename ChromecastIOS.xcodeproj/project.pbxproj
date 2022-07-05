@@ -1902,7 +1902,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
@@ -1929,7 +1929,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
@@ -1960,12 +1960,13 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSCameraUsageDescription = "for better user experience";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This way we'll be able to tailor user experience to your needs and constantly improve app features.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1997,11 +1998,12 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSCameraUsageDescription = "for better user experience";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This way we'll be able to tailor user experience to your needs and constantly improve app features.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -149,7 +149,12 @@ class MainViewController: BaseViewController {
             type: .googlePhotos
         )
         
-        tabs = [browser, media, iptv, youtube, googleDrive, googlePhotos]
+        if Settings.current.googleButtonsEnabled {
+            tabs = [browser, media, iptv, youtube, googleDrive, googlePhotos]
+        } else {
+            tabs = [browser, media, iptv, youtube]
+        }
+        
     }
     
     private func handleTapOnCell(at indexPath: IndexPath) {
@@ -215,7 +220,7 @@ class MainViewController: BaseViewController {
     private func presentDevices(postAction: (() -> ())?) {
         let controller = ListDevicesViewController()
         controller.canDismissOnPan = true
-        controller.isInteractiveBackground = false
+        controller.isInteractiveBackground = true
         controller.grabberState = .inside
         controller.grabberColor = UIColor.black.withAlphaComponent(0.8)
         controller.modalPresentationStyle = .overCurrentContext

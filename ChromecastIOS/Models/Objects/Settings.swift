@@ -106,4 +106,11 @@ class Settings: Object {
     
     @Persisted var supportEmail: String = "contact@go2020apps.com"
     
+    /*
+     MARK: - GoogleServices
+     */
+    
+    @Persisted var googleButtonsEnabled: Bool = false
+    
+    
 }
