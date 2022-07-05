@@ -33,7 +33,8 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mirrorInteractiveView: InteractiveView! {
         didSet {
-            mirrorInteractiveView.didTouchAction = {
+            mirrorInteractiveView.didTouchAction = { [weak self] in
+                guard let self = self else { return } 
                 AgregatorLogger.shared.log(eventName: "Mirroring tap", parameters: nil)
                 self.navigation?.pushViewController(MirrorViewController(), animated: .left)
             }
