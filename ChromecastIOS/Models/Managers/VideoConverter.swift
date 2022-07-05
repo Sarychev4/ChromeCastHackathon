@@ -8,7 +8,7 @@
 import Foundation
 import NextLevelSessionExporter
 import Photos
-import ffmpegkit
+//import ffmpegkit
 
 class VideoConverter: NSObject {
     private var exporter: NextLevelSessionExporter?
