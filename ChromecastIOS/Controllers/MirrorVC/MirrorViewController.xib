@@ -430,7 +430,7 @@
                                                                                 </view>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f43-Ao-5Ks" customClass="RPSystemBroadcastPickerView">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </view>
                                                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TapToStartMirroring" translatesAutoresizingMaskIntoConstraints="NO" id="yXp-k3-656">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>

@@ -83,11 +83,9 @@ class MirrorViewController: BaseViewController {
         super.viewDidLoad()
         
         observeMirroringState()
-        
+        setupMirrotingSection()
         setupNavigationSection()
         setupSettingsSection()
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,16 +94,12 @@ class MirrorViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupMirrotingSection()
         state = Settings.current.mirroringState
-        
     }
     
     @objc private func willEnterForegroundAction() {
         connectIfNeeded(onComplete: nil)
     }
-    
-    
     
     @IBAction func rotationChanged(_ sender: UISwitch) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
