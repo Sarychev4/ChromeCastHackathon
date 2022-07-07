@@ -4,7 +4,6 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>audio</string>
 		<string>processing</string>
 		<string>com.appflair.chromecast.ios</string>
 	</array>
@@ -39,12 +38,6 @@
 		<string>_googlecast._tcp</string>
 		<string>_ABCD1234._googlecast._tcp</string>
 		<string>_com.appflair.chromecast.ios._tcp</string>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-		<string>fetch</string>
-		<string>processing</string>
 	</array>
 </dict>
 </plist>
