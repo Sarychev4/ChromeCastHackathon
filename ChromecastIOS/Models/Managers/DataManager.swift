@@ -223,6 +223,67 @@ class DataManager: NSObject {
         })
     }
     
+    
+    /*
+     MARK: - Check ASA User
+     */
+    
+    public func updateAdAttributions(with completeBlock: Closure?) {
+        AgregatorLogger.shared.updateAdAttributions(with: nil)
+        
+        guard Settings.current.isUserAttributionEnabled == false else { return }
+        
+        if #available(iOS 14.3, *) {
+            if let token = try? AdServices.AAAttribution.attributionToken() {
+                let url = URL(string: "https://api-adservices.apple.com/api/v1")!
+                var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 5)
+                request.httpMethod = "POST"
+                request.setValue("text/plain; charset=utf-8", forHTTPHeaderField: "Content-Type")
+                request.httpBody = token.data(using: .utf8)
+                
+                Alamofire.request(request).responseJSON { response in
+                    defer {
+                        DispatchQueue.main.async {
+                            completeBlock?()
+                        }
+                    }
+                    guard let json = response.value as? [String: AnyHashable], let boolValue = json["attribution"] as? Bool else { return }
+                    try! Settings.current.realm?.write {
+                        Settings.current.isUserAttributionEnabled = boolValue
+                    }
+                    if boolValue {
+                        AgregatorLogger.shared.log(eventName: "ASA user detected", parameters: ["iOS": "14.3+"])
+                    }
+                    AgregatorLogger.shared.log(eventName: "Attribution", parameters: ["attribution": boolValue, "returnType": "Bool", "iOS": "14.3+"])
+                    
+                }
+            } else {
+                completeBlock?()
+            }
+        } else {
+            ADClient.shared().requestAttributionDetails { (dictionary, error) in
+                defer {
+                    DispatchQueue.main.async { completeBlock?() }
+                }
+                guard error == nil, let dictionary = dictionary, let value = dictionary["iad-attribution"] else { return }
+                var boolValue = false
+                if let stringValue = value as? String, let value = Bool(stringValue) {
+                    boolValue = value
+                } else if let value = value as? Bool {
+                    boolValue = value
+                }
+                try! Settings.current.realm?.write {
+                    Settings.current.isUserAttributionEnabled = boolValue
+                }
+                if boolValue {
+                    AgregatorLogger.shared.log(eventName: "ASA user detected", parameters: ["iOS": "14.3-"])
+                }
+                
+                AgregatorLogger.shared.log(eventName: "Attribution", parameters: ["attribution": boolValue, "iOS": "14.3-", "returnType": "String"])
+            }
+        }
+    }
+    
     /*
      MARK: - Check Internet Connection
      */

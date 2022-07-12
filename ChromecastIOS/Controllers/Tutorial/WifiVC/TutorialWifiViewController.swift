@@ -25,7 +25,17 @@ class TutorialWifiViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         
+        /*
+        */
         
+        DataManager.shared.updateAdAttributions(with: { [weak self] in
+            guard let _ = self else { return }
+        })
+        
+        /*
+        */
+         
         AgregatorLogger.shared.log(eventName: "Tutorial_shown",
                                    parameters: ["Tutorial Step": nameForEvents, "Source": source])
         
