@@ -31,16 +31,7 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var goToPremiumInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var mirrorInteractiveView: InteractiveView! {
-        didSet {
-            mirrorInteractiveView.didTouchAction = { [weak self] in
-                guard let self = self else { return } 
-                AgregatorLogger.shared.log(eventName: "Mirroring tap", parameters: nil)
-                self.navigation?.pushViewController(MirrorViewController(), animated: .left)
-            }
-        }
-    }
-    
+    @IBOutlet weak var mirrorInteractiveView: InteractiveView! 
     @IBOutlet weak var needHelpInteractiveLabel: InteractiveLabel!
     
     
@@ -71,7 +62,18 @@ class MainViewController: BaseViewController {
         collectionView.contentInset.top = 0
         setupTabs()
         setupHelpSection()
+        setupMirrorButton()
         setupHeaderSection()
+    }
+    
+    private func setupMirrorButton() {
+        mirrorInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            AgregatorLogger.shared.log(eventName: "Mirroring tap", parameters: nil)
+            let vc = MirrorViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigation?.pushViewController(vc, animated: .left)
+        }
     }
     
     private func setupHeaderSection() {

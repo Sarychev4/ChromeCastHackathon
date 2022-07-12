@@ -83,11 +83,9 @@ class MirrorViewController: BaseViewController {
         super.viewDidLoad()
         
         observeMirroringState()
-        
+        setupMirrotingSection()
         setupNavigationSection()
         setupSettingsSection()
-        
-        setupMirrotingSection()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,16 +94,12 @@ class MirrorViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         state = Settings.current.mirroringState
-        
     }
     
     @objc private func willEnterForegroundAction() {
         connectIfNeeded(onComplete: nil)
     }
-    
-    
     
     @IBAction func rotationChanged(_ sender: UISwitch) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -144,7 +138,9 @@ class MirrorViewController: BaseViewController {
     }
     
     private func setupMirrotingSection() {
-        mirroringButton?.setImage(nil, for: .normal)
+        if let mirroringButton = mirroringButton {
+            mirroringButton.setImage(nil, for: .normal)
+        }
         //temp as
         broadCastView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
         broadCastView.showsMicrophoneButton = false

@@ -17,6 +17,7 @@
 		DD03EFB5282AB0090075F70E /* Locale+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFB4282AB0090075F70E /* Locale+Extension.swift */; };
 		DD03EFB7282AB4E50075F70E /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFB6282AB4E50075F70E /* RoundedImageView.swift */; };
 		DD03EFB9282AB51F0075F70E /* InteractiveImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFB8282AB51F0075F70E /* InteractiveImageView.swift */; };
+		DD0B64F928756E6B007AC44B /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8964313280EB5A700E6E287 /* ReplayKit.framework */; };
 		DD181211282ABA8F00EFF2AF /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD18120F282ABA8F00EFF2AF /* HelpViewController.swift */; };
 		DD181212282ABA8F00EFF2AF /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD181210282ABA8F00EFF2AF /* HelpViewController.xib */; };
 		DD19E4742811D58600931489 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = DD19E46C2811D58600931489 /* style.css */; };
@@ -509,6 +510,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD0B64F928756E6B007AC44B /* ReplayKit.framework in Frameworks */,
 				90EF9B5699B3CF6A697C5CAC /* Pods_Chromecast_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1359,6 +1361,7 @@
 				E8964342280EB75D00E6E287 /* Embed App Extensions */,
 				50245C60B5749F2D6C3C7C11 /* [CP] Embed Pods Frameworks */,
 				ED3EE10D0E760A199BF2AAB9 /* [CP] Copy Pods Resources */,
+				DD0B64FA28756F0D007AC44B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1551,6 +1554,25 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DD0B64FA28756F0D007AC44B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		E8964335280EB75D00E6E287 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1902,7 +1924,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
@@ -1929,7 +1951,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MirroringExtension/Info.plist;
@@ -1960,7 +1982,7 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1999,7 +2021,7 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
