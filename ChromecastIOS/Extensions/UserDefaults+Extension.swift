@@ -16,6 +16,8 @@ extension UserDefaults {
     static var realmEncryptionKey: Data {
         get {
             if let existingKey = UserDefaults.group.object(forKey: "TempTestKey") as? Data {
+                let realmKey = existingKey.map { b in String(format: "%02X", b) }.joined()
+                print(realmKey) // Эту строку надо вставить в реалме чтобы открыть файл.
                 return existingKey
             } else {
                 /*

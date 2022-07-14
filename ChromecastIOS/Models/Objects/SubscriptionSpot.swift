@@ -58,6 +58,7 @@ class SubscriptionSpot: Object {
      */
     
     @Persisted var data: Data? = nil
+    @Persisted var specialOfferdata: Data? = nil
     
     /*
      MARK: -
@@ -72,8 +73,6 @@ class SubscriptionSpot: Object {
     }
     
     
-    @objc
-    dynamic var specialOfferdata: Data? = nil
     
     /*
      MARK: -
