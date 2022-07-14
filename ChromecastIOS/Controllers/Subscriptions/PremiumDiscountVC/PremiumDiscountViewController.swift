@@ -152,7 +152,7 @@ class PremiumDiscountViewController: BaseViewController {
                 /*
                  */
                 
-                var params = [
+                let params = [
                     "Source" : self.source,
                     "Product ID" : productID
                 ]
