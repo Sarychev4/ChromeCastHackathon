@@ -31,7 +31,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E8964332280EB75D00E6E287"
                BuildableName = "Chromecast iOS.app"
-               BlueprintName = "Chromecast iOS"
+               BlueprintName = "Chromecast"
                ReferencedContainer = "container:ChromecastIOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E8964332280EB75D00E6E287"
             BuildableName = "Chromecast iOS.app"
-            BlueprintName = "Chromecast iOS"
+            BlueprintName = "Chromecast"
             ReferencedContainer = "container:ChromecastIOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E8964332280EB75D00E6E287"
             BuildableName = "Chromecast iOS.app"
-            BlueprintName = "Chromecast iOS"
+            BlueprintName = "Chromecast"
             ReferencedContainer = "container:ChromecastIOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
