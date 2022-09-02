@@ -30,7 +30,7 @@ class OpenWebsitesViewController: BaseViewController {
         websitesCollectionView.delegate = self
         websitesCollectionView.dataSource = self
         let size = cellSize()
-        websitesCollectionView.contentInset.left = websitesCollectionView.frame.size.width/2 - size.width/2
+        websitesCollectionView.contentInset.left = (websitesCollectionView.frame.size.width - size.width)/2
         let websiteCellNib = UINib(nibName: WebsiteCell.Identifier, bundle: .main)
         websitesCollectionView.register(websiteCellNib, forCellWithReuseIdentifier: WebsiteCell.Identifier)
         websitesCollectionView.contentInset.top = 32

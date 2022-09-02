@@ -91,6 +91,17 @@
 "SubscriptionComment2" = "So far I’m loving it.\nWay better to see all the info on a bigger screen.";
 "SubscriptionCommentName2" = "by JD891";
 
+
+/*
+ - Tab Bar
+ */
+
+"Screen.TabBar.Cast" = "Cast";
+"Screen.TabBar.Channels" = "Channels";
+"Screen.TabBar.Whiteboard" = "Whiteboard";
+"Screen.TabBar.Settings" = "Settings";
+
+
 /*
  - Main Screen
  */
@@ -103,6 +114,9 @@
 "Screen.Main.Premium" = "Go Premium";
 "Screen.Main.NeedHelp.Title" = "Need help?";
 "Screen.Main.Tap.Title" = "Tap to mirror";
+
+"Screen.Main.Button.Title1" = "Screen mirroring";
+"Screen.Main.Button.Title2" = "Mirror your entire screen";
 
 
 "Screen.Main.Tab.Browser.Title" = "Browser";

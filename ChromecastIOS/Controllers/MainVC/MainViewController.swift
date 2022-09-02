@@ -27,7 +27,7 @@ enum MenuButtonType {
 class MainViewController: BaseViewController {
     
     @IBOutlet weak var systemBroadcastPickerView: RPSystemBroadcastPickerView!
-    @IBOutlet weak var settingsInteractiveView: InteractiveView!
+//    @IBOutlet weak var settingsInteractiveView: InteractiveView!
     @IBOutlet weak var goToPremiumInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -78,13 +78,14 @@ class MainViewController: BaseViewController {
     
     private func setupHeaderSection() {
         
-        settingsInteractiveView.didTouchAction = {
-            AgregatorLogger.shared.log(eventName: "Setting", parameters: ["Source": "Main_screen"])
-            let settingsViewController = SettingsViewController()
-            let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            self.present(navigationController, animated: true, completion: nil)
-        }
+//        settingsInteractiveView.didTouchAction = { [weak self] in
+//        guard let self = self else { return }
+//            AgregatorLogger.shared.log(eventName: "Setting", parameters: ["Source": "Main_screen"])
+//            let settingsViewController = SettingsViewController()
+//            let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
+//            navigationController.modalPresentationStyle = .fullScreen
+//            self.present(navigationController, animated: true, completion: nil)
+//        }
         
         goToPremiumInteractiveView.isHidden = AgregatorApplication.current.subscriptionState == .active
         goToPremiumInteractiveView.didTouchAction = {

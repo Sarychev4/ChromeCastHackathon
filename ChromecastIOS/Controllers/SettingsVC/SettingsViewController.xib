@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="Chromecast" customModuleProvider="target">
             <connections>
-                <outlet property="closeCrossInteractiveView" destination="5uQ-B3-WKS" id="bIJ-zq-fw8"/>
                 <outlet property="containerStackView" destination="CR4-Do-xj6" id="RnG-VC-TN4"/>
                 <outlet property="contentScrollView" destination="uH5-XN-eYJ" id="aAN-nP-xu4"/>
                 <outlet property="faqInteractiveView" destination="UOs-R6-ZPd" id="5YD-CG-Szq"/>
@@ -44,7 +43,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJ0-BE-X1X">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySI-6H-0LA">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySI-6H-0LA">
                                                     <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -52,8 +51,8 @@
                                                         <constraint firstAttribute="height" constant="44" id="p86-d2-gDG"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8l-K5-dIt" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="44" y="0.0" width="326" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8l-K5-dIt" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" name="labelColorDark"/>
                                                     <nil key="highlightedColor"/>
@@ -61,8 +60,8 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.Settings.Title"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-B3-WKS" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="370" y="0.0" width="44" height="44"/>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uQ-B3-WKS" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="Tv3-Nn-Pvh">
                                                             <rect key="frame" x="10" y="15" width="14" height="14"/>
@@ -89,13 +88,13 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4p-b0-VjY">
                                             <rect key="frame" x="0.0" y="50" width="414" height="111"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3NX-mK-44B" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3NX-mK-44B" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="382" height="111"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BannerSettingsPremium" translatesAutoresizingMaskIntoConstraints="NO" id="hFD-Q2-98v">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="111"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Get Premium acces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7X-66-1kb" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Get Premium acces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7X-66-1kb" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
                                                             <rect key="frame" x="84.5" y="29" width="213" height="29"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="tintColor" systemColor="linkColor"/>
@@ -106,7 +105,7 @@
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Screen.Settings.Banner.Title"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_No limits. Best experience." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ad1-4w-6B6" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_No limits. Best experience." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ad1-4w-6B6" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
                                                             <rect key="frame" x="101" y="64" width="180" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -149,7 +148,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Rtj-PL-Nod">
                                                     <rect key="frame" x="16" y="20" width="382" height="260"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOs-R6-ZPd" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOs-R6-ZPd" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rQe-qL-g75">
@@ -162,7 +161,7 @@
                                                                                 <constraint firstAttribute="height" constant="24" id="EU4-yT-lxa"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bY-RO-d3S" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bY-RO-d3S" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
                                                                             <rect key="frame" x="40" y="0.0" width="302" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -202,7 +201,7 @@
                                                                 <constraint firstAttribute="bottom" secondItem="rQe-qL-g75" secondAttribute="bottom" constant="6" id="lhe-X6-YiZ"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNR-SI-wgv" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNR-SI-wgv" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="56" width="382" height="36"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="WTe-h2-99L">
@@ -215,7 +214,7 @@
                                                                                 <constraint firstAttribute="height" constant="24" id="JYZ-B8-PZ7"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Restore purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTD-sB-Tyc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Restore purchases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTD-sB-Tyc" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
                                                                             <rect key="frame" x="38" y="0.0" width="306" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -255,7 +254,7 @@
                                                                 <constraint firstItem="WTe-h2-99L" firstAttribute="leading" secondItem="CNR-SI-wgv" secondAttribute="leading" id="w1U-zB-fVc"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRg-Pf-0bo" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRg-Pf-0bo" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="112" width="382" height="36"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="IiK-fd-taZ">
@@ -268,7 +267,7 @@
                                                                                 <constraint firstAttribute="width" constant="24" id="cjk-GA-Vru"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Privacy policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-kx-Nmf" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Privacy policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-kx-Nmf" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
                                                                             <rect key="frame" x="38" y="0.0" width="306" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -308,7 +307,7 @@
                                                                 <constraint firstItem="IiK-fd-taZ" firstAttribute="leading" secondItem="xRg-Pf-0bo" secondAttribute="leading" id="uoX-i7-ZtI"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2aG-Ty-GBD" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2aG-Ty-GBD" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="168" width="382" height="36"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="qL7-xi-s4Y">
@@ -321,7 +320,7 @@
                                                                                 <constraint firstAttribute="height" constant="24" id="hDZ-99-bRE"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Terms of use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3W-gi-6Yc" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Terms of use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3W-gi-6Yc" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
                                                                             <rect key="frame" x="38" y="0.0" width="306" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -361,7 +360,7 @@
                                                                 <constraint firstItem="qL7-xi-s4Y" firstAttribute="leading" secondItem="2aG-Ty-GBD" secondAttribute="leading" id="tRc-6p-5ja"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkV-j8-MwP" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkV-j8-MwP" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="224" width="382" height="36"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="YVp-P0-rFH">
@@ -374,7 +373,7 @@
                                                                                 <constraint firstAttribute="width" constant="24" id="ZZd-oq-uCw"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Send us a note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFC-Gz-Yc9" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Send us a note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFC-Gz-Yc9" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
                                                                             <rect key="frame" x="38" y="0.0" width="306" height="24"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -434,7 +433,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzg-lp-jNF">
                                             <rect key="frame" x="0.0" y="453" width="414" height="37"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Need help?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ay-nG-DoW" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Need help?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ay-nG-DoW" customClass="InteractiveLabel" customModule="Chromecast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="20" width="96" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="Fhb-NL-KLh"/>

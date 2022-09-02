@@ -22,6 +22,12 @@ extension UIViewController {
         //view.addSubview(child.view)
         child.didMove(toParent: self)
     }
+    
+    func removeAllSubviewsIn(container: UIView) {
+        for view in container.subviews {
+            view.removeFromSuperview()
+        }
+    }
 
     func remove() {
         willMove(toParent: nil)

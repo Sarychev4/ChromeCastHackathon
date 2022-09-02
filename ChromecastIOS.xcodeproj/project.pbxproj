@@ -150,6 +150,10 @@
 		DDD6E3C92833BEEC000C5AB9 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6E3C82833BEEC000C5AB9 /* ServerConfiguration.swift */; };
 		DDD6E3D02833C653000C5AB9 /* FAQ.html in Resources */ = {isa = PBXBuildFile; fileRef = DDD6E3CF2833C653000C5AB9 /* FAQ.html */; };
 		DDD6E3D12833C677000C5AB9 /* FAQ.html in Sources */ = {isa = PBXBuildFile; fileRef = DDD6E3CF2833C653000C5AB9 /* FAQ.html */; };
+		DDE7530B28C22F0E00F44B1C /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE7530928C22F0E00F44B1C /* ChannelsViewController.swift */; };
+		DDE7530C28C22F0E00F44B1C /* ChannelsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE7530A28C22F0E00F44B1C /* ChannelsViewController.xib */; };
+		DDE7531028C2314B00F44B1C /* WhiteboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE7530E28C2314B00F44B1C /* WhiteboardViewController.swift */; };
+		DDE7531128C2314B00F44B1C /* WhiteboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE7530F28C2314B00F44B1C /* WhiteboardViewController.xib */; };
 		DDED96E9282C47390088E4E6 /* SplashAnimation.json in Sources */ = {isa = PBXBuildFile; fileRef = DDED96E8282C47390088E4E6 /* SplashAnimation.json */; };
 		DDED96EA282C496F0088E4E6 /* SplashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = DDED96E8282C47390088E4E6 /* SplashAnimation.json */; };
 		DDED96EC282C4AA10088E4E6 /* PlaylistM3U8.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */; };
@@ -385,6 +389,10 @@
 		DDD6E3752832F9CD000C5AB9 /* SuggestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionCell.xib; sourceTree = "<group>"; };
 		DDD6E3C82833BEEC000C5AB9 /* ServerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerConfiguration.swift; sourceTree = "<group>"; };
 		DDD6E3CF2833C653000C5AB9 /* FAQ.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = FAQ.html; sourceTree = "<group>"; };
+		DDE7530928C22F0E00F44B1C /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		DDE7530A28C22F0E00F44B1C /* ChannelsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelsViewController.xib; sourceTree = "<group>"; };
+		DDE7530E28C2314B00F44B1C /* WhiteboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteboardViewController.swift; sourceTree = "<group>"; };
+		DDE7530F28C2314B00F44B1C /* WhiteboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhiteboardViewController.xib; sourceTree = "<group>"; };
 		DDED96E8282C47390088E4E6 /* SplashAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SplashAnimation.json; sourceTree = "<group>"; };
 		DDED96EB282C4AA10088E4E6 /* PlaylistM3U8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistM3U8.swift; sourceTree = "<group>"; };
 		DDED96ED282C54510088E4E6 /* IPTVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPTVManager.swift; sourceTree = "<group>"; };
@@ -628,9 +636,11 @@
 				DDA72053282BB34400CF4DC3 /* Loading */,
 				DDF59BFA280F31FF00CE2E2B /* NavigationContrainer */,
 				DD923AE02816A2700034E5D3 /* Tutorial */,
-				DD23EADD2811945C00DB7D44 /* SettingsVC */,
 				DD52329F281ACE16004AF0AA /* Subscriptions */,
 				DDF59BEE280F2E9C00CE2E2B /* MainVC */,
+				DDE7530828C22EF100F44B1C /* ChannelsVC */,
+				DDE7530D28C2313400F44B1C /* WhiteboardVC */,
+				DD23EADD2811945C00DB7D44 /* SettingsVC */,
 				DDCE09F32810327C004E9C18 /* MirrorVC */,
 				DDCE09F8281060C4004E9C18 /* BrowserVC */,
 				DD23EAE22811BF2200DB7D44 /* OpenWebsitesVC */,
@@ -1053,6 +1063,24 @@
 			path = ChromeCast;
 			sourceTree = "<group>";
 		};
+		DDE7530828C22EF100F44B1C /* ChannelsVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDE7530928C22F0E00F44B1C /* ChannelsViewController.swift */,
+				DDE7530A28C22F0E00F44B1C /* ChannelsViewController.xib */,
+			);
+			path = ChannelsVC;
+			sourceTree = "<group>";
+		};
+		DDE7530D28C2313400F44B1C /* WhiteboardVC */ = {
+			isa = PBXGroup;
+			children = (
+				DDE7530E28C2314B00F44B1C /* WhiteboardViewController.swift */,
+				DDE7530F28C2314B00F44B1C /* WhiteboardViewController.xib */,
+			);
+			path = WhiteboardVC;
+			sourceTree = "<group>";
+		};
 		DDED96F6282E7B160088E4E6 /* DetectedUrls */ = {
 			isa = PBXGroup;
 			children = (
@@ -1370,6 +1398,7 @@
 				DD345D242817FA9700E67AB0 /* dailymotion_ico.png in Resources */,
 				DDAE265D2818724C00355735 /* DeviceCellView.xib in Resources */,
 				DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */,
+				DDE7530C28C22F0E00F44B1C /* ChannelsViewController.xib in Resources */,
 				E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */,
 				DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */,
 				DD923AED2816B39B0034E5D3 /* TutorialWelcomeViewController.xib in Resources */,
@@ -1392,6 +1421,7 @@
 				DD6E98AE282FDE4100A72DF3 /* GoogleDriveCell.xib in Resources */,
 				DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */,
 				DD345D252817FA9700E67AB0 /* youtube_ico.png in Resources */,
+				DDE7531128C2314B00F44B1C /* WhiteboardViewController.xib in Resources */,
 				DDED96FA282E7B470088E4E6 /* DetectedUrlsViewController.xib in Resources */,
 				DD52329E281AAE26004AF0AA /* AssetCell.xib in Resources */,
 				DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */,
@@ -1550,6 +1580,7 @@
 				DDB35989283E870600605B56 /* SetupChromeCastViewController.swift in Sources */,
 				DD19E4892812AA5700931489 /* PhotoModel.swift in Sources */,
 				DDF59C00280F32A400CE2E2B /* UIViewController+Extension.swift in Sources */,
+				DDE7531028C2314B00F44B1C /* WhiteboardViewController.swift in Sources */,
 				DDF59C10280F4B7B00CE2E2B /* UIView+Extension.swift in Sources */,
 				DD923AE82816AF1B0034E5D3 /* TutorialContainerViewController.swift in Sources */,
 				DDF59C0C280F489C00CE2E2B /* DefaultLabel.swift in Sources */,
@@ -1651,6 +1682,7 @@
 				DDF59BFD280F323500CE2E2B /* UINavigationContainer.swift in Sources */,
 				DDED96F2282E77430088E4E6 /* BrowserTab.swift in Sources */,
 				DDA72045282AC2B300CF4DC3 /* CommentView.swift in Sources */,
+				DDE7530B28C22F0E00F44B1C /* ChannelsViewController.swift in Sources */,
 				DDA7376628193C8C00CCF7FD /* InteractiveLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

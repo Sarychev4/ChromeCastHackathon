@@ -20,7 +20,7 @@ class SettingsViewController: BaseViewController {
         print(">>> deinit SettingsViewController")
     }
     
-    @IBOutlet weak var closeCrossInteractiveView: InteractiveView!
+//    @IBOutlet weak var closeCrossInteractiveView: InteractiveView!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var containerStackView: UIStackView!
     @IBOutlet weak var specialOfferContainerView: UIView!
@@ -42,7 +42,7 @@ class SettingsViewController: BaseViewController {
         specialOfferContainerView.isHidden = AgregatorApplication.current.subscriptionState == .active
       
         setupHelpSection()
-        setupNavigationSection()
+//        setupNavigationSection()
         observeSubscriptionState()
         
         let sentence = NSString(string: NSLocalizedString("Screen.Settings.Banner.Title", comment: ""))
@@ -64,15 +64,18 @@ class SettingsViewController: BaseViewController {
         
         
         privacyPolicyInteractiveView.didTouchAction = { [weak self] in
-            self?.checkInternetConnection { [weak self] in
+            guard let self = self else { return }
+            self.checkInternetConnection { [weak self] in
                 guard let self = self else { return }
                 let viewController = HelpViewController()
                 viewController.title = NSLocalizedString("MorePrivacyPolicy", comment: "")
                 viewController.url = PrivacyPolicy
-                self.navigationController?.pushViewController(viewController, animated: true)
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigation?.pushViewController(viewController, animated: .left)
                 
                 viewController.didFinishAction = { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
+                    guard let self = self else { return }
+                    self.navigation?.popViewController(viewController, animated: true)
                 }
             }
         }
@@ -85,10 +88,11 @@ class SettingsViewController: BaseViewController {
             self.checkInternetConnection {
                 let viewController = SetupChromeCastViewController()
                 viewController.modalPresentationStyle = .fullScreen
+                viewController.hidesBottomBarWhenPushed = true
                 viewController.hideInteractiveViewCompletion = {
                     viewController.closeInteractiveView.isHidden = true
                 }
-                self.navigationController?.pushViewController(viewController, animated: true)
+                self.navigation?.pushViewController(viewController, animated: .left)
             }
         }
         
@@ -97,15 +101,18 @@ class SettingsViewController: BaseViewController {
          */
         
         termsOfUseInteractiveView.didTouchAction = { [weak self] in
-            self?.checkInternetConnection { [weak self] in
+            guard let self = self else { return }
+            self.checkInternetConnection { [weak self] in
                 guard let self = self else { return }
                 let viewController = HelpViewController()
                 viewController.title = NSLocalizedString("MoreTermOfService", comment: "")
                 viewController.url = TermsOfUse
-                self.navigationController?.pushViewController(viewController, animated: true)
+                viewController.hidesBottomBarWhenPushed = true
+                self.navigation?.pushViewController(viewController, animated: .left)
                 
                 viewController.didFinishAction = { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
+                    guard let self = self else { return }
+                    self.navigation?.popViewController(viewController, animated: true)
                 }
             }
         }
@@ -114,7 +121,9 @@ class SettingsViewController: BaseViewController {
          */
         
         sendUsANoteInteractiveView.didTouchAction = { [weak self] in
-            self?.checkInternetConnection { [weak self] in
+            guard let self = self else { return }
+            self.checkInternetConnection { [weak self] in
+                guard let self = self else { return }
                 let systemVersion = UIDevice.current.systemVersion
                 let bundleVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
                 var storeCountry = AgregatorStore.shared.products?.first?.skProduct?.priceLocale.regionCode ?? Locale.current.regionCode
@@ -143,7 +152,7 @@ class SettingsViewController: BaseViewController {
                     viewController.setToRecipients([toRecipient])
                     viewController.setSubject(subject)
                     viewController.setMessageBody(body, isHTML: false)
-                    self?.present(viewController, animated: true)
+                    self.present(viewController, animated: true)
                 } else if let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed), let url = URL(string: "mailto:\(toRecipient)?subject=\(subjectEncoded)&body=\(bodyEncoded)") {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
@@ -180,22 +189,23 @@ class SettingsViewController: BaseViewController {
             guard let self = self else { return }
             self.checkInternetConnection {
                 let viewController = SetupChromeCastViewController()
-                viewController.modalPresentationStyle = .fullScreen
+//                viewController.modalPresentationStyle = .fullScreen
+                viewController.hidesBottomBarWhenPushed = true
                 viewController.hideInteractiveViewCompletion = {
                     viewController.closeInteractiveView.isHidden = true
                 }
-                self.navigationController?.pushViewController(viewController, animated: true)
+                self.navigation?.pushViewController(viewController, animated: .left)
             }
         }
     }
     
-    private func setupNavigationSection() {
-        closeCrossInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            self.dismiss(animated: true)
-           // self.navigation?.popViewController(self, animated: true)
-        }
-    }
+//    private func setupNavigationSection() {
+//        closeCrossInteractiveView.didTouchAction = { [weak self] in
+//            guard let self = self else { return }
+//            self.dismiss(animated: true)
+//           // self.navigation?.popViewController(self, animated: true)
+//        }
+//    }
     
     private func observeSubscriptionState() {
         applicationNotificationToken = AgregatorApplication.current.observe({ [weak self] (change) in
