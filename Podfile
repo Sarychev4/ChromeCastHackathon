@@ -13,7 +13,7 @@ target 'MirroringExtension' do
   pod 'RealmSwift'
 end
 
-target 'Chromecast iOS' do
+target 'Chromecast' do
   use_frameworks!
   common_pods_for_target
   pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
