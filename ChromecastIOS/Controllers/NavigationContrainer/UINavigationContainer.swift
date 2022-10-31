@@ -118,7 +118,7 @@ class UINavigationContainer: BaseViewController {
         whiteboardInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             
-            if self.rootViewController != ChannelsViewController() {
+            if self.rootViewController != WhiteboardViewController() {
                 self.removeAllSubviewsIn(container: self.contentView)
                 let wbVC = WhiteboardViewController()
                 self.rootViewController = wbVC
@@ -144,7 +144,7 @@ class UINavigationContainer: BaseViewController {
         settingsInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             
-            if self.rootViewController != ChannelsViewController() {
+            if self.rootViewController != SettingsViewController() {
                 self.removeAllSubviewsIn(container: self.contentView)
                 let settingsVC = SettingsViewController()
                 self.rootViewController = settingsVC

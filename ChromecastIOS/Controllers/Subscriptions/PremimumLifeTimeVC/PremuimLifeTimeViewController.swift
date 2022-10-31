@@ -224,12 +224,13 @@ class PremuimLifeTimeViewController: BaseViewController, SubscriptionController 
         /*
          */
         
+        
         termsInteractiveLabel.sizeToFit()
         termsInteractiveLabel.didTouchAction = { [weak self] in
             self?.checkInternetConnection {
                 let viewController = HelpViewController()
                 viewController.title = NSLocalizedString("MoreTermOfService", comment: "")
-                viewController.url = URL(string: "https://mewd.wonny.net/terms.html")
+                viewController.url = TermsOfUse
                 self?.navigationController?.pushViewController(viewController, animated: true)
                 
                 viewController.didFinishAction = { [weak self] in
@@ -242,7 +243,7 @@ class PremuimLifeTimeViewController: BaseViewController, SubscriptionController 
             self?.checkInternetConnection {
                 let viewController = HelpViewController()
                 viewController.title = NSLocalizedString("MorePrivacyPolicy", comment: "")
-                viewController.url = URL(string: "https://mewd.wonny.net/privacy.html")
+                viewController.url = PrivacyPolicy
                 self?.navigationController?.pushViewController(viewController, animated: true)
                 
                 viewController.didFinishAction = { [weak self] in

@@ -13,6 +13,7 @@ import GoogleCast
 import Agregator
 import RealmSwift
 import ZMJTipView
+import AVKit
 
 enum State {
     case convertingToMP4(_ progress: Float)
@@ -479,9 +480,18 @@ extension MediaPlayerViewController {
         case .readyForTV:
             connectIfNeeded { [weak self] in
                 guard let self = self else { return }
+            /**/
                 self.savePreviewImageOfVideoToServer()
                 let ipAddress = ServerConfiguration.shared.deviceIPAddress()
                 guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
+//
+//                let player = AVPlayer(url: url)
+//                let playerViewController = AVPlayerViewController()
+//                playerViewController.player = player
+//                self.present(playerViewController, animated: true) {
+//                    playerViewController.player!.play()
+//                }
+            /**/
                 guard let previewImageURL = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/playerPreviewImage/\(UUID().uuidString)") else { return }
                 print(">>>\(previewImageURL)")
                 if self.isTipWasShown == false {
@@ -493,7 +503,6 @@ extension MediaPlayerViewController {
                 ChromeCastService.shared.showDefaultMediaVC()
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    //temp as
                     self.videoPlayerManager.startObserveVideoState()
                 }
             }
@@ -547,7 +556,7 @@ extension MediaPlayerViewController {
                 self._HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
             case .convertingToMP4(let progress):
                 guard progress < 1, progress > 0 else { return } // Это чтобы не появлялся HUD на долю секунды
-                print(">>>> state convert: \(progress)")
+//                print(">>>> state convert: \(progress)")
                 self.HUD?.button.addTarget(self, action: #selector(self.cancelPrepareVideo(_:)), for: .touchUpInside)
                 self.HUD?.label.text = NSLocalizedString("Media.Player.Converting.Video", comment: "")
                 self.HUD?.progressObject?.completedUnitCount = Int64(progress * 100)
