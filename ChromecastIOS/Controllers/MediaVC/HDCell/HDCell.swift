@@ -7,7 +7,6 @@
 
 import UIKit
 import Photos
-import Agregator
 //import Player
 
 class HDCell: UICollectionViewCell {

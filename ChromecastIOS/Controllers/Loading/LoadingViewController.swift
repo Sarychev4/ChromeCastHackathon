@@ -5,7 +5,6 @@
 //  Created by Artsiom Sarychau on 11.05.2022.
 //
 import UIKit
-import Agregator
 import DeviceKit
 import Lottie
 
@@ -25,12 +24,9 @@ class LoadingViewController: BaseViewController {
             if finished == true {
                 self.didFinishAction()
             }
-            //
+            
         }
         
-        AgregatorManager.shared.start { [weak self] success in
-            guard let _ = self else { return }
-        }
     } 
     
     

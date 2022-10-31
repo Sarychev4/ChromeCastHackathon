@@ -7,12 +7,9 @@
 
 import UIKit
 import RealmSwift 
-import Agregator
 import GoogleCast
-import Firebase
 import AppTrackingTransparency
 import AdSupport
-import ApphudSDK
 import GCDWebServer
 
 @main
@@ -80,12 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*
          */
         
-        Agregator.shared.initialize(
-            applicationID: "1620128676",
-            amplitudeAPIKey: "a9ab440a6e5b2968cfe176520ea091f7",
-            apphudAPIKey: "app_HARkZgrMoU5oAsLqx1fGcyPFQGhL8b",
-            appsFlyerAPIKey: "mVN6DoQzLUCxz7gLjQivSY"
-        )
+      
          
         /*
          */
@@ -103,19 +95,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 ATTrackingManager.requestTrackingAuthorization { status in
                     guard status == .authorized else {return}
                     let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-                    Apphud.setAdvertisingIdentifier(idfa)
+                  
                 }
             }
             
             DataManager.shared.updateData()
             if Settings.current.isIntroCompleted {
                 DataManager.shared.setupSpecialOfferTimer()
-                SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.sessionStart.rawValue) { [weak self] success in
-                    guard let self = self else { return }
-                    self.showMainViewController()
-                }
+                self.showMainViewController()
+//                SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.sessionStart.rawValue) { [weak self] success in
+//                    guard let self = self else { return }
+//                    self.showMainViewController()
+//                }
             } else {
-                self.showTutorial()
+                
+                self.showMainViewController()
+
             }
         }
         
@@ -128,29 +123,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func showTutorial() {
-        let vc = TutorialContainerViewController()
-        let navigationController = DefaultNavigationController(rootViewController: vc)
-        navigationController.isNavigationBarHidden = false
-        
-        window!.layer.add(CATransition(), forKey: nil)
-        window!.rootViewController = navigationController
-        
-        vc.didFinishAction = {
-            try! Settings.current.realm?.write {
-                Settings.current.isIntroCompleted = true
-            }
-            
-            DataManager.shared.setupSpecialOfferTimer()
-            
-            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.intro.rawValue, with: { [weak self] success in
-                SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.introSpecialOffer.rawValue, with: { [weak self] success in
-                    self?.showMainViewController()
-                })
-            })
-        }
-        
-    }
     
     func showMainViewController() {
         let viewController = MainViewController()

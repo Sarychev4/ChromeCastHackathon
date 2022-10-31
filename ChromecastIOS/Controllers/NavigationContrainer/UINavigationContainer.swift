@@ -7,29 +7,12 @@
 
 import UIKit
 import DeviceKit
-import Agregator
 
 
 class UINavigationContainer: BaseViewController {
 
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var tabBarView: UIView!
     
-    @IBOutlet weak var castInteractiveView: InteractiveView!
-    @IBOutlet weak var castIconImageView: UIImageView!
-    @IBOutlet weak var castLabel: DefaultLabel!
-    
-    @IBOutlet weak var channelsInteractiveView: InteractiveView!
-    @IBOutlet weak var channelsIconImageView: UIImageView!
-    @IBOutlet weak var channelsLabel: DefaultLabel!
-    
-    @IBOutlet weak var whiteboardInteractiveView: InteractiveView!
-    @IBOutlet weak var whiteboardIconImageView: UIImageView!
-    @IBOutlet weak var whiteboardLabel: DefaultLabel!
-    
-    @IBOutlet weak var settingsInteractiveView: InteractiveView!
-    @IBOutlet weak var settingsIconImageView: UIImageView!
-    @IBOutlet weak var settingLabel: DefaultLabel!
     
     var currentViewController: UIViewController?
     var previousViewController: UIViewController?
@@ -58,123 +41,9 @@ class UINavigationContainer: BaseViewController {
         add(rootViewController!, container: contentView)
         viewControllers.append(rootViewController!)
         
-        setupTabBar()
-        
+    
     }
     
-    func setupTabBar() {
-        
-        castInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            
-            if self.rootViewController != MainViewController() {
-                self.removeAllSubviewsIn(container: self.contentView)
-                let mainVC = MainViewController()
-                self.rootViewController = mainVC
-                self.add(mainVC, container: self.contentView)
-                self.viewControllers.removeAll()
-                self.viewControllers.append(mainVC)
-            }
-           
-            self.castIconImageView.tintColor = UIColor.systemBlue
-            self.castLabel.textColor = UIColor.systemBlue
-            
-            self.channelsIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.channelsLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.whiteboardIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.whiteboardLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.settingsIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.settingLabel.textColor = UIColor(named: "MySubTitleColor")
-        }
-        
-        channelsInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            
-            if self.rootViewController != ChannelsViewController() {
-                self.removeAllSubviewsIn(container: self.contentView)
-                let channelsVC = ChannelsViewController()
-                self.rootViewController = channelsVC
-                self.add(channelsVC, container: self.contentView)
-                self.viewControllers.removeAll()
-                self.viewControllers.append(channelsVC)
-            }
-            
-            self.castIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.castLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.channelsIconImageView.tintColor = UIColor.systemBlue
-            self.channelsLabel.textColor = UIColor.systemBlue
-            
-            self.whiteboardIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.whiteboardLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.settingsIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.settingLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-        }
-        
-        whiteboardInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            
-            if self.rootViewController != WhiteboardViewController() {
-                self.removeAllSubviewsIn(container: self.contentView)
-                let wbVC = WhiteboardViewController()
-                self.rootViewController = wbVC
-                self.add(wbVC, container: self.contentView)
-                self.viewControllers.removeAll()
-                self.viewControllers.append(wbVC)
-            }
-            
-            self.castIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.castLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.channelsIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.channelsLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.whiteboardIconImageView.tintColor = UIColor.systemBlue
-            self.whiteboardLabel.textColor = UIColor.systemBlue
-            
-            self.settingsIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.settingLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-        }
-        
-        settingsInteractiveView.didTouchAction = { [weak self] in
-            guard let self = self else { return }
-            
-            if self.rootViewController != SettingsViewController() {
-                self.removeAllSubviewsIn(container: self.contentView)
-                let settingsVC = SettingsViewController()
-                self.rootViewController = settingsVC
-                self.add(settingsVC, container: self.contentView)
-                self.viewControllers.removeAll()
-                self.viewControllers.append(settingsVC)
-            }
-            
-            
-//            AgregatorLogger.shared.log(eventName: "Setting", parameters: ["Source": "Main_screen"])
-//            let settingsViewController = SettingsViewController()
-//            let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
-//            navigationController.modalPresentationStyle = .fullScreen
-//            self.present(navigationController, animated: true, completion: nil)
-            
-            self.castIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.castLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.channelsIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.channelsLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.whiteboardIconImageView.tintColor = UIColor(named: "MySubTitleColor")
-            self.whiteboardLabel.textColor = UIColor(named: "MySubTitleColor")
-            
-            self.settingsIconImageView.tintColor = UIColor.systemBlue
-            self.settingLabel.textColor = UIColor.systemBlue
-            
-        }
-        
-    }
     
     /*
      */
@@ -198,11 +67,6 @@ class UINavigationContainer: BaseViewController {
         
         addRecognizerOnViewOfController(currentVC)
         
-        //temp as
-        if controller.hidesBottomBarWhenPushed == true {
-            tabBarView.isHidden = true
-        }
-  
     }
     
     func popViewController(_ controller: UIViewController, animated: Bool) {
@@ -233,10 +97,6 @@ class UINavigationContainer: BaseViewController {
             controllerThatWillBeDeleted.remove()
             self.view.isUserInteractionEnabled = true
             
-            //temp as
-            if controller.hidesBottomBarWhenPushed == true {
-                self.tabBarView.isHidden = false
-            }
         })
         
         print(">>>UINavigationContainer", currenVC, currenVC.hidesBottomBarWhenPushed)

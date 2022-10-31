@@ -7,7 +7,6 @@
 
 import UIKit
 import WebKit
-import Agregator
 
 class HelpViewController: BaseViewController, WKNavigationDelegate {
 
@@ -34,7 +33,7 @@ class HelpViewController: BaseViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AgregatorLogger.shared.log(eventName: "Help", parameters: nil)
+       
         /*
          */
         

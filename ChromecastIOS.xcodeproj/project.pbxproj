@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C79DB51145C97265C38D971 /* Pods_MirroringExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */; };
+		179AAE745D2EC3576E88C0C7 /* Pods_Chromecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F482D3839643C3D38DAD421A /* Pods_Chromecast.framework */; };
+		7F0E44B33369D89821A3CF3B /* Pods_MirroringExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9749FE0372B4604AEAA9B465 /* Pods_MirroringExtension.framework */; };
 		DD03EFAA282A63F10075F70E /* LocalNetworkPermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */; };
 		DD03EFAC282AA2EC0075F70E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFAB282AA2EC0075F70E /* Settings.swift */; };
 		DD03EFAE282AA4280075F70E /* SubscriptionSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD03EFAD282AA4280075F70E /* SubscriptionSpot.swift */; };
@@ -50,11 +51,6 @@
 		DD523299281A9906004AF0AA /* AlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD523298281A9906004AF0AA /* AlbumView.xib */; };
 		DD52329D281AAE26004AF0AA /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD52329B281AAE26004AF0AA /* AssetCell.swift */; };
 		DD52329E281AAE26004AF0AA /* AssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD52329C281AAE26004AF0AA /* AssetCell.xib */; };
-		DD5232A5281ACEA2004AF0AA /* SubscriptionSpotsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5232A4281ACEA2004AF0AA /* SubscriptionSpotsManager.swift */; };
-		DD5232AC281ACF0C004AF0AA /* PremiumDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5232AA281ACF0C004AF0AA /* PremiumDiscountViewController.swift */; };
-		DD5232AD281ACF0C004AF0AA /* PremiumDiscountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AB281ACF0C004AF0AA /* PremiumDiscountViewController.xib */; };
-		DD5232B0281ACF22004AF0AA /* PremuimLifeTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */; };
-		DD5232B1281ACF22004AF0AA /* PremuimLifeTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */; };
 		DD55A67D2832EF8900B99C17 /* YoutubeSearchCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */; };
 		DD5F403E2848B7AD0064B934 /* GooglePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F403C2848B7AD0064B934 /* GooglePhotoCell.swift */; };
 		DD5F403F2848B7AD0064B934 /* GooglePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5F403D2848B7AD0064B934 /* GooglePhotoCell.xib */; };
@@ -75,16 +71,6 @@
 		DD923ADB2812F08E0034E5D3 /* FlowLayoutSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ADA2812F08E0034E5D3 /* FlowLayoutSyncManager.swift */; };
 		DD923ADD2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ADC2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift */; };
 		DD923ADF2812F3C70034E5D3 /* CellPassiveMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ADE2812F3C70034E5D3 /* CellPassiveMeasurement.swift */; };
-		DD923AE82816AF1B0034E5D3 /* TutorialContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AE62816AF1B0034E5D3 /* TutorialContainerViewController.swift */; };
-		DD923AE92816AF1B0034E5D3 /* TutorialContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AE72816AF1B0034E5D3 /* TutorialContainerViewController.xib */; };
-		DD923AEC2816B39B0034E5D3 /* TutorialWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AEA2816B39B0034E5D3 /* TutorialWelcomeViewController.swift */; };
-		DD923AED2816B39B0034E5D3 /* TutorialWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AEB2816B39B0034E5D3 /* TutorialWelcomeViewController.xib */; };
-		DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AEE2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift */; };
-		DD923AF12816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AEF2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib */; };
-		DD923AF42816B3F40034E5D3 /* TutorialWifiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AF22816B3F40034E5D3 /* TutorialWifiViewController.swift */; };
-		DD923AF52816B3F40034E5D3 /* TutorialWifiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AF32816B3F40034E5D3 /* TutorialWifiViewController.xib */; };
-		DD923AF82816B4130034E5D3 /* TutorialConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AF62816B4130034E5D3 /* TutorialConnectViewController.swift */; };
-		DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */; };
 		DD923AFB2816CB4A0034E5D3 /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */; };
 		DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */; };
 		DD92BAD62836677500ACD358 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD92BAD52836677500ACD358 /* DeviceManager.swift */; };
@@ -113,8 +99,6 @@
 		DDA737632819319C00CCF7FD /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA737612819319C00CCF7FD /* AlertViewController.swift */; };
 		DDA737642819319C00CCF7FD /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA737622819319C00CCF7FD /* AlertViewController.xib */; };
 		DDA7376628193C8C00CCF7FD /* InteractiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7376528193C8C00CCF7FD /* InteractiveLabel.swift */; };
-		DDAE26502818250000355735 /* TutorialRatingStarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */; };
-		DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */; };
 		DDAE26542818535200355735 /* ListDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE26522818535200355735 /* ListDevicesViewController.swift */; };
 		DDAE26552818535200355735 /* ListDevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAE26532818535200355735 /* ListDevicesViewController.xib */; };
 		DDAE26572818545E00355735 /* AFFloatingPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE26562818545E00355735 /* AFFloatingPanelViewController.swift */; };
@@ -124,6 +108,8 @@
 		DDB35989283E870600605B56 /* SetupChromeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB35987283E870600605B56 /* SetupChromeCastViewController.swift */; };
 		DDB3598A283E870600605B56 /* SetupChromeCastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */; };
 		DDBCDBE9283B830E00AB626A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E86F70A9282A442D0000A5C7 /* GoogleService-Info.plist */; };
+		DDBE6A39290FE9410079C309 /* URLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */; };
+		DDBE6A3A290FE9410079C309 /* URLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */; };
 		DDBE7196285E087400383511 /* ResumeVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE7195285E087400383511 /* ResumeVideoView.swift */; };
 		DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */; };
 		DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */; };
@@ -168,12 +154,6 @@
 		DDED96FF282E7BAC0088E4E6 /* DetectedUrlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */; };
 		DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */; };
 		DDEFA0DC283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */; };
-		DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */; };
-		DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */; };
-		DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */; };
-		DDF231C828181568005E3E3E /* TutorialPreviewImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231C628181568005E3E3E /* TutorialPreviewImageViewController.xib */; };
-		DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF231CA281815EF005E3E3E /* TutorialEverythingReadyViewController.swift */; };
-		DDF231CD281815EF005E3E3E /* TutorialEverythingReadyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF231CB281815EF005E3E3E /* TutorialEverythingReadyViewController.xib */; };
 		DDF59BEC280F2E9600CE2E2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59BEA280F2E9600CE2E2B /* MainViewController.swift */; };
 		DDF59BED280F2E9600CE2E2B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF59BEB280F2E9600CE2E2B /* MainViewController.xib */; };
 		DDF59BF1280F2F0B00CE2E2B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF59BF0280F2F0B00CE2E2B /* BaseViewController.swift */; };
@@ -213,7 +193,6 @@
 		E8E5FA90283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */; };
 		E8E5FA92283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */; };
 		E8E5FA93283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */; };
-		FDAFA4D8F75528E5C44A989B /* Pods_Chromecast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A321926DB2D39BB57234A674 /* Pods_Chromecast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,15 +220,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.debug.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.release.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.release.xcconfig"; sourceTree = "<group>"; };
-		315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirroringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		329CCC095ED3990F9162CC75 /* Pods-Chromecast iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast iOS.debug.xcconfig"; path = "Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		3E6B40AE5B01FA94F58DD536 /* Pods-ChromecastIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.debug.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.debug.xcconfig"; sourceTree = "<group>"; };
-		7036A02DE1999D185C4E2DE6 /* Pods-Chromecast iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast iOS.release.xcconfig"; path = "Target Support Files/Pods-Chromecast iOS/Pods-Chromecast iOS.release.xcconfig"; sourceTree = "<group>"; };
-		9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChromecastIOS.release.xcconfig"; path = "Target Support Files/Pods-ChromecastIOS/Pods-ChromecastIOS.release.xcconfig"; sourceTree = "<group>"; };
-		A321926DB2D39BB57234A674 /* Pods_Chromecast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chromecast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC25134C891F2D61A1F35163 /* Pods-Chromecast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast.release.xcconfig"; path = "Target Support Files/Pods-Chromecast/Pods-Chromecast.release.xcconfig"; sourceTree = "<group>"; };
+		17D62404F0D77905C1505E2E /* Pods-MirroringExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.debug.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		30EB7AE6F9068D6C560DAD12 /* Pods-Chromecast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast.release.xcconfig"; path = "Target Support Files/Pods-Chromecast/Pods-Chromecast.release.xcconfig"; sourceTree = "<group>"; };
+		9749FE0372B4604AEAA9B465 /* Pods_MirroringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MirroringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F7DADAC1D16120F28949E2B /* Pods-MirroringExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MirroringExtension.release.xcconfig"; path = "Target Support Files/Pods-MirroringExtension/Pods-MirroringExtension.release.xcconfig"; sourceTree = "<group>"; };
+		A6F17414D6FD111689071F73 /* Pods-Chromecast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast.debug.xcconfig"; path = "Target Support Files/Pods-Chromecast/Pods-Chromecast.debug.xcconfig"; sourceTree = "<group>"; };
 		DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetworkPermissionsManager.swift; sourceTree = "<group>"; };
 		DD03EFAB282AA2EC0075F70E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DD03EFAD282AA4280075F70E /* SubscriptionSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSpot.swift; sourceTree = "<group>"; };
@@ -291,11 +266,6 @@
 		DD523298281A9906004AF0AA /* AlbumView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumView.xib; sourceTree = "<group>"; };
 		DD52329B281AAE26004AF0AA /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		DD52329C281AAE26004AF0AA /* AssetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssetCell.xib; sourceTree = "<group>"; };
-		DD5232A4281ACEA2004AF0AA /* SubscriptionSpotsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSpotsManager.swift; sourceTree = "<group>"; };
-		DD5232AA281ACF0C004AF0AA /* PremiumDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumDiscountViewController.swift; sourceTree = "<group>"; };
-		DD5232AB281ACF0C004AF0AA /* PremiumDiscountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremiumDiscountViewController.xib; sourceTree = "<group>"; };
-		DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremuimLifeTimeViewController.swift; sourceTree = "<group>"; };
-		DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PremuimLifeTimeViewController.xib; sourceTree = "<group>"; };
 		DD55A67C2832EF8900B99C17 /* YoutubeSearchCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchCodable.swift; sourceTree = "<group>"; };
 		DD5F403C2848B7AD0064B934 /* GooglePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePhotoCell.swift; sourceTree = "<group>"; };
 		DD5F403D2848B7AD0064B934 /* GooglePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GooglePhotoCell.xib; sourceTree = "<group>"; };
@@ -316,16 +286,6 @@
 		DD923ADA2812F08E0034E5D3 /* FlowLayoutSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayoutSyncManager.swift; sourceTree = "<group>"; };
 		DD923ADC2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailSlaveFlowLayout.swift; sourceTree = "<group>"; };
 		DD923ADE2812F3C70034E5D3 /* CellPassiveMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPassiveMeasurement.swift; sourceTree = "<group>"; };
-		DD923AE62816AF1B0034E5D3 /* TutorialContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContainerViewController.swift; sourceTree = "<group>"; };
-		DD923AE72816AF1B0034E5D3 /* TutorialContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialContainerViewController.xib; sourceTree = "<group>"; };
-		DD923AEA2816B39B0034E5D3 /* TutorialWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialWelcomeViewController.swift; sourceTree = "<group>"; };
-		DD923AEB2816B39B0034E5D3 /* TutorialWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialWelcomeViewController.xib; sourceTree = "<group>"; };
-		DD923AEE2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialAccessToNetworkViewController.swift; sourceTree = "<group>"; };
-		DD923AEF2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialAccessToNetworkViewController.xib; sourceTree = "<group>"; };
-		DD923AF22816B3F40034E5D3 /* TutorialWifiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialWifiViewController.swift; sourceTree = "<group>"; };
-		DD923AF32816B3F40034E5D3 /* TutorialWifiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialWifiViewController.xib; sourceTree = "<group>"; };
-		DD923AF62816B4130034E5D3 /* TutorialConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialConnectViewController.swift; sourceTree = "<group>"; };
-		DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialConnectViewController.xib; sourceTree = "<group>"; };
 		DD923AFA2816CB4A0034E5D3 /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
 		DD923AFC2816F4230034E5D3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DD92BAD52836677500ACD358 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
@@ -354,8 +314,6 @@
 		DDA737612819319C00CCF7FD /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		DDA737622819319C00CCF7FD /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		DDA7376528193C8C00CCF7FD /* InteractiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveLabel.swift; sourceTree = "<group>"; };
-		DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRatingStarsViewController.swift; sourceTree = "<group>"; };
-		DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialRatingStarsViewController.xib; sourceTree = "<group>"; };
 		DDAE26522818535200355735 /* ListDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDevicesViewController.swift; sourceTree = "<group>"; };
 		DDAE26532818535200355735 /* ListDevicesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListDevicesViewController.xib; sourceTree = "<group>"; };
 		DDAE26562818545E00355735 /* AFFloatingPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFFloatingPanelViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +322,7 @@
 		DDAE2660281927C000355735 /* DotsActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsActivityIndicator.swift; sourceTree = "<group>"; };
 		DDB35987283E870600605B56 /* SetupChromeCastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupChromeCastViewController.swift; sourceTree = "<group>"; };
 		DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupChromeCastViewController.xib; sourceTree = "<group>"; };
+		DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Extension.swift"; sourceTree = "<group>"; };
 		DDBE7195285E087400383511 /* ResumeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeVideoView.swift; sourceTree = "<group>"; };
 		DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
 		DDCE09F5281032A5004E9C18 /* MirrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorViewController.xib; sourceTree = "<group>"; };
@@ -405,12 +364,6 @@
 		DDED96FD282E7BAC0088E4E6 /* DetectedUrlCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectedUrlCell.xib; sourceTree = "<group>"; };
 		DDED9700282E81770088E4E6 /* MediaInfoExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInfoExtractor.swift; sourceTree = "<group>"; };
 		DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+Extension.swift"; sourceTree = "<group>"; };
-		DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialTestConnectionViewController.swift; sourceTree = "<group>"; };
-		DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialTestConnectionViewController.xib; sourceTree = "<group>"; };
-		DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPreviewImageViewController.swift; sourceTree = "<group>"; };
-		DDF231C628181568005E3E3E /* TutorialPreviewImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialPreviewImageViewController.xib; sourceTree = "<group>"; };
-		DDF231CA281815EF005E3E3E /* TutorialEverythingReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialEverythingReadyViewController.swift; sourceTree = "<group>"; };
-		DDF231CB281815EF005E3E3E /* TutorialEverythingReadyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialEverythingReadyViewController.xib; sourceTree = "<group>"; };
 		DDF59BEA280F2E9600CE2E2B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DDF59BEB280F2E9600CE2E2B /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		DDF59BF0280F2F0B00CE2E2B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -429,7 +382,6 @@
 		DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		DDF59C12280F5E1F00CE2E2B /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		DDF59C13280F5E1F00CE2E2B /* MainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCell.xib; sourceTree = "<group>"; };
-		E593A6571A925CB22BD45CDB /* Pods-Chromecast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chromecast.debug.xcconfig"; path = "Target Support Files/Pods-Chromecast/Pods-Chromecast.debug.xcconfig"; sourceTree = "<group>"; };
 		E86F70A9282A442D0000A5C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E89642B4280EAF7700E6E287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E89642BD280EAF7900E6E287 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -451,6 +403,7 @@
 		E8E5FA8B283BF9E100B4B6FF /* JPEGEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPEGEncoder.swift; sourceTree = "<group>"; };
 		E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImageProperty+extension.swift"; sourceTree = "<group>"; };
 		E8E5FA91283BFAF400B4B6FF /* VTCompressionSession+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VTCompressionSession+Extension.swift"; sourceTree = "<group>"; };
+		F482D3839643C3D38DAD421A /* Pods_Chromecast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chromecast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -459,8 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */,
-				5C79DB51145C97265C38D971 /* Pods_MirroringExtension.framework in Frameworks */,
 				E8E5FA84283BF8E000B4B6FF /* AVFoundation.framework in Frameworks */,
+				7F0E44B33369D89821A3CF3B /* Pods_MirroringExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0B64F928756E6B007AC44B /* ReplayKit.framework in Frameworks */,
-				FDAFA4D8F75528E5C44A989B /* Pods_Chromecast.framework in Frameworks */,
+				179AAE745D2EC3576E88C0C7 /* Pods_Chromecast.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,8 +435,8 @@
 				E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */,
 				E8964313280EB5A700E6E287 /* ReplayKit.framework */,
 				E896431F280EB5A700E6E287 /* UIKit.framework */,
-				315B7F83E89FFBE1968C503D /* Pods_MirroringExtension.framework */,
-				A321926DB2D39BB57234A674 /* Pods_Chromecast.framework */,
+				F482D3839643C3D38DAD421A /* Pods_Chromecast.framework */,
+				9749FE0372B4604AEAA9B465 /* Pods_MirroringExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -491,14 +444,10 @@
 		9FB1EA453052B0581D0BFE07 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3E6B40AE5B01FA94F58DD536 /* Pods-ChromecastIOS.debug.xcconfig */,
-				9752ACD44283C98AF9E8ACE6 /* Pods-ChromecastIOS.release.xcconfig */,
-				15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */,
-				2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */,
-				329CCC095ED3990F9162CC75 /* Pods-Chromecast iOS.debug.xcconfig */,
-				7036A02DE1999D185C4E2DE6 /* Pods-Chromecast iOS.release.xcconfig */,
-				E593A6571A925CB22BD45CDB /* Pods-Chromecast.debug.xcconfig */,
-				BC25134C891F2D61A1F35163 /* Pods-Chromecast.release.xcconfig */,
+				A6F17414D6FD111689071F73 /* Pods-Chromecast.debug.xcconfig */,
+				30EB7AE6F9068D6C560DAD12 /* Pods-Chromecast.release.xcconfig */,
+				17D62404F0D77905C1505E2E /* Pods-MirroringExtension.debug.xcconfig */,
+				9F7DADAC1D16120F28949E2B /* Pods-MirroringExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -635,8 +584,6 @@
 			children = (
 				DDA72053282BB34400CF4DC3 /* Loading */,
 				DDF59BFA280F31FF00CE2E2B /* NavigationContrainer */,
-				DD923AE02816A2700034E5D3 /* Tutorial */,
-				DD52329F281ACE16004AF0AA /* Subscriptions */,
 				DDF59BEE280F2E9C00CE2E2B /* MainVC */,
 				DDE7530828C22EF100F44B1C /* ChannelsVC */,
 				DDE7530D28C2313400F44B1C /* WhiteboardVC */,
@@ -690,39 +637,11 @@
 			path = AssetCell;
 			sourceTree = "<group>";
 		};
-		DD52329F281ACE16004AF0AA /* Subscriptions */ = {
-			isa = PBXGroup;
-			children = (
-				DD5232A2281ACE52004AF0AA /* PremimumLifeTimeVC */,
-				DD5232A1281ACE35004AF0AA /* PremiumDiscountVC */,
-			);
-			path = Subscriptions;
-			sourceTree = "<group>";
-		};
-		DD5232A1281ACE35004AF0AA /* PremiumDiscountVC */ = {
-			isa = PBXGroup;
-			children = (
-				DD5232AA281ACF0C004AF0AA /* PremiumDiscountViewController.swift */,
-				DD5232AB281ACF0C004AF0AA /* PremiumDiscountViewController.xib */,
-			);
-			path = PremiumDiscountVC;
-			sourceTree = "<group>";
-		};
-		DD5232A2281ACE52004AF0AA /* PremimumLifeTimeVC */ = {
-			isa = PBXGroup;
-			children = (
-				DD5232AE281ACF22004AF0AA /* PremuimLifeTimeViewController.swift */,
-				DD5232AF281ACF22004AF0AA /* PremuimLifeTimeViewController.xib */,
-			);
-			path = PremimumLifeTimeVC;
-			sourceTree = "<group>";
-		};
 		DD5232A3281ACE8F004AF0AA /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				E8E5FA8B283BF9E100B4B6FF /* JPEGEncoder.swift */,
 				E8E5FA87283BF9A800B4B6FF /* HTMLStreamManager.swift */,
-				DD5232A4281ACEA2004AF0AA /* SubscriptionSpotsManager.swift */,
 				E8E5FA89283BF9CD00B4B6FF /* HTTPServer.swift */,
 				DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */,
 				DD03EFA9282A63F10075F70E /* LocalNetworkPermissionsManager.swift */,
@@ -785,67 +704,6 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		DD923AE02816A2700034E5D3 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				DD923AE12816A2C60034E5D3 /* Container */,
-				DD923AE22816A2DE0034E5D3 /* WelcomeVC */,
-				DD923AE32816A3040034E5D3 /* AccessToNetworkVC */,
-				DD923AE42816A31E0034E5D3 /* WifiVC */,
-				DD923AE52816A32C0034E5D3 /* ConnectVC */,
-				DDF231BF281814D7005E3E3E /* TestConnectionVC */,
-				DDF231C428181543005E3E3E /* PreviewImageVC */,
-				DDF231C9281815A1005E3E3E /* EverythingReadyVC */,
-				DDAE26482818249400355735 /* RatingStarsVC */,
-			);
-			path = Tutorial;
-			sourceTree = "<group>";
-		};
-		DD923AE12816A2C60034E5D3 /* Container */ = {
-			isa = PBXGroup;
-			children = (
-				DD923AE62816AF1B0034E5D3 /* TutorialContainerViewController.swift */,
-				DD923AE72816AF1B0034E5D3 /* TutorialContainerViewController.xib */,
-			);
-			path = Container;
-			sourceTree = "<group>";
-		};
-		DD923AE22816A2DE0034E5D3 /* WelcomeVC */ = {
-			isa = PBXGroup;
-			children = (
-				DD923AEA2816B39B0034E5D3 /* TutorialWelcomeViewController.swift */,
-				DD923AEB2816B39B0034E5D3 /* TutorialWelcomeViewController.xib */,
-			);
-			path = WelcomeVC;
-			sourceTree = "<group>";
-		};
-		DD923AE32816A3040034E5D3 /* AccessToNetworkVC */ = {
-			isa = PBXGroup;
-			children = (
-				DD923AEE2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift */,
-				DD923AEF2816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib */,
-			);
-			path = AccessToNetworkVC;
-			sourceTree = "<group>";
-		};
-		DD923AE42816A31E0034E5D3 /* WifiVC */ = {
-			isa = PBXGroup;
-			children = (
-				DD923AF22816B3F40034E5D3 /* TutorialWifiViewController.swift */,
-				DD923AF32816B3F40034E5D3 /* TutorialWifiViewController.xib */,
-			);
-			path = WifiVC;
-			sourceTree = "<group>";
-		};
-		DD923AE52816A32C0034E5D3 /* ConnectVC */ = {
-			isa = PBXGroup;
-			children = (
-				DD923AF62816B4130034E5D3 /* TutorialConnectViewController.swift */,
-				DD923AF72816B4130034E5D3 /* TutorialConnectViewController.xib */,
-			);
-			path = ConnectVC;
-			sourceTree = "<group>";
-		};
 		DDA72053282BB34400CF4DC3 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
@@ -891,15 +749,6 @@
 				DDA72061282C378000CF4DC3 /* IPTVStreamCell.xib */,
 			);
 			path = IPTVStreamCell;
-			sourceTree = "<group>";
-		};
-		DDAE26482818249400355735 /* RatingStarsVC */ = {
-			isa = PBXGroup;
-			children = (
-				DDAE264E2818250000355735 /* TutorialRatingStarsViewController.swift */,
-				DDAE264F2818250000355735 /* TutorialRatingStarsViewController.xib */,
-			);
-			path = RatingStarsVC;
 			sourceTree = "<group>";
 		};
 		DDAE2659281870D100355735 /* DeviceCellView */ = {
@@ -1100,33 +949,6 @@
 			path = DetectedUrlCell;
 			sourceTree = "<group>";
 		};
-		DDF231BF281814D7005E3E3E /* TestConnectionVC */ = {
-			isa = PBXGroup;
-			children = (
-				DDF231C0281814F9005E3E3E /* TutorialTestConnectionViewController.swift */,
-				DDF231C1281814F9005E3E3E /* TutorialTestConnectionViewController.xib */,
-			);
-			path = TestConnectionVC;
-			sourceTree = "<group>";
-		};
-		DDF231C428181543005E3E3E /* PreviewImageVC */ = {
-			isa = PBXGroup;
-			children = (
-				DDF231C528181568005E3E3E /* TutorialPreviewImageViewController.swift */,
-				DDF231C628181568005E3E3E /* TutorialPreviewImageViewController.xib */,
-			);
-			path = PreviewImageVC;
-			sourceTree = "<group>";
-		};
-		DDF231C9281815A1005E3E3E /* EverythingReadyVC */ = {
-			isa = PBXGroup;
-			children = (
-				DDF231CA281815EF005E3E3E /* TutorialEverythingReadyViewController.swift */,
-				DDF231CB281815EF005E3E3E /* TutorialEverythingReadyViewController.xib */,
-			);
-			path = EverythingReadyVC;
-			sourceTree = "<group>";
-		};
 		DDF59BEE280F2E9C00CE2E2B /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,6 +1013,7 @@
 				DDF59C0F280F4B7B00CE2E2B /* UIView+Extension.swift */,
 				DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */,
 				E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */,
+				DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1282,7 +1105,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8964331280EB5A700E6E287 /* Build configuration list for PBXNativeTarget "MirroringExtension" */;
 			buildPhases = (
-				9D8BDC54077DA9B1897DDAEC /* [CP] Check Pods Manifest.lock */,
+				DCD5C8B62C352106090C8706 /* [CP] Check Pods Manifest.lock */,
 				E896430E280EB5A700E6E287 /* Sources */,
 				E896430F280EB5A700E6E287 /* Frameworks */,
 				E8964310280EB5A700E6E287 /* Resources */,
@@ -1300,14 +1123,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8964344280EB75D00E6E287 /* Build configuration list for PBXNativeTarget "Chromecast" */;
 			buildPhases = (
-				E8964335280EB75D00E6E287 /* [CP] Check Pods Manifest.lock */,
+				FCDAF9C8A036D9662A748CA8 /* [CP] Check Pods Manifest.lock */,
 				E8964336280EB75D00E6E287 /* Sources */,
 				E896433A280EB75D00E6E287 /* Frameworks */,
 				E896433C280EB75D00E6E287 /* Resources */,
 				E8964342280EB75D00E6E287 /* Embed App Extensions */,
-				50245C60B5749F2D6C3C7C11 /* [CP] Embed Pods Frameworks */,
-				ED3EE10D0E760A199BF2AAB9 /* [CP] Copy Pods Resources */,
 				DD0B64FA28756F0D007AC44B /* ShellScript */,
+				79836A9AB918852967F179DD /* [CP] Embed Pods Frameworks */,
+				6C83C6A852A1EA9EF1FB46EA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1386,22 +1209,15 @@
 				DDF59C07280F46CE00CE2E2B /* Localizable.strings in Resources */,
 				DD19E4852811E56F00931489 /* WebsiteCell.xib in Resources */,
 				DDD6E3D02833C653000C5AB9 /* FAQ.html in Resources */,
-				DD923AF92816B4130034E5D3 /* TutorialConnectViewController.xib in Resources */,
-				DDF231CD281815EF005E3E3E /* TutorialEverythingReadyViewController.xib in Resources */,
 				DD19E4C52812AC8E00931489 /* HDCell.xib in Resources */,
-				DD923AE92816AF1B0034E5D3 /* TutorialContainerViewController.xib in Resources */,
-				DD923AF52816B3F40034E5D3 /* TutorialWifiViewController.xib in Resources */,
-				DD5232AD281ACF0C004AF0AA /* PremiumDiscountViewController.xib in Resources */,
 				DD5F40472848BC460064B934 /* GoogleAlbumView.xib in Resources */,
 				DD523299281A9906004AF0AA /* AlbumView.xib in Resources */,
 				DDCE0A0B28116EF9004E9C18 /* GooglePhotosViewController.xib in Resources */,
 				DD345D242817FA9700E67AB0 /* dailymotion_ico.png in Resources */,
 				DDAE265D2818724C00355735 /* DeviceCellView.xib in Resources */,
-				DDF231C3281814F9005E3E3E /* TutorialTestConnectionViewController.xib in Resources */,
 				DDE7530C28C22F0E00F44B1C /* ChannelsViewController.xib in Resources */,
 				E896433E280EB75D00E6E287 /* Assets.xcassets in Resources */,
 				DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */,
-				DD923AED2816B39B0034E5D3 /* TutorialWelcomeViewController.xib in Resources */,
 				DDCE0A1228116FAE004E9C18 /* MediaPlayerViewController.xib in Resources */,
 				DDCE09F7281032A5004E9C18 /* MirrorViewController.xib in Resources */,
 				DDCF125B28229C23009019D4 /* MediaSettingsViewController.xib in Resources */,
@@ -1416,7 +1232,6 @@
 				DDF59C15280F5E1F00CE2E2B /* MainCell.xib in Resources */,
 				DD345D262817FA9700E67AB0 /* veoh_ico.png in Resources */,
 				DD19E4CA2812ACB500931489 /* ThumbnailCell.xib in Resources */,
-				DDF231C828181568005E3E3E /* TutorialPreviewImageViewController.xib in Resources */,
 				DDA72048282AC2EC00CF4DC3 /* CommentView.xib in Resources */,
 				DD6E98AE282FDE4100A72DF3 /* GoogleDriveCell.xib in Resources */,
 				DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */,
@@ -1424,23 +1239,37 @@
 				DDE7531128C2314B00F44B1C /* WhiteboardViewController.xib in Resources */,
 				DDED96FA282E7B470088E4E6 /* DetectedUrlsViewController.xib in Resources */,
 				DD52329E281AAE26004AF0AA /* AssetCell.xib in Resources */,
-				DDAE26512818250000355735 /* TutorialRatingStarsViewController.xib in Resources */,
 				DDB3598A283E870600605B56 /* SetupChromeCastViewController.xib in Resources */,
 				DDCE0A0728116ED5004E9C18 /* GoogleDriveViewController.xib in Resources */,
 				DDAE26552818535200355735 /* ListDevicesViewController.xib in Resources */,
-				DD5232B1281ACF22004AF0AA /* PremuimLifeTimeViewController.xib in Resources */,
 				DD19E4752811D58600931489 /* Index.html in Resources */,
 				DDF59BED280F2E9600CE2E2B /* MainViewController.xib in Resources */,
-				DD923AF12816B3C20034E5D3 /* TutorialAccessToNetworkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		50245C60B5749F2D6C3C7C11 /* [CP] Embed Pods Frameworks */ = {
+		6C83C6A852A1EA9EF1FB46EA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chromecast/Pods-Chromecast-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Chromecast/Pods-Chromecast-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chromecast/Pods-Chromecast-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79836A9AB918852967F179DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1455,7 +1284,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chromecast/Pods-Chromecast-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D8BDC54077DA9B1897DDAEC /* [CP] Check Pods Manifest.lock */ = {
+		DCD5C8B62C352106090C8706 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1496,7 +1325,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
-		E8964335280EB75D00E6E287 /* [CP] Check Pods Manifest.lock */ = {
+		FCDAF9C8A036D9662A748CA8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1518,23 +1347,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ED3EE10D0E760A199BF2AAB9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Chromecast/Pods-Chromecast-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Chromecast/Pods-Chromecast-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chromecast/Pods-Chromecast-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1551,6 +1363,7 @@
 				E8E5FA88283BF9A800B4B6FF /* HTMLStreamManager.swift in Sources */,
 				E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */,
 				E8E5FA85283BF90A00B4B6FF /* URL+Extension.swift in Sources */,
+				DDBE6A3A290FE9410079C309 /* URLResponse+Extension.swift in Sources */,
 				E8E5FA82283BF8AF00B4B6FF /* Bundle+Extension.swift in Sources */,
 				E825B03128451F610034589B /* UserDefaults+Extension.swift in Sources */,
 				E8E5FA8D283BFA2F00B4B6FF /* CMSampleBuffer+Extension.swift in Sources */,
@@ -1565,7 +1378,6 @@
 				DD19E4C92812ACB500931489 /* ThumbnailCell.swift in Sources */,
 				DD923AD62812E6DF0034E5D3 /* CellAnimationMeasurement.swift in Sources */,
 				DD923AD42812E6C10034E5D3 /* CellBasicMeasurement.swift in Sources */,
-				DDF231CC281815EF005E3E3E /* TutorialEverythingReadyViewController.swift in Sources */,
 				DDEFA0DC283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift in Sources */,
 				DD92BADE2837117C00ACD358 /* VideoPlayerManager.swift in Sources */,
 				DD92BAE6283731A000ACD358 /* WebMediaSearchManager.swift in Sources */,
@@ -1582,7 +1394,6 @@
 				DDF59C00280F32A400CE2E2B /* UIViewController+Extension.swift in Sources */,
 				DDE7531028C2314B00F44B1C /* WhiteboardViewController.swift in Sources */,
 				DDF59C10280F4B7B00CE2E2B /* UIView+Extension.swift in Sources */,
-				DD923AE82816AF1B0034E5D3 /* TutorialContainerViewController.swift in Sources */,
 				DDF59C0C280F489C00CE2E2B /* DefaultLabel.swift in Sources */,
 				DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */,
 				DD92BAD82836AC2700ACD358 /* ConnectButton.swift in Sources */,
@@ -1606,15 +1417,11 @@
 				DDAE2661281927C000355735 /* DotsActivityIndicator.swift in Sources */,
 				DD923ADB2812F08E0034E5D3 /* FlowLayoutSyncManager.swift in Sources */,
 				DDBE7196285E087400383511 /* ResumeVideoView.swift in Sources */,
-				DD923AF02816B3C20034E5D3 /* TutorialAccessToNetworkViewController.swift in Sources */,
-				DD923AEC2816B39B0034E5D3 /* TutorialWelcomeViewController.swift in Sources */,
 				DDCE0A0A28116EF9004E9C18 /* GooglePhotosViewController.swift in Sources */,
 				DD6E98A9282FC04D00A72DF3 /* GoogleDriveAPI.swift in Sources */,
-				DD923AF42816B3F40034E5D3 /* TutorialWifiViewController.swift in Sources */,
 				DD92BADC2836F6FE00ACD358 /* StreamConfiguration.swift in Sources */,
 				DD923AD92812E7190034E5D3 /* AcoordionAnimationManager.swift in Sources */,
 				DDF59C0E280F48D500CE2E2B /* UIFont+Extension.swift in Sources */,
-				DD5232AC281ACF0C004AF0AA /* PremiumDiscountViewController.swift in Sources */,
 				DDCE09F6281032A5004E9C18 /* MirrorViewController.swift in Sources */,
 				DDD6E3C92833BEEC000C5AB9 /* ServerConfiguration.swift in Sources */,
 				DDED96F9282E7B470088E4E6 /* DetectedUrlsViewController.swift in Sources */,
@@ -1623,14 +1430,12 @@
 				DDED9701282E81780088E4E6 /* MediaInfoExtractor.swift in Sources */,
 				DDCE09FB281064C2004E9C18 /* BrowserViewController.swift in Sources */,
 				DD92BAE22837273400ACD358 /* CustomSlider.swift in Sources */,
-				DDF231C2281814F9005E3E3E /* TutorialTestConnectionViewController.swift in Sources */,
 				DDCE0A1128116FAE004E9C18 /* MediaPlayerViewController.swift in Sources */,
 				DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */,
 				DDA72062282C378000CF4DC3 /* IPTVStreamCell.swift in Sources */,
 				DDA7204A282AC47700CF4DC3 /* SKPproduct+Extension.swift in Sources */,
 				DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */,
 				DD69DCAA281A8EF80010E4B3 /* MediaLibraryViewController.swift in Sources */,
-				DD923AF82816B4130034E5D3 /* TutorialConnectViewController.swift in Sources */,
 				DDAE26572818545E00355735 /* AFFloatingPanelViewController.swift in Sources */,
 				DD03EFB3282AAFD50075F70E /* AnyHashable+Extension.swift in Sources */,
 				DDF59C14280F5E1F00CE2E2B /* MainCell.swift in Sources */,
@@ -1639,11 +1444,9 @@
 				DDF59C04280F459600CE2E2B /* DropShadowView.swift in Sources */,
 				DDA7204C282AC79900CF4DC3 /* DefaultAppConfiguration.swift in Sources */,
 				DD03EFB1282AA4580075F70E /* DataManager.swift in Sources */,
-				DDF231C728181568005E3E3E /* TutorialPreviewImageViewController.swift in Sources */,
 				DD19E4D02812C43400931489 /* FlowLayoutInvalidateBehavior.swift in Sources */,
 				E8CFAEC6282AEE94002C3B87 /* Bundle+Extension.swift in Sources */,
 				DD52329D281AAE26004AF0AA /* AssetCell.swift in Sources */,
-				DD5232B0281ACF22004AF0AA /* PremuimLifeTimeViewController.swift in Sources */,
 				DDF59BEC280F2E9600CE2E2B /* MainViewController.swift in Sources */,
 				DD23EAE02811947A00DB7D44 /* SettingsViewController.swift in Sources */,
 				E8E5FA8F283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */,
@@ -1651,6 +1454,7 @@
 				DD03EFAA282A63F10075F70E /* LocalNetworkPermissionsManager.swift in Sources */,
 				DDED96EE282C54510088E4E6 /* IPTVManager.swift in Sources */,
 				DD6E98AD282FDE4100A72DF3 /* GoogleDriveCell.swift in Sources */,
+				DDBE6A39290FE9410079C309 /* URLResponse+Extension.swift in Sources */,
 				DD923ADD2812F0EF0034E5D3 /* ThumbnailSlaveFlowLayout.swift in Sources */,
 				DDA737632819319C00CCF7FD /* AlertViewController.swift in Sources */,
 				DDCE0A0628116ED5004E9C18 /* GoogleDriveViewController.swift in Sources */,
@@ -1658,7 +1462,6 @@
 				DDF59BF3280F2F3500CE2E2B /* Constants.swift in Sources */,
 				DD923AFD2816F4230034E5D3 /* UIColor+Extension.swift in Sources */,
 				DD03EFAC282AA2EC0075F70E /* Settings.swift in Sources */,
-				DD5232A5281ACEA2004AF0AA /* SubscriptionSpotsManager.swift in Sources */,
 				DDED96FE282E7BAC0088E4E6 /* DetectedUrlCell.swift in Sources */,
 				DDCE0A1528116FEC004E9C18 /* IPTVPlayListsViewController.swift in Sources */,
 				DDCE09FF2810724B004E9C18 /* BrowserCell.swift in Sources */,
@@ -1668,7 +1471,6 @@
 				DD523297281A98F4004AF0AA /* AlbumView.swift in Sources */,
 				DD92BADA2836C78F00ACD358 /* VideoConverter.swift in Sources */,
 				DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */,
-				DDAE26502818250000355735 /* TutorialRatingStarsViewController.swift in Sources */,
 				DD19E4842811E56F00931489 /* WebsiteCell.swift in Sources */,
 				DD2FEAB82824FFD300D8EB11 /* DeviceObject.swift in Sources */,
 				DDCE0A1928117020004E9C18 /* YouTubeViewController.swift in Sources */,
@@ -1844,7 +1646,7 @@
 		};
 		E896432C280EB5A700E6E287 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15A2B569E9BE2D29CF7D6372 /* Pods-MirroringExtension.debug.xcconfig */;
+			baseConfigurationReference = 17D62404F0D77905C1505E2E /* Pods-MirroringExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1871,7 +1673,7 @@
 		};
 		E896432D280EB5A700E6E287 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FC802617401239FFFCDBF49 /* Pods-MirroringExtension.release.xcconfig */;
+			baseConfigurationReference = 9F7DADAC1D16120F28949E2B /* Pods-MirroringExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1898,7 +1700,7 @@
 		};
 		E8964345280EB75D00E6E287 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E593A6571A925CB22BD45CDB /* Pods-Chromecast.debug.xcconfig */;
+			baseConfigurationReference = A6F17414D6FD111689071F73 /* Pods-Chromecast.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1937,7 +1739,7 @@
 		};
 		E8964346280EB75D00E6E287 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC25134C891F2D61A1F35163 /* Pods-Chromecast.release.xcconfig */;
+			baseConfigurationReference = 30EB7AE6F9068D6C560DAD12 /* Pods-Chromecast.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

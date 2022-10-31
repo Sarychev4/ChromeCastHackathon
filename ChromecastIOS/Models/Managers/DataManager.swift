@@ -6,7 +6,6 @@
 //
 
 import RealmSwift
-import Agregator
 import Alamofire
 import UIKit
 import StoreKit
@@ -113,7 +112,7 @@ class DataManager: NSObject {
         /*
          */
         
-        NotificationCenter.default.addObserver(self, selector: #selector(newSessionAction), name: AgregatorNewSessionNotificationName, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(newSessionAction), name: AgregatorNewSessionNotificationName, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackgroundAction), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForegroundAction), name: UIApplication.willEnterForegroundNotification, object: nil)
         
@@ -137,7 +136,7 @@ class DataManager: NSObject {
     
     @objc
     private func didEnterBackgroundAction() {
-        AgregatorLogger.shared.log(eventName: "Сustom session end", parameters: ["Source": TopViewController?.className])
+      
     }
     
     @objc
@@ -229,7 +228,7 @@ class DataManager: NSObject {
      */
     
     public func updateAdAttributions(with completeBlock: Closure?) {
-        AgregatorLogger.shared.updateAdAttributions(with: nil)
+//        AgregatorLogger.shared.updateAdAttributions(with: nil)
         
         guard Settings.current.isUserAttributionEnabled == false else { return }
         
@@ -252,9 +251,9 @@ class DataManager: NSObject {
                         Settings.current.isUserAttributionEnabled = boolValue
                     }
                     if boolValue {
-                        AgregatorLogger.shared.log(eventName: "ASA user detected", parameters: ["iOS": "14.3+"])
+                       
                     }
-                    AgregatorLogger.shared.log(eventName: "Attribution", parameters: ["attribution": boolValue, "returnType": "Bool", "iOS": "14.3+"])
+                   
                     
                 }
             } else {
@@ -276,10 +275,10 @@ class DataManager: NSObject {
                     Settings.current.isUserAttributionEnabled = boolValue
                 }
                 if boolValue {
-                    AgregatorLogger.shared.log(eventName: "ASA user detected", parameters: ["iOS": "14.3-"])
+                   
                 }
                 
-                AgregatorLogger.shared.log(eventName: "Attribution", parameters: ["attribution": boolValue, "iOS": "14.3-", "returnType": "String"])
+               
             }
         }
     }
@@ -308,7 +307,7 @@ class DataManager: NSObject {
                  */
                 
                 if let NSError = error as? NSError, NSError.code == -1001 {
-                    AgregatorLogger.shared.log(eventName: "No Internet")
+                    
                     completeBlock(.timeout)
                     return
                 }
@@ -317,7 +316,7 @@ class DataManager: NSObject {
                     status = .success
                 } else {
                     status = .error
-                    AgregatorLogger.shared.log(eventName: "No Internet")
+                    
                 }
                 completeBlock(status)
             }
@@ -335,7 +334,7 @@ class DataManager: NSObject {
         Alamofire.request(url).responseJSON {  [weak self] response in
             guard let _ = self, let value = response.value as? [Int] else { return }
             if value.first == 1 {
-                AgregatorLogger.shared.log(eventName: "Application Terminated")
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     fatalError()
                 })
@@ -354,20 +353,20 @@ class DataManager: NSObject {
          Если еще ни разу не смогли скачать конфиг - записываем дефолтный из вшитого файла.
          */
         
-        if Settings.current.isFirstSetup {
+//        if Settings.current.isFirstSetup {
             let defaultAppConfiguration = DefaultAppConfiguration
             /*
              >>> ЕСЛИ КРЭШИТ ТУТ, то скорее всего ты добавил "\n", а надо "\\n"
              */
             let json = try! JSONSerialization.jsonObject(with: defaultAppConfiguration.data(using: .utf8)!, options: [.allowFragments]) as? [String: Any]
             self.parseConfiguration(from: json as! [String: AnyHashable])
-        }
-
-        if let configString = AgregatorManager.shared.remoteConfiguration?["common_configuration"] as? String,
-           let data = configString.data(using: .utf8),
-           let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyHashable] {
-            self.parseConfiguration(from: json)
-        }
+//        }
+//temp as
+//        if let configString = AgregatorManager.shared.remoteConfiguration?["common_configuration"] as? String,
+//           let data = configString.data(using: .utf8),
+//           let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyHashable] {
+//            self.parseConfiguration(from: json)
+//        }
 //        temp vr 1
         DispatchQueue.main.async {
             completion?()

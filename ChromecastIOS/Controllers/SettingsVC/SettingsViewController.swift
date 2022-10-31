@@ -7,7 +7,6 @@
 
 import UIKit
 import MBProgressHUD
-import Agregator
 import MessageUI
 import SystemConfiguration.CaptiveNetwork
 import NetworkExtension
@@ -39,7 +38,6 @@ class SettingsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        specialOfferContainerView.isHidden = AgregatorApplication.current.subscriptionState == .active
       
         setupHelpSection()
 //        setupNavigationSection()
@@ -53,10 +51,8 @@ class SettingsViewController: BaseViewController {
         premiumLabel.attributedText = attribute
         
         specialOfferInteractiveView.didTouchAction = { [weak self] in
-            AgregatorLogger.shared.log(eventName: "Banner tap", parameters: ["Source": "Settings"])
-            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.settings.rawValue, with: { [weak self] success in
+            
                 self?.containerStackView.reloadInputViews()
-            })
             
         }
         /*
@@ -126,10 +122,10 @@ class SettingsViewController: BaseViewController {
                 guard let self = self else { return }
                 let systemVersion = UIDevice.current.systemVersion
                 let bundleVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-                var storeCountry = AgregatorStore.shared.products?.first?.skProduct?.priceLocale.regionCode ?? Locale.current.regionCode
+                var storeCountry = Locale.current.regionCode
                 storeCountry = SKPaymentQueue.default().storefront?.countryCode ?? ""
                 let toRecipient = Settings.current.supportEmail
-                let subject = "[Screen Mirroring] User Feedback"
+                let subject = "[Chromecast] User Feedback"
                 let body = """
                 {Please describe your problem below}\n
                 
@@ -165,13 +161,13 @@ class SettingsViewController: BaseViewController {
         restorePurchasesInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             
-            self.checkInternetConnection {
-                AgregatorStore.shared.restoreProducts { (response) in
-                    if response {
-                        NSObject.cancelPreviousPerformRequests(withTarget: self)
-                    }
-                }
-            }
+//            self.checkInternetConnection {
+//                AgregatorStore.shared.restoreProducts { (response) in
+//                    if response {
+//                        NSObject.cancelPreviousPerformRequests(withTarget: self)
+//                    }
+//                }
+//            }
         }
         
         /*
@@ -208,26 +204,26 @@ class SettingsViewController: BaseViewController {
 //    }
     
     private func observeSubscriptionState() {
-        applicationNotificationToken = AgregatorApplication.current.observe({ [weak self] (change) in
-            switch change {
-            case .change(_, let properties):
-                for property in properties {
-                    if property.name == #keyPath(AgregatorApplication.subscriptionState) {
-                        DispatchQueue.main.async {
-                            
-                            self?.specialOfferContainerView.isHidden = !Settings.current.isNeedToShowSpecialOffer
-                            self?.containerStackView.reloadInputViews()
-                            self?.contentScrollView.reloadInputViews()
-                            
-                        }
-                    }
-                }
-            case .deleted:
-                self?.applicationNotificationToken.invalidate()
-            case .error(_):
-                break
-            }
-        })
+//        applicationNotificationToken = AgregatorApplication.current.observe({ [weak self] (change) in
+//            switch change {
+//            case .change(_, let properties):
+//                for property in properties {
+//                    if property.name == #keyPath(AgregatorApplication.subscriptionState) {
+//                        DispatchQueue.main.async {
+//
+//                            self?.specialOfferContainerView.isHidden = !Settings.current.isNeedToShowSpecialOffer
+//                            self?.containerStackView.reloadInputViews()
+//                            self?.contentScrollView.reloadInputViews()
+//
+//                        }
+//                    }
+//                }
+//            case .deleted:
+//                self?.applicationNotificationToken.invalidate()
+//            case .error(_):
+//                break
+//            }
+//        })
     }
 }
 

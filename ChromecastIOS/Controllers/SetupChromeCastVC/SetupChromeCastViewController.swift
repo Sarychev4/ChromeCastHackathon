@@ -7,7 +7,6 @@
 
 import UIKit
 import WebKit
-import Agregator
 
 class SetupChromeCastViewController: BaseViewController {
     
@@ -25,7 +24,7 @@ class SetupChromeCastViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AgregatorLogger.shared.log(eventName: "Setup_chromecast", parameters: nil)
+     
         self.navigationController?.isNavigationBarHidden = true
         
         hideInteractiveViewCompletion?()

@@ -18,7 +18,6 @@ target 'Chromecast' do
   common_pods_for_target
   pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
   pod 'AdvancedPageControl'
-  pod 'Agregator', :git => 'git@github.com:mirroringcontact/common.git'
   pod 'Kingfisher'
   pod 'ReachabilitySwift'
   pod "NextLevelSessionExporter", "~> 0.4.5"
@@ -26,14 +25,13 @@ target 'Chromecast' do
   pod 'LNZCollectionLayouts'
   pod 'XCDYouTubeKit-kbexdev', :git => 'https://github.com/kbex-dev/XCDYouTubeKit.git'
   pod 'IndicateKit', '~> 1.0.5'
+  pod 'MBProgressHUD'
   pod 'lottie-ios'
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Messaging'
   pod 'GoogleAPIClientForREST/Drive'
   pod 'GoogleSignIn'
   pod "NextLevelSessionExporter", "~> 0.4.5"
   pod 'ZMJTipView'
+  pod 'DeviceKit'
 #  pod 'ffmpeg-kit-ios-min'
 #pod 'ffmpeg-kit-ios-https-gpl'
 end 
@@ -41,9 +39,13 @@ end
  post_install do |installer_representation|
    installer_representation.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
             config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
             config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
             config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
+            if config.build_settings['WRAPPER_EXTENSION'] == 'bundle'
+                config.build_settings['DEVELOPMENT_TEAM'] = 'C2HGX78UB7'
+            end
         end
   end
  end

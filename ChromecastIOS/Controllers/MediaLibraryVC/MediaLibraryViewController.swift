@@ -9,7 +9,6 @@ import UIKit
 import DeviceKit
 import Photos
 import GoogleCast
-import Agregator
 
 class MediaLibraryViewController: BaseViewController {
     
@@ -39,8 +38,7 @@ class MediaLibraryViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AgregatorLogger.shared.log(eventName: "Media_library", parameters: nil)
-        
+       
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
 //            ChromeCastService.shared.stopWebApp()
@@ -150,7 +148,7 @@ class MediaLibraryViewController: BaseViewController {
     
     private func setupAlbums() {
         
-        AgregatorLogger.shared.log(eventName: "Media_setup_albums", parameters: nil)
+     
         
         albumViewsArray.forEach({ $0.removeFromSuperview(); albumsStackView.removeArrangedSubview($0) })
         albumViewsArray.removeAll()

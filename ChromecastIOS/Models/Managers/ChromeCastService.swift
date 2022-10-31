@@ -9,7 +9,6 @@ import Foundation
 import GoogleCast
 import RealmSwift
 import UIKit
-import Agregator
 import CSSystemInfoHelper
 import AVFAudio
 import Network
@@ -161,7 +160,7 @@ class ChromeCastService: NSObject {
                 self.showNoWiFiToast()
                 //Не отправлять WiFi_lost если до этого не было WiFi_found
                 if self.isWiFiFound {
-                    AgregatorLogger.shared.log(eventName: "WiFi lost")
+                  
                 }
 //                if let connectableDevice = self.connectableDevice {
 //                    self.disconnect(connectableDevice)
@@ -169,7 +168,7 @@ class ChromeCastService: NSObject {
 //                self.discoveryManager.clearDeviceList()
             } else {
                 self.isWiFiFound = true
-                AgregatorLogger.shared.log(eventName: "WiFi found")
+                
                 self.startDiscovery()
             }
         }
@@ -321,15 +320,7 @@ class ChromeCastService: NSObject {
                     if property.name == #keyPath(StreamConfiguration.event), let value = property.newValue as? String, let event = StreamEvent(rawValue: value) {
                         switch event {
                         case .broadcastStarted:
-                            AgregatorLogger.shared.log(
-                                eventName: "Mirroring start",
-                                parameters:
-                                    [
-                                        "Quality": StreamConfiguration.current.resolutionType.eventTitle,
-                                        "Sound": StreamConfiguration.current.isSoundOn ? "on" : "off"
-                                    ]
-                                //                                    .merging(device.commonEventParams) { (current, _) in current }
-                            )
+                            
                             
                             guard let deviceIP = CSSystemInfoHelper.ipAddress else { return }
                             guard let url = URL(string: "http://\(deviceIP):\(Port.htmlStreamPort.rawValue)/screenmirror") else { return }
@@ -337,15 +328,7 @@ class ChromeCastService: NSObject {
                             self.displayStream(with: url)
                             
                         case .broadcastFinished:
-                            AgregatorLogger.shared.log(
-                                eventName: "Mirroring stop",
-                                parameters:
-                                    [
-                                        "Quality": StreamConfiguration.current.resolutionType.eventTitle,
-                                        "Sound": StreamConfiguration.current.isSoundOn ? "on" : "off"
-                                    ]
-                                //                                    .merging(device.commonEventParams) { (current, _) in current }
-                            )
+                            
                             self.stopWebApp()
                         }
                     }

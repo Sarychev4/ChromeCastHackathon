@@ -8,7 +8,6 @@
 import UIKit
 import ReplayKit
 import RealmSwift
-import Agregator
 import Network
 import Dispatch
 import MBProgressHUD
@@ -218,34 +217,25 @@ class MirrorViewController: BaseViewController {
         
         balancedInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.resolution.rawValue) { [weak self] (success) in
-                guard let self = self else { return }
-                if success {
+            
                     DispatchQueue.main.async {
                         try? StreamConfiguration.current.realm?.write {
                             StreamConfiguration.current.resolutionType = .medium
                         }
                         self.updateUIbasedOnQuality()
                     }
-                    
-                }
-            }
         }
+            
+        
         
         bestInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.resolution.rawValue) { [weak self] (success) in
-                guard let self = self else { return }
-                if success {
                     DispatchQueue.main.async {
                         try? StreamConfiguration.current.realm?.write {
                             StreamConfiguration.current.resolutionType = .high
                         }
                         self.updateUIbasedOnQuality()
                     }
-                    
-                }
-            }
         }
         
         needHelpInteractiveLabel.didTouchAction = { [weak self] in

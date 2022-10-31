@@ -144,9 +144,7 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
     func didSelectCell(at indexPath: IndexPath) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         let index = indexPath.row
-        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.iptv.rawValue, with: { [weak self] success in
-            guard let self = self, success == true else { return }
-            self.connectIfNeeded { [weak self] in
+            connectIfNeeded { [weak self] in
                 guard let self = self, let stream = self.streams?[indexPath.row] else { return }
                 guard let streamUrl = URL(string: stream.url) else { return }
                 if self.isTipWasShown == false {
@@ -177,7 +175,7 @@ extension IPTVStreamsViewController: UITableViewDelegate, UITableViewDataSource 
                 }
                 
             }
-        })
+        
     }
     
     private func setupPlayerStateObserver() {

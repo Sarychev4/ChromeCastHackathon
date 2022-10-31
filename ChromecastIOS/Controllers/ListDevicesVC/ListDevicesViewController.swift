@@ -9,7 +9,6 @@ import UIKit
 import RealmSwift
 import CoreMedia
 import MBProgressHUD
-import Agregator
 
 class ListDevicesViewController: AFFloatingPanelViewController {
     
@@ -33,7 +32,7 @@ class ListDevicesViewController: AFFloatingPanelViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AgregatorLogger.shared.log(eventName: "Device List", parameters: nil)
+        
         
         setupDotsIndicator()
         

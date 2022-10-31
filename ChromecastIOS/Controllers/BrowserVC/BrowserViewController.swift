@@ -8,7 +8,6 @@
 import UIKit
 import WebKit
 import MBProgressHUD
-import Agregator
 import DeviceKit
 import Realm
 import RealmSwift
@@ -341,9 +340,7 @@ class BrowserViewController: BaseViewController {
     //temp as
     private func castToTV(_ url: String?) {
         
-        SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.browser.rawValue, with: { [weak self] success in
-            guard let self = self, success == true else { return }
-            self.connectIfNeeded { [weak self] in
+        connectIfNeeded { [weak self] in
                 guard let self = self else { return }
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
                 guard let urlString = url, let url = URL(string: urlString) else { return }
@@ -357,7 +354,7 @@ class BrowserViewController: BaseViewController {
                 ChromeCastService.shared.displayVideo(with: url)
                 ChromeCastService.shared.showDefaultMediaVC()
             }
-        })
+        
     }
     
     private func connectIfNeeded(onComplete: Closure?) {

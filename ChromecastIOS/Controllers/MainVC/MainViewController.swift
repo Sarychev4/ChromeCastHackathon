@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Agregator
 import WebKit
 import CSSystemInfoHelper
 import GoogleCast
@@ -43,7 +42,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AgregatorLogger.shared.log(eventName: "Main screen", parameters: nil)
+        
         
         ChromeCastService.shared.initialize()
         
@@ -52,7 +51,7 @@ class MainViewController: BaseViewController {
         
         connectInteractiveView.didTouchAction = { [weak self] in
             guard self == self else { return }
-            AgregatorLogger.shared.log(eventName: "Connect", parameters: ["Source": "Main_screen"])
+            
             self?.presentDevices(postAction: nil)
         }
         
@@ -64,12 +63,60 @@ class MainViewController: BaseViewController {
         setupHelpSection()
         setupMirrorButton()
         setupHeaderSection()
+        
+
+    }
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        try! Settings.current.realm?.write {
+//            Settings.current.isIntroCompleted = true
+//        }
+//        LocalNetworkPermissionsManager.shared.checkUserPermissonsLocalNetwork(onComplete: { (success) in
+//            if success {
+//
+//                ChromeCastService.shared.initialize()
+//
+//
+//
+//            } else {
+//                self.showAlertLocalNetworkPermissionRequired {
+//                    guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+//
+//                    if UIApplication.shared.canOpenURL(settingsURL) {
+//                        UIApplication.shared.open(settingsURL, completionHandler: { (success) in
+//
+//                        })
+//                    }
+//                }
+//            }
+//        })
+    }
+    
+    private func showAlertLocalNetworkPermissionRequired(onComplete: (() -> ())?) {
+        
+        let alertView = AlertViewController(
+            alertTitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Title", comment: ""),
+            alertSubtitle: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Message", comment: ""),
+            continueAction: NSLocalizedString("Alert.Permissions.Denied.LocalNetwork.Continue", comment: ""),
+            leftAction: nil,
+            rightAction: nil
+        )
+        
+        alertView.continueClicked = {
+            onComplete?()
+            alertView.dismiss()
+        }
+        
+        alertView.present(from: self)
     }
     
     private func setupMirrorButton() {
         mirrorInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            AgregatorLogger.shared.log(eventName: "Mirroring tap", parameters: nil)
+            
             let vc = MirrorViewController()
             vc.hidesBottomBarWhenPushed = true
             self.navigation?.pushViewController(vc, animated: .left)
@@ -80,33 +127,13 @@ class MainViewController: BaseViewController {
         
 //        settingsInteractiveView.didTouchAction = { [weak self] in
 //        guard let self = self else { return }
-//            AgregatorLogger.shared.log(eventName: "Setting", parameters: ["Source": "Main_screen"])
+//
 //            let settingsViewController = SettingsViewController()
 //            let navigationController = DefaultNavigationController(rootViewController: settingsViewController)
 //            navigationController.modalPresentationStyle = .fullScreen
 //            self.present(navigationController, animated: true, completion: nil)
 //        }
         
-        goToPremiumInteractiveView.isHidden = AgregatorApplication.current.subscriptionState == .active
-        goToPremiumInteractiveView.didTouchAction = {
-            
-//        #if DEBUG //1
-//            try! AgregatorApplication.current.realm?.write {
-//                if AgregatorApplication.current.subscriptionState == .active {
-//                    AgregatorApplication.current.subscriptionState = .none
-//                } else {
-//                    AgregatorApplication.current.subscriptionState = .active
-//                }
-//            }//temp vr 1
-//            return
-//        #endif
-            AgregatorLogger.shared.log(eventName: "Banner tap", parameters: ["Source": "Main_screen"])
-            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.banner.rawValue, with: { [weak self] success in
-                guard let self = self else { return }
-                self.goToPremiumInteractiveView.isHidden = AgregatorApplication.current.subscriptionState == .active
-                self.collectionView.reloadData()
-            })
-        }
         
     }
     
@@ -174,35 +201,30 @@ class MainViewController: BaseViewController {
         case .media:
             let viewController = MediaLibraryViewController()
             viewController.hidesBottomBarWhenPushed = true
-            AgregatorLogger.shared.log(eventName: "Media", parameters: ["Source": "Main_screen"])
             navigation?.pushViewController(viewController, animated: .left)
         case .browser:
             let viewController = BrowserViewController()
             viewController.hidesBottomBarWhenPushed = true
-            AgregatorLogger.shared.log(eventName: "Browser", parameters: ["Source": "Main_screen"])
             navigation?.pushViewController(viewController, animated: .left)
         case .iptv:
             let viewController = IPTVPlayListsViewController()
             viewController.hidesBottomBarWhenPushed = true
-            AgregatorLogger.shared.log(eventName: "IPTV", parameters: ["Source": "Main_screen"])
             self.navigation?.pushViewController(viewController, animated: .left)
         case .youtube:
-            SubscriptionSpotsManager.shared.requestSpot(for: DataManager.SubscriptionSpotType.youtube.rawValue, with: { [weak self] success in
-                guard let self = self, success == true else { return }
+            
             let viewController = YouTubeViewController()
             viewController.hidesBottomBarWhenPushed = true
-            AgregatorLogger.shared.log(eventName: "YouTube", parameters: ["Source": "Main_screen"])
             self.navigation?.pushViewController(viewController, animated: .left)
-            })
+            
         case .googleDrive:
             let viewController = GoogleDriveViewController()
             viewController.hidesBottomBarWhenPushed = true
-            AgregatorLogger.shared.log(eventName: "GoogleDrive", parameters: ["Source": "Main_screen"])
+            
             self.navigation?.pushViewController(viewController, animated: .left)
         case .googlePhotos:
             let viewController = GooglePhotosViewController()
             viewController.hidesBottomBarWhenPushed = true
-            AgregatorLogger.shared.log(eventName: "GooglePhotos", parameters: ["Source": "Main_screen"])
+            
             self.navigation?.pushViewController(viewController, animated: .left)
         }
     }

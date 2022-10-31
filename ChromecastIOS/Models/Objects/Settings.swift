@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import Agregator
 
 @objc
 enum SpecialOfferState: Int, PersistableEnum {
@@ -67,7 +66,7 @@ class Settings: Object {
 
     var isNeedToShowSpecialOffer: Bool {
         get {
-            return (AgregatorApplication.current.subscriptionState == .none || AgregatorApplication.current.subscriptionState == .expired || AgregatorApplication.current.subscriptionState == .customTrialExpired) && Settings.current.specialOfferState != .completed && isSpecialOfferEnabled
+            return true
         }
     }
     

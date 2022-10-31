@@ -10,7 +10,6 @@ import AudioToolbox
 import Photos
 import MBProgressHUD
 import GoogleCast
-import Agregator
 import RealmSwift
 import ZMJTipView
 import AVKit
@@ -23,7 +22,7 @@ class MediaPlayerViewController: BaseViewController {
     
     deinit {
         print(">>> deinit MediaPlayerViewController")
-        AgregatorLogger.shared.log(eventName: "Media player dealloc", parameters: nil)
+      
     }
     
     @IBOutlet weak var backInteractiveView: InteractiveView!
@@ -79,7 +78,6 @@ class MediaPlayerViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AgregatorLogger.shared.log(eventName: "Media_player", parameters: nil)
         
         setupNavigationSection()
         registerUICollectionsCells()
@@ -181,7 +179,7 @@ class MediaPlayerViewController: BaseViewController {
     
     
     private func handleAsset(at index: Int) {
-        AgregatorLogger.shared.log(eventName: "Media player handle asset", parameters: nil)
+        
     
         guard index >= 0, index < assets.count else { return }
         let asset = assets[index]
@@ -274,7 +272,7 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private func presentDevices(postAction: Closure?) {
-        AgregatorLogger.shared.log(eventName: "Media player device list", parameters: nil)
+       
         let controller = ListDevicesViewController()
         controller.canDismissOnPan = true
         controller.isInteractiveBackground = false
@@ -308,7 +306,7 @@ class MediaPlayerViewController: BaseViewController {
                 "previous value": Settings.current.videosResolution.eventTitle,
                 "quality": resolution.eventTitle
             ]
-            AgregatorLogger.shared.log(eventName: "Media quality changed", parameters: params)
+            
             self.updateResolution(for: asset.mediaType, newResolution: resolution)
             
             postAction?()
@@ -327,7 +325,7 @@ class MediaPlayerViewController: BaseViewController {
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
-        AgregatorLogger.shared.log(eventName: "Media player reconnect", parameters: nil)
+        
         guard GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue != 2 else {
             onComplete?()
             return
@@ -480,25 +478,16 @@ extension MediaPlayerViewController {
         case .readyForTV:
             connectIfNeeded { [weak self] in
                 guard let self = self else { return }
-            /**/
                 self.savePreviewImageOfVideoToServer()
                 let ipAddress = ServerConfiguration.shared.deviceIPAddress()
-                guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)") else { return }
-//
-//                let player = AVPlayer(url: url)
-//                let playerViewController = AVPlayerViewController()
-//                playerViewController.player = player
-//                self.present(playerViewController, animated: true) {
-//                    playerViewController.player!.play()
-//                }
-            /**/
-                guard let previewImageURL = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/playerPreviewImage/\(UUID().uuidString)") else { return }
-                print(">>>\(previewImageURL)")
+                guard let url = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/video/\(UUID().uuidString)"), let previewImageURL = URL(string: "http://\(ipAddress):\(Port.app.rawValue)/playerPreviewImage/\(UUID().uuidString)") else { return }
+                
                 if self.isTipWasShown == false {
                     self.resumeVideoInteractiveView.isHidden = false
                     self.showTipView()
                     self.isTipWasShown = true
                 }
+
                 ChromeCastService.shared.displayVideo(with: url, previewImage: previewImageURL)
                 ChromeCastService.shared.showDefaultMediaVC()
                 DispatchQueue.main.async { [weak self] in
