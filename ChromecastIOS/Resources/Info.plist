@@ -27,6 +27,7 @@
 	</dict>
 	<key>NSBonjourServices</key>
 	<array>
+		<string>_785537D5._googlecast._tcp</string>
 		<string>_YouTube._googlecast._tcp</string>
 		<string>_D7506266._googlecast._tcp</string>
 		<string>_785537D5._googlecast._tcp</string>

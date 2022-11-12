@@ -14,8 +14,11 @@ target 'MirroringExtension' do
 end
 
 target 'Chromecast' do
+
+  platform :ios, '10.0'
   use_frameworks!
   common_pods_for_target
+  pod 'Starscream', '~> 4.0.4'
   pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
   pod 'AdvancedPageControl'
   pod 'Kingfisher'
@@ -24,7 +27,7 @@ target 'Chromecast' do
   pod 'google-cast-sdk-no-bluetooth'
   pod 'LNZCollectionLayouts'
   pod 'XCDYouTubeKit-kbexdev', :git => 'https://github.com/kbex-dev/XCDYouTubeKit.git'
-  pod 'IndicateKit', '~> 1.0.5'
+ # pod 'IndicateKit', '~> 1.0.5'
   pod 'MBProgressHUD'
   pod 'lottie-ios'
   pod 'GoogleAPIClientForREST/Drive'

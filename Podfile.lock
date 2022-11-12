@@ -12,10 +12,10 @@ PODS:
   - GCDWebServer (3.5.4):
     - GCDWebServer/Core (= 3.5.4)
   - GCDWebServer/Core (3.5.4)
-  - google-cast-sdk-no-bluetooth (4.7.0):
-    - google-cast-sdk-no-bluetooth/Core (= 4.7.0)
+  - google-cast-sdk-no-bluetooth (4.6.1):
+    - google-cast-sdk-no-bluetooth/Core (= 4.6.1)
     - Protobuf (~> 3.13)
-  - google-cast-sdk-no-bluetooth/Core (4.7.0):
+  - google-cast-sdk-no-bluetooth/Core (4.6.1):
     - Protobuf (~> 3.13)
   - GoogleAPIClientForREST/Core (2.0.1):
     - GTMSessionFetcher/Full (< 3.0, >= 1.6.1)
@@ -39,10 +39,9 @@ PODS:
   - GTMSessionFetcher/Core (1.7.2)
   - GTMSessionFetcher/Full (1.7.2):
     - GTMSessionFetcher/Core (= 1.7.2)
-  - IndicateKit (1.0.6)
-  - Kingfisher (7.4.1)
+  - Kingfisher (6.3.1)
   - LNZCollectionLayouts (1.2.2)
-  - lottie-ios (3.5.0)
+  - lottie-ios (3.2.3)
   - MBProgressHUD (1.2.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
@@ -59,6 +58,7 @@ PODS:
   - RealmSwift (10.32.1):
     - Realm (= 10.32.1)
   - Result (4.1.0)
+  - Starscream (4.0.4)
   - XCDYouTubeKit-kbexdev (2.16.0)
   - ZMJTipView (0.1.7)
 
@@ -71,7 +71,6 @@ DEPENDENCIES:
   - GoogleAPIClientForREST/Drive
   - GoogleSignIn
   - GPhotos (from `https://github.com/deivitaka/GPhotos.git`)
-  - IndicateKit (~> 1.0.5)
   - Kingfisher
   - LNZCollectionLayouts
   - lottie-ios
@@ -79,6 +78,7 @@ DEPENDENCIES:
   - NextLevelSessionExporter (~> 0.4.5)
   - ReachabilitySwift
   - RealmSwift
+  - Starscream (~> 4.0.4)
   - XCDYouTubeKit-kbexdev (from `https://github.com/kbex-dev/XCDYouTubeKit.git`)
   - ZMJTipView
 
@@ -94,7 +94,6 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
-    - IndicateKit
     - Kingfisher
     - LNZCollectionLayouts
     - lottie-ios
@@ -107,6 +106,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - Result
+    - Starscream
     - ZMJTipView
 
 EXTERNAL SOURCES:
@@ -135,16 +135,15 @@ SPEC CHECKSUMS:
   CSSystemInfoHelper: 4042fd3366678b5d07335b9df2d6529d4eea0c4d
   DeviceKit: e787680f500d6ce642b24204aa7a5f9bc9ea1209
   GCDWebServer: f5590602d75d912fb63660e57c4939d57b8fe85b
-  google-cast-sdk-no-bluetooth: 5313156110d6e71fa336f6d742f1ee641e91fdca
+  google-cast-sdk-no-bluetooth: b3037c14fdf07a794326502e799beb0875ab2029
   GoogleAPIClientForREST: 1c2743c7ed11d190f69617e1caa4f0cce24ea62e
   GoogleSignIn: c90b5bec45e780f54c6a8e1e3c182a86e3dda69d
   GPhotos: ecf2ea0944a5a53e3516a353d131a91af968ce16
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
-  IndicateKit: 3d24987763d4005dd37a7d472101dd509d8511f9
-  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   LNZCollectionLayouts: 509d8143a70db014f2094ae7052ec879ab988dab
-  lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   NextLevelSessionExporter: 4d8aa5e617f1c709724f2453efe5d4628480f65a
@@ -154,9 +153,10 @@ SPEC CHECKSUMS:
   Realm: fd821b81e5479be497cc5bca2e020f707d8323eb
   RealmSwift: 8635e4cc524790916d72b0ffa51c1a91f4ec9668
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   XCDYouTubeKit-kbexdev: d6bdf492b85a547fe8605568359ec2e91980a465
   ZMJTipView: c51b687cd307b5329d09760e8b95e5e37d01cd63
 
-PODFILE CHECKSUM: f85cafcdffbd53ff0a8ab9aa06ed3a3880289f95
+PODFILE CHECKSUM: 8a9943237e7b98f849363f042247d3372c5729fe
 
 COCOAPODS: 1.11.3

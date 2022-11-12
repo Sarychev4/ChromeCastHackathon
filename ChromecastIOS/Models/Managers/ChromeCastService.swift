@@ -12,11 +12,11 @@ import UIKit
 import CSSystemInfoHelper
 import AVFAudio
 import Network
-import Indicate
+//import Indicate
 
 class ChromeCastService: NSObject {
     
-    let kReceiverAppID = "2C5BA44D"//temp vr 1!!!! // "785537D5"// "D7506266""2C5BA44D"
+    let kReceiverAppID = "785537D5"//temp vr 1!!!! // "785537D5"// "D7506266""2C5BA44D"
     let kDebugLoggingEnabled = true
     
     static let shared = ChromeCastService()
@@ -177,24 +177,24 @@ class ChromeCastService: NSObject {
     }
     
     private func showNoWiFiToast() {
-        guard let view = TopViewController?.view else { return }
-        let content = Indicate.Content(
-            title: .init(value: NSLocalizedString("NoWifiTitle", comment: ""), alignment: .natural),
-            attachment: .image(.init(value: UIImage(named: "IconWiFiRed")))
-        )
-        
-        let config = Indicate.Configuration(
-            duration: 10,
-            size: CGSize(width: 300, height: 75),
-            titleColor: .red,
-            backgroundColor: .white,
-            titleFont: .systemFont(ofSize: 18))
-            .with(tap: { controller in
-                controller.dismiss()
-            })
-        
-        let controller = Indicate.PresentationController(content: content, configuration: config)
-        controller.present(in: view)
+//        guard let view = TopViewController?.view else { return }
+//        let content = Indicate.Content(
+//            title: .init(value: NSLocalizedString("NoWifiTitle", comment: ""), alignment: .natural),
+//            attachment: .image(.init(value: UIImage(named: "IconWiFiRed")))
+//        )
+//        
+//        let config = Indicate.Configuration(
+//            duration: 10,
+//            size: CGSize(width: 300, height: 75),
+//            titleColor: .red,
+//            backgroundColor: .white,
+//            titleFont: .systemFont(ofSize: 18))
+//            .with(tap: { controller in
+//                controller.dismiss()
+//            })
+//        
+//        let controller = Indicate.PresentationController(content: content, configuration: config)
+//        controller.present(in: view)
     }
     
     func startNewSession(with device: GCKDevice){
