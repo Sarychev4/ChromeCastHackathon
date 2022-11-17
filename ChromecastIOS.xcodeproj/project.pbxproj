@@ -38,10 +38,6 @@
 		DD23EAE52811BF4000DB7D44 /* OpenWebsitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD23EAE32811BF4000DB7D44 /* OpenWebsitesViewController.swift */; };
 		DD23EAE62811BF4000DB7D44 /* OpenWebsitesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD23EAE42811BF4000DB7D44 /* OpenWebsitesViewController.xib */; };
 		DD23EAFB2811C32900DB7D44 /* JavaScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */; };
-		DD2D001529263CC6005BA71C /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2D001429263CC5005BA71C /* WebRTC.xcframework */; };
-		DD2D001629263CC6005BA71C /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD2D001429263CC5005BA71C /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DD2D001829263CD5005BA71C /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2D001729263CD5005BA71C /* WebRTCiOSSDK.xcframework */; };
-		DD2D001929263CD5005BA71C /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD2D001729263CD5005BA71C /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD2FEA942823BD5300D8EB11 /* ChromeCastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */; };
 		DD2FEAB82824FFD300D8EB11 /* DeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2FEAB72824FFD300D8EB11 /* DeviceObject.swift */; };
 		DD345D222817FA9700E67AB0 /* ted_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = DD345D1C2817FA9700E67AB0 /* ted_ico.png */; };
@@ -112,6 +108,10 @@
 		DDAE2661281927C000355735 /* DotsActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAE2660281927C000355735 /* DotsActivityIndicator.swift */; };
 		DDB35989283E870600605B56 /* SetupChromeCastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB35987283E870600605B56 /* SetupChromeCastViewController.swift */; };
 		DDB3598A283E870600605B56 /* SetupChromeCastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */; };
+		DDBB897829266412000A908C /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896F292663C8000A908C /* WebRTC.xcframework */; };
+		DDBB897929266412000A908C /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896F292663C8000A908C /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DDBB897A29266412000A908C /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */; };
+		DDBB897B29266412000A908C /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DDBCDBE9283B830E00AB626A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E86F70A9282A442D0000A5C7 /* GoogleService-Info.plist */; };
 		DDBE6A39290FE9410079C309 /* URLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */; };
 		DDBE6A3A290FE9410079C309 /* URLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */; };
@@ -209,24 +209,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DD0095FB291F8F5700832FF9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				DD2D001629263CC6005BA71C /* WebRTC.xcframework in Embed Frameworks */,
-				DD2D001929263CD5005BA71C /* WebRTCiOSSDK.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DD471CE8291BD312002B49B8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDBB897C29266412000A908C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DDBB897929266412000A908C /* WebRTC.xcframework in Embed Frameworks */,
+				DDBB897B29266412000A908C /* WebRTCiOSSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,8 +278,6 @@
 		DD23EAE32811BF4000DB7D44 /* OpenWebsitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWebsitesViewController.swift; sourceTree = "<group>"; };
 		DD23EAE42811BF4000DB7D44 /* OpenWebsitesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenWebsitesViewController.xib; sourceTree = "<group>"; };
 		DD23EAFA2811C32900DB7D44 /* JavaScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScripts.swift; sourceTree = "<group>"; };
-		DD2D001429263CC5005BA71C /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = "../../../Downloads/WebRTC-iOS-SDK-master/WebRTC.xcframework"; sourceTree = "<group>"; };
-		DD2D001729263CD5005BA71C /* WebRTCiOSSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTCiOSSDK.xcframework; path = "../../../Downloads/WebRTC-iOS-SDK-master/WebRTCiOSSDK.xcframework"; sourceTree = "<group>"; };
 		DD2FEA932823BD5300D8EB11 /* ChromeCastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromeCastService.swift; sourceTree = "<group>"; };
 		DD2FEAB72824FFD300D8EB11 /* DeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceObject.swift; sourceTree = "<group>"; };
 		DD345D1C2817FA9700E67AB0 /* ted_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ted_ico.png; sourceTree = "<group>"; };
@@ -350,6 +348,8 @@
 		DDAE2660281927C000355735 /* DotsActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsActivityIndicator.swift; sourceTree = "<group>"; };
 		DDB35987283E870600605B56 /* SetupChromeCastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupChromeCastViewController.swift; sourceTree = "<group>"; };
 		DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupChromeCastViewController.xib; sourceTree = "<group>"; };
+		DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTCiOSSDK.xcframework; sourceTree = "<group>"; };
+		DDBB896F292663C8000A908C /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTC.xcframework; sourceTree = "<group>"; };
 		DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Extension.swift"; sourceTree = "<group>"; };
 		DDBE7195285E087400383511 /* ResumeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeVideoView.swift; sourceTree = "<group>"; };
 		DDCE09F4281032A5004E9C18 /* MirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorViewController.swift; sourceTree = "<group>"; };
@@ -439,10 +439,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD2D001529263CC6005BA71C /* WebRTC.xcframework in Frameworks */,
+				DDBB897829266412000A908C /* WebRTC.xcframework in Frameworks */,
 				E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */,
 				E8E5FA84283BF8E000B4B6FF /* AVFoundation.framework in Frameworks */,
-				DD2D001829263CD5005BA71C /* WebRTCiOSSDK.xcframework in Frameworks */,
+				DDBB897A29266412000A908C /* WebRTCiOSSDK.xcframework in Frameworks */,
 				917CA5630C328744C5F2BB7D /* Pods_MirroringExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,8 +463,6 @@
 		504D1222731237FE33320495 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD2D001729263CD5005BA71C /* WebRTCiOSSDK.xcframework */,
-				DD2D001429263CC5005BA71C /* WebRTC.xcframework */,
 				DD471CEC291BD4AC002B49B8 /* Foundation.framework */,
 				E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */,
 				E8964313280EB5A700E6E287 /* ReplayKit.framework */,
@@ -1073,6 +1071,8 @@
 		E89642A8280EAF7700E6E287 = {
 			isa = PBXGroup;
 			children = (
+				DDBB896F292663C8000A908C /* WebRTC.xcframework */,
+				DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */,
 				E89642B3280EAF7700E6E287 /* ChromecastIOS */,
 				E8964315280EB5A700E6E287 /* MirroringExtension */,
 				E89642B2280EAF7700E6E287 /* Products */,
@@ -1143,7 +1143,7 @@
 				E896430E280EB5A700E6E287 /* Sources */,
 				E896430F280EB5A700E6E287 /* Frameworks */,
 				E8964310280EB5A700E6E287 /* Resources */,
-				DD0095FB291F8F5700832FF9 /* Embed Frameworks */,
+				DDBB897C29266412000A908C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1545,6 +1545,7 @@
 		E89642C3280EAF7900E6E287 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1606,6 +1607,7 @@
 		E89642C4280EAF7900E6E287 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1662,6 +1664,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5224BCCF15D5037F4472B16F /* Pods-MirroringExtension.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 29;
@@ -1690,6 +1693,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3668BE4FA45E913005262ACB /* Pods-MirroringExtension.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 29;
