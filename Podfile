@@ -2,6 +2,7 @@
 #platform :ios, '9.0'
 inhibit_all_warnings!
 
+pod 'Starscream', '~> 4.0.4'
 def common_pods_for_target
   pod 'CSSystemInfoHelper', '~> 2.0'
 end
@@ -10,7 +11,6 @@ target 'MirroringExtension' do
   use_frameworks!
   common_pods_for_target
   pod 'RealmSwift'
-  pod 'Starscream', '~> 4.0.4'
 end
 
 target 'Chromecast' do

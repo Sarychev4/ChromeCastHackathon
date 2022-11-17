@@ -56,6 +56,11 @@ class MirrorViewController: BaseViewController {
     
     @IBOutlet weak var needHelpInteractiveLabel: InteractiveLabel!
     
+    
+    @IBOutlet weak var helpMirroringDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var streamURLLabel: UILabel!
+    
     @IBOutlet weak var broadCastView: RPSystemBroadcastPickerView!
     @IBOutlet weak var mirrorActionLabel: DefaultLabel!
     
@@ -101,6 +106,16 @@ class MirrorViewController: BaseViewController {
         setupMirrotingSection()
         setupNavigationSection()
         setupSettingsSection()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelDidGetTapped(sender:)))
+
+        streamURLLabel.isUserInteractionEnabled = true
+        streamURLLabel.addGestureRecognizer(tapGesture)
+        
+        showHideOpenTheURL()
+//        helpMirroringDescriptionLabel.isHidden = true
+//        streamURLLabel.isHidden = true
+     
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,7 +142,8 @@ class MirrorViewController: BaseViewController {
     
     @IBAction func startBroadcastClicked(_ sender: UIButton) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        
+
+            
         if StreamConfiguration.current.mirrorToType == .tv {
             switch state {
             case .mirroringNotStarted:
@@ -139,11 +155,26 @@ class MirrorViewController: BaseViewController {
                         self.startBroadcastClicked(sender)
                     })
                 }
+                print("WWWW")
             case .mirroringStarted:
+                print("GGWWW")
                 showSystemMirroringScreen()
             }
+        } else {
+            showSystemMirroringScreen()
+            self.showHideOpenTheURL()
         }
+            
+
         
+    }
+    
+    @objc
+    func labelDidGetTapped(sender: UITapGestureRecognizer) {
+        guard let label = sender.view as? UILabel else {
+            return
+        }
+        UIPasteboard.general.string = label.text
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
@@ -207,28 +238,16 @@ class MirrorViewController: BaseViewController {
         })
     }
     
-    private func showAlertOpenTheURL(onComplete: (() -> ())?) {
-        
-        let alertView = AlertViewController(
-            alertTitle: NSLocalizedString("Open the URL", comment: ""),
-            alertSubtitle: NSLocalizedString("To start mirroring open the\nbrowser on your device\nand type in this URL", comment: ""),
-            continueAction: nil,
-            leftAction: "Cancel",
-            rightAction: "Continue",
-            copyableTitle: "https://ovh36.antmedia.io:5443/WebRTCAppEE/player.html"
-        )
-        
-        alertView.noClicked = { [weak self, weak alertView] in
-            guard let _ = self else { return }
-            alertView?.dismiss()
+    private func showHideOpenTheURL() {
+        if StreamConfiguration.current.mirrorToType == .tv {
+            helpMirroringDescriptionLabel.isHidden = true
+            streamURLLabel.isHidden = true
+            streamURLLabel.text = "https://ovh36.antmedia.io:5443/WebRTCAppEE/player.html"
+        } else {
+            helpMirroringDescriptionLabel.isHidden = false
+            streamURLLabel.isHidden = false
+            streamURLLabel.text = "https://ovh36.antmedia.io:5443/WebRTCAppEE/player.html"
         }
-        
-        alertView.yesClicked = {
-            onComplete?()
-            alertView.dismiss()
-        }
-        
-        alertView.present(from: self)
     }
     
     private func setupSettingsSection() {
@@ -249,6 +268,7 @@ class MirrorViewController: BaseViewController {
                 self.mirrorToContainer.isHidden = true
                 self.showHideMirrorToImageView.image = UIImage(named: "show")
             }
+            self.qualityContainer.isHidden = true
         }
         
         tvInteractiveView.didTouchAction = { [weak self] in
@@ -258,7 +278,12 @@ class MirrorViewController: BaseViewController {
                 StreamConfiguration.current.mirrorToType = .tv
                 
             }
+            
+            
             self.updateUIbasedOnMirrorTo()
+            self.mirrorToContainer.isHidden = true
+            self.showHideMirrorToImageView.image = UIImage(named: "show")
+            self.showHideOpenTheURL()
             
         }
         
@@ -268,9 +293,11 @@ class MirrorViewController: BaseViewController {
             try? StreamConfiguration.current.realm?.write {
                 StreamConfiguration.current.mirrorToType = .pc
             }
-            self.showAlertOpenTheURL(onComplete: nil)
-            self.updateUIbasedOnMirrorTo()
             
+            self.updateUIbasedOnMirrorTo()
+            self.mirrorToContainer.isHidden = true
+            self.showHideMirrorToImageView.image = UIImage(named: "show")
+            self.showHideOpenTheURL()
         }
         
         //Quality
@@ -288,6 +315,7 @@ class MirrorViewController: BaseViewController {
                 self.qualityContainer.isHidden = true
                 self.showHideImageView.image = UIImage(named: "show")
             }
+            self.mirrorToContainer.isHidden = true
         }
         
         optimizedInteractiveView.didTouchAction = { [weak self] in
@@ -335,6 +363,7 @@ class MirrorViewController: BaseViewController {
         
         
         updateUIbasedOnQuality()
+        updateUIbasedOnMirrorTo()
     }
     
     private func updateUIbasedOnMirrorTo(){
