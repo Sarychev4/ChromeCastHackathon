@@ -13,6 +13,8 @@ class AlertViewController: BaseViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: DefaultLabel!
     @IBOutlet weak var subtitleLabel: DefaultLabel!
+    
+    @IBOutlet weak var copybleLabel: DefaultLabel!
     @IBOutlet weak var continueLabel: DefaultLabel!
     @IBOutlet weak var continueInteractiveView: InteractiveView!
     
@@ -23,6 +25,7 @@ class AlertViewController: BaseViewController {
   
     private var alertTitle: String?
     private var alertSubtitle: String?
+    private var alertCopyableTitle: String?
     
     private var continueAction: String?
     private var leftAction: String?
@@ -32,12 +35,14 @@ class AlertViewController: BaseViewController {
     var noClicked: (() -> Void)?
     var yesClicked: (() -> Void)?
     
-    init(alertTitle: String?, alertSubtitle: String?, continueAction: String?, leftAction: String?, rightAction: String?){
+    init(alertTitle: String?, alertSubtitle: String?, continueAction: String?, leftAction: String?, rightAction: String?, copyableTitle: String? = nil){
         self.alertTitle = alertTitle
         self.alertSubtitle = alertSubtitle
         self.continueAction = continueAction
         self.leftAction = leftAction
         self.rightAction = rightAction
+        
+        self.alertCopyableTitle = copyableTitle
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -57,6 +62,12 @@ class AlertViewController: BaseViewController {
         continueLabel.text = continueAction
         noInteractiveLabel.text = leftAction
         yesInteractiveLabel.text = rightAction
+        
+        copybleLabel.text = alertCopyableTitle
+        
+        if alertCopyableTitle == nil {
+            copybleLabel.isHidden = true
+        }
         
         if continueAction == nil {
             continueInteractiveView.isHidden = true
@@ -78,7 +89,20 @@ class AlertViewController: BaseViewController {
             guard let self = self else { return }
             self.continueClicked?()
         }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelDidGetTapped(sender:)))
+
+        copybleLabel.isUserInteractionEnabled = true
+        copybleLabel.addGestureRecognizer(tapGesture)
      
+    }
+    
+    @objc
+    func labelDidGetTapped(sender: UITapGestureRecognizer) {
+        guard let label = sender.view as? UILabel else {
+            return
+        }
+        UIPasteboard.general.string = label.text
     }
     
     func present(from parent: UIViewController) {

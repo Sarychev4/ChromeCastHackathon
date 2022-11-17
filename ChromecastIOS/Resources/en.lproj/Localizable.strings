@@ -144,6 +144,10 @@
 "Screen.Mirror.Title" = "Mirror";
 "Screen.Mirror.AutoRotate" = "Auto-rotate";
 
+"Screen.MirrorTo.Title" = "Mirror to";
+"Screen.MirrorTo.TV" = "TV";
+"Screen.MirrorTo.PC" = "PC/Tablet/Other";
+
 "Screen.Mirror.Quality.Title" = "Quality";
 "Screen.Mirror.ChoosenQualiry.Title" = "Optimized";
 
@@ -153,6 +157,8 @@
 
 "Screen.Mirror.Action.Tap.Start" = "Tap to Start Mirroring";
 "Screen.Mirror.Action.Tap.Stop" = "Tap to Stop Mirroring";
+
+
 
 /*
  - Browser

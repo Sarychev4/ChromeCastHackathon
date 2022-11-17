@@ -23,6 +23,22 @@ class MirrorViewController: BaseViewController {
     @IBOutlet weak var showHideImageView: UIImageView!
     @IBOutlet weak var qualityContainer: UIStackView!
     
+    
+    @IBOutlet weak var showHideMirrorToImageView: UIImageView!
+    @IBOutlet weak var mirrorToContainer: UIStackView!
+    
+    
+    @IBOutlet weak var mirrorToInteractiveView: InteractiveView!
+    @IBOutlet weak var mirrorToLabel: DefaultLabel!
+    
+    @IBOutlet weak var tvInteractiveView: InteractiveView!
+    @IBOutlet weak var tvLabel: DefaultLabel!
+    @IBOutlet weak var tvImageView: UIImageView!
+    
+    @IBOutlet weak var pcInteractiveView: InteractiveView!
+    @IBOutlet weak var pcLabel: DefaultLabel!
+    @IBOutlet weak var pcImageView: UIImageView!
+    
     @IBOutlet weak var qualityInteractiveView: InteractiveView!
     @IBOutlet weak var qualityLabel: DefaultLabel!
     
@@ -66,9 +82,9 @@ class MirrorViewController: BaseViewController {
                 let image = UIImage(named: "TapToStopMirroring")!
                 mirroringButton?.setImage(image, for: .normal)
                 mirrorActionLabel.text = NSLocalizedString("Screen.Mirror.Action.Tap.Stop", comment: "")
-//                if isDLNADeviceConnected() {
-//                    updateMirroringStreamURL()
-//                }
+                //                if isDLNADeviceConnected() {
+                //                    updateMirroringStreamURL()
+                //                }
             case .mirroringNotStarted:
                 let image = UIImage(named: "TapToStartMirroring")!
                 mirroringButton?.setImage(image, for: .normal)
@@ -88,7 +104,7 @@ class MirrorViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,22 +124,26 @@ class MirrorViewController: BaseViewController {
             StreamConfiguration.current.isAutoRotate = isRotationEnabled
         }
     }
-
+    
     @IBAction func startBroadcastClicked(_ sender: UIButton) {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        switch state {
-        case .mirroringNotStarted:
-            if GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue == 2 {
-                self.showSystemMirroringScreen()
-            } else {
-                presentDevices(postAction: { [weak self] in
-                    guard let self = self else { return }
-                    self.startBroadcastClicked(sender)
-                })
+        
+        if StreamConfiguration.current.mirrorToType == .tv {
+            switch state {
+            case .mirroringNotStarted:
+                if GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue == 2 {
+                    self.showSystemMirroringScreen()
+                } else {
+                    presentDevices(postAction: { [weak self] in
+                        guard let self = self else { return }
+                        self.startBroadcastClicked(sender)
+                    })
+                }
+            case .mirroringStarted:
+                showSystemMirroringScreen()
             }
-        case .mirroringStarted:
-            showSystemMirroringScreen()
         }
+        
     }
     
     private func connectIfNeeded(onComplete: Closure?) {
@@ -187,15 +207,78 @@ class MirrorViewController: BaseViewController {
         })
     }
     
+    private func showAlertOpenTheURL(onComplete: (() -> ())?) {
+        
+        let alertView = AlertViewController(
+            alertTitle: NSLocalizedString("Open the URL", comment: ""),
+            alertSubtitle: NSLocalizedString("To start mirroring open the\nbrowser on your device\nand type in this URL", comment: ""),
+            continueAction: nil,
+            leftAction: "Cancel",
+            rightAction: "Continue",
+            copyableTitle: "https://ovh36.antmedia.io:5443/WebRTCAppEE/player.html"
+        )
+        
+        alertView.noClicked = { [weak self, weak alertView] in
+            guard let _ = self else { return }
+            alertView?.dismiss()
+        }
+        
+        alertView.yesClicked = {
+            onComplete?()
+            alertView.dismiss()
+        }
+        
+        alertView.present(from: self)
+    }
+    
     private func setupSettingsSection() {
         
         rotationSwitch.isOn = StreamConfiguration.current.isAutoRotate
         
+        //Mirror to
+        mirrorToContainer.isHidden = true
+        
+        tvImageView.isHidden = true
+        pcImageView.isHidden = true
+        
+        mirrorToInteractiveView.didTouchAction = {
+            if self.mirrorToContainer.isHidden == true {
+                self.mirrorToContainer.isHidden = false
+                self.showHideMirrorToImageView.image = UIImage(named: "hide")
+            } else {
+                self.mirrorToContainer.isHidden = true
+                self.showHideMirrorToImageView.image = UIImage(named: "show")
+            }
+        }
+        
+        tvInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            
+            try? StreamConfiguration.current.realm?.write {
+                StreamConfiguration.current.mirrorToType = .tv
+                
+            }
+            self.updateUIbasedOnMirrorTo()
+            
+        }
+        
+        pcInteractiveView.didTouchAction = { [weak self] in
+            guard let self = self else { return }
+            
+            try? StreamConfiguration.current.realm?.write {
+                StreamConfiguration.current.mirrorToType = .pc
+            }
+            self.showAlertOpenTheURL(onComplete: nil)
+            self.updateUIbasedOnMirrorTo()
+            
+        }
+        
+        //Quality
+        qualityContainer.isHidden = true
+        
         optimizedImageView.isHidden = true
         balancedImageView.isHidden = true
         bestImageView.isHidden = true
-        
-        qualityContainer.isHidden = true
         
         qualityInteractiveView.didTouchAction = {
             if self.qualityContainer.isHidden == true {
@@ -218,24 +301,24 @@ class MirrorViewController: BaseViewController {
         balancedInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
             
-                    DispatchQueue.main.async {
-                        try? StreamConfiguration.current.realm?.write {
-                            StreamConfiguration.current.resolutionType = .medium
-                        }
-                        self.updateUIbasedOnQuality()
-                    }
+            DispatchQueue.main.async {
+                try? StreamConfiguration.current.realm?.write {
+                    StreamConfiguration.current.resolutionType = .medium
+                }
+                self.updateUIbasedOnQuality()
+            }
         }
-            
+        
         
         
         bestInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-                    DispatchQueue.main.async {
-                        try? StreamConfiguration.current.realm?.write {
-                            StreamConfiguration.current.resolutionType = .high
-                        }
-                        self.updateUIbasedOnQuality()
-                    }
+            DispatchQueue.main.async {
+                try? StreamConfiguration.current.realm?.write {
+                    StreamConfiguration.current.resolutionType = .high
+                }
+                self.updateUIbasedOnQuality()
+            }
         }
         
         needHelpInteractiveLabel.didTouchAction = { [weak self] in
@@ -250,8 +333,25 @@ class MirrorViewController: BaseViewController {
             }
         }
         
-       
+        
         updateUIbasedOnQuality()
+    }
+    
+    private func updateUIbasedOnMirrorTo(){
+        let currentQuality = StreamConfiguration.current.mirrorToType
+        switch currentQuality {
+        case .tv:
+            mirrorToLabel.text = NSLocalizedString("Screen.MirrorTo.TV", comment: "")
+            tvImageView.isHidden = false
+            pcImageView.isHidden = true
+        case .pc:
+            mirrorToLabel.text = NSLocalizedString("Screen.MirrorTo.PC", comment: "")
+            tvImageView.isHidden = true
+            pcImageView.isHidden = false
+        default:
+            tvImageView.isHidden = false
+            pcImageView.isHidden = true
+        }
     }
     
     private func updateUIbasedOnQuality(){

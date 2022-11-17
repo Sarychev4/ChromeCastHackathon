@@ -31,7 +31,16 @@ class StreamConfiguration: Object {
    
     @objc @Persisted var connectedDeviceType: ConnectedDeviceType = .unknown
     
+    @objc @Persisted var mirrorToType: MirrorToType = .tv
+    
 }
+
+@objc
+enum MirrorToType: Int, PersistableEnum {
+    case tv, pc
+}
+
+
 
 enum StreamEvent: String {
     case broadcastStarted = "broadcastStartedEvent"

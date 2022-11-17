@@ -11,6 +11,7 @@ target 'MirroringExtension' do
   use_frameworks!
   common_pods_for_target
   pod 'RealmSwift'
+  pod 'Starscream', '~> 4.0.4'
 end
 
 target 'Chromecast' do

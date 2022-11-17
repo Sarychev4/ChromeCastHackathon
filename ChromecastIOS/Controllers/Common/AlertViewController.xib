@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertViewController" customModule="ChromecastIOS" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertViewController" customModule="Chromecast" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="NJW-uk-MTf" id="CeN-CS-7bl"/>
                 <outlet property="continueInteractiveView" destination="GP6-6I-m6I" id="COh-Hk-ijM"/>
                 <outlet property="continueLabel" destination="8SG-g5-pMp" id="Wjf-li-oN1"/>
+                <outlet property="copybleLabel" destination="JvL-Cp-QS5" id="047-fn-gr5"/>
                 <outlet property="darkBackgroundView" destination="4OT-lG-wod" id="4Zo-8d-QAb"/>
                 <outlet property="noInteractiveLabel" destination="93a-6j-87C" id="usc-G2-rDk"/>
                 <outlet property="subtitleLabel" destination="1RZ-vy-fyO" id="uCx-5C-hka"/>
@@ -36,41 +38,49 @@
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJW-uk-MTf">
-                            <rect key="frame" x="70.5" y="329" width="273" height="238.5"/>
+                            <rect key="frame" x="32" y="304" width="350" height="288"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Confirm connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adm-UA-VZM" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                    <rect key="frame" x="58" y="16" width="157" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Confirm connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adm-UA-VZM" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
+                                    <rect key="frame" x="96.5" y="16" width="157" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RZ-vy-fyO" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="40" width="241" height="93.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RZ-vy-fyO" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="40" width="318" height="93.5"/>
                                     <string key="text">In some cases you may see a
 confirmation dialog on the screen of your TV. Tap Yes to confirm connection. 
 if you don’t see any confirmation window on your TV, just tap Continue.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
+                                    <string key="userLabel">In some cases you may see a confirmation dialog on the screen of your TV. Tap Yes to confirm connection.  if you don’t see any confirmation window on your TV, just tap Continue.</string>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COPY URLCOPY URLCOPY URLCOPY URLCOPY URLCOPY URLCOPY URLCOPY URLCOPY URL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvL-Cp-QS5" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="149.5" width="318" height="33.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                    <color key="textColor" systemColor="linkColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <string key="userLabel">In some cases you may see a confirmation dialog on the screen of your TV. Tap Yes to confirm connection.  if you don’t see any confirmation window on your TV, just tap Continue.</string>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFk-f2-LUh" userLabel="separator">
-                                    <rect key="frame" x="0.0" y="149.5" width="273" height="1"/>
+                                    <rect key="frame" x="0.0" y="199" width="350" height="1"/>
                                     <color key="backgroundColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.36492878401360546" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="gRv-Mp-8iM"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JPf-eN-oHR">
-                                    <rect key="frame" x="0.0" y="150.5" width="273" height="88"/>
+                                    <rect key="frame" x="0.0" y="200" width="350" height="88"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="58d-uY-8cu">
-                                            <rect key="frame" x="0.0" y="0.0" width="273" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="44"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVb-Xa-S0i">
-                                                    <rect key="frame" x="0.0" y="0.0" width="136.5" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="44"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93a-6j-87C" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="136.5" height="44"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93a-6j-87C" customClass="InteractiveLabel" customModule="Chromecast" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" name="AppleBlue"/>
                                                             <nil key="highlightedColor"/>
@@ -87,10 +97,10 @@ if you don’t see any confirmation window on your TV, just tap Continue.</str
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZO3-bo-cVh">
-                                                    <rect key="frame" x="136.5" y="0.0" width="136.5" height="44"/>
+                                                    <rect key="frame" x="175" y="0.0" width="175" height="44"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOL-Wt-Er0" customClass="InteractiveLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="136.5" height="44"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOL-Wt-Er0" customClass="InteractiveLabel" customModule="Chromecast" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="44"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" name="AppleBlue"/>
                                                             <nil key="highlightedColor"/>
@@ -111,11 +121,11 @@ if you don’t see any confirmation window on your TV, just tap Continue.</str
                                                 <constraint firstAttribute="height" constant="44" id="VZe-G0-1Z0"/>
                                             </constraints>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GP6-6I-m6I" customClass="InteractiveView" customModule="ChromecastIOS" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="44" width="273" height="44"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GP6-6I-m6I" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="44" width="350" height="44"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SG-g5-pMp" customClass="DefaultLabel" customModule="ChromecastIOS" customModuleProvider="target">
-                                                    <rect key="frame" x="100.5" y="11.5" width="72" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SG-g5-pMp" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
+                                                    <rect key="frame" x="139" y="12" width="72" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" name="AppleBlue"/>
                                                     <nil key="highlightedColor"/>
@@ -137,16 +147,20 @@ if you don’t see any confirmation window on your TV, just tap Continue.</str
                             </subviews>
                             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="AFk-f2-LUh" firstAttribute="top" secondItem="JvL-Cp-QS5" secondAttribute="bottom" constant="16" id="5G6-jT-RyZ"/>
                                 <constraint firstItem="1RZ-vy-fyO" firstAttribute="leading" secondItem="NJW-uk-MTf" secondAttribute="leading" constant="16" id="EVO-iI-FRm"/>
-                                <constraint firstItem="JPf-eN-oHR" firstAttribute="top" secondItem="1RZ-vy-fyO" secondAttribute="bottom" constant="17" id="HPE-Y7-65V"/>
                                 <constraint firstAttribute="trailing" secondItem="JPf-eN-oHR" secondAttribute="trailing" id="Jzu-8Q-ikq"/>
                                 <constraint firstAttribute="bottom" secondItem="JPf-eN-oHR" secondAttribute="bottom" id="KcG-Dd-c3z"/>
-                                <constraint firstItem="AFk-f2-LUh" firstAttribute="top" secondItem="1RZ-vy-fyO" secondAttribute="bottom" constant="16" id="MIL-xR-08v"/>
                                 <constraint firstItem="adm-UA-VZM" firstAttribute="top" secondItem="NJW-uk-MTf" secondAttribute="top" constant="16" id="Nq9-EE-S22"/>
                                 <constraint firstItem="1RZ-vy-fyO" firstAttribute="top" secondItem="NJW-uk-MTf" secondAttribute="top" constant="40" id="Q1b-qQ-YYT"/>
                                 <constraint firstItem="AFk-f2-LUh" firstAttribute="leading" secondItem="NJW-uk-MTf" secondAttribute="leading" id="QLK-AF-PjK"/>
+                                <constraint firstItem="JvL-Cp-QS5" firstAttribute="centerX" secondItem="NJW-uk-MTf" secondAttribute="centerX" id="S30-en-7ht"/>
                                 <constraint firstAttribute="trailing" secondItem="1RZ-vy-fyO" secondAttribute="trailing" constant="16" id="Yxa-RH-dur"/>
+                                <constraint firstItem="JvL-Cp-QS5" firstAttribute="top" secondItem="1RZ-vy-fyO" secondAttribute="bottom" constant="16" id="h9p-yH-xau"/>
                                 <constraint firstItem="adm-UA-VZM" firstAttribute="centerX" secondItem="NJW-uk-MTf" secondAttribute="centerX" id="jVf-eQ-O4m"/>
+                                <constraint firstAttribute="trailing" secondItem="JvL-Cp-QS5" secondAttribute="trailing" constant="16" id="lap-zU-SpL"/>
+                                <constraint firstItem="JvL-Cp-QS5" firstAttribute="leading" secondItem="NJW-uk-MTf" secondAttribute="leading" constant="16" id="tuM-4z-cyS"/>
+                                <constraint firstItem="JPf-eN-oHR" firstAttribute="top" secondItem="JvL-Cp-QS5" secondAttribute="bottom" constant="17" id="xhJ-4C-imH"/>
                                 <constraint firstItem="JPf-eN-oHR" firstAttribute="leading" secondItem="NJW-uk-MTf" secondAttribute="leading" id="xsA-hf-7Mc"/>
                                 <constraint firstAttribute="trailing" secondItem="AFk-f2-LUh" secondAttribute="trailing" id="yLg-Rg-FXP"/>
                             </constraints>
@@ -158,6 +172,8 @@ if you don’t see any confirmation window on your TV, just tap Continue.</str
                         <constraint firstItem="4OT-lG-wod" firstAttribute="leading" secondItem="H9g-Ig-QaW" secondAttribute="leading" id="CU8-EM-iZ8"/>
                         <constraint firstAttribute="bottom" secondItem="4OT-lG-wod" secondAttribute="bottom" id="IcK-Dt-eAU"/>
                         <constraint firstItem="NJW-uk-MTf" firstAttribute="centerX" secondItem="H9g-Ig-QaW" secondAttribute="centerX" id="Npq-91-wKZ"/>
+                        <constraint firstAttribute="trailing" secondItem="NJW-uk-MTf" secondAttribute="trailing" constant="32" id="SND-vx-NSj"/>
+                        <constraint firstItem="NJW-uk-MTf" firstAttribute="leading" secondItem="H9g-Ig-QaW" secondAttribute="leading" constant="32" id="dKP-h4-RIt"/>
                         <constraint firstAttribute="trailing" secondItem="4OT-lG-wod" secondAttribute="trailing" id="ojy-3E-Uvn"/>
                         <constraint firstItem="NJW-uk-MTf" firstAttribute="centerY" secondItem="H9g-Ig-QaW" secondAttribute="centerY" id="suI-DX-8cO"/>
                     </constraints>
@@ -178,5 +194,8 @@ if you don’t see any confirmation window on your TV, just tap Continue.</str
         <namedColor name="AppleBlue">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
