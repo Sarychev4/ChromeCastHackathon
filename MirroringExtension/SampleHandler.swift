@@ -70,9 +70,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         
     }
     
-    
-    
-    private var htmlStream: HTMLStreamManager?
+     
     private var streamInfoNotificationsToken: NotificationToken?
     private var resolution: ResolutionType = .low
     private var orientation: CGImagePropertyOrientation = .up
@@ -91,7 +89,6 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         isAutoRotate = streamConfiguration.isAutoRotate
         isSoundOn = streamConfiguration.isSoundOn
         observeStreamInfoProperties()
-        setupHTMLStream()
         try? streamConfiguration.realm?.write {
             streamConfiguration.event = StreamEvent.broadcastStarted.rawValue
             print(">>> broadcast \(streamConfiguration.event)")
@@ -150,17 +147,6 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
             if videoEnabled {
                 self.client.deliverExternalVideo(sampleBuffer: sampleBuffer);
             }
-            
-            guard CMSampleBufferGetNumSamples(sampleBuffer) == 1,
-                    CMSampleBufferIsValid(sampleBuffer),
-                  CMSampleBufferDataIsReady(sampleBuffer)
-            else { return }
-                        
-            orientation = isAutoRotate ? sampleBuffer.cgOrientation : .up
-            
-            if let htmlStream = htmlStream {
-                htmlStream.encode(sampleBuffer, resolution: resolution, orientation: orientation)
-            }
             break
         case RPSampleBufferType.audioApp:
             // Handle audio sample buffer for app audio
@@ -190,11 +176,6 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
 }
 
 extension SampleHandler {
-    
-    private func setupHTMLStream() {
-        let jpegEncoder = JPEGEncoder()
-        htmlStream = HTMLStreamManager(encoder: jpegEncoder)
-    }
     
     private func observeStreamInfoProperties() {
         DispatchQueue.main.async { [weak self] in

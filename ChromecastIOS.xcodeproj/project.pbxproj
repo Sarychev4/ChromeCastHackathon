@@ -190,8 +190,6 @@
 		E8E5FA82283BF8AF00B4B6FF /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC5282AEE93002C3B87 /* Bundle+Extension.swift */; };
 		E8E5FA84283BF8E000B4B6FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */; };
 		E8E5FA85283BF90A00B4B6FF /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CFAEC3282AED8B002C3B87 /* URL+Extension.swift */; };
-		E8E5FA88283BF9A800B4B6FF /* HTMLStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA87283BF9A800B4B6FF /* HTMLStreamManager.swift */; };
-		E8E5FA8A283BF9CE00B4B6FF /* HTTPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA89283BF9CD00B4B6FF /* HTTPServer.swift */; };
 		E8E5FA8C283BF9E100B4B6FF /* JPEGEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA8B283BF9E100B4B6FF /* JPEGEncoder.swift */; };
 		E8E5FA8D283BFA2F00B4B6FF /* CMSampleBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEFA0DB283BEA8D008A9EAF /* CMSampleBuffer+Extension.swift */; };
 		E8E5FA8F283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA8E283BFAC300B4B6FF /* CGImageProperty+extension.swift */; };
@@ -1372,13 +1370,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8E5FA8A283BF9CE00B4B6FF /* HTTPServer.swift in Sources */,
 				E8E5FA81283BF8A300B4B6FF /* Realm+Extension.swift in Sources */,
 				E8E5FA93283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */,
 				E8E5FA8C283BF9E100B4B6FF /* JPEGEncoder.swift in Sources */,
 				E8E5FA80283BF87800B4B6FF /* StreamConfiguration.swift in Sources */,
 				E8E5FA90283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */,
-				E8E5FA88283BF9A800B4B6FF /* HTMLStreamManager.swift in Sources */,
 				E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */,
 				E8E5FA85283BF90A00B4B6FF /* URL+Extension.swift in Sources */,
 				DDBE6A3A290FE9410079C309 /* URLResponse+Extension.swift in Sources */,

@@ -4,7 +4,6 @@ inhibit_all_warnings!
 
 def common_pods_for_target
   pod 'CSSystemInfoHelper', '~> 2.0'
-  pod "GCDWebServer", :git => 'git@github.com:Sarychev4/GCDWebServer.git'
 end
 
 target 'MirroringExtension' do
@@ -18,8 +17,9 @@ target 'Chromecast' do
 
   platform :ios, '10.0'
   use_frameworks!
-  common_pods_for_target
-  pod 'Starscream', '~> 4.0.4'
+  common_pods_for_target 
+  pod "GCDWebServer", :git => 'git@github.com:Sarychev4/GCDWebServer.git'
+  
   pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
   pod 'AdvancedPageControl'
   pod 'Kingfisher'
@@ -38,6 +38,7 @@ target 'Chromecast' do
   pod 'DeviceKit'
 #  pod 'ffmpeg-kit-ios-min'
 #pod 'ffmpeg-kit-ios-https-gpl'
+
 end 
 
  post_install do |installer_representation|
