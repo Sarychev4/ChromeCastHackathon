@@ -54,7 +54,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQG-uk-Ugc">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="a2r-uT-1TI">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="a2r-uT-1TI">
                             <rect key="frame" x="0.0" y="52" width="414" height="844"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNC-t4-bBx">
@@ -134,10 +134,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-ak-dkq">
-                                    <rect key="frame" x="0.0" y="63" width="414" height="438.5"/>
+                                    <rect key="frame" x="0.0" y="53" width="414" height="398.5"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7RI-cE-nnb">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="438.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7RI-cE-nnb">
+                                            <rect key="frame" x="16" y="0.0" width="382" height="398.5"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0l-nm-yBq">
                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
@@ -194,7 +194,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1q-0T-3op" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="56" width="382" height="36"/>
+                                                    <rect key="frame" x="0.0" y="48" width="382" height="36"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Aoj-Jx-3Lr">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
@@ -272,7 +272,7 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HxS-fd-6gV">
-                                                    <rect key="frame" x="0.0" y="112" width="382" height="82"/>
+                                                    <rect key="frame" x="0.0" y="96" width="382" height="82"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-q5-rlO">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
@@ -347,7 +347,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBP-fi-Z2b" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="214" width="382" height="36"/>
+                                                    <rect key="frame" x="0.0" y="190" width="382" height="36"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Esg-Cd-NJ0">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
@@ -425,7 +425,7 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="9ba-LH-SMB">
-                                                    <rect key="frame" x="0.0" y="270" width="382" height="114"/>
+                                                    <rect key="frame" x="0.0" y="238" width="382" height="114"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Rh-Mp-bzY">
                                                             <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
@@ -535,11 +535,8 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Help?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N76-kc-bfR" customClass="InteractiveLabel" customModule="Chromecast" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="404" width="382" height="34.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="34.5" id="p1v-Et-87F"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="364" width="382" height="34.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -562,19 +559,19 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdQ-an-Cav">
-                                    <rect key="frame" x="0.0" y="531.5" width="414" height="104.5"/>
+                                    <rect key="frame" x="0.0" y="471.5" width="414" height="174.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKc-kH-zq6">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="61"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="47"/>
                                             <string key="text">Tap 'Start mirroring' button below, 
 open the browser on your device
 and type in this URL</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" name="labelColorDark"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URLURLURL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9l-He-vvv">
-                                            <rect key="frame" x="16" y="77" width="382" height="20.5"/>
+                                            <rect key="frame" x="16" y="63" width="382" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" systemColor="linkColor"/>
                                             <nil key="highlightedColor"/>

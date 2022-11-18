@@ -2,22 +2,23 @@
 #platform :ios, '9.0'
 inhibit_all_warnings!
 
-pod 'Starscream', '~> 4.0.4'
-def common_pods_for_target
-  pod 'CSSystemInfoHelper', '~> 2.0'
-end
+abstract_target 'AntMediaWebRTCSDK' do
 
+  platform :ios, '10.0'
+  use_frameworks!
+  pod 'Starscream', '~> 4.0.4'
+  
 target 'MirroringExtension' do
   use_frameworks!
-  common_pods_for_target
+  pod 'CSSystemInfoHelper', '~> 2.0'
   pod 'RealmSwift'
 end
 
 target 'Chromecast' do
 
-  platform :ios, '10.0'
-  use_frameworks!
-  common_pods_for_target 
+ # platform :ios, '10.0'
+ # use_frameworks!
+  pod 'CSSystemInfoHelper', '~> 2.0'
   pod "GCDWebServer", :git => 'git@github.com:Sarychev4/GCDWebServer.git'
   
   pod 'GPhotos', :git => 'https://github.com/deivitaka/GPhotos.git'
@@ -36,8 +37,6 @@ target 'Chromecast' do
   pod "NextLevelSessionExporter", "~> 0.4.5"
   pod 'ZMJTipView'
   pod 'DeviceKit'
-#  pod 'ffmpeg-kit-ios-min'
-#pod 'ffmpeg-kit-ios-https-gpl'
 
 end 
 
@@ -54,3 +53,5 @@ end
         end
   end
  end
+ 
+end

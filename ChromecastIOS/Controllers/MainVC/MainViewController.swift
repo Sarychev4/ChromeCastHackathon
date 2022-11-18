@@ -27,7 +27,6 @@ class MainViewController: BaseViewController {
     
     @IBOutlet weak var systemBroadcastPickerView: RPSystemBroadcastPickerView!
 //    @IBOutlet weak var settingsInteractiveView: InteractiveView!
-    @IBOutlet weak var goToPremiumInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mirrorInteractiveView: InteractiveView! 
