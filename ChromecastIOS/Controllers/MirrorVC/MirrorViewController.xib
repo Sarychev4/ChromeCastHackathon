@@ -84,7 +84,7 @@
                                                     <rect key="frame" x="48" y="0.0" width="286" height="24"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Mirror" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSz-bQ-hmu" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
-                                                            <rect key="frame" x="113.5" y="2" width="59" height="20.5"/>
+                                                            <rect key="frame" x="113.5" y="2" width="59" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" red="0.14117647058823529" green="0.15686274509803921" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -95,11 +95,12 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="eSz-bQ-hmu" firstAttribute="top" secondItem="H8L-wS-u3l" secondAttribute="top" constant="2" id="A9Z-Ru-kz5"/>
                                                         <constraint firstItem="eSz-bQ-hmu" firstAttribute="centerX" secondItem="H8L-wS-u3l" secondAttribute="centerX" id="rd3-tQ-hLq"/>
                                                         <constraint firstItem="eSz-bQ-hmu" firstAttribute="centerY" secondItem="H8L-wS-u3l" secondAttribute="centerY" id="vf9-zg-mOM"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-KM-519" customClass="ConnectButton" customModule="Chromecast" customModuleProvider="target">
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE3-KM-519" customClass="ConnectButton" customModule="Chromecast" customModuleProvider="target">
                                                     <rect key="frame" x="334" y="0.0" width="48" height="24"/>
                                                     <subviews>
                                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cast" translatesAutoresizingMaskIntoConstraints="NO" id="vmx-V6-Kqa">

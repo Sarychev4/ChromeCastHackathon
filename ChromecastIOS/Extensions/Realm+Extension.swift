@@ -11,7 +11,7 @@ import Foundation
 let AppGroupId = "group.chromecast.ios"
 let RealmFolderURL = Realm.Configuration.defaultConfiguration.fileURL!.deletingLastPathComponent()
 let GroupFolder = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: AppGroupId)!
-
+//Realm.Configuration.defaultConfiguration.fileURL!.deletingLastPathComponent()
 extension Realm {
     static var GroupShared: Realm! {
         let streamConfigURL = GroupFolder.appendingPathComponent("GroupShared.realm")

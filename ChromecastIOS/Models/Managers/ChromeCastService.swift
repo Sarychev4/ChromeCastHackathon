@@ -15,8 +15,9 @@ import Network
 //import Indicate
 
 class ChromeCastService: NSObject {
-    
-    let kReceiverAppID = "785537D5"//temp vr 1!!!! // "785537D5"// "D7506266""2C5BA44D"
+    //785537D5 - фотки не кастятся, экран не трансилруется с хромкаста, экран передается на сайт
+    // 2C5BA44D - кастятся фотки, экран не трансилируется с хромкаста, экран передается на сайт
+//    let kReceiverAppID = "2C5BA44D"//"2C5BA44D"//"785537D5"//temp vr 1!!!! // "785537D5"// "D7506266""2C5BA44D"
     let kDebugLoggingEnabled = true
     
     static let shared = ChromeCastService()
@@ -41,10 +42,24 @@ class ChromeCastService: NSObject {
         
     }
     
-    func initialize() {
+    func initialize(kReceiverAppID: String) {
+       
         print(">>>ChromeCast Service was initialized")
         clearAllDevices()
+       // let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
+        
+        //>>>>>
         let criteria = GCKDiscoveryCriteria(applicationID: kReceiverAppID)
+        let initWithIds = Selector(("initWithApplicationIDs:"))
+        if criteria.responds(to: initWithIds) {
+            criteria.perform(initWithIds, with: NSOrderedSet(array: [kReceiverAppID, "785537D5"]))
+
+        }
+            
+//        let options = GCKCastOptions(discoveryCriteria: criteria)
+//        GCKCastContext.setSharedInstanceWith(options)
+        
+        //>>>>>>
         let options = GCKCastOptions(discoveryCriteria: criteria)
         let launchOptions = GCKLaunchOptions(relaunchIfRunning: true)
         launchOptions.androidReceiverCompatible = false
@@ -198,7 +213,12 @@ class ChromeCastService: NSObject {
     }
     
     func startNewSession(with device: GCKDevice){
+        print(">>>Start new session with device \(device)")
         self.sessionManager!.startSession(with: device)
+    }
+    
+    func endSession() {
+        self.sessionManager!.endSession()
     }
     
     func displayImage(with url: URL) {

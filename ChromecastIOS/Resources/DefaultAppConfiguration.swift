@@ -197,7 +197,7 @@ let DefaultAppConfiguration = """
   "tutorial_rating_enabled": false,
   "tutorial_rating_type": "stars",
   "support_email": "contact@go2020apps.com",
-  "google_buttons_enabled": false,
+  "google_buttons_enabled": true,
   "hide_close_button_for_attributedUser": true,
   "web_apps": {
     "chromecast": {

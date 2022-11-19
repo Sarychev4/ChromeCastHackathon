@@ -102,6 +102,13 @@ class MirrorViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ChromeCastService.shared.endSession()
+        let sessionManager = GCKCastContext.sharedInstance().sessionManager
+        sessionManager.setDefaultSessionOptions(["gck_applicationID": NSString("785537D5")],
+                                                                              forDeviceCategory: kGCKCastDeviceCategory)
+      
+        //GCKCastContext.sharedInstance().discoveryManager.startDiscovery()
+        
         observeMirroringState()
         setupMirrotingSection()
         setupNavigationSection()
@@ -147,6 +154,7 @@ class MirrorViewController: BaseViewController {
         if StreamConfiguration.current.mirrorToType == .tv {
             switch state {
             case .mirroringNotStarted:
+                print("mirroring not started")
                 if GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue == 2 {
                     self.showSystemMirroringScreen()
                 } else {
@@ -155,12 +163,14 @@ class MirrorViewController: BaseViewController {
                         self.startBroadcastClicked(sender)
                     })
                 }
-                print("WWWW")
+                
             case .mirroringStarted:
-                print("GGWWW")
+                print("mirroring started")
                 showSystemMirroringScreen()
             }
         } else {
+            //disconect from chromecast
+            ChromeCastService.shared.endSession()
             showSystemMirroringScreen()
             self.showHideOpenTheURL()
         }
@@ -198,13 +208,24 @@ class MirrorViewController: BaseViewController {
     
     private func showSystemMirroringScreen() {
         mirroringButton?.sendActions(for: .allTouchEvents)
+        //открыть mirroring extension
     }
     
     
     private func setupNavigationSection() {
         backInteractiveView.didTouchAction = { [weak self] in
             guard let self = self else { return }
-            self.navigation?.popViewController(self, animated: true)
+            
+            if UIScreen.main.isCaptured {
+                self.showAlertStopMirroring()
+                return
+            } else {
+                ChromeCastService.shared.endSession()
+                let sessionManager = GCKCastContext.sharedInstance().sessionManager
+                sessionManager.setDefaultSessionOptions(["gck_applicationID": NSString("2C5BA44D")],
+                                                                                          forDeviceCategory: kGCKCastDeviceCategory)
+                self.navigation?.popViewController(self, animated: true)
+            }
         }
         
         connectInteractiveView.didTouchAction = { [weak self] in
@@ -242,11 +263,11 @@ class MirrorViewController: BaseViewController {
         if StreamConfiguration.current.mirrorToType == .tv {
             helpMirroringDescriptionLabel.isHidden = true
             streamURLLabel.isHidden = true
-            streamURLLabel.text = "https://ovh36.antmedia.io:5443/WebRTCAppEE/player.html"
+            streamURLLabel.text = "https://squid-app-ara8b.ondigitalocean.app/"
         } else {
             helpMirroringDescriptionLabel.isHidden = false
             streamURLLabel.isHidden = false
-            streamURLLabel.text = "https://ovh36.antmedia.io:5443/WebRTCAppEE/player.html"
+            streamURLLabel.text = "https://squid-app-ara8b.ondigitalocean.app/"
         }
     }
     
@@ -420,6 +441,34 @@ class MirrorViewController: BaseViewController {
             postAction?()
         }
         present(controller, animated: false, completion: nil)
+    }
+    
+    private func showAlertStopMirroring() {
+        let alertView = AlertViewController(alertTitle: NSLocalizedString("AlertCloseBroadcastTitle", comment: ""),
+                                            alertSubtitle: NSLocalizedString("AlertCloseBroadcastSubtitle", comment: ""),
+                                            continueAction: nil,
+                                            leftAction: NSLocalizedString("AlertCloseBroadcastCancel", comment: ""),
+                                            rightAction: NSLocalizedString("AlertCloseBroadcastStop", comment: ""))
+        
+        alertView.noClicked = { [weak self, weak alertView] in
+            guard let _ = self else { return }
+            alertView?.dismiss()
+        }
+        
+        alertView.yesClicked = { [weak self, weak alertView] in
+            guard let self = self else { return }
+            self.showSystemMirroringScreen()
+
+            ChromeCastService.shared.endSession()
+            let sessionManager = GCKCastContext.sharedInstance().sessionManager
+            sessionManager.setDefaultSessionOptions(["gck_applicationID": NSString("2C5BA44D")],
+                                                                                      forDeviceCategory: kGCKCastDeviceCategory)
+                
+            
+            alertView?.dismiss()
+        }
+        
+        alertView.present(from: self)
     }
     
     

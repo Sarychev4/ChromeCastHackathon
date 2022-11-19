@@ -12,12 +12,13 @@ target 'MirroringExtension' do
   use_frameworks!
   pod 'CSSystemInfoHelper', '~> 2.0'
   pod 'RealmSwift'
+  pod "GCDWebServer", :git => 'git@github.com:Sarychev4/GCDWebServer.git'
 end
 
 target 'Chromecast' do
 
  # platform :ios, '10.0'
- # use_frameworks!
+  use_frameworks!
   pod 'CSSystemInfoHelper', '~> 2.0'
   pod "GCDWebServer", :git => 'git@github.com:Sarychev4/GCDWebServer.git'
   
@@ -43,13 +44,13 @@ end
  post_install do |installer_representation|
    installer_representation.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
-            config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+        #  config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        #    config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
             config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
             config.build_settings['APPLICATION_EXTENSION_API_ONLY'] = 'No'
-            if config.build_settings['WRAPPER_EXTENSION'] == 'bundle'
-                config.build_settings['DEVELOPMENT_TEAM'] = 'C2HGX78UB7'
-            end
+       #     if config.build_settings['WRAPPER_EXTENSION'] == 'bundle'
+       #         config.build_settings['DEVELOPMENT_TEAM'] = 'C2HGX78UB7'
+       #     end
         end
   end
  end

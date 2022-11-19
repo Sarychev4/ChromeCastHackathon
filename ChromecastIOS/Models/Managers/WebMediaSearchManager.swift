@@ -10,7 +10,7 @@ import Alamofire
 
 
 class WebMediaSearchManager {
-    static let apiKey = "AIzaSyBmP65nhJR3KJ-w1UjRsZVLBCU03R_cOAo"// "AIzaSyDBfjDxxUIWKy9MKpDMG0xWQgWvVnkkV8I"// "AIzaSyADJDixidd3uKy81hYr9ZwP3ZiPu5FVQ0s" //AIzaSyDBfjDxxUIWKy9MKpDMG0xWQgWvVnkkV8I
+    static let apiKey = "AIzaSyAgrdlsczrBTPaPmfjYaIjdSAHd9lKnfJU"//"AIzaSyDbCgTFu_24APeabfHJYj4W5ThQJEKCw_I"//"AIzaSyBmP65nhJR3KJ-w1UjRsZVLBCU03R_cOAo"// "AIzaSyDBfjDxxUIWKy9MKpDMG0xWQgWvVnkkV8I"// "AIzaSyADJDixidd3uKy81hYr9ZwP3ZiPu5FVQ0s" //AIzaSyDBfjDxxUIWKy9MKpDMG0xWQgWvVnkkV8I
     static let bundleId = "com.appflair.screenmirroring"//"com.appflair.screenmirroring"
     static let searchEngineId = "005594313016221312182:vorw4qu0-xa"
     

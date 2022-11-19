@@ -22,7 +22,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     
     func clientHasError(_ message: String) {
         let userInfo = [NSLocalizedFailureReasonErrorKey: message]
-       
+        
         finishBroadcastWithError(NSError(domain: "ScreenShare", code: -99, userInfo: userInfo));
     }
     
@@ -70,21 +70,22 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         
     }
     
-     
+    
     private var streamInfoNotificationsToken: NotificationToken?
+    private var htmlStream: HTMLStreamManager?
     private var resolution: ResolutionType = .low
     private var orientation: CGImagePropertyOrientation = .up
     private var isAutoRotate: Bool = true
-    private var isSoundOn: Bool = true 
+    private var isSoundOn: Bool = true
     private var streamConfiguration: StreamConfiguration! { StreamConfiguration.current }
     
     let client: AntMediaClient = AntMediaClient.init()
     var videoEnabled: Bool = true;
     var audioEnabled: Bool = true;
-
+    
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         print(">>> broadcast Started")
-         
+        
         resolution = streamConfiguration.resolutionType
         isAutoRotate = streamConfiguration.isAutoRotate
         isSoundOn = streamConfiguration.isSoundOn
@@ -101,26 +102,14 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     
     func broadcastStartedAntMedia(withSetupInfo setupInfo: [String : NSObject]?) {
         let sharedDefault = UserDefaults(suiteName: "group.chromecast.ios")!
-
-        let streamId = "test"//sharedDefault.object(forKey: "streamId");
-        let url = sharedDefault.object(forKey: "url");
-        let token = sharedDefault.object(forKey: "token");
         
-        let videoEnabledObject = sharedDefault.object(forKey:"videoEnabled") as! String;
-        if videoEnabledObject == "false"
-        {
-            videoEnabled = false;
-        }
-        
-        let audioEnabledObject = sharedDefault.object(forKey:"audioEnabled") as! String;
-        if audioEnabledObject == "false" {
-            audioEnabled = false;
-        }
+        let streamId = "test2"// sharedDefault.object(forKey: "streamId");//test2
+        let url = "wss://ovh36.antmedia.io:5443/WebRTCAppEE/websocket"
         
         if ((streamId) == nil)
         {
             let userInfo = [NSLocalizedFailureReasonErrorKey: "StreamId is not specified. Please specify stream id in the container app"]
-           
+            
             finishBroadcastWithError(NSError(domain: "ScreenShare", code: -1, userInfo: userInfo));
         }
         else if ((url) == nil)
@@ -134,10 +123,22 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
             
             self.client.delegate = self
             self.client.setDebug(true)
-            self.client.setOptions(url: url as! String, streamId: streamId as! String, token: token as? String ?? "", mode: AntMediaClientMode.join, enableDataChannel: true, captureScreenEnabled: true);
+            self.client.setOptions(url: url as! String, streamId: streamId as! String, token: "", mode: AntMediaClientMode.publish, enableDataChannel: true, captureScreenEnabled: true);
             self.client.setExternalAudio(externalAudioEnabled: true)
+          //  self.applyResolution()
             self.client.initPeerConnection();
             self.client.start();
+        }
+    }
+    
+    func applyResolution() {
+        switch resolution {
+        case .low:
+            self.client.setTargetResolution(width:  Int(UIScreen.main.bounds.size.width/2), height: Int(UIScreen.main.bounds.size.height/2))
+        case .medium:
+            self.client.setTargetResolution(width:  Int(UIScreen.main.bounds.size.width), height: Int(UIScreen.main.bounds.size.height))
+        case .high:
+            break
         }
     }
     
@@ -147,6 +148,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
             if videoEnabled {
                 self.client.deliverExternalVideo(sampleBuffer: sampleBuffer);
             }
+            
             break
         case RPSampleBufferType.audioApp:
             // Handle audio sample buffer for app audio
@@ -176,7 +178,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
 }
 
 extension SampleHandler {
-    
+  
     private func observeStreamInfoProperties() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -191,6 +193,7 @@ extension SampleHandler {
                         
                         if property.name == #keyPath(StreamConfiguration.resolutionType), let newValueInt = property.newValue as? Int, let newValue = ResolutionType(rawValue: newValueInt) {
                             self.resolution = newValue
+                           // self.applyResolution()
                         }
                         
                         if property.name == #keyPath(StreamConfiguration.isSoundOn), let newValue = property.newValue as? Bool {

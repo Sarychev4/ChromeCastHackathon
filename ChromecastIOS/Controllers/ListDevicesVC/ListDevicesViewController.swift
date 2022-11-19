@@ -125,12 +125,54 @@ class ListDevicesViewController: AFFloatingPanelViewController {
             guard let device = self.detectedDevices?[index] else { return }
             cellView.activityIndicator.startAnimating()
             print(">>>is connected \(device.isConnected)")
+            print(">>>isSessionResumed \(ChromeCastService.shared.isSessionResumed)")
+            
             if device.isConnected || ChromeCastService.shared.isSessionResumed == true {
-                self.hidePanel { [weak self] in
+//                self.hidePanel { [weak self] in
+//                    guard let self = self else { return }
+//                    self.didFinishAction?()
+//                    cellView.activityIndicator.stopAnimating()
+//                }
+//                
+                ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
                     guard let self = self else { return }
-                    self.didFinishAction?()
-                    cellView.activityIndicator.stopAnimating()
-                }
+
+                    if success {
+                        let realm = try! Realm()
+                        
+                        try! realm.write {
+                            device.isConnected = true
+                            realm.add(device, update: .all)
+                        }
+                        self.hidePanel { [weak self] in
+                            guard let self = self else { return }
+                            cellView.activityIndicator.stopAnimating()
+                            self.didFinishAction?()
+                        }
+                    } else {
+                        print("Not success")
+                    }
+                })
+            } else if device.isConnected == false && ChromeCastService.shared.isSessionResumed == true {
+                ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
+                    guard let self = self else { return }
+
+                    if success {
+                        let realm = try! Realm()
+                        
+                        try! realm.write {
+                            device.isConnected = true
+                            realm.add(device, update: .all)
+                        }
+                        self.hidePanel { [weak self] in
+                            guard let self = self else { return }
+                            cellView.activityIndicator.stopAnimating()
+                            self.didFinishAction?()
+                        }
+                    } else {
+                        print("Not success")
+                    }
+                })
             } else {
                 ChromeCastService.shared.connect(to: device.deviceUniqueID, onComplete: { [weak self] success in
                     guard let self = self else { return }

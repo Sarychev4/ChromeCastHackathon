@@ -8,7 +8,7 @@
 import Foundation 
 import UIKit
 import GCDWebServer
-    
+
 class HTTPServer: NSObject {
     private var httpServer: GCDWebServer?
     private var responseWaitDataClosure: ((Data) -> Void)?

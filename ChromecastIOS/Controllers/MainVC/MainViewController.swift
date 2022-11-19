@@ -43,7 +43,7 @@ class MainViewController: BaseViewController {
         
         
         
-        ChromeCastService.shared.initialize()
+        ChromeCastService.shared.initialize(kReceiverAppID: "2C5BA44D") //для каста 2C5BA44D// 785537D5
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -273,6 +273,13 @@ class MainViewController: BaseViewController {
             self.systemBroadcastPickerView.preferredExtension = "com.appflair.chromecast.ios.MirroringExtension"
             if let mirroringButton = self.systemBroadcastPickerView.subviews.first(where: { $0 is UIButton }) as? UIButton {
                 mirroringButton.sendActions(for: .allTouchEvents)
+                //temp as
+//                ChromeCastService.shared.initialize(kReceiverAppID: "2C5BA44D")
+                ChromeCastService.shared.endSession()
+                let sessionManager = GCKCastContext.sharedInstance().sessionManager
+                sessionManager.setDefaultSessionOptions(["gck_applicationID": NSString("2C5BA44D")],
+                                                                                      forDeviceCategory: kGCKCastDeviceCategory)
+                
             }
             alertView?.dismiss()
         }

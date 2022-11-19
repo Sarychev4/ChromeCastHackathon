@@ -62,6 +62,11 @@
 		DD6E98AD282FDE4100A72DF3 /* GoogleDriveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */; };
 		DD6E98AE282FDE4100A72DF3 /* GoogleDriveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */; };
 		DD6E98B12830036000A72DF3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E98B02830036000A72DF3 /* Date+Extension.swift */; };
+		DD8BB2782929365700D39F84 /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8BB2772929365700D39F84 /* WebRTCiOSSDK.xcframework */; };
+		DD8BB2792929366100D39F84 /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8BB2772929365700D39F84 /* WebRTCiOSSDK.xcframework */; };
+		DD8BB27A2929366100D39F84 /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD8BB2772929365700D39F84 /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DD8BB27B292938EE00D39F84 /* HTMLStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA87283BF9A800B4B6FF /* HTMLStreamManager.swift */; };
+		DD8BB28329293F4E00D39F84 /* HTTPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E5FA89283BF9CD00B4B6FF /* HTTPServer.swift */; };
 		DD9159BA2817F2B300C1393F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9159B82817F2B300C1393F /* Main.storyboard */; };
 		DD923AD02812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */; };
 		DD923AD22812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */; };
@@ -109,8 +114,6 @@
 		DDB3598A283E870600605B56 /* SetupChromeCastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */; };
 		DDBB897829266412000A908C /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896F292663C8000A908C /* WebRTC.xcframework */; };
 		DDBB897929266412000A908C /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896F292663C8000A908C /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DDBB897A29266412000A908C /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */; };
-		DDBB897B29266412000A908C /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DDBCDBE9283B830E00AB626A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E86F70A9282A442D0000A5C7 /* GoogleService-Info.plist */; };
 		DDBE6A39290FE9410079C309 /* URLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */; };
 		DDBE6A3A290FE9410079C309 /* URLResponse+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */; };
@@ -226,7 +229,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				DDBB897929266412000A908C /* WebRTC.xcframework in Embed Frameworks */,
-				DDBB897B29266412000A908C /* WebRTCiOSSDK.xcframework in Embed Frameworks */,
+				DD8BB27A2929366100D39F84 /* WebRTCiOSSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +310,8 @@
 		DD6E98AB282FDE4100A72DF3 /* GoogleDriveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDriveCell.swift; sourceTree = "<group>"; };
 		DD6E98AC282FDE4100A72DF3 /* GoogleDriveCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleDriveCell.xib; sourceTree = "<group>"; };
 		DD6E98B02830036000A72DF3 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		DD8BB2772929365700D39F84 /* WebRTCiOSSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTCiOSSDK.xcframework; sourceTree = "<group>"; };
+		DD8BB27E29293EC400D39F84 /* GCDWebServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GCDWebServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9159B92817F2B300C1393F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD923ACF2812E65B0034E5D3 /* ThumbnailMasterFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailMasterFlowLayout.swift; sourceTree = "<group>"; };
 		DD923AD12812E6A10034E5D3 /* ThumbnailFlowLayoutDraggingBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailFlowLayoutDraggingBehavior.swift; sourceTree = "<group>"; };
@@ -352,7 +357,6 @@
 		DDAE2660281927C000355735 /* DotsActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsActivityIndicator.swift; sourceTree = "<group>"; };
 		DDB35987283E870600605B56 /* SetupChromeCastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupChromeCastViewController.swift; sourceTree = "<group>"; };
 		DDB35988283E870600605B56 /* SetupChromeCastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupChromeCastViewController.xib; sourceTree = "<group>"; };
-		DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTCiOSSDK.xcframework; sourceTree = "<group>"; };
 		DDBB896F292663C8000A908C /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTC.xcframework; sourceTree = "<group>"; };
 		DDBE6A38290FE9410079C309 /* URLResponse+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Extension.swift"; sourceTree = "<group>"; };
 		DDBE7195285E087400383511 /* ResumeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeVideoView.swift; sourceTree = "<group>"; };
@@ -446,8 +450,9 @@
 				DDBB897829266412000A908C /* WebRTC.xcframework in Frameworks */,
 				E8964314280EB5A700E6E287 /* ReplayKit.framework in Frameworks */,
 				E8E5FA84283BF8E000B4B6FF /* AVFoundation.framework in Frameworks */,
-				DDBB897A29266412000A908C /* WebRTCiOSSDK.xcframework in Frameworks */,
+				DD8BB2782929365700D39F84 /* WebRTCiOSSDK.xcframework in Frameworks */,
 				DF465D7C2EB4D2F3C16B70E0 /* Pods_AntMediaWebRTCSDK_MirroringExtension.framework in Frameworks */,
+				DD8BB2792929366100D39F84 /* WebRTCiOSSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +472,7 @@
 		504D1222731237FE33320495 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD8BB27E29293EC400D39F84 /* GCDWebServer.framework */,
 				DD471CEC291BD4AC002B49B8 /* Foundation.framework */,
 				E8E5FA83283BF8E000B4B6FF /* AVFoundation.framework */,
 				E8964313280EB5A700E6E287 /* ReplayKit.framework */,
@@ -1079,8 +1085,8 @@
 		E89642A8280EAF7700E6E287 = {
 			isa = PBXGroup;
 			children = (
+				DD8BB2772929365700D39F84 /* WebRTCiOSSDK.xcframework */,
 				DDBB896F292663C8000A908C /* WebRTC.xcframework */,
-				DDBB896E292663C7000A908C /* WebRTCiOSSDK.xcframework */,
 				E89642B3280EAF7700E6E287 /* ChromecastIOS */,
 				E8964315280EB5A700E6E287 /* MirroringExtension */,
 				E89642B2280EAF7700E6E287 /* Products */,
@@ -1380,8 +1386,10 @@
 			files = (
 				E8E5FA81283BF8A300B4B6FF /* Realm+Extension.swift in Sources */,
 				E8E5FA93283BFAF400B4B6FF /* VTCompressionSession+Extension.swift in Sources */,
+				DD8BB27B292938EE00D39F84 /* HTMLStreamManager.swift in Sources */,
 				E8E5FA8C283BF9E100B4B6FF /* JPEGEncoder.swift in Sources */,
 				E8E5FA80283BF87800B4B6FF /* StreamConfiguration.swift in Sources */,
+				DD8BB28329293F4E00D39F84 /* HTTPServer.swift in Sources */,
 				E8E5FA90283BFAC300B4B6FF /* CGImageProperty+extension.swift in Sources */,
 				E8964317280EB5A700E6E287 /* SampleHandler.swift in Sources */,
 				E8E5FA85283BF90A00B4B6FF /* URL+Extension.swift in Sources */,
@@ -1672,10 +1680,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF006941BB83C3FF1E5F42D7 /* Pods-AntMediaWebRTCSDK-MirroringExtension.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1701,10 +1708,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D9F73FE8B0D357979FEE6FFE /* Pods-AntMediaWebRTCSDK-MirroringExtension.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = MirroringExtension/MirroringExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1736,13 +1742,15 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = asdasdasd;
 				INFOPLIST_KEY_NSCameraUsageDescription = "for better user experience";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access is required for video chat";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This way we'll be able to tailor user experience to your needs and constantly improve app features.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1775,12 +1783,14 @@
 				CODE_SIGN_ENTITLEMENTS = ChromecastIOS/ChromecastIOS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 32CU8MGAMB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChromecastIOS/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Chromecast;
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = asdasdasd;
 				INFOPLIST_KEY_NSCameraUsageDescription = "for better user experience";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access is required for video chat";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App use photo for showing on TV";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This way we'll be able to tailor user experience to your needs and constantly improve app features.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
