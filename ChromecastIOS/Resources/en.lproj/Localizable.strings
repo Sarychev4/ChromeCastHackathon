@@ -145,7 +145,7 @@
 "Screen.Mirror.AutoRotate" = "Auto-rotate";
 
 "Screen.MirrorTo.Title" = "Mirror to";
-"Screen.MirrorTo.TV" = "TV";
+"Screen.MirrorTo.TV" = "ChromeCast";
 "Screen.MirrorTo.PC" = "PC/Tablet/Other";
 
 "Screen.Mirror.Quality.Title" = "Quality";

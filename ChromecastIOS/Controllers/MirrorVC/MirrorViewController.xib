@@ -121,6 +121,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="W4P-FI-kRS" firstAttribute="centerY" secondItem="eSz-bQ-hmu" secondAttribute="centerY" id="3Wb-Nf-1UY"/>
+                                                <constraint firstItem="H8L-wS-u3l" firstAttribute="centerX" secondItem="EgC-j3-eOS" secondAttribute="centerX" id="4Lg-Q6-iaq"/>
                                                 <constraint firstItem="vmx-V6-Kqa" firstAttribute="centerY" secondItem="eSz-bQ-hmu" secondAttribute="centerY" id="duj-ju-fPM"/>
                                                 <constraint firstAttribute="height" constant="24" id="i0P-Nh-zb1"/>
                                             </constraints>
@@ -281,8 +282,8 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9G-we-NEn" customClass="InteractiveView" customModule="Chromecast" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="36"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLZ-zc-i3h" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
-                                                                            <rect key="frame" x="38" y="8" width="22" height="20.5"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ChromeCast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLZ-zc-i3h" customClass="DefaultLabel" customModule="Chromecast" customModuleProvider="target">
+                                                                            <rect key="frame" x="38" y="8" width="98" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                             <color key="textColor" red="0.14117647059999999" green="0.15686274510000001" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>

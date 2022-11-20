@@ -18,6 +18,7 @@ class MirrorViewController: BaseViewController {
     @IBOutlet weak var backInteractiveView: InteractiveView!
     @IBOutlet weak var connectInteractiveView: InteractiveView!
     
+    
     @IBOutlet weak var rotationSwitch: UISwitch!
     
     @IBOutlet weak var showHideImageView: UIImageView!
@@ -90,6 +91,7 @@ class MirrorViewController: BaseViewController {
                 //                if isDLNADeviceConnected() {
                 //                    updateMirroringStreamURL()
                 //                }
+                
             case .mirroringNotStarted:
                 let image = UIImage(named: "TapToStartMirroring")!
                 mirroringButton?.setImage(image, for: .normal)
@@ -122,6 +124,15 @@ class MirrorViewController: BaseViewController {
         showHideOpenTheURL()
 //        helpMirroringDescriptionLabel.isHidden = true
 //        streamURLLabel.isHidden = true
+        
+        if StreamConfiguration.current.mirrorToType == .tv {
+            self.connectInteractiveView.isHidden = false
+            
+        } else {
+            self.connectInteractiveView.isHidden = true
+            
+        }
+
      
     }
     
@@ -155,18 +166,21 @@ class MirrorViewController: BaseViewController {
             switch state {
             case .mirroringNotStarted:
                 print("mirroring not started")
-                if GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue == 2 {
-                    self.showSystemMirroringScreen()
-                } else {
-                    presentDevices(postAction: { [weak self] in
-                        guard let self = self else { return }
-                        self.startBroadcastClicked(sender)
-                    })
-                }
-                
+//                if GCKCastContext.sharedInstance().sessionManager.connectionState.rawValue == 2 {
+//                    self.showSystemMirroringScreen()
+//                } else {
+//                    presentDevices(postAction: { [weak self] in
+//                        guard let self = self else { return }
+//                        self.startBroadcastClicked(sender)
+//                    })
+//                }
+                ChromeCastService.shared.endSession()
+                showSystemMirroringScreen()
+                presentDevices(postAction: nil)
             case .mirroringStarted:
                 print("mirroring started")
                 showSystemMirroringScreen()
+              
             }
         } else {
             //disconect from chromecast
@@ -229,8 +243,17 @@ class MirrorViewController: BaseViewController {
         }
         
         connectInteractiveView.didTouchAction = { [weak self] in
-            guard self == self else { return }
-            self?.presentDevices(postAction: nil)
+            guard let self = self else { return }
+//            if StreamConfiguration.current.mirrorToType == .tv && self.state == .mirroringNotStarted {
+//                self.helpMirroringDescriptionLabel.text = "Please Start Mirroring and then connect to device."
+//                self.helpMirroringDescriptionLabel.isHidden = false
+//
+//            } else {
+//
+//                //self.helpMirroringDescriptionLabel.isHidden = true
+//            }
+            self.presentDevices(postAction: nil)
+            
         }
     }
     
@@ -261,11 +284,15 @@ class MirrorViewController: BaseViewController {
     
     private func showHideOpenTheURL() {
         if StreamConfiguration.current.mirrorToType == .tv {
-            helpMirroringDescriptionLabel.isHidden = true
+            helpMirroringDescriptionLabel.isHidden = false
+            helpMirroringDescriptionLabel.text = "Tap 'Start Mirroring' button below\nand then connect to device."
+            
+            
             streamURLLabel.isHidden = true
             streamURLLabel.text = "https://squid-app-ara8b.ondigitalocean.app/"
         } else {
             helpMirroringDescriptionLabel.isHidden = false
+            helpMirroringDescriptionLabel.text = "Tap 'Start mirroring' button below,\nopen the browser on your device\nand type in this URL"
             streamURLLabel.isHidden = false
             streamURLLabel.text = "https://squid-app-ara8b.ondigitalocean.app/"
         }
@@ -305,6 +332,7 @@ class MirrorViewController: BaseViewController {
             self.mirrorToContainer.isHidden = true
             self.showHideMirrorToImageView.image = UIImage(named: "show")
             self.showHideOpenTheURL()
+            self.connectInteractiveView.isHidden = false
             
         }
         
@@ -319,6 +347,8 @@ class MirrorViewController: BaseViewController {
             self.mirrorToContainer.isHidden = true
             self.showHideMirrorToImageView.image = UIImage(named: "show")
             self.showHideOpenTheURL()
+            self.connectInteractiveView.isHidden = true
+            
         }
         
         //Quality
