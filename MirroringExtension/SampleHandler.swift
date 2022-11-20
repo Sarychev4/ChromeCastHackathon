@@ -125,7 +125,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
             self.client.setDebug(true)
             self.client.setOptions(url: url as! String, streamId: streamId as! String, token: "", mode: AntMediaClientMode.publish, enableDataChannel: true, captureScreenEnabled: true);
             self.client.setExternalAudio(externalAudioEnabled: true)
-          //  self.applyResolution()
+            self.applyResolution()
             self.client.initPeerConnection();
             self.client.start();
         }
@@ -193,7 +193,7 @@ extension SampleHandler {
                         
                         if property.name == #keyPath(StreamConfiguration.resolutionType), let newValueInt = property.newValue as? Int, let newValue = ResolutionType(rawValue: newValueInt) {
                             self.resolution = newValue
-                           // self.applyResolution()
+                            self.applyResolution()
                         }
                         
                         if property.name == #keyPath(StreamConfiguration.isSoundOn), let newValue = property.newValue as? Bool {
